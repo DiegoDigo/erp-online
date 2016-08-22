@@ -1,25 +1,25 @@
 package br.com.control.vendas;
 
-import java.util.concurrent.atomic.AtomicLong;
-
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.control.modelo.Usuario;
-import br.com.control.vo.ComunicacaoVO;
+import br.com.control.cadastro.ClienteService;
+import br.com.control.integracao.MensagemHttp;
+import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
 
 @RestController
+@RequestMapping("/cliente")
 public class ClienteController {
 
-	private static final String template = "Olá, %s!";
-
-	private final AtomicLong counter = new AtomicLong();
-
-	@RequestMapping("/comunicacao")
-	public ComunicacaoVO greeting(@AuthenticationPrincipal Usuario user) {
-		return new ComunicacaoVO(counter.incrementAndGet(),
-				String.format(template, user.getNome()));
+	@Autowired
+	private ClienteService servicoCliente;
+	
+	@RequestMapping("/salvar")
+	public MensagemHttp salvar(Cliente cliente) {
+		Cliente clienteSalvo = servicoCliente.salvar(cliente);
+		return new MensagemHttp(HttpStatus.OK, "Cliente Salvo com Sucesso", clienteSalvo.getId().toString());
 	}
 
 }

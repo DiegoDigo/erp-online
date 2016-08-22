@@ -8,7 +8,16 @@
 		<artifactId>new-gestao</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
+	<packaging>jar</packaging>
 
 	<artifactId>new-gestao-autenticacao</artifactId>
 
+	<dependencies>
+		<dependency>
+			<groupId>br.com.control</groupId>
+			<artifactId>new-gestao-servico</artifactId>
+			<version>${version}</version>
+		</dependency>
+		
+	</dependencies>
 </project>

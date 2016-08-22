@@ -1,4 +1,4 @@
-package br.com.control.modelo;
+package br.com.control.autenticacao.modelo;
 
 import java.util.HashSet;
 import java.util.Set;

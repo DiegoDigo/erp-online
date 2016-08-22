@@ -4,16 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.control.configuracao.UserRepository;
-import br.com.control.modelo.Usuario;
+import br.com.control.autenticacao.modelo.Usuario;
+import br.com.control.repositorio.UsuarioRepository;
 
 @RestController
 public class UsuarioController {
 
-	private final UserRepository userRepository;
+	private final UsuarioRepository userRepository;
 
 	@Autowired
-	public UsuarioController(UserRepository userRepository) {
+	public UsuarioController(UsuarioRepository userRepository) {
 		this.userRepository = userRepository;
 	}
 

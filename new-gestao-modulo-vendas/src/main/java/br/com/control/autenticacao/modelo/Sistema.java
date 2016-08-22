@@ -1,4 +1,4 @@
-package br.com.control.modelo;
+package br.com.control.autenticacao.modelo;
 
 public enum Sistema {
 	SFA("222"), PORTAL_VENDAS("111");

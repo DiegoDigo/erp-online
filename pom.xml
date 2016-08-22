@@ -26,10 +26,12 @@
 	</pluginRepositories>
 
 	<modules>
-		<module>new-gestao-vendas</module>
-		<module>new-gestao-autenticacao</module>
+		<module>new-gestao-core</module>
+<!-- 		<module>new-gestao-autenticacao</module> -->
 		<module>new-gestao-auditoria</module>
 		<module>new-gestao-rest</module>
+		<module>new-gestao-servico</module>
+		<module>new-gestao-repositorio</module>
 	</modules>
 
 	<parent>
@@ -56,10 +58,6 @@
 			<groupId>org.springframework.security.oauth</groupId>
 			<artifactId>spring-security-oauth2</artifactId>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.h2database</groupId> -->
-<!-- 			<artifactId>h2</artifactId> -->
-<!-- 		</dependency> -->
 		<dependency>
 			<groupId>postgresql</groupId>
 			<artifactId>postgresql</artifactId>

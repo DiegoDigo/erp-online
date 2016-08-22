@@ -21,13 +21,14 @@ import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 
-import br.com.control.modelo.Sistema;
+import br.com.control.autenticacao.UsuarioService;
+import br.com.control.autenticacao.modelo.Sistema;
 
 @Configuration
 public class OAuth2Configuracao extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private CustomUserDetailsService userDetailsService;
+	private UsuarioService userDetailsService;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -53,7 +54,7 @@ public class OAuth2Configuracao extends WebSecurityConfigurerAdapter {
 
 		@Override
 		public void configure(HttpSecurity http) throws Exception {
-			http.authorizeRequests().antMatchers("/users").hasRole("ADMIN").antMatchers("/comunicacao").authenticated();
+			http.authorizeRequests().antMatchers("/users").hasRole("ADMIN").antMatchers("/cliente/**").authenticated();
 		}
 
 	}
@@ -69,7 +70,7 @@ public class OAuth2Configuracao extends WebSecurityConfigurerAdapter {
 		private AuthenticationManager authenticationManager;
 
 		@Autowired
-		private CustomUserDetailsService userDetailsService;
+		private UsuarioService userDetailsService;
 
 		@Override
 		public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {

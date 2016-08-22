@@ -1,4 +1,4 @@
-package br.com.control.configuracao;
+package br.com.control.autenticacao;
 
 import java.util.Collection;
 
@@ -9,15 +9,16 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import br.com.control.modelo.Usuario;
+import br.com.control.autenticacao.modelo.Usuario;
+import br.com.control.repositorio.UsuarioRepository;
 
 @Service
-public class CustomUserDetailsService implements UserDetailsService {
+public class UsuarioService implements UserDetailsService {
 
-	private final UserRepository userRepository;
+	private final UsuarioRepository userRepository;
 
 	@Autowired
-	public CustomUserDetailsService(UserRepository userRepository) {
+	public UsuarioService(UsuarioRepository userRepository) {
 		this.userRepository = userRepository;
 	}
 
