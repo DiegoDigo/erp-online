@@ -1,6 +1,6 @@
-insert into usuario(nome, login, sistema, password) values ('Rasa Lariguet','rasa', 'SFA','123');
-insert into usuario(nome, login, sistema, password) values ('Rodrigo Galante','rodrigo', 'SFA','123');
-insert into usuario(nome, login, sistema, password) values ('Wagner Dragao','dragao', 'PORTAL_VENDAS', '123');
+insert into usuario(nome, login, sistema, password) values ('Rasa Lariguet','rasa', 'PORTAL_VENDAS','123');
+insert into usuario(nome, login, sistema, password) values ('Rodrigo Galante','rodrigo', 'PORTAL_VENDAS','123');
+insert into usuario(nome, login, sistema, password) values ('Wagner Dragao','dragao', 'SFA', '123');
  
 insert into perfil(nome) values ('ROLE_USER');
 insert into perfil(nome) values ('ROLE_ADMIN');
