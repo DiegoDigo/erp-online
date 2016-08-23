@@ -27,7 +27,7 @@
 
 	<modules>
 		<module>new-gestao-core</module>
-<!-- 		<module>new-gestao-autenticacao</module> -->
+		<module>new-gestao-autenticacao</module>
 		<module>new-gestao-auditoria</module>
 		<module>new-gestao-rest</module>
 		<module>new-gestao-servico</module>
