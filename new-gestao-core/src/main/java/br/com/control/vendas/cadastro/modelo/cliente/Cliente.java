@@ -1,5 +1,6 @@
 package br.com.control.vendas.cadastro.modelo.cliente;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -9,8 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+@SuppressWarnings("serial")
 @Entity
-public class Cliente {
+public class Cliente implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -31,6 +33,10 @@ public class Cliente {
 	@OneToMany
 	private List<Documento> documentos;
 
+	@OneToOne
+	private Estabelecimento estabelecimento; 
+	
+	
 	public Long getId() {
 		return id;
 	}

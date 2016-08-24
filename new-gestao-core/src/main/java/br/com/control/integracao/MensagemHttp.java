@@ -1,14 +1,18 @@
 package br.com.control.integracao;
 
+import java.io.Serializable;
+
 import org.springframework.http.HttpStatus;
 
-public class MensagemHttp {
+public class MensagemHttp implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	private HttpStatus status;
 	private String mensagem;
-	private String conteudo;
+	private Object conteudo;
 	
 	
-	public MensagemHttp(HttpStatus status, String mensagem, String conteudo) {
+	public MensagemHttp(HttpStatus status, String mensagem, Object conteudo) {
 		this.status = status;
 		this.mensagem = mensagem;
 		this.conteudo = conteudo;
@@ -26,10 +30,13 @@ public class MensagemHttp {
 	public void setMensagem(String mensagem) {
 		this.mensagem = mensagem;
 	}
-	public String getConteudo() {
+
+	public Object getConteudo() {
 		return conteudo;
 	}
-	public void setConteudo(String conteudo) {
+
+	public void setConteudo(Object conteudo) {
 		this.conteudo = conteudo;
 	}
+	
 }
