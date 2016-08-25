@@ -1,6 +1,7 @@
 package br.com.control.vendas.cadastro.modelo.cliente;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -25,13 +26,13 @@ public class Cliente implements Serializable {
 	private String razaoSocial;
 	
 	@OneToMany
-	private List<Endereco> enderecos;
+	private List<Endereco> enderecos = new ArrayList<>();
 	
 	@OneToOne
 	private ContatoResponsavel contatoResponsavel; 
 
 	@OneToMany
-	private List<Documento> documentos;
+	private List<Documento> documentos = new ArrayList<>();
 
 	@OneToOne
 	private Estabelecimento estabelecimento; 
