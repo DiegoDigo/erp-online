@@ -14,6 +14,7 @@ import br.com.control.cadastro.ClienteService;
 import br.com.control.integracao.MensagemHttp;
 import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
+import br.com.control.vendas.cadastro.modelo.cliente.Estado;
 import br.com.control.vendas.cadastro.modelo.cliente.TipoDocumento;
 import br.com.control.vendas.cadastro.modelo.cliente.TipoEstabelecimento;
 import br.com.control.vendas.cadastro.modelo.cliente.TipoLogradouro;
@@ -38,6 +39,10 @@ public class ClienteController {
 	@RequestMapping(RotasRest.LOGRADOUROS_TIPOS)
 	public ResponseEntity<List<String>> recuberaTiposLogradouros() {
 		return new ResponseEntity<List<String>>(TipoLogradouro.recuperaNomes(), HttpStatus.OK);
+	}
+	@RequestMapping(RotasRest.ESTADOS)
+	public ResponseEntity<List<String>> recuberaEstados() {
+		return new ResponseEntity<List<String>>(Estado.recuperaEstados(), HttpStatus.OK);
 	}
 
 	@RequestMapping(value=RotasRest.SALVAR, method=RequestMethod.POST, headers="Accept=application/json")

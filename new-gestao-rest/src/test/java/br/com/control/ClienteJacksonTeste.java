@@ -11,8 +11,11 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import br.com.control.json.Views;
 import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
 import br.com.control.vendas.cadastro.modelo.cliente.Documento;
+import br.com.control.vendas.cadastro.modelo.cliente.Endereco;
 import br.com.control.vendas.cadastro.modelo.cliente.Estado;
 import br.com.control.vendas.cadastro.modelo.cliente.TipoDocumento;
+import br.com.control.vendas.cadastro.modelo.cliente.TipoEndereco;
+import br.com.control.vendas.cadastro.modelo.cliente.TipoLogradouro;
 
 
 public class ClienteJacksonTeste {
@@ -35,6 +38,14 @@ public class ClienteJacksonTeste {
 		doc.setValorDocumento("33666544-6");
 		doc.setOrgaoEmissor(Estado.SAOPAULO);
 		cliente.getDocumentos().add(doc);
+		
+		Endereco end = new Endereco();
+		end.setTipoEndereco(TipoEndereco.FATURA);
+		end.setTipoLogradouro(TipoLogradouro.RUA);
+		end.setLogradouro("Xiririca");
+		end.setNumero("1554");
+		cliente.getEnderecos().add(end);
+		
 		
 		System.out.println(mapper.writerWithView(Views.CadastroCliente.class).writeValueAsString(cliente));
 

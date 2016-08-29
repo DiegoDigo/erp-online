@@ -1,4 +1,9 @@
 package br.com.control.vendas.cadastro.modelo.cliente;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public enum Estado {
 
     /**
@@ -124,6 +129,14 @@ public enum Estado {
         this.sigla = sigla;       
         this.regiao = regiao;
     }
+    
+	public static List<String> recuperaEstados(){
+		List<String> estados = new ArrayList<>();
+		for (Estado estado : Arrays.asList(Estado.values())) {
+			estados.add(estado.getNome());
+		}
+		return estados;
+	}    
 
     /**
      * Retorna nome
