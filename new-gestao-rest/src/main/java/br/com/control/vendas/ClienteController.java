@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.control.cadastro.ClienteService;
@@ -40,6 +41,7 @@ public class ClienteController {
 	public ResponseEntity<List<String>> recuberaTiposLogradouros() {
 		return new ResponseEntity<List<String>>(TipoLogradouro.recuperaNomes(), HttpStatus.OK);
 	}
+	
 	@RequestMapping(RotasRest.ESTADOS)
 	public ResponseEntity<List<String>> recuberaEstados() {
 		return new ResponseEntity<List<String>>(Estado.recuperaEstados(), HttpStatus.OK);
