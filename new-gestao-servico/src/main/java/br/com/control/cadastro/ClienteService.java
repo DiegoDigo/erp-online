@@ -11,7 +11,6 @@ import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
 @Service
 @Transactional
 public class ClienteService {
-
 	@Autowired
 	private ClienteRepository repositorioCliente;
 	
@@ -19,6 +18,4 @@ public class ClienteService {
 		Cliente clienteSalvo = repositorioCliente.save(cliente);
 		return clienteSalvo;
 	}
-	
-	
 }
