@@ -6,12 +6,12 @@
 
     <parent>
         <groupId>br.com.control</groupId>
-        <artifactId>new-gestao</artifactId>
+        <artifactId>api-servicos-j-control</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
     <packaging>jar</packaging>
 
-    <artifactId>new-gestao-core</artifactId>
+    <artifactId>core-j-control</artifactId>
     
 </project>

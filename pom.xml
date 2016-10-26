@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>br.com.control</groupId>
-	<artifactId>new-gestao</artifactId>
+	<artifactId>api-servicos-j-control</artifactId>
 	<version>1.0-SNAPSHOT</version>
 
 	<packaging>pom</packaging>
@@ -26,12 +26,12 @@
 	</pluginRepositories>
 
 	<modules>
-		<module>new-gestao-core</module>
-		<module>new-gestao-autenticacao</module>
-		<module>new-gestao-auditoria</module>
-		<module>new-gestao-rest</module>
-		<module>new-gestao-servico</module>
-		<module>new-gestao-repositorio</module>
+		<module>core-j-control</module>
+		<module>autenticacao-j-control</module>
+		<module>auditoria-j-control</module>
+		<module>rest-j-control</module>
+		<module>servico-j-control</module>
+		<module>repositorio-j-control</module>
 	</modules>
 
 	<parent>
