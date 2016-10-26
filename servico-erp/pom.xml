@@ -16,7 +16,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>br.com.control</groupId>
-			<artifactId>repositorio-erp</artifactId>
+			<artifactId>repositorio-jpa-erp</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>

@@ -31,8 +31,8 @@
 		<module>auditoria-erp</module>
 		<module>rest-erp</module>
 		<module>servico-erp</module>
-		<module>repositorio-erp</module>
-		<module>repositorio-erp</module>
+		<module>repositorio-jpa-erp</module>
+		<module>repositorio-jdbc-erp</module>
 	</modules>
 
 	<parent>
