@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>br.com.control</groupId>
-	<artifactId>api-servicos-j-control</artifactId>
+	<artifactId>api-servicos-erp</artifactId>
 	<version>1.0-SNAPSHOT</version>
 
 	<packaging>pom</packaging>
@@ -26,12 +26,13 @@
 	</pluginRepositories>
 
 	<modules>
-		<module>core-j-control</module>
-		<module>autenticacao-j-control</module>
-		<module>auditoria-j-control</module>
-		<module>rest-j-control</module>
-		<module>servico-j-control</module>
-		<module>repositorio-j-control</module>
+		<module>core-erp</module>
+		<module>autenticacao-erp</module>
+		<module>auditoria-erp</module>
+		<module>rest-erp</module>
+		<module>servico-erp</module>
+		<module>repositorio-erp</module>
+		<module>repositorio-erp</module>
 	</modules>
 
 	<parent>
