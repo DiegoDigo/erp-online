@@ -11,6 +11,7 @@ import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
 @Service
 @Transactional
 public class ClienteService {
+	
 	@Autowired
 	private ClienteRepository repositorioCliente;
 	
