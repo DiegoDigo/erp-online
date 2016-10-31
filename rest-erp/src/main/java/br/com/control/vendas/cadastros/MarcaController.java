@@ -10,24 +10,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.control.auditoria.Auditavel;
-import br.com.control.cadastro.FamiliaService;
+import br.com.control.cadastro.MarcaService;
 import br.com.control.integracao.MensagemRecebida;
 import br.com.control.integracao.MensagemRetorno;
 import br.com.control.rotas.RotasRest;
-import br.com.control.vendas.cadastro.modelo.produto.Familia;
+import br.com.control.vendas.cadastro.modelo.produto.Marca;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_FAMILIA)
+@RequestMapping(RotasRest.RAIZ_MARCA)
 @Auditavel
-public class FamiliaController {
+public class MarcaController {
 
 	@Autowired
-	private FamiliaService servicoFamilia;
+	private MarcaService servicoMarca;
 	
 	@RequestMapping(value=RotasRest.LISTAR, method=RequestMethod.POST, headers="Accept=application/json")
-	public MensagemRetorno listar(@RequestBody MensagemRecebida<Familia> mensagem) {
-		List<Familia> familiasEncontradas = servicoFamilia.listarTodos(mensagem.getIdentificacao().getMatriculaAssociada());
-		return new MensagemRetorno(HttpStatus.OK, "Listagem retornada com Sucesso", familiasEncontradas, mensagem.getIdentificacao());
+	public MensagemRetorno listar(@RequestBody MensagemRecebida<Marca> mensagem) {
+		List<Marca> marcasEncontradas = servicoMarca.listarTodos(mensagem.getIdentificacao().getMatriculaAssociada());
+		return new MensagemRetorno(HttpStatus.OK, "Listagem retornada com Sucesso", marcasEncontradas, mensagem.getIdentificacao());
 	}
 
 }

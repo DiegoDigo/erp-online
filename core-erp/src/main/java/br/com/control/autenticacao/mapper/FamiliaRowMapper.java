@@ -12,16 +12,16 @@ public class FamiliaRowMapper implements RowMapper<Familia> {
     @Override
     public Familia mapRow(ResultSet rs, int rowNum) throws SQLException {
 
-    	Familia state = new Familia();
+    	Familia familia = new Familia();
 
-        state.setId(rs.getLong("ID"));
-        state.setMatriculaAssociada(rs.getString("MATRICULA_ASSOCIADA"));
-        state.setCodigoFamiliaProduto(rs.getString("CODIGO_FAMILIA_PRODUTO"));
-        state.setCodigoFameb(rs.getString("CODIGO_FAMEB"));
-        state.setDescricao(rs.getString("DESCRICAO"));
-        state.setAtivo(rs.getBoolean("ATIVO"));
+        familia.setId(rs.getLong("ID"));
+        familia.setMatriculaAssociada(rs.getString("MATRICULA_ASSOCIADA"));
+        familia.setCodigoFamiliaProduto(rs.getString("CODIGO_FAMILIA_PRODUTO"));
+        familia.setCodigoFameb(rs.getString("CODIGO_FAMEB"));
+        familia.setDescricao(rs.getString("DESCRICAO"));
+        familia.setAtivo(rs.getBoolean("ATIVO"));
 
-        return state;
+        return familia;
     }
 
 }

@@ -1,21 +1,21 @@
-package br.com.control.repositorio;
+package br.com.control.dao;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.sql.DataSource;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import br.com.control.autenticacao.mapper.FamiliaRowMapper;
-import br.com.control.vendas.cadastro.modelo.produto.Familia;
+import br.com.control.autenticacao.mapper.MarcaRowMapper;
+import br.com.control.vendas.cadastro.modelo.produto.Marca;
 
 @Repository
-public class FamiliaDao {
+@Transactional
+public class MarcaProdutoDao {
 
 	private DataSource dataSource;
 
@@ -28,13 +28,13 @@ public class FamiliaDao {
 		this.dataSource = dataSource;
 	}
 
-	public List<Familia> listaTodasAsFamiliasDaMatricula(String matricula) {
+	public List<Marca> listaTodasAsFamiliasDaMatricula(String matricula) {
 		jdbcTemplate = new JdbcTemplate(dataSource);
-		String sql = "SELECT * FROM cadastro_familia_produto WHERE matricula_associada = " + matricula;
+		String sql = "SELECT * FROM cadastro_marca_produto WHERE matricula_associada = " + matricula;
 
-		List<Familia> familias = jdbcTemplate.query(sql, new FamiliaRowMapper());
+		List<Marca> marcas = jdbcTemplate.query(sql, new MarcaRowMapper());
 
-		return familias;
+		return marcas;
 	}
 
 }

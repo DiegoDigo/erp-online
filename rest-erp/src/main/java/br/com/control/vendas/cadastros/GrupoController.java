@@ -10,23 +10,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.control.auditoria.Auditavel;
-import br.com.control.cadastro.FamiliaService;
+import br.com.control.cadastro.GrupoService;
 import br.com.control.integracao.MensagemRecebida;
 import br.com.control.integracao.MensagemRetorno;
 import br.com.control.rotas.RotasRest;
-import br.com.control.vendas.cadastro.modelo.produto.Familia;
+import br.com.control.vendas.cadastro.modelo.produto.Grupo;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_FAMILIA)
+@RequestMapping(RotasRest.RAIZ_GRUPO)
 @Auditavel
-public class FamiliaController {
+public class GrupoController {
 
 	@Autowired
-	private FamiliaService servicoFamilia;
+	private GrupoService servicoGrupo;
 	
 	@RequestMapping(value=RotasRest.LISTAR, method=RequestMethod.POST, headers="Accept=application/json")
-	public MensagemRetorno listar(@RequestBody MensagemRecebida<Familia> mensagem) {
-		List<Familia> familiasEncontradas = servicoFamilia.listarTodos(mensagem.getIdentificacao().getMatriculaAssociada());
+	public MensagemRetorno listar(@RequestBody MensagemRecebida<Grupo> mensagem) {
+		List<Grupo> familiasEncontradas = servicoGrupo.listarTodos(mensagem.getIdentificacao().getMatriculaAssociada());
 		return new MensagemRetorno(HttpStatus.OK, "Listagem retornada com Sucesso", familiasEncontradas, mensagem.getIdentificacao());
 	}
 
