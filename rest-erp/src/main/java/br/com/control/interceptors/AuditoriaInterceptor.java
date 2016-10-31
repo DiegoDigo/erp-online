@@ -47,13 +47,16 @@ public class AuditoriaInterceptor {
 				
 				Identificacao identificacao = msg.getIdentificacao();
 				if (identificacao.getOrigem() == null) {
-					throw new IdentificacaoException("Sistema Origem não informado");
+					throw new IdentificacaoException("Sistema Origem não informado!");
 				}
 				if (identificacao.getDestino() == null) {
-					throw new IdentificacaoException("Sistema Destino não informado");
+					throw new IdentificacaoException("Sistema Destino não informado!");
 				}
 				if (identificacao.getUsuarioOrigemServico() == null) {
-					throw new IdentificacaoException("Usuário do sistema Origem não informado");
+					throw new IdentificacaoException("Usuário do sistema Origem não informado!");
+				}
+				if (identificacao.getMatriculaAssociada() == null) {
+					throw new IdentificacaoException("Matrícula da revenda não foi informada!");
 				}
 			}
 		}
