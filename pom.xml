@@ -3,12 +3,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>br.com.control</groupId>
-	<artifactId>api-servicos-gestao</artifactId>
+	<artifactId>api-servicos-erp</artifactId>
 	<version>1.0-SNAPSHOT</version>
 
 	<packaging>pom</packaging>
 
-	<name>new-gestao</name>
+	<name>servicos-erp</name>
 	<url>http://maven.apache.org</url>
 
 	<repositories>
