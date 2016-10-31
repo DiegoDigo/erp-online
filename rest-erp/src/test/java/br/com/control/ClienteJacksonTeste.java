@@ -8,6 +8,10 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+import br.com.control.autenticacao.modelo.Sistema;
+import br.com.control.integracao.Identificacao;
+import br.com.control.integracao.MensagemRecebida;
+import br.com.control.integracao.TipoOperacao;
 import br.com.control.json.Views;
 import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
 import br.com.control.vendas.cadastro.modelo.cliente.Documento;
@@ -47,7 +51,15 @@ public class ClienteJacksonTeste {
 		cliente.getEnderecos().add(end);
 		
 		
-		System.out.println(mapper.writerWithView(Views.CadastroCliente.class).writeValueAsString(cliente));
+		Identificacao i = new Identificacao();
+		i.setOrigem(Sistema.PORTAL_VENDAS);
+		i.setDestino(Sistema.ERP);
+		i.setTipoOperacao(TipoOperacao.POST);
+		i.setUsuarioOrigemServico("Admin Revenda do Portal");
+		
+		MensagemRecebida<Cliente> mr = new MensagemRecebida<>(cliente, i);
+		
+		System.out.println(mapper.writerWithView(Views.CadastroCliente.class).writeValueAsString(mr));
 
 	}
 

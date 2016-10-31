@@ -1,11 +1,8 @@
 package br.com.control.integracao;
 
-import javax.persistence.Entity;
+import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 import br.com.control.autenticacao.modelo.Sistema;
 
@@ -15,29 +12,21 @@ import br.com.control.autenticacao.modelo.Sistema;
  *         Classe utilizada para identificar os serviços, deve ser enviado
  *         preenchido em todas as requisições;
  */
-@Entity
+@Embeddable
 public class Identificacao {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
+	@Enumerated(EnumType.STRING)
 	private Sistema origem;
 
+	@Enumerated(EnumType.STRING)
 	private Sistema destino;
 
 	private String usuarioOrigemServico;
 
 	@Enumerated(EnumType.STRING)
 	private TipoOperacao tipoOperacao;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+	
+	private String servicoAcessado;
 
 	public Sistema getOrigem() {
 		return origem;
@@ -69,6 +58,14 @@ public class Identificacao {
 
 	public void setUsuarioOrigemServico(String usuarioOrigemServico) {
 		this.usuarioOrigemServico = usuarioOrigemServico;
+	}
+
+	public String getServicoAcessado() {
+		return servicoAcessado;
+	}
+
+	public void setServicoAcessado(String servicoAcessado) {
+		this.servicoAcessado = servicoAcessado;
 	}
 
 }

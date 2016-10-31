@@ -1,7 +1,7 @@
 package br.com.control.autenticacao.modelo;
 
 public enum Sistema {
-	PORTAL_VENDAS("001"), SFA("002");
+	ERP("001"), PORTAL_VENDAS("002"), SFA("003");
 	
 	private String segredo;
 

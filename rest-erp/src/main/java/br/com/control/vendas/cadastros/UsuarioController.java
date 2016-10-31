@@ -1,4 +1,4 @@
-package br.com.control.vendas;
+package br.com.control.vendas.cadastros;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -24,6 +24,11 @@
 			<artifactId>core-erp</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>br.com.control</groupId>
+			<artifactId>auditoria-erp</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 </project>

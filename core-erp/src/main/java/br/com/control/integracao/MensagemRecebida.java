@@ -2,29 +2,37 @@ package br.com.control.integracao;
 
 import java.io.Serializable;
 
-public class MensagemEnvio implements Serializable {
+public class MensagemRecebida<T> implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private Object conteudo;
+	private T conteudo;
 	private Identificacao identificacao;
 	
 	public Identificacao getIdentificacao() {
 		return identificacao;
 	}
+	
+	public MensagemRecebida() {
+	}
 
-	public MensagemEnvio(Object conteudo, Identificacao identificacao) {
-		super();
+	public MensagemRecebida(T conteudo, Identificacao identificacao) {
 		this.conteudo = conteudo;
 		this.identificacao = identificacao;
 	}
 
 
 
-	public Object getConteudo() {
+	public T getConteudo() {
 		return conteudo;
 	}
 
-	public void setConteudo(Object conteudo) {
+	public void setConteudo(T conteudo) {
 		this.conteudo = conteudo;
 	}
+
+	public void setIdentificacao(Identificacao identificacao) {
+		this.identificacao = identificacao;
+	}
+	
+	
 }

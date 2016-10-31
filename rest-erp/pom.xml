@@ -24,6 +24,11 @@
 			<artifactId>autenticacao-erp</artifactId>
 			<version>${version}</version>
 		</dependency>
+		<dependency>
+			<groupId>br.com.control</groupId>
+			<artifactId>auditoria-erp</artifactId>
+			<version>${version}</version>
+		</dependency>
 	</dependencies>
 
 </project>

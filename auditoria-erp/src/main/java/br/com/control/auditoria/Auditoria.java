@@ -1,12 +1,14 @@
 package br.com.control.auditoria;
 
-import java.time.LocalDate;
+import java.util.Calendar;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import br.com.control.integracao.Identificacao;
 
@@ -26,12 +28,14 @@ public class Auditoria {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@OneToOne
+	@Embedded
 	private Identificacao identificacao;
 
-	private LocalDate dataInicioExecucaoServico;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Calendar dataInicioExecucaoServico;
 
-	private LocalDate dataFimExecucaoServico;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Calendar dataFimExecucaoServico;
 
 	public Long getId() {
 		return id;
@@ -49,19 +53,19 @@ public class Auditoria {
 		this.identificacao = identificacao;
 	}
 
-	public LocalDate getDataInicioExecucaoServico() {
+	public Calendar getDataInicioExecucaoServico() {
 		return dataInicioExecucaoServico;
 	}
 
-	public void setDataInicioExecucaoServico(LocalDate dataInicioExecucaoServico) {
+	public void setDataInicioExecucaoServico(Calendar dataInicioExecucaoServico) {
 		this.dataInicioExecucaoServico = dataInicioExecucaoServico;
 	}
 
-	public LocalDate getDataFimExecucaoServico() {
+	public Calendar getDataFimExecucaoServico() {
 		return dataFimExecucaoServico;
 	}
 
-	public void setDataFimExecucaoServico(LocalDate dataFimExecucaoServico) {
+	public void setDataFimExecucaoServico(Calendar dataFimExecucaoServico) {
 		this.dataFimExecucaoServico = dataFimExecucaoServico;
 	}
 }

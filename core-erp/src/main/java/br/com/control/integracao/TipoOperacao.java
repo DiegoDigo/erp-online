@@ -8,5 +8,5 @@ package br.com.control.integracao;
  *         auditoria.
  */
 public enum TipoOperacao {
-	PUT, UPDATE, DELETE, GET;
+	PUT, POST, DELETE, GET;
 }

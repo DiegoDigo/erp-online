@@ -30,11 +30,11 @@ import org.springframework.util.Base64Utils;
 import org.springframework.web.context.WebApplicationContext;
 
 import br.com.control.autenticacao.modelo.Sistema;
-import br.com.control.vendas.ClienteController;
+import br.com.control.vendas.cadastros.ClienteController;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@SpringApplicationConfiguration(classes = NewGestao.class)
+@SpringApplicationConfiguration(classes = ServicoERP.class)
 public class ClienteRestTest {
 
 	@Autowired

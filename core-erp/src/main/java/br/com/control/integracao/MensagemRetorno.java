@@ -14,10 +14,11 @@ public class MensagemRetorno implements Serializable {
 	private Identificacao identificacao;
 	
 	
-	public MensagemRetorno(HttpStatus status, String mensagem, Object conteudo) {
+	public MensagemRetorno(HttpStatus status, String mensagem, Object conteudo, Identificacao identificacao) {
 		this.status = status;
 		this.mensagem = mensagem;
 		this.conteudo = conteudo;
+		this.identificacao = identificacao;
 	}
 
 	public HttpStatus getStatus() {
