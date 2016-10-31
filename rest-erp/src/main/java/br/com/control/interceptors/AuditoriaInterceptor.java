@@ -1,6 +1,5 @@
 package br.com.control.interceptors;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.Calendar;
 
@@ -61,6 +60,7 @@ public class AuditoriaInterceptor {
 	}
 
 	
+	@SuppressWarnings("unchecked")
 	private void gravaLogParaAClasseAcionada(JoinPoint joinPoint) {
 		if (isClasseAcionadaAuditavel(joinPoint)) {
 			Object[] argumentosServicoChamado = joinPoint.getArgs();
