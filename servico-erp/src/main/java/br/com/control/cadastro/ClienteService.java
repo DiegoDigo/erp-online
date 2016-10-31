@@ -1,5 +1,8 @@
 package br.com.control.cadastro;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,5 +21,12 @@ public class ClienteService {
 	public Cliente salvar(Cliente cliente){
 		Cliente clienteSalvo = repositorioCliente.save(cliente);
 		return clienteSalvo;
+	}
+
+	public List<Cliente> listarTodos(){
+		List<Cliente> listaClientes = new ArrayList<>();
+		Iterable<Cliente> clientesIterable = repositorioCliente.findAll();
+		clientesIterable.forEach(listaClientes::add);
+		return listaClientes;
 	}
 }

@@ -54,5 +54,11 @@ public class ClienteController {
 		Cliente clienteSalvo = servicoCliente.salvar((Cliente) mensagem.getConteudo());
 		return new MensagemRetorno(HttpStatus.OK, "Cliente Salvo com Sucesso", clienteSalvo.getId().toString(), mensagem.getIdentificacao());
 	}
+	
+	@RequestMapping(value=RotasRest.LISTAR, method=RequestMethod.POST, headers="Accept=application/json")
+	public MensagemRetorno listar(@RequestBody MensagemRecebida<Cliente> mensagem) {
+		List<Cliente> clientesEncontrados = servicoCliente.listarTodos();
+		return new MensagemRetorno(HttpStatus.OK, "Listagem retornada com Sucesso", clientesEncontrados, mensagem.getIdentificacao());
+	}
 
 }

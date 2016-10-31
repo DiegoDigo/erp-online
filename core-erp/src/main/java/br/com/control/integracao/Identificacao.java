@@ -28,6 +28,8 @@ public class Identificacao {
 	
 	private String servicoAcessado;
 
+	private String matriculaAssociada;
+
 	public Sistema getOrigem() {
 		return origem;
 	}
@@ -67,5 +69,15 @@ public class Identificacao {
 	public void setServicoAcessado(String servicoAcessado) {
 		this.servicoAcessado = servicoAcessado;
 	}
+
+	public String getMatriculaAssociada() {
+		return matriculaAssociada;
+	}
+
+	public void setMatriculaAssociada(String matriculaAssociada) {
+		this.matriculaAssociada = matriculaAssociada;
+	}
+	
+	
 
 }
