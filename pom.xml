@@ -28,7 +28,6 @@
 	<modules>
 		<module>core-erp</module>
 		<module>autenticacao-erp</module>
-		<module>auditoria-erp</module>
 		<module>rest-erp</module>
 		<module>servico-erp</module>
 		<module>repositorio-jpa-erp</module>
@@ -108,7 +107,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>new-gestao</finalName>
+		<finalName>api-servicos-erp</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

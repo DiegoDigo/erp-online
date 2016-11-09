@@ -14,11 +14,11 @@ public class CategoriaRowMapper implements RowMapper<Categoria> {
 
     	Categoria categoria = new Categoria();
 
-    	categoria.setId(rs.getLong("ID"));
-    	categoria.setMatriculaAssociada(rs.getString("MATRICULA_ASSOCIADA"));
+//    	categoria.setId(rs.getLong("ID"));
+//    	categoria.setMatriculaAssociada(rs.getString("MATRICULA_ASSOCIADA"));
     	categoria.setDescricao(rs.getString("DESCRICAO"));
     	categoria.setCodigoCategoriaProduto("CODIGO_CATEGORIA_PRODUTO");
-    	categoria.setAtivo(rs.getBoolean("ATIVO"));
+//    	categoria.setAtivo(rs.getBoolean("ATIVO"));
 
         return categoria;
     }

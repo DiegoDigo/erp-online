@@ -14,11 +14,11 @@ public class GrupoRowMapper implements RowMapper<Grupo> {
 
     	Grupo grupo = new Grupo();
 
-    	grupo.setId(rs.getLong("ID"));
-    	grupo.setMatriculaAssociada(rs.getString("MATRICULA_ASSOCIADA"));
+//    	grupo.setId(rs.getLong("ID"));
+//    	grupo.setMatriculaAssociada(rs.getString("MATRICULA_ASSOCIADA"));
     	grupo.setDescricao(rs.getString("DESCRICAO"));
     	grupo.setCodigoGrupoProduto("CODIGO_GRUPO_PRODUTO");
-    	grupo.setAtivo(rs.getBoolean("ATIVO"));
+//    	grupo.setAtivo(rs.getBoolean("ATIVO"));
 
         return grupo;
     }

@@ -14,12 +14,12 @@ public class FamiliaRowMapper implements RowMapper<Familia> {
 
     	Familia familia = new Familia();
 
-        familia.setId(rs.getLong("ID"));
-        familia.setMatriculaAssociada(rs.getString("MATRICULA_ASSOCIADA"));
-        familia.setCodigoFamiliaProduto(rs.getString("CODIGO_FAMILIA_PRODUTO"));
-        familia.setCodigoFameb(rs.getString("CODIGO_FAMEB"));
-        familia.setDescricao(rs.getString("DESCRICAO"));
-        familia.setAtivo(rs.getBoolean("ATIVO"));
+//        familia.setId(rs.getLong("ID"));
+//        familia.setMatriculaAssociada(rs.getString("MATRICULA_ASSOCIADA"));
+        familia.setCodigoFamiliaProduto(rs.getString("CODIGO_FAMILIA_PRODUTO").trim());
+//        familia.setCodigoFameb(rs.getString("CODIGO_FAMEB"));
+        familia.setDescricao(rs.getString("DESCRICAO").trim());
+//        familia.setAtivo(rs.getBoolean("ATIVO"));
 
         return familia;
     }

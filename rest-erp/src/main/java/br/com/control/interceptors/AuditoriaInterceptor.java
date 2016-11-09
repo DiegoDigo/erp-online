@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import br.com.control.auditoria.Auditavel;
 import br.com.control.auditoria.Auditoria;
 import br.com.control.autenticacao.AuditoriaService;
 import br.com.control.autenticacao.exceptions.IdentificacaoException;
@@ -65,28 +64,21 @@ public class AuditoriaInterceptor {
 	
 	@SuppressWarnings("unchecked")
 	private void gravaLogParaAClasseAcionada(JoinPoint joinPoint) {
-		if (isClasseAcionadaAuditavel(joinPoint)) {
-			Object[] argumentosServicoChamado = joinPoint.getArgs();
-			for (Object argumentoServico : argumentosServicoChamado) {
-				if (argumentoServico instanceof MensagemRecebida) {
-					MensagemRecebida<?> msg = (MensagemRecebida<?>) argumentoServico;
-					
-					MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
-					Method method = methodSignature.getMethod();
-					RequestMethod methodHttp = method.getAnnotation(RequestMapping.class).method()[0];
+		Object[] argumentosServicoChamado = joinPoint.getArgs();
+		for (Object argumentoServico : argumentosServicoChamado) {
+			if (argumentoServico instanceof MensagemRecebida) {
+				MensagemRecebida<?> msg = (MensagemRecebida<?>) argumentoServico;
+				
+				MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+				Method method = methodSignature.getMethod();
+				RequestMethod methodHttp = method.getAnnotation(RequestMapping.class).method()[0];
 
-					String servicoRaiz = ((RequestMapping)joinPoint.getSignature().getDeclaringType().getAnnotation(RequestMapping.class)).value()[0];
-					String servicoAcessado = method.getAnnotation(RequestMapping.class).value()[0];
-					            
-					gravaLog(msg, methodHttp, servicoRaiz+servicoAcessado);
-				}
+				String servicoRaiz = ((RequestMapping)joinPoint.getSignature().getDeclaringType().getAnnotation(RequestMapping.class)).value()[0];
+				String servicoAcessado = method.getAnnotation(RequestMapping.class).value()[0];
+				            
+				gravaLog(msg, methodHttp, servicoRaiz+servicoAcessado);
 			}
 		}
-	}
-
-	@SuppressWarnings("unchecked")
-	private boolean isClasseAcionadaAuditavel(JoinPoint joinPoint) {
-		return joinPoint.getSignature().getDeclaringType().getDeclaredAnnotationsByType(Auditavel.class).length > 0;
 	}
 
 	public void gravaLog(MensagemRecebida<?> msg, RequestMethod requestMethod, String servicoAcessado) {

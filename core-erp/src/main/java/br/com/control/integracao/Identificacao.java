@@ -77,7 +77,5 @@ public class Identificacao {
 	public void setMatriculaAssociada(String matriculaAssociada) {
 		this.matriculaAssociada = matriculaAssociada;
 	}
-	
-	
 
 }

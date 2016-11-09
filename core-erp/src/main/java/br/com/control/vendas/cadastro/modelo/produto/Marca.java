@@ -7,7 +7,7 @@ public class Marca implements Serializable {
 
 	private Long id;
 	
-	private String matriculaAssociada;
+	private String matriculaEmpresa;
 	
 	private boolean ativo;
 	
@@ -23,12 +23,12 @@ public class Marca implements Serializable {
 		this.id = id;
 	}
 
-	public String getMatriculaAssociada() {
-		return matriculaAssociada;
+	public String getMatriculaEmpresa() {
+		return matriculaEmpresa;
 	}
 
-	public void setMatriculaAssociada(String matriculaAssociada) {
-		this.matriculaAssociada = matriculaAssociada;
+	public void setMatriculaEmpresa(String matriculaEmpresa) {
+		this.matriculaEmpresa = matriculaEmpresa;
 	}
 
 	public boolean isAtivo() {
@@ -38,7 +38,6 @@ public class Marca implements Serializable {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
-
 
 	public String getCodigoMarcaProduto() {
 		return codigoMarcaProduto;
@@ -55,7 +54,5 @@ public class Marca implements Serializable {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
 
-	
 }

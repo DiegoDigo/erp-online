@@ -1,39 +1,21 @@
 package br.com.control.dao;
 
 import java.util.List;
-
-import javax.sql.DataSource;
 import javax.transaction.Transactional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
 import br.com.control.autenticacao.mapper.GrupoRowMapper;
+import br.com.control.integracao.TabelasIntegracaoPortal;
 import br.com.control.vendas.cadastro.modelo.produto.Grupo;
 
 @Repository
 @Transactional
-public class GrupoProdutoDao {
-
-	private DataSource dataSource;
-
-	@Autowired
-	private JdbcTemplate jdbcTemplate;
-
-	@Autowired
-	@Qualifier("secondaryDataSource")
-	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
+public class GrupoProdutoDao extends JdbcDao {
 
 	public List<Grupo> listaTodasAsFamiliasDaMatricula(String matricula) {
-		jdbcTemplate = new JdbcTemplate(dataSource);
-		String sql = "SELECT * FROM cadastro_grupo_produto WHERE matricula_associada = " + matricula;
-
-		List<Grupo> grupos = jdbcTemplate.query(sql, new GrupoRowMapper());
-
+		String declare = "DECLARE set int @CODIGO_GRUPO_PRODUTO = 98;";
+		getJdbcTemplate().update(declare);
+		String sql = "SELECT * FROM "+TabelasIntegracaoPortal.CADASTRO_GRUPO_PRODUTO.getViewERP();
+		List<Grupo> grupos = getJdbcTemplate().query(sql, new GrupoRowMapper());
 		return grupos;
 	}
 
