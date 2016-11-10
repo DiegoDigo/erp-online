@@ -5,7 +5,7 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Marca implements Serializable {
 
-	private Long id;
+	//private Long id;
 	
 	private String matriculaEmpresa;
 	
@@ -15,13 +15,13 @@ public class Marca implements Serializable {
 
 	private String descricao;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+//	public Long getId() {
+//		return id;
+//	}
+//
+//	public void setId(Long id) {
+//		this.id = id;
+//	}
 
 	public String getMatriculaEmpresa() {
 		return matriculaEmpresa;

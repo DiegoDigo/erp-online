@@ -16,8 +16,8 @@ public class MarcaRowMapper implements RowMapper<Marca> {
 
 //    	marca.setId(rs.getLong("ID"));
 //    	marca.setMatriculaAssociada(rs.getString("MATRICULA_ASSOCIADA"));
-    	marca.setDescricao(rs.getString("DESCRICAO"));
-    	marca.setCodigoMarcaProduto("CODIGO_MARCA_PRODUTO");
+    	marca.setDescricao(rs.getString("DESCRICAO").trim());
+    	marca.setCodigoMarcaProduto(rs.getString("CODIGO_MARCA_PRODUTO").trim());
 //    	marca.setAtivo(rs.getBoolean("ATIVO"));
 
         return marca;
