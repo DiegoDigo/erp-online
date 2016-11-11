@@ -6,6 +6,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Documento {
@@ -19,8 +20,19 @@ public class Documento {
 	
 	private String valorDocumento;
 	
+	@ManyToOne
+	private Cliente cliente;
+	
 	@Enumerated(EnumType.STRING)
 	private Estado orgaoEmissor;
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
 
 	public TipoDocumento getTipoDocumento() {
 		return tipoDocumento;

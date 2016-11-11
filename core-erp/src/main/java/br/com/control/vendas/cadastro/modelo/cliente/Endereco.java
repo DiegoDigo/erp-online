@@ -6,6 +6,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Endereco {
@@ -22,6 +23,9 @@ public class Endereco {
 	
 	@Enumerated(EnumType.STRING)
 	private TipoLogradouro tipoLogradouro; 
+	
+	@ManyToOne
+	private Cliente cliente;
 
 	private String logradouro;
 	
@@ -34,6 +38,17 @@ public class Endereco {
 	private String bairro;
 	
 	private String cep;
+
+	
+	
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
 
 	public Long getId() {
 		return id;

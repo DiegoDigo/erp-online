@@ -7,17 +7,19 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.web.SpringBootServletInitializer;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Primary;
+import org.springframework.jms.annotation.EnableJms;
 
 import br.com.control.configuracao.ConfiguracaoWeb;
 
 @SpringBootApplication
 @Import({ ConfiguracaoWeb.class})
 @EnableAspectJAutoProxy
+@EnableJms
 public class ServicoERP extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
