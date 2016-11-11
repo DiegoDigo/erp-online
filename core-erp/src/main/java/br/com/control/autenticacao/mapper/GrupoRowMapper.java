@@ -16,8 +16,8 @@ public class GrupoRowMapper implements RowMapper<Grupo> {
 
 //    	grupo.setId(rs.getLong("ID"));
 //    	grupo.setMatriculaAssociada(rs.getString("MATRICULA_ASSOCIADA"));
-    	grupo.setDescricao(rs.getString("DESCRICAO"));
-    	grupo.setCodigoGrupoProduto("CODIGO_GRUPO_PRODUTO");
+    	grupo.setDescricao(rs.getString("DESCRICAO").trim());
+    	grupo.setCodigoGrupoProduto(rs.getString("CODIGO_GRUPO_PRODUTO").trim());
 //    	grupo.setAtivo(rs.getBoolean("ATIVO"));
 
         return grupo;

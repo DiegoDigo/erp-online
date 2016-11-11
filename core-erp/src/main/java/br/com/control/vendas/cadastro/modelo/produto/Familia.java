@@ -5,9 +5,9 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Familia implements Serializable {
 
-	private Long id;
+	//private Long id;
 	
-	private String matriculaAssociada;
+	private String matriculaEmpresa;
 	
 	private boolean ativo;
 	
@@ -17,20 +17,20 @@ public class Familia implements Serializable {
 	
 	private String codigoFameb;
 
-	public Long getId() {
-		return id;
+//	public Long getId() {
+//		return id;
+//	}
+//
+//	public void setId(Long id) {
+//		this.id = id;
+//	}
+
+	public String getMatriculaEmpresa() {
+		return matriculaEmpresa;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getMatriculaAssociada() {
-		return matriculaAssociada;
-	}
-
-	public void setMatriculaAssociada(String matriculaAssociada) {
-		this.matriculaAssociada = matriculaAssociada;
+	public void setMatriculaEmpresa(String matriculaEmpresa) {
+		this.matriculaEmpresa = matriculaEmpresa;
 	}
 
 	public boolean isAtivo() {
