@@ -5,11 +5,13 @@ import java.io.Serializable;
 public class Pessoa implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
+	
 	public Pessoa(int id, String nome) {
 		super();
 		this.id = id;
 		this.nome = nome;
 	}
+	
 	private int id;
 	private String nome;
 	public int getId() {
