@@ -4,9 +4,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import br.com.control.vendas.cadastro.modelo.produto.Marca;
 
+@Component
 public class MarcaRowMapper implements RowMapper<Marca> {
 
     @Override
@@ -16,8 +18,8 @@ public class MarcaRowMapper implements RowMapper<Marca> {
 
 //    	marca.setId(rs.getLong("ID"));
 //    	marca.setMatriculaAssociada(rs.getString("MATRICULA_ASSOCIADA"));
-    	marca.setDescricao(rs.getString("DESCRICAO").trim());
-    	marca.setCodigoMarcaProduto(rs.getString("CODIGO_MARCA_PRODUTO").trim());
+    	marca.setDescricao(rs.getString("descricao").trim());
+    	marca.setCodigoMarcaProduto(rs.getString("codigo_marca_produto").trim());
 //    	marca.setAtivo(rs.getBoolean("ATIVO"));
 
         return marca;

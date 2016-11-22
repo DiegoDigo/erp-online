@@ -23,9 +23,5 @@ public class CanalService {
 		canais.forEach(listaCanal::add);
 		return listaCanal;
 	}
-	
-	public Canal buscarCanalId(Long id){
-		return canalDao.buscaCanalPorID(id);
-	}
 
 }

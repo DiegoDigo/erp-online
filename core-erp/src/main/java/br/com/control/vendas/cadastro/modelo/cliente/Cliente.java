@@ -2,10 +2,6 @@ package br.com.control.vendas.cadastro.modelo.cliente;
 
 import java.io.Serializable;
 
-import br.com.control.vendas.cadastro.modelo.canal.Canal;
-import br.com.control.vendas.cadastro.modelo.condicaoPagamento.CondicaoPagamento;
-import br.com.control.vendas.cadastro.modelo.tipoCobranca.TipoCobranca;
-
 
 
 @SuppressWarnings("serial")
@@ -39,9 +35,9 @@ public class Cliente implements Serializable{
 	private String telefoneDdd;
 	private String telefoneTronco;
 	private Integer usoVerbaRestritoProduto;
-	private Canal canalVenda;
-	private CondicaoPagamento condicaoPagamento;
-	private TipoCobranca tipoCobranca;
+	private Long canalVenda;
+	private Long condicaoPagamento;
+	private Long tipoCobranca;
 	public Long getRecId() {
 		return recId;
 	}
@@ -210,27 +206,23 @@ public class Cliente implements Serializable{
 	public void setUsoVerbaRestritoProduto(Integer usoVerbaRestritoProduto) {
 		this.usoVerbaRestritoProduto = usoVerbaRestritoProduto;
 	}
-	public Canal getCanalVenda() {
+	public Long getCanalVenda() {
 		return canalVenda;
 	}
-	public void setCanalVenda(Canal canalVenda) {
+	public void setCanalVenda(Long canalVenda) {
 		this.canalVenda = canalVenda;
 	}
-	public CondicaoPagamento getCondicaoPagamento() {
+	public Long getCondicaoPagamento() {
 		return condicaoPagamento;
 	}
-	public void setCondicaoPagamento(CondicaoPagamento condicaoPagamento) {
+	public void setCondicaoPagamento(Long condicaoPagamento) {
 		this.condicaoPagamento = condicaoPagamento;
 	}
-	public TipoCobranca getTipoCobranca() {
+	public Long getTipoCobranca() {
 		return tipoCobranca;
 	}
-	public void setTipoCobranca(TipoCobranca tipoCobranca) {
+	public void setTipoCobranca(Long tipoCobranca) {
 		this.tipoCobranca = tipoCobranca;
 	}
-	
-	
-
-	
 		
 }

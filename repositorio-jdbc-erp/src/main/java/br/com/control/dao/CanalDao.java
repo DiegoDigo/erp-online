@@ -21,9 +21,4 @@ public class CanalDao extends JdbcDao{
 		return canais;
 	}
 	
-	public Canal buscaCanalPorID(Long id){
-		String sql = "select * from " + TabelasIntegracaoPortal.CADASTRO_CANAL.getTabelaERP() + " where rec_id = "+id;
-		Canal canal = getJdbcTemplate().queryForObject(sql, new CanalRowMapper());
-		return canal; 
-	}
 }

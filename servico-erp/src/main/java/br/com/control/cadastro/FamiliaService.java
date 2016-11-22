@@ -17,7 +17,6 @@ public class FamiliaService {
 	
 	@Autowired
 	private FamiliaProdutoDao familiaDao;
-	
 
 	public List<Familia> listarTodos(String numeroMatricula){
 		List<Familia> listaFamilias = new ArrayList<>();

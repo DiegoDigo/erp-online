@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import br.com.control.vendas.cadastro.modelo.vendedor.Vendedor;
 
-public class VendedorRowMapper implements RowMapper<Vendedor>{
+public class VendedorRowMapper implements RowMapper<Vendedor> {
 
 	@Override
 	public Vendedor mapRow(ResultSet rs, int rowNum) throws SQLException {

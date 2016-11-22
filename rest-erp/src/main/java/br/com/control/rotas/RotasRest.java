@@ -13,6 +13,7 @@ public class RotasRest {
 	public static final String RAIZ_CANAL = "/canal";
 	public static final String RAIZ_VENDEDOR = "/vendedor";
 	public static final String RAIZ_TIPO_ENDERECO = "/tipo/endereco/";
+	public static final String RAIZ_PRODUTO = "/produto";
 		
 	
 	

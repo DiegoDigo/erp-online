@@ -12,11 +12,11 @@ import br.com.control.vendas.cadastro.modelo.cliente.TipoEndereco;
 
 @Repository
 @Transactional
-public class TipoEnderecoDao extends JdbcDao{
-	
-	public List<TipoEndereco> listarTiposEndereco(){		
-		String sql = "select * from " + TabelasIntegracaoPortal.CADASTRO_TIPO_ENDERECO.getViewERP();		
+public class TipoEnderecoDao extends JdbcDao {
+
+	public List<TipoEndereco> listarTiposEndereco() {
+		String sql = "select * from " + TabelasIntegracaoPortal.CADASTRO_TIPO_ENDERECO.getViewERP();
 		return getJdbcTemplate().query(sql, new TipoEnderecoRowMapper());
-		}
-	
+	}
+
 }

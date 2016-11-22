@@ -16,8 +16,8 @@ public class CategoriaRowMapper implements RowMapper<Categoria> {
 
 //    	categoria.setId(rs.getLong("ID"));
 //    	categoria.setMatriculaAssociada(rs.getString("MATRICULA_ASSOCIADA"));
-    	categoria.setDescricao(rs.getString("DESCRICAO").trim());
-    	categoria.setCodigoCategoriaProduto(rs.getString("CODIGO_CATEGORIA_PRODUTO").trim());
+    	categoria.setDescricao(rs.getString("descricao").trim());
+    	categoria.setCodigoCategoriaProduto(rs.getString("codigo_categoria_produto").trim());
 //    	categoria.setAtivo(rs.getBoolean("ATIVO"));
 
         return categoria;

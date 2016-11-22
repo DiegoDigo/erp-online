@@ -12,11 +12,11 @@ import br.com.control.vendas.cadastro.modelo.vendedor.Vendedor;
 
 @Repository
 @Transactional
-public class VendedorDao extends JdbcDao{
-	
-	public List<Vendedor> listarVendedor(){
-		String sql = "Select * from " + TabelasIntegracaoPortal.CADASTRO_VENDEDOR.getViewERP();
+public class VendedorDao extends JdbcDao {
+
+	public List<Vendedor> listarVendedor() {
+		String sql = "select * from " + TabelasIntegracaoPortal.CADASTRO_VENDEDOR.getViewERP();
 		return getJdbcTemplate().query(sql, new VendedorRowMapper());
 	}
-	
+
 }

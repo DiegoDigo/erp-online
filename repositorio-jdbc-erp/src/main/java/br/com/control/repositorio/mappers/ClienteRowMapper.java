@@ -3,33 +3,16 @@ package br.com.control.repositorio.mappers;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
-import br.com.control.dao.CanalDao;
-import br.com.control.dao.CondicaoPagamentoDao;
-import br.com.control.dao.TipoCobrancaDao;
 import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
 
 @Component
 public class ClienteRowMapper implements RowMapper<Cliente> {
 	
-	@Autowired
-	private CanalDao canalDao;
-	
-	@Autowired
-	private CondicaoPagamentoDao condicaoPagamentoDao;
-	
-	@Autowired
-	private TipoCobrancaDao tipoCobrancaDao;
-	
 	@Override
 	public Cliente mapRow(ResultSet rs, int rowNum) throws SQLException {
-		
-		Long idCondicaoPagemnto =   rs.getLong("codigo_condicao_pagamento_rec_id");
-		Long idCanal =  rs.getLong("codigo_canal_rec_id");
-		Long idTipoCobranca = rs.getLong("codigo_tipo_cobranca_rec_id");
 		
 		Cliente cliente = new Cliente();
 		cliente.setRecId(rs.getLong("rec_id"));
@@ -59,20 +42,11 @@ public class ClienteRowMapper implements RowMapper<Cliente> {
 		cliente.setSubCanal(rs.getString("sub_canal"));
 		cliente.setTelefoneDdd(rs.getString("telefone_ddd"));
 		cliente.setTelefoneTronco(rs.getString("telefone_troco"));		
-		cliente.setUsoVerbaRestritoProduto(rs.getInt("uso_verba_restrito_produto"));
-		
-		return preencherForengKey(cliente,idCondicaoPagemnto,idCanal, idTipoCobranca);
-		
-	}
-	
-	
-	private Cliente preencherForengKey(Cliente cliente, Long idCondicaoPagamento , Long idCanal , Long idTipoCobranca){
-		cliente.setCondicaoPagamento(condicaoPagamentoDao.buscarPorId(idCondicaoPagamento));
-		cliente.setCanalVenda(canalDao.buscaCanalPorID(idCanal));
-		cliente.setTipoCobranca(tipoCobrancaDao.buscarPorId(idTipoCobranca));
+		cliente.setUsoVerbaRestritoProduto(rs.getInt("uso_verba_restrito_produto"));	
+		cliente.setCondicaoPagamento(rs.getLong("codigo_condicao_pagamento_rec_id"));
+		cliente.setCanalVenda(rs.getLong("codigo_canal_rec_id"));
+		cliente.setTipoCobranca(rs.getLong("codigo_tipo_cobranca_rec_id"));
 		return cliente;
+		
 	}
-	
-	
-
 }

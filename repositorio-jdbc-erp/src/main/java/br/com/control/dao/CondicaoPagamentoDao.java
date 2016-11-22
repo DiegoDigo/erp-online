@@ -19,10 +19,4 @@ public class CondicaoPagamentoDao extends JdbcDao{
 		return condicoes;
 	}
 	
-	public CondicaoPagamento buscarPorId(Long id){
-		String sql = "select * from "+ TabelasIntegracaoPortal.CADASTRO_CONDICAO_PAGAMENTO.getTabelaERP() +" where rec_id = "+ id;
-		CondicaoPagamento condicao = getJdbcTemplate().queryForObject(sql, new CondicaoPagamentoRowMapper());
-		return condicao;
-	}
-	
 }

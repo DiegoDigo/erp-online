@@ -1,7 +1,9 @@
 package br.com.control.dao;
 
 import java.util.List;
+
 import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Repository;
 
 import br.com.control.integracao.TabelasIntegracaoPortal;
@@ -19,5 +21,4 @@ public class FamiliaProdutoDao extends JdbcDao{
 		List<Familia> familias = getJdbcTemplate().query(sql, new FamiliaRowMapper());
 		return familias;
 	}
-
 }

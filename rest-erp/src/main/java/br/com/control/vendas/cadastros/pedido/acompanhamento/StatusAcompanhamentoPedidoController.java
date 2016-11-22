@@ -1,4 +1,4 @@
-package br.com.control.vendas.cadastros.AcompanhamentoPedido;
+package br.com.control.vendas.cadastros.pedido.acompanhamento;
 
 import java.util.List;
 
