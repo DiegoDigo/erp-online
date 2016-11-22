@@ -17,7 +17,7 @@ public class JdbcDao {
 	private String driverErp;
 
 	@Autowired
-	@Qualifier("secondaryDataSource")
+	@Qualifier("dbmakerDataSource")
 	public void setDataSource(DataSource dataSource) throws ClassNotFoundException {
 		this.dataSource = dataSource;
 		jdbcTemplate = new JdbcTemplate(dataSource);
