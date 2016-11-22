@@ -3,8 +3,9 @@ package br.com.control.dao;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
-import br.com.control.autenticacao.mapper.FamiliaRowMapper;
+
 import br.com.control.integracao.TabelasIntegracaoPortal;
+import br.com.control.repositorio.mappers.FamiliaRowMapper;
 import br.com.control.vendas.cadastro.modelo.produto.Familia;
 
 @Repository

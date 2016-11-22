@@ -3,8 +3,9 @@ package br.com.control.dao;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
-import br.com.control.autenticacao.mapper.GrupoRowMapper;
+
 import br.com.control.integracao.TabelasIntegracaoPortal;
+import br.com.control.repositorio.mappers.GrupoRowMapper;
 import br.com.control.vendas.cadastro.modelo.produto.Grupo;
 
 @Repository
@@ -18,5 +19,7 @@ public class GrupoProdutoDao extends JdbcDao {
 		List<Grupo> grupos = getJdbcTemplate().query(sql, new GrupoRowMapper());
 		return grupos;
 	}
+	
+	
 
 }

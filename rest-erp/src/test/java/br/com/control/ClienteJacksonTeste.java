@@ -13,13 +13,13 @@ import br.com.control.integracao.Identificacao;
 import br.com.control.integracao.MensagemRecebida;
 import br.com.control.integracao.TipoOperacao;
 import br.com.control.json.Views;
-import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
-import br.com.control.vendas.cadastro.modelo.cliente.Documento;
-import br.com.control.vendas.cadastro.modelo.cliente.Endereco;
-import br.com.control.vendas.cadastro.modelo.cliente.Estado;
-import br.com.control.vendas.cadastro.modelo.cliente.TipoDocumento;
-import br.com.control.vendas.cadastro.modelo.cliente.TipoEndereco;
-import br.com.control.vendas.cadastro.modelo.cliente.TipoLogradouro;
+import br.com.control.vendas.cadastro.modelo.clienteOld.Cliente;
+import br.com.control.vendas.cadastro.modelo.clienteOld.Documento;
+import br.com.control.vendas.cadastro.modelo.clienteOld.Endereco;
+import br.com.control.vendas.cadastro.modelo.clienteOld.Estado;
+import br.com.control.vendas.cadastro.modelo.clienteOld.TipoDocumento;
+import br.com.control.vendas.cadastro.modelo.clienteOld.TipoEndereco;
+import br.com.control.vendas.cadastro.modelo.clienteOld.TipoLogradouro;
 
 
 public class ClienteJacksonTeste {

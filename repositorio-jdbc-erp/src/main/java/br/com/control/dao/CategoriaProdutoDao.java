@@ -3,8 +3,9 @@ package br.com.control.dao;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
-import br.com.control.autenticacao.mapper.CategoriaRowMapper;
+
 import br.com.control.integracao.TabelasIntegracaoPortal;
+import br.com.control.repositorio.mappers.CategoriaRowMapper;
 import br.com.control.vendas.cadastro.modelo.produto.Categoria;
 
 @Repository
