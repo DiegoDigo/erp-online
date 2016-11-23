@@ -11,7 +11,7 @@ import br.com.control.vendas.cadastro.modelo.produto.Marca;
 @Component
 public class MarcaRowMapper implements RowMapper<Marca> {
 
-    @Override
+    @Override 	
     public Marca mapRow(ResultSet rs, int rowNum) throws SQLException {
 
     	Marca marca = new Marca();
