@@ -12,7 +12,7 @@ import br.com.control.vendas.cadastro.modelo.produto.Familia;
 
 @Repository
 @Transactional
-public class FamiliaProdutoDao extends JdbcDao{
+public class FamiliaProdutoDao extends JdbcDao<Familia>{
 
 	public List<Familia> listaTodasAsFamiliasDaMatricula(String matricula) {
 		String declare = "DECLARE set date @ALTEDT_FAMILIA_PRODUTO = 0;";

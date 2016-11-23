@@ -12,9 +12,9 @@ import br.com.control.vendas.cadastro.modelo.produto.Marca;
 
 @Repository
 @Transactional
-public class MarcaProdutoDao extends JdbcDao {
+public class MarcaProdutoDao extends JdbcDao<Marca> {
 
-	public List<Marca> listaTodasAsFamiliasDaMatricula(String matricula) {
+	public List<Marca> listaTodasAsMarcasDaMatricula(String matricula) {
 		String declare = "DECLARE set date @CODIGO_MARCA_PRODUTO = 0;";
 		getJdbcTemplate().update(declare);
 		String sql = "SELECT * FROM " + TabelasIntegracaoPortal.CADASTRO_MARCA_PRODUTO.getViewERP();

@@ -1,6 +1,5 @@
 package br.com.control.cadastro;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -9,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.control.dao.GrupoProdutoDao;
+import br.com.control.integracao.TabelasIntegracaoPortal;
+import br.com.control.repositorio.mappers.GrupoRowMapper;
 import br.com.control.vendas.cadastro.modelo.produto.Grupo;
 
 @Service
@@ -20,10 +21,7 @@ public class GrupoService {
 	
 
 	public List<Grupo> listarTodos(String numeroMatricula){
-		List<Grupo> listaGrupos = new ArrayList<>();
-		Iterable<Grupo> gruposIterable = grupoDao.listaTodasAsFamiliasDaMatricula(numeroMatricula);
-		gruposIterable.forEach(listaGrupos::add);
-		return listaGrupos;
+		return grupoDao.selectViewSemWhere(TabelasIntegracaoPortal.CADASTRO_GRUPO_PRODUTO, new GrupoRowMapper());
 	}
 	
 	

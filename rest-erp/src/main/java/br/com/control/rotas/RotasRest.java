@@ -14,6 +14,8 @@ public class RotasRest {
 	public static final String RAIZ_VENDEDOR = "/vendedor";
 	public static final String RAIZ_TIPO_ENDERECO = "/tipo/endereco/";
 	public static final String RAIZ_PRODUTO = "/produto";
+	public static final String RAIZ_DETALHE_COMBO_PRODUTO = "/detalhe/produto/combo";
+	public static final String RAIZ_PRECO = "/preco";
 		
 	
 	
@@ -23,4 +25,5 @@ public class RotasRest {
 	public static final String ESTADOS = "/estados";
 	public static final String SALVAR = "/salvar";
 	public static final String LISTAR = "/listar";
+	public static final String TESTE = "/teste";
 }

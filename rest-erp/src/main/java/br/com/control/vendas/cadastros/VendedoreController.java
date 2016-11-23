@@ -28,4 +28,11 @@ public class VendedoreController extends AbstractController{
 		return new MensagemRetorno(HttpStatus.OK, "Vendedores Listado com sucesso !", vendedores, mensagem.getIdentificacao());
 		
 	}
+	
+//	@RequestMapping(value = RotasRest.TESTE, method=RequestMethod.GET ,headers="Accept=application/json")
+//	public MensagemRetorno ListarTeste(@RequestParam("mensagem") MensagemRecebida<Vendedor> mensagem){
+//		List<Vendedor> vendedores = vendedorService.listarTeste();
+//		return new MensagemRetorno(HttpStatus.OK, "Vendedores Listado com sucesso !", vendedores, mensagem.getIdentificacao());
+//		
+//	}
 }

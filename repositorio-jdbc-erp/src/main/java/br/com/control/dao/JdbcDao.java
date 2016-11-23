@@ -1,13 +1,18 @@
 package br.com.control.dao;
 
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
-public class JdbcDao {
+import br.com.control.integracao.TabelasIntegracaoPortal;
+
+public class JdbcDao<T> {
 	private DataSource dataSource;
 
 	@Autowired
@@ -22,6 +27,13 @@ public class JdbcDao {
 		this.dataSource = dataSource;
 		jdbcTemplate = new JdbcTemplate(dataSource);
 		Class.forName(driverErp);
+	}
+	
+	public List<T> selectViewSemWhere(TabelasIntegracaoPortal tabela , RowMapper<T> rowMapper){
+		String sql = "select * from " + tabela.getViewERP();
+		List<T> dados = getJdbcTemplate().query(sql, rowMapper);
+		return  dados;
+		
 	}
 
 	public JdbcTemplate getJdbcTemplate() {

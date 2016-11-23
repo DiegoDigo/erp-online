@@ -13,7 +13,7 @@ import br.com.control.vendas.cadastro.modelo.produto.Grupo;
 
 @Repository
 @Transactional
-public class GrupoProdutoDao extends JdbcDao {
+public class GrupoProdutoDao extends JdbcDao<Grupo> {
 	
 	@Autowired
 	private GrupoRowMapper grupoRowMapper;

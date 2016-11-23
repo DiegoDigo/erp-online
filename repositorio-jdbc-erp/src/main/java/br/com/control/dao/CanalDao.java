@@ -12,13 +12,10 @@ import br.com.control.vendas.cadastro.modelo.canal.Canal;
 
 @Repository
 @Transactional
-public class CanalDao extends JdbcDao{	
+public class CanalDao extends JdbcDao<Canal>{	
 	
-
 	public List<Canal> listarCanais(){
-		String sql = "select * from " + TabelasIntegracaoPortal.CADASTRO_CANAL.getViewERP();
-		List<Canal> canais = getJdbcTemplate().query(sql, new CanalRowMapper());
-		return canais;
+		return selectViewSemWhere(TabelasIntegracaoPortal.CADASTRO_CANAL, new CanalRowMapper());
 	}
 	
 }

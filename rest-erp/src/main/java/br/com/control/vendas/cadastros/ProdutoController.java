@@ -20,9 +20,13 @@ public class ProdutoController extends AbstractController{
 	@Autowired
 	private ProdutoService produtoService;
 	
+	
+	
 	@RequestMapping(value = RotasRest.LISTAR, method=RequestMethod.GET, headers="Accept=application/json")
 	public MensagemRetorno listar(@RequestParam("mensagem") MensagemRecebida<Produto> mensagem){
 		return new MensagemRetorno(HttpStatus.OK, "Produtos Listado com sucesso !", produtoService.listarProdutos(), mensagem.getIdentificacao());
 	}
+	
+	
 	
 }

@@ -1,6 +1,5 @@
 package br.com.control.cadastro;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -20,9 +19,6 @@ public class MarcaService {
 	
 
 	public List<Marca> listarTodos(String numeroMatricula){
-		List<Marca> listaMarcas = new ArrayList<>();
-		Iterable<Marca> marcasIterable = marcaDao.listaTodasAsFamiliasDaMatricula(numeroMatricula);
-		marcasIterable.forEach(listaMarcas::add);
-		return listaMarcas;
+		return marcaDao.listaTodasAsMarcasDaMatricula(numeroMatricula);
 	}
 }

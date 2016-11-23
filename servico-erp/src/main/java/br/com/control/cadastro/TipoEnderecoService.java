@@ -1,6 +1,5 @@
 package br.com.control.cadastro;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -9,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.control.dao.TipoEnderecoDao;
+import br.com.control.integracao.TabelasIntegracaoPortal;
+import br.com.control.repositorio.mappers.TipoEnderecoRowMapper;
 import br.com.control.vendas.cadastro.modelo.cliente.TipoEndereco;
 
 @Service
@@ -20,10 +21,7 @@ public class TipoEnderecoService {
 	
 	
 	public List<TipoEndereco> Listar(){
-		List<TipoEndereco> tiposEndereco = new ArrayList<>();
-		Iterable<TipoEndereco> iterableTiposEnderecos = tipoEnderecoDao.listarTiposEndereco();
-		iterableTiposEnderecos.forEach(tiposEndereco::add);
-		return tiposEndereco;
+		return tipoEnderecoDao.selectViewSemWhere(TabelasIntegracaoPortal.CADASTRO_TIPO_ENDERECO, new TipoEnderecoRowMapper());
 	}
 
 }

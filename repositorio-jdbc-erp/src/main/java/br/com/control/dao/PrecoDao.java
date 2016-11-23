@@ -4,11 +4,11 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.control.vendas.cadastro.modelo.cliente.TipoEndereco;
+import br.com.control.vendas.cadastro.modelo.preco.Preco;
 
 @Repository
 @Transactional
-public class TipoEnderecoDao extends JdbcDao<TipoEndereco> {
-
-
+public class PrecoDao extends JdbcDao<Preco>{
+	
+	
 }
