@@ -16,16 +16,17 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.produto.Marca;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_MARCA)
+@RequestMapping(RotasRest.RAIZ_PRODUTO + RotasRest.RAIZ_MARCA)
 public class MarcaController extends AbstractController {
 
 	@Autowired
 	private MarcaService servicoMarca;
-	
-	@RequestMapping(value=RotasRest.LISTAR, method=RequestMethod.GET, headers="Accept=application/json")
+
+	@RequestMapping(value = RotasRest.LISTAR, method = RequestMethod.GET, headers = "Accept=application/json")
 	public MensagemRetorno listar(@RequestParam(value = "mensagem") MensagemRecebida<Marca> mensagem) {
 		List<Marca> marcasEncontradas = servicoMarca.listarTodos(mensagem.getIdentificacao().getMatriculaAssociada());
-		return new MensagemRetorno(HttpStatus.OK, "Listagem retornada com Sucesso", marcasEncontradas, mensagem.getIdentificacao());
+		return new MensagemRetorno(HttpStatus.OK, "Listagem retornada com Sucesso", marcasEncontradas,
+				mensagem.getIdentificacao());
 	}
 
 }

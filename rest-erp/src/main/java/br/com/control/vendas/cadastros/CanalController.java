@@ -18,16 +18,15 @@ import br.com.control.vendas.cadastro.modelo.produto.Categoria;
 
 @RestController
 @RequestMapping(RotasRest.RAIZ_CANAL)
-public class CanalController extends AbstractController{
-	
+public class CanalController extends AbstractController {
+
 	@Autowired
 	private CanalService canalServico;
-	
-	@RequestMapping(value =RotasRest.LISTAR, method = RequestMethod.GET, headers="Accept=application/json")
-	public MensagemRetorno listar(@RequestParam(value = "mensagem") MensagemRecebida<Categoria> mensagem){
+
+	@RequestMapping(value = RotasRest.LISTAR, method = RequestMethod.GET, headers = "Accept=application/json")
+	public MensagemRetorno listar(@RequestParam(value = "mensagem") MensagemRecebida<Categoria> mensagem) {
 		List<Canal> canais = canalServico.listar();
-		return new MensagemRetorno(HttpStatus.OK, "Canais Listados com sucesso !", canais , mensagem.getIdentificacao());
+		return new MensagemRetorno(HttpStatus.OK, "Canais Listados com sucesso !", canais, mensagem.getIdentificacao());
 	}
-	
 
 }

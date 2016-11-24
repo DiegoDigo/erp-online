@@ -3,7 +3,7 @@ package br.com.control.vendas.cadastro.modelo.pedido.acompanhemanto;
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-public class SiglaAcompanhamentoPedido implements Serializable {
+public class StatusAcompanhamentoPedido implements Serializable {
 	
 	private Long recId;
 	private Boolean ativo;

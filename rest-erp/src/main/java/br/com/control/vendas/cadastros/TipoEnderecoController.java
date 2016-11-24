@@ -16,15 +16,16 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.cliente.TipoEndereco;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_TIPO_ENDERECO)
-public class TipoEnderecoController extends AbstractController{
+@RequestMapping(RotasRest.RAIZ_TIPO + RotasRest.RAIZ_ENDERECO)
+public class TipoEnderecoController extends AbstractController {
 
-		@Autowired
-		private TipoEnderecoService tipoEnderecoService;
-	
-		@RequestMapping(value = RotasRest.LISTAR, method = RequestMethod.GET , headers = "Accept=application/json")
-		public MensagemRetorno list(@RequestParam("mensagem") MensagemRecebida<TipoEndereco> mensagem){
-			List<TipoEndereco> tiposEndereco  = tipoEnderecoService.Listar();			
-			return new MensagemRetorno(HttpStatus.OK, "Tipo endereço listado com sucesso!",tiposEndereco , mensagem.getIdentificacao());
-		}
+	@Autowired
+	private TipoEnderecoService tipoEnderecoService;
+
+	@RequestMapping(value = RotasRest.LISTAR, method = RequestMethod.GET, headers = "Accept=application/json")
+	public MensagemRetorno list(@RequestParam("mensagem") MensagemRecebida<TipoEndereco> mensagem) {
+		List<TipoEndereco> tiposEndereco = tipoEnderecoService.Listar();
+		return new MensagemRetorno(HttpStatus.OK, "Tipo endereço listado com sucesso!", tiposEndereco,
+				mensagem.getIdentificacao());
+	}
 }

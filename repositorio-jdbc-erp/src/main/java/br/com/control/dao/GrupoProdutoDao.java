@@ -2,9 +2,6 @@ package br.com.control.dao;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import br.com.control.integracao.TabelasIntegracaoPortal;
@@ -12,18 +9,12 @@ import br.com.control.repositorio.mappers.GrupoRowMapper;
 import br.com.control.vendas.cadastro.modelo.produto.Grupo;
 
 @Repository
-@Transactional
 public class GrupoProdutoDao extends JdbcDao<Grupo> {
-	
-	@Autowired
-	private GrupoRowMapper grupoRowMapper;
 
 	public List<Grupo> listaTodasAsFamiliasDaMatricula(String matricula) {
 		String declare = "DECLARE set int @CODIGO_GRUPO_PRODUTO = 98;";
 		getJdbcTemplate().update(declare);
-		String sql = "SELECT * FROM "+TabelasIntegracaoPortal.CADASTRO_GRUPO_PRODUTO.getViewERP();
-		List<Grupo> grupos = getJdbcTemplate().query(sql, grupoRowMapper);
-		return grupos;
+		return selectViewSemWhere(TabelasIntegracaoPortal.CADASTRO_GRUPO_PRODUTO, new GrupoRowMapper());
 	}
 
 }

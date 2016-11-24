@@ -14,14 +14,15 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.produto.DetalheComboProduto;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_DETALHE_COMBO_PRODUTO)
-public class DetalheComboProdutoController extends AbstractController{
-	
+@RequestMapping(RotasRest.RAIZ_PRODUTO + RotasRest.RAIZ_DETALHE_COMBO)
+public class DetalheComboProdutoController extends AbstractController {
+
 	@Autowired
 	private DetalheComboProdutoService detalheComboProdutoService;
-	
-	@RequestMapping(value=RotasRest.LISTAR , method=RequestMethod.GET, headers="Accept=application/json")
-	public MensagemRetorno listar(@RequestParam("mensagem") MensagemRecebida<DetalheComboProduto> mensagem){
-		return new MensagemRetorno(HttpStatus.OK, "Detalhe Combo Produto Listado com sucesso !", detalheComboProdutoService.detalhes(), mensagem.getIdentificacao());
+
+	@RequestMapping(value = RotasRest.LISTAR, method = RequestMethod.GET, headers = "Accept=application/json")
+	public MensagemRetorno listar(@RequestParam("mensagem") MensagemRecebida<DetalheComboProduto> mensagem) {
+		return new MensagemRetorno(HttpStatus.OK, "Detalhe Combo Produto Listado com sucesso !",
+				detalheComboProdutoService.detalhes(), mensagem.getIdentificacao());
 	}
 }

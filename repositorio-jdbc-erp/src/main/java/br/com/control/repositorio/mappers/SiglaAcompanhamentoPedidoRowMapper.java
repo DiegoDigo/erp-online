@@ -5,14 +5,14 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import br.com.control.vendas.cadastro.modelo.pedido.acompanhemanto.SiglaAcompanhamentoPedido;
+import br.com.control.vendas.cadastro.modelo.pedido.acompanhemanto.StatusAcompanhamentoPedido;
 
-public class SiglaAcompanhamentoPedidoRowMapper implements RowMapper<SiglaAcompanhamentoPedido>{
+public class SiglaAcompanhamentoPedidoRowMapper implements RowMapper<StatusAcompanhamentoPedido>{
 
 	@Override
-	public SiglaAcompanhamentoPedido mapRow(ResultSet rs, int rowNum) throws SQLException {
+	public StatusAcompanhamentoPedido mapRow(ResultSet rs, int rowNum) throws SQLException {
 		
-		SiglaAcompanhamentoPedido siglaAcompanhamentoPedido = new SiglaAcompanhamentoPedido();
+		StatusAcompanhamentoPedido siglaAcompanhamentoPedido = new StatusAcompanhamentoPedido();
 		siglaAcompanhamentoPedido.setRecId(rs.getLong("rec_id"));
 		siglaAcompanhamentoPedido.setAtivo(rs.getBoolean("ativo"));
 		siglaAcompanhamentoPedido.setDescricaoStatus(rs.getString("descricao_status").trim());

@@ -11,7 +11,7 @@ public class PrecoRowMapper implements RowMapper<Preco> {
 
 	@Override
 	public Preco mapRow(ResultSet rs, int rowNum) throws SQLException {
-		Preco preco  = new Preco();
+		Preco preco = new Preco();
 		preco.setRecId(rs.getLong("rec_id"));
 		preco.setAliqPvv(rs.getInt("aliq_pvv"));
 		preco.setAtivo(rs.getBoolean("ativo"));
@@ -27,13 +27,14 @@ public class PrecoRowMapper implements RowMapper<Preco> {
 		preco.setPrecoCustoUnitario(rs.getFloat("preco_custo_un"));
 		preco.setPrecoPvv(rs.getFloat("preco_pvv"));
 		preco.setPromocao(rs.getInt("promocao"));
-		preco.setRestricao(rs.getInt("Retricao"));
+		preco.setRestricao(rs.getInt("restricao"));
 		preco.setSelo(rs.getFloat("selo"));
 		preco.setTpCont(rs.getString("tp_cont"));
-		preco.setUfTabelaPreco(rs.getString("uf_tabela_preco"));
+		preco.setUfTabelaPreco(rs.getString("UF_TABELA_PRECO"));
 		preco.setValIcms(rs.getFloat("val_icms"));
 		preco.setValIpi(rs.getFloat("val_ipi"));
 		preco.setValor(rs.getBigDecimal("valor"));
+		preco.setProduto(rs.getLong("codigo_produto_rec_id"));
 		return preco;
 	}
 

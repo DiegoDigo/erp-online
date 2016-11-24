@@ -16,7 +16,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.produto.Familia;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_FAMILIA)
+@RequestMapping(RotasRest.RAIZ_PRODUTO + RotasRest.RAIZ_FAMILIA)
 public class FamiliaController extends AbstractController {
 
 	@Autowired
@@ -24,8 +24,10 @@ public class FamiliaController extends AbstractController {
 
 	@RequestMapping(value = RotasRest.LISTAR, method = RequestMethod.GET, headers = "Accept=application/json")
 	public MensagemRetorno listar(@RequestParam(value = "mensagem") MensagemRecebida<Familia> mensagem) {
-		List<Familia> familiasEncontradas = servicoFamilia.listarTodos(mensagem.getIdentificacao().getMatriculaAssociada());
-		return new MensagemRetorno(HttpStatus.OK, "Listagem retornada com Sucesso", familiasEncontradas, mensagem.getIdentificacao());
+		List<Familia> familiasEncontradas = servicoFamilia
+				.listarTodos(mensagem.getIdentificacao().getMatriculaAssociada());
+		return new MensagemRetorno(HttpStatus.OK, "Listagem retornada com Sucesso", familiasEncontradas,
+				mensagem.getIdentificacao());
 	}
 
 }

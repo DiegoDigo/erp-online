@@ -16,16 +16,17 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.produto.Grupo;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_GRUPO)
-public class GrupoController extends AbstractController{
+@RequestMapping(RotasRest.RAIZ_PRODUTO + RotasRest.RAIZ_GRUPO)
+public class GrupoController extends AbstractController {
 
 	@Autowired
 	private GrupoService servicoGrupo;
-	
-	@RequestMapping(value=RotasRest.LISTAR, method=RequestMethod.GET, headers="Accept=application/json")
+
+	@RequestMapping(value = RotasRest.LISTAR, method = RequestMethod.GET, headers = "Accept=application/json")
 	public MensagemRetorno listar(@RequestParam(value = "mensagem") MensagemRecebida<Grupo> mensagem) {
 		List<Grupo> gruposEncontrados = servicoGrupo.listarTodos(mensagem.getIdentificacao().getMatriculaAssociada());
-		return new MensagemRetorno(HttpStatus.OK, "Listagem retornada com Sucesso", gruposEncontrados, mensagem.getIdentificacao());
+		return new MensagemRetorno(HttpStatus.OK, "Listagem retornada com Sucesso", gruposEncontrados,
+				mensagem.getIdentificacao());
 	}
 
 }
