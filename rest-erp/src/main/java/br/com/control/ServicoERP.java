@@ -44,9 +44,9 @@ public class ServicoERP extends SpringBootServletInitializer {
 	@Bean
 	@ConfigurationProperties(prefix = "spring.secondDatasource")
 	public DataSource dbmakerDataSource() {
-		DataSourceBuilder factory = DataSourceBuilder.create(this.properties.getClassLoader())
-				.driverClassName("dbmaker.sql.JdbcOdbcDriver").url(this.properties.getUrl())
-				.username(this.properties.getUsername()).password(this.properties.getPassword());
+		DataSourceBuilder factory = DataSourceBuilder.create().driverClassName("dbmaker.jdbc.ws.client.Driver")
+				.url("jdbc:dbmaker:type3://10.0.3.220:7777/DBCONTROL_1049_999").username("DBCONTROL1049999")
+				.password("db1049999");
 		return factory.build();
 	}
 
