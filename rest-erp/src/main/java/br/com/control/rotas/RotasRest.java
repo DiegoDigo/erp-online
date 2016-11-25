@@ -24,7 +24,13 @@ public class RotasRest {
 	public static final String RAIZ_ITEM = "/item";
 	public static final String RAIZ_HISTORICO = "/historico";
 	public static final String RAIZ_ORIGEM_LOGRADOURO = "/origem/logradouro";
-	public static final String RAIZ_MOTIVO_GERAL = "/motivo/geral";
+	public static final String RAIZ_MOTIVO = "/motivo";
+	public static final String RAIZ_MOTIVO_GERAL = "/geral";
+	public static final String RAIZ_MOVIMENTO = "/movimento";
+	public static final String RAIZ_FINANCEIRO = "/financeiro";
+	public static final String RAIZ_COMODATO = "/comodato";
+	public static final String RAIZ_RESTRICAO = "/restricao";
+	public static final String RAIZ_COMERCIAL = "/comercial";
 
 	public static final String ESTABELECIMENTOS_TIPOS = "/estabelecimentos/tipos";
 	public static final String LOGRADOUROS_TIPOS = "/logradouros/tipos";
