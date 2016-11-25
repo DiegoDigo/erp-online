@@ -12,7 +12,7 @@ public class RotasRest {
 	public static final String RAIZ_CANAL = "/canal";
 	public static final String RAIZ_ACOMPANHAMENTO = "/acompanhamento";
 	public static final String RAIZ_TIPO = "/tipo";
-	public static final String RAIZ_TIPO_COBRANCA = "/cobranca";
+	public static final String RAIZ_COBRANCA = "/cobranca";
 	public static final String RAIZ_ENDERECO = "/endereco";
 	public static final String RAIZ_OCORRENCIA = "/ocorrencia";
 	public static final String RAIZ_CONDICAO_PAGAMENTO = "/condicao";
@@ -23,6 +23,8 @@ public class RotasRest {
 	public static final String RAIZ_CAPA = "/capa";
 	public static final String RAIZ_ITEM = "/item";
 	public static final String RAIZ_HISTORICO = "/historico";
+	public static final String RAIZ_ORIGEM_LOGRADOURO = "/origem/logradouro";
+	public static final String RAIZ_MOTIVO_GERAL = "/motivo/geral";
 
 	public static final String ESTABELECIMENTOS_TIPOS = "/estabelecimentos/tipos";
 	public static final String LOGRADOUROS_TIPOS = "/logradouros/tipos";

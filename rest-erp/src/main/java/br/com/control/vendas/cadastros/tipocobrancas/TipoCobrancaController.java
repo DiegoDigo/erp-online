@@ -17,18 +17,17 @@ import br.com.control.vendas.cadastro.modelo.tipoCobranca.TipoCobranca;
 import br.com.control.vendas.cadastros.AbstractController;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_TIPO_COBRANCA)
-public class TipoCobrancaController extends AbstractController{
-	
+@RequestMapping(RotasRest.RAIZ_TIPO + RotasRest.RAIZ_COBRANCA)
+public class TipoCobrancaController extends AbstractController {
+
 	@Autowired
 	private TipoCobrancaService tipoCobrancaService;
-	
-	@RequestMapping(value = RotasRest.LISTAR, method=RequestMethod.GET , headers="Accept=application/json" )
-	public MensagemRetorno listar(@RequestParam("mensagem") MensagemRecebida<TipoCobranca> mensagem){
+
+	@RequestMapping(value = RotasRest.LISTAR, method = RequestMethod.GET, headers = "Accept=application/json")
+	public MensagemRetorno listar(@RequestParam("mensagem") MensagemRecebida<TipoCobranca> mensagem) {
 		List<TipoCobranca> tiposCobrancas = tipoCobrancaService.listarTiposCobrancas();
 		return new MensagemRetorno(HttpStatus.OK, "Listagem retornada com Sucesso", tiposCobrancas, mensagem.getIdentificacao());
-		
-	}
 
+	}
 
 }
