@@ -2,12 +2,15 @@ package br.com.control.dao;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Repository;
 
 import br.com.control.repositorio.mappers.ClienteRowMapper;
 import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
 
 @Repository
+@Transactional
 public class ClienteDao extends JdbcDao<Cliente> {
 
 	public List<Cliente> listaTodosClientesDaMatricula(String matricula) {

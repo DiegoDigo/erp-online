@@ -1,5 +1,7 @@
 package br.com.control;
 
+import java.beans.PropertyVetoException;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,8 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jms.annotation.EnableJms;
+
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 import br.com.control.configuracao.ConfiguracaoWeb;
 
@@ -44,10 +48,31 @@ public class ServicoERP extends SpringBootServletInitializer {
 	@Bean
 	@ConfigurationProperties(prefix = "spring.secondDatasource")
 	public DataSource dbmakerDataSource() {
-		DataSourceBuilder factory = DataSourceBuilder.create().driverClassName("dbmaker.jdbc.ws.client.Driver")
-				.url("jdbc:dbmaker:type3://10.0.3.220:7777/DBCONTROL_1049_999").username("DBCONTROL1049999")
-				.password("db1049999");
-		return factory.build();
+		ComboPooledDataSource cpds = new ComboPooledDataSource();
+		try {
+			cpds.setDriverClass("dbmaker.jdbc.ws.client.Driver");
+		} catch (PropertyVetoException e) {
+			e.printStackTrace();
+		}
+		cpds.setJdbcUrl("jdbc:dbmaker:type3://10.0.3.220:7777/DBCONTROL_1049_999");
+		cpds.setUser("DBCONTROL1049999");
+		cpds.setPassword("db1049999");
+
+		// Optional Settings
+		cpds.setInitialPoolSize(1);
+		cpds.setMinPoolSize(1);
+		cpds.setAcquireIncrement(1);
+		cpds.setMaxPoolSize(1);
+		cpds.setMaxStatements(100);
+		cpds.setAcquireIncrement(1);
+		cpds.setMaxIdleTime(1800);
+		
+		return cpds;
+		
+//		DataSourceBuilder factory = DataSourceBuilder.create().driverClassName("dbmaker.jdbc.ws.client.Driver")
+//				.url("jdbc:dbmaker:type3://10.0.3.220:7777/DBCONTROL_1049_999").username("DBCONTROL1049999")
+//				.password("db1049999");
+//		return factory.build();
 	}
 
 	@Override
