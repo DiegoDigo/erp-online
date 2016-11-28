@@ -30,7 +30,7 @@ import org.springframework.util.Base64Utils;
 import org.springframework.web.context.WebApplicationContext;
 
 import br.com.control.autenticacao.modelo.Sistema;
-import br.com.control.vendas.cadastros.ClienteController;
+import br.com.control.controllers.cadastros.ClienteController;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
