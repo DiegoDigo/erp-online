@@ -5,19 +5,19 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import br.com.control.vendas.cadastro.modelo.pedido.PedidoCapa;
+import br.com.control.portal.mensageria.to.PedidoCapaTO;
 
-public class PedidoCapaRowMapper implements RowMapper<PedidoCapa> {
+public class PedidoCapaRowMapper implements RowMapper<PedidoCapaTO> {
 
 	@Override
-	public PedidoCapa mapRow(ResultSet rs, int rowNum) throws SQLException {
-		PedidoCapa pedido = new PedidoCapa();
+	public PedidoCapaTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+		PedidoCapaTO pedido = new PedidoCapaTO();
 		pedido.setAtivo(rs.getBoolean("ativo"));
 		pedido.setCliente(rs.getLong("codigo_cliente_rec_id"));
-		pedido.setCondicaoPagamento(rs.getLong("codigo_condicao_pagamento_rec_id"));
+		pedido.setCondicaoPagamento(rs.getString("codigo_condicao_pagamento_rec_id"));
 		pedido.setDataHoraEmissao(rs.getTimestamp("data_hora_emissao"));
 		pedido.setDataPrimeiraParcela(rs.getDate("data_primeira_parcela"));
-		pedido.setNumeroPedidoGestao(rs.getString("numero_pedido_gestao"));
+		pedido.setNumeroPrePedidoGestao(rs.getLong("numero_pedido_gestao"));
 		pedido.setObservacao(rs.getString("observacao"));
 		pedido.setPedidoAberto(rs.getBoolean("pedido_aberto"));
 		pedido.setPedidoBloqueado(rs.getBoolean("pedido_bloqueado"));

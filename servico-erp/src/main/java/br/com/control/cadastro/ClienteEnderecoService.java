@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.control.dao.ClienteEnderecoDao;
-import br.com.control.integracao.TabelasIntegracaoPortal;
+import br.com.control.integracao.TabelasIntegracao;
 import br.com.control.repositorio.mappers.ClienteEnderecoRowMapper;
 import br.com.control.vendas.cadastro.modelo.cliente.ClienteEndereco;
 
@@ -17,7 +17,7 @@ public class ClienteEnderecoService {
 	private ClienteEnderecoDao clienteEnderecoDao;
 
 	public List<ClienteEndereco> listarEndereco() {
-		return clienteEnderecoDao.selectViewSemWhere(TabelasIntegracaoPortal.CADASTRO_CLIENTE_ENDERECO, new ClienteEnderecoRowMapper());
+		return clienteEnderecoDao.selectViewSemWhere(TabelasIntegracao.CADASTRO_CLIENTE_ENDERECO, new ClienteEnderecoRowMapper());
 	}
 
 }

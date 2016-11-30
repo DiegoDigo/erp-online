@@ -12,7 +12,7 @@
 
 	<appender name="dailyRollingFileAppender"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<File>C:/PortalVendasWeb/tomcat-8.5.8/logs/servicos-erp.log</File>
+		<File>C:/PortalVendasWeb/server/logs/servicos-erp.log</File>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- daily rollover -->
 			<FileNamePattern>servicos-erp.%d{yyyy-MM-dd}.log</FileNamePattern>
@@ -30,7 +30,7 @@
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- rollover every minute -->
-			<FileNamePattern>C:/PortalVendasWeb/tomcat-8.5.8/logs/servicos-erp-minuto.%d{yyyy-MM-dd_HH-mm}.log
+			<FileNamePattern>C:/PortalVendasWeb/server/logs/servicos-erp-minuto.%d{yyyy-MM-dd_HH-mm}.log
 			</FileNamePattern>
 
 			<!-- keep 30 minutes' worth of history -->

@@ -11,8 +11,8 @@ import br.com.control.cadastro.PedidoCapaService;
 import br.com.control.controllers.AbstractController;
 import br.com.control.integracao.MensagemRecebida;
 import br.com.control.integracao.MensagemRetorno;
+import br.com.control.portal.mensageria.to.PedidoCapaTO;
 import br.com.control.rotas.RotasRest;
-import br.com.control.vendas.cadastro.modelo.pedido.PedidoCapa;
 
 @RestController
 @RequestMapping(RotasRest.RAIZ_PEDIDO + RotasRest.RAIZ_CAPA)
@@ -22,9 +22,8 @@ public class PedidoCapaController extends AbstractController {
 	private PedidoCapaService pedidoCapaService;
 
 	@RequestMapping(value = RotasRest.LISTAR, method = RequestMethod.GET, headers = "Accept=application/json")
-	public MensagemRetorno listar(@RequestParam("mensagem") MensagemRecebida<PedidoCapa> mensagem) {
+	public MensagemRetorno listar(@RequestParam("mensagem") MensagemRecebida<PedidoCapaTO> mensagem) {
 		return new MensagemRetorno(HttpStatus.OK, "Pedido capa listado com sucesso", pedidoCapaService.listarPedido(),
 				mensagem.getIdentificacao());
 	}
-
 }

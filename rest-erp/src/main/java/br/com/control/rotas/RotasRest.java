@@ -31,6 +31,8 @@ public class RotasRest {
 	public static final String RAIZ_COMODATO = "/comodato";
 	public static final String RAIZ_RESTRICAO = "/restricao";
 	public static final String RAIZ_COMERCIAL = "/comercial";
+	public static final String RAIZ_LIBERADO = "/liberado";
+	public static final String RAIZ_RECUSADO = "/recusado";
 
 	public static final String ESTABELECIMENTOS_TIPOS = "/estabelecimentos/tipos";
 	public static final String LOGRADOUROS_TIPOS = "/logradouros/tipos";
@@ -38,5 +40,4 @@ public class RotasRest {
 	public static final String ESTADOS = "/estados";
 	public static final String SALVAR = "/salvar";
 	public static final String LISTAR = "/listar";
-	public static final String TESTE = "/teste";
 }

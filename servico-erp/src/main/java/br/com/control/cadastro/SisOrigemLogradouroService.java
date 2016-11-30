@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.control.dao.SisOrigemLogradouroDao;
-import br.com.control.integracao.TabelasIntegracaoPortal;
+import br.com.control.integracao.TabelasIntegracao;
 import br.com.control.repositorio.mappers.SisOrigemLogradouroRowMapper;
 import br.com.control.vendas.cadastro.modelo.cliente.SisOrigemLogradouro;
 
@@ -17,7 +17,7 @@ public class SisOrigemLogradouroService {
 	private SisOrigemLogradouroDao sisOrigemLogradouroDao;
 
 	public List<SisOrigemLogradouro> listarOrigemLogradouro() {
-		return sisOrigemLogradouroDao.selectViewSemWhere(TabelasIntegracaoPortal.SIS_ORIGEM_LOGRADOURO, new SisOrigemLogradouroRowMapper());
+		return sisOrigemLogradouroDao.selectViewSemWhere(TabelasIntegracao.SIS_ORIGEM_LOGRADOURO, new SisOrigemLogradouroRowMapper());
 	}
 
 }

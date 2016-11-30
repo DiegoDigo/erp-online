@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.control.dao.PedidoItemDao;
-import br.com.control.integracao.TabelasIntegracaoPortal;
+import br.com.control.integracao.TabelasIntegracao;
 import br.com.control.repositorio.mappers.PedidoItemRowMapper;
 import br.com.control.vendas.cadastro.modelo.pedido.PedidoItem;
 
@@ -17,7 +17,7 @@ public class PedidoItemService {
 	private PedidoItemDao pedidoItemDao;
 
 	public List<PedidoItem> listarPedidoItem() {
-		return pedidoItemDao.selectViewSemWhere(TabelasIntegracaoPortal.PEDIDO_ITEM, new PedidoItemRowMapper());
+		return pedidoItemDao.selectViewSemWhere(TabelasIntegracao.PEDIDO_ITEM, new PedidoItemRowMapper());
 	}
 
 }

@@ -1,40 +1,122 @@
-package br.com.control.vendas.cadastro.modelo.pedido;
+package br.com.control.portal.mensageria.to;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Date;
 
-public class PedidoCapa {
+import br.com.control.annotation.SequenciaParametrosProcedure;
 
-	private Long recId;
+public class PedidoCapaTO implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	private long recId;
+
+	@SequenciaParametrosProcedure(index = 1)
+	private long cliente;
+	@SequenciaParametrosProcedure(index = 2)
+	private String tipoCobranca;
+	@SequenciaParametrosProcedure(index = 3)
+	private String condicaoPagamento;
+	@SequenciaParametrosProcedure(index = 4)
+	private BigDecimal valorDesconto;
+	@SequenciaParametrosProcedure(index = 5)
+	private float percTaxaFinanc;
+	@SequenciaParametrosProcedure(index = 6)
+	private String vendedor;
+	@SequenciaParametrosProcedure(index = 7)
+	private BigDecimal valorLiquido;
+	@SequenciaParametrosProcedure(index = 8)
+	private int dataVencimento;
+	@SequenciaParametrosProcedure(index = 9)
+	private int dataEmissao;
+	@SequenciaParametrosProcedure(index = 10)
+	private int horaEmissao;
+	@SequenciaParametrosProcedure(index = 11)
+	private String usuario;
+	@SequenciaParametrosProcedure(index = 12, isRetornoProcedure = true)
+	private long numeroPrePedidoGestao;
+
 	private Boolean ativo;
 	private Timestamp dataHoraEmissao;
+	private Timestamp dataHoraVenciamento;
+	private int horaVencimento;
 	private Date dataPrimeiraParcela;
-	private String numeroPedidoGestao;
 	private String observacao;
 	private Boolean pedidoAberto;
 	private Boolean pedidoBloqueado;
 	private Boolean pedidoTransmitido;
 	private float percDesconto;
-	private float percTaxaFinanc;
 	private Boolean permiteErpAjustarPedido;
-	private Integer qtdeAvulsa;
-	private Integer qtdeCaixa;
-	private Integer tipoEntrega;
+	private int qtdeAvulsa;
+	private int qtdeCaixa;
+	private int tipoEntrega;
 	private BigDecimal valorBonificado;
 	private BigDecimal valorBruto;
-	private BigDecimal valorDesconto;
 	private BigDecimal valorFinal;
-	private BigDecimal valorLiquido;
 	private BigDecimal valorVerba;
-	private Long cliente;
-	private Long condicaoPagamento;
 
-	public Long getRecId() {
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public Timestamp getDataHoraVenciamento() {
+		return dataHoraVenciamento;
+	}
+
+	public void setDataHoraVenciamento(Timestamp dataHoraVenciamento) {
+		this.dataHoraVenciamento = dataHoraVenciamento;
+	}
+
+	public int getDataVencimento() {
+		return dataVencimento;
+	}
+
+	public void setDataVencimento(int dataVencimento) {
+		this.dataVencimento = dataVencimento;
+	}
+
+	public int getHoraVencimento() {
+		return horaVencimento;
+	}
+
+	public void setHoraVencimento(int horaVencimento) {
+		this.horaVencimento = horaVencimento;
+	}
+
+	public int getDataEmissao() {
+		return dataEmissao;
+	}
+
+	public void setDataEmissao(int dataEmissao) {
+		this.dataEmissao = dataEmissao;
+	}
+
+	public int getHoraEmissao() {
+		return horaEmissao;
+	}
+
+	public void setHoraEmissao(int horaEmissao) {
+		this.horaEmissao = horaEmissao;
+	}
+
+	public String getVendedor() {
+		return vendedor;
+	}
+
+	public void setVendedor(String vendedor) {
+		this.vendedor = vendedor;
+	}
+
+	public long getRecId() {
 		return recId;
 	}
 
-	public void setRecId(Long recId) {
+	public void setRecId(long recId) {
 		this.recId = recId;
 	}
 
@@ -62,12 +144,12 @@ public class PedidoCapa {
 		this.dataPrimeiraParcela = dataPrimeiraParcela;
 	}
 
-	public String getNumeroPedidoGestao() {
-		return numeroPedidoGestao;
+	public long getNumeroPrePedidoGestao() {
+		return numeroPrePedidoGestao;
 	}
 
-	public void setNumeroPedidoGestao(String numeroPedidoGestao) {
-		this.numeroPedidoGestao = numeroPedidoGestao;
+	public void setNumeroPrePedidoGestao(long numeroPrePedidoGestao) {
+		this.numeroPrePedidoGestao = numeroPrePedidoGestao;
 	}
 
 	public String getObservacao() {
@@ -126,27 +208,27 @@ public class PedidoCapa {
 		this.permiteErpAjustarPedido = permiteErpAjustarPedido;
 	}
 
-	public Integer getQtdeAvulsa() {
+	public int getQtdeAvulsa() {
 		return qtdeAvulsa;
 	}
 
-	public void setQtdeAvulsa(Integer qtdeAvulsa) {
+	public void setQtdeAvulsa(int qtdeAvulsa) {
 		this.qtdeAvulsa = qtdeAvulsa;
 	}
 
-	public Integer getQtdeCaixa() {
+	public int getQtdeCaixa() {
 		return qtdeCaixa;
 	}
 
-	public void setQtdeCaixa(Integer qtdeCaixa) {
+	public void setQtdeCaixa(int qtdeCaixa) {
 		this.qtdeCaixa = qtdeCaixa;
 	}
 
-	public Integer getTipoEntrega() {
+	public int getTipoEntrega() {
 		return tipoEntrega;
 	}
 
-	public void setTipoEntrega(Integer tipoEntrega) {
+	public void setTipoEntrega(int tipoEntrega) {
 		this.tipoEntrega = tipoEntrega;
 	}
 
@@ -198,20 +280,28 @@ public class PedidoCapa {
 		this.valorVerba = valorVerba;
 	}
 
-	public Long getCliente() {
+	public long getCliente() {
 		return cliente;
 	}
 
-	public void setCliente(Long cliente) {
+	public void setCliente(long cliente) {
 		this.cliente = cliente;
 	}
 
-	public Long getCondicaoPagamento() {
+	public String getCondicaoPagamento() {
 		return condicaoPagamento;
 	}
 
-	public void setCondicaoPagamento(Long condicaoPagamento) {
+	public void setCondicaoPagamento(String condicaoPagamento) {
 		this.condicaoPagamento = condicaoPagamento;
+	}
+
+	public String getTipoCobranca() {
+		return tipoCobranca;
+	}
+
+	public void setTipoCobranca(String tipoCobranca) {
+		this.tipoCobranca = tipoCobranca;
 	}
 
 }

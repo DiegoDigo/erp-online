@@ -56,7 +56,7 @@ public class ServicoERP extends SpringBootServletInitializer {
 		}
 		cpds.setJdbcUrl("jdbc:dbmaker:type3://10.0.3.220:7777/DBCONTROL_1049_999");
 		cpds.setUser("DBCONTROL1049999");
-		cpds.setPassword("db1049999");
+		cpds.setPassword("DB1049999");
 
 		// Optional Settings
 		cpds.setInitialPoolSize(1);
@@ -66,13 +66,14 @@ public class ServicoERP extends SpringBootServletInitializer {
 		cpds.setMaxStatements(100);
 		cpds.setAcquireIncrement(1);
 		cpds.setMaxIdleTime(1800);
-		
+
 		return cpds;
-		
-//		DataSourceBuilder factory = DataSourceBuilder.create().driverClassName("dbmaker.jdbc.ws.client.Driver")
-//				.url("jdbc:dbmaker:type3://10.0.3.220:7777/DBCONTROL_1049_999").username("DBCONTROL1049999")
-//				.password("db1049999");
-//		return factory.build();
+
+		// DataSourceBuilder factory =
+		// DataSourceBuilder.create().driverClassName("dbmaker.jdbc.ws.client.Driver")
+		// .url("jdbc:dbmaker:type3://10.0.3.220:7777/DBCONTROL_1049_999").username("DBCONTROL1049999")
+		// .password("db1049999");
+		// return factory.build();
 	}
 
 	@Override

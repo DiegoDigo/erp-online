@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.control.dao.TipoCobrancaDao;
-import br.com.control.integracao.TabelasIntegracaoPortal;
+import br.com.control.integracao.TabelasIntegracao;
 import br.com.control.repositorio.mappers.TipoCobrancaRowMapper;
 import br.com.control.vendas.cadastro.modelo.tipoCobranca.TipoCobranca;
 
@@ -18,7 +18,7 @@ public class TipoCobrancaService {
 	private TipoCobrancaDao tipoCobrancaDao;
 
 	public List<TipoCobranca> listarTiposCobrancas() {
-		return tipoCobrancaDao.selectViewSemWhere(TabelasIntegracaoPortal.CADASTRO_TIPO_COBRANCA,
+		return tipoCobrancaDao.selectViewSemWhere(TabelasIntegracao.CADASTRO_TIPO_COBRANCA,
 				new TipoCobrancaRowMapper());
 	}
 

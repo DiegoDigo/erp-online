@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.control.dao.DetalheComboProdutoDao;
-import br.com.control.integracao.TabelasIntegracaoPortal;
+import br.com.control.integracao.TabelasIntegracao;
 import br.com.control.repositorio.mappers.DetalheComboProdutoRowMapper;
 import br.com.control.vendas.cadastro.modelo.produto.DetalheComboProduto;
 
@@ -17,7 +17,7 @@ public class DetalheComboProdutoService {
 	private DetalheComboProdutoDao detalheComboProdutoDao;
 
 	public List<DetalheComboProduto> detalhes() {
-		return detalheComboProdutoDao.selectViewSemWhere(TabelasIntegracaoPortal.CADASTRO_DETALHE_PRODUTO_COMBO,
+		return detalheComboProdutoDao.selectViewSemWhere(TabelasIntegracao.CADASTRO_DETALHE_PRODUTO_COMBO,
 				new DetalheComboProdutoRowMapper());
 	}
 

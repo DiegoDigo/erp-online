@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.control.dao.SiglaAcompanhamentoPedidoDao;
-import br.com.control.integracao.TabelasIntegracaoPortal;
+import br.com.control.integracao.TabelasIntegracao;
 import br.com.control.repositorio.mappers.SiglaAcompanhamentoPedidoRowMapper;
 import br.com.control.vendas.cadastro.modelo.pedido.acompanhemanto.StatusAcompanhamentoPedido;
 
@@ -19,7 +19,7 @@ public class SiglaAcompanhamentoPedidoService {
 
 	public List<StatusAcompanhamentoPedido> listaSigla(String sigla) {
 		return siglaAcompanhamentoPedidoDao.selectViewSemWhere(
-				TabelasIntegracaoPortal.CADASTRO_SIGLA_ACOMPANHAMENTO_PEDIDO, new SiglaAcompanhamentoPedidoRowMapper());
+				TabelasIntegracao.CADASTRO_SIGLA_ACOMPANHAMENTO_PEDIDO, new SiglaAcompanhamentoPedidoRowMapper());
 
 	}
 

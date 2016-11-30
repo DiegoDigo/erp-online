@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.control.dao.AcompanhamentoPedidoDao;
-import br.com.control.integracao.TabelasIntegracaoPortal;
+import br.com.control.integracao.TabelasIntegracao;
 import br.com.control.repositorio.mappers.AcompanhamentoPedidoCapaRowMapper;
 import br.com.control.vendas.cadastro.modelo.pedido.acompanhemanto.AcompanhamentoPedidoCapa;
 
@@ -17,7 +17,7 @@ public class AcompanhamentoCapaPedidoService {
 	private AcompanhamentoPedidoDao acompanhamentoPedidoDao;
 
 	public List<AcompanhamentoPedidoCapa> listarAcomapanhamentos() {
-		return acompanhamentoPedidoDao.selectViewSemWhere(TabelasIntegracaoPortal.ACOMPANHAMENTO_PEDIDO_CAPA,
+		return acompanhamentoPedidoDao.selectViewSemWhere(TabelasIntegracao.ACOMPANHAMENTO_PEDIDO_CAPA,
 				new AcompanhamentoPedidoCapaRowMapper());
 	}
 

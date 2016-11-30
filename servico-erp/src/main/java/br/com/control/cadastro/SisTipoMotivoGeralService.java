@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.control.dao.SisTipoMotivoGeralDao;
-import br.com.control.integracao.TabelasIntegracaoPortal;
+import br.com.control.integracao.TabelasIntegracao;
 import br.com.control.repositorio.mappers.SisTipoMotivoGeralRowMapper;
 import br.com.control.vendas.cadastro.modelo.SisTipoMotivoGeral;
 
@@ -17,7 +17,7 @@ public class SisTipoMotivoGeralService {
 	private SisTipoMotivoGeralDao sisTipoMotivoGeralDao;
 
 	public List<SisTipoMotivoGeral> listar() {
-		return sisTipoMotivoGeralDao.selectViewSemWhere(TabelasIntegracaoPortal.SIS_CADASTRO_TIPO_MOTIVO_GERAL, new SisTipoMotivoGeralRowMapper());
+		return sisTipoMotivoGeralDao.selectViewSemWhere(TabelasIntegracao.SIS_CADASTRO_TIPO_MOTIVO_GERAL, new SisTipoMotivoGeralRowMapper());
 
 	}
 

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.control.dao.GrupoProdutoDao;
-import br.com.control.integracao.TabelasIntegracaoPortal;
+import br.com.control.integracao.TabelasIntegracao;
 import br.com.control.repositorio.mappers.GrupoRowMapper;
 import br.com.control.vendas.cadastro.modelo.produto.Grupo;
 
@@ -17,7 +17,7 @@ public class GrupoService {
 	private GrupoProdutoDao grupoDao;
 
 	public List<Grupo> listarTodos(String numeroMatricula) {
-		return grupoDao.selectViewSemWhere(TabelasIntegracaoPortal.CADASTRO_GRUPO_PRODUTO, new GrupoRowMapper());
+		return grupoDao.selectViewSemWhere(TabelasIntegracao.CADASTRO_GRUPO_PRODUTO, new GrupoRowMapper());
 	}
 
 }

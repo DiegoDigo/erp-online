@@ -11,4 +11,13 @@
 	<packaging>jar</packaging>
 
 	<artifactId>mensageria-erp</artifactId>
+	
+	<dependencies>
+		<dependency>
+			<groupId>br.com.control</groupId>
+			<artifactId>servico-erp</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	
 </project>
