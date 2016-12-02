@@ -37,6 +37,16 @@ public class Auditoria {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataFimExecucaoServico;
 
+	private String duracao;
+
+	public String getDuracao() {
+		return duracao;
+	}
+
+	public void setDuracao(String duracao) {
+		this.duracao = duracao;
+	}
+
 	public Long getId() {
 		return id;
 	}

@@ -1,30 +1,29 @@
 package br.com.control.interceptors;
 
-import java.util.Map;
-import java.util.Map.Entry;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import br.com.control.autenticacao.exceptions.IdentificacaoException;
 import br.com.control.integracao.Identificacao;
 import br.com.control.integracao.MensagemRecebida;
 
 @Component
-public class ValidacaoServicoInterceptor extends HandlerInterceptorAdapter {
-	
-	@Override
-	public boolean preHandle(HttpServletRequest request,
-			HttpServletResponse response, Object handler) throws Exception {
-		
-		Map<String, String[]> parametrosServico = request.getParameterMap();
-		for (Entry<String, String[]> parametro : parametrosServico.entrySet()) {
-			if (parametro instanceof MensagemRecebida) {
-				MensagemRecebida<?> msg = (MensagemRecebida<?>) parametro;
-				
+@Aspect
+public class ValidadorIdentificacaoRestAop {
+
+	@Before(value = "@within(org.springframework.web.bind.annotation.RequestMapping) || @annotation(org.springframework.web.bind.annotation.RequestMapping)")
+	public void before(JoinPoint joinPoint) throws Throwable {
+		validaObrigatoriedadesIdentificacao(joinPoint);
+	}
+
+	private void validaObrigatoriedadesIdentificacao(JoinPoint joinPoint) {
+		Object[] argumentosServicoChamado = joinPoint.getArgs();
+		for (Object argumentoServico : argumentosServicoChamado) {
+			if (argumentoServico instanceof MensagemRecebida) {
+				MensagemRecebida<?> msg = (MensagemRecebida<?>) argumentoServico;
+
 				Identificacao identificacao = msg.getIdentificacao();
 				if (identificacao.getOrigem() == null) {
 					throw new IdentificacaoException("Sistema Origem não informado!");
@@ -40,7 +39,6 @@ public class ValidacaoServicoInterceptor extends HandlerInterceptorAdapter {
 				}
 			}
 		}
-		return true;
 	}
 
 }

@@ -3,35 +3,39 @@ package br.com.control.configuracao;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-import br.com.control.interceptors.ValidacaoServicoInterceptor;
-
+import br.com.control.interceptors.ValidadorIdentificacaoRestAop;
+import br.com.control.interceptors.TempoExecucaoFilter;
 
 @Configuration
 public class ConfiguracaoWeb extends WebMvcConfigurerAdapter {
 
-//	@Autowired
-//	private TempoExecucaoServicoInterceptor tempoExecucaoServicoInterceptor;
-	
 	@Autowired
-	private ValidacaoServicoInterceptor validacaoServicoInterceptor;
-	
+	private ValidadorIdentificacaoRestAop auditoriaInterceptor;
 
+	@Bean
+	public FilterRegistrationBean someFilterRegistration() {
 
-	@Override
-	  public void addInterceptors(InterceptorRegistry registry) {
-//	    registry.addInterceptor(getTempoExecucaoServicoInterceptor());
-	    registry.addInterceptor(getValidacaoServicoInterceptor());
-	  }
+		FilterRegistrationBean registration = new FilterRegistrationBean();
+		registration.setFilter(tempoExecucaoFilter());
+		registration.addUrlPatterns("/servicos/*");
+		return registration;
+	}
+
+	@Bean(name = "someFilter")
+	public TempoExecucaoFilter tempoExecucaoFilter() {
+		return new TempoExecucaoFilter();
+	}
 
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
@@ -42,21 +46,13 @@ public class ConfiguracaoWeb extends WebMvcConfigurerAdapter {
 		converter.setObjectMapper(mapper);
 		converters.add(converter);
 	}
-	
-//	public TempoExecucaoServicoInterceptor getTempoExecucaoServicoInterceptor() {
-//		return tempoExecucaoServicoInterceptor;
-//	}
-//
-//	public void setTempoExecucaoServicoInterceptor(TempoExecucaoServicoInterceptor tempoExecucaoServicoInterceptor) {
-//		this.tempoExecucaoServicoInterceptor = tempoExecucaoServicoInterceptor;
-//	}
 
-	public ValidacaoServicoInterceptor getValidacaoServicoInterceptor() {
-		return validacaoServicoInterceptor;
+	public ValidadorIdentificacaoRestAop getAuditoriaInterceptor() {
+		return auditoriaInterceptor;
 	}
 
-	public void setValidacaoServicoInterceptor(ValidacaoServicoInterceptor validacaoServicoInterceptor) {
-		this.validacaoServicoInterceptor = validacaoServicoInterceptor;
+	public void setAuditoriaInterceptor(ValidadorIdentificacaoRestAop auditoriaInterceptor) {
+		this.auditoriaInterceptor = auditoriaInterceptor;
 	}
-	
+
 }
