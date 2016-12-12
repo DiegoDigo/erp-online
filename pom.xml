@@ -138,8 +138,41 @@
 
 	</dependencies>
 
+
+<!-- PERFIS -->
+	<profiles>
+		<profile>
+			<id>DEV</id>
+			<properties>
+				<packaging.type>war</packaging.type>
+				<artefato.nome>api-servicos-erp</artefato.nome>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>HOMOLOG</id>
+			<properties>
+				<packaging.type>war</packaging.type>
+				<server.url>C:\PortalVendasWeb\server\webapps</server.url>
+				<artefato.nome>api-servicos-erp-homolog</artefato.nome>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>PRD</id>
+			<properties>
+				<packaging.type>war</packaging.type>
+				<server.url>C:\PortalVendasWeb\server\webapps</server.url>
+				<artefato.nome>api-servicos-erp-prd</artefato.nome>
+			</properties>
+		</profile>
+	</profiles>
+
+
 	<build>
-		<finalName>api-servicos-erp</finalName>
+		<finalName>${artefato.nome}</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

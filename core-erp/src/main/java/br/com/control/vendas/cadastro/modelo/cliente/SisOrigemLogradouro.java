@@ -8,7 +8,7 @@ public class SisOrigemLogradouro implements Serializable {
 	private Long recId;
 	private Boolean ativo;
 	private String descricao;
-	private String ogiremLogradouro;
+	private String origemLogradouro;
 
 	public Long getRecId() {
 		return recId;
@@ -34,12 +34,11 @@ public class SisOrigemLogradouro implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public String getOgiremLogradouro() {
-		return ogiremLogradouro;
+	public String getOrigemLogradouro() {
+		return origemLogradouro;
 	}
 
-	public void setOgiremLogradouro(String ogiremLogradouro) {
-		this.ogiremLogradouro = ogiremLogradouro;
+	public void setOrigemLogradouro(String origemLogradouro) {
+		this.origemLogradouro = origemLogradouro;
 	}
-
 }

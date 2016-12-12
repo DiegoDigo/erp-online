@@ -17,7 +17,7 @@ public class SisOrigemLogradouroService {
 	private SisOrigemLogradouroDao sisOrigemLogradouroDao;
 
 	public List<SisOrigemLogradouro> listarOrigemLogradouro() {
-		return sisOrigemLogradouroDao.selectViewSemWhere(TabelasIntegracao.SIS_ORIGEM_LOGRADOURO, new SisOrigemLogradouroRowMapper());
+		return sisOrigemLogradouroDao.selectViewSemWhere(TabelasIntegracao.TESTE, new SisOrigemLogradouroRowMapper());
 	}
 
 }

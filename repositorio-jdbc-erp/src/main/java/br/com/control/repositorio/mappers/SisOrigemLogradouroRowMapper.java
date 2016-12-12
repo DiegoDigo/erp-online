@@ -14,7 +14,7 @@ public class SisOrigemLogradouroRowMapper implements RowMapper<SisOrigemLogradou
 		SisOrigemLogradouro sis = new SisOrigemLogradouro();
 		sis.setAtivo(rs.getBoolean("ativo"));
 		sis.setDescricao(rs.getString("descricao"));
-		sis.setOgiremLogradouro(rs.getString("origem_logradouro"));
+		sis.setOrigemLogradouro(rs.getString("origem_logradouro"));
 		sis.setRecId(rs.getLong("rec_id"));
 		return sis;
 	}
