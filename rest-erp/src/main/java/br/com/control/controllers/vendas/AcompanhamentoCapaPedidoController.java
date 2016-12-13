@@ -11,6 +11,7 @@ import br.com.control.cadastro.acompanhamentopedido.AcompanhamentoCapaPedidoServ
 import br.com.control.controllers.AbstractController;
 import br.com.control.integracao.MensagemRecebida;
 import br.com.control.integracao.MensagemRetorno;
+import br.com.control.portal.mensageria.to.AcompanhamentoPedidoTO;
 import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.pedido.acompanhemanto.AcompanhamentoPedidoCapa;
 
@@ -26,5 +27,15 @@ public class AcompanhamentoCapaPedidoController extends AbstractController {
 		return new MensagemRetorno(HttpStatus.OK, "Capas do pedido listada com sucesso",
 				acompanhamentoCapaPedidoService.listarAcomapanhamentos(), mensagem.getIdentificacao());
 	}
+	
+	@RequestMapping(value = RotasRest.SINALIZA_PORTAL, method = RequestMethod.GET, headers = "Accept=application/json")
+	public MensagemRetorno sinalizaPortal(@RequestParam("mensagem") MensagemRecebida<AcompanhamentoPedidoTO> mensagem) {
+		
+		System.out.println("CHEGOU NO SERVICO: "+mensagem.getConteudo());
+		
+		return new MensagemRetorno(HttpStatus.OK, "Capas do pedido listada com sucesso",
+				null, mensagem.getIdentificacao());
+	}
+
 
 }

@@ -33,6 +33,7 @@
 		<module>repositorio-jpa-erp</module>
 		<module>repositorio-jdbc-erp</module>
 		<module>mensageria-erp</module>
+		<module>integracao-iscobol-erp</module>
 	</modules>
 
 	<parent>
