@@ -17,7 +17,7 @@ public class Preco implements Serializable{
 	private float descontoVerba;
 	private float despac;
 	private String origemTabela;
-	private Boolean participaBandaPreco;
+	private String participaBandaPreco;
 	private float precoCustoCaixa;
 	private float precoCustoUnitario;
 	private float precoPvv;
@@ -93,10 +93,10 @@ public class Preco implements Serializable{
 	public void setOrigemTabela(String origemTabela) {
 		this.origemTabela = origemTabela;
 	}
-	public Boolean getParticipaBandaPreco() {
+	public String getParticipaBandaPreco() {
 		return participaBandaPreco;
 	}
-	public void setParticipaBandaPreco(Boolean participaBandaPreco) {
+	public void setParticipaBandaPreco(String participaBandaPreco) {
 		this.participaBandaPreco = participaBandaPreco;
 	}
 	public float getPrecoCustoCaixa() {

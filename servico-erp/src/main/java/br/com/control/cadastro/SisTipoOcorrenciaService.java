@@ -17,7 +17,7 @@ public class SisTipoOcorrenciaService {
 	private SisTipoOcorrenciaDao sisTipoOcorrenciaDao;
 
 	public List<SisTipoOCorrencia> listarOcorrencia() {
-		return sisTipoOcorrenciaDao.selectViewSemWhere(TabelasIntegracao.SIS_CADASTRO_TIPO_OCORRENCIA, new SisTipoOcorrenciaRowMapper());
+		return sisTipoOcorrenciaDao.listarOcorrencias();
 	}
 
 }

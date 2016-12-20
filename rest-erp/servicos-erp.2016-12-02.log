@@ -1,0 +1,82 @@
+09:50:37.290 [main] INFO  br.com.control.ServicoERP - Starting ServicoERP on DESKTOP-D46L3R0 with PID 7756 (C:\java\ws_git_portal\api-servicos-erp\rest-erp\target\classes started by Diego in C:\java\ws_git_portal\api-servicos-erp\rest-erp) 
+09:50:37.437 [main] DEBUG br.com.control.ServicoERP - Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE 
+09:50:37.438 [main] INFO  br.com.control.ServicoERP - The following profiles are active: dev 
+09:51:24.327 [main] INFO  br.com.control.ServicoERP - Started ServicoERP in 48.469 seconds (JVM running for 51.235) 
+10:17:43.505 [main] INFO  br.com.control.ServicoERP - Starting ServicoERP on DESKTOP-D46L3R0 with PID 7804 (C:\java\ws_git_portal\api-servicos-erp\rest-erp\target\classes started by Diego in C:\java\ws_git_portal\api-servicos-erp\rest-erp) 
+10:17:43.518 [main] DEBUG br.com.control.ServicoERP - Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE 
+10:17:43.518 [main] INFO  br.com.control.ServicoERP - The following profiles are active: dev 
+10:18:30.460 [main] INFO  br.com.control.ServicoERP - Started ServicoERP in 49.386 seconds (JVM running for 53.389) 
+10:40:58.836 [main] INFO  br.com.control.ServicoERP - Starting ServicoERP on DESKTOP-D46L3R0 with PID 4788 (C:\java\ws_git_portal\api-servicos-erp\rest-erp\target\classes started by Diego in C:\java\ws_git_portal\api-servicos-erp\rest-erp) 
+10:40:58.844 [main] DEBUG br.com.control.ServicoERP - Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE 
+10:40:58.845 [main] INFO  br.com.control.ServicoERP - The following profiles are active: dev 
+10:48:39.199 [main] INFO  br.com.control.ServicoERP - Starting ServicoERP on DESKTOP-D46L3R0 with PID 7024 (C:\java\ws_git_portal\api-servicos-erp\rest-erp\target\classes started by Diego in C:\java\ws_git_portal\api-servicos-erp\rest-erp) 
+10:48:39.200 [main] DEBUG br.com.control.ServicoERP - Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE 
+10:48:39.201 [main] INFO  br.com.control.ServicoERP - The following profiles are active: dev 
+10:49:26.475 [main] INFO  br.com.control.ServicoERP - Started ServicoERP in 50.118 seconds (JVM running for 52.653) 
+11:21:16.423 [main] INFO  br.com.control.ServicoERP - Starting ServicoERP on DESKTOP-D46L3R0 with PID 5508 (C:\java\ws_git_portal\api-servicos-erp\rest-erp\target\classes started by Diego in C:\java\ws_git_portal\api-servicos-erp\rest-erp) 
+11:21:16.429 [main] DEBUG br.com.control.ServicoERP - Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE 
+11:21:16.430 [main] INFO  br.com.control.ServicoERP - The following profiles are active: dev 
+11:21:48.433 [main] INFO  br.com.control.ServicoERP - Started ServicoERP in 32.909 seconds (JVM running for 34.23) 
+11:23:37.787 [main] INFO  br.com.control.ServicoERP - Starting ServicoERP on DESKTOP-D46L3R0 with PID 4060 (C:\java\ws_git_portal\api-servicos-erp\rest-erp\target\classes started by Diego in C:\java\ws_git_portal\api-servicos-erp\rest-erp) 
+11:23:37.795 [main] DEBUG br.com.control.ServicoERP - Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE 
+11:23:37.795 [main] INFO  br.com.control.ServicoERP - The following profiles are active: dev 
+11:24:26.587 [main] INFO  br.com.control.ServicoERP - Started ServicoERP in 50.279 seconds (JVM running for 52.405) 
+11:31:47.830 [main] INFO  br.com.control.ServicoERP - Starting ServicoERP on DESKTOP-D46L3R0 with PID 2616 (C:\java\ws_git_portal\api-servicos-erp\rest-erp\target\classes started by Diego in C:\java\ws_git_portal\api-servicos-erp\rest-erp) 
+11:31:47.856 [main] DEBUG br.com.control.ServicoERP - Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE 
+11:31:47.858 [main] INFO  br.com.control.ServicoERP - The following profiles are active: dev 
+11:32:32.988 [main] INFO  br.com.control.ServicoERP - Started ServicoERP in 47.411 seconds (JVM running for 49.605) 
+11:37:56.689 [main] INFO  br.com.control.ServicoERP - Starting ServicoERP on DESKTOP-D46L3R0 with PID 4380 (C:\java\ws_git_portal\api-servicos-erp\rest-erp\target\classes started by Diego in C:\java\ws_git_portal\api-servicos-erp\rest-erp) 
+11:37:56.696 [main] DEBUG br.com.control.ServicoERP - Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE 
+11:37:56.697 [main] INFO  br.com.control.ServicoERP - The following profiles are active: dev 
+11:38:48.703 [main] INFO  br.com.control.ServicoERP - Started ServicoERP in 53.386 seconds (JVM running for 56.55) 
+11:42:47.519 [main] INFO  br.com.control.ServicoERP - Starting ServicoERP on DESKTOP-D46L3R0 with PID 7864 (C:\java\ws_git_portal\api-servicos-erp\rest-erp\target\classes started by Diego in C:\java\ws_git_portal\api-servicos-erp\rest-erp) 
+11:42:47.527 [main] DEBUG br.com.control.ServicoERP - Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE 
+11:42:47.529 [main] INFO  br.com.control.ServicoERP - The following profiles are active: dev 
+11:43:08.661 [main] INFO  br.com.control.ServicoERP - Started ServicoERP in 21.901 seconds (JVM running for 23.194) 
+11:48:18.370 [main] INFO  br.com.control.ServicoERP - Starting ServicoERP on DESKTOP-D46L3R0 with PID 7832 (C:\java\ws_git_portal\api-servicos-erp\rest-erp\target\classes started by Diego in C:\java\ws_git_portal\api-servicos-erp\rest-erp) 
+11:48:18.379 [main] DEBUG br.com.control.ServicoERP - Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE 
+11:48:18.379 [main] INFO  br.com.control.ServicoERP - The following profiles are active: dev 
+11:48:38.220 [main] INFO  br.com.control.ServicoERP - Started ServicoERP in 20.664 seconds (JVM running for 21.97) 
+11:50:39.825 [main] INFO  br.com.control.ServicoERP - Starting ServicoERP on DESKTOP-D46L3R0 with PID 1952 (C:\java\ws_git_portal\api-servicos-erp\rest-erp\target\classes started by Diego in C:\java\ws_git_portal\api-servicos-erp\rest-erp) 
+11:50:39.832 [main] DEBUG br.com.control.ServicoERP - Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE 
+11:50:39.832 [main] INFO  br.com.control.ServicoERP - The following profiles are active: dev 
+11:51:01.509 [main] INFO  br.com.control.ServicoERP - Started ServicoERP in 22.582 seconds (JVM running for 24.177) 
+11:54:20.677 [main] INFO  br.com.control.ServicoERP - Starting ServicoERP on DESKTOP-D46L3R0 with PID 11824 (C:\java\ws_git_portal\api-servicos-erp\rest-erp\target\classes started by Diego in C:\java\ws_git_portal\api-servicos-erp\rest-erp) 
+11:54:20.689 [main] DEBUG br.com.control.ServicoERP - Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE 
+11:54:20.690 [main] INFO  br.com.control.ServicoERP - The following profiles are active: dev 
+11:54:44.233 [main] INFO  br.com.control.ServicoERP - Started ServicoERP in 24.345 seconds (JVM running for 25.609) 
+12:10:08.984 [main] INFO  br.com.control.ServicoERP - Starting ServicoERP on DESKTOP-D46L3R0 with PID 12764 (C:\java\ws_git_portal\api-servicos-erp\rest-erp\target\classes started by Diego in C:\java\ws_git_portal\api-servicos-erp\rest-erp) 
+12:10:09.001 [main] DEBUG br.com.control.ServicoERP - Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE 
+12:10:09.002 [main] INFO  br.com.control.ServicoERP - The following profiles are active: dev 
+12:10:32.578 [main] INFO  br.com.control.ServicoERP - Started ServicoERP in 24.555 seconds (JVM running for 25.972) 
+14:25:46.162 [main] INFO  br.com.control.ServicoERP - Starting ServicoERP on DESKTOP-D46L3R0 with PID 11988 (C:\java\ws_git_portal\api-servicos-erp\rest-erp\target\classes started by Diego in C:\java\ws_git_portal\api-servicos-erp\rest-erp) 
+14:25:46.229 [main] DEBUG br.com.control.ServicoERP - Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE 
+14:25:46.229 [main] INFO  br.com.control.ServicoERP - The following profiles are active: dev 
+14:26:57.904 [main] INFO  br.com.control.ServicoERP - Started ServicoERP in 72.764 seconds (JVM running for 74.107) 
+14:29:52.121 [main] INFO  br.com.control.ServicoERP - Starting ServicoERP on DESKTOP-D46L3R0 with PID 1312 (C:\java\ws_git_portal\api-servicos-erp\rest-erp\target\classes started by Diego in C:\java\ws_git_portal\api-servicos-erp\rest-erp) 
+14:29:52.128 [main] DEBUG br.com.control.ServicoERP - Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE 
+14:29:52.129 [main] INFO  br.com.control.ServicoERP - The following profiles are active: dev 
+14:30:38.442 [main] INFO  br.com.control.ServicoERP - Starting ServicoERP on DESKTOP-D46L3R0 with PID 9464 (C:\java\ws_git_portal\api-servicos-erp\rest-erp\target\classes started by Diego in C:\java\ws_git_portal\api-servicos-erp\rest-erp) 
+14:30:38.451 [main] DEBUG br.com.control.ServicoERP - Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE 
+14:30:38.451 [main] INFO  br.com.control.ServicoERP - The following profiles are active: dev 
+14:31:15.157 [main] INFO  br.com.control.ServicoERP - Started ServicoERP in 37.76 seconds (JVM running for 39.233) 
+14:36:58.740 [main] INFO  br.com.control.ServicoERP - Starting ServicoERP on DESKTOP-D46L3R0 with PID 7448 (C:\java\ws_git_portal\api-servicos-erp\rest-erp\target\classes started by Diego in C:\java\ws_git_portal\api-servicos-erp\rest-erp) 
+14:36:58.745 [main] DEBUG br.com.control.ServicoERP - Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE 
+14:36:58.746 [main] INFO  br.com.control.ServicoERP - The following profiles are active: dev 
+14:37:41.058 [main] INFO  br.com.control.ServicoERP - Started ServicoERP in 43.089 seconds (JVM running for 44.178) 
+15:19:56.930 [main] INFO  br.com.control.ServicoERP - Starting ServicoERP on DESKTOP-D46L3R0 with PID 5476 (C:\java\ws_git_portal\api-servicos-erp\rest-erp\target\classes started by Diego in C:\java\ws_git_portal\api-servicos-erp\rest-erp) 
+15:19:56.964 [main] DEBUG br.com.control.ServicoERP - Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE 
+15:19:56.964 [main] INFO  br.com.control.ServicoERP - The following profiles are active: dev 
+15:20:41.022 [main] INFO  br.com.control.ServicoERP - Started ServicoERP in 44.921 seconds (JVM running for 46.257) 
+15:39:54.005 [main] INFO  br.com.control.ServicoERP - Starting ServicoERP on DESKTOP-D46L3R0 with PID 908 (C:\java\ws_git_portal\api-servicos-erp\rest-erp\target\classes started by Diego in C:\java\ws_git_portal\api-servicos-erp\rest-erp) 
+15:39:54.010 [main] DEBUG br.com.control.ServicoERP - Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE 
+15:39:54.010 [main] INFO  br.com.control.ServicoERP - The following profiles are active: dev 
+15:40:15.704 [main] INFO  br.com.control.ServicoERP - Started ServicoERP in 22.488 seconds (JVM running for 23.601) 
+15:46:17.414 [main] INFO  br.com.control.ServicoERP - Starting ServicoERP on DESKTOP-D46L3R0 with PID 1300 (C:\java\ws_git_portal\api-servicos-erp\rest-erp\target\classes started by Diego in C:\java\ws_git_portal\api-servicos-erp\rest-erp) 
+15:46:17.421 [main] DEBUG br.com.control.ServicoERP - Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE 
+15:46:17.422 [main] INFO  br.com.control.ServicoERP - The following profiles are active: dev 
+15:46:37.818 [main] INFO  br.com.control.ServicoERP - Started ServicoERP in 21.231 seconds (JVM running for 22.294) 
+15:55:51.743 [main] INFO  br.com.control.ServicoERP - Starting ServicoERP on DESKTOP-D46L3R0 with PID 10000 (C:\java\ws_git_portal\api-servicos-erp\rest-erp\target\classes started by Diego in C:\java\ws_git_portal\api-servicos-erp\rest-erp) 
+15:55:51.756 [main] DEBUG br.com.control.ServicoERP - Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE 
+15:55:51.757 [main] INFO  br.com.control.ServicoERP - The following profiles are active: dev 
+15:56:16.739 [main] INFO  br.com.control.ServicoERP - Started ServicoERP in 25.785 seconds (JVM running for 26.847) 

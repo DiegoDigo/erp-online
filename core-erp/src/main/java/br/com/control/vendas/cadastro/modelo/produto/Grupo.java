@@ -11,7 +11,7 @@ public class Grupo implements Serializable {
 	
 	private boolean ativo;
 	
-	private String codigoGrupoProduto;
+	private int codigoGrupoProduto;
 
 	private String descricao;
 
@@ -39,11 +39,11 @@ public class Grupo implements Serializable {
 		this.ativo = ativo;
 	}
 
-	public String getCodigoGrupoProduto() {
+	public int getCodigoGrupoProduto() {
 		return codigoGrupoProduto;
 	}
 
-	public void setCodigoGrupoProduto(String codigoGrupoProduto) {
+	public void setCodigoGrupoProduto(int codigoGrupoProduto) {
 		this.codigoGrupoProduto = codigoGrupoProduto;
 	}
 

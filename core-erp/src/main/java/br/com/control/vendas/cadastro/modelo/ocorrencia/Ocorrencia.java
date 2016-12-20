@@ -13,9 +13,9 @@ public class Ocorrencia implements Serializable {
 	private String desdobro;
 	private String empresa;
 	private Boolean geraMotivoFinanc;
-	private Integer naturezaOperacao;
-	private Integer naturezaOperacaoM;
-	private Integer naturezaOperacaoO;
+	private String naturezaOperacao;
+	private String naturezaOperacaoM;
+	private String naturezaOperacaoO;
 	private Boolean ocorrDispPortal;
 	private String sinal;
 	private String tipo;
@@ -86,27 +86,27 @@ public class Ocorrencia implements Serializable {
 		this.geraMotivoFinanc = geraMotivoFinanc;
 	}
 
-	public Integer getNaturezaOperacao() {
+	public String getNaturezaOperacao() {
 		return naturezaOperacao;
 	}
 
-	public void setNaturezaOperacao(Integer naturezaOperacao) {
+	public void setNaturezaOperacao(String naturezaOperacao) {
 		this.naturezaOperacao = naturezaOperacao;
 	}
 
-	public Integer getNaturezaOperacaoM() {
+	public String getNaturezaOperacaoM() {
 		return naturezaOperacaoM;
 	}
 
-	public void setNaturezaOperacaoM(Integer naturezaOperacaoM) {
+	public void setNaturezaOperacaoM(String naturezaOperacaoM) {
 		this.naturezaOperacaoM = naturezaOperacaoM;
 	}
 
-	public Integer getNaturezaOperacaoO() {
+	public String getNaturezaOperacaoO() {
 		return naturezaOperacaoO;
 	}
 
-	public void setNaturezaOperacaoO(Integer naturezaOperacaoO) {
+	public void setNaturezaOperacaoO(String naturezaOperacaoO) {
 		this.naturezaOperacaoO = naturezaOperacaoO;
 	}
 

@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.control.dao.VendedorDao;
-import br.com.control.integracao.TabelasIntegracao;
-import br.com.control.repositorio.mappers.VendedorRowMapper;
 import br.com.control.vendas.cadastro.modelo.vendedor.Vendedor;
 
 @Service
@@ -17,7 +15,7 @@ public class VendedorService {
 	private VendedorDao vendedorDao;
 
 	public List<Vendedor> listar() {
-		return vendedorDao.selectViewSemWhere(TabelasIntegracao.CADASTRO_VENDEDOR, new VendedorRowMapper());
+		return vendedorDao.listarVendedores();
 	}
 
 }

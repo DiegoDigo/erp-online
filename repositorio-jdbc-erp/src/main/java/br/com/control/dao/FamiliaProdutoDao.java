@@ -14,8 +14,8 @@ import br.com.control.vendas.cadastro.modelo.produto.Familia;
 @Transactional
 public class FamiliaProdutoDao extends JdbcDao<Familia> {
 
-	public List<Familia> listaTodasAsFamiliasDaMatricula(String matricula) {
-		String declare = "DECLARE set date @ALTEDT_FAMILIA_PRODUTO = 0;";
+	public List<Familia> listaTodasAsFamiliasDaMatricula() {
+		String declare = "DECLARE set date @CODIGO_FAMILIA = 0;";
 		getJdbcTemplate().update(declare);
 		return selectViewSemWhere(TabelasIntegracao.CADASTRO_FAMILIA_PRODUTO, new FamiliaRowMapper());
 	}

@@ -23,7 +23,7 @@ public class PrecoController extends AbstractController {
 
 	@RequestMapping(value = RotasRest.LISTAR, method = RequestMethod.GET, headers = "Accept=application/json")
 	public MensagemRetorno listar(@RequestParam("mensagem") MensagemRecebida<Preco> mensagem) {
-		return new MensagemRetorno(HttpStatus.OK, "Precos Listados com sucesso ! ", precoService.ListaPreco(),
+		return new MensagemRetorno(HttpStatus.OK, "Precos Listados com sucesso ! ", precoService.listaPreco(),
 				mensagem.getIdentificacao());
 	}
 

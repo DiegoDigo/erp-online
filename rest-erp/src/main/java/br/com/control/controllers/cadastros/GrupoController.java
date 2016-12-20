@@ -25,7 +25,7 @@ public class GrupoController extends AbstractController {
 
 	@RequestMapping(value = RotasRest.LISTAR, method = RequestMethod.GET, headers = "Accept=application/json")
 	public MensagemRetorno listar(@RequestParam(value = "mensagem") MensagemRecebida<Grupo> mensagem) {
-		List<Grupo> gruposEncontrados = servicoGrupo.listarTodos(mensagem.getIdentificacao().getMatriculaAssociada());
+		List<Grupo> gruposEncontrados = servicoGrupo.listarTodos();
 		return new MensagemRetorno(HttpStatus.OK, "Listagem retornada com Sucesso", gruposEncontrados,
 				mensagem.getIdentificacao());
 	}

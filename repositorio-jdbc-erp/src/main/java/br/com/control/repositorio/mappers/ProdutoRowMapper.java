@@ -14,15 +14,15 @@ public class ProdutoRowMapper implements RowMapper<Produto>{
 	@Override
 	public Produto mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Produto produto = new Produto();
-		produto.setRecId(rs.getLong("rec_id"));
+//		produto.setRecId(rs.getLong("rec_id"));
 		produto.setAtivo(rs.getBoolean("ativo"));
 		produto.setBonificaUnidade(rs.getBoolean("bonifica_unidade"));
 		produto.setClassFiscal(rs.getInt("class_fiscal"));
 		produto.setCodigoEanFab(rs.getString("codigo_ean_fab"));
 		produto.setCodigoProduto(rs.getString("codigo_produto"));
-		produto.setDescricao(rs.getString("descricao"));
+		produto.setDescricao(rs.getString("descricao"));	
 		produto.setDescricaoRed(rs.getString("descricao_red"));
-		produto.setIpiPauta(rs.getBoolean("ipi_pauta"));
+		produto.setIpiPauta(rs.getString("ipi_pauta"));
 		produto.setLinha(rs.getString("linha"));
 		produto.setLitragem(rs.getString("litragem"));
 		produto.setPercentualBonusGera(rs.getFloat("percentual_bonus_gera"));

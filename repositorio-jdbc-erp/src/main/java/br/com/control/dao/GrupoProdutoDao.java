@@ -14,8 +14,8 @@ import br.com.control.vendas.cadastro.modelo.produto.Grupo;
 @Transactional
 public class GrupoProdutoDao extends JdbcDao<Grupo> {
 
-	public List<Grupo> listaTodasAsFamiliasDaMatricula(String matricula) {
-		String declare = "DECLARE set int @CODIGO_GRUPO_PRODUTO = 98;";
+	public List<Grupo> listaTodasGrupos() {
+		String declare = "DECLARE set int @CODIGO_GRUPO_PRODUTO = 0;";
 		getJdbcTemplate().update(declare);
 		return selectViewSemWhere(TabelasIntegracao.CADASTRO_GRUPO_PRODUTO, new GrupoRowMapper());
 	}

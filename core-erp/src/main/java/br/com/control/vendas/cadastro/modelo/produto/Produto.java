@@ -13,7 +13,7 @@ public class Produto implements Serializable{
 	private String 	codigoProduto;
 	private String 	descricao;
 	private String 	descricaoRed;
-	private Boolean ipiPauta;
+	private String	ipiPauta;
 	private String 	linha;
 	private String 	litragem;
 	private float 	percentualBonusGera;
@@ -87,10 +87,10 @@ public class Produto implements Serializable{
 	public void setDescricaoRed(String descricaoRed) {
 		this.descricaoRed = descricaoRed;
 	}
-	public Boolean getIpiPauta() {
+	public String getIpiPauta() {
 		return ipiPauta;
 	}
-	public void setIpiPauta(Boolean ipiPauta) {
+	public void setIpiPauta(String ipiPauta) {
 		this.ipiPauta = ipiPauta;
 	}
 	public String getLinha() {
