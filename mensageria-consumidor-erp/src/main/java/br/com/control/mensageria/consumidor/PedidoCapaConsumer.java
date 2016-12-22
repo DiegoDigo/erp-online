@@ -14,9 +14,12 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.control.cadastro.PedidoCapaService;
+import br.com.control.cadastro.PedidoItemService;
 import br.com.control.mensageria.produtor.PedidoCapaProducer;
 import br.com.control.portal.mensageria.to.AcompanhamentoPedidoTO;
 import br.com.control.portal.mensageria.to.PedidoCapaTO;
+import br.com.control.portal.mensageria.to.PedidoItemTO;
+import br.com.control.util.FormatacaoUtil;
 
 @Component
 public class PedidoCapaConsumer {
@@ -29,7 +32,13 @@ public class PedidoCapaConsumer {
 	private PedidoCapaService pedidoCapaService;
 
 	@Autowired
+	private PedidoItemService pedidoItemService;
+
+	@Autowired
 	private PedidoCapaProducer producer;
+	
+	@Autowired
+	private FormatacaoUtil util;
 
 	@JmsListener(destination = FILA_PEDIDOS)
 	public void receiveMessage(final Message<PedidoCapaTO> message) throws JMSException {
@@ -37,8 +46,15 @@ public class PedidoCapaConsumer {
 
 		log.debug("### RECEBIDO O PEDIDO " + pedidoCapa.getRecId() + " DA FILA PEDIDOS ###");
 
+		preparaDatasPedido(pedidoCapa);
+		
 		AcompanhamentoPedidoTO capaTO = pedidoCapaService.salvarCapa(pedidoCapa);
 
+		for (PedidoItemTO item : pedidoCapa.getItens()) {
+			item.setNumeroPrePedidoGestao(capaTO.getNumeroPedidoGestao());
+			pedidoItemService.salvarItem(item);
+		}
+		
 		producer.sendMessage(capaTO);
 		
 		ObjectMapper mapper = new ObjectMapper();
@@ -49,6 +65,15 @@ public class PedidoCapaConsumer {
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private void preparaDatasPedido(PedidoCapaTO pedidoCapa) {
+		String dataVencimento = util.formataData(pedidoCapa.getDataHoraEmissao(), "yyyyMMdd");
+		String dataEmissao = util.formataData(pedidoCapa.getDataHoraEmissao(), "yyyyMMdd");
+		String horaEmissao = util.formataData(pedidoCapa.getDataHoraEmissao(), "HHmm");
+		pedidoCapa.setDataVencimento(Integer.valueOf(dataVencimento));
+		pedidoCapa.setDataEmissao(Integer.valueOf(dataEmissao));
+		pedidoCapa.setHoraEmissao(Integer.valueOf(horaEmissao));
 	}
 
 }

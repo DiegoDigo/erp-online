@@ -29,6 +29,17 @@
 			<artifactId>mensageria-erp</artifactId>
 			<version>${version}</version>
 		</dependency>
+		<dependency>
+			<groupId>br.com.control</groupId>
+			<artifactId>mensageria-consumidor-erp</artifactId>
+			<version>${version}</version>
+		</dependency>
+		<dependency>
+			<groupId>br.com.control</groupId>
+			<artifactId>mensageria-produtor-erp</artifactId>
+			<version>${version}</version>
+		</dependency>
+		
 	</dependencies>
 
 </project>

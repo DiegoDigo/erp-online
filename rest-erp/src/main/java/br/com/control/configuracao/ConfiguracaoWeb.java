@@ -32,7 +32,7 @@ public class ConfiguracaoWeb extends WebMvcConfigurerAdapter {
 		return registration;
 	}
 
-	@Bean(name = "someFilter")
+	@Bean
 	public TempoExecucaoFilter tempoExecucaoFilter() {
 		return new TempoExecucaoFilter();
 	}

@@ -1,11 +1,11 @@
-package br.com.control.portal.mensageria.to;
+package br.com.control.rest.client;
 
 import java.io.Serializable;
 
 public class AcompanhamentoPedidoTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Long recId;
-	private String numeroPedidoGestao;
+	private Long numeroPedidoGestao;
 	private Long statusAcompanhamentoPedido;
 
 	public Long getRecId() {
@@ -16,11 +16,11 @@ public class AcompanhamentoPedidoTO implements Serializable {
 		this.recId = recId;
 	}
 
-	public String getNumeroPedidoGestao() {
+	public Long getNumeroPedidoGestao() {
 		return numeroPedidoGestao;
 	}
 
-	public void setNumeroPedidoGestao(String numeroPedidoGestao) {
+	public void setNumeroPedidoGestao(Long numeroPedidoGestao) {
 		this.numeroPedidoGestao = numeroPedidoGestao;
 	}
 

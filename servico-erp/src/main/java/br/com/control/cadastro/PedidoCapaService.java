@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import br.com.control.dao.PedidoCapaDao;
 import br.com.control.integracao.TabelasIntegracao;
-import br.com.control.portal.mensageria.to.PedidoCapaTO;
 import br.com.control.portal.mensageria.to.AcompanhamentoPedidoTO;
+import br.com.control.portal.mensageria.to.PedidoCapaTO;
 import br.com.control.repositorio.mappers.PedidoCapaRowMapper;
 
 @Service

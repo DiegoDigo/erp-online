@@ -5,12 +5,12 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.sql.CallableStatement;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.List;
 
 import javax.sql.DataSource;
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -22,14 +22,15 @@ import org.springframework.stereotype.Repository;
 import br.com.control.annotation.SequenciaParametrosProcedure;
 import br.com.control.integracao.ProcedureIntegracao;
 import br.com.control.integracao.TabelasIntegracao;
+import br.com.control.repositorio.ConnectionFactoryDBMaker;
 
 @Repository
-@Transactional
 public class JdbcDao<T> {
 	private DataSource dataSource;
 
-	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	private Connection connection;
 
 	@Value("${spring.secondDatasource.database.driverClassName}")
 	private String driverErp;
@@ -38,7 +39,7 @@ public class JdbcDao<T> {
 	@Qualifier("dbmakerDataSource")
 	public void setDataSource(DataSource dataSource) throws ClassNotFoundException {
 		this.dataSource = dataSource;
-		jdbcTemplate.setDataSource(dataSource);
+		jdbcTemplate = new JdbcTemplate(dataSource);
 		Class.forName(driverErp);
 	}
 
@@ -68,6 +69,17 @@ public class JdbcDao<T> {
 	public DataSource getDataSource() {
 		return dataSource;
 	}
+	
+	@Autowired
+	private ConnectionFactoryDBMaker connectionFactory;
+	
+	public ConnectionFactoryDBMaker getConnectionFactory() {
+		return connectionFactory;
+	}
+
+	public void setConnectionFactory(ConnectionFactoryDBMaker connectionFactory) {
+		this.connectionFactory = connectionFactory;
+	}
 
 	public CallableStatement preparaChamadaProcedure(ProcedureIntegracao procedure) {
 		try {
@@ -86,11 +98,22 @@ public class JdbcDao<T> {
 			}
 			call = call.substring(0, call.length() - 1);
 			call += ")}";
-			return getDataSource().getConnection().prepareCall(call);
+			
+			this.connection = connectionFactory.getConnection();
+			
+			return connection.prepareCall(call);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 
+	}
+	
+	public void closeConnection(){
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			throw new RuntimeException("Erro ao Fechar a conexão com o BANCO: "+e);
+		}
 	}
 
 	public void preparaExecucaoProcedure(Object obj, CallableStatement stmt) {
@@ -114,6 +137,8 @@ public class JdbcDao<T> {
 								+ " veio nulo da Origem, não é possível realizar o processo");
 					}
 
+					metodoSetStatement.setAccessible(true);
+					
 					if (sequencia.isRetornoProcedure()) {
 
 						if (Integer.class.isAssignableFrom(invokeGetBean.getClass())) {

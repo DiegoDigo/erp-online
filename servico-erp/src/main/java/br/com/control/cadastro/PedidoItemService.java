@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import br.com.control.dao.PedidoItemDao;
 import br.com.control.integracao.TabelasIntegracao;
+import br.com.control.portal.mensageria.to.AcompanhamentoPedidoTO;
+import br.com.control.portal.mensageria.to.PedidoItemTO;
 import br.com.control.repositorio.mappers.PedidoItemRowMapper;
 import br.com.control.vendas.cadastro.modelo.pedido.PedidoItem;
 
@@ -20,4 +22,8 @@ public class PedidoItemService {
 		return pedidoItemDao.selectViewSemWhere(TabelasIntegracao.PEDIDO_ITEM, new PedidoItemRowMapper());
 	}
 
+	public AcompanhamentoPedidoTO salvarItem(PedidoItemTO pedidoItem) {
+		return pedidoItemDao.salvarItemPedido(pedidoItem);
+	}
+	
 }

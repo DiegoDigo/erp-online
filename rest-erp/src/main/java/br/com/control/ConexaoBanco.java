@@ -4,6 +4,7 @@ import java.beans.PropertyVetoException;
 
 import javax.sql.DataSource;
 
+import org.apache.commons.dbcp.BasicDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,8 +13,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
-
-import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 @Configuration
 public class ConexaoBanco {
@@ -74,23 +73,19 @@ public class ConexaoBanco {
 				.password(passwordPostgre);
 		return factory.build();
 	}
-
+	
 	@Bean
 	public DataSource dbmakerDataSource() throws PropertyVetoException {
-		ComboPooledDataSource cpds = new ComboPooledDataSource();
-		cpds.setDriverClass(driverDbMaker);
-		cpds.setJdbcUrl(urlDbMaker);
-		cpds.setUser(userDbMaker);
-		cpds.setPassword(passwordDbMaker);
+		BasicDataSource pool = new BasicDataSource();
+		pool.setDriverClassName(driverDbMaker);
+		pool.setUrl(urlDbMaker);
+		pool.setUsername(userDbMaker);
+		pool.setPassword(passwordDbMaker);
 
-		cpds.setInitialPoolSize(1);
-		cpds.setMinPoolSize(1);
-		cpds.setAcquireIncrement(1);
-		cpds.setMaxPoolSize(1);
-		cpds.setMaxStatements(100);
-		cpds.setAcquireIncrement(1);
-		cpds.setMaxIdleTime(1800);
-		return cpds;
+		pool.setInitialSize(1);
+		pool.setMaxActive(1);
+		pool.setRemoveAbandoned(true);
+		return pool;
 	}
 
 }

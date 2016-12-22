@@ -3,7 +3,9 @@ package br.com.control.portal.mensageria.to;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import br.com.control.annotation.SequenciaParametrosProcedure;
 
@@ -37,6 +39,17 @@ public class PedidoCapaTO implements Serializable {
 	@SequenciaParametrosProcedure(index = 12, isRetornoProcedure = true)
 	private long numeroPrePedidoGestao;
 
+	private List<PedidoItemTO> itens = new ArrayList<>();
+
+	public List<PedidoItemTO> getItens() {
+		return itens;
+	}
+
+	public void setItens(List<PedidoItemTO> itens) {
+		this.itens = itens;
+	}
+
+	private Long statusPedido;
 	private Boolean ativo;
 	private Timestamp dataHoraEmissao;
 	private Timestamp dataHoraVenciamento;
@@ -55,6 +68,14 @@ public class PedidoCapaTO implements Serializable {
 	private BigDecimal valorBruto;
 	private BigDecimal valorFinal;
 	private BigDecimal valorVerba;
+
+	public Long getStatusPedido() {
+		return statusPedido;
+	}
+
+	public void setStatusPedido(Long statusPedido) {
+		this.statusPedido = statusPedido;
+	}
 
 	public String getUsuario() {
 		return usuario;

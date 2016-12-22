@@ -15,6 +15,7 @@ public class MessagingConfiguration {
 	private static final String FILA_PEDIDOS = "pedidos";
 	private static final String FILA_ACOMPANHAMENTO = "acompanhamento";
 
+	
 	@Bean
 	public ActiveMQConnectionFactory connectionFactory() {
 		ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();

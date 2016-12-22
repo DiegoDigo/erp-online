@@ -33,6 +33,8 @@
 		<module>repositorio-jpa-erp</module>
 		<module>repositorio-jdbc-erp</module>
 		<module>mensageria-erp</module>
+		<module>mensageria-consumidor-erp</module>
+		<module>mensageria-produtor-erp</module>
 		<module>integracao-iscobol-erp</module>
 	</modules>
 
@@ -55,9 +57,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.mchange</groupId>
-			<artifactId>c3p0</artifactId>
-			<version>0.9.5.1</version>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
 		</dependency>
 
 		<dependency>
@@ -140,7 +142,7 @@
 	</dependencies>
 
 
-<!-- PERFIS -->
+	<!-- PERFIS -->
 	<profiles>
 		<profile>
 			<id>DEV</id>

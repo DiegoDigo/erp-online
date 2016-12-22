@@ -30,9 +30,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 public class ClienteRestService {
-
+	
+	private String SERVICO_ACOMPANHAMENTO_PEDIDO = "servicos/sinaliza/portal/acompanhamento";
+	
 	public void sinalizaPortalAcompanhamentoPedido(String conteudo) {
-		System.out.println("ENTROU NO ClienteRestService");
+		System.out.println("### ENTROU NO ClienteRestService::sinalizaPortalAcompanhamentoPedido ###");
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(Arrays.asList(org.springframework.http.MediaType.APPLICATION_JSON));
 
@@ -43,7 +45,8 @@ public class ClienteRestService {
 		
 		try {
 			String msgJson = mapper.writer().writeValueAsString(m);
-			String url = getREST_SERVICE_URI() + "/servicos/b" + "?mensagem="
+			
+			String url = REST_SERVICE_URI + SERVICO_ACOMPANHAMENTO_PEDIDO + "?mensagem="
 					+ msgJson;
 			UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
 			UriComponents uriComponents = builder.build();
@@ -55,9 +58,12 @@ public class ClienteRestService {
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
-
+		System.out.println("### SAIU DO ClienteRestService::sinalizaPortalAcompanhamentoPedido ###");
+	}
+	
+	
+	public void sinalizaPortalAtualizacaoCadastral(String conteudo) {
 		
-
 	}
 
 	
@@ -109,19 +115,17 @@ public class ClienteRestService {
 		identificacao.setUsuarioOrigemServico("CARLOS");
 		MensagemEnvio m = new MensagemEnvio();
 		m.setIdentificacao(identificacao);
-//		m.setConteudo(criaConteudo(conteudo));
+		m.setConteudo(criaConteudo(conteudo));
 		return m;
 	}
 
-//	private AcompanhamentoPedidoTO criaConteudo(String conteudo) {
-//		String[] split = conteudo.split("|");
-//		AcompanhamentoPedidoTO to = new AcompanhamentoPedidoTO();
-//		to.setRecId(Long.valueOf(split[1]));
-//		to.setNumeroPedidoGestao(Long.valueOf(split[2]));
-//		to.setStatusAcompanhamentoPedido(Long.valueOf(split[3]));
-//		
-//		return null;
-//	}
+	private AcompanhamentoPedidoTO criaConteudo(String conteudo) {
+		String[] split = conteudo.split("\\|");
+		AcompanhamentoPedidoTO to = new AcompanhamentoPedidoTO();
+		to.setNumeroPedidoGestao(Long.valueOf(split[1]));
+		to.setStatusAcompanhamentoPedido(Long.valueOf(split[2]));
+		return to;
+	}
 
 	public HttpHeaders getHeadersWithClientCredentials() {
 		String plainClientCredentials = "PORTAL_VENDAS:002";
@@ -138,42 +142,6 @@ public class ClienteRestService {
 		return headers;
 	}
 
-	public String getREST_SERVICE_URI() {
-		return REST_SERVICE_URI;
-	}
-
-	public void setREST_SERVICE_URI(String rEST_SERVICE_URI) {
-		REST_SERVICE_URI = rEST_SERVICE_URI;
-	}
-
-	public String getAUTH_SERVER_URI() {
-		return AUTH_SERVER_URI;
-	}
-
-	public void setAUTH_SERVER_URI(String aUTH_SERVER_URI) {
-		AUTH_SERVER_URI = aUTH_SERVER_URI;
-	}
-
-	public String getQPM_PASSWORD_GRANT() {
-		return QPM_PASSWORD_GRANT;
-	}
-
-	public void setQPM_PASSWORD_GRANT(String qPM_PASSWORD_GRANT) {
-		QPM_PASSWORD_GRANT = qPM_PASSWORD_GRANT;
-	}
-
-	public String getQPM_ACCESS_TOKEN() {
-		return QPM_ACCESS_TOKEN;
-	}
-
-	public void setQPM_ACCESS_TOKEN(String qPM_ACCESS_TOKEN) {
-		QPM_ACCESS_TOKEN = qPM_ACCESS_TOKEN;
-	}
-	
-	
-	
-	
-	
 	
 	public static void TESTE(String[] args) {
 

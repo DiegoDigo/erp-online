@@ -42,4 +42,5 @@ public class RotasRest {
 	public static final String SALVAR = "/salvar";
 	public static final String LISTAR = "/listar";
 	public static final String SINALIZA_PORTAL = "/sinalizaPortal";
+	public static final String RAIZ_SINALIZA_PORTAL_PEDIDOS = SINALIZA_PORTAL+"/sinaliza/portal";
 }
