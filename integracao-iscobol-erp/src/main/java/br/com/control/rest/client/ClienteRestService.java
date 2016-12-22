@@ -73,7 +73,7 @@ public class ClienteRestService {
 	
 	private String QPM_PASSWORD_GRANT = "?grant_type=password&username=portalvendas&password=123";
 	
-	private String QPM_ACCESS_TOKEN = "?access_token=";
+//	private String QPM_ACCESS_TOKEN = "?access_token=";
 	
 	@SuppressWarnings({ "unchecked" })
 	public AuthTokenInfo sendTokenRequest() {

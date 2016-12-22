@@ -48,7 +48,7 @@ public class TempoExecucaoFilter implements Filter {
 		mapper.enable(SerializationFeature.INDENT_OUTPUT);
 
 		try {
-			MensagemRecebida mensagemRecebida = mapper.readValue(parameter, MensagemRecebida.class);
+			MensagemRecebida<?> mensagemRecebida = mapper.readValue(parameter, MensagemRecebida.class);
 
 			Auditoria auditoria = new Auditoria();
 			Calendar calendarioInicio = Calendar.getInstance();

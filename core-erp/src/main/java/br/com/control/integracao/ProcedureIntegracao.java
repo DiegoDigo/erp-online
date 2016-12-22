@@ -10,7 +10,7 @@ public enum ProcedureIntegracao {
 	private String procedure;
 	private Class<?> classe;
 
-	private ProcedureIntegracao(String procedure, Class classe) {
+	private ProcedureIntegracao(String procedure, Class<?> classe) {
 		this.procedure = procedure;
 		this.classe = classe;
 	}
