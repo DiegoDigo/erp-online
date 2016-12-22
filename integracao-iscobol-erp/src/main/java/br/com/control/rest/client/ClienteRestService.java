@@ -27,6 +27,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import br.com.control.portal.mensageria.to.AcompanhamentoPedidoTO;
+
 
 
 public class ClienteRestService {
@@ -122,7 +124,7 @@ public class ClienteRestService {
 	private AcompanhamentoPedidoTO criaConteudo(String conteudo) {
 		String[] split = conteudo.split("\\|");
 		AcompanhamentoPedidoTO to = new AcompanhamentoPedidoTO();
-		to.setNumeroPedidoGestao(Long.valueOf(split[1]));
+		to.setNumeroPedidoGestao(split[1]);
 		to.setStatusAcompanhamentoPedido(Long.valueOf(split[2]));
 		return to;
 	}
