@@ -15,7 +15,7 @@ public class ClienteRowMapper implements RowMapper<Cliente> {
 	public Cliente mapRow(ResultSet rs, int rowNum) throws SQLException {
 		
 		Cliente cliente = new Cliente();
-		cliente.setCodigoErp("codigo_cliente_erp");
+		cliente.setCodigoErp(rs.getString("codigo_cliente_erp"));
 		cliente.setAbateIcms(rs.getBoolean("abate_icms"));
 		cliente.setAtivo(rs.getBoolean("ativo"));
 		cliente.setBonusDisponivel(rs.getFloat("bonus_disponivel"));		
