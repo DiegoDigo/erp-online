@@ -5,20 +5,12 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class CondicaoPagamento implements Serializable{
 
-	private Long recId;
 	private Boolean ativo;
-	private String codigoCondicaoPagamento;
+	private String codigoErp;
 	private String descricao;
 	private Boolean informaPrimeiraParcela;
 	private Integer numeroDias;
 	private Integer prazo;
-	private Long matricualRecId;
-	public Long getRecId() {
-		return recId;
-	}
-	public void setRecId(Long recId) {
-		this.recId = recId;
-	}
 	public Boolean getAtivo() {
 		return ativo;
 	}
@@ -26,11 +18,12 @@ public class CondicaoPagamento implements Serializable{
 		this.ativo = ativo;
 	}
 	
-	public String getCodigoCondicaoPagamento() {
-		return codigoCondicaoPagamento;
+
+	public String getCodigoErp() {
+		return codigoErp;
 	}
-	public void setCodigoCondicaoPagamento(String codigoCondicaoPagamento) {
-		this.codigoCondicaoPagamento = codigoCondicaoPagamento;
+	public void setCodigoErp(String codigoErp) {
+		this.codigoErp = codigoErp;
 	}
 	public String getDescricao() {
 		return descricao;
@@ -55,12 +48,6 @@ public class CondicaoPagamento implements Serializable{
 	}
 	public void setPrazo(Integer prazo) {
 		this.prazo = prazo;
-	}
-	public Long getMatricualRecID() {
-		return matricualRecId;
-	}
-	public void setMatricualRecId(Long matricualRecId) {
-		this.matricualRecId = matricualRecId;
 	}
 	
 	

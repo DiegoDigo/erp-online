@@ -7,7 +7,7 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Cliente implements Serializable{
 	
-	private Long recId;
+	private String codigoErp;
 	private Boolean abateIcms;
 	private Boolean ativo;
 	private float bonusDisponivel;
@@ -35,14 +35,15 @@ public class Cliente implements Serializable{
 	private String telefoneDdd;
 	private String telefoneTronco;
 	private Integer usoVerbaRestritoProduto;
-	private Long canalVenda;
-	private Long condicaoPagamento;
-	private Long tipoCobranca;
-	public Long getRecId() {
-		return recId;
+	private String codigoErpCanal;
+	private String codigoErpCondicaoPagamento;
+	private String codigoErpTipoCobranca;
+	
+	public String getCodigoErp() {
+		return codigoErp;
 	}
-	public void setRecId(Long recId) {
-		this.recId = recId;
+	public void setCodigoErp(String codigoErp) {
+		this.codigoErp = codigoErp;
 	}
 	public Boolean getAbateIcms() {
 		return abateIcms;
@@ -206,23 +207,23 @@ public class Cliente implements Serializable{
 	public void setUsoVerbaRestritoProduto(Integer usoVerbaRestritoProduto) {
 		this.usoVerbaRestritoProduto = usoVerbaRestritoProduto;
 	}
-	public Long getCanalVenda() {
-		return canalVenda;
+	public String getCodigoErpCanal() {
+		return codigoErpCanal;
 	}
-	public void setCanalVenda(Long canalVenda) {
-		this.canalVenda = canalVenda;
+	public void setCodigoErpCanal(String codigoErpCanal) {
+		this.codigoErpCanal = codigoErpCanal;
 	}
-	public Long getCondicaoPagamento() {
-		return condicaoPagamento;
+	public String getCodigoErpCondicaoPagamento() {
+		return codigoErpCondicaoPagamento;
 	}
-	public void setCondicaoPagamento(Long condicaoPagamento) {
-		this.condicaoPagamento = condicaoPagamento;
+	public void setCodigoErpCondicaoPagamento(String codigoErpCondicaoPagamento) {
+		this.codigoErpCondicaoPagamento = codigoErpCondicaoPagamento;
 	}
-	public Long getTipoCobranca() {
-		return tipoCobranca;
+	public String getCodigoErpTipoCobranca() {
+		return codigoErpTipoCobranca;
 	}
-	public void setTipoCobranca(Long tipoCobranca) {
-		this.tipoCobranca = tipoCobranca;
+	public void setCodigoErpTipoCobranca(String codigoErpTipoCobranca) {
+		this.codigoErpTipoCobranca = codigoErpTipoCobranca;
 	}
 		
 }

@@ -11,19 +11,13 @@ import br.com.control.vendas.cadastro.modelo.produto.Familia;
 @Component
 public class FamiliaRowMapper implements RowMapper<Familia> {
 
-    @Override
-    public Familia mapRow(ResultSet rs, int rowNum) throws SQLException {
-
-    	Familia familia = new Familia();
-
-//        familia.setId(rs.getLong("ID"));
-//        familia.setMatriculaAssociada(rs.getString("MATRICULA_ASSOCIADA"));
-        familia.setCodigoFamiliaProduto(rs.getString("codigo_familia_produto").trim());
-//        familia.setCodigoFameb(rs.getString("CODIGO_FAMEB"));
-        familia.setDescricao(rs.getString("descricao").trim());
-//        familia.setAtivo(rs.getBoolean("ATIVO"));
-
-        return familia;
-    }
+	@Override
+	public Familia mapRow(ResultSet rs, int rowNum) throws SQLException {
+		Familia familia = new Familia();
+		familia.setCodigoErp(rs.getString("codigo_familia_produto_erp").trim());
+		familia.setCodigoFameb(rs.getString("codigo_fameb").trim());
+		familia.setDescricao(rs.getString("descricao").trim());
+		return familia;
+	}
 
 }

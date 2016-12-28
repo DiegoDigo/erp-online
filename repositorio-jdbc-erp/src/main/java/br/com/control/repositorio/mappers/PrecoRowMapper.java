@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
+import br.com.control.util.FormatacaoUtil;
 import br.com.control.vendas.cadastro.modelo.preco.Preco;
 
 public class PrecoRowMapper implements RowMapper<Preco> {
@@ -15,14 +16,14 @@ public class PrecoRowMapper implements RowMapper<Preco> {
 //		preco.setRecId(rs.getLong("rec_id"));
 		preco.setAliqPvv(rs.getInt("aliq_pvv"));
 		preco.setAtivo(rs.getBoolean("ativo"));
-		preco.setCodigoTabpreco(rs.getString("codigo_tabpreco"));
+		preco.setCodigoTabpreco(rs.getString("codigo_tabpreco_erp"));
 		preco.setDaIcmO(rs.getString("da_icm_o"));
 		preco.setDesconto(rs.getFloat("desconto"));
 		preco.setDescontoMaximo(rs.getBigDecimal("desconto_maximo"));
 		preco.setDescontoVerba(rs.getFloat("desconto_verba"));
 		preco.setDespac(rs.getFloat("despac"));
 		preco.setOrigemTabela(rs.getString("origem_tabela"));
-		preco.setParticipaBandaPreco(rs.getString("participa_banda_preco"));
+		preco.setParticipaBandaPreco(FormatacaoUtil.converteZeroUmParaBoolean(rs.getString("participa_banda_preco")));
 		preco.setPrecoCustoCaixa(rs.getFloat("preco_custo_caixa"));
 		preco.setPrecoCustoUnitario(rs.getFloat("preco_custo_un"));
 		preco.setPrecoPvv(rs.getFloat("preco_pvv"));
@@ -34,8 +35,7 @@ public class PrecoRowMapper implements RowMapper<Preco> {
 		preco.setValIcms(rs.getFloat("val_icms"));
 		preco.setValIpi(rs.getFloat("val_ipi"));
 		preco.setValor(rs.getBigDecimal("valor"));
-		preco.setProduto(rs.getLong("codigo_produto_rec_id"));
+		preco.setCodigoErpProduto(rs.getLong("codigo_produto_erp"));
 		return preco;
 	}
-
 }

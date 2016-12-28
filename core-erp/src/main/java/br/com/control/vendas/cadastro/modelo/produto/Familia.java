@@ -5,49 +5,11 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Familia implements Serializable {
 
-	//private Long id;
-	
-	private String matriculaEmpresa;
-	
-	private boolean ativo;
-	
-	private String codigoFamiliaProduto;
+	private String codigoErp;
 
 	private String descricao;
 	
 	private String codigoFameb;
-
-//	public Long getId() {
-//		return id;
-//	}
-//
-//	public void setId(Long id) {
-//		this.id = id;
-//	}
-
-	public String getMatriculaEmpresa() {
-		return matriculaEmpresa;
-	}
-
-	public void setMatriculaEmpresa(String matriculaEmpresa) {
-		this.matriculaEmpresa = matriculaEmpresa;
-	}
-
-	public boolean isAtivo() {
-		return ativo;
-	}
-
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
-	}
-
-	public String getCodigoFamiliaProduto() {
-		return codigoFamiliaProduto;
-	}
-
-	public void setCodigoFamiliaProduto(String codigoFamiliaProduto) {
-		this.codigoFamiliaProduto = codigoFamiliaProduto;
-	}
 
 	public String getDescricao() {
 		return descricao;
@@ -63,6 +25,14 @@ public class Familia implements Serializable {
 
 	public void setCodigoFameb(String codigoFameb) {
 		this.codigoFameb = codigoFameb;
+	}
+
+	public String getCodigoErp() {
+		return codigoErp;
+	}
+
+	public void setCodigoErp(String codigoErp) {
+		this.codigoErp = codigoErp;
 	}
 	
 }

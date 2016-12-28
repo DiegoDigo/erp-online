@@ -5,46 +5,16 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Marca implements Serializable {
 
-	//private Long id;
-	
-	private String matriculaEmpresa;
-	
-	private boolean ativo;
-	
-	private String codigoMarcaProduto;
+	private String codigoErp;
 
 	private String descricao;
 
-//	public Long getId() {
-//		return id;
-//	}
-//
-//	public void setId(Long id) {
-//		this.id = id;
-//	}
-
-	public String getMatriculaEmpresa() {
-		return matriculaEmpresa;
+	public String getCodigoErp() {
+		return codigoErp;
 	}
 
-	public void setMatriculaEmpresa(String matriculaEmpresa) {
-		this.matriculaEmpresa = matriculaEmpresa;
-	}
-
-	public boolean isAtivo() {
-		return ativo;
-	}
-
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
-	}
-
-	public String getCodigoMarcaProduto() {
-		return codigoMarcaProduto;
-	}
-
-	public void setCodigoMarcaProduto(String codigoMarcaProduto) {
-		this.codigoMarcaProduto = codigoMarcaProduto;
+	public void setCodigoErp(String codigoErp) {
+		this.codigoErp = codigoErp;
 	}
 
 	public String getDescricao() {

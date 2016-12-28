@@ -5,47 +5,9 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Grupo implements Serializable {
 
-	//private Long id;
-	
-	private String matriculaEmpresa;
-	
-	private boolean ativo;
-	
-	private int codigoGrupoProduto;
+	private int codigoErp;
 
 	private String descricao;
-
-//	public Long getId() {
-//		return id;
-//	}
-//
-//	public void setId(Long id) {
-//		this.id = id;
-//	}
-
-	public String getMatriculaEmpresa() {
-		return matriculaEmpresa;
-	}
-
-	public void setMatriculaEmpresa(String matriculaEmpresa) {
-		this.matriculaEmpresa = matriculaEmpresa;
-	}
-
-	public boolean isAtivo() {
-		return ativo;
-	}
-
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
-	}
-
-	public int getCodigoGrupoProduto() {
-		return codigoGrupoProduto;
-	}
-
-	public void setCodigoGrupoProduto(int codigoGrupoProduto) {
-		this.codigoGrupoProduto = codigoGrupoProduto;
-	}
 
 	public String getDescricao() {
 		return descricao;
@@ -54,7 +16,13 @@ public class Grupo implements Serializable {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
 
-	
+	public int getCodigoErp() {
+		return codigoErp;
+	}
+
+	public void setCodigoErp(int codigoErp) {
+		this.codigoErp = codigoErp;
+	}
+
 }

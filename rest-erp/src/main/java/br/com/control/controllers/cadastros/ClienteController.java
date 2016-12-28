@@ -28,31 +28,4 @@ public class ClienteController extends AbstractController{
 		List<Cliente> clientesEncontrados = servicoCliente.listarTodos();
 		return new MensagemRetorno(HttpStatus.OK, "Listagem retornada com Sucesso", clientesEncontrados, mensagem.getIdentificacao());
 	}
-
-//	@RequestMapping(value=RotasRest.ESTABELECIMENTOS_TIPOS, method=RequestMethod.GET, headers="Accept=application/json")
-//	public ResponseEntity<TipoEstabelecimento[]> recuperaTiposEstabelecimentos(@RequestParam(value = "mensagem") MensagemRecebida<Cliente> mensagem) {
-//		return new ResponseEntity<TipoEstabelecimento[]>(TipoEstabelecimento.values(), HttpStatus.OK);
-//	}
-//
-//	@RequestMapping(value=RotasRest.DOCUMENTOS_TIPOS, method=RequestMethod.GET, headers="Accept=application/json")
-//	public MensagemRetorno recuperaTiposDocumentos(@RequestParam(value = "mensagem") MensagemRecebida<Cliente> mensagem) {
-//		return new MensagemRetorno(HttpStatus.OK, "sucesso", TipoDocumento.values(), mensagem.getIdentificacao());
-//	}
-//
-//	@RequestMapping(value=RotasRest.LOGRADOUROS_TIPOS, method=RequestMethod.GET, headers="Accept=application/json")
-//	public ResponseEntity<List<String>> recuberaTiposLogradouros(@RequestParam(value = "mensagem") MensagemRecebida<Cliente> mensagem) {
-//		return new ResponseEntity<List<String>>(TipoLogradouro.recuperaNomes(), HttpStatus.OK);
-//	}
-//	
-//	@RequestMapping(value=RotasRest.ESTADOS, method=RequestMethod.GET, headers="Accept=application/json")
-//	public MensagemRetorno recuberaEstados(@RequestParam(value = "mensagem") MensagemRecebida<Cliente> mensagem) {
-//		return new MensagemRetorno(HttpStatus.OK, "sucesso", Estado.recuperaEstados(), mensagem.getIdentificacao());
-//	}
-//
-//	@RequestMapping(value=RotasRest.SALVAR, method=RequestMethod.POST, headers="Accept=application/json")
-//	public MensagemRetorno salvar(@RequestBody MensagemRecebida<Cliente> mensagem) {
-//		Cliente clienteSalvo = servicoCliente.salvar((Cliente) mensagem.getConteudo());
-//		return new MensagemRetorno(HttpStatus.OK, "Cliente Salvo com Sucesso", clienteSalvo.getId().toString(), mensagem.getIdentificacao());
-//	}
-	
 }

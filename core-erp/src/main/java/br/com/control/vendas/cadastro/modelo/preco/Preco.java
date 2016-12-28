@@ -17,7 +17,7 @@ public class Preco implements Serializable{
 	private float descontoVerba;
 	private float despac;
 	private String origemTabela;
-	private String participaBandaPreco;
+	private Boolean participaBandaPreco;
 	private float precoCustoCaixa;
 	private float precoCustoUnitario;
 	private float precoPvv;
@@ -29,10 +29,15 @@ public class Preco implements Serializable{
 	private float valIcms;
 	private float valIpi;
 	private BigDecimal valor;
-	private Long produto;
+	private Long codigoErpProduto;
 	
 	
-	
+	public Long getCodigoErpProduto() {
+		return codigoErpProduto;
+	}
+	public void setCodigoErpProduto(Long codigoErpProduto) {
+		this.codigoErpProduto = codigoErpProduto;
+	}
 	public Long getRecId() {
 		return recId;
 	}
@@ -93,10 +98,11 @@ public class Preco implements Serializable{
 	public void setOrigemTabela(String origemTabela) {
 		this.origemTabela = origemTabela;
 	}
-	public String getParticipaBandaPreco() {
+	
+	public Boolean getParticipaBandaPreco() {
 		return participaBandaPreco;
 	}
-	public void setParticipaBandaPreco(String participaBandaPreco) {
+	public void setParticipaBandaPreco(Boolean participaBandaPreco) {
 		this.participaBandaPreco = participaBandaPreco;
 	}
 	public float getPrecoCustoCaixa() {
@@ -164,12 +170,6 @@ public class Preco implements Serializable{
 	}
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
-	}
-	public Long getProduto() {
-		return produto;
-	}
-	public void setProduto(Long produto) {
-		this.produto = produto;
 	}
 	
 }

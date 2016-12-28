@@ -15,8 +15,8 @@ import br.com.control.vendas.cadastro.modelo.preco.Preco;
 public class PrecoDao extends JdbcDao<Preco> {
 
 	public List<Preco> listarPreco() {
-		String declare = "DECLARE set date @TABELA_ANO = 2014;";
-		String declare2 = "DECLARE set date @TABELA_MES = 4;";
+		String declare = "DECLARE set date @TABELA_ANO = 2016;";
+		String declare2 = "DECLARE set date @TABELA_MES = 10;";
 		String declare3 = "DECLARE set date @TABELA_NMES  = 1;";
 		getJdbcTemplate().update(declare);
 		getJdbcTemplate().update(declare2);
