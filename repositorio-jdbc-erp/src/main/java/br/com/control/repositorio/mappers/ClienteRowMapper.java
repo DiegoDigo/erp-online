@@ -29,7 +29,7 @@ public class ClienteRowMapper implements RowMapper<Cliente> {
 		cliente.setDiasEntrega(rs.getInt("dias_Entrega"));
 		cliente.setEmail(rs.getString("email").trim());
 		cliente.setIgnoraBandaPreco(rs.getBoolean("ignora_banda_preco"));
-		//FIXME: rever este trecho quando realmente for utilizar o dia da semana a view deverá mandar
+		//FIXME: rever este trecho quando realmente for utilizar este campo a view deverá mandar
 		cliente.setInconformidadeCadastro("1");
 		cliente.setLimiteCredito(rs.getFloat("limite_credito"));
 		cliente.setMotivoBloqClasse20(rs.getString("motivo_bloq_classe_20"));
