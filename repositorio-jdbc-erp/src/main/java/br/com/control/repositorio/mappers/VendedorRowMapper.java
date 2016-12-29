@@ -12,12 +12,12 @@ public class VendedorRowMapper implements RowMapper<Vendedor> {
 	@Override
 	public Vendedor mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Vendedor vendedor = new Vendedor();
-//		vendedor.setRecId(rs.getLong("rec_id"));
 		vendedor.setAtivo(rs.getBoolean("ativo"));
-		vendedor.setCodigoVendedor(rs.getString("codigo_vendedor"));
-		vendedor.setTelefone_ddd(rs.getString("TELEFONE_DD"));
-		vendedor.setTelefone_tronco(rs.getString("TELEFONE_TRONCO"));
+		vendedor.setCodigoVendedor(rs.getString("codigo_vendedor_erp"));
+		vendedor.setTelefoneDdd(rs.getString("TELEFONE_DD").trim());
+		vendedor.setTelefoneTronco(rs.getString("TELEFONE_TRONCO"));
 		vendedor.setTipo(rs.getString("tipo"));
+		vendedor.setNome("teste");
 		return vendedor;
 	}
 

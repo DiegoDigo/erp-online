@@ -3,51 +3,70 @@ package br.com.control.vendas.cadastro.modelo.vendedor;
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-public class Vendedor implements Serializable{
+public class Vendedor implements Serializable {
 
 	private Long recId;
 	private Boolean ativo;
+	private String nome;
 	private String codigoVendedor;
-	private String telefone_ddd;
-	private String telefone_tronco;
+	private String telefoneDdd;
+	private String telefoneTronco;
 	private String tipo;
+
 	public Long getRecId() {
 		return recId;
 	}
+
 	public void setRecId(Long recId) {
 		this.recId = recId;
 	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
 	public Boolean getAtivo() {
 		return ativo;
 	}
+
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
+
 	public String getCodigoVendedor() {
 		return codigoVendedor;
 	}
+
 	public void setCodigoVendedor(String codigoVendedor) {
 		this.codigoVendedor = codigoVendedor;
 	}
-	public String getTelefone_ddd() {
-		return telefone_ddd;
+
+	public String getTelefoneDdd() {
+		return telefoneDdd;
 	}
-	public void setTelefone_ddd(String telefone_ddd) {
-		this.telefone_ddd = telefone_ddd;
+
+	public void setTelefoneDdd(String telefoneDdd) {
+		this.telefoneDdd = telefoneDdd;
 	}
-	public String getTelefone_tronco() {
-		return telefone_tronco;
+
+	public String getTelefoneTronco() {
+		return telefoneTronco;
 	}
-	public void setTelefone_tronco(String telefone_tronco) {
-		this.telefone_tronco = telefone_tronco;
+
+	public void setTelefoneTronco(String telefoneTronco) {
+		this.telefoneTronco = telefoneTronco;
 	}
+
 	public String getTipo() {
 		return tipo;
 	}
+
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	
-	
-	
+
 }

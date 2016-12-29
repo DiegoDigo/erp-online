@@ -5,41 +5,30 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class VendedorCliente implements Serializable {
 
-	private Long recId;
+	
 	private Boolean ativo;
-	private Long codigoClienteRecId;
-	private Long codigoVendedorRecID;
-
-	public Long getRecId() {
-		return recId;
-	}
-
-	public void setRecId(Long recId) {
-		this.recId = recId;
-	}
-
+	private String codigoClienteERP;
+	private String codigoVendedorERP;
+	
 	public Boolean getAtivo() {
 		return ativo;
 	}
-
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
-
-	public Long getCodigoClienteRecId() {
-		return codigoClienteRecId;
+	public String getCodigoClienteERP() {
+		return codigoClienteERP;
+	}
+	public void setCodigoClienteERP(String codigoClienteERP) {
+		this.codigoClienteERP = codigoClienteERP;
+	}
+	public String getCodigoVendedorERP() {
+		return codigoVendedorERP;
+	}
+	public void setCodigoVendedorERP(String codigoVendedorERP) {
+		this.codigoVendedorERP = codigoVendedorERP;
 	}
 
-	public void setCodigoClienteRecId(Long codigoClienteRecId) {
-		this.codigoClienteRecId = codigoClienteRecId;
-	}
-
-	public Long getCodigoVendedorRecID() {
-		return codigoVendedorRecID;
-	}
-
-	public void setCodigoVendedorRecID(Long codigoVendedorRecID) {
-		this.codigoVendedorRecID = codigoVendedorRecID;
-	}
+	
 
 }
