@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.control.dao.HistoricoPedidoCapaDao;
-import br.com.control.integracao.TabelasIntegracao;
-import br.com.control.repositorio.mappers.HistroricoPedidoCapaRowMapper;
 import br.com.control.vendas.cadastro.modelo.pedido.HistoricoPedidoCapa;
 
 @Service
@@ -17,8 +15,7 @@ public class HistoricoPedidoCapaService {
 	private HistoricoPedidoCapaDao historicoPedidoCapaDao;
 
 	public List<HistoricoPedidoCapa> listarHistoricoCapa() {
-		return historicoPedidoCapaDao.selectViewSemWhere(TabelasIntegracao.HISTORICO_PEDIDO_CAPA,
-				new HistroricoPedidoCapaRowMapper());
+		return historicoPedidoCapaDao.listar();
 	}
 
 }
