@@ -14,13 +14,22 @@ public class Ocorrencia implements Serializable {
 	private String empresa;
 	private Boolean geraMotivoFinanc;
 	private String naturezaOperacao;
-	private String naturezaOperacaoM;
-	private String naturezaOperacaoO;
+//	private String naturezaOperacaoM;
+//	private String naturezaOperacaoO;
 	private Boolean ocorrDispPortal;
 	private String sinal;
 	private String tipo;
 	private String tipoProduto;
-	private Long tipoOcorrenciaRecId;
+	private String codigoTipoOcorrenciaERP;
+	
+
+	public String getCodigoTipoOcorrenciaERP() {
+		return codigoTipoOcorrenciaERP;
+	}
+
+	public void setCodigoTipoOcorrenciaERP(String codigoTipoOcorrenciaERP) {
+		this.codigoTipoOcorrenciaERP = codigoTipoOcorrenciaERP;
+	}
 
 	public Long getRecId() {
 		return recId;
@@ -93,22 +102,22 @@ public class Ocorrencia implements Serializable {
 	public void setNaturezaOperacao(String naturezaOperacao) {
 		this.naturezaOperacao = naturezaOperacao;
 	}
-
-	public String getNaturezaOperacaoM() {
-		return naturezaOperacaoM;
-	}
-
-	public void setNaturezaOperacaoM(String naturezaOperacaoM) {
-		this.naturezaOperacaoM = naturezaOperacaoM;
-	}
-
-	public String getNaturezaOperacaoO() {
-		return naturezaOperacaoO;
-	}
-
-	public void setNaturezaOperacaoO(String naturezaOperacaoO) {
-		this.naturezaOperacaoO = naturezaOperacaoO;
-	}
+//
+//	public String getNaturezaOperacaoM() {
+//		return naturezaOperacaoM;
+//	}
+//
+//	public void setNaturezaOperacaoM(String naturezaOperacaoM) {
+//		this.naturezaOperacaoM = naturezaOperacaoM;
+//	}
+//
+//	public String getNaturezaOperacaoO() {
+//		return naturezaOperacaoO;
+//	}
+//
+//	public void setNaturezaOperacaoO(String naturezaOperacaoO) {
+//		this.naturezaOperacaoO = naturezaOperacaoO;
+//	}
 
 	public Boolean getOcorrDispPortal() {
 		return ocorrDispPortal;
@@ -142,12 +151,5 @@ public class Ocorrencia implements Serializable {
 		this.tipoProduto = tipoProduto;
 	}
 
-	public Long getTipoOcorrenciaRecId() {
-		return tipoOcorrenciaRecId;
-	}
-
-	public void setTipoOcorrenciaRecId(Long tipoOcorrenciaRecId) {
-		this.tipoOcorrenciaRecId = tipoOcorrenciaRecId;
-	}
-
+	
 }
