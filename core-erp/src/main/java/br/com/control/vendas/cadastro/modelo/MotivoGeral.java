@@ -7,12 +7,12 @@ public class MotivoGeral implements Serializable {
 
 	private Long recId;
 	private Boolean ativo;
-	private String codigoMotivoGeral;
+	private String codigoMotivoGeralERP;
 	private String descricao;
 	private String descricaoReduzida;
 	private Boolean influiVenda;
 	private Boolean permiteVenda;
-	private Long tipoMotivoGeral;
+	private String codigoTipoMotivoGeralERP;
 
 	public Long getRecId() {
 		return recId;
@@ -30,12 +30,14 @@ public class MotivoGeral implements Serializable {
 		this.ativo = ativo;
 	}
 
-	public String getCodigoMotivoGeral() {
-		return codigoMotivoGeral;
+	
+
+	public String getCodigoMotivoGeralERP() {
+		return codigoMotivoGeralERP;
 	}
 
-	public void setCodigoMotivoGeral(String codigoMotivoGeral) {
-		this.codigoMotivoGeral = codigoMotivoGeral;
+	public void setCodigoMotivoGeralERP(String codigoMotivoGeralERP) {
+		this.codigoMotivoGeralERP = codigoMotivoGeralERP;
 	}
 
 	public String getDescricao() {
@@ -70,12 +72,16 @@ public class MotivoGeral implements Serializable {
 		this.permiteVenda = permiteVenda;
 	}
 
-	public Long getTipoMotivoGeral() {
-		return tipoMotivoGeral;
+	public String getCodigoTipoMotivoGeralERP() {
+		return codigoTipoMotivoGeralERP;
 	}
 
-	public void setTipoMotivoGeral(Long tipoMotivoGeral) {
-		this.tipoMotivoGeral = tipoMotivoGeral;
+	public void setCodigoTipoMotivoGeralERP(String codigoTipoMotivoGeralERP) {
+		this.codigoTipoMotivoGeralERP = codigoTipoMotivoGeralERP;
 	}
+
+	
+
+	
 
 }
