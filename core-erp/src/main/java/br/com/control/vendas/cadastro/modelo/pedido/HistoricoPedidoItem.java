@@ -2,7 +2,6 @@ package br.com.control.vendas.cadastro.modelo.pedido;
 
 public class HistoricoPedidoItem {
 
-	private Long recId;
 	private String numeroItemPedido;
 	private float precoProduto;
 	private Integer quantidadeAvulsa;
@@ -11,14 +10,6 @@ public class HistoricoPedidoItem {
 	private Long preco;
 	private Long produto;
 	private Long historicoPedidoCapa;
-
-	public Long getRecId() {
-		return recId;
-	}
-
-	public void setRecId(Long recId) {
-		this.recId = recId;
-	}
 
 	public String getNumeroItemPedido() {
 		return numeroItemPedido;
