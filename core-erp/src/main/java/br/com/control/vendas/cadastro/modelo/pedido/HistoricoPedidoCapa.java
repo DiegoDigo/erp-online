@@ -1,6 +1,7 @@
 package br.com.control.vendas.cadastro.modelo.pedido;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @SuppressWarnings("serial")
@@ -9,8 +10,8 @@ public class HistoricoPedidoCapa implements Serializable {
 	private Long recId;
 	private Boolean ativo;
 	private String codigoMotivoDevolucao;
-	private Date dataHoraEmissaoPedido;
-	private Date dataVencimento;
+	private Timestamp dataHoraEmissaoPedido;
+	private Timestamp dataVencimento;
 	private float descontoFinanceiro;
 	private String numeroPedido;
 	private float percentualDesconto;
@@ -50,7 +51,7 @@ public class HistoricoPedidoCapa implements Serializable {
 		return dataHoraEmissaoPedido;
 	}
 
-	public void setDataHoraEmissaoPedido(Date dataHoraEmissaoPedido) {
+	public void setDataHoraEmissaoPedido(Timestamp dataHoraEmissaoPedido) {
 		this.dataHoraEmissaoPedido = dataHoraEmissaoPedido;
 	}
 
@@ -58,7 +59,7 @@ public class HistoricoPedidoCapa implements Serializable {
 		return dataVencimento;
 	}
 
-	public void setDataVencimento(Date dataVencimento) {
+	public void setDataVencimento(Timestamp dataVencimento) {
 		this.dataVencimento = dataVencimento;
 	}
 
