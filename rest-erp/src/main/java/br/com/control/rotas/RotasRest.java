@@ -26,7 +26,7 @@ public class RotasRest {
 	public static final String RAIZ_HISTORICO =   "/historico";
 	public static final String RAIZ_ORIGEM_LOGRADOURO =   "/origem/logradouro";
 	public static final String RAIZ_MOTIVO =   "/motivo";
-	public static final String RAIZ_MOTIVO_GERAL =   "/geral";
+	public static final String RAIZ_GERAL =   "/geral";
 	public static final String RAIZ_MOVIMENTO =   "/movimento";
 	public static final String RAIZ_FINANCEIRO =   "/financeiro";
 	public static final String RAIZ_COMODATO =   "/comodato";

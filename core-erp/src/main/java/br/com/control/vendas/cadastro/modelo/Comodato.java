@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 public class Comodato implements Serializable {
 
 	private Long recId;
-	private Long clienteRecId;
+	private String codigoClienteERP;
 	private String codigoModelo;
 	private String codigoOcorrencia;
 	private String codigoSituacao;
@@ -21,7 +21,7 @@ public class Comodato implements Serializable {
 	private String numeroCev;
 	private String numeroCevItem;
 	private String patrimonioDois;
-	private Long produtoRecId;
+	private String codigoProdutoERP;
 	private Integer quantidade;
 	private Long tabelaPrecoRecId;
 	private String tecnologiaUtilizada;
@@ -36,14 +36,7 @@ public class Comodato implements Serializable {
 		this.recId = recId;
 	}
 
-	public Long getClienteRecId() {
-		return clienteRecId;
-	}
-
-	public void setClienteRecId(Long clienteRecId) {
-		this.clienteRecId = clienteRecId;
-	}
-
+	
 	public String getCodigoModelo() {
 		return codigoModelo;
 	}
@@ -148,12 +141,14 @@ public class Comodato implements Serializable {
 		this.patrimonioDois = patrimonioDois;
 	}
 
-	public Long getProdutoRecId() {
-		return produtoRecId;
+	
+
+	public String getCodigoProdutoERP() {
+		return codigoProdutoERP;
 	}
 
-	public void setProdutoRecId(Long produtoRecId) {
-		this.produtoRecId = produtoRecId;
+	public void setCodigoProdutoERP(String codigoProdutoERP) {
+		this.codigoProdutoERP = codigoProdutoERP;
 	}
 
 	public Integer getQuantidade() {
@@ -195,5 +190,15 @@ public class Comodato implements Serializable {
 	public void setValorItem(float valorItem) {
 		this.valorItem = valorItem;
 	}
+
+	public String getCodigoClienteERP() {
+		return codigoClienteERP;
+	}
+
+	public void setCodigoClienteERP(String codigoClienteERP) {
+		this.codigoClienteERP = codigoClienteERP;
+	}
+	
+	
 
 }
