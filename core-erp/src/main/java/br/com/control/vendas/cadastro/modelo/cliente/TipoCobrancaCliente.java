@@ -7,8 +7,8 @@ public class TipoCobrancaCliente implements Serializable {
 
 	private Long recId;
 	private Boolean ativo;
-	private Long codigoClienteRecId;
-	private Long CodigoTipoCobrancaRecId;
+	private String codigoClienteERP;
+	private String codigoTipoConbrancaERP;
 
 	public Long getRecId() {
 		return recId;
@@ -26,20 +26,20 @@ public class TipoCobrancaCliente implements Serializable {
 		this.ativo = ativo;
 	}
 
-	public Long getCodigoClienteRecId() {
-		return codigoClienteRecId;
+	public String getCodigoClienteERP() {
+		return codigoClienteERP;
 	}
 
-	public void setCodigoClienteRecId(Long codigoClienteRecId) {
-		this.codigoClienteRecId = codigoClienteRecId;
+	public void setCodigoClienteERP(String codigoClienteERP) {
+		this.codigoClienteERP = codigoClienteERP;
 	}
 
-	public Long getCodigoTipoCobrancaRecId() {
-		return CodigoTipoCobrancaRecId;
+	public String getCodigoTipoConbrancaERP() {
+		return codigoTipoConbrancaERP;
 	}
 
-	public void setCodigoTipoCobrancaRecId(Long codigoTipoCobrancaRecId) {
-		CodigoTipoCobrancaRecId = codigoTipoCobrancaRecId;
+	public void setCodigoTipoConbrancaERP(String codigoTipoConbrancaERP) {
+		this.codigoTipoConbrancaERP = codigoTipoConbrancaERP;
 	}
 
 }

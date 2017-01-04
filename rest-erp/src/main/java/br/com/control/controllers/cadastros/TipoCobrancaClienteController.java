@@ -21,7 +21,7 @@ public class TipoCobrancaClienteController extends AbstractController {
 	@Autowired
 	private TipoCobrancaClienteService tipoCobrancaClienteService;
 
-	@RequestMapping(value = RotasRest.LISTAR, method = RequestMethod.GET, headers = "Accept=applicantion/json")
+	@RequestMapping(value = RotasRest.LISTAR, method = RequestMethod.GET, headers = "Accept=application/json")
 	public MensagemRetorno listar(@RequestParam("mensagem") MensagemRecebida<TipoCobrancaCliente> mensagem) {
 		return new MensagemRetorno(HttpStatus.OK, "Tipo cobrança cliente Listado com sucesso !", tipoCobrancaClienteService.listarTiposCobranca(), mensagem.getIdentificacao());
 	}

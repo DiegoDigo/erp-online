@@ -13,9 +13,9 @@ public class TipoCobrancaClienteRowMapper implements RowMapper<TipoCobrancaClien
 	public TipoCobrancaCliente mapRow(ResultSet rs, int rowNum) throws SQLException {
 		TipoCobrancaCliente cobranca = new TipoCobrancaCliente();
 		cobranca.setAtivo(rs.getBoolean("ativo"));
-		cobranca.setCodigoClienteRecId(rs.getLong("codigo_cliente_rec_id"));
-		cobranca.setCodigoTipoCobrancaRecId(rs.getLong("Codigo_tipo_Cobranca_rec_id"));
-		cobranca.setRecId(rs.getLong("rec_id"));
+		cobranca.setCodigoClienteERP(rs.getString("CODIGO_CLIENTE_ERP"));
+		cobranca.setCodigoTipoConbrancaERP(rs.getString("CODIGO_TIPO_COBRANCA_ERP"));
+//		cobranca.setRecId(rs.getLong("rec_id"));
 		return cobranca;
 	}
 
