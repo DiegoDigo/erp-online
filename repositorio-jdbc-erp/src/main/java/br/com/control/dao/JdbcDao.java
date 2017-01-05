@@ -29,7 +29,7 @@ public class JdbcDao<T> {
 	private DataSource dataSource;
 
 	private JdbcTemplate jdbcTemplate;
-	
+
 	private Connection connection;
 
 	@Value("${spring.secondDatasource.database.driverClassName}")
@@ -69,10 +69,10 @@ public class JdbcDao<T> {
 	public DataSource getDataSource() {
 		return dataSource;
 	}
-	
+
 	@Autowired
 	private ConnectionFactoryDBMaker connectionFactory;
-	
+
 	public ConnectionFactoryDBMaker getConnectionFactory() {
 		return connectionFactory;
 	}
@@ -98,21 +98,21 @@ public class JdbcDao<T> {
 			}
 			call = call.substring(0, call.length() - 1);
 			call += ")}";
-			
+
 			this.connection = connectionFactory.getConnection();
-			
+
 			return connection.prepareCall(call);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 
 	}
-	
-	public void closeConnection(){
+
+	public void closeConnection() {
 		try {
 			connection.close();
 		} catch (SQLException e) {
-			throw new RuntimeException("Erro ao Fechar a conexão com o BANCO: "+e);
+			throw new RuntimeException("Erro ao Fechar a conexão com o BANCO: " + e);
 		}
 	}
 
@@ -138,7 +138,7 @@ public class JdbcDao<T> {
 					}
 
 					metodoSetStatement.setAccessible(true);
-					
+
 					if (sequencia.isRetornoProcedure()) {
 
 						if (Integer.class.isAssignableFrom(invokeGetBean.getClass())) {
@@ -155,15 +155,15 @@ public class JdbcDao<T> {
 					} else {
 
 						if (Integer.class.isAssignableFrom(invokeGetBean.getClass())) {
-							metodoSetStatement.invoke(stmt, sequencia.index(), (Integer) invokeGetBean);
+							metodoSetStatement.invoke(stmt, sequencia.index(), invokeGetBean);
 						} else if (Long.class.isAssignableFrom(invokeGetBean.getClass())) {
-							metodoSetStatement.invoke(stmt, sequencia.index(), (Long) invokeGetBean);
+							metodoSetStatement.invoke(stmt, sequencia.index(), invokeGetBean);
 						} else if (String.class.isAssignableFrom(invokeGetBean.getClass())) {
-							metodoSetStatement.invoke(stmt, sequencia.index(), (String) invokeGetBean);
+							metodoSetStatement.invoke(stmt, sequencia.index(), invokeGetBean);
 						} else if (Float.class.isAssignableFrom(invokeGetBean.getClass())) {
-							metodoSetStatement.invoke(stmt, sequencia.index(), (Float) invokeGetBean);
+							metodoSetStatement.invoke(stmt, sequencia.index(), invokeGetBean);
 						} else if (BigDecimal.class.isAssignableFrom(invokeGetBean.getClass())) {
-							metodoSetStatement.invoke(stmt, sequencia.index(), (BigDecimal) invokeGetBean);
+							metodoSetStatement.invoke(stmt, sequencia.index(), invokeGetBean);
 						}
 					}
 
