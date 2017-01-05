@@ -13,14 +13,14 @@ public class RestricaoComercialRowMapper implements RowMapper<RestricaoComercial
 	public RestricaoComercial mapRow(ResultSet rs, int rowNum) throws SQLException {
 		RestricaoComercial restricao = new RestricaoComercial();
 		restricao.setAtivo(rs.getBoolean("ativo"));
-		restricao.setCanalVenda(rs.getLong("codigo_canal_rec_id"));
-		restricao.setCliente(rs.getLong("codigo_cliente_rec_id"));
-		restricao.setCodigoGrupoCanal(rs.getString("codigo_grupo_canal"));
-		restricao.setCodigoRestricaoComercial(rs.getString("codigo_restricao_comercial"));
-		restricao.setCondicaoPagamento(rs.getLong("codigo_condicao_pagamento_rec_id"));
+		restricao.setCodigoCanalVendaERP(rs.getString("codigo_canal_ERP"));
+		restricao.setCodigoClienteERP(rs.getString("codigo_cliente_ERP"));
+		restricao.setCodigoGrupoCanalERP(rs.getString("codigo_grupo_canal_ERP"));
+		restricao.setCodigoRestricaoComercialERP(rs.getString("codigo_restricao_comercial_ERP"));
+		restricao.setCodigoCondicaoPagamentoERP(rs.getString("codigo_condicao_pagamento_ERP"));
 		restricao.setDivisaoCanal(rs.getString("divisao_canal"));
-		restricao.setRecId(rs.getLong("rec_id"));
-		restricao.setTipoCobranca(rs.getLong("codigo_tipo_cobranca_rec_id"));
+//		restricao.setRecId(rs.getLong("rec_id"));
+		restricao.setCodigoTipoCobrancaERP(rs.getString("codigo_tipo_cobranca_ERP"));
 		restricao.setValorMinimoPedido(rs.getInt("valor_minimo_pedido"));
 		return restricao;
 	}
