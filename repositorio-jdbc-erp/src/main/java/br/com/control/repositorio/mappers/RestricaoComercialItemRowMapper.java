@@ -12,9 +12,9 @@ public class RestricaoComercialItemRowMapper implements RowMapper<RestricaoComer
 	@Override
 	public RestricaoComercialItem mapRow(ResultSet rs, int rowNum) throws SQLException {
 		RestricaoComercialItem restricao = new RestricaoComercialItem();
-		restricao.setCodigoRetricaoComercialRecId(rs.getLong("codigo_retricao_comercial_rec_id"));
-		restricao.setCodigoTebelaPreco(rs.getString("codigo_tabela_preco"));
-		restricao.setRecId(rs.getLong("rec_id"));
+		restricao.setCodigoRestricaoComercialERP(rs.getString("CODIGO_RESTRICAO_COMERCIAL_ERP"));
+		restricao.setCodigoTebelaPrecoERP(rs.getString("codigo_tabela_preco"));
+//		restricao.setRecId(rs.getLong("rec_id"));
 		return restricao;
 	}
 

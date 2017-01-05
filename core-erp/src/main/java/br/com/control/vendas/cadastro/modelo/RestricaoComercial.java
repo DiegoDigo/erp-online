@@ -7,14 +7,14 @@ public class RestricaoComercial implements Serializable {
 
 	private Long recId;
 	private Boolean ativo;
-	private String codigoGrupoCanal;
-	private String codigoRestricaoComercial;
+	private String codigoGrupoCanalERP;
+	private String codigoRestricaoComercialERP;
 	private String divisaoCanal;
 	private float valorMinimoPedido;
-	private Long canalVenda;
-	private Long cliente;
-	private Long condicaoPagamento;
-	private Long tipoCobranca;
+	private String codigoCanalVendaERP;
+	private String codigoClienteERP;
+	private String codigoCondicaoPagamentoERP;
+	private String codigoTipoCobrancaERP;
 
 	public Long getRecId() {
 		return recId;
@@ -32,22 +32,7 @@ public class RestricaoComercial implements Serializable {
 		this.ativo = ativo;
 	}
 
-	public String getCodigoGrupoCanal() {
-		return codigoGrupoCanal;
-	}
-
-	public void setCodigoGrupoCanal(String codigoGrupoCanal) {
-		this.codigoGrupoCanal = codigoGrupoCanal;
-	}
-
-	public String getCodigoRestricaoComercial() {
-		return codigoRestricaoComercial;
-	}
-
-	public void setCodigoRestricaoComercial(String codigoRestricaoComercial) {
-		this.codigoRestricaoComercial = codigoRestricaoComercial;
-	}
-
+	
 	public String getDivisaoCanal() {
 		return divisaoCanal;
 	}
@@ -64,36 +49,53 @@ public class RestricaoComercial implements Serializable {
 		this.valorMinimoPedido = valorMinimoPedido;
 	}
 
-	public Long getCanalVenda() {
-		return canalVenda;
+	public String getCodigoGrupoCanalERP() {
+		return codigoGrupoCanalERP;
 	}
 
-	public void setCanalVenda(Long canalVenda) {
-		this.canalVenda = canalVenda;
+	public void setCodigoGrupoCanalERP(String codigoGrupoCanalERP) {
+		this.codigoGrupoCanalERP = codigoGrupoCanalERP;
 	}
 
-	public Long getCliente() {
-		return cliente;
+	public String getCodigoRestricaoComercialERP() {
+		return codigoRestricaoComercialERP;
 	}
 
-	public void setCliente(Long cliente) {
-		this.cliente = cliente;
+	public void setCodigoRestricaoComercialERP(String codigoRestricaoComercialERP) {
+		this.codigoRestricaoComercialERP = codigoRestricaoComercialERP;
 	}
 
-	public Long getCondicaoPagamento() {
-		return condicaoPagamento;
+	public String getCodigoCanalVendaERP() {
+		return codigoCanalVendaERP;
 	}
 
-	public void setCondicaoPagamento(Long condicaoPagamento) {
-		this.condicaoPagamento = condicaoPagamento;
+	public void setCodigoCanalVendaERP(String codigoCanalVendaERp) {
+		this.codigoCanalVendaERP = codigoCanalVendaERp;
 	}
 
-	public Long getTipoCobranca() {
-		return tipoCobranca;
+	public String getCodigoClienteERP() {
+		return codigoClienteERP;
 	}
 
-	public void setTipoCobranca(Long tipoCobranca) {
-		this.tipoCobranca = tipoCobranca;
+	public void setCodigoClienteERP(String codigoClienteERP) {
+		this.codigoClienteERP = codigoClienteERP;
 	}
 
+	public String getCodigoCondicaoPagamentoERP() {
+		return codigoCondicaoPagamentoERP;
+	}
+
+	public void setCodigoCondicaoPagamentoERP(String codigoCondicaoPagamentoERP) {
+		this.codigoCondicaoPagamentoERP = codigoCondicaoPagamentoERP;
+	}
+
+	public String getCodigoTipoCobrancaERP() {
+		return codigoTipoCobrancaERP;
+	}
+
+	public void setCodigoTipoCobrancaERP(String codigoTipoCobrancaERP) {
+		this.codigoTipoCobrancaERP = codigoTipoCobrancaERP;
+	}
+
+	
 }

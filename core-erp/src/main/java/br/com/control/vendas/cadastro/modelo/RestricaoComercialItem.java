@@ -6,8 +6,9 @@ import java.io.Serializable;
 public class RestricaoComercialItem implements Serializable {
 
 	private Long recId;
-	private String codigoTebelaPreco;
-	private Long codigoRetricaoComercialRecId;
+	private String codigoTebelaPrecoERP;
+	private String codigoRestricaoComercialERP;
+	
 
 	public Long getRecId() {
 		return recId;
@@ -17,20 +18,20 @@ public class RestricaoComercialItem implements Serializable {
 		this.recId = recId;
 	}
 
-	public String getCodigoTebelaPreco() {
-		return codigoTebelaPreco;
+	public String getCodigoTebelaPrecoERP() {
+		return codigoTebelaPrecoERP;
 	}
 
-	public void setCodigoTebelaPreco(String codigoTebelaPreco) {
-		this.codigoTebelaPreco = codigoTebelaPreco;
+	public void setCodigoTebelaPrecoERP(String codigoTebelaPrecoERP) {
+		this.codigoTebelaPrecoERP = codigoTebelaPrecoERP;
 	}
 
-	public Long getCodigoRetricaoComercialRecId() {
-		return codigoRetricaoComercialRecId;
+	public String getCodigoRestricaoComercialERP() {
+		return codigoRestricaoComercialERP;
 	}
 
-	public void setCodigoRetricaoComercialRecId(Long codigoRetricaoComercialRecId) {
-		this.codigoRetricaoComercialRecId = codigoRetricaoComercialRecId;
+	public void setCodigoRestricaoComercialERP(String codigoRestricaoComercialERP) {
+		this.codigoRestricaoComercialERP = codigoRestricaoComercialERP;
 	}
 
 }
