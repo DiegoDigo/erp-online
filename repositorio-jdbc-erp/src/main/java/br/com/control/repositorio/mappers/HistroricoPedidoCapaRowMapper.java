@@ -14,7 +14,7 @@ public class HistroricoPedidoCapaRowMapper implements RowMapper<HistoricoPedidoC
 	public HistoricoPedidoCapa mapRow(ResultSet rs, int rowNum) throws SQLException {
 		HistoricoPedidoCapa historico = new HistoricoPedidoCapa();
 		historico.setAtivo(rs.getBoolean("ativo"));
-		historico.setCodigoClienteERP(rs.getLong("codigo_cliente_rec_id"));
+		historico.setCodigoClienteERP(rs.getString("codigo_cliente_rec_id"));
 		historico.setCodigoMotivoDevolucao(rs.getString("codigo_motivo_devolucao").trim());
 		historico.setCondicaoPagamentoERP(rs.getLong("codigo_condicao_pagamento_rec_id"));
 		historico.setDataHoraEmissaoPedido(new Timestamp(0)); // rs.getTimestamp("data_hora_emissao_pedido"));

@@ -19,7 +19,7 @@ public class HistoricoPedidoCapa implements Serializable {
 	private float taxaFinanceira;
 	private float valorDevolucao;
 	private float valorPedido;
-	private Long codigoClienteERP;
+	private String codigoClienteERP;
 	private Long condicaoPagamentoERP;
 	private Long tipoCobrancaERP;
 
@@ -119,11 +119,11 @@ public class HistoricoPedidoCapa implements Serializable {
 		this.valorPedido = valorPedido;
 	}
 
-	public Long getCodigoClienteERP() {
+	public String getCodigoClienteERP() {
 		return codigoClienteERP;
 	}
 
-	public void setCodigoClienteERP(Long codigoClienteERP) {
+	public void setCodigoClienteERP(String codigoClienteERP) {
 		this.codigoClienteERP = codigoClienteERP;
 	}
 
