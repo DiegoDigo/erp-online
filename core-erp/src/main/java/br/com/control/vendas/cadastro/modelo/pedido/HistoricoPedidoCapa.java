@@ -19,9 +19,9 @@ public class HistoricoPedidoCapa implements Serializable {
 	private float taxaFinanceira;
 	private float valorDevolucao;
 	private float valorPedido;
-	private Long cliente;
-	private Long condicaoPagamento;
-	private Long tipoCobranca;
+	private String codigoClienteERP;
+	private Long condicaoPagamentoERP;
+	private Long tipoCobrancaERP;
 
 	public Long getRecId() {
 		return recId;
@@ -119,28 +119,28 @@ public class HistoricoPedidoCapa implements Serializable {
 		this.valorPedido = valorPedido;
 	}
 
-	public Long getCliente() {
-		return cliente;
+	public String getCodigoClienteERP() {
+		return codigoClienteERP;
 	}
 
-	public void setCliente(Long cliente) {
-		this.cliente = cliente;
+	public void setCodigoClienteERP(String codigoClienteERP) {
+		this.codigoClienteERP = codigoClienteERP;
 	}
 
-	public Long getCondicaoPagamento() {
-		return condicaoPagamento;
+	public Long getCondicaoPagamentoERP() {
+		return condicaoPagamentoERP;
 	}
 
-	public void setCondicaoPagamento(Long condicaoPagamento) {
-		this.condicaoPagamento = condicaoPagamento;
+	public void setCondicaoPagamentoERP(Long condicaoPagamentoERP) {
+		this.condicaoPagamentoERP = condicaoPagamentoERP;
 	}
 
-	public Long getTipoCobranca() {
-		return tipoCobranca;
+	public Long getTipoCobrancaERP() {
+		return tipoCobrancaERP;
 	}
 
-	public void setTipoCobranca(Long tipoCobranca) {
-		this.tipoCobranca = tipoCobranca;
+	public void setTipoCobrancaERP(Long tipoCobrancaERP) {
+		this.tipoCobrancaERP = tipoCobrancaERP;
 	}
 
 }

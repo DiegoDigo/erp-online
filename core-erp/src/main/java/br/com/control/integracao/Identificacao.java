@@ -25,7 +25,7 @@ public class Identificacao {
 
 	@Enumerated(EnumType.STRING)
 	private TipoOperacao tipoOperacao;
-	
+
 	private String servicoAcessado;
 
 	private String matriculaAssociada;
@@ -46,20 +46,20 @@ public class Identificacao {
 		this.destino = destino;
 	}
 
-	public TipoOperacao getTipoOperacao() {
-		return tipoOperacao;
-	}
-
-	public void setTipoOperacao(TipoOperacao tipoOperacao) {
-		this.tipoOperacao = tipoOperacao;
-	}
-
 	public String getUsuarioOrigemServico() {
 		return usuarioOrigemServico;
 	}
 
 	public void setUsuarioOrigemServico(String usuarioOrigemServico) {
 		this.usuarioOrigemServico = usuarioOrigemServico;
+	}
+
+	public TipoOperacao getTipoOperacao() {
+		return tipoOperacao;
+	}
+
+	public void setTipoOperacao(TipoOperacao tipoOperacao) {
+		this.tipoOperacao = tipoOperacao;
 	}
 
 	public String getServicoAcessado() {
