@@ -6,9 +6,11 @@ import java.io.Serializable;
 public class DetalheComboProduto implements Serializable{
 	
 	public Long recId;
-	public Integer quantidade;
-	public Long codigoProdutoCodigo;
-	public Long codigoProdutoComboCodigo;
+	public Integer quantidadeAvulso;
+	public Integer quantidadeCaixa;
+	public String codigoProdutoERP;
+	public String codigoProdutoComboERP;
+	 
 	
 	
 	public Long getRecId() {
@@ -17,24 +19,32 @@ public class DetalheComboProduto implements Serializable{
 	public void setRecId(Long recId) {
 		this.recId = recId;
 	}
-	public Integer getQuantidade() {
-		return quantidade;
+	
+	public Integer getQuantidadeAvulso() {
+		return quantidadeAvulso;
 	}
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
+	public void setQuantidadeAvulso(Integer quantidadeAvulso) {
+		this.quantidadeAvulso = quantidadeAvulso;
 	}
-	public Long getCodigoProdutoCodigo() {
-		return codigoProdutoCodigo;
+	public Integer getQuantidadeCaixa() {
+		return quantidadeCaixa;
 	}
-	public void setCodigoProdutoCodigo(Long codigoProdutoCodigo) {
-		this.codigoProdutoCodigo = codigoProdutoCodigo;
+	public void setQuantidadeCaixa(Integer quantidadeCaixa) {
+		this.quantidadeCaixa = quantidadeCaixa;
 	}
-	public Long getCodigoProdutoComboCodigo() {
-		return codigoProdutoComboCodigo;
+	public String getCodigoProdutoERP() {
+		return codigoProdutoERP;
 	}
-	public void setCodigoProdutoComboCodigo(Long codigoProdutoComboCodigo) {
-		this.codigoProdutoComboCodigo = codigoProdutoComboCodigo;
+	public void setCodigoProdutoERP(String codigoProdutoERP) {
+		this.codigoProdutoERP = codigoProdutoERP;
 	}
+	public String getCodigoProdutoComboERP() {
+		return codigoProdutoComboERP;
+	}
+	public void setCodigoProdutoComboERP(String codigoProdutoComboERP) {
+		this.codigoProdutoComboERP = codigoProdutoComboERP;
+	}
+	
 	
 	
 	

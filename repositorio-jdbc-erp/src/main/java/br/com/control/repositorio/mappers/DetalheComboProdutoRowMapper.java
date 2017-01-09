@@ -12,10 +12,11 @@ public class DetalheComboProdutoRowMapper implements RowMapper<DetalheComboProdu
 	@Override
 	public DetalheComboProduto mapRow(ResultSet rs, int rowNum) throws SQLException {
 		DetalheComboProduto detalhe = new DetalheComboProduto();
-		detalhe.setRecId(rs.getLong("rec_id"));
-		detalhe.setCodigoProdutoComboCodigo(rs.getLong("codigo_produto_combo"));
-		detalhe.setCodigoProdutoCodigo(rs.getLong("codigo_produto"));
-		detalhe.setQuantidade(rs.getInt("quantidade"));
+//		detalhe.setRecId(rs.getLong("rec_id"));
+		detalhe.setCodigoProdutoComboERP(rs.getString("CODIGO_PRODUTO_COMBO_ERP"));
+		detalhe.setCodigoProdutoERP(rs.getString("CODIGO_PRODUTO_ERP"));
+		detalhe.setQuantidadeCaixa(rs.getInt("quantidade_caixa"));
+		detalhe.setQuantidadeAvulso(rs.getInt("quantidade_avulso"));
 		return detalhe;
 	}
 	

@@ -13,7 +13,7 @@ public class RestricaoComercialItemRowMapper implements RowMapper<RestricaoComer
 	public RestricaoComercialItem mapRow(ResultSet rs, int rowNum) throws SQLException {
 		RestricaoComercialItem restricao = new RestricaoComercialItem();
 		restricao.setCodigoRestricaoComercialERP(rs.getString("CODIGO_RESTRICAO_COMERCIAL_ERP"));
-		restricao.setCodigoTebelaPrecoERP(rs.getString("codigo_tabela_preco"));
+		restricao.setCodigoTabelaPrecoERP(rs.getString("codigo_tabela_preco"));
 //		restricao.setRecId(rs.getLong("rec_id"));
 		return restricao;
 	}

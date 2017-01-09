@@ -6,7 +6,7 @@ import java.io.Serializable;
 public class RestricaoComercialItem implements Serializable {
 
 	private Long recId;
-	private String codigoTebelaPrecoERP;
+	private String codigoTabelaPrecoERP;
 	private String codigoRestricaoComercialERP;
 	
 
@@ -18,15 +18,15 @@ public class RestricaoComercialItem implements Serializable {
 		this.recId = recId;
 	}
 
-	public String getCodigoTebelaPrecoERP() {
-		return codigoTebelaPrecoERP;
+		public String getCodigoTabelaPrecoERP() {
+		return codigoTabelaPrecoERP;
 	}
 
-	public void setCodigoTebelaPrecoERP(String codigoTebelaPrecoERP) {
-		this.codigoTebelaPrecoERP = codigoTebelaPrecoERP;
+	public void setCodigoTabelaPrecoERP(String codigoTabelaPrecoERP) {
+		this.codigoTabelaPrecoERP = codigoTabelaPrecoERP;
 	}
 
-	public String getCodigoRestricaoComercialERP() {
+		public String getCodigoRestricaoComercialERP() {
 		return codigoRestricaoComercialERP;
 	}
 
