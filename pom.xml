@@ -58,7 +58,6 @@
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
-			<version>1.4</version>
 		</dependency>
 
 		<dependency>
@@ -157,7 +156,7 @@
 			<id>HOMOLOG</id>
 			<properties>
 				<packaging.type>war</packaging.type>
-				<server.url>C:\PortalVendasWeb\server\webapps</server.url>
+				<server.url>C:\PortalIntegracao\tomcat\webapps</server.url>
 				<artefato.nome>api-servicos-erp-homolog</artefato.nome>
 			</properties>
 		</profile>
@@ -166,7 +165,7 @@
 			<id>PRD</id>
 			<properties>
 				<packaging.type>war</packaging.type>
-				<server.url>C:\PortalVendasWeb\server\webapps</server.url>
+				<server.url>C:\PortalIntegracao\tomcat\webapps</server.url>
 				<artefato.nome>api-servicos-erp-prd</artefato.nome>
 			</properties>
 		</profile>

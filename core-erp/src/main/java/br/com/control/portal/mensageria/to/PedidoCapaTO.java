@@ -15,7 +15,7 @@ public class PedidoCapaTO implements Serializable {
 	private long recId;
 
 	@SequenciaParametrosProcedure(index = 1)
-	private long cliente;
+	private String cliente;
 	@SequenciaParametrosProcedure(index = 2)
 	private String tipoCobranca;
 	@SequenciaParametrosProcedure(index = 3)
@@ -301,11 +301,11 @@ public class PedidoCapaTO implements Serializable {
 		this.valorVerba = valorVerba;
 	}
 
-	public long getCliente() {
+	public String getCliente() {
 		return cliente;
 	}
 
-	public void setCliente(long cliente) {
+	public void setCliente(String cliente) {
 		this.cliente = cliente;
 	}
 

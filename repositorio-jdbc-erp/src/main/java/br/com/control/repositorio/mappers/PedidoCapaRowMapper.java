@@ -13,7 +13,7 @@ public class PedidoCapaRowMapper implements RowMapper<PedidoCapaTO> {
 	public PedidoCapaTO mapRow(ResultSet rs, int rowNum) throws SQLException {
 		PedidoCapaTO pedido = new PedidoCapaTO();
 		pedido.setAtivo(rs.getBoolean("ativo"));
-		pedido.setCliente(rs.getLong("codigo_cliente_rec_id"));
+		pedido.setCliente(rs.getString("codigo_cliente_rec_id"));
 		pedido.setCondicaoPagamento(rs.getString("codigo_condicao_pagamento_rec_id"));
 		pedido.setDataHoraEmissao(rs.getTimestamp("data_hora_emissao"));
 		pedido.setDataPrimeiraParcela(rs.getDate("data_primeira_parcela"));

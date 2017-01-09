@@ -20,6 +20,7 @@ public class RotasRest {
 	public static final String RAIZ_VENDEDOR =   "/vendedor";
 	public static final String RAIZ_PRECO =   "/preco";
 	public static final String RAIZ_BANDA =   "/banda";
+	public static final String RAIZ_IMAGEM =   "/imagem";
 	public static final String RAIZ_PEDIDO =   "/pedido";
 	public static final String RAIZ_CAPA =   "/capa";
 	public static final String RAIZ_ITEM =   "/item";
