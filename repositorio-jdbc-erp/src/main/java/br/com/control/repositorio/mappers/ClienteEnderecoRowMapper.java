@@ -14,15 +14,15 @@ public class ClienteEnderecoRowMapper implements RowMapper<ClienteEndereco> {
 		ClienteEndereco endereco = new ClienteEndereco();
 		endereco.setBairro(rs.getString("bairro"));
 		endereco.setCepEndereco(rs.getString("cep_endereco"));
-		endereco.setCliente(rs.getLong("CODIGO_CLIENTE_REC_ID"));
+		endereco.setCodigoClienteERP(rs.getString("CODIGO_CLIENTE_ERP"));
 		endereco.setEndereco(rs.getString("endereco"));
 		endereco.setMunicipio(rs.getString("municipio"));
 		endereco.setNumero(rs.getInt("numero"));
-		endereco.setOrigemLogradouro(rs.getLong("ORIGEM_LOGRADOURO_REC_ID"));
+		endereco.setOrigemLogradouroERP(rs.getString("ORIGEM_LOGRADOURO_ERP"));
 		endereco.setPontoReferencia(rs.getString("PONTO_REFERENCIA"));
 //		endereco.setRecId(rs.getLong("rec_id"));
-		endereco.setTipoEndereco(rs.getLong("sigla_logradouro_rec_id"));
-		endereco.setUfEndereco(rs.getString("uf_endereco"));
+		endereco.setCodigoTipoEnderecoERP(rs.getString("SIGLA_LOGRADOURO_ERP"));
+		endereco.setUfEndereco(rs.getString("UTF_ENDERECO"));
 		return endereco;
 	}
 

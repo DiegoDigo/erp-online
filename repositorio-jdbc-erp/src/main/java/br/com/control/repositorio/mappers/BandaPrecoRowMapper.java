@@ -13,22 +13,24 @@ public class BandaPrecoRowMapper implements RowMapper<BandaPreco> {
 	public BandaPreco mapRow(ResultSet rs, int rowNum) throws SQLException {
 		BandaPreco banda = new BandaPreco();
 		banda.setAtivo(rs.getBoolean("ativo"));
-		banda.setCodigoBandaPreco(rs.getString("codigo_banda_preco"));
-		banda.setCodigoCanalRecId(rs.getLong("codigo_canal_rec_id"));
-		banda.setCodigoCategoriaProdutoRecId(rs.getLong("codigo_categoria_produto_rec_id"));
 		banda.setCodigoFameb(rs.getString("codigo_fameb"));
-		banda.setCodigoFamiliaProdutoRecId(rs.getLong("codigo_familia_produto_rec_id"));
-		banda.setCodigoGrupoAnaliseCli(rs.getString("codigo_grupo_analise_cli"));
-		banda.setCodigoGrupoCanalCli(rs.getString("codigo_grupo_canal_cli"));
-		banda.setCodigoMarcaProdutoRecId(rs.getLong("codigo_marca_produto_rec_id"));
-		banda.setCodigoPastaCli(rs.getString("codigo_pasta_cli"));
-		banda.setCodigoProdutoRecId(rs.getLong("codigo_produto_rec_id"));
+		banda.setCodigoGrupoAnaliseCli(rs.getString("CODIGO_GRUPO_ANALISE_CLI"));
+		banda.setCodigoPastaCli(rs.getString("CODIGO_PASTA_CLI"));
 		banda.setDescricao(rs.getString("descricao"));
-		banda.setOrigemBanda(rs.getString("origem_banda"));
-		banda.setRecId(rs.getLong("rec_id"));
+		banda.setOrigemBanda(rs.getString("origem_banda").trim());
+//		banda.setRecId(rs.getLong("rec_id"));
 		banda.setRegiaoCliente(rs.getString("regiao_cliente"));
 		banda.setUnidade(rs.getInt("unidade"));
-		banda.setCodigoGrupoProdutoRecId(rs.getLong("codigo_grupo_produto_rec_id"));
+		banda.setCodigoBandaPreco(rs.getString("CODIGO_BANDA_PRECO_ERP"));
+		banda.setCodigoGrupoCanalCli(rs.getString("CODIGO_GRUPO_CANAL_CLI"));
+		banda.setCodigoMarcaProdutoERP(rs.getString("CODIGO_MARCA_PRODUTO_ERP"));
+		banda.setCodigoGrupoProdutoERP(rs.getString("CODIGO_GRUPO_PRODUTO_ERP"));
+		banda.setCodigoCanalERP(rs.getString("CODIGO_CANAL_ERP"));
+		banda.setCodigoCategoriaProdutoERP(rs.getString("CODIGO_CATEGORIA_PRODUTO_ERP"));
+		banda.setCodigoProdutoERP(rs.getString("CODIGO_PRODUTO_ERP"));
+		banda.setCodigoFamiliaProdutoERP(rs.getString("CODIGO_FAMILIA_PRODUTO_ERP"));
+		banda.setCodigoCondicaoPagamentoERP(rs.getString("CODIGO_CONDICAO_PAGAMENTO_ERP"));
+		
 		return banda;
 	}
 

@@ -13,10 +13,8 @@ public class TipoEnderecoRowMapper implements RowMapper<TipoEndereco> {
 	public TipoEndereco mapRow(ResultSet rs, int rowNum) throws SQLException {
 		TipoEndereco endereco = new TipoEndereco();
 		endereco.setAtivo(rs.getBoolean("ativo"));
-		endereco.setDescricaoLogradouro(rs.getString("descricao_logradouro"));
-		endereco.setRecId(rs.getLong("rec_id"));
-		endereco.setSiglaLogradouro(rs.getString("sigla_logradouro"));
-		endereco.setMatriculaRecId(rs.getLong("matricula_rec_id"));		
+		endereco.setDescricaoLogradouro(rs.getString("descricao_logradouro").trim());		
+		endereco.setSiglaLogradouro(rs.getString("sigla_logradouro").trim());	
 		return endereco;
 	}
 

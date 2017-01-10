@@ -24,7 +24,7 @@ public class TipoEnderecoController extends AbstractController {
 	private TipoEnderecoService tipoEnderecoService;
 
 	@RequestMapping(value = RotasRest.LISTAR, method = RequestMethod.GET, headers = "Accept=application/json")
-	public MensagemRetorno list(@RequestParam("mensagem") MensagemRecebida<TipoEndereco> mensagem) {
+	public MensagemRetorno listar(@RequestParam("mensagem") MensagemRecebida<TipoEndereco> mensagem) {
 		List<TipoEndereco> tiposEndereco = tipoEnderecoService.Listar();
 		return new MensagemRetorno(HttpStatus.OK, "Tipo endereço listado com sucesso!", tiposEndereco,
 				mensagem.getIdentificacao());
