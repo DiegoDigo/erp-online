@@ -13,13 +13,14 @@ public class SiglaAcompanhamentoPedidoRowMapper implements RowMapper<StatusAcomp
 	public StatusAcompanhamentoPedido mapRow(ResultSet rs, int rowNum) throws SQLException {
 		
 		StatusAcompanhamentoPedido siglaAcompanhamentoPedido = new StatusAcompanhamentoPedido();
-		siglaAcompanhamentoPedido.setRecId(rs.getLong("rec_id"));
-		siglaAcompanhamentoPedido.setAtivo(rs.getBoolean("ativo"));
-		siglaAcompanhamentoPedido.setDescricaoStatus(rs.getString("descricao_status").trim());
-		siglaAcompanhamentoPedido.setImpedimento(rs.getString("impedimento".trim()));
-		siglaAcompanhamentoPedido.setNivelAnalise(rs.getString("nivel_analise").trim());
-		siglaAcompanhamentoPedido.setPermiteReativarPedido(rs.getBoolean("permite_reativar_pedido"));
-		siglaAcompanhamentoPedido.setSiglaStatus(rs.getString("sigla_status").trim());		
+		siglaAcompanhamentoPedido.setNumeroPedidoErp(rs.getString("NUMERO_PEDIDO_GESTAO"));
+		siglaAcompanhamentoPedido.setSituacaoPedidoErp(rs.getString("SITUACAO_PEDIDO_GESTAO"));
+		siglaAcompanhamentoPedido.setNumeroPrePedidoErp(rs.getString("NUMERO_PRE_PEDIDO_GESTAO").trim());
+		siglaAcompanhamentoPedido.setNumeroRomaneio(rs.getString("NUMERO_ROMANEIO"));
+		siglaAcompanhamentoPedido.setSituacaoRomaneio(rs.getString("SITUACAO_ROMANEIO"));
+		siglaAcompanhamentoPedido.setSerieNFE(rs.getString("SERIE_NFISCAL"));
+		siglaAcompanhamentoPedido.setNumeroNFE(rs.getString("NUMERO_NFISCAL"));		
+		siglaAcompanhamentoPedido.setCodigoBloqueioPedido(rs.getString("CODIGO_BLOQ_PEDIDO"));		
 		
 		return siglaAcompanhamentoPedido;
 	}

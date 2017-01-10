@@ -5,65 +5,61 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class StatusAcompanhamentoPedido implements Serializable {
 	
-	private Long recId;
-	private Boolean ativo;
-	private String descricaoStatus;
-	private String impedimento;
-	private String nivelAnalise;
-	private String siglaStatus;
-	private Boolean permiteReativarPedido;
-	private String matriculaRecId;
-	
-	public String getSiglaStatus() {
-		return siglaStatus;
+	private String numeroPedidoErp;
+	private String situacaoPedidoErp;
+	private String numeroPrePedidoErp;
+	private String numeroRomaneio;
+	private String situacaoRomaneio;
+	private String serieNFE;
+	private String numeroNFE;
+	private String codigoBloqueioPedido;
+	public String getNumeroPedidoErp() {
+		return numeroPedidoErp;
 	}
-	public void setSiglaStatus(String siglaStatus) {
-		this.siglaStatus = siglaStatus;
+	public void setNumeroPedidoErp(String numeroPedidoErp) {
+		this.numeroPedidoErp = numeroPedidoErp;
 	}
-	public Long getRecId() {
-		return recId;
+	public String getSituacaoPedidoErp() {
+		return situacaoPedidoErp;
 	}
-	public void setRecId(Long recId) {
-		this.recId = recId;
+	public void setSituacaoPedidoErp(String situacaoPedidoErp) {
+		this.situacaoPedidoErp = situacaoPedidoErp;
 	}
-	public Boolean getAtivo() {
-		return ativo;
+	public String getNumeroPrePedidoErp() {
+		return numeroPrePedidoErp;
 	}
-	public void setAtivo(Boolean ativo) {
-		this.ativo = ativo;
+	public void setNumeroPrePedidoErp(String numeroPrePedidoErp) {
+		this.numeroPrePedidoErp = numeroPrePedidoErp;
 	}
-	public String getDescricaoStatus() {
-		return descricaoStatus;
+	public String getNumeroRomaneio() {
+		return numeroRomaneio;
 	}
-	public void setDescricaoStatus(String descricaoStatus) {
-		this.descricaoStatus = descricaoStatus;
+	public void setNumeroRomaneio(String numeroRomaneio) {
+		this.numeroRomaneio = numeroRomaneio;
 	}
-	public String getImpedimento() {
-		return impedimento;
+	public String getSituacaoRomaneio() {
+		return situacaoRomaneio;
 	}
-	public void setImpedimento(String impedimento) {
-		this.impedimento = impedimento;
+	public void setSituacaoRomaneio(String situacaoRomaneio) {
+		this.situacaoRomaneio = situacaoRomaneio;
 	}
-	public String getNivelAnalise() {
-		return nivelAnalise;
+	public String getSerieNFE() {
+		return serieNFE;
 	}
-	public void setNivelAnalise(String nivelAnalise) {
-		this.nivelAnalise = nivelAnalise;
+	public void setSerieNFE(String serieNFE) {
+		this.serieNFE = serieNFE;
 	}
-	public Boolean getPermiteReativarPedido() {
-		return permiteReativarPedido;
+	public String getNumeroNFE() {
+		return numeroNFE;
 	}
-	public void setPermiteReativarPedido(Boolean permiteReativarPedido) {
-		this.permiteReativarPedido = permiteReativarPedido;
+	public void setNumeroNFE(String numeroNFE) {
+		this.numeroNFE = numeroNFE;
 	}
-	public String getMatriculaRecId() {
-		return matriculaRecId;
+	public String getCodigoBloqueioPedido() {
+		return codigoBloqueioPedido;
 	}
-	public void setMatriculaRecId(String matriculaRecId) {
-		this.matriculaRecId = matriculaRecId;
+	public void setCodigoBloqueioPedido(String codigoBloqueioPedido) {
+		this.codigoBloqueioPedido = codigoBloqueioPedido;
 	}
-	
-	
-	
-	
+
 }

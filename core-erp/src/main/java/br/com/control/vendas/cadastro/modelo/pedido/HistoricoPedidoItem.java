@@ -6,10 +6,10 @@ public class HistoricoPedidoItem {
 	private float precoProduto;
 	private Integer quantidadeAvulsa;
 	private Integer quantidadeCaixa;
-	private Long ocorrencia;
-	private Long preco;
-	private Long produto;
-	private Long historicoPedidoCapa;
+	private Long codigoOcorrenciaErp;
+	private Long codigoPrecoErp;
+	private Long codigoProdutoErp;
+	private Long historicoPedidoCapaErp;
 
 	public String getNumeroItemPedido() {
 		return numeroItemPedido;
@@ -43,36 +43,36 @@ public class HistoricoPedidoItem {
 		this.quantidadeCaixa = quantidadeCaixa;
 	}
 
-	public Long getOcorrencia() {
-		return ocorrencia;
+	public Long getCodigoPrecoErp() {
+		return codigoPrecoErp;
 	}
 
-	public void setOcorrencia(Long ocorrencia) {
-		this.ocorrencia = ocorrencia;
+	public void setCodigoPrecoErp(Long codigoPrecoErp) {
+		this.codigoPrecoErp = codigoPrecoErp;
 	}
 
-	public Long getPreco() {
-		return preco;
+	public Long getCodigoOcorrenciaErp() {
+		return codigoOcorrenciaErp;
 	}
 
-	public void setPreco(Long preco) {
-		this.preco = preco;
+	public void setCodigoOcorrenciaErp(Long codigoOcorrenciaErp) {
+		this.codigoOcorrenciaErp = codigoOcorrenciaErp;
 	}
 
-	public Long getProduto() {
-		return produto;
+	public Long getCodigoProdutoErp() {
+		return codigoProdutoErp;
 	}
 
-	public void setProduto(Long produto) {
-		this.produto = produto;
+	public void setCodigoProdutoErp(Long codigoProdutoErp) {
+		this.codigoProdutoErp = codigoProdutoErp;
 	}
 
-	public Long getHistoricoPedidoCapa() {
-		return historicoPedidoCapa;
+	public Long getHistoricoPedidoCapaErp() {
+		return historicoPedidoCapaErp;
 	}
 
-	public void setHistoricoPedidoCapa(Long historicoPedidoCapa) {
-		this.historicoPedidoCapa = historicoPedidoCapa;
+	public void setHistoricoPedidoCapaErp(Long historicoPedidoCapaErp) {
+		this.historicoPedidoCapaErp = historicoPedidoCapaErp;
 	}
 
 }
