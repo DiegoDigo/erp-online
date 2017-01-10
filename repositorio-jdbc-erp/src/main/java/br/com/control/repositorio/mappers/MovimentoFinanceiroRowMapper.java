@@ -2,6 +2,9 @@ package br.com.control.repositorio.mappers;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import org.springframework.jdbc.core.RowMapper;
 
@@ -11,16 +14,29 @@ public class MovimentoFinanceiroRowMapper implements RowMapper<MovimentoFinancei
 
 	@Override
 	public MovimentoFinanceiro mapRow(ResultSet rs, int rowNum) throws SQLException {
+		try {
 		MovimentoFinanceiro movimento = new MovimentoFinanceiro();
-		movimento.setCadastroClienteRecId(rs.getLong("cadastro_cliente_rec_id"));
-		movimento.setCodigoProduto(rs.getLong("codigo_produto"));
-		movimento.setDataOperacao(rs.getTimestamp("data_operacao"));
-		movimento.setDataVencimento(rs.getTimestamp("data_venciamento"));
-		movimento.setMod(rs.getString("mod"));
-		movimento.setNumeroDocumento(rs.getString("numero_documento"));
-		movimento.setTipoRegistro(rs.getString("tipo_registro"));
-		movimento.setValor(rs.getInt("valor"));
+		movimento.setCodigoClienteERP(rs.getString("CODIGO_CLIENTE_ERP"));
+		movimento.setCodigoProdutoERP(rs.getString("codigo_produto_ERP"));	
+		movimento.setDataOperacao(converterStringTimeStamp(rs.getString("DATA_OPERACAO")));
+		movimento.setDataVencimento(converterStringTimeStamp(rs.getString("DATA_VENCIMENTO")));
+		movimento.setMod(rs.getString("MOD"));
+		movimento.setNumeroDocumento(rs.getString("NUMERO_DOCUMENTO").trim());
+		movimento.setTipoRegistro(rs.getString("TIPO_REGISTRO"));
+		movimento.setValor(rs.getFloat("VALOR"));
 		return movimento;
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 
+	private Timestamp converterStringTimeStamp(String date) throws ParseException{
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+		java.util.Date parsedDate = dateFormat.parse(date);
+		java.sql.Timestamp dataTimeStamp = new java.sql.Timestamp(parsedDate.getTime());
+		return  dataTimeStamp ;
+	}	
+	
 }
