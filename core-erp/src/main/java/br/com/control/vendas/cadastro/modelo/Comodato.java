@@ -6,7 +6,6 @@ import java.sql.Timestamp;
 @SuppressWarnings("serial")
 public class Comodato implements Serializable {
 
-	private Long recId;
 	private String codigoClienteERP;
 	private String codigoModelo;
 	private String codigoOcorrencia;
@@ -27,14 +26,6 @@ public class Comodato implements Serializable {
 	private String tecnologiaUtilizada;
 	private String tipoStatus;
 	private float valorItem;
-
-	public Long getRecId() {
-		return recId;
-	}
-
-	public void setRecId(Long recId) {
-		this.recId = recId;
-	}
 
 	
 	public String getCodigoModelo() {
