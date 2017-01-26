@@ -15,10 +15,8 @@ import br.com.control.vendas.cadastro.modelo.produto.Produto;
 public class ProdutoDao extends JdbcDao<Produto> {
 
 	public List<Produto> listarProdutos() {
-		String declare = "DECLARE set date @CODIGO_FAMILIA = 0;";
-		getJdbcTemplate().update(declare);
-		String declare2 = "DECLARE set date @CODIGO_SEQUENCIA = 0;";
-		getJdbcTemplate().update(declare2);
+		String declare = "DECLARE set date @CODIGO_PROD = 0;";
+		getJdbcTemplate().update(declare);		
 		return selectViewSemWhere(TabelasIntegracao.CADASTRO_PRODUTO, new ProdutoRowMapper());
 	}
 
