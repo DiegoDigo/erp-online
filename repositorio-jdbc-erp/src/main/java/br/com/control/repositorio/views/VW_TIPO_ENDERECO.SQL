@@ -1,7 +1,9 @@
-create view DBCONTROL1049999."VW_TIPO_ENDERECO"
-as select TIPOENDERECO."REC_ID",
-TIPOENDERECO.ATIVO,
-TIPOENDERECO."DESCRICAO_LOGRADOURO",
-TIPOENDERECO."SIGLA_LOGRADOURO",
-TIPOENDERECO."MATRICULA_REC_ID"
-from DBCONTROL1049999.TIPOENDERECO
+CREATE VIEW dbcontrol1049999. "VW_TIPO_ENDERECO" 
+AS 
+  SELECT @ATIVO                                    AS ATIVO, 
+         dbcontrol1049999.ceptip. "gegentip_cod"   AS DESCRICAO_LOGRADOURO, 
+         dbcontrol1049999.ceptip. "gegentip_sigla" AS SIGLA_LOGRADOURO 
+  FROM   dbcontrol1049999.ceptip 
+  GROUP  BY ativo, 
+            descricao_logradouro, 
+            sigla_logradouro 
