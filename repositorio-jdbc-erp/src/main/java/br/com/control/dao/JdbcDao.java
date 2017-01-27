@@ -20,8 +20,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import br.com.control.annotation.SequenciaParametrosProcedure;
-import br.com.control.integracao.ProcedureIntegracao;
-import br.com.control.integracao.TabelasIntegracao;
+import br.com.control.portal.integracao.ProcedureIntegracao;
+import br.com.control.portal.integracao.TabelasIntegracao;
 import br.com.control.repositorio.ConnectionFactoryDBMaker;
 
 @Repository
@@ -47,7 +47,12 @@ public class JdbcDao<T> {
 		String sql = "select * from " + tabela.getViewERP();
 		List<T> dados = getJdbcTemplate().query(sql, rowMapper);
 		return dados;
+	}
 
+	public T selectViewSingle(TabelasIntegracao tabela, RowMapper<T> rowMapper) {
+		String sql = "select * from " + tabela.getViewERP();
+		T dados = getJdbcTemplate().queryForObject(sql, rowMapper);
+		return dados;
 	}
 
 	public JdbcTemplate getJdbcTemplate() {

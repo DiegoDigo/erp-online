@@ -12,6 +12,7 @@ public class RotasRest {
 	public static final String RAIZ_DETALHE_COMBO =   "/detalhe/combo";
 	public static final String RAIZ_CANAL =   "/canal";
 	public static final String RAIZ_ACOMPANHAMENTO =   "/acompanhamento";
+	public static final String RAIZ_CADASTRO =   "/cadastro";
 	public static final String RAIZ_TIPO =   "/tipo";
 	public static final String RAIZ_COBRANCA =   "/cobranca";
 	public static final String RAIZ_ENDERECO =   "/endereco";
@@ -42,6 +43,6 @@ public class RotasRest {
 	public static final String ESTADOS = "/estados";
 	public static final String SALVAR = "/salvar";
 	public static final String LISTAR = "/listar";
-	public static final String SINALIZA_PORTAL = "/sinalizaPortal";
-	public static final String RAIZ_SINALIZA_PORTAL_PEDIDOS = SINALIZA_PORTAL+"/sinaliza/portal";
+	public static final String BUSCAR = "/buscar";
+	public static final String SINALIZA = "/sinaliza";
 }

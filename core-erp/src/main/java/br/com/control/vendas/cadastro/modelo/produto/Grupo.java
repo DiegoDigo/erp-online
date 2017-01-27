@@ -5,7 +5,7 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Grupo implements Serializable {
 
-	private int codigoErp;
+	private String codigoErp;
 
 	private String descricao;
 
@@ -17,12 +17,14 @@ public class Grupo implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public int getCodigoErp() {
+	public String getCodigoErp() {
 		return codigoErp;
 	}
 
-	public void setCodigoErp(int codigoErp) {
+	public void setCodigoErp(String codigoErp) {
 		this.codigoErp = codigoErp;
 	}
+
+
 
 }

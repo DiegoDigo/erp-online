@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.control.integracao.ProcedureIntegracao;
+import br.com.control.portal.integracao.ProcedureIntegracao;
 import br.com.control.portal.mensageria.to.AcompanhamentoPedidoTO;
 import br.com.control.portal.mensageria.to.PedidoItemTO;
 import br.com.control.vendas.cadastro.modelo.pedido.PedidoItem;

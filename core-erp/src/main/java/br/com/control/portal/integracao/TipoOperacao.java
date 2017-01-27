@@ -1,4 +1,4 @@
-package br.com.control.integracao;
+package br.com.control.portal.integracao;
 
 /**
  * @author rasa.lariguet

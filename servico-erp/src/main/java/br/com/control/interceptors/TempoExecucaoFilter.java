@@ -22,8 +22,8 @@ import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 
 import br.com.control.auditoria.Auditoria;
 import br.com.control.autenticacao.AuditoriaService;
-import br.com.control.integracao.MensagemRecebida;
-import br.com.control.integracao.TipoOperacao;
+import br.com.control.portal.integracao.MensagemRecebida;
+import br.com.control.portal.integracao.TipoOperacao;
 
 @Component
 public class TempoExecucaoFilter implements Filter {

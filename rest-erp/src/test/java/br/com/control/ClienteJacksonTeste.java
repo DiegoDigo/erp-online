@@ -8,11 +8,11 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-import br.com.control.autenticacao.modelo.Sistema;
-import br.com.control.integracao.Identificacao;
-import br.com.control.integracao.MensagemRecebida;
-import br.com.control.integracao.TipoOperacao;
 import br.com.control.json.Views;
+import br.com.control.portal.integracao.Identificacao;
+import br.com.control.portal.integracao.MensagemRecebida;
+import br.com.control.portal.integracao.Sistema;
+import br.com.control.portal.integracao.TipoOperacao;
 import br.com.control.vendas.cadastro.modelo.clienteOld.Cliente;
 import br.com.control.vendas.cadastro.modelo.clienteOld.Documento;
 import br.com.control.vendas.cadastro.modelo.clienteOld.Endereco;

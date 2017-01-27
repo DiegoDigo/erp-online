@@ -17,4 +17,8 @@ public class FamiliaService {
 	public List<Familia> listarTodos(String numeroMatricula) {
 		return familiaDao.listaTodasAsFamiliasDaMatricula();
 	}
+
+	public Familia recuperaFamilia(String codigoErp) {
+		return familiaDao.recuperaFamilia(codigoErp);
+	}
 }

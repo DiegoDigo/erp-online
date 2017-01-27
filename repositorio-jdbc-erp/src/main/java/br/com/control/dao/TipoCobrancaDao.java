@@ -6,7 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.control.integracao.TabelasIntegracao;
+import br.com.control.portal.integracao.TabelasIntegracao;
 import br.com.control.repositorio.mappers.TipoCobrancaRowMapper;
 import br.com.control.vendas.cadastro.modelo.tipoCobranca.TipoCobranca;
 

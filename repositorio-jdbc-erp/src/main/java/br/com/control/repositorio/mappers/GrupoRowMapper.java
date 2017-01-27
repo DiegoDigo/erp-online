@@ -15,7 +15,7 @@ public class GrupoRowMapper implements RowMapper<Grupo> {
     public Grupo mapRow(ResultSet rs, int rowNum) throws SQLException {
     	Grupo grupo = new Grupo();
     	grupo.setDescricao(rs.getString("descricao").trim());
-    	grupo.setCodigoErp(rs.getInt("codigo_grupo_produto_erp"));
+    	grupo.setCodigoErp(String.valueOf(rs.getInt("codigo_grupo_produto_erp")));
         return grupo;
     }
 

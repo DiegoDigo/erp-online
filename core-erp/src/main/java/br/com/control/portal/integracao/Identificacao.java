@@ -1,10 +1,13 @@
-package br.com.control.integracao;
+package br.com.control.portal.integracao;
+
+import java.io.Serializable;
 
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Transient;
 
-import br.com.control.autenticacao.modelo.Sistema;
+import br.com.control.portal.enums.CadastrosEnum;
 
 /**
  * @author rasa.lariguet
@@ -13,7 +16,9 @@ import br.com.control.autenticacao.modelo.Sistema;
  *         preenchido em todas as requisições;
  */
 @Embeddable
-public class Identificacao {
+public class Identificacao implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Enumerated(EnumType.STRING)
 	private Sistema origem;
@@ -29,6 +34,17 @@ public class Identificacao {
 	private String servicoAcessado;
 
 	private String matriculaAssociada;
+	
+	@Transient
+	private CadastrosEnum cadastroASincronizar;
+	
+	public CadastrosEnum getCadastroASincronizar() {
+		return cadastroASincronizar;
+	}
+
+	public void setCadastroASincronizar(CadastrosEnum cadastroASincronizar) {
+		this.cadastroASincronizar = cadastroASincronizar;
+	}
 
 	public Sistema getOrigem() {
 		return origem;

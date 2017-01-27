@@ -19,6 +19,7 @@ import br.com.control.mensageria.produtor.PedidoCapaProducer;
 import br.com.control.portal.mensageria.to.AcompanhamentoPedidoTO;
 import br.com.control.portal.mensageria.to.PedidoCapaTO;
 import br.com.control.portal.mensageria.to.PedidoItemTO;
+import br.com.control.portal.mensageria.to.StatusAcompanhamentoPedidoTO;
 import br.com.control.util.FormatacaoUtil;
 
 @Component
@@ -33,7 +34,7 @@ public class PedidoCapaConsumer {
 
 	@Autowired
 	private PedidoItemService pedidoItemService;
-
+	
 	@Autowired
 	private PedidoCapaProducer producer;
 	
@@ -55,7 +56,11 @@ public class PedidoCapaConsumer {
 			pedidoItemService.salvarItem(item);
 		}
 		
-		producer.sendMessage(capaTO);
+		StatusAcompanhamentoPedidoTO status = new StatusAcompanhamentoPedidoTO();
+		status.setNumeroPrePedidoErp(capaTO.getNumeroPedidoGestao());
+		status.setRecId(capaTO.getRecId());
+		
+		producer.sendMessage(status);
 		
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);

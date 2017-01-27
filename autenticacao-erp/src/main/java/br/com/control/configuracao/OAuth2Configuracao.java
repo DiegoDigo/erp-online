@@ -22,7 +22,7 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 
 import br.com.control.autenticacao.UsuarioService;
-import br.com.control.autenticacao.modelo.Sistema;
+import br.com.control.portal.integracao.Sistema;
 
 @Configuration
 public class OAuth2Configuracao extends WebSecurityConfigurerAdapter {

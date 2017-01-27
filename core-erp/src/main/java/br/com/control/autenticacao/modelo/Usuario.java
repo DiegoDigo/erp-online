@@ -20,6 +20,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.com.control.portal.integracao.Sistema;
+
 @Entity
 @Table(name="usuario")
 public class Usuario {

@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import br.com.control.integracao.Identificacao;
+import br.com.control.portal.integracao.Identificacao;
 
 /**
  * @author rasa.lariguet

@@ -1,4 +1,4 @@
-package br.com.control.integracao;
+package br.com.control.portal.integracao;
 
 import br.com.control.portal.mensageria.to.PedidoCapaTO;
 import br.com.control.portal.mensageria.to.PedidoItemTO;

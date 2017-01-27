@@ -5,6 +5,7 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class StatusAcompanhamentoPedido implements Serializable {
 	
+	private Long recId;
 	private String numeroPedidoErp;
 	private String situacaoPedidoErp;
 	private String numeroPrePedidoErp;
@@ -13,6 +14,13 @@ public class StatusAcompanhamentoPedido implements Serializable {
 	private String serieNFE;
 	private String numeroNFE;
 	private String codigoBloqueioPedido;
+	
+	public Long getRecId() {
+		return recId;
+	}
+	public void setRecId(Long recId) {
+		this.recId = recId;
+	}
 	public String getNumeroPedidoErp() {
 		return numeroPedidoErp;
 	}

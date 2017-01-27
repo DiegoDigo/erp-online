@@ -6,8 +6,8 @@ import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
 import br.com.control.autenticacao.exceptions.IdentificacaoException;
-import br.com.control.integracao.Identificacao;
-import br.com.control.integracao.MensagemRecebida;
+import br.com.control.portal.integracao.Identificacao;
+import br.com.control.portal.integracao.MensagemRecebida;
 
 @Component
 @Aspect

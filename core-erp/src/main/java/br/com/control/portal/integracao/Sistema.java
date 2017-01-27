@@ -1,4 +1,4 @@
-package br.com.control.autenticacao.modelo;
+package br.com.control.portal.integracao;
 
 public enum Sistema {
 	ERP("001"), PORTAL_VENDAS("002"), SFA("003");

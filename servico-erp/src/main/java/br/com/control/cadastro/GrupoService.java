@@ -17,4 +17,7 @@ public class GrupoService {
 	public List<Grupo> listarTodos() {		
 		return grupoDao.listaTodasGrupos();
 	}
+	public Grupo recuperaGrupo(String codigoGrupoErp) {		
+		return grupoDao.recuperarGrupo(codigoGrupoErp);
+	}
 }

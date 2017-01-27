@@ -14,6 +14,7 @@ public class MessagingConfiguration {
 
 	private static final String FILA_PEDIDOS = "pedidos";
 	private static final String FILA_ACOMPANHAMENTO = "acompanhamento";
+	private static final String FILA_SINCRONISMO_CADASTRO= "sincronismo_cadastro";
 
 	
 	@Bean
@@ -39,6 +40,14 @@ public class MessagingConfiguration {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactory());
 		template.setDefaultDestinationName(FILA_ACOMPANHAMENTO);
+		return template;
+	}
+
+	@Bean
+	public JmsTemplate jmsTemplateSincronismoCadastro() {
+		JmsTemplate template = new JmsTemplate();
+		template.setConnectionFactory(connectionFactory());
+		template.setDefaultDestinationName(FILA_SINCRONISMO_CADASTRO);
 		return template;
 	}
 

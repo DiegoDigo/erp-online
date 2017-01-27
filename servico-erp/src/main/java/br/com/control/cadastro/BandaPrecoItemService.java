@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.control.dao.BandaPrecoItemDao;
-import br.com.control.integracao.TabelasIntegracao;
+import br.com.control.portal.integracao.TabelasIntegracao;
 import br.com.control.repositorio.mappers.BandaPrecoItemRowMapper;
 import br.com.control.vendas.cadastro.modelo.preco.BandaPrecoItem;
 

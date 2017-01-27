@@ -11,7 +11,7 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Component;
 
-import br.com.control.portal.mensageria.to.AcompanhamentoPedidoTO;
+import br.com.control.portal.mensageria.to.StatusAcompanhamentoPedidoTO;
 
 @Component
 public class PedidoCapaProducer {
@@ -20,11 +20,11 @@ public class PedidoCapaProducer {
 	@Qualifier("jmsTemplateAcompanhamentoPedidos")
 	private JmsTemplate jmsTemplateAcompanhamento;
 
-	public void sendMessage(final AcompanhamentoPedidoTO pedidoTO) {
+	public void sendMessage(final StatusAcompanhamentoPedidoTO status) {
 		jmsTemplateAcompanhamento.send(new MessageCreator() {
 			@Override
 			public Message createMessage(Session session) throws JMSException {
-				ObjectMessage objectMessage = session.createObjectMessage(pedidoTO);
+				ObjectMessage objectMessage = session.createObjectMessage(status);
 				return objectMessage;
 			}
 		});

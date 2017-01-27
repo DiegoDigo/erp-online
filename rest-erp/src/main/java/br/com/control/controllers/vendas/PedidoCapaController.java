@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.control.cadastro.PedidoCapaService;
 import br.com.control.controllers.AbstractController;
-import br.com.control.integracao.MensagemRecebida;
-import br.com.control.integracao.MensagemRetorno;
+import br.com.control.portal.integracao.MensagemRecebida;
+import br.com.control.portal.integracao.MensagemRetorno;
 import br.com.control.portal.mensageria.to.PedidoCapaTO;
 import br.com.control.rotas.RotasRest;
 

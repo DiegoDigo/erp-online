@@ -1,5 +1,9 @@
 package br.com.control.rest.client;
 
+import javax.persistence.Transient;
+
+import br.com.control.portal.enums.CadastrosEnum;
+
 /**
  * @author rasa.lariguet
  *
@@ -21,6 +25,17 @@ public class Identificacao {
 	private String servicoAcessado;
 
 	private String matriculaAssociada;
+	
+	private CadastrosEnum cadastroASincronizar;
+
+	
+	public CadastrosEnum getCadastroASincronizar() {
+		return cadastroASincronizar;
+	}
+
+	public void setCadastroASincronizar(CadastrosEnum cadastroASincronizar) {
+		this.cadastroASincronizar = cadastroASincronizar;
+	}
 
 	public Sistema getOrigem() {
 		return origem;

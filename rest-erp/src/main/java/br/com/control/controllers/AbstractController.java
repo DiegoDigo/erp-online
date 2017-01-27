@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-import br.com.control.integracao.MensagemRecebida;
+import br.com.control.portal.integracao.MensagemRecebida;
 
 public abstract class AbstractController {
 	
