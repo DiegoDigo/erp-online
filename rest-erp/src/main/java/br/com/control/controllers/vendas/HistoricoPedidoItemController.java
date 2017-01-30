@@ -15,7 +15,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.pedido.HistoricoPedidoItem;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_HISTORICO + RotasRest.RAIZ_PEDIDO + RotasRest.RAIZ_ITEM)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_HISTORICO + RotasRest.RAIZ_PEDIDO + RotasRest.RAIZ_ITEM)
 public class HistoricoPedidoItemController extends AbstractController {
 
 	@Autowired

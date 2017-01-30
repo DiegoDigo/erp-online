@@ -15,7 +15,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.ocorrencia.Ocorrencia;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_OCORRENCIA)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_OCORRENCIA)
 public class OcorrenciaController extends AbstractController {
 
 	@Autowired

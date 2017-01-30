@@ -1,7 +1,5 @@
 package br.com.control.rest.client;
 
-import javax.persistence.Transient;
-
 import br.com.control.portal.enums.CadastrosEnum;
 
 /**

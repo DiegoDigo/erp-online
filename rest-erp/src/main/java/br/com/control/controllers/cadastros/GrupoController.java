@@ -17,7 +17,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.produto.Grupo;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_PRODUTO + RotasRest.RAIZ_GRUPO)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_PRODUTO + RotasRest.RAIZ_GRUPO)
 public class GrupoController extends AbstractController {
 
 	@Autowired

@@ -15,7 +15,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.SisTipoMotivoGeral;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_TIPO +RotasRest.RAIZ_MOTIVO+ RotasRest.RAIZ_GERAL)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_TIPO +RotasRest.RAIZ_MOTIVO+ RotasRest.RAIZ_GERAL)
 public class SisTipoMotivoGeralController extends AbstractController {
 
 	@Autowired

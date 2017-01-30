@@ -15,7 +15,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.MovimentoFinanceiro;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_MOVIMENTO + RotasRest.RAIZ_FINANCEIRO)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_MOVIMENTO + RotasRest.RAIZ_FINANCEIRO)
 public class MovimentoFinanceiroController extends AbstractController {
 
 	@Autowired

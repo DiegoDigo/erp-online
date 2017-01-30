@@ -17,7 +17,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_CLIENTE)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_CLIENTE)
 public class ClienteController extends AbstractController{
 
 	@Autowired

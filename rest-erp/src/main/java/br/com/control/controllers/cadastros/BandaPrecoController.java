@@ -15,7 +15,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.preco.BandaPreco;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_BANDA + RotasRest.RAIZ_PRECO)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_BANDA + RotasRest.RAIZ_PRECO)
 public class BandaPrecoController extends AbstractController {
 
 	@Autowired

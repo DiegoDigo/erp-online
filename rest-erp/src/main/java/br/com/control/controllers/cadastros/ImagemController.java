@@ -17,7 +17,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.util.ZipUtil;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_IMAGEM + RotasRest.RAIZ_PRODUTO)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_IMAGEM + RotasRest.RAIZ_PRODUTO)
 public class ImagemController extends AbstractController {
 
 	@RequestMapping(value = RotasRest.LISTAR, method = RequestMethod.GET, headers = "Accept=multipart/form-data")

@@ -15,7 +15,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.cliente.SisOrigemLogradouro;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_ORIGEM_LOGRADOURO)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_ORIGEM_LOGRADOURO)
 public class SisOrigemLogradouroController extends AbstractController {
 
 	@Autowired

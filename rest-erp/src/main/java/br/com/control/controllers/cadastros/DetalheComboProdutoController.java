@@ -15,7 +15,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.produto.DetalheComboProduto;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_PRODUTO + RotasRest.RAIZ_DETALHE_COMBO)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_PRODUTO + RotasRest.RAIZ_DETALHE_COMBO)
 public class DetalheComboProdutoController extends AbstractController {
 
 	@Autowired

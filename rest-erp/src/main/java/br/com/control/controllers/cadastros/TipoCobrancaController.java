@@ -17,7 +17,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.tipoCobranca.TipoCobranca;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_TIPO + RotasRest.RAIZ_COBRANCA)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_TIPO + RotasRest.RAIZ_COBRANCA)
 public class TipoCobrancaController extends AbstractController {
 
 	@Autowired

@@ -15,7 +15,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.cliente.ClienteEndereco;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_BANDA + RotasRest.RAIZ_PRECO + RotasRest.RAIZ_RESTRICAO)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_BANDA + RotasRest.RAIZ_PRECO + RotasRest.RAIZ_RESTRICAO)
 public class BandaPrecoRestricaoController extends AbstractController {
 
 	@Autowired

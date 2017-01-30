@@ -17,7 +17,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.produto.Marca;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_PRODUTO + RotasRest.RAIZ_MARCA)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_PRODUTO + RotasRest.RAIZ_MARCA)
 public class MarcaController extends AbstractController {
 
 	@Autowired

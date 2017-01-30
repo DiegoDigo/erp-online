@@ -17,7 +17,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.produto.Categoria;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_PRODUTO + RotasRest.RAIZ_CATEGORIA)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_PRODUTO + RotasRest.RAIZ_CATEGORIA)
 public class CategoriaController extends AbstractController {
 
 	@Autowired

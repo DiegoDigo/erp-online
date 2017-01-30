@@ -15,7 +15,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.MotivoGeral;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_MOTIVO + RotasRest.RAIZ_GERAL)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_MOTIVO + RotasRest.RAIZ_GERAL)
 public class MotivoGeralController extends AbstractController {
 
 	@Autowired

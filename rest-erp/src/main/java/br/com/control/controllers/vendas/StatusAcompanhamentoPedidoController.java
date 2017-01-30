@@ -14,7 +14,7 @@ import br.com.control.portal.integracao.MensagemRetorno;
 import br.com.control.rotas.RotasRest;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_ACOMPANHAMENTO + RotasRest.RAIZ_PEDIDO + RotasRest.RAIZ_CAPA)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_ACOMPANHAMENTO + RotasRest.RAIZ_PEDIDO + RotasRest.RAIZ_CAPA)
 public class StatusAcompanhamentoPedidoController extends AbstractController {
 
 	@Autowired
