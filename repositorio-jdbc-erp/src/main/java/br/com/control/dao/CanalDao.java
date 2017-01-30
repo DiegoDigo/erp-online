@@ -20,4 +20,10 @@ public class CanalDao extends JdbcDao<Canal> {
 		return selectViewSemWhere(TabelasIntegracao.CADASTRO_CANAL, new CanalRowMapper());
 	}
 
+	public Canal recuperarCanal(String codigoCanalErp) {
+		String declare = "DECLARE set int @CODIGO_CANAL= " + codigoCanalErp + ";";
+		getJdbcTemplate().update(declare);
+		return selectViewSingle(TabelasIntegracao.CADASTRO_CANAL, new CanalRowMapper());
+	}
+
 }

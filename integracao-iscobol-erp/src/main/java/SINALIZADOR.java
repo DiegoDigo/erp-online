@@ -3,17 +3,21 @@ import com.iscobol.types.NumericVar;
 
 import br.com.control.portal.enums.CadastrosEnum;
 import br.com.control.rest.client.SincronismoAcompanhamentoPedido;
+import br.com.control.rest.client.SincronismoCadastroCanalProduto;
+import br.com.control.rest.client.SincronismoCadastroCategoriaProduto;
 import br.com.control.rest.client.SincronismoCadastroFamiliaProduto;
 import br.com.control.rest.client.SincronismoCadastroGrupoProduto;
+import br.com.control.rest.client.SincronismoCadastroMarcaProduto;
 
 public class SINALIZADOR implements IscobolCall {
 
 	public static void main(String[] args) {
 		SINALIZADOR sinalizador = new SINALIZADOR();
-		String[] param = {"CADASTRO|"+CadastrosEnum.FAMILIA_PRODUTO+"|1"};
+		String[] param = { "CADASTRO|" + CadastrosEnum.CANAL + "|1" };
 		sinalizador.call(param);
 	}
-	
+
+	@Override
 	public Object call(Object[] argv) {
 
 		try {
@@ -30,10 +34,10 @@ public class SINALIZADOR implements IscobolCall {
 				SincronismoAcompanhamentoPedido clienteREST = new SincronismoAcompanhamentoPedido();
 				clienteREST.sinalizaPortalAtualizacao(parametroRecebido, null);
 			} else if (acao.equals("CADASTRO")) {
-				
+
 				String nomeCadastro = valoresQuebrados[1];
 				CadastrosEnum cadastro = CadastrosEnum.recuperaCadastro(nomeCadastro);
-				
+
 				if (CadastrosEnum.GRUPO_PRODUTO == cadastro) {
 					SincronismoCadastroGrupoProduto rest = new SincronismoCadastroGrupoProduto();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.GRUPO_PRODUTO);
@@ -42,7 +46,18 @@ public class SINALIZADOR implements IscobolCall {
 					SincronismoCadastroFamiliaProduto rest = new SincronismoCadastroFamiliaProduto();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.FAMILIA_PRODUTO);
 				}
-				
+				if (CadastrosEnum.MARCA_PRODUTO == cadastro) {
+					SincronismoCadastroMarcaProduto rest = new SincronismoCadastroMarcaProduto();
+					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.MARCA_PRODUTO);
+				}
+				if (CadastrosEnum.CATEGORIA_PRODUTO == cadastro) {
+					SincronismoCadastroCategoriaProduto rest = new SincronismoCadastroCategoriaProduto();
+					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.CATEGORIA_PRODUTO);
+				}
+				if (CadastrosEnum.CANAL == cadastro) {
+					SincronismoCadastroCanalProduto rest = new SincronismoCadastroCanalProduto();
+					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.CANAL);
+				}
 			}
 
 			System.out.println("### SAIU DO SINALIZADOR SEM ERROS ###");
@@ -55,9 +70,11 @@ public class SINALIZADOR implements IscobolCall {
 
 	}
 
+	@Override
 	public void finalize() {
 	}
 
+	@Override
 	public void perform(int begin, int end) {
 	}
 

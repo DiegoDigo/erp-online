@@ -19,4 +19,8 @@ public class CanalService {
 		return canalDao.listarCanal();
 	}
 
+	public Canal recuperaCanal(String codigoCanalErp) {
+		return canalDao.recuperarCanal(codigoCanalErp);
+	}
+
 }
