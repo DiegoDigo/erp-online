@@ -14,7 +14,11 @@ public class ProdutoService {
 	@Autowired
 	private ProdutoDao produtoDao;
 
-	public List<Produto> listarProdutos() {		
+	public List<Produto> listarProdutos() {
 		return produtoDao.listarProdutos();
+	}
+
+	public Produto recuperarProduto(String codigoProdutoErp) {
+		return produtoDao.recuperarProduto(codigoProdutoErp);
 	}
 }

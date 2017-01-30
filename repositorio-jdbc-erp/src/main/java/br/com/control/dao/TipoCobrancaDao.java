@@ -17,8 +17,13 @@ public class TipoCobrancaDao extends JdbcDao<TipoCobranca> {
 	public List<TipoCobranca> listarTiposCobrancas() {
 		String declare = "DECLARE set date @CODIGO_TIPO_COBRANCA  = 0;";
 		getJdbcTemplate().update(declare);
-		return selectViewSemWhere(TabelasIntegracao.CADASTRO_TIPO_COBRANCA,
-				new TipoCobrancaRowMapper());
+		return selectViewSemWhere(TabelasIntegracao.CADASTRO_TIPO_COBRANCA, new TipoCobrancaRowMapper());
+	}
+
+	public TipoCobranca recuperarTipoCobranca(String codigoTipoCobrancaErp) {
+		String declare = "DECLARE set int @CODIGO_TIPO_COBRANCA = " + codigoTipoCobrancaErp + ";";
+		getJdbcTemplate().update(declare);
+		return selectViewSingle(TabelasIntegracao.CADASTRO_TIPO_COBRANCA, new TipoCobrancaRowMapper());
 	}
 
 }

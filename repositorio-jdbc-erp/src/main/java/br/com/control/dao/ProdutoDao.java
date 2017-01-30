@@ -20,10 +20,4 @@ public class ProdutoDao extends JdbcDao<Produto> {
 		return selectViewSemWhere(TabelasIntegracao.CADASTRO_PRODUTO, new ProdutoRowMapper());
 	}
 
-	public Produto recuperarProduto(String codigoErp) {
-		String declare = "DECLARE set int @CODIGO_PROD= " + codigoErp + ";";
-		getJdbcTemplate().update(declare);
-		return selectViewSingle(TabelasIntegracao.CADASTRO_PRODUTO, new ProdutoRowMapper());
-	}
-
 }

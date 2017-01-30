@@ -19,4 +19,8 @@ public class TipoCobrancaService {
 		return tipoCobrancaDao.listarTiposCobrancas();
 	}
 
+	public TipoCobranca recuperarTipoCobranca(String codigoTipoCobrancaErp) {
+		return tipoCobrancaDao.recuperarTipoCobranca(codigoTipoCobrancaErp);
+	}
+
 }
