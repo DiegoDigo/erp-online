@@ -1,6 +1,6 @@
 package br.com.control.rest.client;
 
-public class SincronismoCadastroTipoCobranca extends ClienteRestSincronismo {
+public class SincronismoCadastroCondicaoPagamento extends ClienteRestSincronismo {
 
 	@Override
 	public String defineCodigoErp(String conteudo) {
@@ -10,6 +10,6 @@ public class SincronismoCadastroTipoCobranca extends ClienteRestSincronismo {
 
 	@Override
 	public String getServicoSincronismo() {
-		return "/servicos/erp/sinaliza/cadastro/tipoCobranca";
+		return "/servicos/erp/sinaliza/cadastro/condicao";
 	}
 }

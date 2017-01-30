@@ -10,6 +10,6 @@ public class SincronismoCadastroProduto extends ClienteRestSincronismo {
 
 	@Override
 	public String getServicoSincronismo() {
-		return "/sinaliza/cadastro/produto";
+		return "/servicos/erp/sinaliza/cadastro/produto";
 	}
 }

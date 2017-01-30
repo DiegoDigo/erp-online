@@ -18,4 +18,8 @@ public class CondicaoPagamentoService {
 		return condicaoPagamentoDao.listarCondicoesPagamento();
 	}
 
+	public CondicaoPagamento recuperarCondicaoPagamento(String codigoCondicaoPagamentoErp) {
+		return condicaoPagamentoDao.recuperarCondicaoPagamento(codigoCondicaoPagamentoErp);
+	}
+
 }

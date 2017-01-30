@@ -1,7 +1,7 @@
 package br.com.control.rest.client;
 
 public class SincronismoCadastroGrupoProduto extends ClienteRestSincronismo {
-	
+
 	@Override
 	public String defineCodigoErp(String conteudo) {
 		String[] split = conteudo.split("\\|");
@@ -10,6 +10,6 @@ public class SincronismoCadastroGrupoProduto extends ClienteRestSincronismo {
 
 	@Override
 	public String getServicoSincronismo() {
-		return "/sinaliza/cadastro/grupo";
+		return "/servicos/erp/sinaliza/cadastro/grupo";
 	}
 }

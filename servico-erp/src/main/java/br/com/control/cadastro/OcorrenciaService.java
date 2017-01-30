@@ -18,4 +18,8 @@ public class OcorrenciaService {
 		return ocorrenciaDao.listarOcorrencia();
 	}
 
+	public Ocorrencia recuperarOcorrencia(String codigoOcorrenciaErp) {
+		return ocorrenciaDao.recuperarOcorrencia(codigoOcorrenciaErp);
+	}
+
 }

@@ -14,10 +14,16 @@ import br.com.control.vendas.cadastro.modelo.ocorrencia.Ocorrencia;
 @Transactional
 public class OcorrenciaDao extends JdbcDao<Ocorrencia> {
 
-	public List<Ocorrencia> listarOcorrencia(){
+	public List<Ocorrencia> listarOcorrencia() {
 		String declare = "DECLARE set char @CODIGO_OCORRENCIA  = '';";
 		getJdbcTemplate().update(declare);
 		return selectViewSemWhere(TabelasIntegracao.CADASTRO_OCORRENCIA, new OcorrenciaRowMapper());
 	}
-	
+
+	public Ocorrencia recuperarOcorrencia(String codigoOcorrenciaErp) {
+		String declare = "DECLARE set int @CODIGO_OCORRENCIA = " + codigoOcorrenciaErp + ";";
+		getJdbcTemplate().update(declare);
+		return selectViewSingle(TabelasIntegracao.CADASTRO_OCORRENCIA, new OcorrenciaRowMapper());
+	}
+
 }
