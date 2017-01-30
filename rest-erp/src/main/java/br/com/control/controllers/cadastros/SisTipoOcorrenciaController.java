@@ -15,7 +15,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.ocorrencia.SisTipoOCorrencia;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_TIPO + RotasRest.RAIZ_OCORRENCIA)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_TIPO + RotasRest.RAIZ_OCORRENCIA)
 public class SisTipoOcorrenciaController extends AbstractController {
 
 	@Autowired

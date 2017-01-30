@@ -15,7 +15,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.pedido.PedidoLiberado;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_PEDIDO + RotasRest.RAIZ_LIBERADO)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_PEDIDO + RotasRest.RAIZ_LIBERADO)
 public class PedidoLiberadoController extends AbstractController {
 
 	@Autowired

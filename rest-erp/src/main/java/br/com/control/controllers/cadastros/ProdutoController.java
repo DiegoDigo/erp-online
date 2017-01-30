@@ -15,7 +15,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.produto.Produto;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_PRODUTO)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_PRODUTO)
 public class ProdutoController extends AbstractController{
 
 	@Autowired

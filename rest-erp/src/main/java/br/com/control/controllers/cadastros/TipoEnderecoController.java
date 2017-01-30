@@ -17,7 +17,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.cliente.TipoEndereco;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_TIPO + RotasRest.RAIZ_ENDERECO)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_TIPO + RotasRest.RAIZ_ENDERECO)
 public class TipoEnderecoController extends AbstractController {
 
 	@Autowired

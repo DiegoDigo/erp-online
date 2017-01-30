@@ -15,7 +15,7 @@ import br.com.control.portal.mensageria.to.PedidoCapaTO;
 import br.com.control.rotas.RotasRest;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_PEDIDO + RotasRest.RAIZ_CAPA)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_PEDIDO + RotasRest.RAIZ_CAPA)
 public class PedidoCapaController extends AbstractController {
 
 	@Autowired

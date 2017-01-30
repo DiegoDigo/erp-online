@@ -15,7 +15,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.RestricaoFinanceira;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_RESTRICAO + RotasRest.RAIZ_FINANCEIRO)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_RESTRICAO + RotasRest.RAIZ_FINANCEIRO)
 public class RestricaoFinanceiraController extends AbstractController {
 
 	@Autowired

@@ -17,7 +17,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.condicaoPagamento.CondicaoPagamento;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_CONDICAO_PAGAMENTO)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_CONDICAO_PAGAMENTO)
 public class CondicaoPagamentoController extends AbstractController{
 	
 	@Autowired

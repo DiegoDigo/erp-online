@@ -17,7 +17,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.produto.Familia;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_PRODUTO + RotasRest.RAIZ_FAMILIA)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_PRODUTO + RotasRest.RAIZ_FAMILIA)
 public class FamiliaController extends AbstractController {
 
 	@Autowired

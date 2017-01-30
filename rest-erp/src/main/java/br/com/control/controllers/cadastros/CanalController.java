@@ -18,7 +18,7 @@ import br.com.control.vendas.cadastro.modelo.canal.Canal;
 import br.com.control.vendas.cadastro.modelo.produto.Categoria;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_CANAL)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_CANAL)
 public class CanalController extends AbstractController {
 
 	@Autowired

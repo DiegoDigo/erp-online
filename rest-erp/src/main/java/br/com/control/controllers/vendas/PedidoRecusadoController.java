@@ -15,7 +15,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.pedido.PedidoRecusado;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_PEDIDO + RotasRest.RAIZ_RECUSADO)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_PEDIDO + RotasRest.RAIZ_RECUSADO)
 public class PedidoRecusadoController extends AbstractController {
 
 	@Autowired

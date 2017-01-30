@@ -25,7 +25,7 @@ import br.com.control.vendas.cadastro.modelo.produto.Familia;
 import br.com.control.vendas.cadastro.modelo.produto.Grupo;
 
 @RestController
-@RequestMapping(RotasRest.SINALIZA)
+@RequestMapping(RotasRest.RAIZ + RotasRest.SINALIZA)
 public class SinalizadorPortalController extends AbstractController {
 	
 	@Autowired

@@ -15,7 +15,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.pedido.HistoricoPedidoCapa;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_HISTORICO + RotasRest.RAIZ_PEDIDO + RotasRest.RAIZ_CAPA)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_HISTORICO + RotasRest.RAIZ_PEDIDO + RotasRest.RAIZ_CAPA)
 public class HistoricoPedidoCapaController extends AbstractController {
 
 	@Autowired

@@ -2,7 +2,7 @@ package br.com.control.rotas;
 
 public class RotasRest {
 
-	public static final String RAIZ = "/servicos";
+	public static final String RAIZ = "/servicos/erp/";
 	public static final String RAIZ_PRODUTO = "/produto";
 	public static final String RAIZ_CLIENTE =  "/cliente";
 	public static final String RAIZ_FAMILIA =   "/familia";
