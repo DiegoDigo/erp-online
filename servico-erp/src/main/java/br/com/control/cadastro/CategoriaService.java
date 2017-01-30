@@ -17,4 +17,8 @@ public class CategoriaService {
 	public List<Categoria> listarTodos() {
 		return categoriaDao.listaTodasACategoriasDaMatricula();
 	}
+
+	public Categoria recuperaCategoria(String codigoCategoriaErp) {
+		return categoriaDao.recuperarCategoria(codigoCategoriaErp);
+	}
 }

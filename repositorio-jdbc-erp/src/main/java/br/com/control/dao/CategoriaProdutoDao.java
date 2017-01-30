@@ -19,4 +19,10 @@ public class CategoriaProdutoDao extends JdbcDao<Categoria> {
 		getJdbcTemplate().update(declare);
 		return selectViewSemWhere(TabelasIntegracao.CADASTRO_CATEGORIA_PRODUTO, new CategoriaRowMapper());
 	}
+
+	public Categoria recuperarCategoria(String codigoCategoriaErp) {
+		String declare = "DECLARE set int @CODIGO_CATEGORIA_PRODUTO = " + codigoCategoriaErp + ";";
+		getJdbcTemplate().update(declare);
+		return selectViewSingle(TabelasIntegracao.CADASTRO_CATEGORIA_PRODUTO, new CategoriaRowMapper());
+	}
 }

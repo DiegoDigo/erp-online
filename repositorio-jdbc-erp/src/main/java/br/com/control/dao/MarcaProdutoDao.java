@@ -16,4 +16,10 @@ public class MarcaProdutoDao extends JdbcDao<Marca> {
 		getJdbcTemplate().update(declare);
 		return selectViewSemWhere(TabelasIntegracao.CADASTRO_MARCA_PRODUTO, new MarcaRowMapper());
 	}
+
+	public Marca recuperarMarca(String codigoMarcaErp) {
+		String declare = "DECLARE set int @CODIGO_MARCA_PRODUTO = " + codigoMarcaErp + ";";
+		getJdbcTemplate().update(declare);
+		return selectViewSingle(TabelasIntegracao.CADASTRO_MARCA_PRODUTO, new MarcaRowMapper());
+	}
 }

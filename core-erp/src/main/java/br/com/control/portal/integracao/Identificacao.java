@@ -34,10 +34,10 @@ public class Identificacao implements Serializable {
 	private String servicoAcessado;
 
 	private String matriculaAssociada;
-	
+
 	@Transient
 	private CadastrosEnum cadastroASincronizar;
-	
+
 	public CadastrosEnum getCadastroASincronizar() {
 		return cadastroASincronizar;
 	}
@@ -93,5 +93,4 @@ public class Identificacao implements Serializable {
 	public void setMatriculaAssociada(String matriculaAssociada) {
 		this.matriculaAssociada = matriculaAssociada;
 	}
-
 }

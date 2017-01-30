@@ -17,4 +17,8 @@ public class MarcaService {
 	public List<Marca> listarTodos(String numeroMatricula) {
 		return marcaDao.listaTodasAsMarcasDaMatricula(numeroMatricula);
 	}
+
+	public Marca recuperaMarca(String codigoMarcaErp) {
+		return marcaDao.recuperarMarca(codigoMarcaErp);
+	}
 }
