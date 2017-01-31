@@ -17,7 +17,11 @@ public class ClienteEnderecoService {
 	private ClienteEnderecoDao clienteEnderecoDao;
 
 	public List<ClienteEndereco> listarEndereco() {
-		return clienteEnderecoDao.selectViewSemWhere(TabelasIntegracao.CADASTRO_CLIENTE_ENDERECO, new ClienteEnderecoRowMapper());
+		return clienteEnderecoDao.listarEnderecoCliente();
+	}
+
+	public List<ClienteEndereco> recuperarTipoEnderecoCodigoERP(String codigoTipoEnderecoERP) {
+		return clienteEnderecoDao.recuperarTipoEndereco(codigoTipoEnderecoERP);
 	}
 
 }

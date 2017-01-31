@@ -11,6 +11,7 @@ import br.com.control.rest.client.SincronismoCadastroFamiliaProduto;
 import br.com.control.rest.client.SincronismoCadastroGrupoProduto;
 import br.com.control.rest.client.SincronismoCadastroMarcaProduto;
 import br.com.control.rest.client.SincronismoCadastroOcorrencia;
+import br.com.control.rest.client.SincronismoCadastroEnderecoCliente;
 import br.com.control.rest.client.SincronismoCadastroProduto;
 import br.com.control.rest.client.SincronismoCadastroTipoCobranca;
 
@@ -18,7 +19,7 @@ public class SINALIZADOR implements IscobolCall {
 
 	public static void main(String[] args) {
 		SINALIZADOR sinalizador = new SINALIZADOR();
-		String[] param = { "CADASTRO|" + CadastrosEnum.PRODUTO_COMBO + "|7000525" };
+		String[] param = { "CADASTRO|" + CadastrosEnum.CLIENTE_ENDERECO + "|00010001" };
 		sinalizador.call(param);
 	}
 
@@ -83,6 +84,15 @@ public class SINALIZADOR implements IscobolCall {
 					SincronismoCadastroDetalheProdutoCombo rest = new SincronismoCadastroDetalheProdutoCombo();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PRODUTO_COMBO);
 				}
+				if (CadastrosEnum.CLIENTE_ENDERECO == cadastro) {
+					SincronismoCadastroEnderecoCliente rest = new SincronismoCadastroEnderecoCliente();
+					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.CLIENTE_ENDERECO);
+				}
+				if (CadastrosEnum.VENDEDOR_CLIENTE == cadastro) {
+				     SincronismoCadastroVendedorCliente rest = new SincronismoCadastroVendedorCliente();
+				     rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.VENDEDOR_CLIENTE);
+				}
+				
 			}
 
 			System.out.println("### SAIU DO SINALIZADOR SEM ERROS ###");
