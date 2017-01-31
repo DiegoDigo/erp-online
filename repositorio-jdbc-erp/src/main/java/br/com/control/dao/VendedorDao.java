@@ -20,4 +20,10 @@ public class VendedorDao extends JdbcDao<Vendedor> {
 		return selectViewSemWhere(TabelasIntegracao.CADASTRO_VENDEDOR, new VendedorRowMapper());
 	}
 
+	public Vendedor recuperarVendedor(String codigoErp) {
+		String declare = "DECLARE set char @CODIGO_VENDEDOR =" + codigoErp + ";";
+		getJdbcTemplate().update(declare);
+		return selectViewSingle(TabelasIntegracao.CADASTRO_VENDEDOR, new VendedorRowMapper());
+	}
+
 }

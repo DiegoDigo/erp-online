@@ -18,4 +18,8 @@ public class VendedorService {
 		return vendedorDao.listarVendedores();
 	}
 
+	public Vendedor recuperarVendedor(String codigoErp) {
+		return vendedorDao.recuperarVendedor(codigoErp);
+	}
+
 }

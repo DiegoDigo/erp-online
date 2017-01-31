@@ -24,6 +24,8 @@ import br.com.control.cadastro.GrupoService;
 import br.com.control.cadastro.MarcaService;
 import br.com.control.cadastro.OcorrenciaService;
 import br.com.control.cadastro.ProdutoService;
+import br.com.control.cadastro.VendedorClienteService;
+import br.com.control.cadastro.VendedorService;
 import br.com.control.cadastro.sincronismo.SincronismoAcompanhamentoPedidoService;
 import br.com.control.cadastro.sincronismo.SincronismoCadastroService;
 import br.com.control.cadastro.tipoCobranca.TipoCobrancaService;
@@ -41,6 +43,8 @@ import br.com.control.portal.mensageria.to.MarcaTO;
 import br.com.control.portal.mensageria.to.OcorrenciaTO;
 import br.com.control.portal.mensageria.to.ProdutoTO;
 import br.com.control.portal.mensageria.to.TipoCobrancaTO;
+import br.com.control.portal.mensageria.to.VendedorClienteTO;
+import br.com.control.portal.mensageria.to.VendedorTO;
 import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.canal.Canal;
 import br.com.control.vendas.cadastro.modelo.cliente.ClienteEndereco;
@@ -53,6 +57,7 @@ import br.com.control.vendas.cadastro.modelo.produto.Grupo;
 import br.com.control.vendas.cadastro.modelo.produto.Marca;
 import br.com.control.vendas.cadastro.modelo.produto.Produto;
 import br.com.control.vendas.cadastro.modelo.tipoCobranca.TipoCobranca;
+import br.com.control.vendas.cadastro.modelo.vendedor.Vendedor;
 import br.com.control.vendas.cadastro.modelo.vendedor.VendedorCliente;
 
 @RestController
@@ -85,7 +90,7 @@ public class SinalizadorPortalController extends AbstractController {
 
 	@Autowired
 	private TipoCobrancaService tipoCobrancaService;
-	
+
 	@Autowired
 	private DetalheComboProdutoService detalheProdutoComboService;
 
@@ -94,9 +99,15 @@ public class SinalizadorPortalController extends AbstractController {
 
 	@Autowired
 	private OcorrenciaService ocorrenciaService;
-	
+
 	@Autowired
 	private ClienteEnderecoService clienteEnderecoServico;
+
+	@Autowired
+	private VendedorClienteService vendedorClienteService;
+
+	@Autowired
+	private VendedorService vendedorService;
 
 	@RequestMapping(value = RotasRest.RAIZ_ACOMPANHAMENTO, method = RequestMethod.GET, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortal(@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
@@ -273,71 +284,95 @@ public class SinalizadorPortalController extends AbstractController {
 		sincronismoCadastoService.enviaParaOPortal(msg);
 		return null;
 	}
+
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
 			+ RotasRest.RAIZ_DETALHE_COMBO, method = RequestMethod.GET, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoCadastroDetalheProdutoCombo(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
-		
+
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
 		String codigoProdutoComboErp = mapper.convertValue(mensagem.getConteudo(), new TypeReference<String>() {
 		});
-		
-		List<DetalheComboProdutoTO> combosProdutoTO= new ArrayList<>();
-		
-		List<DetalheComboProduto> comboProduto = detalheProdutoComboService.recuperarComboProduto(codigoProdutoComboErp);
-		
+
+		List<DetalheComboProdutoTO> combosProdutoTO = new ArrayList<>();
+
+		List<DetalheComboProduto> comboProduto = detalheProdutoComboService
+				.recuperarComboProduto(codigoProdutoComboErp);
+
 		for (DetalheComboProduto detalheComboProduto : comboProduto) {
 			combosProdutoTO.add(new DetalheComboProdutoTO(detalheComboProduto));
 		}
-		
-		
-		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Alteração cadastral Detalhe combo produto", combosProdutoTO,
-				mensagem.getIdentificacao());
+
+		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Alteração cadastral Detalhe combo produto",
+				combosProdutoTO, mensagem.getIdentificacao());
 		sincronismoCadastoService.enviaParaOPortal(msg);
 		return null;
 	}
-	@RequestMapping(value = RotasRest.RAIZ_CADASTRO	+ RotasRest.RAIZ_CLIENTE + RotasRest.RAIZ_ENDERECO, method = RequestMethod.GET, headers = "Accept=application/json")
-	public MensagemRetorno sinalizaPortalSincronismoCadastroOrigemLogradouro(@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
-		
+
+	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_CLIENTE
+			+ RotasRest.RAIZ_ENDERECO, method = RequestMethod.GET, headers = "Accept=application/json")
+	public MensagemRetorno sinalizaPortalSincronismoCadastroOrigemLogradouro(
+			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
 		String codigoClienteERP = mapper.convertValue(mensagem.getConteudo(), new TypeReference<String>() {
 		});
-		
+
 		List<ClienteEnderecoTO> clienteEnderecoTOs = new ArrayList<>();
-		
-		List<ClienteEndereco> clienteEnderecos = clienteEnderecoServico.recuperarTipoEnderecoCodigoERP(codigoClienteERP);
+
+		List<ClienteEndereco> clienteEnderecos = clienteEnderecoServico
+				.recuperarTipoEnderecoCodigoERP(codigoClienteERP);
 		for (ClienteEndereco clienteEndereco : clienteEnderecos) {
 			clienteEnderecoTOs.add(new ClienteEnderecoTO(clienteEndereco));
-		}	
-		
+		}
+
 		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Alteração cadastral Ocorrência", clienteEnderecoTOs,
 				mensagem.getIdentificacao());
 		sincronismoCadastoService.enviaParaOPortal(msg);
 		return null;
 	}
 
+	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
+			+ RotasRest.RAIZ_VENDEDOR, method = RequestMethod.GET, headers = "Accept=application/json")
+	public MensagemRetorno sinalizaPortalSincronismoCadastroVendedor(
+			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
+		String codigoErp = mapper.convertValue(mensagem.getConteudo(), new TypeReference<String>() {
+		});
+
+		Vendedor vendedor = vendedorService.recuperarVendedor(codigoErp);
+		VendedorTO vendedorTO = new VendedorTO(vendedor);
+
+		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Alteração Vendedores", vendedorTO,
+				mensagem.getIdentificacao());
+		sincronismoCadastoService.enviaParaOPortal(msg);
+		return null;
+	}
+
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_CLIENTE
-			   + RotasRest.RAIZ_VENDEDOR, method = RequestMethod.GET, headers = "Accept=application/json")
-			 public MensagemRetorno sinalizaPortalSincronismoCadastroClienteVendedor(
-			   @RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+			+ RotasRest.RAIZ_VENDEDOR, method = RequestMethod.GET, headers = "Accept=application/json")
+	public MensagemRetorno sinalizaPortalSincronismoCadastroClienteVendedor(
+			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-			  ObjectMapper mapper = new ObjectMapper();
-			  mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
-			  String codigoErp = mapper.convertValue(mensagem.getConteudo(), new TypeReference<String>() {
-			  });
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
+		String codigoErp = mapper.convertValue(mensagem.getConteudo(), new TypeReference<String>() {
+		});
 
-			  List<VendedorCliente> vendedorClientes = vendedorClienteService.recuperarClientesVendedor(codigoErp);
-			  List<VendedorClienteTO> vendedorClientesTO = new ArrayList<VendedorClienteTO>();
-			  for (VendedorCliente vendedorCliente : vendedorClientes) {
-			   VendedorClienteTO vendedorClienteTO = new VendedorClienteTO(vendedorCliente);
-			   vendedorClientesTO.add(vendedorClienteTO);
-			  }
+		List<VendedorCliente> vendedorClientes = vendedorClienteService.recuperarClientesVendedor(codigoErp);
+		List<VendedorClienteTO> vendedorClientesTO = new ArrayList<VendedorClienteTO>();
+		for (VendedorCliente vendedorCliente : vendedorClientes) {
+			VendedorClienteTO vendedorClienteTO = new VendedorClienteTO(vendedorCliente);
+			vendedorClientesTO.add(vendedorClienteTO);
+		}
 
-			  MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Alteração Vendedor x Clientes", vendedorClientesTO,
-			    mensagem.getIdentificacao());
-			  sincronismoCadastoService.enviaParaOPortal(msg);
-			  return null;
-			 }
+		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Alteração Vendedor x Clientes", vendedorClientesTO,
+				mensagem.getIdentificacao());
+		sincronismoCadastoService.enviaParaOPortal(msg);
+		return null;
+	}
 }

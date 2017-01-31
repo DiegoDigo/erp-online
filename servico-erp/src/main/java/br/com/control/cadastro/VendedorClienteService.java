@@ -17,7 +17,12 @@ public class VendedorClienteService {
 	private VendedorClienteDao vendedorClienteDao;
 
 	public List<VendedorCliente> listar() {
-		return vendedorClienteDao.selectViewSemWhere(TabelasIntegracao.CADASTRO_VENDEDOR_CLIENTE, new VendedorClienteRowMapper());
+		return vendedorClienteDao.selectViewSemWhere(TabelasIntegracao.CADASTRO_VENDEDOR_CLIENTE,
+				new VendedorClienteRowMapper());
+	}
+
+	public List<VendedorCliente> recuperarClientesVendedor(String codigoErp) {
+		return vendedorClienteDao.recuperarClientesVendedor(codigoErp);
 	}
 
 }

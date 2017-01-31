@@ -7,13 +7,15 @@ import br.com.control.rest.client.SincronismoCadastroCanalProduto;
 import br.com.control.rest.client.SincronismoCadastroCategoriaProduto;
 import br.com.control.rest.client.SincronismoCadastroCondicaoPagamento;
 import br.com.control.rest.client.SincronismoCadastroDetalheProdutoCombo;
+import br.com.control.rest.client.SincronismoCadastroEnderecoCliente;
 import br.com.control.rest.client.SincronismoCadastroFamiliaProduto;
 import br.com.control.rest.client.SincronismoCadastroGrupoProduto;
 import br.com.control.rest.client.SincronismoCadastroMarcaProduto;
 import br.com.control.rest.client.SincronismoCadastroOcorrencia;
-import br.com.control.rest.client.SincronismoCadastroEnderecoCliente;
 import br.com.control.rest.client.SincronismoCadastroProduto;
 import br.com.control.rest.client.SincronismoCadastroTipoCobranca;
+import br.com.control.rest.client.SincronismoCadastroVendedor;
+import br.com.control.rest.client.SincronismoCadastroVendedorCliente;
 
 public class SINALIZADOR implements IscobolCall {
 
@@ -88,11 +90,15 @@ public class SINALIZADOR implements IscobolCall {
 					SincronismoCadastroEnderecoCliente rest = new SincronismoCadastroEnderecoCliente();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.CLIENTE_ENDERECO);
 				}
-				if (CadastrosEnum.VENDEDOR_CLIENTE == cadastro) {
-				     SincronismoCadastroVendedorCliente rest = new SincronismoCadastroVendedorCliente();
-				     rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.VENDEDOR_CLIENTE);
+				if (CadastrosEnum.VENDEDOR == cadastro) {
+					SincronismoCadastroVendedor rest = new SincronismoCadastroVendedor();
+					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.VENDEDOR);
 				}
-				
+				if (CadastrosEnum.VENDEDOR_CLIENTE == cadastro) {
+					SincronismoCadastroVendedorCliente rest = new SincronismoCadastroVendedorCliente();
+					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.VENDEDOR_CLIENTE);
+				}
+
 			}
 
 			System.out.println("### SAIU DO SINALIZADOR SEM ERROS ###");
