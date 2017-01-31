@@ -1,5 +1,8 @@
 package br.com.control.controllers.vendas;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import br.com.control.cadastro.CanalService;
 import br.com.control.cadastro.CategoriaService;
 import br.com.control.cadastro.CondicaoPagamentoService;
+import br.com.control.cadastro.DetalheComboProdutoService;
 import br.com.control.cadastro.FamiliaService;
 import br.com.control.cadastro.GrupoService;
 import br.com.control.cadastro.MarcaService;
@@ -28,6 +32,7 @@ import br.com.control.portal.integracao.MensagemRetorno;
 import br.com.control.portal.mensageria.to.CanalTO;
 import br.com.control.portal.mensageria.to.CategoriaTO;
 import br.com.control.portal.mensageria.to.CondicaoPagamentoTO;
+import br.com.control.portal.mensageria.to.DetalheComboProdutoTO;
 import br.com.control.portal.mensageria.to.FamiliaTO;
 import br.com.control.portal.mensageria.to.GrupoTO;
 import br.com.control.portal.mensageria.to.MarcaTO;
@@ -39,6 +44,7 @@ import br.com.control.vendas.cadastro.modelo.canal.Canal;
 import br.com.control.vendas.cadastro.modelo.condicaoPagamento.CondicaoPagamento;
 import br.com.control.vendas.cadastro.modelo.ocorrencia.Ocorrencia;
 import br.com.control.vendas.cadastro.modelo.produto.Categoria;
+import br.com.control.vendas.cadastro.modelo.produto.DetalheComboProduto;
 import br.com.control.vendas.cadastro.modelo.produto.Familia;
 import br.com.control.vendas.cadastro.modelo.produto.Grupo;
 import br.com.control.vendas.cadastro.modelo.produto.Marca;
@@ -75,6 +81,9 @@ public class SinalizadorPortalController extends AbstractController {
 
 	@Autowired
 	private TipoCobrancaService tipoCobrancaService;
+	
+	@Autowired
+	private DetalheComboProdutoService detalheProdutoComboService;
 
 	@Autowired
 	private CondicaoPagamentoService condicaoPagamentoService;
@@ -253,6 +262,30 @@ public class SinalizadorPortalController extends AbstractController {
 		OcorrenciaTO ocorrenciaTO = new OcorrenciaTO(ocorrencia);
 
 		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Alteração cadastral Ocorrência", ocorrenciaTO,
+				mensagem.getIdentificacao());
+		sincronismoCadastoService.enviaParaOPortal(msg);
+		return null;
+	}
+	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
+			+ RotasRest.RAIZ_DETALHE_COMBO, method = RequestMethod.GET, headers = "Accept=application/json")
+	public MensagemRetorno sinalizaPortalSincronismoCadastroDetalheProdutoCombo(
+			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+		
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
+		String codigoProdutoComboErp = mapper.convertValue(mensagem.getConteudo(), new TypeReference<String>() {
+		});
+		
+		List<DetalheComboProdutoTO> combosProdutoTO= new ArrayList<>();
+		
+		List<DetalheComboProduto> comboProduto = detalheProdutoComboService.recuperarComboProduto(codigoProdutoComboErp);
+		
+		for (DetalheComboProduto detalheComboProduto : comboProduto) {
+			combosProdutoTO.add(new DetalheComboProdutoTO(detalheComboProduto));
+		}
+		
+		
+		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Alteração cadastral Detalhe combo produto", combosProdutoTO,
 				mensagem.getIdentificacao());
 		sincronismoCadastoService.enviaParaOPortal(msg);
 		return null;

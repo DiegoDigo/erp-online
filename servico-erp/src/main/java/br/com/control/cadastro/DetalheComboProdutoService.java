@@ -21,4 +21,8 @@ public class DetalheComboProdutoService {
 				new DetalheComboProdutoRowMapper());
 	}
 
+	public List<DetalheComboProduto> recuperarComboProduto(String codigoProdutoComboErp) {		
+		return detalheComboProdutoDao.recuperarComboProduto(codigoProdutoComboErp);
+	}
+
 }

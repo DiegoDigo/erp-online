@@ -70,7 +70,7 @@ public abstract class ClienteRestSincronismo {
 	}
 	
 	public abstract String defineCodigoErp(String conteudo);
-
+	
 	public abstract String getServicoSincronismo();
 	
 

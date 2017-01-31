@@ -25,7 +25,6 @@ public class MensagemRecebida<T> implements Serializable {
 	}
 
 
-
 	public T getConteudo() {
 		return conteudo;
 	}
@@ -37,6 +36,4 @@ public class MensagemRecebida<T> implements Serializable {
 	public void setIdentificacao(Identificacao identificacao) {
 		this.identificacao = identificacao;
 	}
-	
-	
 }
