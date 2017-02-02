@@ -15,13 +15,13 @@ import br.com.control.vendas.cadastro.modelo.ocorrencia.Ocorrencia;
 public class OcorrenciaDao extends JdbcDao<Ocorrencia> {
 
 	public List<Ocorrencia> listarOcorrencia() {
-		String declare = "DECLARE set char @CODIGO_OCORRENCIA  = '';";
+		String declare = "DECLARE set varchar(3) @CODIGO_OCORRENCIA  = '';";
 		getJdbcTemplate().update(declare);
 		return selectViewSemWhere(TabelasIntegracao.CADASTRO_OCORRENCIA, new OcorrenciaRowMapper());
 	}
 
 	public Ocorrencia recuperarOcorrencia(String codigoOcorrenciaErp) {
-		String declare = "DECLARE set int @CODIGO_OCORRENCIA = " + codigoOcorrenciaErp + ";";
+		String declare = String.format("DECLARE set varchar(3) @CODIGO_OCORRENCIA = '%s' ;", codigoOcorrenciaErp);
 		getJdbcTemplate().update(declare);
 		return selectViewSingle(TabelasIntegracao.CADASTRO_OCORRENCIA, new OcorrenciaRowMapper());
 	}

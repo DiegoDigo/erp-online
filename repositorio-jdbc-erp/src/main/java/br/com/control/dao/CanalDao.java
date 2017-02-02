@@ -15,13 +15,13 @@ import br.com.control.vendas.cadastro.modelo.canal.Canal;
 public class CanalDao extends JdbcDao<Canal> {
 
 	public List<Canal> listarCanal() {
-		String declare = "DECLARE set char @CODIGO_CANAL  = '';";
+		String declare = "DECLARE set char(2) @CODIGO_CANAL  = '';";
 		getJdbcTemplate().update(declare);
 		return selectViewSemWhere(TabelasIntegracao.CADASTRO_CANAL, new CanalRowMapper());
 	}
 
 	public Canal recuperarCanal(String codigoCanalErp) {
-		String declare = "DECLARE set int @CODIGO_CANAL= " + codigoCanalErp + ";";
+		String declare = String.format("DECLARE set char(2) @CODIGO_CANAL= '%s';", codigoCanalErp );
 		getJdbcTemplate().update(declare);
 		return selectViewSingle(TabelasIntegracao.CADASTRO_CANAL, new CanalRowMapper());
 	}

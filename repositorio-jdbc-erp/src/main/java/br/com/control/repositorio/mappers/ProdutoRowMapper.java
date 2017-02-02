@@ -41,10 +41,10 @@ public class ProdutoRowMapper implements RowMapper<Produto>{
 		produto.setVendaMultiMinCx(rs.getInt("venda_multi_min_cx"));
 		produto.setVendeAvulso(rs.getBoolean("venda_avulso"));
 		produto.setVisibilidadePortal(rs.getInt("visibilidade_portal"));
-		produto.setCodigoErpCategoria(rs.getLong("CODIGO_CATEGORIA_PRODUTO_ERP"));
-		produto.setCodigoErpGrupo(rs.getLong("CODIGO_GRUPO_PRODUTO_ERP"));
-		produto.setCodigoErpFamilia(rs.getLong("CODIGO_FAMILIA_PRODUTO_ERP"));
-		produto.setCodigoErpMarca(rs.getLong("CODIGO_MARCA_PRODUTO_ERP"));
+		produto.setCodigoErpCategoria(rs.getString("CODIGO_CATEGORIA_PRODUTO_ERP"));
+		produto.setCodigoErpGrupo(rs.getString("CODIGO_GRUPO_PRODUTO_ERP"));
+		produto.setCodigoErpFamilia(rs.getString("CODIGO_FAMILIA_PRODUTO_ERP"));
+		produto.setCodigoErpMarca(rs.getString("CODIGO_MARCA_PRODUTO_ERP"));
 		return produto;
 	}
 

@@ -32,10 +32,10 @@ public class Produto implements Serializable {
 	private Integer vendaMultiMinCx;
 	private Boolean vendeAvulso;
 	private Integer visibilidadePortal;
-	private Long codigoErpCategoria;
-	private Long codigoErpFamilia;
-	private Long codigoErpGrupo;
-	private Long codigoErpMarca;
+	private String codigoErpCategoria;
+	private String codigoErpFamilia;
+	private String codigoErpGrupo;
+	private String codigoErpMarca;
 
 	public Long getRecId() {
 		return recId;
@@ -255,36 +255,38 @@ public class Produto implements Serializable {
 		this.visibilidadePortal = visibilidadePortal;
 	}
 
-	public Long getCodigoErpCategoria() {
+	public String getCodigoErpCategoria() {
 		return codigoErpCategoria;
 	}
 
-	public void setCodigoErpCategoria(Long codigoErpCategoria) {
+	public void setCodigoErpCategoria(String codigoErpCategoria) {
 		this.codigoErpCategoria = codigoErpCategoria;
 	}
 
-	public Long getCodigoErpFamilia() {
+	public String getCodigoErpFamilia() {
 		return codigoErpFamilia;
 	}
 
-	public void setCodigoErpFamilia(Long codigoErpFamilia) {
+	public void setCodigoErpFamilia(String codigoErpFamilia) {
 		this.codigoErpFamilia = codigoErpFamilia;
 	}
 
-	public Long getCodigoErpGrupo() {
+	public String getCodigoErpGrupo() {
 		return codigoErpGrupo;
 	}
 
-	public void setCodigoErpGrupo(Long codigoErpGrupo) {
+	public void setCodigoErpGrupo(String codigoErpGrupo) {
 		this.codigoErpGrupo = codigoErpGrupo;
 	}
 
-	public Long getCodigoErpMarca() {
+	public String getCodigoErpMarca() {
 		return codigoErpMarca;
 	}
 
-	public void setCodigoErpMarca(Long codigoErpMarca) {
+	public void setCodigoErpMarca(String codigoErpMarca) {
 		this.codigoErpMarca = codigoErpMarca;
 	}
 
+	
+	
 }

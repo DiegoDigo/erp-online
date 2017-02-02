@@ -22,7 +22,7 @@ public class SINALIZADOR implements IscobolCall {
 
 	public static void main(String[] args) {
 		SINALIZADOR sinalizador = new SINALIZADOR();
-		String[] param = { "CADASTRO|" + CadastrosEnum.CLIENTE + "|00010001" };
+		String[] param = { "CADASTRO|" + CadastrosEnum.VENDEDOR_CLIENTE + "|037" };
 		sinalizador.call(param);
 	}
 
@@ -102,6 +102,10 @@ public class SINALIZADOR implements IscobolCall {
 				if (CadastrosEnum.CLIENTE == cadastro) {
 					SincronismoCadastroCliente rest = new SincronismoCadastroCliente();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.CLIENTE);
+				}
+				if (CadastrosEnum.OCORRENCIA == cadastro) {
+					SincronismoCadastroOcorrencia rest = new SincronismoCadastroOcorrencia();
+					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.OCORRENCIA);
 				}
 
 			}

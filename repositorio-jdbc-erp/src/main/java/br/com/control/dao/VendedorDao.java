@@ -15,13 +15,13 @@ import br.com.control.vendas.cadastro.modelo.vendedor.Vendedor;
 public class VendedorDao extends JdbcDao<Vendedor> {
 
 	public List<Vendedor> listarVendedores() {
-		String declare = "DECLARE set char @CODIGO_VENDEDOR = '';";
+		String declare = "DECLARE set char(3) @CODIGO_VENDEDOR = '';";
 		getJdbcTemplate().update(declare);
 		return selectViewSemWhere(TabelasIntegracao.CADASTRO_VENDEDOR, new VendedorRowMapper());
 	}
 
 	public Vendedor recuperarVendedor(String codigoErp) {
-		String declare = "DECLARE set char @CODIGO_VENDEDOR =" + codigoErp + ";";
+		String declare = String.format("DECLARE set char(3) @CODIGO_VENDEDOR = '%s' ;",  codigoErp );
 		getJdbcTemplate().update(declare);
 		return selectViewSingle(TabelasIntegracao.CADASTRO_VENDEDOR, new VendedorRowMapper());
 	}
