@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import br.com.control.portal.integracao.TabelasIntegracao;
 import br.com.control.repositorio.mappers.ClienteRowMapper;
 import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
 
@@ -13,10 +14,16 @@ import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
 @Transactional
 public class ClienteDao extends JdbcDao<Cliente> {
 
-	public List<Cliente> listaTodosClientesDaMatricula(String matricula) {
-		String sql = "SELECT * FROM cadastro_cliente WHERE matricula_associada = " + matricula;
-		List<Cliente> clientes = getJdbcTemplate().query(sql, new ClienteRowMapper());
-		return clientes;
+	public List<Cliente> listaTodosClientesDaMatricula() {
+		String declare = "DECLARE set int @CODIGO_CLIENTE = 0";
+		getJdbcTemplate().update(declare);
+		return selectViewSemWhere(TabelasIntegracao.CADASTRO_CLIENTE, new ClienteRowMapper());
+	}
+
+	public Cliente recuperarCliente(String codigoClienteErp) {
+		String declare = "DECLARE set int @CODIGO_CLIENTE =  " + codigoClienteErp + ";";
+		getJdbcTemplate().update(declare);
+		return selectViewSingle(TabelasIntegracao.CADASTRO_CLIENTE, new ClienteRowMapper());
 	}
 
 }

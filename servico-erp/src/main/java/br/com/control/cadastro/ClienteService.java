@@ -27,4 +27,8 @@ public class ClienteService {
 
 	}
 
+	public Cliente recuperarCliente(String codigoClienteErp) {		
+		return clienteDao.recuperarCliente(codigoClienteErp);
+	}
+
 }

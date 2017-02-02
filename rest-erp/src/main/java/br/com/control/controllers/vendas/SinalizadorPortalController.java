@@ -4,19 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.MapperFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import br.com.control.cadastro.CanalService;
 import br.com.control.cadastro.CategoriaService;
 import br.com.control.cadastro.ClienteEnderecoService;
+import br.com.control.cadastro.ClienteService;
 import br.com.control.cadastro.CondicaoPagamentoService;
 import br.com.control.cadastro.DetalheComboProdutoService;
 import br.com.control.cadastro.FamiliaService;
@@ -24,6 +20,7 @@ import br.com.control.cadastro.GrupoService;
 import br.com.control.cadastro.MarcaService;
 import br.com.control.cadastro.OcorrenciaService;
 import br.com.control.cadastro.ProdutoService;
+import br.com.control.cadastro.SinalizadorPortalService;
 import br.com.control.cadastro.VendedorClienteService;
 import br.com.control.cadastro.VendedorService;
 import br.com.control.cadastro.sincronismo.SincronismoAcompanhamentoPedidoService;
@@ -35,6 +32,7 @@ import br.com.control.portal.integracao.MensagemRetorno;
 import br.com.control.portal.mensageria.to.CanalTO;
 import br.com.control.portal.mensageria.to.CategoriaTO;
 import br.com.control.portal.mensageria.to.ClienteEnderecoTO;
+import br.com.control.portal.mensageria.to.ClienteTO;
 import br.com.control.portal.mensageria.to.CondicaoPagamentoTO;
 import br.com.control.portal.mensageria.to.DetalheComboProdutoTO;
 import br.com.control.portal.mensageria.to.FamiliaTO;
@@ -47,6 +45,7 @@ import br.com.control.portal.mensageria.to.VendedorClienteTO;
 import br.com.control.portal.mensageria.to.VendedorTO;
 import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.canal.Canal;
+import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
 import br.com.control.vendas.cadastro.modelo.cliente.ClienteEndereco;
 import br.com.control.vendas.cadastro.modelo.condicaoPagamento.CondicaoPagamento;
 import br.com.control.vendas.cadastro.modelo.ocorrencia.Ocorrencia;
@@ -107,15 +106,17 @@ public class SinalizadorPortalController extends AbstractController {
 	private VendedorClienteService vendedorClienteService;
 
 	@Autowired
+	private ClienteService clienteService;
+
+	@Autowired
 	private VendedorService vendedorService;
+
+	@Autowired
+	private SinalizadorPortalService sinalizadorPortalService;
 
 	@RequestMapping(value = RotasRest.RAIZ_ACOMPANHAMENTO, method = RequestMethod.GET, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortal(@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
-		String codigoPrePedidoErp = mapper.convertValue(mensagem.getConteudo(), new TypeReference<String>() {
-		});
-		acompanhamentoCapaPedidoService.enviaParaOPortal(codigoPrePedidoErp);
+		acompanhamentoCapaPedidoService.enviaParaOPortal(sinalizadorPortalService.retornaCodigoERP(mensagem));
 		return null;
 	}
 
@@ -123,34 +124,22 @@ public class SinalizadorPortalController extends AbstractController {
 			+ RotasRest.RAIZ_GRUPO, method = RequestMethod.GET, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoCadastroGrupo(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
-		String codigoGrupoErp = mapper.convertValue(mensagem.getConteudo(), new TypeReference<String>() {
-		});
-		Grupo grupo = grupoService.recuperaGrupo(codigoGrupoErp);
+
+		Grupo grupo = grupoService.recuperaGrupo(sinalizadorPortalService.retornaCodigoERP(mensagem));
 		GrupoTO grupoTO = new GrupoTO(grupo);
 
-		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Alteração cadastral Grupo", grupoTO,
-				mensagem.getIdentificacao());
-		sincronismoCadastoService.enviaParaOPortal(msg);
-		return null;
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, grupoTO, "Grupo");
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
 			+ RotasRest.RAIZ_FAMILIA, method = RequestMethod.GET, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoCadastroFamilia(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
-		String codigoFamiliaErp = mapper.convertValue(mensagem.getConteudo(), new TypeReference<String>() {
-		});
-		Familia familia = familiaService.recuperaFamilia(codigoFamiliaErp);
+
+		Familia familia = familiaService.recuperaFamilia(sinalizadorPortalService.retornaCodigoERP(mensagem));
 		FamiliaTO familiaTO = new FamiliaTO(familia);
 
-		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Alteração cadastral Família", familiaTO,
-				mensagem.getIdentificacao());
-		sincronismoCadastoService.enviaParaOPortal(msg);
-		return null;
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, familiaTO, "Familia");
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
@@ -158,17 +147,10 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroMarca(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
-		String codigoMarcaErp = mapper.convertValue(mensagem.getConteudo(), new TypeReference<String>() {
-		});
-		Marca marca = marcaService.recuperaMarca(codigoMarcaErp);
+		Marca marca = marcaService.recuperaMarca(sinalizadorPortalService.retornaCodigoERP(mensagem));
 		MarcaTO marcaTO = new MarcaTO(marca);
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, marcaTO, "Marca");
 
-		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Alteração cadastral Marca", marcaTO,
-				mensagem.getIdentificacao());
-		sincronismoCadastoService.enviaParaOPortal(msg);
-		return null;
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
@@ -176,17 +158,11 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroCategoria(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
-		String codigoCategoriaErp = mapper.convertValue(mensagem.getConteudo(), new TypeReference<String>() {
-		});
-		Categoria categoria = categoriaService.recuperaCategoria(codigoCategoriaErp);
+		Categoria categoria = categoriaService.recuperaCategoria(sinalizadorPortalService.retornaCodigoERP(mensagem));
 		CategoriaTO categoriaTO = new CategoriaTO(categoria);
 
-		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Alteração cadastral Categoria", categoriaTO,
-				mensagem.getIdentificacao());
-		sincronismoCadastoService.enviaParaOPortal(msg);
-		return null;
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, categoriaTO, "Categoria");
+
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
@@ -194,18 +170,10 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroCanal(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
-		String codigoCanalErp = mapper.convertValue(mensagem.getConteudo(), new TypeReference<String>() {
-		});
-
-		Canal canal = canalService.recuperaCanal(codigoCanalErp);
+		Canal canal = canalService.recuperaCanal(sinalizadorPortalService.retornaCodigoERP(mensagem));
 		CanalTO canalTO = new CanalTO(canal);
 
-		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Alteração cadastral Canal", canalTO,
-				mensagem.getIdentificacao());
-		sincronismoCadastoService.enviaParaOPortal(msg);
-		return null;
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, canalTO, "Canal");
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
@@ -213,18 +181,10 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroProduto(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
-		String codigoProdutoErp = mapper.convertValue(mensagem.getConteudo(), new TypeReference<String>() {
-		});
-
-		Produto produto = produtoService.recuperarProduto(codigoProdutoErp);
+		Produto produto = produtoService.recuperarProduto(sinalizadorPortalService.retornaCodigoERP(mensagem));
 		ProdutoTO produtoTO = new ProdutoTO(produto);
 
-		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Alteração cadastral Produto", produtoTO,
-				mensagem.getIdentificacao());
-		sincronismoCadastoService.enviaParaOPortal(msg);
-		return null;
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, produtoTO, "Produto");
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_TIPO
@@ -232,38 +192,23 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroTipoCobranca(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
-		String codigoTipoCobrancaErp = mapper.convertValue(mensagem.getConteudo(), new TypeReference<String>() {
-		});
-
-		TipoCobranca tipoCobranca = tipoCobrancaService.recuperarTipoCobranca(codigoTipoCobrancaErp);
+		TipoCobranca tipoCobranca = tipoCobrancaService
+				.recuperarTipoCobranca(sinalizadorPortalService.retornaCodigoERP(mensagem));
 		TipoCobrancaTO tipoCobrancaTO = new TipoCobrancaTO(tipoCobranca);
 
-		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Alteração cadastral Tipo de Cobrança", tipoCobrancaTO,
-				mensagem.getIdentificacao());
-		sincronismoCadastoService.enviaParaOPortal(msg);
-		return null;
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, tipoCobrancaTO, "Tipo Cobrança");
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
 			+ RotasRest.RAIZ_CONDICAO_PAGAMENTO, method = RequestMethod.GET, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoCadastroCondicaoPagamento(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
-
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
-		String codigoCondicaoPagamentoErp = mapper.convertValue(mensagem.getConteudo(), new TypeReference<String>() {
-		});
-
-		CondicaoPagamento condicaoPagamento = condicaoPagamentoService
-				.recuperarCondicaoPagamento(codigoCondicaoPagamentoErp);
+		
+		CondicaoPagamento condicaoPagamento = condicaoPagamentoService.recuperarCondicaoPagamento(sinalizadorPortalService.retornaCodigoERP(mensagem));
 		CondicaoPagamentoTO condicaoPagamentoTO = new CondicaoPagamentoTO(condicaoPagamento);
 
-		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Alteração cadastral Condição de Pagamento",
-				condicaoPagamentoTO, mensagem.getIdentificacao());
-		sincronismoCadastoService.enviaParaOPortal(msg);
-		return null;
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, condicaoPagamentoTO, "Condições de Pagemanto");
+		
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
@@ -271,43 +216,28 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroOcorrencia(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
-		String codigoOcorrenciaErp = mapper.convertValue(mensagem.getConteudo(), new TypeReference<String>() {
-		});
-
-		Ocorrencia ocorrencia = ocorrenciaService.recuperarOcorrencia(codigoOcorrenciaErp);
+		Ocorrencia ocorrencia = ocorrenciaService.recuperarOcorrencia(sinalizadorPortalService.retornaCodigoERP(mensagem));
 		OcorrenciaTO ocorrenciaTO = new OcorrenciaTO(ocorrencia);
 
-		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Alteração cadastral Ocorrência", ocorrenciaTO,
-				mensagem.getIdentificacao());
-		sincronismoCadastoService.enviaParaOPortal(msg);
-		return null;
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, ocorrenciaTO, "Ocorrência");		
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
 			+ RotasRest.RAIZ_DETALHE_COMBO, method = RequestMethod.GET, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoCadastroDetalheProdutoCombo(
-			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
-
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
-		String codigoProdutoComboErp = mapper.convertValue(mensagem.getConteudo(), new TypeReference<String>() {
-		});
+			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {		
 
 		List<DetalheComboProdutoTO> combosProdutoTO = new ArrayList<>();
 
 		List<DetalheComboProduto> comboProduto = detalheProdutoComboService
-				.recuperarComboProduto(codigoProdutoComboErp);
+				.recuperarComboProduto(sinalizadorPortalService.retornaCodigoERP(mensagem));
 
 		for (DetalheComboProduto detalheComboProduto : comboProduto) {
 			combosProdutoTO.add(new DetalheComboProdutoTO(detalheComboProduto));
 		}
 
-		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Alteração cadastral Detalhe combo produto",
-				combosProdutoTO, mensagem.getIdentificacao());
-		sincronismoCadastoService.enviaParaOPortal(msg);
-		return null;
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, combosProdutoTO,"Detalhe combo produto");
+		 
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_CLIENTE
@@ -315,23 +245,15 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroOrigemLogradouro(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
-		String codigoClienteERP = mapper.convertValue(mensagem.getConteudo(), new TypeReference<String>() {
-		});
-
 		List<ClienteEnderecoTO> clienteEnderecoTOs = new ArrayList<>();
 
-		List<ClienteEndereco> clienteEnderecos = clienteEnderecoServico
-				.recuperarTipoEnderecoCodigoERP(codigoClienteERP);
+		List<ClienteEndereco> clienteEnderecos = clienteEnderecoServico.recuperarTipoEnderecoCodigoERP(sinalizadorPortalService.retornaCodigoERP(mensagem));
 		for (ClienteEndereco clienteEndereco : clienteEnderecos) {
 			clienteEnderecoTOs.add(new ClienteEnderecoTO(clienteEndereco));
 		}
-
-		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Alteração cadastral Ocorrência", clienteEnderecoTOs,
-				mensagem.getIdentificacao());
-		sincronismoCadastoService.enviaParaOPortal(msg);
-		return null;
+		
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, clienteEnderecoTOs, "Cliente Endereco");
+		 
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
@@ -339,18 +261,11 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroVendedor(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
-		String codigoErp = mapper.convertValue(mensagem.getConteudo(), new TypeReference<String>() {
-		});
-
-		Vendedor vendedor = vendedorService.recuperarVendedor(codigoErp);
+		Vendedor vendedor = vendedorService.recuperarVendedor(sinalizadorPortalService.retornaCodigoERP(mensagem));
 		VendedorTO vendedorTO = new VendedorTO(vendedor);
 
-		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Alteração Vendedores", vendedorTO,
-				mensagem.getIdentificacao());
-		sincronismoCadastoService.enviaParaOPortal(msg);
-		return null;
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, vendedorTO, "Vendedor");
+		
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_CLIENTE
@@ -358,21 +273,24 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroClienteVendedor(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
-		String codigoErp = mapper.convertValue(mensagem.getConteudo(), new TypeReference<String>() {
-		});
-
-		List<VendedorCliente> vendedorClientes = vendedorClienteService.recuperarClientesVendedor(codigoErp);
+		List<VendedorCliente> vendedorClientes = vendedorClienteService.recuperarClientesVendedor(sinalizadorPortalService.retornaCodigoERP(mensagem));
 		List<VendedorClienteTO> vendedorClientesTO = new ArrayList<VendedorClienteTO>();
+		
 		for (VendedorCliente vendedorCliente : vendedorClientes) {
-			VendedorClienteTO vendedorClienteTO = new VendedorClienteTO(vendedorCliente);
-			vendedorClientesTO.add(vendedorClienteTO);
+			vendedorClientesTO.add(new VendedorClienteTO(vendedorCliente));
 		}
 
-		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Alteração Vendedor x Clientes", vendedorClientesTO,
-				mensagem.getIdentificacao());
-		sincronismoCadastoService.enviaParaOPortal(msg);
-		return null;
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, vendedorClientesTO, "Vendedor do Cliente");		
+	}
+
+	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
+			+ RotasRest.RAIZ_CLIENTE, method = RequestMethod.GET, headers = "Accept=application/json")
+	public MensagemRetorno sinalizaPortalSincronismoCadastroCliente(
+			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+		
+		Cliente cliente = clienteService.recuperarCliente(sinalizadorPortalService.retornaCodigoERP(mensagem));
+		ClienteTO clienteTO = new ClienteTO(cliente);
+
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, clienteTO, "Cliente");
 	}
 }

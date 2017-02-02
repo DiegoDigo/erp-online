@@ -5,6 +5,7 @@ import br.com.control.portal.enums.CadastrosEnum;
 import br.com.control.rest.client.SincronismoAcompanhamentoPedido;
 import br.com.control.rest.client.SincronismoCadastroCanalProduto;
 import br.com.control.rest.client.SincronismoCadastroCategoriaProduto;
+import br.com.control.rest.client.SincronismoCadastroCliente;
 import br.com.control.rest.client.SincronismoCadastroCondicaoPagamento;
 import br.com.control.rest.client.SincronismoCadastroDetalheProdutoCombo;
 import br.com.control.rest.client.SincronismoCadastroEnderecoCliente;
@@ -21,7 +22,7 @@ public class SINALIZADOR implements IscobolCall {
 
 	public static void main(String[] args) {
 		SINALIZADOR sinalizador = new SINALIZADOR();
-		String[] param = { "CADASTRO|" + CadastrosEnum.CLIENTE_ENDERECO + "|00010001" };
+		String[] param = { "CADASTRO|" + CadastrosEnum.CLIENTE + "|00010001" };
 		sinalizador.call(param);
 	}
 
@@ -97,6 +98,10 @@ public class SINALIZADOR implements IscobolCall {
 				if (CadastrosEnum.VENDEDOR_CLIENTE == cadastro) {
 					SincronismoCadastroVendedorCliente rest = new SincronismoCadastroVendedorCliente();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.VENDEDOR_CLIENTE);
+				}
+				if (CadastrosEnum.CLIENTE == cadastro) {
+					SincronismoCadastroCliente rest = new SincronismoCadastroCliente();
+					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.CLIENTE);
 				}
 
 			}

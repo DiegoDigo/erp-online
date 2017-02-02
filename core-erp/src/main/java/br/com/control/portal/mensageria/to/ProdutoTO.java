@@ -34,6 +34,42 @@ public class ProdutoTO implements Serializable {
 	private Integer vendaMultiMinCx;
 	private Boolean vendeAvulso;
 	private Integer visibilidadePortal;
+	private Long codigoErpCategoria;
+	private Long codigoErpFamilia;
+	private Long codigoErpGrupo;
+	private Long codigoErpMarca;
+
+	public Long getCodigoErpCategoria() {
+		return codigoErpCategoria;
+	}
+
+	public void setCodigoErpCategoria(Long codigoErpCategoria) {
+		this.codigoErpCategoria = codigoErpCategoria;
+	}
+
+	public Long getCodigoErpFamilia() {
+		return codigoErpFamilia;
+	}
+
+	public void setCodigoErpFamilia(Long codigoErpFamilia) {
+		this.codigoErpFamilia = codigoErpFamilia;
+	}
+
+	public Long getCodigoErpGrupo() {
+		return codigoErpGrupo;
+	}
+
+	public void setCodigoErpGrupo(Long codigoErpGrupo) {
+		this.codigoErpGrupo = codigoErpGrupo;
+	}
+
+	public Long getCodigoErpMarca() {
+		return codigoErpMarca;
+	}
+
+	public void setCodigoErpMarca(Long codigoErpMarca) {
+		this.codigoErpMarca = codigoErpMarca;
+	}
 
 	public Boolean getAtivo() {
 		return ativo;
@@ -276,6 +312,10 @@ public class ProdutoTO implements Serializable {
 		this.setVendaMultiMinCx(produto.getVendaMultiMinCx());
 		this.setVendeAvulso(produto.getVendeAvulso());
 		this.setVisibilidadePortal(produto.getVisibilidadePortal());
+		this.setCodigoErpCategoria(produto.getCodigoErpCategoria());
+		this.setCodigoErpFamilia(produto.getCodigoErpFamilia());
+		this.setCodigoErpGrupo(produto.getCodigoErpGrupo());
+		this.setCodigoErpMarca(produto.getCodigoErpMarca());		
 
 	}
 }

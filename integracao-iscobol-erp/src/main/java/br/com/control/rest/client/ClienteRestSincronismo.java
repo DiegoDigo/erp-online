@@ -55,7 +55,7 @@ public abstract class ClienteRestSincronismo {
 		Identificacao identificacao = new Identificacao();
 		identificacao.setOrigem(Sistema.ERP);
 		identificacao.setDestino(Sistema.PORTAL_VENDAS);
-		identificacao.setMatriculaAssociada("3333");
+		identificacao.setMatriculaAssociada("1001");
 		identificacao.setServicoAcessado("CADASTRO");
 		identificacao.setUsuarioOrigemServico("CARLOS");
 		
