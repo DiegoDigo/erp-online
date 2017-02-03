@@ -14,12 +14,17 @@ import br.com.control.vendas.cadastro.modelo.produto.DetalheComboProduto;
 @Transactional
 public class DetalheComboProdutoDao extends JdbcDao<DetalheComboProduto> {
 
-	public List<DetalheComboProduto> recuperarComboProduto(String codigoProdutoComboErp) {
-		String declare = "DECLARE set date @CODIGO_COMBO = " + codigoProdutoComboErp;
-		getJdbcTemplate().update(declare);
-		return selectViewSemWhere(TabelasIntegracao.CADASTRO_DETALHE_PRODUTO_COMBO,
-				new DetalheComboProdutoRowMapper());
 	
+
+	public List<DetalheComboProduto> listaTodosOsCombos() {
+		String declare = "DECLARE set int @CODIGO_COMBO = 0;";
+		getJdbcTemplate().update(declare);
+		return selectViewSemWhere(TabelasIntegracao.CADASTRO_DETALHE_PRODUTO_COMBO, new DetalheComboProdutoRowMapper());
 	}
 	
+	public List<DetalheComboProduto> recuperarComboProduto(String codigoProdutoComboErp) {
+		String declare = "DECLARE set int @CODIGO_COMBO = " + codigoProdutoComboErp;
+		getJdbcTemplate().update(declare);
+		return selectViewSemWhere(TabelasIntegracao.CADASTRO_DETALHE_PRODUTO_COMBO, new DetalheComboProdutoRowMapper());
+	}
 }

@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.control.dao.ClienteEnderecoDao;
-import br.com.control.portal.integracao.TabelasIntegracao;
-import br.com.control.repositorio.mappers.ClienteEnderecoRowMapper;
 import br.com.control.vendas.cadastro.modelo.cliente.ClienteEndereco;
 
 @Service

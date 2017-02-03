@@ -24,6 +24,6 @@ public class DetalheComboProdutoController extends AbstractController {
 	@RequestMapping(value = RotasRest.LISTAR, method = RequestMethod.GET, headers = "Accept=application/json")
 	public MensagemRetorno listar(@RequestParam("mensagem") MensagemRecebida<DetalheComboProduto> mensagem) {
 		return new MensagemRetorno(HttpStatus.OK, "Detalhe Combo Produto Listado com sucesso !",
-				detalheComboProdutoService.detalhes(), mensagem.getIdentificacao());
+				detalheComboProdutoService.listarTodos(), mensagem.getIdentificacao());
 	}
 }

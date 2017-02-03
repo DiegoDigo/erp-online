@@ -14,8 +14,8 @@ public class MarcaService {
 	@Autowired
 	private MarcaProdutoDao marcaDao;
 
-	public List<Marca> listarTodos(String numeroMatricula) {
-		return marcaDao.listaTodasAsMarcasDaMatricula(numeroMatricula);
+	public List<Marca> listarTodos() {
+		return marcaDao.listaTodasAsMarcasDaMatricula();
 	}
 
 	public Marca recuperaMarca(String codigoMarcaErp) {
