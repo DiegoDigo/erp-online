@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,11 +21,15 @@ import br.com.control.util.ZipUtil;
 @RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_IMAGEM + RotasRest.RAIZ_PRODUTO)
 public class ImagemController extends AbstractController {
 
+	
+	@Value("${caminho_imagens_produtos_erp}")
+	private String caminhoImagensProdutosErp;
+	
 	@RequestMapping(value = RotasRest.LISTAR, method = RequestMethod.GET, headers = "Accept=multipart/form-data")
 	@ResponseBody
 	public ByteArrayResource getFile(@RequestParam(value = "mensagem") MensagemRecebida<String> mensagem) throws IOException {
-		new ZipUtil(mensagem.getConteudo(), mensagem.getConteudo()+"_ZIP.zip").zip();
-		byte[] array = Files.readAllBytes(new File(mensagem.getConteudo()+"_ZIP.zip").toPath());
+		new ZipUtil(caminhoImagensProdutosErp, caminhoImagensProdutosErp+"_ZIP.zip").zip();
+		byte[] array = Files.readAllBytes(new File(caminhoImagensProdutosErp+"_ZIP.zip").toPath());
 		return new ByteArrayResource(array);
 	}
 }
