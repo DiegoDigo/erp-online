@@ -13,10 +13,10 @@
 
 	<appender name="dailyRollingFileAppender"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<File>C:/PortalVendasWeb/server/logs/servicos-erp.log</File>
+		<File>${CAMINHO_LOG}/servicos-erp.log</File>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- daily rollover -->
-			<FileNamePattern>servicos-erp.%d{yyyy-MM-dd}.log</FileNamePattern>
+			<FileNamePattern>log_erp_dia.%d{yyyy-MM-dd}.log</FileNamePattern>
 
 			<!-- keep 30 days' worth of history -->
 			<maxHistory>30</maxHistory>
@@ -27,27 +27,11 @@
 			</Pattern>
 		</encoder>
 	</appender>
-	<appender name="minuteRollingFileAppender"
-		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<!-- rollover every minute -->
-			<FileNamePattern>C:/PortalVendasWeb/server/logs/servicos-erp-minuto.%d{yyyy-MM-dd_HH-mm}.log
-			</FileNamePattern>
 
-			<!-- keep 30 minutes' worth of history -->
-			<maxHistory>30</maxHistory>
-		</rollingPolicy>
-
-		<encoder>
-			<Pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n
-			</Pattern>
-		</encoder>
-	</appender>
 
 	<logger name="br.com.control" additivity="false">
 		<level value="DEBUG" />
 		<appender-ref ref="dailyRollingFileAppender" />
-		<appender-ref ref="minuteRollingFileAppender" />
 		<appender-ref ref="consoleAppender" />
 	</logger>
 
