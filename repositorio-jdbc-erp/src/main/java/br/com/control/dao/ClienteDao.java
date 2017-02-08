@@ -20,8 +20,8 @@ public class ClienteDao extends JdbcDao<Cliente> {
 		return selectViewSemWhere(TabelasIntegracao.CADASTRO_CLIENTE, new ClienteRowMapper());
 	}
 
-	public Cliente recuperarCliente(String codigoClienteErp) {
-		String declare = "DECLARE set int @CODIGO_CLIENTE =  " + codigoClienteErp + ";";
+	public Cliente recuperarCliente(int codigoClienteErp) {
+		String declare = "DECLARE SET INT @CODIGO_CLIENTE = " + codigoClienteErp ;
 		getJdbcTemplate().update(declare);
 		return selectViewSingle(TabelasIntegracao.CADASTRO_CLIENTE, new ClienteRowMapper());
 	}

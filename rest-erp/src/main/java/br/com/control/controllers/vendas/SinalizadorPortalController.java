@@ -288,7 +288,7 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroCliente(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 		
-		Cliente cliente = clienteService.recuperarCliente(sinalizadorPortalService.retornaCodigoERP(mensagem));
+		Cliente cliente = clienteService.recuperarCliente(Integer.valueOf(sinalizadorPortalService.retornaCodigoERP(mensagem)));
 		ClienteTO clienteTO = new ClienteTO(cliente);
 
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, clienteTO, "Cliente");

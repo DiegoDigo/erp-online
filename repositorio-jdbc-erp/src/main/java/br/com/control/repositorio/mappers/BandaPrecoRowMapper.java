@@ -21,7 +21,7 @@ public class BandaPrecoRowMapper implements RowMapper<BandaPreco> {
 //		banda.setRecId(rs.getLong("rec_id"));
 		banda.setRegiaoCliente(rs.getString("regiao_cliente"));
 		banda.setUnidade(rs.getInt("unidade"));
-		banda.setCodigoBandaPreco(rs.getString("CODIGO_BANDA_PRECO_ERP"));
+		banda.setCodigoERP(rs.getString("CODIGO_BANDA_PRECO_ERP"));
 		banda.setCodigoGrupoCanalCli(rs.getString("CODIGO_GRUPO_CANAL_CLI"));
 		banda.setCodigoMarcaProdutoERP(rs.getString("CODIGO_MARCA_PRODUTO_ERP"));
 		banda.setCodigoGrupoProdutoERP(rs.getString("CODIGO_GRUPO_PRODUTO_ERP"));

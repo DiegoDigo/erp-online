@@ -7,7 +7,7 @@ public class BandaPreco implements Serializable {
 
 	private Long recId;
 	private Boolean ativo;
-	private String codigoBandaPreco;
+	private String codigoErp;
 	private String codigoFameb;
 	private String codigoGrupoAnaliseCli;
 	private String codigoGrupoCanalCli;
@@ -42,11 +42,11 @@ public class BandaPreco implements Serializable {
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
-	public String getCodigoBandaPreco() {
-		return codigoBandaPreco;
+	public String getCodigoERP() {
+		return codigoErp;
 	}
-	public void setCodigoBandaPreco(String codigoBandaPreco) {
-		this.codigoBandaPreco = codigoBandaPreco;
+	public void setCodigoERP(String codigoErp) {
+		this.codigoErp = codigoErp;
 	}
 	public String getCodigoFameb() {
 		return codigoFameb;

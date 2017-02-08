@@ -23,11 +23,11 @@ public class ClienteService {
 	}
 
 	public List<Cliente> listarTodos() {
-		return clienteDao.selectViewSemWhere(TabelasIntegracao.CADASTRO_CLIENTE, new ClienteRowMapper());
+		return clienteDao.listaTodosClientesDaMatricula();
 
 	}
 
-	public Cliente recuperarCliente(String codigoClienteErp) {		
+	public Cliente recuperarCliente(int codigoClienteErp) {		
 		return clienteDao.recuperarCliente(codigoClienteErp);
 	}
 
