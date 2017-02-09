@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xml>
 <configuration>
+
+	<property name="LOG_PATH" value="${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}" />
+
 	<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
 			<Pattern>.%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg %n
@@ -13,17 +16,17 @@
 
 	<appender name="dailyRollingFileAppender"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<File>${CAMINHO_LOG}/servicos-erp.log</File>
+		<File>${LOG_PATH}/servicos-erp.log</File>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- daily rollover -->
-			<FileNamePattern>log_erp_dia.%d{yyyy-MM-dd}.log</FileNamePattern>
+			<FileNamePattern>${LOG_PATH}/log_erp_dia.%d{dd-MM-yyyy}.log</FileNamePattern>
 
 			<!-- keep 30 days' worth of history -->
 			<maxHistory>30</maxHistory>
 		</rollingPolicy>
 
 		<encoder>
-			<Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n
+			<Pattern>%d{dd-MM-yyyy - HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n
 			</Pattern>
 		</encoder>
 	</appender>
