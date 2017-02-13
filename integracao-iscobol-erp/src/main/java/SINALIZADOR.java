@@ -21,8 +21,9 @@ import br.com.control.rest.client.SincronismoCadastroVendedorCliente;
 public class SINALIZADOR implements IscobolCall {
 
 	public static void main(String[] args) {
+		
 		SINALIZADOR sinalizador = new SINALIZADOR();
-		String[] param = { "CADASTRO|" + CadastrosEnum.VENDEDOR_CLIENTE + "|037" };
+		String[] param = { "CADASTRO|" + CadastrosEnum.GRUPO_PRODUTO + "|1" };
 		sinalizador.call(param);
 	}
 
@@ -43,7 +44,6 @@ public class SINALIZADOR implements IscobolCall {
 				SincronismoAcompanhamentoPedido clienteREST = new SincronismoAcompanhamentoPedido();
 				clienteREST.sinalizaPortalAtualizacao(parametroRecebido, null);
 			} else if (acao.equals("CADASTRO")) {
-
 				String nomeCadastro = valoresQuebrados[1];
 				CadastrosEnum cadastro = CadastrosEnum.recuperaCadastro(nomeCadastro);
 

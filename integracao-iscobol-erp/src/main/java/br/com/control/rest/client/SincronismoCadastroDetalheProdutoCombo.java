@@ -10,6 +10,6 @@ public class SincronismoCadastroDetalheProdutoCombo extends ClienteRestSincronis
 
 	@Override
 	public String getServicoSincronismo() {
-		return "servicos/erp/sinaliza/cadastro/detalhe/combo";
+		return "/servicos/erp/sinaliza/cadastro/detalhe/combo";
 	}
 }
