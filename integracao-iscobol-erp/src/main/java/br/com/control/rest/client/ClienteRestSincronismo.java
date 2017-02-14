@@ -1,7 +1,11 @@
 package br.com.control.rest.client;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.util.Arrays;
+import java.util.Properties;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.client.RestTemplate;
@@ -17,6 +21,9 @@ import br.com.control.portal.enums.CadastrosEnum;
 
 
 public abstract class ClienteRestSincronismo {
+	
+	Properties prop = new Properties();
+	
 	
 	public void sinalizaPortalAtualizacao(String conteudo, CadastrosEnum cadastroASincronizar) {
 		System.out.println("### ENTROU NO ClienteRestSincronismo::"+conteudo.split("\\|")[0]+" ###");
@@ -55,9 +62,7 @@ public abstract class ClienteRestSincronismo {
 		Identificacao identificacao = new Identificacao();
 		identificacao.setOrigem(Sistema.ERP);
 		identificacao.setDestino(Sistema.PORTAL_VENDAS);
-		identificacao.setMatriculaAssociada("1001");
-		identificacao.setServicoAcessado("CADASTRO");
-		identificacao.setUsuarioOrigemServico("CARLOS");
+		atualizaValoresPropriedades(identificacao);
 		
 		if(cadastroASincronizar != null){
 			identificacao.setCadastroASincronizar(cadastroASincronizar);
@@ -68,6 +73,41 @@ public abstract class ClienteRestSincronismo {
 		m.setConteudo(defineCodigoErp(conteudo));
 		return m;
 	}
+	
+	
+	
+	/**
+	 * @param identificacao
+	 * 
+	 * Le do arquivo de properties com as configurações da revenda
+	 * 
+	 */
+	public void atualizaValoresPropriedades(Identificacao identificacao) {
+
+		InputStream input = null;
+
+		try {
+
+			input = new FileInputStream("integracao-is-cobol.properties");
+
+			prop.load(input);
+			identificacao.setMatriculaAssociada(prop.getProperty("matricula_revenda"));
+			identificacao.setServicoAcessado(prop.getProperty("servico_acessado"));
+			identificacao.setUsuarioOrigemServico(prop.getProperty("usuario_origem"));
+
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+	  }
 	
 	public abstract String defineCodigoErp(String conteudo);
 	
