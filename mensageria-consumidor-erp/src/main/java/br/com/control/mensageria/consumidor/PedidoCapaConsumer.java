@@ -26,18 +26,18 @@ import br.com.control.util.FormatacaoUtil;
 public class PedidoCapaConsumer {
 
 	private static Logger log = LoggerFactory.getLogger(PedidoCapaConsumer.class);
-	
-	private static final String FILA_PEDIDOS = "pedidos";
+
+	public static final String FILA_PEDIDOS = "pedidos";
 
 	@Autowired
 	private PedidoCapaService pedidoCapaService;
 
 	@Autowired
 	private PedidoItemService pedidoItemService;
-	
+
 	@Autowired
 	private PedidoCapaProducer producer;
-	
+
 	@Autowired
 	private FormatacaoUtil util;
 
@@ -48,20 +48,20 @@ public class PedidoCapaConsumer {
 		log.debug("### RECEBIDO O PEDIDO " + pedidoCapa.getRecId() + " DA FILA PEDIDOS ###");
 
 		preparaDatasPedido(pedidoCapa);
-		
+
 		AcompanhamentoPedidoTO capaTO = pedidoCapaService.salvarCapa(pedidoCapa);
 
 		for (PedidoItemTO item : pedidoCapa.getItens()) {
 			item.setNumeroPrePedidoGestao(capaTO.getNumeroPedidoGestao());
 			pedidoItemService.salvarItem(item);
 		}
-		
+
 		StatusAcompanhamentoPedidoTO status = new StatusAcompanhamentoPedidoTO();
 		status.setNumeroPrePedidoErp(capaTO.getNumeroPedidoGestao());
 		status.setRecId(capaTO.getRecId());
-		
+
 		producer.sendMessage(status);
-		
+
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
 
