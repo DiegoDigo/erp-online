@@ -17,6 +17,13 @@ public class AutenticacaoRest {
 	
 	private String QPM_PASSWORD_GRANT = "?grant_type=password&username=portalvendas&password=123";
 	
+//	private String REST_SERVICE_URI = "http://linkedby-ecommerce.com.br:8282/api-servicos-erp-homolog";
+//
+//	private String AUTH_SERVER_URI = "http://linkedby-ecommerce.com.br:8282/api-servicos-erp-homolog/oauth/token";
+//	
+//	private String QPM_PASSWORD_GRANT = "?grant_type=password&username=portalvendas&password=123";
+//	
+	
 //	private String QPM_ACCESS_TOKEN = "?access_token=";
 	
 	@SuppressWarnings({ "unchecked" })
