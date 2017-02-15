@@ -1,4 +1,3 @@
-DECLARE set int @codigoprepedido;
 CREATE VIEW dbcontrol1049999. "VW_STATUS_PEDIDO" 
 AS 
   SELECT dbcontrol1049999.vdpedflc. "vdpedflc_nped"         AS 
@@ -16,5 +15,5 @@ AS
   WHERE  dbcontrol1049999.vdpedflc. "vdpedflc_pnped" > 0 
          AND ( dbcontrol1049999.vdpedflc. "vdpedflc_status_integ" = '0' 
                 OR dbcontrol1049999.vdpedflc. "vdpedflc_status_integ" = '' ) 
-         AND ( dbcontrol1049999.vdpedflc. "vdpedflc_pnped" = @codigoprepedido 
-                OR @codigoprepedido = 0 );
+         AND ( dbcontrol1049999.vdpedflc. "vdpedflc_pnped" = @CODIGOPREPEDIDO 
+                OR @CODIGOPREPEDIDO = 0 ) 

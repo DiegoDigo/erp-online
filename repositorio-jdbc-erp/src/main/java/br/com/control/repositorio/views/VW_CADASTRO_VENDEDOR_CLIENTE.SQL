@@ -55,7 +55,9 @@ AS
                      END)                          AS CODIGO_CLIENTE_ERP, 
          dbcontrol1049999.cadcli01. "vdclicli_ven" AS CODIGO_VENDEDOR_ERP 
   FROM   dbcontrol1049999.cadcli01 
-  WHERE  dbcontrol1049999.cadcli01. "vdclicli_classe" <> 20 
+  WHERE  ( dbcontrol1049999.cadcli01. "vdclicli_ven" = @CODIGO_VENDEDOR 
+            OR @CODIGO_VENDEDOR = '' ) 
+         AND dbcontrol1049999.cadcli01. "vdclicli_classe" <> 20 
           OR (SELECT dbcontrol1049999.tbblocli. "vdcadblo_impclipalm" 
               FROM   dbcontrol1049999.tbblocli 
               WHERE  dbcontrol1049999.tbblocli. "vdcadblo_cod" = 
@@ -116,7 +118,9 @@ AS
                      END)                           AS CODIGO_CLIENTE_ERP, 
          dbcontrol1049999.cadcli01. "vdclicli_ven2" AS CODIGO_VENDEDOR_ERP 
   FROM   dbcontrol1049999.cadcli01 
-  WHERE  dbcontrol1049999.cadcli01. "vdclicli_ven2" <> '   ' 
+  WHERE  ( dbcontrol1049999.cadcli01. "vdclicli_ven2" = @CODIGO_VENDEDOR 
+            OR @CODIGO_VENDEDOR = '' ) 
+         AND dbcontrol1049999.cadcli01. "vdclicli_ven2" <> '   ' 
          AND dbcontrol1049999.cadcli01. "vdclicli_classe" <> 20 
           OR (SELECT dbcontrol1049999.tbblocli. "vdcadblo_impclipalm" 
               FROM   dbcontrol1049999.tbblocli 
@@ -178,7 +182,9 @@ AS
                      END)                           AS CODIGO_CLIENTE_ERP, 
          dbcontrol1049999.cadcli01. "vdclicli_ven3" AS CODIGO_VENDEDOR_ERP 
   FROM   dbcontrol1049999.cadcli01 
-  WHERE  dbcontrol1049999.cadcli01. "vdclicli_ven3" <> '   ' 
+  WHERE  ( dbcontrol1049999.cadcli01. "vdclicli_ven3" = @CODIGO_VENDEDOR 
+            OR @CODIGO_VENDEDOR = '' ) 
+         AND dbcontrol1049999.cadcli01. "vdclicli_ven3" <> '   ' 
          AND dbcontrol1049999.cadcli01. "vdclicli_classe" <> 20 
           OR (SELECT dbcontrol1049999.tbblocli. "vdcadblo_impclipalm" 
               FROM   dbcontrol1049999.tbblocli 
@@ -302,9 +308,11 @@ AS
                      END)                           AS CODIGO_CLIENTE_ERP, 
          dbcontrol1049999.cadcli01. "vdclicli_ven5" AS CODIGO_VENDEDOR_ERP 
   FROM   dbcontrol1049999.cadcli01 
-  WHERE  dbcontrol1049999.cadcli01. "vdclicli_ven5" <> '   ' 
-         AND dbcontrol1049999.cadcli01. "vdclicli_classe" <> 20 
-          OR (SELECT dbcontrol1049999.tbblocli. "vdcadblo_impclipalm" 
-              FROM   dbcontrol1049999.tbblocli 
-              WHERE  dbcontrol1049999.tbblocli. "vdcadblo_cod" = 
-                     dbcontrol1049999.cadcli01. "vdclicli_motblo") = 1 
+  WHERE ( dbcontrol1049999.cadcli01. "vdclicli_ven5" = @CODIGO_VENDEDOR 
+           OR @CODIGO_VENDEDOR = '' ) 
+        AND dbcontrol1049999.cadcli01. "vdclicli_ven5" <> '   ' 
+        AND dbcontrol1049999.cadcli01. "vdclicli_classe" <> 20 
+         OR (SELECT dbcontrol1049999.tbblocli. "vdcadblo_impclipalm" 
+             FROM   dbcontrol1049999.tbblocli 
+             WHERE  dbcontrol1049999.tbblocli. "vdcadblo_cod" = 
+                    dbcontrol1049999.cadcli01. "vdclicli_motblo") = 1 

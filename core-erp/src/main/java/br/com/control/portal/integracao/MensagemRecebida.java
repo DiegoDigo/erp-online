@@ -2,6 +2,7 @@ package br.com.control.portal.integracao;
 
 import java.io.Serializable;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -11,17 +12,22 @@ public class MensagemRecebida<T> implements Serializable {
 	private T conteudo;
 	
 	private Identificacao identificacao;
+
+	@Value("${numero_matricula_empresa}")
+	private String matriculaAssociada;
 	
 	public Identificacao getIdentificacao() {
 		return identificacao;
 	}
 	
 	public MensagemRecebida() {
+		
 	}
 
 	public MensagemRecebida(T conteudo, Identificacao identificacao) {
 		this.conteudo = conteudo;
 		this.identificacao = identificacao;
+		this.identificacao.setMatriculaAssociada(matriculaAssociada);
 	}
 
 

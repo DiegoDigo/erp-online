@@ -4,6 +4,3 @@ AS
          dbcontrol1049999.ceptip. "gegentip_cod"   AS DESCRICAO_LOGRADOURO, 
          dbcontrol1049999.ceptip. "gegentip_sigla" AS SIGLA_LOGRADOURO 
   FROM   dbcontrol1049999.ceptip 
-  GROUP  BY ativo, 
-            descricao_logradouro, 
-            sigla_logradouro 

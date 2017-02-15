@@ -57,7 +57,38 @@ AS
                      dbcontrol1049999.tabprc01. "vdtabprd_nro") AS 
             CODIGO_PRODUTO_ERP 
   FROM   dbcontrol1049999.tabprc01 
-  WHERE  dbcontrol1049999.tabprc01. "vdtabprd_ano" = @TABELA_ANO 
-         AND dbcontrol1049999.tabprc01. "vdtabprd_mes" = @TABELA_MES 
-         AND dbcontrol1049999.tabprc01. "vdtabprd_nmes" = @TABELA_NMES 
-         AND dbcontrol1049999.tabprc01. "vdtabprd_cfam" > 0 
+         CROSS JOIN dbcontrol1049999.bdapre01 
+  WHERE  ( dbcontrol1049999.tabprc01. "vdtabprd_ano" = @TABELA_ANO 
+           AND dbcontrol1049999.tabprc01. "vdtabprd_mes" = @TABELA_MES 
+           AND dbcontrol1049999.tabprc01. "vdtabprd_nmes" = @TABELA_NMES 
+           AND dbcontrol1049999.tabprc01. "vdtabprd_cfam" > 0 ) 
+          OR ( Cast(Cast(Cast(dbcontrol1049999.tabprc01. "vdtabprd_ano" AS CHAR( 
+                              04) 
+                         ) 
+                         || CASE 
+                              WHEN dbcontrol1049999.tabprc01. "vdtabprd_mes" <= 9 
+                            THEN 
+                              Concat('0', Cast(dbcontrol1049999.tabprc01. 
+                                               "vdtabprd_mes" 
+                                               AS 
+                                               CHAR 
+                                               (1))) 
+                              ELSE Cast(dbcontrol1049999.tabprc01. "vdtabprd_mes" 
+                                        AS CHAR( 
+                                        2)) 
+                            END 
+                         || CASE 
+                              WHEN dbcontrol1049999.tabprc01. "vdtabprd_nmes" <= 
+                                   9 
+                            THEN 
+                              Concat('0', Cast(dbcontrol1049999.tabprc01. 
+                                               "vdtabprd_nmes" 
+                                               AS 
+                                               CHAR(1)) 
+                              ) 
+                              ELSE Cast(dbcontrol1049999.tabprc01. 
+                                        "vdtabprd_nmes" 
+                                        AS CHAR 
+                                        (2)) 
+                            END AS CHAR(08)) AS INTEGER) = 
+                   dbcontrol1049999.bdapre01. "vdprdbda_tab_x_1" ) 

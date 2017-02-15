@@ -12,5 +12,5 @@ AS
          DESCRICAO_COMPLEMENTAR, 
          dbcontrol1049999.ccat01. "vdclicat_descr_compl" AS DIVISAO_CANAL 
   FROM   dbcontrol1049999.ccat01 
-  WHERE  dbcontrol1049999.ccat01. "vdclicat_cod" > @CODIGO_CANAL 
-         AND dbcontrol1049999.ccat01. "vdclicat_cod" > '00' 
+  WHERE  ( dbcontrol1049999.ccat01. "vdclicat_cod" = @CODIGO_CANAL 
+            OR @CODIGO_CANAL = '' ) 

@@ -185,7 +185,85 @@ AS
             codigo_tipo_cobranca_erp 
   FROM   dbcontrol1049999.cadcli01 
   WHERE  dbcontrol1049999.cadcli01. "vdclicli_classe" <> 20 
-          OR (SELECT dbcontrol1049999.tbblocli. "vdcadblo_impclipalm" 
-              FROM   dbcontrol1049999.tbblocli 
-              WHERE  dbcontrol1049999.tbblocli. "vdcadblo_cod" = 
-                     dbcontrol1049999.cadcli01. "vdclicli_motblo") = 1 
+         AND ( Cast(Concat(CASE 
+                             WHEN Length(Cast(dbcontrol1049999.cadcli01. 
+                                              "vdclicli_regi" 
+                                              AS 
+                                              CHAR 
+                                              (4))) 
+                                  = 1 
+                           THEN Concat('000', Cast(dbcontrol1049999.cadcli01. 
+                                                   "vdclicli_regi" 
+                                                   AS 
+                                                   VARCHAR(4)) 
+                                ) 
+                             WHEN Length(Cast(dbcontrol1049999.cadcli01. 
+                                              "vdclicli_regi" 
+                                              AS 
+                                              CHAR 
+                                              (4))) 
+                                  = 2 
+                           THEN Concat('00', Cast(dbcontrol1049999.cadcli01. 
+                                                  "vdclicli_regi" 
+                                                  AS 
+                                                  VARCHAR(4))) 
+                             WHEN Length(Cast(dbcontrol1049999.cadcli01. 
+                                              "vdclicli_regi" 
+                                              AS 
+                                              CHAR 
+                                              (4))) 
+                                  = 3 
+                           THEN Concat('0', Cast(dbcontrol1049999.cadcli01. 
+                                                 "vdclicli_regi" AS 
+                                                 VARCHAR(4))) 
+                             WHEN Length(Cast(dbcontrol1049999.cadcli01. 
+                                              "vdclicli_regi" 
+                                              AS 
+                                              CHAR 
+                                              (4))) 
+                                  = 4 
+                           THEN Cast(dbcontrol1049999.cadcli01. "vdclicli_regi" 
+                                     AS 
+                                     VARCHAR 
+                                     (4)) 
+                           END, CASE 
+                                  WHEN Length(Cast(dbcontrol1049999.cadcli01. 
+                                                   "vdclicli_num" 
+                                                   AS 
+                                                   CHAR( 
+                                                   4))) = 1 
+                                THEN Concat('000', Cast( 
+                                     dbcontrol1049999.cadcli01. 
+                                     "vdclicli_num" AS 
+                                     VARCHAR(4))) 
+                                  WHEN Length(Cast(dbcontrol1049999.cadcli01. 
+                                                   "vdclicli_num" 
+                                                   AS 
+                                                   CHAR( 
+                                                   4))) = 2 
+                                THEN Concat('00', Cast(dbcontrol1049999.cadcli01. 
+                                                       "vdclicli_num" 
+                                                       AS 
+                                                       VARCHAR(4))) 
+                                  WHEN Length(Cast(dbcontrol1049999.cadcli01. 
+                                                   "vdclicli_num" 
+                                                   AS 
+                                                   CHAR( 
+                                                   4))) = 3 
+                                THEN Concat('0', Cast(dbcontrol1049999.cadcli01. 
+                                                      "vdclicli_num" 
+                                                      AS 
+                                                      VARCHAR(4))) 
+                                  WHEN Length(Cast(dbcontrol1049999.cadcli01. 
+                                                   "vdclicli_num" 
+                                                   AS 
+                                                   CHAR( 
+                                                   4))) = 4 
+                                THEN Cast(dbcontrol1049999.cadcli01. 
+                                          "vdclicli_num" 
+                                          AS 
+                                          VARCHAR 
+                                          ( 
+                                          4)) 
+                                END) AS INTEGER) = @CODIGO_CLIENTE 
+                OR @CODIGO_CLIENTE = 0 ) 

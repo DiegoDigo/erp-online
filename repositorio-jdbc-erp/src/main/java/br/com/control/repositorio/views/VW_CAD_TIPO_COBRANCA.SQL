@@ -8,4 +8,5 @@ AS
          dbcontrol1049999.tpcobr01. "vdcadtco_redcnt"    AS RED, 
          dbcontrol1049999.tpcobr01. "vdcadtco_redcnt"    AS RED_F 
   FROM   dbcontrol1049999.tpcobr01 
-  WHERE  dbcontrol1049999.tpcobr01. "vdcadtco_cod" > @CODIGO_TIPO_COBRANCA 
+  WHERE  ( dbcontrol1049999.tpcobr01. "vdcadtco_cod" = @CODIGO_TIPO_COBRANCA 
+            OR @CODIGO_TIPO_COBRANCA = 0 ) 

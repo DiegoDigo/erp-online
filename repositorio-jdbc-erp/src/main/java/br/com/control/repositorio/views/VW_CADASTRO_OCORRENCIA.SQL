@@ -39,4 +39,7 @@ AS
                  ON dbcontrol1049999.vdnoot01. "vdnopotp_oco" = Cast( 
                     dbcontrol1049999.cadoco01. "vdnopoco_cod" AS SMALLINT) 
   WHERE  dbcontrol1049999.cadoco01. "vdnopoco_tipooco" = 1 
+         AND dbcontrol1049999.cadoco01. "vdnopoco_cod" = '001' 
          AND dbcontrol1049999.vdnoot01. "vdnopotp_tipo_prod" = 'P' 
+         AND ( dbcontrol1049999.cadoco01. "vdnopoco_cod" = @CODIGO_OCORRENCIA 
+                OR @CODIGO_OCORRENCIA = '' ) 

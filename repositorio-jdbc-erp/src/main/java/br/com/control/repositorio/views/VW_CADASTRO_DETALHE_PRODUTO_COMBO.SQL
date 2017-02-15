@@ -7,3 +7,5 @@ AS
          CODIGO_PRODUTO_COMBO_ERP 
   FROM   dbcontrol1049999.vdprdcbo 
   WHERE  dbcontrol1049999.vdprdcbo. "vdprdcbo_codrprd" <> 0 
+         AND ( dbcontrol1049999.vdprdcbo. "vdprdcbo_codcbo" = @CODIGO_COMBO 
+                OR @CODIGO_COMBO = 0 ) 

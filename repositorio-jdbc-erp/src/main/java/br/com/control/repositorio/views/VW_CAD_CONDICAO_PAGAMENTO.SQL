@@ -12,4 +12,5 @@ AS
          dbcontrol1049999.condpg01. "vdcadpag_nrdias" AS NUMERO_DIAS, 
          dbcontrol1049999.condpg01. "vdcadpag_prazo"  AS PRAZO 
   FROM   dbcontrol1049999.condpg01 
-  WHERE  dbcontrol1049999.condpg01. "vdcadpag_cod" > @CODIGO_CONDICAO_PAGAMENTO 
+  WHERE  ( dbcontrol1049999.condpg01. "vdcadpag_cod" = @CODIGO_CONDICAO_PAGAMENTO 
+            OR @CODIGO_CONDICAO_PAGAMENTO = 0 ) 
