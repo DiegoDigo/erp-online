@@ -18,4 +18,8 @@ public class TipoEnderecoService {
 		return tipoEnderecoDao.listarTipoEndereco();
 	}
 
+	public TipoEndereco recuperarTipoEndereco(String retornaCodigoERP) {
+		return tipoEnderecoDao.recuperaTipoEndereco(retornaCodigoERP);
+	}
+
 }

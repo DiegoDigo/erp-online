@@ -23,7 +23,7 @@ public class TipoEnderecoDao extends JdbcDao<TipoEndereco> {
 				new TipoEnderecoRowMapper());
 	}
 	
-	public TipoEndereco atualizarTipoEndereco(String sigla) {
+	public TipoEndereco recuperaTipoEndereco(String sigla) {
 		String declare = "DECLARE set int @ATIVO = 1";
 		getJdbcTemplate().update(declare);
 		String declare2 = String.format("DECLARE set varchar(4) @sigla = '%s'", sigla);

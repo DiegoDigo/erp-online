@@ -28,7 +28,6 @@ import br.com.control.cadastro.sincronismo.SincronismoAcompanhamentoPedidoServic
 import br.com.control.cadastro.sincronismo.SincronismoCadastroService;
 import br.com.control.cadastro.tipoCobranca.TipoCobrancaService;
 import br.com.control.controllers.AbstractController;
-import br.com.control.dao.TipoEnderecoDao;
 import br.com.control.portal.integracao.MensagemRecebida;
 import br.com.control.portal.integracao.MensagemRetorno;
 import br.com.control.portal.mensageria.to.CanalTO;
@@ -116,7 +115,7 @@ public class SinalizadorPortalController extends AbstractController {
 	private VendedorService vendedorService;
 
 	@Autowired
-	private TipoEnderecoDao tipoEnderecoDao;
+	private TipoEnderecoService tipoEnderecoService;
 	
 	@Autowired
 	private SinalizadorPortalService sinalizadorPortalService;
@@ -303,12 +302,12 @@ public class SinalizadorPortalController extends AbstractController {
 	
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
 			+ RotasRest.RAIZ_TIPO + RotasRest.RAIZ_ENDERECO, method = RequestMethod.GET, headers = "Accept=application/json")
-	public MensagemRetorno sinalizaPortalSincronismoCadastroEndereco(
+	public MensagemRetorno sinalizaPortalSincronismoCadastroTipoEndereco(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 		
-		TipoEndereco tipoEndereco = tipoEnderecoDao.atualizarTipoEndereco(sinalizadorPortalService.retornaCodigoERP(mensagem));
+		TipoEndereco tipoEndereco = tipoEnderecoService.recuperarTipoEndereco(sinalizadorPortalService.retornaCodigoERP(mensagem));
 		TipoEnderecoTO tipoEnderecoTO = new TipoEnderecoTO(tipoEndereco);
 
-		return sincronismoCadastoService.enviaParaOPortal(mensagem, tipoEnderecoTO, "Cliente");
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, tipoEnderecoTO, "Tipo de Endereço");
 	}
 }
