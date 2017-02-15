@@ -21,12 +21,14 @@ import br.com.control.cadastro.MarcaService;
 import br.com.control.cadastro.OcorrenciaService;
 import br.com.control.cadastro.ProdutoService;
 import br.com.control.cadastro.SinalizadorPortalService;
+import br.com.control.cadastro.TipoEnderecoService;
 import br.com.control.cadastro.VendedorClienteService;
 import br.com.control.cadastro.VendedorService;
 import br.com.control.cadastro.sincronismo.SincronismoAcompanhamentoPedidoService;
 import br.com.control.cadastro.sincronismo.SincronismoCadastroService;
 import br.com.control.cadastro.tipoCobranca.TipoCobrancaService;
 import br.com.control.controllers.AbstractController;
+import br.com.control.dao.TipoEnderecoDao;
 import br.com.control.portal.integracao.MensagemRecebida;
 import br.com.control.portal.integracao.MensagemRetorno;
 import br.com.control.portal.mensageria.to.CanalTO;
@@ -41,12 +43,14 @@ import br.com.control.portal.mensageria.to.MarcaTO;
 import br.com.control.portal.mensageria.to.OcorrenciaTO;
 import br.com.control.portal.mensageria.to.ProdutoTO;
 import br.com.control.portal.mensageria.to.TipoCobrancaTO;
+import br.com.control.portal.mensageria.to.TipoEnderecoTO;
 import br.com.control.portal.mensageria.to.VendedorClienteTO;
 import br.com.control.portal.mensageria.to.VendedorTO;
 import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.canal.Canal;
 import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
 import br.com.control.vendas.cadastro.modelo.cliente.ClienteEndereco;
+import br.com.control.vendas.cadastro.modelo.cliente.TipoEndereco;
 import br.com.control.vendas.cadastro.modelo.condicaoPagamento.CondicaoPagamento;
 import br.com.control.vendas.cadastro.modelo.ocorrencia.Ocorrencia;
 import br.com.control.vendas.cadastro.modelo.produto.Categoria;
@@ -111,6 +115,9 @@ public class SinalizadorPortalController extends AbstractController {
 	@Autowired
 	private VendedorService vendedorService;
 
+	@Autowired
+	private TipoEnderecoDao tipoEnderecoDao;
+	
 	@Autowired
 	private SinalizadorPortalService sinalizadorPortalService;
 
@@ -292,5 +299,16 @@ public class SinalizadorPortalController extends AbstractController {
 		ClienteTO clienteTO = new ClienteTO(cliente);
 
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, clienteTO, "Cliente");
+	}
+	
+	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
+			+ RotasRest.RAIZ_TIPO + RotasRest.RAIZ_ENDERECO, method = RequestMethod.GET, headers = "Accept=application/json")
+	public MensagemRetorno sinalizaPortalSincronismoCadastroEndereco(
+			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+		
+		TipoEndereco tipoEndereco = tipoEnderecoDao.atualizarTipoEndereco(sinalizadorPortalService.retornaCodigoERP(mensagem));
+		TipoEnderecoTO tipoEnderecoTO = new TipoEnderecoTO(tipoEndereco);
+
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, tipoEnderecoTO, "Cliente");
 	}
 }

@@ -15,10 +15,10 @@ public class SinalizadorPortalService {
 		
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
-		String codigoTipoCobrancaErp = mapper.convertValue(mensagem.getConteudo(), new TypeReference<String>() {
+		String codigoErp = mapper.convertValue(mensagem.getConteudo(), new TypeReference<String>() {
 		});
 		
-		return codigoTipoCobrancaErp;
+		return codigoErp;
 	}
 	
 }

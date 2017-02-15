@@ -15,7 +15,7 @@ public class TipoEnderecoService {
 	private TipoEnderecoDao tipoEnderecoDao;
 	
 	public List<TipoEndereco> Listar() {
-		return tipoEnderecoDao.ListarTipoEndereco();
+		return tipoEnderecoDao.listarTipoEndereco();
 	}
 
 }
