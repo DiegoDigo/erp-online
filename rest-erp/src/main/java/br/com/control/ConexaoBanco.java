@@ -49,17 +49,38 @@ public class ConexaoBanco {
 	
 	
 	
+	@Profile("local")
+	@Bean
+	public DataSource conexao0() {
+		logger.warn("############################################------> LOCAL" + passwordPostgre);
+		return DataSourceBuilder.create().build();
+	}
+	
 	@Profile("dev")
 	@Bean
-	public DataSource teste() {
+	public DataSource conexao1() {
 		logger.warn("############################################------> DEV" + passwordPostgre);
 		return DataSourceBuilder.create().build();
 	}
 
 	@Profile("homolog")
 	@Bean
-	public DataSource teste2() {
+	public DataSource conexao2() {
 		logger.warn("############################################------> HOMOLOG" + passwordPostgre);
+		return DataSourceBuilder.create().build();
+	}
+	
+	@Profile("prd")
+	@Bean
+	public DataSource conexao3() {
+		logger.warn("############################################------> PRD" + passwordPostgre);
+		return DataSourceBuilder.create().build();
+	}
+	
+	@Profile("apresentacao")
+	@Bean
+	public DataSource conexao4() {
+		logger.warn("############################################------> APRESENTACAO" + passwordPostgre);
 		return DataSourceBuilder.create().build();
 	}
 	
