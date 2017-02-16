@@ -15,8 +15,7 @@ public class ClienteService {
 	private ClienteDao clienteDao;
 
 	public Cliente salvar(Cliente cliente) {
-		// Cliente clienteSalvo = repositorioCliente.save(cliente);
-		// return clienteSalvo;
+		clienteDao.salvar(cliente);
 		return null;
 	}
 
@@ -25,7 +24,7 @@ public class ClienteService {
 
 	}
 
-	public Cliente recuperarCliente(int codigoClienteErp) {		
+	public Cliente recuperarCliente(int codigoClienteErp) {
 		return clienteDao.recuperarCliente(codigoClienteErp);
 	}
 
