@@ -17,7 +17,12 @@ public class TipoCobrancaClienteService {
 	private TipoCobrancaClienteDao tipoCobrancaClienteDao;
 
 	public List<TipoCobrancaCliente> listarTiposCobranca() {
-		return tipoCobrancaClienteDao.selectViewSemWhere(TabelasIntegracao.TIPO_COBRANCA_CLIENTE, new TipoCobrancaClienteRowMapper());
+		return tipoCobrancaClienteDao.selectViewSemWhere(TabelasIntegracao.TIPO_COBRANCA_CLIENTE,
+				new TipoCobrancaClienteRowMapper());
+	}
+
+	public TipoCobrancaCliente recuperarTipoCobrancaCliente(String retornaCodigoERP) {
+		return tipoCobrancaClienteDao.recuperarTipoCobrancaCliente(retornaCodigoERP);
 	}
 
 }

@@ -15,7 +15,6 @@ public class TipoCobrancaClienteRowMapper implements RowMapper<TipoCobrancaClien
 		cobranca.setAtivo(rs.getBoolean("ativo"));
 		cobranca.setCodigoClienteERP(rs.getString("CODIGO_CLIENTE_ERP"));
 		cobranca.setCodigoTipoConbrancaERP(rs.getString("CODIGO_TIPO_COBRANCA_ERP"));
-//		cobranca.setRecId(rs.getLong("rec_id"));
 		return cobranca;
 	}
 
