@@ -26,6 +26,8 @@ public class TipoCobrancaClienteDao extends JdbcDao<TipoCobrancaCliente> {
 	public List<TipoCobrancaCliente> retornaTodosTipoCobrancaCliente() {
 		String declare = "DECLARE set int @ATIVO = 1";
 		getJdbcTemplate().update(declare);
+		String declare2 = "DECLARE set VARCHAR(8) @codigoclienteerp = ''";
+		getJdbcTemplate().update(declare2);
 		return selectViewSemWhere(TabelasIntegracao.TIPO_COBRANCA_CLIENTE,
 				new TipoCobrancaClienteRowMapper());
 	}
