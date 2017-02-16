@@ -25,7 +25,7 @@ public class SINALIZADOR implements IscobolCall {
 	public static void main(String[] args) {
 
 		SINALIZADOR sinalizador = new SINALIZADOR();
-		String[] param = { "CADASTRO|" + CadastrosEnum.TIPO_COBRANCA + "|10A" };
+		String[] param = { "CADASTRO|" + CadastrosEnum.TIPO_COBRANCA_CLIENTE + "|00010001" };
 		sinalizador.call(param);
 	}
 

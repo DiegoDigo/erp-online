@@ -1,5 +1,7 @@
 package br.com.control.dao;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -12,11 +14,20 @@ import br.com.control.vendas.cadastro.modelo.cliente.TipoCobrancaCliente;
 @Transactional
 public class TipoCobrancaClienteDao extends JdbcDao<TipoCobrancaCliente> {
 
+	
 	public TipoCobrancaCliente recuperarTipoCobrancaCliente(String retornaCodigoERP) {
 		String declare = "DECLARE set int @ATIVO = 1";
 		getJdbcTemplate().update(declare);
+		String declare2 = new String().format("DECLARE set VARCHAR(8) @codigoclienteerp = '%s'", retornaCodigoERP);
+		getJdbcTemplate().update(declare2);
 		return selectViewSingle(TabelasIntegracao.TIPO_COBRANCA_CLIENTE, new TipoCobrancaClienteRowMapper());
 
+	}
+	public List<TipoCobrancaCliente> retornaTodosTipoCobrancaCliente() {
+		String declare = "DECLARE set int @ATIVO = 1";
+		getJdbcTemplate().update(declare);
+		return selectViewSemWhere(TabelasIntegracao.TIPO_COBRANCA_CLIENTE,
+				new TipoCobrancaClienteRowMapper());
 	}
 
 }

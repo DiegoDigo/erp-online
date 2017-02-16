@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.control.dao.TipoCobrancaClienteDao;
-import br.com.control.portal.integracao.TabelasIntegracao;
-import br.com.control.repositorio.mappers.TipoCobrancaClienteRowMapper;
 import br.com.control.vendas.cadastro.modelo.cliente.TipoCobrancaCliente;
 
 @Service
@@ -17,8 +15,7 @@ public class TipoCobrancaClienteService {
 	private TipoCobrancaClienteDao tipoCobrancaClienteDao;
 
 	public List<TipoCobrancaCliente> listarTiposCobranca() {
-		return tipoCobrancaClienteDao.selectViewSemWhere(TabelasIntegracao.TIPO_COBRANCA_CLIENTE,
-				new TipoCobrancaClienteRowMapper());
+		return tipoCobrancaClienteDao.retornaTodosTipoCobrancaCliente();
 	}
 
 	public TipoCobrancaCliente recuperarTipoCobrancaCliente(String retornaCodigoERP) {
