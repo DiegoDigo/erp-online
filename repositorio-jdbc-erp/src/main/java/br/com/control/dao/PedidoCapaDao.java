@@ -20,7 +20,7 @@ public class PedidoCapaDao extends JdbcDao<PedidoCapaTO> {
 	
 	private String completaComZeros(String valor){
 		String zeros = "";
-		if (valor.length() < 3) {
+		if (valor.length() <= 3) {
 			for (int i = valor.length(); i < 3; i++) {
 				zeros += "0";
 			}
