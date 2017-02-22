@@ -1,6 +1,7 @@
 package br.com.control.util;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import org.springframework.stereotype.Component;
@@ -34,5 +35,12 @@ public class FormatacaoUtil {
 			}
 		}
 		return resultado;
+	}
+	
+	public static Timestamp converterStringTimeStamp(String date) throws ParseException{
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+		java.util.Date parsedDate = dateFormat.parse(date);
+		java.sql.Timestamp dataTimeStamp = new java.sql.Timestamp(parsedDate.getTime());
+		return  dataTimeStamp ;
 	}
 }

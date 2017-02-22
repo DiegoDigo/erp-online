@@ -5,10 +5,10 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 @SuppressWarnings("serial")
-public class HistoricoPedidoCapa implements Serializable {
+public class PedidoPendenteLiberacao implements Serializable {
+	
 
 	private Boolean ativo;
-	private String codigoMotivoDevolucao;
 	private Timestamp dataHoraEmissaoPedido;
 	private Timestamp dataVencimento;
 	private float descontoFinanceiro;
@@ -30,14 +30,6 @@ public class HistoricoPedidoCapa implements Serializable {
 
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
-	}
-
-	public String getCodigoMotivoDevolucao() {
-		return codigoMotivoDevolucao;
-	}
-
-	public void setCodigoMotivoDevolucao(String codigoMotivoDevolucao) {
-		this.codigoMotivoDevolucao = codigoMotivoDevolucao;
 	}
 
 	public Date getDataHoraEmissaoPedido() {
@@ -135,5 +127,6 @@ public class HistoricoPedidoCapa implements Serializable {
 	public void setTipoCobrancaERP(Long tipoCobrancaERP) {
 		this.tipoCobrancaERP = tipoCobrancaERP;
 	}
+
 
 }

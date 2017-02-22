@@ -7,21 +7,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.control.cadastro.PedidoBloqueadoService;
+import br.com.control.cadastro.PedidoPendenteLiberacaoService;
+import br.com.control.controllers.AbstractController;
 import br.com.control.portal.integracao.MensagemRecebida;
 import br.com.control.portal.integracao.MensagemRetorno;
 import br.com.control.rotas.RotasRest;
-import br.com.control.vendas.cadastro.modelo.pedido.PedidoBloqueados;
+import br.com.control.vendas.cadastro.modelo.pedido.PedidoPendenteLiberacao;
 
 @RestController
 @RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_PEDIDO + RotasRest.RAIZ_BLOQUEADO)
-public class PedidoBloqueadosController {
+public class PedidoPendenteLiberacaoController extends AbstractController{
 	
 	@Autowired
-	private PedidoBloqueadoService pedidoBloqueadoService;
+	private PedidoPendenteLiberacaoService pedidoBloqueadoService;
 	
 	@RequestMapping(value = RotasRest.LISTAR, method = RequestMethod.GET, headers = "Accept=application/json")
-	public MensagemRetorno listar(@RequestParam(value = "mensagem") MensagemRecebida<PedidoBloqueados> mensagem) {
+	public MensagemRetorno listar(@RequestParam(value = "mensagem") MensagemRecebida<PedidoPendenteLiberacao> mensagem) {
 		return new MensagemRetorno(HttpStatus.OK, "Pedido Bloqueados retornado com Sucesso", pedidoBloqueadoService.listarPedidoBloqueado(),
 				mensagem.getIdentificacao());
 	}
