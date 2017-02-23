@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.control.dao.MovimentoFinanceiroDao;
-import br.com.control.portal.integracao.TabelasIntegracao;
-import br.com.control.repositorio.mappers.MovimentoFinanceiroRowMapper;
 import br.com.control.vendas.cadastro.modelo.MovimentoFinanceiro;
 
 @Service
@@ -17,7 +15,13 @@ public class MovimentoFinanceiroService {
 	private MovimentoFinanceiroDao movimentoFinanceiroDao;
 
 	public List<MovimentoFinanceiro> listar() {
-		return movimentoFinanceiroDao.selectViewSemWhere(TabelasIntegracao.MOVIMENTO_FINANCEIRO, new MovimentoFinanceiroRowMapper());
+		return movimentoFinanceiroDao.listarMovimentoFinaceiro();
 	}
+
+	public MovimentoFinanceiro buscarMovimentoFinanceiro(Integer dataOperacao) {
+		return movimentoFinanceiroDao.buscarMovimentoFinanceiro(dataOperacao);
+	}
+	
+	
 
 }

@@ -17,6 +17,7 @@ import br.com.control.rest.client.SincronismoCadastroProduto;
 import br.com.control.rest.client.SincronismoCadastroTipoCobranca;
 import br.com.control.rest.client.SincronismoCadastroVendedor;
 import br.com.control.rest.client.SincronismoCadastroVendedorCliente;
+import br.com.control.rest.client.SincronismoComodato;
 import br.com.control.rest.client.SincronismoTipoCobrancaCliente;
 import br.com.control.rest.client.SincronismoTipoEndereco;
 
@@ -25,7 +26,7 @@ public class SINALIZADOR implements IscobolCall {
 	public static void main(String[] args) {
 
 		SINALIZADOR sinalizador = new SINALIZADOR();
-		String[] param = { "CADASTRO|" + CadastrosEnum.TIPO_COBRANCA_CLIENTE + "|00010001" };
+		String[] param = { "CADASTRO|" + CadastrosEnum.COMODATO + "|68831" };
 		sinalizador.call(param);
 	}
 
@@ -116,6 +117,14 @@ public class SINALIZADOR implements IscobolCall {
 				if (CadastrosEnum.TIPO_COBRANCA_CLIENTE == cadastro) {
 					SincronismoTipoCobrancaCliente rest = new SincronismoTipoCobrancaCliente();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.TIPO_COBRANCA_CLIENTE);
+				}
+				if (CadastrosEnum.MOVIMENTO_FINANCEIRO == cadastro) {
+					SincronismoTipoCobrancaCliente rest = new SincronismoTipoCobrancaCliente();
+					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.MOVIMENTO_FINANCEIRO);
+				}
+				if (CadastrosEnum.COMODATO == cadastro) {
+					SincronismoComodato rest = new SincronismoComodato();
+					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.COMODATO);
 				}
 
 			}

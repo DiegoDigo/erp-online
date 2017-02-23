@@ -13,11 +13,13 @@ import br.com.control.cadastro.CanalService;
 import br.com.control.cadastro.CategoriaService;
 import br.com.control.cadastro.ClienteEnderecoService;
 import br.com.control.cadastro.ClienteService;
+import br.com.control.cadastro.ComodatoService;
 import br.com.control.cadastro.CondicaoPagamentoService;
 import br.com.control.cadastro.DetalheComboProdutoService;
 import br.com.control.cadastro.FamiliaService;
 import br.com.control.cadastro.GrupoService;
 import br.com.control.cadastro.MarcaService;
+import br.com.control.cadastro.MovimentoFinanceiroService;
 import br.com.control.cadastro.OcorrenciaService;
 import br.com.control.cadastro.ProdutoService;
 import br.com.control.cadastro.SinalizadorPortalService;
@@ -35,11 +37,13 @@ import br.com.control.portal.mensageria.to.CanalTO;
 import br.com.control.portal.mensageria.to.CategoriaTO;
 import br.com.control.portal.mensageria.to.ClienteEnderecoTO;
 import br.com.control.portal.mensageria.to.ClienteTO;
+import br.com.control.portal.mensageria.to.ComodatoTO;
 import br.com.control.portal.mensageria.to.CondicaoPagamentoTO;
 import br.com.control.portal.mensageria.to.DetalheComboProdutoTO;
 import br.com.control.portal.mensageria.to.FamiliaTO;
 import br.com.control.portal.mensageria.to.GrupoTO;
 import br.com.control.portal.mensageria.to.MarcaTO;
+import br.com.control.portal.mensageria.to.MovimentoFinanceiroTO;
 import br.com.control.portal.mensageria.to.OcorrenciaTO;
 import br.com.control.portal.mensageria.to.ProdutoTO;
 import br.com.control.portal.mensageria.to.TipoCobrancaClienteTO;
@@ -48,6 +52,8 @@ import br.com.control.portal.mensageria.to.TipoEnderecoTO;
 import br.com.control.portal.mensageria.to.VendedorClienteTO;
 import br.com.control.portal.mensageria.to.VendedorTO;
 import br.com.control.rotas.RotasRest;
+import br.com.control.vendas.cadastro.modelo.Comodato;
+import br.com.control.vendas.cadastro.modelo.MovimentoFinanceiro;
 import br.com.control.vendas.cadastro.modelo.canal.Canal;
 import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
 import br.com.control.vendas.cadastro.modelo.cliente.ClienteEndereco;
@@ -125,6 +131,12 @@ public class SinalizadorPortalController extends AbstractController {
 
 	@Autowired
 	private SinalizadorPortalService sinalizadorPortalService;
+	
+	@Autowired
+	private MovimentoFinanceiroService movimentoFinanceiroService;
+	
+	@Autowired
+	private ComodatoService comodatoService;
 
 	@RequestMapping(value = RotasRest.RAIZ_ACOMPANHAMENTO, method = RequestMethod.GET, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortal(@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
@@ -333,5 +345,26 @@ public class SinalizadorPortalController extends AbstractController {
 		TipoCobrancaClienteTO tipoCobrancaClienteTO = new TipoCobrancaClienteTO(tipoCobrancaCliente);
 
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, tipoCobrancaClienteTO, "Tipo de Cobrança Cliente");
+	}	
+	
+	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_MOTIVO + RotasRest.RAIZ_FINANCEIRO, method = RequestMethod.GET, headers = "Accept=application/json")
+	public MensagemRetorno sinalizaPortalSincronismoCadastroMovimentoFinanceiro(
+			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+
+		MovimentoFinanceiro movimentoFinanceiroBase = movimentoFinanceiroService.buscarMovimentoFinanceiro(Integer.valueOf(sinalizadorPortalService.retornaCodigoERP(mensagem)));
+		MovimentoFinanceiroTO movimentoFinanceiroTO = new MovimentoFinanceiroTO(movimentoFinanceiroBase);
+		
+
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, movimentoFinanceiroTO, "Movimento Financeiro");
 	}
+	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_COMODATO, method = RequestMethod.GET, headers = "Accept=application/json")
+	public MensagemRetorno sinalizaPortalSincronismoComodato(@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+		
+		Comodato ComodatoBase = comodatoService.listarComodato(sinalizadorPortalService.retornaCodigoERP(mensagem));
+		ComodatoTO comodatoTO = new ComodatoTO(ComodatoBase);		
+		
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, comodatoTO, "Movimento Financeiro");
+	}
+	
+	
 }
