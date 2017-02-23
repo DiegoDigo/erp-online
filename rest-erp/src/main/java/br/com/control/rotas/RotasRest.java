@@ -39,6 +39,8 @@ public class RotasRest {
 	public static final String RAIZ_BLOQUEADO =   "/bloqueado";
 
 	public static final String ESTABELECIMENTOS_TIPOS = "/estabelecimentos/tipos";
+	public static final String CONEXAO = "/conexao";
+	public static final String VALIDA = "/valida";
 	public static final String LOGRADOUROS_TIPOS = "/logradouros/tipos";
 	public static final String DOCUMENTOS_TIPOS = "/documentos/tipos";
 	public static final String ESTADOS = "/estados";
