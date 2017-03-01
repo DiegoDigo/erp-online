@@ -18,7 +18,7 @@ public class HistroricoPedidoCapaRowMapper implements RowMapper<HistoricoPedidoC
 			historico.setAtivo(rs.getBoolean("ativo"));
 			historico.setCodigoClienteERP(rs.getString("codigo_cliente_rec_id"));
 			historico.setCodigoMotivoDevolucao(rs.getString("codigo_motivo_devolucao").trim());
-			historico.setCondicaoPagamentoERP(rs.getLong("codigo_condicao_pagamento_rec_id"));	
+			historico.setCondicaoPagamentoERP(rs.getString("codigo_condicao_pagamento_rec_id"));	
 			historico.setDataHoraEmissaoPedido(FormatacaoUtil.converterStringTimeStamp(rs.getString("data_hora_emissao_pedido")));
 			historico.setDataVencimento(FormatacaoUtil.converterStringTimeStamp(rs.getString("data_hora_emissao_pedido")));
 			historico.setDescontoFinanceiro(rs.getInt("desconto_financeiro"));
@@ -26,7 +26,7 @@ public class HistroricoPedidoCapaRowMapper implements RowMapper<HistoricoPedidoC
 			historico.setPercentualDesconto(rs.getFloat("percentual_desconto"));
 			historico.setStatusPedido(rs.getString("status_pedido"));
 			historico.setTaxaFinanceira(rs.getFloat("taxa_financeiro"));
-			historico.setTipoCobrancaERP(rs.getLong("codigo_tipo_cobranca_rec_id"));
+			historico.setTipoCobrancaERP(rs.getString("codigo_tipo_cobranca_rec_id"));
 			historico.setValorDevolucao(rs.getFloat("valor_devolucao"));
 			historico.setValorPedido(rs.getFloat("valor_pedido"));		
 		} catch (ParseException e) {

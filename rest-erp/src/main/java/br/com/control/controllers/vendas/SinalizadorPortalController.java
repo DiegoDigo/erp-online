@@ -18,6 +18,8 @@ import br.com.control.cadastro.CondicaoPagamentoService;
 import br.com.control.cadastro.DetalheComboProdutoService;
 import br.com.control.cadastro.FamiliaService;
 import br.com.control.cadastro.GrupoService;
+import br.com.control.cadastro.HistoricoPedidoCapaService;
+import br.com.control.cadastro.HistoricoPedidoItemService;
 import br.com.control.cadastro.MarcaService;
 import br.com.control.cadastro.MovimentoFinanceiroService;
 import br.com.control.cadastro.OcorrenciaService;
@@ -42,6 +44,8 @@ import br.com.control.portal.mensageria.to.CondicaoPagamentoTO;
 import br.com.control.portal.mensageria.to.DetalheComboProdutoTO;
 import br.com.control.portal.mensageria.to.FamiliaTO;
 import br.com.control.portal.mensageria.to.GrupoTO;
+import br.com.control.portal.mensageria.to.HistoricoPedidoCapaTO;
+import br.com.control.portal.mensageria.to.HistoricoPedidoItemTO;
 import br.com.control.portal.mensageria.to.MarcaTO;
 import br.com.control.portal.mensageria.to.MovimentoFinanceiroTO;
 import br.com.control.portal.mensageria.to.OcorrenciaTO;
@@ -61,6 +65,8 @@ import br.com.control.vendas.cadastro.modelo.cliente.TipoCobrancaCliente;
 import br.com.control.vendas.cadastro.modelo.cliente.TipoEndereco;
 import br.com.control.vendas.cadastro.modelo.condicaoPagamento.CondicaoPagamento;
 import br.com.control.vendas.cadastro.modelo.ocorrencia.Ocorrencia;
+import br.com.control.vendas.cadastro.modelo.pedido.HistoricoPedidoCapa;
+import br.com.control.vendas.cadastro.modelo.pedido.HistoricoPedidoItem;
 import br.com.control.vendas.cadastro.modelo.produto.Categoria;
 import br.com.control.vendas.cadastro.modelo.produto.DetalheComboProduto;
 import br.com.control.vendas.cadastro.modelo.produto.Familia;
@@ -137,6 +143,12 @@ public class SinalizadorPortalController extends AbstractController {
 	
 	@Autowired
 	private ComodatoService comodatoService;
+	
+	@Autowired
+	private HistoricoPedidoCapaService historicoPedidoCapaService;
+
+	@Autowired
+	private HistoricoPedidoItemService historicoPedidoItemService;
 
 	@RequestMapping(value = RotasRest.RAIZ_ACOMPANHAMENTO, method = RequestMethod.GET, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortal(@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
@@ -363,7 +375,26 @@ public class SinalizadorPortalController extends AbstractController {
 		Comodato ComodatoBase = comodatoService.listarComodato(sinalizadorPortalService.retornaCodigoERP(mensagem));
 		ComodatoTO comodatoTO = new ComodatoTO(ComodatoBase);		
 		
-		return sincronismoCadastoService.enviaParaOPortal(mensagem, comodatoTO, "Movimento Financeiro");
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, comodatoTO, "Comodato");
+	}
+	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_HISTORICO + RotasRest.RAIZ_PEDIDO + RotasRest.RAIZ_CAPA, method = RequestMethod.GET, headers = "Accept=application/json")
+	public MensagemRetorno sinalizaPortalSincronismoHistoricoPedidoCapa(@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+		
+		HistoricoPedidoCapa historioPedidoCapa = historicoPedidoCapaService.buscarHistoricoCapa(sinalizadorPortalService.retornaCodigoERP(mensagem));
+		HistoricoPedidoCapaTO comodatoTO = new HistoricoPedidoCapaTO(historioPedidoCapa);		
+		
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, comodatoTO, "Historico Pedido Capa");
+	}
+	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_HISTORICO + RotasRest.RAIZ_PEDIDO + RotasRest.RAIZ_ITEM, method = RequestMethod.GET, headers = "Accept=application/json")
+	public MensagemRetorno sinalizaPortalSincronismoHistoricoPedidoItem(@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+		
+		List<HistoricoPedidoItem> historioPedidoItem = historicoPedidoItemService.buscarItemPedido(sinalizadorPortalService.retornaCodigoERP(mensagem));
+		List<HistoricoPedidoItemTO> historicoPedidoItensTO  = new ArrayList<>();
+		for (HistoricoPedidoItem historicoPedidoItem : historioPedidoItem) {
+			HistoricoPedidoItemTO historicoPedidoItemTO = new HistoricoPedidoItemTO(historicoPedidoItem);
+			historicoPedidoItensTO.add(historicoPedidoItemTO);
+		}						
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, historicoPedidoItensTO, "Historico Pedido Item");
 	}
 	
 	

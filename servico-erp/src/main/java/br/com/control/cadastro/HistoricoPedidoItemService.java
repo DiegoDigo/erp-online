@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import br.com.control.dao.HistoricoPedidoItemDao;
-import br.com.control.portal.integracao.TabelasIntegracao;
-import br.com.control.repositorio.mappers.HistoricoPedidoItemRowMapper;
 import br.com.control.vendas.cadastro.modelo.pedido.HistoricoPedidoItem;
 
 @Repository
@@ -17,7 +15,11 @@ public class HistoricoPedidoItemService {
 	private HistoricoPedidoItemDao historicoPedidoItemDao;
 
 	public List<HistoricoPedidoItem> listarPedidoItem() {
-		return historicoPedidoItemDao.selectViewSemWhere(TabelasIntegracao.HISTORICO_PEDIDO_ITEM, new HistoricoPedidoItemRowMapper());
+		return historicoPedidoItemDao.listarPedidoItem();
+	}
+
+	public List<HistoricoPedidoItem> buscarItemPedido(String numeroPedido) {
+		return historicoPedidoItemDao.listarPedidoItemDaCapa(numeroPedido);
 	}
 
 }

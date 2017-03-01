@@ -13,7 +13,16 @@ import br.com.control.vendas.cadastro.modelo.pedido.HistoricoPedidoCapa;
 @Repository
 @Transactional
 public class HistoricoPedidoCapaDao extends JdbcDao<HistoricoPedidoCapa> {
+	
 	public List<HistoricoPedidoCapa> listar() {
+		String declare = "DECLARE set varchar(12) @numero_pedido = '' " ;
+		getJdbcTemplate().update(declare);	
 		return selectViewSemWhere(TabelasIntegracao.HISTORICO_PEDIDO_CAPA, new HistroricoPedidoCapaRowMapper());
+	}
+	
+	public HistoricoPedidoCapa buscarHistoricoPedidoCapa(String codigoERP) {
+		String declare = String.format("DECLARE set varchar(12) @numero_pedido = '%s' ", codigoERP) ;
+		getJdbcTemplate().update(declare);		
+		return selectViewSingle(TabelasIntegracao.HISTORICO_PEDIDO_CAPA, new HistroricoPedidoCapaRowMapper());
 	}
 }

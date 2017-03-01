@@ -17,5 +17,9 @@ public class HistoricoPedidoCapaService {
 	public List<HistoricoPedidoCapa> listarHistoricoCapa() {
 		return historicoPedidoCapaDao.listar();
 	}
+	
+	public HistoricoPedidoCapa buscarHistoricoCapa(String CodigoERP) {
+		return historicoPedidoCapaDao.buscarHistoricoPedidoCapa(CodigoERP);
+	}
 
 }

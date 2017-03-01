@@ -14,7 +14,7 @@ public class ComodatoDao extends JdbcDao<Comodato> {
 	public Comodato buscarComodato(String codigoERP) {
 		String declare = "DECLARE set Integer @CODIGO_CEV = " + Integer.valueOf(codigoERP) + ";";
 		getJdbcTemplate().update(declare);		
-		return selectViewSingle(TabelasIntegracao.CADASTRO_PRODUTO, new ComodatoRowMapper());
+		return selectViewSingle(TabelasIntegracao.COMODATO, new ComodatoRowMapper());
 	}
 
 	public List<Comodato> listar() {
