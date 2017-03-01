@@ -12,10 +12,10 @@ public class HistoricoPedidoItemTO implements Serializable {
 	private float precoProduto;
 	private Integer quantidadeAvulsa;
 	private Integer quantidadeCaixa;
-	private Long codigoOcorrenciaErp;
-	private Long codigoPrecoErp;
-	private Long codigoProdutoErp;
-	private Long historicoPedidoCapaErp;
+	private String codigoOcorrenciaErp;
+	private String codigoPrecoErp;
+	private String codigoProdutoErp;
+	private String historicoPedidoCapaErp;
 
 	public String getNumeroItemPedido() {
 		return numeroItemPedido;
@@ -49,35 +49,37 @@ public class HistoricoPedidoItemTO implements Serializable {
 		this.quantidadeCaixa = quantidadeCaixa;
 	}
 
-	public Long getCodigoPrecoErp() {
-		return codigoPrecoErp;
-	}
+	
 
-	public void setCodigoPrecoErp(Long codigoPrecoErp) {
-		this.codigoPrecoErp = codigoPrecoErp;
-	}
-
-	public Long getCodigoOcorrenciaErp() {
+	public String getCodigoOcorrenciaErp() {
 		return codigoOcorrenciaErp;
 	}
 
-	public void setCodigoOcorrenciaErp(Long codigoOcorrenciaErp) {
+	public void setCodigoOcorrenciaErp(String codigoOcorrenciaErp) {
 		this.codigoOcorrenciaErp = codigoOcorrenciaErp;
 	}
 
-	public Long getCodigoProdutoErp() {
+	public String getCodigoPrecoErp() {
+		return codigoPrecoErp;
+	}
+
+	public void setCodigoPrecoErp(String codigoPrecoErp) {
+		this.codigoPrecoErp = codigoPrecoErp;
+	}
+
+	public String getCodigoProdutoErp() {
 		return codigoProdutoErp;
 	}
 
-	public void setCodigoProdutoErp(Long codigoProdutoErp) {
+	public void setCodigoProdutoErp(String codigoProdutoErp) {
 		this.codigoProdutoErp = codigoProdutoErp;
 	}
 
-	public Long getHistoricoPedidoCapaErp() {
+	public String getHistoricoPedidoCapaErp() {
 		return historicoPedidoCapaErp;
 	}
 
-	public void setHistoricoPedidoCapaErp(Long historicoPedidoCapaErp) {
+	public void setHistoricoPedidoCapaErp(String historicoPedidoCapaErp) {
 		this.historicoPedidoCapaErp = historicoPedidoCapaErp;
 	}
 
