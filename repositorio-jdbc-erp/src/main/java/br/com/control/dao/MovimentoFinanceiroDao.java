@@ -12,14 +12,14 @@ import br.com.control.vendas.cadastro.modelo.MovimentoFinanceiro;
 public class MovimentoFinanceiroDao extends JdbcDao<MovimentoFinanceiro> {
 
 	public MovimentoFinanceiro buscarMovimentoFinanceiro(Integer dataOperacao) {
-		String declare = "DECLARE set int @CODIGO_PROD= " + dataOperacao + ";";
+		String declare = "DECLARE set int @DATA_OPERACAO = " + dataOperacao + ";";
 		getJdbcTemplate().update(declare);
 		return selectViewSingle(TabelasIntegracao.MOVIMENTO_FINANCEIRO, new MovimentoFinanceiroRowMapper());
 
 	}
 
 	public List<MovimentoFinanceiro> listarMovimentoFinaceiro() {
-		String declare = "DECLARE set int @CODIGO_PROD= 0";
+		String declare = "DECLARE set int @DATA_OPERACAO = 0";
 		getJdbcTemplate().update(declare);
 		return selectViewSemWhere(TabelasIntegracao.MOVIMENTO_FINANCEIRO, new MovimentoFinanceiroRowMapper());
 	}

@@ -1,3 +1,5 @@
+DECLARE set bigint @CODIGO_CLIENTE = 0;
+
 CREATE VIEW dbcontrol1049999. "VW_CADASTRO_CLIENTE_ENDERECO" 
 AS 
   SELECT 1                                                AS ATIVO, 
@@ -65,7 +67,8 @@ AS
                      END)                                 AS codigo_cliente_erp, 
          dbcontrol1049999.cadcli01. "vdclicli_endfat_tip" AS SIGLA_LOGRADOURO_ERP 
   FROM   dbcontrol1049999.cadcli01 
-  WHERE  ( Cast(Concat(CASE 
+  WHERE  dbcontrol1049999.cadcli01. "vdclicli_classe" <> 20 
+			AND ( Cast(Concat(CASE 
                          WHEN Length(Cast(dbcontrol1049999.cadcli01. 
                                           "vdclicli_regi" AS 
                                           CHAR 
@@ -206,7 +209,8 @@ AS
          dbcontrol1049999.cadcli01. "vdclicli_endcob_tip" AS 
          SIGLA_LOGRADOURO_REC_ID 
   FROM   dbcontrol1049999.cadcli01 
-  WHERE  ( Cast(Concat(CASE 
+  WHERE  dbcontrol1049999.cadcli01. "vdclicli_classe" <> 20 
+			AND ( Cast(Concat(CASE 
                          WHEN Length(Cast(dbcontrol1049999.cadcli01. 
                                           "vdclicli_regi" AS 
                                           CHAR 
@@ -347,7 +351,8 @@ AS
          dbcontrol1049999.cadcli01. "vdclicli_endent_tip" AS 
          SIGLA_LOGRADOURO_REC_ID 
   FROM   dbcontrol1049999.cadcli01 
-  WHERE  ( Cast(Concat(CASE 
+  WHERE  dbcontrol1049999.cadcli01. "vdclicli_classe" <> 20 
+			AND ( Cast(Concat(CASE 
                          WHEN Length(Cast(dbcontrol1049999.cadcli01. 
                                           "vdclicli_regi" AS 
                                           CHAR 

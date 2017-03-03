@@ -15,14 +15,14 @@ import br.com.control.vendas.cadastro.modelo.cliente.ClienteEndereco;
 public class ClienteEnderecoDao extends JdbcDao<ClienteEndereco> {
 
 	public List<ClienteEndereco> recuperarTipoEndereco(String codigoTipoEnderecoERP) {
-		String declare = "DECLARE set date @CODIGO_CLIENTE = " + Integer.valueOf(codigoTipoEnderecoERP);
+		String declare = "DECLARE set bigint @CODIGO_CLIENTE = " + Integer.valueOf(codigoTipoEnderecoERP);
 		getJdbcTemplate().update(declare);
 		return selectViewSemWhere(TabelasIntegracao.CADASTRO_CLIENTE_ENDERECO, new ClienteEnderecoRowMapper());
 		
 	}
 
 	public List<ClienteEndereco> listarEnderecoCliente() {
-		String declare = "DECLARE set date @CODIGO_CLIENTE = 0";
+		String declare = "DECLARE set bigint @CODIGO_CLIENTE = 0";
 		getJdbcTemplate().update(declare);
 		return selectViewSemWhere(TabelasIntegracao.CADASTRO_CLIENTE_ENDERECO, new ClienteEnderecoRowMapper());
 	}

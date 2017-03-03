@@ -16,6 +16,8 @@ public class BandaPreco implements Serializable {
 	private String origemBanda;
 	private String regiaoCliente;
 	private Integer unidade;
+	private Integer ordem;
+	private Integer modo;
 	private String codigoCanalERP;
 	private String codigoCategoriaProdutoERP;
 	private String codigoFamiliaProdutoERP;
@@ -42,10 +44,10 @@ public class BandaPreco implements Serializable {
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
-	public String getCodigoERP() {
+	public String getCodigoErp() {
 		return codigoErp;
 	}
-	public void setCodigoERP(String codigoErp) {
+	public void setCodigoErp(String codigoErp) {
 		this.codigoErp = codigoErp;
 	}
 	public String getCodigoFameb() {
@@ -132,6 +134,16 @@ public class BandaPreco implements Serializable {
 	public void setCodigoProdutoERP(String codigoProdutoERP) {
 		this.codigoProdutoERP = codigoProdutoERP;
 	}
-	
-	
+	public Integer getOrdem() {
+		return ordem;
+	}
+	public void setOrdem(Integer ordem) {
+		this.ordem = ordem;
+	}
+	public Integer getModo() {
+		return modo;
+	}
+	public void setModo(Integer modo) {
+		this.modo = modo;
+	}
 }

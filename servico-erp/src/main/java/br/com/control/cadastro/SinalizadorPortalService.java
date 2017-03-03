@@ -15,7 +15,7 @@ public class SinalizadorPortalService {
 		
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
-		String codigoErp = mapper.convertValue(mensagem.getConteudo(), new TypeReference<String>() {
+		String codigoErp = mapper.convertValue(mensagem.getConteudo().trim(), new TypeReference<String>() {
 		});
 		
 		return codigoErp;

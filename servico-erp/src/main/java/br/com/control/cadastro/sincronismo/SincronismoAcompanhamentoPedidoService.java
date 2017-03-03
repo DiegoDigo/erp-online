@@ -2,6 +2,7 @@ package br.com.control.cadastro.sincronismo;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,8 @@ import br.com.control.vendas.cadastro.modelo.pedido.acompanhemanto.StatusAcompan
 @Service
 public class SincronismoAcompanhamentoPedidoService {
 
+	private static final Logger LOG = Logger.getLogger(SincronismoAcompanhamentoPedidoService.class);
+	
 	@Autowired
 	private AcompanhamentoPedidoDao acompanhamentoPedidoDao;
 
@@ -29,8 +32,12 @@ public class SincronismoAcompanhamentoPedidoService {
 
 	public void enviaParaOPortal(String codigoPrePedidoERP) {
 		StatusAcompanhamentoPedido status = recuperaStatusPedidos(codigoPrePedidoERP);
-		StatusAcompanhamentoPedidoTO to = new StatusAcompanhamentoPedidoTO(status);
-		pedidoCapaProducer.sendMessage(to);
+		if (status != null) {
+			StatusAcompanhamentoPedidoTO to = new StatusAcompanhamentoPedidoTO(status);
+			pedidoCapaProducer.sendMessage(to);
+		}else{
+			LOG.error("Não foi encontrado nenhum pedido com o código de pré pedido: "+codigoPrePedidoERP);
+		}
 	}
 
 }

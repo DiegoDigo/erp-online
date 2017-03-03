@@ -2,7 +2,6 @@ package br.com.control.repositorio.mappers;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.text.ParseException;
 
 import org.springframework.jdbc.core.RowMapper;

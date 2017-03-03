@@ -6,7 +6,6 @@ import java.util.Date;
 
 import br.com.control.vendas.cadastro.modelo.pedido.HistoricoPedidoCapa;
 
-@SuppressWarnings("serial")
 public class HistoricoPedidoCapaTO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

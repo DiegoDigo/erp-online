@@ -5,7 +5,6 @@ import java.sql.Timestamp;
 
 import br.com.control.vendas.cadastro.modelo.Comodato;
 
-@SuppressWarnings("serial")
 public class ComodatoTO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

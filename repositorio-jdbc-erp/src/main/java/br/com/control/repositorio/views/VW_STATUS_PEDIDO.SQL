@@ -13,7 +13,5 @@ AS
          dbcontrol1049999.vdpedflc. "vdpedflc_cod_bloq_ped" AS CODIGO_BLOQ_PEDIDO 
   FROM   dbcontrol1049999.vdpedflc 
   WHERE  dbcontrol1049999.vdpedflc. "vdpedflc_pnped" > 0 
-         AND ( dbcontrol1049999.vdpedflc. "vdpedflc_status_integ" = '0' 
-                OR dbcontrol1049999.vdpedflc. "vdpedflc_status_integ" = '' ) 
-         AND ( dbcontrol1049999.vdpedflc. "vdpedflc_pnped" = @CODIGOPREPEDIDO 
-                OR @CODIGOPREPEDIDO = 0 ) 
+         AND (dbcontrol1049999.vdpedflc. "vdpedflc_status_integ" = 'D') 
+         AND (dbcontrol1049999.vdpedflc. "vdpedflc_pnped" = @CODIGOPREPEDIDO OR @CODIGOPREPEDIDO = 0 ); 
