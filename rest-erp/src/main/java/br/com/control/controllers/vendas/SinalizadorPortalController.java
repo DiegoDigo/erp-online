@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.control.cadastro.BandaPrecoItemService;
+import br.com.control.cadastro.BandaPrecoService;
 import br.com.control.cadastro.CanalService;
 import br.com.control.cadastro.CategoriaService;
 import br.com.control.cadastro.ClienteEnderecoService;
@@ -35,6 +37,8 @@ import br.com.control.cadastro.tipoCobranca.TipoCobrancaService;
 import br.com.control.controllers.AbstractController;
 import br.com.control.portal.integracao.MensagemRecebida;
 import br.com.control.portal.integracao.MensagemRetorno;
+import br.com.control.portal.mensageria.to.BandaPrecoItemTO;
+import br.com.control.portal.mensageria.to.BandaPrecoTO;
 import br.com.control.portal.mensageria.to.CanalTO;
 import br.com.control.portal.mensageria.to.CategoriaTO;
 import br.com.control.portal.mensageria.to.ClienteEnderecoTO;
@@ -67,6 +71,8 @@ import br.com.control.vendas.cadastro.modelo.condicaoPagamento.CondicaoPagamento
 import br.com.control.vendas.cadastro.modelo.ocorrencia.Ocorrencia;
 import br.com.control.vendas.cadastro.modelo.pedido.HistoricoPedidoCapa;
 import br.com.control.vendas.cadastro.modelo.pedido.HistoricoPedidoItem;
+import br.com.control.vendas.cadastro.modelo.preco.BandaPreco;
+import br.com.control.vendas.cadastro.modelo.preco.BandaPrecoItem;
 import br.com.control.vendas.cadastro.modelo.produto.Categoria;
 import br.com.control.vendas.cadastro.modelo.produto.DetalheComboProduto;
 import br.com.control.vendas.cadastro.modelo.produto.Familia;
@@ -149,6 +155,12 @@ public class SinalizadorPortalController extends AbstractController {
 
 	@Autowired
 	private HistoricoPedidoItemService historicoPedidoItemService;
+	
+	@Autowired
+	private BandaPrecoService bandaPrecoService;
+
+	@Autowired
+	private BandaPrecoItemService bandaPrecoItemService;
 
 	@RequestMapping(value = RotasRest.RAIZ_ACOMPANHAMENTO, method = RequestMethod.GET, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortal(@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
@@ -395,6 +407,25 @@ public class SinalizadorPortalController extends AbstractController {
 			historicoPedidoItensTO.add(historicoPedidoItemTO);
 		}						
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, historicoPedidoItensTO, "Historico Pedido Item");
+	}
+	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_BANDA + RotasRest.RAIZ_PRECO + RotasRest.RAIZ_CAPA, method = RequestMethod.GET, headers = "Accept=application/json")
+	public MensagemRetorno sinalizaPortalSincronismoBandaPrecoCapa(@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+		
+		BandaPreco bandaPreco = bandaPrecoService.buscarBanda(sinalizadorPortalService.retornaCodigoERP(mensagem));
+		BandaPrecoTO bandaPrecoTo = new BandaPrecoTO(bandaPreco);			
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, bandaPrecoTo, "Banda Preço");
+	}
+	
+	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_BANDA + RotasRest.RAIZ_PRECO + RotasRest.RAIZ_ITEM, method = RequestMethod.GET, headers = "Accept=application/json")
+	public MensagemRetorno sinalizaPortalSincronismoBandaPrecoItem(@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+		
+		List<BandaPrecoItemTO> bandaPrecoItensTO = new ArrayList<>();		
+		List<BandaPrecoItem> bandaPrecoItens = bandaPrecoItemService.buscaBandaPrecoItem(sinalizadorPortalService.retornaCodigoERP(mensagem));
+		for (BandaPrecoItem bandaPrecoItem : bandaPrecoItens) {
+			BandaPrecoItemTO bandaPrecoItemTO = new BandaPrecoItemTO(bandaPrecoItem);
+			bandaPrecoItensTO.add(bandaPrecoItemTO);
+		}			
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, bandaPrecoItensTO, "Banda Preço Item");
 	}
 	
 	

@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.control.dao.BandaPrecoItemDao;
-import br.com.control.portal.integracao.TabelasIntegracao;
-import br.com.control.repositorio.mappers.BandaPrecoItemRowMapper;
 import br.com.control.vendas.cadastro.modelo.preco.BandaPrecoItem;
 
 @Service
@@ -17,7 +15,11 @@ public class BandaPrecoItemService {
 	private BandaPrecoItemDao bandaPrecoItemDao;
 
 	public List<BandaPrecoItem> listar() {
-		return bandaPrecoItemDao.selectViewSemWhere(TabelasIntegracao.CADASTRO_BANDA_PRECO_ITEM, new BandaPrecoItemRowMapper());
+		return bandaPrecoItemDao.listar();
 	}
 
+	public List<BandaPrecoItem> buscaBandaPrecoItem(String codigoBandaPreco) {
+		return bandaPrecoItemDao.buscarBandaItem(codigoBandaPreco);
+	}
+	
 }

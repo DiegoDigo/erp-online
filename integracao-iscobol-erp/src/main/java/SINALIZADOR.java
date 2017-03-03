@@ -3,6 +3,8 @@ import com.iscobol.types.NumericVar;
 
 import br.com.control.portal.enums.CadastrosEnum;
 import br.com.control.rest.client.SincronismoAcompanhamentoPedido;
+import br.com.control.rest.client.SincronismoBandaPrecoCapa;
+import br.com.control.rest.client.SincronismoBandaPrecoItem;
 import br.com.control.rest.client.SincronismoCadastroCanalProduto;
 import br.com.control.rest.client.SincronismoCadastroCategoriaProduto;
 import br.com.control.rest.client.SincronismoCadastroCliente;
@@ -135,6 +137,14 @@ public class SINALIZADOR implements IscobolCall {
 				if (CadastrosEnum.HISTORICO_PEDIDO_ITEM == cadastro) {
 					SincronismoHistoricoPedidoItem rest = new SincronismoHistoricoPedidoItem();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.HISTORICO_PEDIDO_ITEM);
+				}
+				if (CadastrosEnum.BANDA_PRECO_CAPA == cadastro) {
+					SincronismoBandaPrecoCapa rest = new SincronismoBandaPrecoCapa();
+					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.BANDA_PRECO_CAPA);
+				}
+				if (CadastrosEnum.BANDA_PRECO_ITEM == cadastro) {
+					SincronismoBandaPrecoItem rest = new SincronismoBandaPrecoItem();
+					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.BANDA_PRECO_ITEM);
 				}
 
 			}
