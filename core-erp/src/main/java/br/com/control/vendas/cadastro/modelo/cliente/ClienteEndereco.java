@@ -2,6 +2,8 @@ package br.com.control.vendas.cadastro.modelo.cliente;
 
 import java.io.Serializable;
 
+import br.com.control.portal.mensageria.to.ClienteEnderecoTO;
+
 @SuppressWarnings("serial")
 public class ClienteEndereco implements Serializable {
 
@@ -81,7 +83,25 @@ public class ClienteEndereco implements Serializable {
 	}
 	public void setCodigoTipoEnderecoERP(String codigoTipoEnderecoERP) {
 		CodigoTipoEnderecoERP = codigoTipoEnderecoERP;
+
 	}
+	
+	public ClienteEndereco() {}
+	
+	public ClienteEndereco(ClienteEnderecoTO clienteEnderecoTO) {		
+		this.bairro = clienteEnderecoTO.getBairro();
+		this.cepEndereco = clienteEnderecoTO.getCepEndereco();
+		this.endereco = clienteEnderecoTO.getEndereco();
+		this.municipio = clienteEnderecoTO.getMunicipio();
+		this.numero = clienteEnderecoTO.getNumero();
+		this.pontoReferencia = clienteEnderecoTO.getPontoReferencia();
+		this.ufEndereco = clienteEnderecoTO.getUfEndereco();
+		this.origemLogradouroERP = clienteEnderecoTO.getOrigemLogradouroERP();
+		this.codigoClienteERP = clienteEnderecoTO.getCodigoClienteERP();
+		this.CodigoTipoEnderecoERP = clienteEnderecoTO.getCodigoTipoEnderecoERP();
+	}
+	
+	
 	
 	
 }

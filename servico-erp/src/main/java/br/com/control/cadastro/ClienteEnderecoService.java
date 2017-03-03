@@ -21,5 +21,10 @@ public class ClienteEnderecoService {
 	public List<ClienteEndereco> recuperarTipoEnderecoCodigoERP(String codigoTipoEnderecoERP) {
 		return clienteEnderecoDao.recuperarTipoEndereco(codigoTipoEnderecoERP);
 	}
+	
+	public void alterarDados(ClienteEndereco clienteEndereco) {
+		clienteEnderecoDao.	alterarEndereco(clienteEndereco);
+		
+	}
 
 }

@@ -18,6 +18,10 @@ public class ClienteService {
 		clienteDao.salvar(cliente);
 		return null;
 	}
+	public Cliente alterarDados(Cliente cliente) {
+		clienteDao.alterarDadosCadastrais(cliente);
+		return null;
+	}
 
 	public List<Cliente> listarTodos() {
 		return clienteDao.listaTodosClientesDaMatricula();

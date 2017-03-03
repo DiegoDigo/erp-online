@@ -17,6 +17,9 @@ public class MessagingConfiguration {
 	private static final String FILA_PEDIDOS = "pedidos";
 	private static final String FILA_ACOMPANHAMENTO = "acompanhamento";
 	private static final String FILA_SINCRONISMO_CADASTRO = "sincronismo_cadastro";
+	private static final String FILA_LIBERACAO_PEDIDO = "liberacao_pedido";
+	private static final String FILA_ALTERACAO_DADOS_CADASTRAIS_CONTATO = "alteracao_dados_cadastrais_contato";
+	private static final String FILA_ALTERACAO_DADOS_CADASTRAIS_ENDERECO = "alteracao_dados_cadastrais_endereco";
 
 	@Bean
 	public ActiveMQConnectionFactory connectionFactory() {
@@ -49,6 +52,27 @@ public class MessagingConfiguration {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactory());
 		template.setDefaultDestinationName(FILA_SINCRONISMO_CADASTRO);
+		return template;
+	}
+	@Bean
+	public JmsTemplate jmsTemplateLiberacaoPedido() {
+		JmsTemplate template = new JmsTemplate();
+		template.setConnectionFactory(connectionFactory());
+		template.setDefaultDestinationName(FILA_LIBERACAO_PEDIDO);
+		return template;
+	}
+	@Bean
+	public JmsTemplate jmsTemplateAlteracaoDadosCadastraisContato() {
+		JmsTemplate template = new JmsTemplate();
+		template.setConnectionFactory(connectionFactory());
+		template.setDefaultDestinationName(FILA_ALTERACAO_DADOS_CADASTRAIS_CONTATO);
+		return template;
+	}
+	@Bean
+	public JmsTemplate jmsTemplateAlteracaoDadosCadastraisEndereco() {
+		JmsTemplate template = new JmsTemplate();
+		template.setConnectionFactory(connectionFactory());
+		template.setDefaultDestinationName(FILA_ALTERACAO_DADOS_CADASTRAIS_ENDERECO);
 		return template;
 	}
 

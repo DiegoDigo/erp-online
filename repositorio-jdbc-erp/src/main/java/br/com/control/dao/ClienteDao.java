@@ -40,6 +40,18 @@ public class ClienteDao extends JdbcDao<Cliente> {
 			e.getMessage();
 		}
 	}
+	
+	@Transactional
+	public void alterarDadosCadastrais(Cliente cliente) {
+		CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.ALTERACAO_PRE_CADASTRO_CLIENTE);
+		preparaExecucaoProcedure(cliente, stmt);
+		try {
+			stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			e.getMessage();
+		}
+	}
 
 	// public AcompanhamentoPedidoTO salvarCapaPedido(PedidoCapaTO pedido) {
 	// CallableStatement stmt =
