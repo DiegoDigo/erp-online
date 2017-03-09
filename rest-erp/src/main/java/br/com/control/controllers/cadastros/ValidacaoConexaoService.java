@@ -9,15 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.control.rotas.RotasRest;
 
 @RestController
-@RequestMapping(RotasRest.CONEXAO)
+@RequestMapping(RotasRest.RAIZ + RotasRest.CONEXAO)
 public class ValidacaoConexaoService {
-	
 
 	@RequestMapping(value = RotasRest.VALIDA, method = RequestMethod.GET, headers = "Accept=application/json")
-	public ResponseEntity<String> listar() {
-		return new ResponseEntity<String>("", HttpStatus.OK);
+	public ResponseEntity<Void> listar() {
+		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
-	
-	
+
 }
-	
