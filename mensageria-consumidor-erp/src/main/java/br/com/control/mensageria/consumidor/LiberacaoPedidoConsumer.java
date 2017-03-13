@@ -14,11 +14,9 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.control.cadastro.PedidoCapaService;
-import br.com.control.cadastro.PedidoItemService;
 import br.com.control.mensageria.produtor.PedidoCapaProducer;
 import br.com.control.portal.mensageria.to.AcompanhamentoPedidoTO;
 import br.com.control.portal.mensageria.to.PedidoCapaTO;
-import br.com.control.portal.mensageria.to.PedidoItemTO;
 import br.com.control.portal.mensageria.to.StatusAcompanhamentoPedidoTO;
 import br.com.control.util.FormatacaoUtil;
 
