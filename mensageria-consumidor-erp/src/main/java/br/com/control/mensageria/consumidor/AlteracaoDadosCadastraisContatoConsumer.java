@@ -33,6 +33,7 @@ public class AlteracaoDadosCadastraisContatoConsumer {
 
 	@JmsListener(destination = FILA_ALTERACAO_DADOS_CADASTRAIS_ENDERECO)
 	public void receiveMessage(final Message<ClienteEnderecoTO> message) throws JMSException {
+		@SuppressWarnings("unchecked")
 		List<ClienteEnderecoTO> clienteEnderecoTOs = (List<ClienteEnderecoTO>) message.getPayload();
 		for (ClienteEnderecoTO clienteEnderecoTO : clienteEnderecoTOs) {
 			log.debug("### RECEBIDO ALTERAÇÃO DO ENDEREÇO DO CLIENTE " + clienteEnderecoTO.getCodigoClienteERP() + " DA ALTERAÇÃO DE DADOS CADASTRAIS ENDERECO ###");

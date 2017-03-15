@@ -33,10 +33,13 @@ public class MovimentoFinanceiroRowMapper implements RowMapper<MovimentoFinancei
 	}
 
 	private Timestamp converterStringTimeStamp(String date) throws ParseException{
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
-		java.util.Date parsedDate = dateFormat.parse(date);
-		java.sql.Timestamp dataTimeStamp = new java.sql.Timestamp(parsedDate.getTime());
-		return  dataTimeStamp ;
+		if (date != null && !date.equals("0") && !date.equals("")) {
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+			java.util.Date parsedDate = dateFormat.parse(date);
+			java.sql.Timestamp dataTimeStamp = new java.sql.Timestamp(parsedDate.getTime());
+			return  dataTimeStamp ;
+		}
+		return null;
 	}	
 	
 }
