@@ -46,6 +46,9 @@ public class PedidoCapaConsumer {
 		PedidoCapaTO pedidoCapa = message.getPayload();
 
 		log.debug("### RECEBIDO O PEDIDO " + pedidoCapa.getRecId() + " DA FILA PEDIDOS ###");
+		log.info("### CAPA REC_ID: "+pedidoCapa.getRecId()+ " ###");
+		log.info("### NUMERO PRE-PEDIDO ERP: " + pedidoCapa.getNumeroPrePedidoGestao() + " ###");
+		log.info("### STATUS PEDIDO: "+pedidoCapa.getStatusPedido()+" ###");
 
 		preparaDatasPedido(pedidoCapa);
 
