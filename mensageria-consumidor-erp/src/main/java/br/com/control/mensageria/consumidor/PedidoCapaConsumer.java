@@ -47,8 +47,7 @@ public class PedidoCapaConsumer {
 
 		log.debug("### RECEBIDO O PEDIDO " + pedidoCapa.getRecId() + " DA FILA PEDIDOS ###");
 		log.info("### CAPA REC_ID: "+pedidoCapa.getRecId()+ " ###");
-		log.info("### NUMERO PRE-PEDIDO ERP: " + pedidoCapa.getNumeroPrePedidoGestao() + " ###");
-		log.info("### STATUS PEDIDO: "+pedidoCapa.getStatusPedido()+" ###");
+		
 
 		preparaDatasPedido(pedidoCapa);
 
@@ -58,6 +57,9 @@ public class PedidoCapaConsumer {
 			item.setNumeroPrePedidoGestao(capaTO.getNumeroPedidoGestao());
 			pedidoItemService.salvarItem(item);
 		}
+		
+		log.info("### NUMERO PRE-PEDIDO ERP: " + capaTO.getNumeroPedidoGestao() + " ###");
+		log.info("### STATUS PEDIDO: "+capaTO.getStatusAcompanhamentoPedido()+" ###");
 
 		StatusAcompanhamentoPedidoTO status = new StatusAcompanhamentoPedidoTO();
 		status.setNumeroPrePedidoErp(capaTO.getNumeroPedidoGestao());

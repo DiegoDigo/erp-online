@@ -18,9 +18,6 @@ public class PedidoItemDao extends JdbcDao<PedidoItem> {
 		preparaExecucaoProcedure(pedidoItem, stmt);
 
 		try {
-			System.out.println(stmt.getLong(12));
-			System.out.println(stmt.getLong(13));
-			System.out.println(stmt.getLong(14));
 			stmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
