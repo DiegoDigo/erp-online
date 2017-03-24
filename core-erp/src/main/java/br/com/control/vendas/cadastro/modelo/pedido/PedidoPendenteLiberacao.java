@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import br.com.control.portal.enums.StatusLiberacaoPedido;
+
 @SuppressWarnings("serial")
 public class PedidoPendenteLiberacao implements Serializable {
 	
@@ -14,7 +16,7 @@ public class PedidoPendenteLiberacao implements Serializable {
 	private float descontoFinanceiro;
 	private String numeroPedido;
 	private float percentualDesconto;
-	private String statusPedido;
+	private StatusLiberacaoPedido statusPedido;
 	private float taxaFinanceira;
 	private float valorDevolucao;
 	private float valorPedido;
@@ -72,11 +74,11 @@ public class PedidoPendenteLiberacao implements Serializable {
 		this.percentualDesconto = percentualDesconto;
 	}
 
-	public String getStatusPedido() {
+	public StatusLiberacaoPedido getStatusPedido() {
 		return statusPedido;
 	}
 
-	public void setStatusPedido(String statusPedido) {
+	public void setStatusPedido(StatusLiberacaoPedido statusPedido) {
 		this.statusPedido = statusPedido;
 	}
 

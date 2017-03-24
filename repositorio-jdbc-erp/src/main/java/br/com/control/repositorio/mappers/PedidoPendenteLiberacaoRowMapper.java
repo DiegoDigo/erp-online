@@ -6,6 +6,7 @@ import java.text.ParseException;
 
 import org.springframework.jdbc.core.RowMapper;
 
+import br.com.control.portal.enums.StatusLiberacaoPedido;
 import br.com.control.util.FormatacaoUtil;
 import br.com.control.vendas.cadastro.modelo.pedido.PedidoPendenteLiberacao;
 
@@ -24,7 +25,7 @@ public class PedidoPendenteLiberacaoRowMapper  implements RowMapper<PedidoPenden
 			pedidoLiberacao.setDescontoFinanceiro(rs.getInt("desconto_financeiro"));
 			pedidoLiberacao.setNumeroPedido(rs.getString("numero_pedido"));
 			pedidoLiberacao.setPercentualDesconto(rs.getFloat("percentual_desconto"));
-			pedidoLiberacao.setStatusPedido(rs.getString("status_pedido"));
+			pedidoLiberacao.setStatusPedido(StatusLiberacaoPedido.recuperaPorNome(rs.getString("status_pedido")));
 			pedidoLiberacao.setTaxaFinanceira(rs.getFloat("taxa_financeiro"));
 			pedidoLiberacao.setTipoCobrancaERP(rs.getLong("codigo_tipo_cobranca_rec_id"));
 			pedidoLiberacao.setValorDevolucao(rs.getFloat("valor_devolucao"));
