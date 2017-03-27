@@ -5,7 +5,7 @@ public enum StatusLiberacaoPedido {
 	
 	public static StatusLiberacaoPedido recuperaPorNome(String nome){
 		for (StatusLiberacaoPedido status : StatusLiberacaoPedido.values()) {
-			if (status.equals(nome)) {
+			if (status.toString().equals(nome)) {
 				return status;
 			}
 		}
