@@ -12,6 +12,11 @@ public class MensagemRecebida<T> implements Serializable {
 	private T conteudo;
 	
 	private Identificacao identificacao;
+	
+	private int pagina;
+	
+	private int quantidadePorPagina;
+
 
 	@Value("${numero_matricula_empresa}")
 	private String matriculaAssociada;
@@ -42,4 +47,21 @@ public class MensagemRecebida<T> implements Serializable {
 	public void setIdentificacao(Identificacao identificacao) {
 		this.identificacao = identificacao;
 	}
+
+	public int getPagina() {
+		return pagina;
+	}
+
+	public void setPagina(int pagina) {
+		this.pagina = pagina;
+	}
+
+	public int getQuantidadePorPagina() {
+		return quantidadePorPagina;
+	}
+
+	public void setQuantidadePorPagina(int quantidadePorPagina) {
+		this.quantidadePorPagina = quantidadePorPagina;
+	}
+	
 }

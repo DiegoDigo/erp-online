@@ -1,6 +1,8 @@
 package br.com.control.controllers.sincronismo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,14 +18,20 @@ import br.com.control.portal.integracao.MensagemRetorno;
 
 @RestController
 @RequestMapping(value = "/auditoria")
-public class AuditoriaController extends AbstractController{	
-	
+public class AuditoriaController extends AbstractController {
+
 	@Autowired
 	private AuditoriaSincronismoService auditoriaService;
-	
-	@RequestMapping(value="listar/{matricula}",method = RequestMethod.GET , headers="Accept=application/json")
-	public MensagemRetorno  listarAuditoria(@PathVariable("matricula") String matricula,@RequestParam(value = "mensagem") MensagemRecebida<Auditoria> mensagem){
-		return new MensagemRetorno(HttpStatus.OK, "Auditorias Listados com sucesso !", auditoriaService.buscarAuditoriaPorMatricula(matricula), mensagem.getIdentificacao());
+
+	@RequestMapping(value = "listar/{matricula}", method = RequestMethod.GET, headers = "Accept=application/json")
+	public MensagemRetorno listarAuditoria(@PathVariable("matricula") String matricula,
+			@RequestParam(value = "mensagem") MensagemRecebida<Auditoria> mensagem) {
+		
+		Pageable pageable = new PageRequest(mensagem.getPagina(), mensagem.getQuantidadePorPagina());
+
+		
+		return new MensagemRetorno(HttpStatus.OK, "Auditorias Listados com sucesso !",
+				auditoriaService.buscarAuditoriaPorMatricula(matricula, pageable), mensagem.getIdentificacao());
 	}
-	
+
 }
