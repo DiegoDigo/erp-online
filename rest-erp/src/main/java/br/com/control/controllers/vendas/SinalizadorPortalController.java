@@ -3,6 +3,8 @@ package br.com.control.controllers.vendas;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -87,6 +89,8 @@ import br.com.control.vendas.cadastro.modelo.vendedor.VendedorCliente;
 @RequestMapping(RotasRest.RAIZ + RotasRest.SINALIZA)
 public class SinalizadorPortalController extends AbstractController {
 
+	private static final Logger logger = LoggerFactory.getLogger(SinalizadorPortalController.class);
+
 	@Autowired
 	private SincronismoAcompanhamentoPedidoService acompanhamentoCapaPedidoService;
 
@@ -143,19 +147,19 @@ public class SinalizadorPortalController extends AbstractController {
 
 	@Autowired
 	private SinalizadorPortalService sinalizadorPortalService;
-	
+
 	@Autowired
 	private MovimentoFinanceiroService movimentoFinanceiroService;
-	
+
 	@Autowired
 	private ComodatoService comodatoService;
-	
+
 	@Autowired
 	private HistoricoPedidoCapaService historicoPedidoCapaService;
 
 	@Autowired
 	private HistoricoPedidoItemService historicoPedidoItemService;
-	
+
 	@Autowired
 	private BandaPrecoService bandaPrecoService;
 
@@ -173,10 +177,18 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroGrupo(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		Grupo grupo = grupoService.recuperaGrupo(sinalizadorPortalService.retornaCodigoERP(mensagem));
-		GrupoTO grupoTO = new GrupoTO(grupo);
+		String codigoGrupo = sinalizadorPortalService.retornaCodigoERP(mensagem);
+		Grupo grupo = grupoService.recuperaGrupo(codigoGrupo);
 
+		if (grupo == null) {
+			String msg = "Grupo com código: " + codigoGrupo + " não encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
+		GrupoTO grupoTO = new GrupoTO(grupo);
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, grupoTO, "Grupo");
+
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
@@ -184,9 +196,16 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroFamilia(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		Familia familia = familiaService.recuperaFamilia(sinalizadorPortalService.retornaCodigoERP(mensagem));
-		FamiliaTO familiaTO = new FamiliaTO(familia);
+		String codigoFamilia = sinalizadorPortalService.retornaCodigoERP(mensagem);
+		Familia familia = familiaService.recuperaFamilia(codigoFamilia);
 
+		if (familia == null) {
+			String msg = "Família com código: " + codigoFamilia + " não encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
+		FamiliaTO familiaTO = new FamiliaTO(familia);
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, familiaTO, "Familia");
 	}
 
@@ -195,7 +214,15 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroMarca(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		Marca marca = marcaService.recuperaMarca(sinalizadorPortalService.retornaCodigoERP(mensagem));
+		String codigoMarca = sinalizadorPortalService.retornaCodigoERP(mensagem);
+		Marca marca = marcaService.recuperaMarca(codigoMarca);
+
+		if (marca == null) {
+			String msg = "Marca com código: " + codigoMarca + " não encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
 		MarcaTO marcaTO = new MarcaTO(marca);
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, marcaTO, "Marca");
 
@@ -206,11 +233,17 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroCategoria(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		Categoria categoria = categoriaService.recuperaCategoria(sinalizadorPortalService.retornaCodigoERP(mensagem));
+		String codigoCategoria = sinalizadorPortalService.retornaCodigoERP(mensagem);
+		Categoria categoria = categoriaService.recuperaCategoria(codigoCategoria);
+
+		if (categoria == null) {
+			String msg = "Categoria com código: " + codigoCategoria + " não encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
 		CategoriaTO categoriaTO = new CategoriaTO(categoria);
-
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, categoriaTO, "Categoria");
-
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
@@ -218,9 +251,16 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroCanal(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		Canal canal = canalService.recuperaCanal(sinalizadorPortalService.retornaCodigoERP(mensagem));
-		CanalTO canalTO = new CanalTO(canal);
+		String codigoCanal = sinalizadorPortalService.retornaCodigoERP(mensagem);
+		Canal canal = canalService.recuperaCanal(codigoCanal);
 
+		if (canal == null) {
+			String msg = "Canal com código: " + codigoCanal + " não encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
+		CanalTO canalTO = new CanalTO(canal);
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, canalTO, "Canal");
 	}
 
@@ -229,9 +269,16 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroProduto(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		Produto produto = produtoService.recuperarProduto(sinalizadorPortalService.retornaCodigoERP(mensagem));
-		ProdutoTO produtoTO = new ProdutoTO(produto);
+		String codigoProduto = sinalizadorPortalService.retornaCodigoERP(mensagem);
+		Produto produto = produtoService.recuperarProduto(codigoProduto);
 
+		if (produto == null) {
+			String msg = "Produgo com código: " + codigoProduto + " não encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
+		ProdutoTO produtoTO = new ProdutoTO(produto);
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, produtoTO, "Produto");
 	}
 
@@ -240,10 +287,16 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroTipoCobranca(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		TipoCobranca tipoCobranca = tipoCobrancaService
-				.recuperarTipoCobranca(sinalizadorPortalService.retornaCodigoERP(mensagem));
-		TipoCobrancaTO tipoCobrancaTO = new TipoCobrancaTO(tipoCobranca);
+		String codigoTipoCobranca = sinalizadorPortalService.retornaCodigoERP(mensagem);
+		TipoCobranca tipoCobranca = tipoCobrancaService.recuperarTipoCobranca(codigoTipoCobranca);
 
+		if (tipoCobranca == null) {
+			String msg = "Tipo Cobrança com código: " + codigoTipoCobranca + " não encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
+		TipoCobrancaTO tipoCobrancaTO = new TipoCobrancaTO(tipoCobranca);
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, tipoCobrancaTO, "Tipo Cobrança");
 	}
 
@@ -252,12 +305,18 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroCondicaoPagamento(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		String codigoCondicaoPagamento = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		CondicaoPagamento condicaoPagamento = condicaoPagamentoService
-				.recuperarCondicaoPagamento(sinalizadorPortalService.retornaCodigoERP(mensagem));
+				.recuperarCondicaoPagamento(codigoCondicaoPagamento);
+
+		if (condicaoPagamento == null) {
+			String msg = "Condição Pagamento com código: " + codigoCondicaoPagamento + " não encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
 		CondicaoPagamentoTO condicaoPagamentoTO = new CondicaoPagamentoTO(condicaoPagamento);
-
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, condicaoPagamentoTO, "Condições de Pagemanto");
-
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
@@ -265,10 +324,16 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroOcorrencia(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		Ocorrencia ocorrencia = ocorrenciaService
-				.recuperarOcorrencia(sinalizadorPortalService.retornaCodigoERP(mensagem));
-		OcorrenciaTO ocorrenciaTO = new OcorrenciaTO(ocorrencia);
+		String codigoOcorrencia = sinalizadorPortalService.retornaCodigoERP(mensagem);
+		Ocorrencia ocorrencia = ocorrenciaService.recuperarOcorrencia(codigoOcorrencia);
 
+		if (ocorrencia == null) {
+			String msg = "Ocorrencia com código: " + codigoOcorrencia + " não encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
+		OcorrenciaTO ocorrenciaTO = new OcorrenciaTO(ocorrencia);
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, ocorrenciaTO, "Ocorrência");
 	}
 
@@ -279,8 +344,14 @@ public class SinalizadorPortalController extends AbstractController {
 
 		List<DetalheComboProdutoTO> combosProdutoTO = new ArrayList<>();
 
-		List<DetalheComboProduto> comboProduto = detalheProdutoComboService
-				.recuperarComboProduto(sinalizadorPortalService.retornaCodigoERP(mensagem));
+		String codigoCombo = sinalizadorPortalService.retornaCodigoERP(mensagem);
+		List<DetalheComboProduto> comboProduto = detalheProdutoComboService.recuperarComboProduto(codigoCombo);
+
+		if (comboProduto == null || comboProduto.isEmpty()) {
+			String msg = "Combo Produto com código: " + codigoCombo + " não encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
 
 		for (DetalheComboProduto detalheComboProduto : comboProduto) {
 			combosProdutoTO.add(new DetalheComboProdutoTO(detalheComboProduto));
@@ -297,8 +368,16 @@ public class SinalizadorPortalController extends AbstractController {
 
 		List<ClienteEnderecoTO> clienteEnderecoTOs = new ArrayList<>();
 
+		String codigoClienteEndereco = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		List<ClienteEndereco> clienteEnderecos = clienteEnderecoServico
-				.recuperarTipoEnderecoCodigoERP(sinalizadorPortalService.retornaCodigoERP(mensagem));
+				.recuperarTipoEnderecoCodigoERP(codigoClienteEndereco);
+
+		if (clienteEnderecos == null || clienteEnderecos.isEmpty()) {
+			String msg = "Cliente Endereço com código: " + codigoClienteEndereco + " não encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
 		for (ClienteEndereco clienteEndereco : clienteEnderecos) {
 			clienteEnderecoTOs.add(new ClienteEnderecoTO(clienteEndereco));
 		}
@@ -312,9 +391,16 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroVendedor(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		Vendedor vendedor = vendedorService.recuperarVendedor(sinalizadorPortalService.retornaCodigoERP(mensagem));
-		VendedorTO vendedorTO = new VendedorTO(vendedor);
+		String codigoVendedor = sinalizadorPortalService.retornaCodigoERP(mensagem);
+		Vendedor vendedor = vendedorService.recuperarVendedor(codigoVendedor);
 
+		if (vendedor == null) {
+			String msg = "Vendedor com código: " + codigoVendedor + " não encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
+		VendedorTO vendedorTO = new VendedorTO(vendedor);
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, vendedorTO, "Vendedor");
 
 	}
@@ -324,8 +410,16 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroClienteVendedor(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		String codigoVendedorCliente = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		List<VendedorCliente> vendedorClientes = vendedorClienteService
-				.recuperarClientesVendedor(sinalizadorPortalService.retornaCodigoERP(mensagem));
+				.recuperarClientesVendedor(codigoVendedorCliente);
+
+		if (vendedorClientes == null || vendedorClientes.isEmpty()) {
+			String msg = "Vendedor Cliente com código: " + codigoVendedorCliente + " não encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
 		List<VendedorClienteTO> vendedorClientesTO = new ArrayList<VendedorClienteTO>();
 
 		for (VendedorCliente vendedorCliente : vendedorClientes) {
@@ -340,10 +434,16 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroCliente(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		Cliente cliente = clienteService
-				.recuperarCliente(Integer.valueOf(sinalizadorPortalService.retornaCodigoERP(mensagem)));
-		ClienteTO clienteTO = new ClienteTO(cliente);
+		String codigoCliente = sinalizadorPortalService.retornaCodigoERP(mensagem);
+		Cliente cliente = clienteService.recuperarCliente(Integer.valueOf(codigoCliente));
 
+		if (cliente == null) {
+			String msg = "Cliente com código: " + codigoCliente + " não encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
+		ClienteTO clienteTO = new ClienteTO(cliente);
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, clienteTO, "Cliente");
 	}
 
@@ -352,10 +452,16 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroTipoEndereco(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		TipoEndereco tipoEndereco = tipoEnderecoService
-				.recuperarTipoEndereco(sinalizadorPortalService.retornaCodigoERP(mensagem));
-		TipoEnderecoTO tipoEnderecoTO = new TipoEnderecoTO(tipoEndereco);
+		String codigoTipoEndereco = sinalizadorPortalService.retornaCodigoERP(mensagem);
+		TipoEndereco tipoEndereco = tipoEnderecoService.recuperarTipoEndereco(codigoTipoEndereco);
 
+		if (tipoEndereco == null) {
+			String msg = "Tipo Endereço com código: " + codigoTipoEndereco + " não encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
+		TipoEnderecoTO tipoEnderecoTO = new TipoEnderecoTO(tipoEndereco);
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, tipoEnderecoTO, "Tipo de Endereço");
 	}
 
@@ -364,69 +470,141 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroTipoCobrancaCliente(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		String codigoTipoCobrancaCliente = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		TipoCobrancaCliente tipoCobrancaCliente = tipoCobrancaClienteService
-				.recuperarTipoCobrancaCliente(sinalizadorPortalService.retornaCodigoERP(mensagem));
-		TipoCobrancaClienteTO tipoCobrancaClienteTO = new TipoCobrancaClienteTO(tipoCobrancaCliente);
+				.recuperarTipoCobrancaCliente(codigoTipoCobrancaCliente);
 
+		if (tipoCobrancaCliente == null) {
+			String msg = "Tipo Cobrança Cliente com código: " + codigoTipoCobrancaCliente
+					+ " não encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
+		TipoCobrancaClienteTO tipoCobrancaClienteTO = new TipoCobrancaClienteTO(tipoCobrancaCliente);
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, tipoCobrancaClienteTO, "Tipo de Cobrança Cliente");
-	}	
-	
-	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_MOTIVO + RotasRest.RAIZ_FINANCEIRO, method = RequestMethod.GET, headers = "Accept=application/json")
+	}
+
+	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_MOTIVO
+			+ RotasRest.RAIZ_FINANCEIRO, method = RequestMethod.GET, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoCadastroMovimentoFinanceiro(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		MovimentoFinanceiro movimentoFinanceiroBase = movimentoFinanceiroService.buscarMovimentoFinanceiro(Integer.valueOf(sinalizadorPortalService.retornaCodigoERP(mensagem)));
-		MovimentoFinanceiroTO movimentoFinanceiroTO = new MovimentoFinanceiroTO(movimentoFinanceiroBase);
-		
+		String codigoMovimentoFinanceiro = sinalizadorPortalService.retornaCodigoERP(mensagem);
+		MovimentoFinanceiro movimentoFinanceiroBase = movimentoFinanceiroService
+				.buscarMovimentoFinanceiro(Integer.valueOf(codigoMovimentoFinanceiro));
 
+		if (movimentoFinanceiroBase == null) {
+			String msg = "Movimento Financeiro com código: " + codigoMovimentoFinanceiro
+					+ " não encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
+		MovimentoFinanceiroTO movimentoFinanceiroTO = new MovimentoFinanceiroTO(movimentoFinanceiroBase);
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, movimentoFinanceiroTO, "Movimento Financeiro");
 	}
-	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_COMODATO, method = RequestMethod.GET, headers = "Accept=application/json")
-	public MensagemRetorno sinalizaPortalSincronismoComodato(@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
-		
-		Comodato ComodatoBase = comodatoService.listarComodato(sinalizadorPortalService.retornaCodigoERP(mensagem));
-		ComodatoTO comodatoTO = new ComodatoTO(ComodatoBase);		
-		
+
+	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
+			+ RotasRest.RAIZ_COMODATO, method = RequestMethod.GET, headers = "Accept=application/json")
+	public MensagemRetorno sinalizaPortalSincronismoComodato(
+			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+
+		String codigoComodato = sinalizadorPortalService.retornaCodigoERP(mensagem);
+		Comodato comodatoBase = comodatoService.listarComodato(codigoComodato);
+
+		if (comodatoBase == null) {
+			String msg = "Comodato com código: " + codigoComodato + " não encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
+		ComodatoTO comodatoTO = new ComodatoTO(comodatoBase);
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, comodatoTO, "Comodato");
 	}
-	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_HISTORICO + RotasRest.RAIZ_PEDIDO + RotasRest.RAIZ_CAPA, method = RequestMethod.GET, headers = "Accept=application/json")
-	public MensagemRetorno sinalizaPortalSincronismoHistoricoPedidoCapa(@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
-		
-		HistoricoPedidoCapa historioPedidoCapa = historicoPedidoCapaService.buscarHistoricoCapa(sinalizadorPortalService.retornaCodigoERP(mensagem));
-		HistoricoPedidoCapaTO comodatoTO = new HistoricoPedidoCapaTO(historioPedidoCapa);		
-		
-		return sincronismoCadastoService.enviaParaOPortal(mensagem, comodatoTO, "Historico Pedido Capa");
+
+	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_HISTORICO + RotasRest.RAIZ_PEDIDO
+			+ RotasRest.RAIZ_CAPA, method = RequestMethod.GET, headers = "Accept=application/json")
+	public MensagemRetorno sinalizaPortalSincronismoHistoricoPedidoCapa(
+			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+
+		String codigoHistoricoPedidoCapa = sinalizadorPortalService.retornaCodigoERP(mensagem);
+		HistoricoPedidoCapa historioPedidoCapa = historicoPedidoCapaService
+				.buscarHistoricoCapa(codigoHistoricoPedidoCapa);
+
+		if (historioPedidoCapa == null) {
+			String msg = "Histórico Pedido Capa com código: " + codigoHistoricoPedidoCapa
+					+ " não encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
+		HistoricoPedidoCapaTO historicoPedidoCapaTO = new HistoricoPedidoCapaTO(historioPedidoCapa);
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, historicoPedidoCapaTO, "Historico Pedido Capa");
 	}
-	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_HISTORICO + RotasRest.RAIZ_PEDIDO + RotasRest.RAIZ_ITEM, method = RequestMethod.GET, headers = "Accept=application/json")
-	public MensagemRetorno sinalizaPortalSincronismoHistoricoPedidoItem(@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
-		
-		List<HistoricoPedidoItem> historioPedidoItem = historicoPedidoItemService.buscarItemPedido(sinalizadorPortalService.retornaCodigoERP(mensagem));
-		List<HistoricoPedidoItemTO> historicoPedidoItensTO  = new ArrayList<>();
+
+	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_HISTORICO + RotasRest.RAIZ_PEDIDO
+			+ RotasRest.RAIZ_ITEM, method = RequestMethod.GET, headers = "Accept=application/json")
+	public MensagemRetorno sinalizaPortalSincronismoHistoricoPedidoItem(
+			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+
+		String codigoHistoricoPedidoItem = sinalizadorPortalService.retornaCodigoERP(mensagem);
+		List<HistoricoPedidoItem> historioPedidoItem = historicoPedidoItemService
+				.buscarItemPedido(codigoHistoricoPedidoItem);
+
+		if (historioPedidoItem == null || historioPedidoItem.isEmpty()) {
+			String msg = "Histórico Pedido Item com código: " + codigoHistoricoPedidoItem
+					+ " não encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
+		List<HistoricoPedidoItemTO> historicoPedidoItensTO = new ArrayList<>();
 		for (HistoricoPedidoItem historicoPedidoItem : historioPedidoItem) {
 			HistoricoPedidoItemTO historicoPedidoItemTO = new HistoricoPedidoItemTO(historicoPedidoItem);
 			historicoPedidoItensTO.add(historicoPedidoItemTO);
-		}						
+		}
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, historicoPedidoItensTO, "Historico Pedido Item");
 	}
-	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_BANDA + RotasRest.RAIZ_PRECO + RotasRest.RAIZ_CAPA, method = RequestMethod.GET, headers = "Accept=application/json")
-	public MensagemRetorno sinalizaPortalSincronismoBandaPrecoCapa(@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
-		
-		BandaPreco bandaPreco = bandaPrecoService.buscarBanda(sinalizadorPortalService.retornaCodigoERP(mensagem));
-		BandaPrecoTO bandaPrecoTo = new BandaPrecoTO(bandaPreco);			
+
+	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_BANDA + RotasRest.RAIZ_PRECO
+			+ RotasRest.RAIZ_CAPA, method = RequestMethod.GET, headers = "Accept=application/json")
+	public MensagemRetorno sinalizaPortalSincronismoBandaPrecoCapa(
+			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+
+		String codigoBandaPreco = sinalizadorPortalService.retornaCodigoERP(mensagem);
+		BandaPreco bandaPreco = bandaPrecoService.buscarBanda(codigoBandaPreco);
+
+		if (bandaPreco == null) {
+			String msg = "Banda Preço com código: " + codigoBandaPreco + " não encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
+		BandaPrecoTO bandaPrecoTo = new BandaPrecoTO(bandaPreco);
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, bandaPrecoTo, "Banda Preço");
 	}
-	
-	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_BANDA + RotasRest.RAIZ_PRECO + RotasRest.RAIZ_ITEM, method = RequestMethod.GET, headers = "Accept=application/json")
-	public MensagemRetorno sinalizaPortalSincronismoBandaPrecoItem(@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+
+	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_BANDA + RotasRest.RAIZ_PRECO
+			+ RotasRest.RAIZ_ITEM, method = RequestMethod.GET, headers = "Accept=application/json")
+	public MensagemRetorno sinalizaPortalSincronismoBandaPrecoItem(
+			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+
+		List<BandaPrecoItemTO> bandaPrecoItensTO = new ArrayList<>();
+		String codigoBandaPrecoItem = sinalizadorPortalService.retornaCodigoERP(mensagem);
+		List<BandaPrecoItem> bandaPrecoItens = bandaPrecoItemService.buscaBandaPrecoItem(codigoBandaPrecoItem);
 		
-		List<BandaPrecoItemTO> bandaPrecoItensTO = new ArrayList<>();		
-		List<BandaPrecoItem> bandaPrecoItens = bandaPrecoItemService.buscaBandaPrecoItem(sinalizadorPortalService.retornaCodigoERP(mensagem));
+		if (codigoBandaPrecoItem == null || codigoBandaPrecoItem.isEmpty()) {
+			String msg = "Banda Preço Item com código: " + codigoBandaPrecoItem + " não encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+		
 		for (BandaPrecoItem bandaPrecoItem : bandaPrecoItens) {
 			BandaPrecoItemTO bandaPrecoItemTO = new BandaPrecoItemTO(bandaPrecoItem);
 			bandaPrecoItensTO.add(bandaPrecoItemTO);
-		}			
+		}
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, bandaPrecoItensTO, "Banda Preço Item");
 	}
-	
-	
+
 }

@@ -20,6 +20,14 @@ public class ExceptionHandlerRest extends ResponseEntityExceptionHandler {
 
 	private static final Logger logger = LoggerFactory.getLogger(ExceptionHandlerRest.class);
 
+	@ExceptionHandler(value = { RuntimeException.class, })
+	protected ResponseEntity<Object> handleConflict(RuntimeException ex, HttpServletRequest request) {
+		logger.error("RuntimeException", ex);
+		return new ErrorMessageData(ex, //
+				HttpStatus.INTERNAL_SERVER_ERROR, //
+				"Erro de execucao", //
+				request.getRequestURI()).getResponseEntity();
+	}
 
 	@ExceptionHandler(value = { IdentificacaoException.class, })
 	protected ResponseEntity<Object> handleConflict(UnsatisfiedServletRequestParameterException ex, HttpServletRequest request) {

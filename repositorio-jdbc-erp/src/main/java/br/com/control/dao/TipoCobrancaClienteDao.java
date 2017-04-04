@@ -18,7 +18,7 @@ public class TipoCobrancaClienteDao extends JdbcDao<TipoCobrancaCliente> {
 	public TipoCobrancaCliente recuperarTipoCobrancaCliente(String retornaCodigoERP) {
 		String declare = "DECLARE set int @ATIVO = 1";
 		getJdbcTemplate().update(declare);
-		String declare2 = String.format("DECLARE set VARCHAR(8) @codigoclienteerp = '%s'", retornaCodigoERP);
+		String declare2 = "DECLARE set VARCHAR(8) @codigoclienteerp = '"+ retornaCodigoERP+"'";
 		getJdbcTemplate().update(declare2);
 		return selectViewSingle(TabelasIntegracao.TIPO_COBRANCA_CLIENTE, new TipoCobrancaClienteRowMapper());
 

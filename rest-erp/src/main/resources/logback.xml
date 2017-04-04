@@ -10,7 +10,7 @@
 			</Pattern>
 		</encoder>
 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-			<level>TRACE</level>
+			<level>INFO</level>
 		</filter>
 	</appender>
 
@@ -33,7 +33,7 @@
 
 
 	<logger name="br.com.control" additivity="false">
-		<level value="DEBUG" />
+		<level value="INFO, WARN, ERROR" />
 		<appender-ref ref="dailyRollingFileAppender" />
 		<appender-ref ref="consoleAppender" />
 	</logger>

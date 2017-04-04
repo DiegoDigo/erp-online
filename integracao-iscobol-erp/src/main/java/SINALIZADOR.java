@@ -27,13 +27,6 @@ import br.com.control.rest.client.SincronismoTipoEndereco;
 
 public class SINALIZADOR implements IscobolCall {
 
-	public static void main(String[] args) {
-
-		SINALIZADOR sinalizador = new SINALIZADOR();
-		String[] param = { "CADASTRO|" + CadastrosEnum.HISTORICO_PEDIDO_ITEM + "|201702160006" };
-		sinalizador.call(param);
-	}
-
 	@Override
 	public Object call(Object[] argv) {
 
@@ -57,92 +50,67 @@ public class SINALIZADOR implements IscobolCall {
 				if (CadastrosEnum.GRUPO_PRODUTO == cadastro) {
 					SincronismoCadastroGrupoProduto rest = new SincronismoCadastroGrupoProduto();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.GRUPO_PRODUTO);
-				}
-				if (CadastrosEnum.FAMILIA_PRODUTO == cadastro) {
+				}else if (CadastrosEnum.FAMILIA_PRODUTO == cadastro) {
 					SincronismoCadastroFamiliaProduto rest = new SincronismoCadastroFamiliaProduto();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.FAMILIA_PRODUTO);
-				}
-				if (CadastrosEnum.MARCA_PRODUTO == cadastro) {
+				}else if (CadastrosEnum.MARCA_PRODUTO == cadastro) {
 					SincronismoCadastroMarcaProduto rest = new SincronismoCadastroMarcaProduto();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.MARCA_PRODUTO);
-				}
-				if (CadastrosEnum.CATEGORIA_PRODUTO == cadastro) {
+				} else if (CadastrosEnum.CATEGORIA_PRODUTO == cadastro) {
 					SincronismoCadastroCategoriaProduto rest = new SincronismoCadastroCategoriaProduto();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.CATEGORIA_PRODUTO);
-				}
-				if (CadastrosEnum.PRODUTO == cadastro) {
+				}else if (CadastrosEnum.PRODUTO == cadastro) {
 					SincronismoCadastroProduto rest = new SincronismoCadastroProduto();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PRODUTO);
-				}
-				if (CadastrosEnum.CANAL == cadastro) {
+				}else if (CadastrosEnum.CANAL == cadastro) {
 					SincronismoCadastroCanalProduto rest = new SincronismoCadastroCanalProduto();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.CANAL);
-				}
-				if (CadastrosEnum.TIPO_COBRANCA == cadastro) {
+				}else if (CadastrosEnum.TIPO_COBRANCA == cadastro) {
 					SincronismoCadastroTipoCobranca rest = new SincronismoCadastroTipoCobranca();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.TIPO_COBRANCA);
-				}
-				if (CadastrosEnum.OCORRENCIA == cadastro) {
+				}else if (CadastrosEnum.OCORRENCIA == cadastro) {
 					SincronismoCadastroOcorrencia rest = new SincronismoCadastroOcorrencia();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.OCORRENCIA);
-				}
-				if (CadastrosEnum.CONDICAO_PAGAMENTO == cadastro) {
+				}else if (CadastrosEnum.CONDICAO_PAGAMENTO == cadastro) {
 					SincronismoCadastroCondicaoPagamento rest = new SincronismoCadastroCondicaoPagamento();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.CONDICAO_PAGAMENTO);
-				}
-				if (CadastrosEnum.PRODUTO_COMBO == cadastro) {
+				}else if (CadastrosEnum.PRODUTO_COMBO == cadastro) {
 					SincronismoCadastroDetalheProdutoCombo rest = new SincronismoCadastroDetalheProdutoCombo();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PRODUTO_COMBO);
-				}
-				if (CadastrosEnum.CLIENTE_ENDERECO == cadastro) {
+				}else if (CadastrosEnum.CLIENTE_ENDERECO == cadastro) {
 					SincronismoCadastroEnderecoCliente rest = new SincronismoCadastroEnderecoCliente();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.CLIENTE_ENDERECO);
-				}
-				if (CadastrosEnum.VENDEDOR == cadastro) {
+				}else if (CadastrosEnum.VENDEDOR == cadastro) {
 					SincronismoCadastroVendedor rest = new SincronismoCadastroVendedor();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.VENDEDOR);
-				}
-				if (CadastrosEnum.VENDEDOR_CLIENTE == cadastro) {
+				}else if (CadastrosEnum.VENDEDOR_CLIENTE == cadastro) {
 					SincronismoCadastroVendedorCliente rest = new SincronismoCadastroVendedorCliente();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.VENDEDOR_CLIENTE);
-				}
-				if (CadastrosEnum.CLIENTE == cadastro) {
+				}else if (CadastrosEnum.CLIENTE == cadastro) {
 					SincronismoCadastroCliente rest = new SincronismoCadastroCliente();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.CLIENTE);
-				}
-				if (CadastrosEnum.OCORRENCIA == cadastro) {
-					SincronismoCadastroOcorrencia rest = new SincronismoCadastroOcorrencia();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.OCORRENCIA);
-				}
-				if (CadastrosEnum.TIPO_ENDERECO == cadastro) {
+				}else if (CadastrosEnum.TIPO_ENDERECO == cadastro) {
 					SincronismoTipoEndereco rest = new SincronismoTipoEndereco();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.TIPO_ENDERECO);
-				}
-				if (CadastrosEnum.TIPO_COBRANCA_CLIENTE == cadastro) {
+				}else if (CadastrosEnum.TIPO_COBRANCA_CLIENTE == cadastro) {
 					SincronismoTipoCobrancaCliente rest = new SincronismoTipoCobrancaCliente();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.TIPO_COBRANCA_CLIENTE);
-				}
-				if (CadastrosEnum.MOVIMENTO_FINANCEIRO == cadastro) {
+				}else if (CadastrosEnum.MOVIMENTO_FINANCEIRO == cadastro) {
 					SincronismoTipoCobrancaCliente rest = new SincronismoTipoCobrancaCliente();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.MOVIMENTO_FINANCEIRO);
-				}
-				if (CadastrosEnum.COMODATO == cadastro) {
+				}else if (CadastrosEnum.COMODATO == cadastro) {
 					SincronismoComodato rest = new SincronismoComodato();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.COMODATO);
-				}
-				if (CadastrosEnum.HISTORICO_PEDIDO_CAPA == cadastro) {
+				}else if (CadastrosEnum.HISTORICO_PEDIDO_CAPA == cadastro) {
 					SincronismoHistoricoPedidoCapa rest = new SincronismoHistoricoPedidoCapa();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.HISTORICO_PEDIDO_CAPA);
-				}
-				if (CadastrosEnum.HISTORICO_PEDIDO_ITEM == cadastro) {
+				}else if (CadastrosEnum.HISTORICO_PEDIDO_ITEM == cadastro) {
 					SincronismoHistoricoPedidoItem rest = new SincronismoHistoricoPedidoItem();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.HISTORICO_PEDIDO_ITEM);
-				}
-				if (CadastrosEnum.BANDA_PRECO_CAPA == cadastro) {
+				}else if (CadastrosEnum.BANDA_PRECO_CAPA == cadastro) {
 					SincronismoBandaPrecoCapa rest = new SincronismoBandaPrecoCapa();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.BANDA_PRECO_CAPA);
-				}
-				if (CadastrosEnum.BANDA_PRECO_ITEM == cadastro) {
+				}else if (CadastrosEnum.BANDA_PRECO_ITEM == cadastro) {
 					SincronismoBandaPrecoItem rest = new SincronismoBandaPrecoItem();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.BANDA_PRECO_ITEM);
 				}
@@ -166,5 +134,12 @@ public class SINALIZADOR implements IscobolCall {
 	@Override
 	public void perform(int begin, int end) {
 	}
+	
+	
+//	public static void main(String[] args) {
+//	SINALIZADOR sinalizador = new SINALIZADOR();
+//	String[] param = { "CADASTRO|" + CadastrosEnum.HISTORICO_PEDIDO_ITEM + "|201702160006" };
+//	sinalizador.call(param);
+//}
 
 }

@@ -51,8 +51,11 @@ public class JdbcDao<T> {
 
 	public T selectViewSingle(TabelasIntegracao tabela, RowMapper<T> rowMapper) {
 		String sql = "select * from " + tabela.getViewERP();
-		T dados = getJdbcTemplate().queryForObject(sql, rowMapper);
-		return dados;
+		List<T> dados = getJdbcTemplate().query(sql, rowMapper);
+		if (!dados.isEmpty()) {
+			return dados.get(0);
+		}
+		return null;
 	}
 
 	public JdbcTemplate getJdbcTemplate() {
