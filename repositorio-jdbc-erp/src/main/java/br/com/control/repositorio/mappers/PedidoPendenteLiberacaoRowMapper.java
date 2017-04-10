@@ -30,6 +30,9 @@ public class PedidoPendenteLiberacaoRowMapper  implements RowMapper<PedidoPenden
 			pedidoLiberacao.setTipoCobrancaERP(rs.getLong("codigo_tipo_cobranca_rec_id"));
 			pedidoLiberacao.setValorDevolucao(rs.getFloat("valor_devolucao"));
 			pedidoLiberacao.setValorPedido(rs.getFloat("valor_pedido"));
+			pedidoLiberacao.setCodigoVendedor(rs.getString("CODIGO_VENDEDOR") != null ? rs.getString("CODIGO_VENDEDOR").trim() : null);
+			pedidoLiberacao.setNomeVendedor(rs.getString("NOME_VENDEDOR") != null ? rs.getString("NOME_VENDEDOR").trim() : null);
+			pedidoLiberacao.setDescricaoBloqueio(rs.getString("DESCRICAO_BLOQUEIO") != null ? rs.getString("DESCRICAO_BLOQUEIO").trim() : null);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}

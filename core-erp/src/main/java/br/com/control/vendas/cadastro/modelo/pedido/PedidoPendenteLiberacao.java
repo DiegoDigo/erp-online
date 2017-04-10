@@ -23,8 +23,34 @@ public class PedidoPendenteLiberacao implements Serializable {
 	private String codigoClienteERP;
 	private Long condicaoPagamentoERP;
 	private Long tipoCobrancaERP;
+	private String codigoVendedor;
+	private String nomeVendedor;
+	private String descricaoBloqueio;
 
 
+	public String getCodigoVendedor() {
+		return codigoVendedor;
+	}
+
+	public void setCodigoVendedor(String codigoVendedor) {
+		this.codigoVendedor = codigoVendedor;
+	}
+
+	public String getNomeVendedor() {
+		return nomeVendedor;
+	}
+
+	public void setNomeVendedor(String nomeVendedor) {
+		this.nomeVendedor = nomeVendedor;
+	}
+
+	public String getDescricaoBloqueio() {
+		return descricaoBloqueio;
+	}
+
+	public void setDescricaoBloqueio(String descricaoBloqueio) {
+		this.descricaoBloqueio = descricaoBloqueio;
+	}
 
 	public Boolean getAtivo() {
 		return ativo;
