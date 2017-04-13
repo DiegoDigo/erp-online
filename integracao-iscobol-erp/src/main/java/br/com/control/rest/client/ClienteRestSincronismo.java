@@ -1,13 +1,12 @@
 package br.com.control.rest.client;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.URI;
 import java.util.Arrays;
 import java.util.Properties;
 
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -37,26 +36,45 @@ public abstract class ClienteRestSincronismo {
 		
 		try {
 			AutenticacaoRest autenticacaoRest = new AutenticacaoRest();
-			
+			System.out.println("ENTROU NO TRY PARA PEGAR A AUTENTICACAO REST");
 			AuthTokenInfo tokenInfo = autenticacaoRest.sendTokenRequest();
 			String SERVICO = getServicoSincronismo();
 			String AUTH = "?access_token=" + tokenInfo.getAccess_token();
 			String msgJson = AUTH + "&mensagem=" + mapper.writer().writeValueAsString(m);
 			String url = autenticacaoRest.getREST_SERVICE_URI()+ SERVICO + msgJson;
 			
+			System.out.println("----> URL: "+url);
+			
 			UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
 			UriComponents uriComponents = builder.build();
 			URI uri = uriComponents.toUri();
 
+			System.out.println("----> URI: "+uri);
+			
 			RestTemplate restTemplate = new RestTemplate();
 			
-			restTemplate.getForObject(uri, MensagemRetorno.class);
+			HttpEntity<String> request = new HttpEntity<String>(getHeaders());
+			System.out.println("############### TOKEN DO POST: "+tokenInfo.getAccess_token());
+			System.out.println("FAZENDO O POST");
+			restTemplate.postForLocation(uri, request);
+			System.out.println("FEZ O POST");
+			
+//			restTemplate.getForObject(uri, MensagemRetorno.class);
 		} catch (JsonProcessingException e) {
+			System.out.println("ERRO" + e.getMessage());
+			System.out.println("ERRO" + e.getOriginalMessage());
 			e.printStackTrace();
 		}
 		System.out.println("### SAIU DO ClienteRestSincronismo::"+conteudo.split("\\|")[0]+" ###");
 	}
 	
+	
+	private HttpHeaders getHeaders() {
+		HttpHeaders headers = new HttpHeaders();
+		headers.setAccept(Arrays.asList(org.springframework.http.MediaType.APPLICATION_JSON));
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		return headers;
+	}
 	
 	public MensagemEnvio criaIdentificacaoServico(String conteudo, CadastrosEnum cadastroASincronizar) {
 		Identificacao identificacao = new Identificacao();
@@ -84,28 +102,31 @@ public abstract class ClienteRestSincronismo {
 	 */
 	public void atualizaValoresPropriedades(Identificacao identificacao) {
 
-		InputStream input = null;
+//		InputStream input = null;
 
-		try {
+//		try {
 
-			input = new FileInputStream("integracao-is-cobol.properties");
+//			input = new FileInputStream("integracao-is-cobol.properties");
 
-			prop.load(input);
-			identificacao.setMatriculaAssociada(prop.getProperty("matricula_revenda"));
-			identificacao.setServicoAcessado(prop.getProperty("servico_acessado"));
-			identificacao.setUsuarioOrigemServico(prop.getProperty("usuario_origem"));
+//			prop.load(input);
+//			identificacao.setMatriculaAssociada(prop.getProperty("matricula_revenda"));
+//			identificacao.setServicoAcessado(prop.getProperty("servico_acessado"));
+//			identificacao.setUsuarioOrigemServico(prop.getProperty("usuario_origem"));
+			identificacao.setMatriculaAssociada("2222");
+			identificacao.setServicoAcessado("SINCRONISMO");
+			identificacao.setUsuarioOrigemServico("USUARIO ERP");
 
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		} finally {
-			if (input != null) {
-				try {
-					input.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
+//		} catch (IOException ex) {
+//			ex.printStackTrace();
+//		} finally {
+//			if (input != null) {
+//				try {
+//					input.close();
+//				} catch (IOException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		}
 
 	  }
 	

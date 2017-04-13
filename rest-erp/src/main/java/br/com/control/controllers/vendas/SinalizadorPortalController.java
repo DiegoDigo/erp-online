@@ -166,14 +166,15 @@ public class SinalizadorPortalController extends AbstractController {
 	@Autowired
 	private BandaPrecoItemService bandaPrecoItemService;
 
-	@RequestMapping(value = RotasRest.RAIZ_ACOMPANHAMENTO, method = RequestMethod.GET, headers = "Accept=application/json")
+	@RequestMapping(value = RotasRest.RAIZ_ACOMPANHAMENTO, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortal(@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+		logger.info("------> ENTROU NA API REST DE ACOMPANHAMENTO DE PEDIDO");
 		acompanhamentoCapaPedidoService.enviaParaOPortal(sinalizadorPortalService.retornaCodigoERP(mensagem));
 		return null;
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
-			+ RotasRest.RAIZ_GRUPO, method = RequestMethod.GET, headers = "Accept=application/json")
+			+ RotasRest.RAIZ_GRUPO, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoCadastroGrupo(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
@@ -192,7 +193,7 @@ public class SinalizadorPortalController extends AbstractController {
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
-			+ RotasRest.RAIZ_FAMILIA, method = RequestMethod.GET, headers = "Accept=application/json")
+			+ RotasRest.RAIZ_FAMILIA, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoCadastroFamilia(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
@@ -210,7 +211,7 @@ public class SinalizadorPortalController extends AbstractController {
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
-			+ RotasRest.RAIZ_MARCA, method = RequestMethod.GET, headers = "Accept=application/json")
+			+ RotasRest.RAIZ_MARCA, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoCadastroMarca(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
@@ -229,7 +230,7 @@ public class SinalizadorPortalController extends AbstractController {
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
-			+ RotasRest.RAIZ_CATEGORIA, method = RequestMethod.GET, headers = "Accept=application/json")
+			+ RotasRest.RAIZ_CATEGORIA, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoCadastroCategoria(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
@@ -247,7 +248,7 @@ public class SinalizadorPortalController extends AbstractController {
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
-			+ RotasRest.RAIZ_CANAL, method = RequestMethod.GET, headers = "Accept=application/json")
+			+ RotasRest.RAIZ_CANAL, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoCadastroCanal(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
@@ -265,7 +266,7 @@ public class SinalizadorPortalController extends AbstractController {
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
-			+ RotasRest.RAIZ_PRODUTO, method = RequestMethod.GET, headers = "Accept=application/json")
+			+ RotasRest.RAIZ_PRODUTO, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoCadastroProduto(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
@@ -283,7 +284,7 @@ public class SinalizadorPortalController extends AbstractController {
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_TIPO
-			+ RotasRest.RAIZ_COBRANCA, method = RequestMethod.GET, headers = "Accept=application/json")
+			+ RotasRest.RAIZ_COBRANCA, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoCadastroTipoCobranca(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
@@ -301,7 +302,7 @@ public class SinalizadorPortalController extends AbstractController {
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
-			+ RotasRest.RAIZ_CONDICAO_PAGAMENTO, method = RequestMethod.GET, headers = "Accept=application/json")
+			+ RotasRest.RAIZ_CONDICAO_PAGAMENTO, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoCadastroCondicaoPagamento(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
@@ -320,7 +321,7 @@ public class SinalizadorPortalController extends AbstractController {
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
-			+ RotasRest.RAIZ_OCORRENCIA, method = RequestMethod.GET, headers = "Accept=application/json")
+			+ RotasRest.RAIZ_OCORRENCIA, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoCadastroOcorrencia(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
@@ -338,7 +339,7 @@ public class SinalizadorPortalController extends AbstractController {
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
-			+ RotasRest.RAIZ_DETALHE_COMBO, method = RequestMethod.GET, headers = "Accept=application/json")
+			+ RotasRest.RAIZ_DETALHE_COMBO, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoCadastroDetalheProdutoCombo(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
@@ -362,7 +363,7 @@ public class SinalizadorPortalController extends AbstractController {
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_CLIENTE
-			+ RotasRest.RAIZ_ENDERECO, method = RequestMethod.GET, headers = "Accept=application/json")
+			+ RotasRest.RAIZ_ENDERECO, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoCadastroOrigemLogradouro(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
@@ -387,7 +388,7 @@ public class SinalizadorPortalController extends AbstractController {
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
-			+ RotasRest.RAIZ_VENDEDOR, method = RequestMethod.GET, headers = "Accept=application/json")
+			+ RotasRest.RAIZ_VENDEDOR, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoCadastroVendedor(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
@@ -406,7 +407,7 @@ public class SinalizadorPortalController extends AbstractController {
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_CLIENTE
-			+ RotasRest.RAIZ_VENDEDOR, method = RequestMethod.GET, headers = "Accept=application/json")
+			+ RotasRest.RAIZ_VENDEDOR, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoCadastroClienteVendedor(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
@@ -430,7 +431,7 @@ public class SinalizadorPortalController extends AbstractController {
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
-			+ RotasRest.RAIZ_CLIENTE, method = RequestMethod.GET, headers = "Accept=application/json")
+			+ RotasRest.RAIZ_CLIENTE, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoCadastroCliente(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
@@ -448,7 +449,7 @@ public class SinalizadorPortalController extends AbstractController {
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_TIPO
-			+ RotasRest.RAIZ_ENDERECO, method = RequestMethod.GET, headers = "Accept=application/json")
+			+ RotasRest.RAIZ_ENDERECO, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoCadastroTipoEndereco(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
@@ -466,7 +467,7 @@ public class SinalizadorPortalController extends AbstractController {
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_TIPO + RotasRest.RAIZ_COBRANCA
-			+ RotasRest.RAIZ_CLIENTE, method = RequestMethod.GET, headers = "Accept=application/json")
+			+ RotasRest.RAIZ_CLIENTE, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoCadastroTipoCobrancaCliente(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
@@ -486,7 +487,7 @@ public class SinalizadorPortalController extends AbstractController {
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_MOTIVO
-			+ RotasRest.RAIZ_FINANCEIRO, method = RequestMethod.GET, headers = "Accept=application/json")
+			+ RotasRest.RAIZ_FINANCEIRO, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoCadastroMovimentoFinanceiro(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
@@ -506,7 +507,7 @@ public class SinalizadorPortalController extends AbstractController {
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
-			+ RotasRest.RAIZ_COMODATO, method = RequestMethod.GET, headers = "Accept=application/json")
+			+ RotasRest.RAIZ_COMODATO, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoComodato(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
@@ -524,7 +525,7 @@ public class SinalizadorPortalController extends AbstractController {
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_HISTORICO + RotasRest.RAIZ_PEDIDO
-			+ RotasRest.RAIZ_CAPA, method = RequestMethod.GET, headers = "Accept=application/json")
+			+ RotasRest.RAIZ_CAPA, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoHistoricoPedidoCapa(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
@@ -544,7 +545,7 @@ public class SinalizadorPortalController extends AbstractController {
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_HISTORICO + RotasRest.RAIZ_PEDIDO
-			+ RotasRest.RAIZ_ITEM, method = RequestMethod.GET, headers = "Accept=application/json")
+			+ RotasRest.RAIZ_ITEM, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoHistoricoPedidoItem(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
@@ -568,7 +569,7 @@ public class SinalizadorPortalController extends AbstractController {
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_BANDA + RotasRest.RAIZ_PRECO
-			+ RotasRest.RAIZ_CAPA, method = RequestMethod.GET, headers = "Accept=application/json")
+			+ RotasRest.RAIZ_CAPA, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoBandaPrecoCapa(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
@@ -586,7 +587,7 @@ public class SinalizadorPortalController extends AbstractController {
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_BANDA + RotasRest.RAIZ_PRECO
-			+ RotasRest.RAIZ_ITEM, method = RequestMethod.GET, headers = "Accept=application/json")
+			+ RotasRest.RAIZ_ITEM, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortalSincronismoBandaPrecoItem(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 

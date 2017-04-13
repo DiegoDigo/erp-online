@@ -41,6 +41,7 @@ public class SINALIZADOR implements IscobolCall {
 			System.out.println("--> Ação: ATUALIZAÇÃO DE " + acao);
 
 			if (acao.equals("PEDIDO")) {
+				System.out.println("---> PARAMETRO RECEBIDO DO GESTÃO: "+parametroRecebido);
 				SincronismoAcompanhamentoPedido clienteREST = new SincronismoAcompanhamentoPedido();
 				clienteREST.sinalizaPortalAtualizacao(parametroRecebido, null);
 			} else if (acao.equals("CADASTRO")) {
@@ -121,6 +122,10 @@ public class SINALIZADOR implements IscobolCall {
 			return NumericVar.literal(0, false);
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("Mensagem: "+e.getMessage());
+			System.out.println("Causa: "+e.getCause());
+			System.out.println("StackTrace: "+e.getStackTrace());
+			System.out.println("Localized Message: "+e.getLocalizedMessage());
 			System.out.println("### SAIU DO SINALIZADOR COM ERROS ###");
 			return NumericVar.literal(1, false);
 		}
@@ -136,10 +141,5 @@ public class SINALIZADOR implements IscobolCall {
 	}
 	
 	
-//	public static void main(String[] args) {
-//	SINALIZADOR sinalizador = new SINALIZADOR();
-//	String[] param = { "CADASTRO|" + CadastrosEnum.HISTORICO_PEDIDO_ITEM + "|201702160006" };
-//	sinalizador.call(param);
-//}
 
 }

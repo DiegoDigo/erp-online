@@ -7,13 +7,21 @@ import org.apache.commons.codec.binary.Base64;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 public class AutenticacaoRest {
-	private String REST_SERVICE_URI = "http://localhost:8282";
+	
+//	private String REST_SERVICE_URI = "http://172.30.24.110:8282/";
+//
+//	private String AUTH_SERVER_URI = "http://172.30.24.110:8282/oauth/token";
+//	
+//	private String QPM_PASSWORD_GRANT = "?grant_type=password&username=portalvendas&password=123";
+//	
+	private String REST_SERVICE_URI = "http://linkedby-ecommerce.com.br:8282/api-servicos-erp-dev";
 
-	private String AUTH_SERVER_URI = "http://localhost:8282/oauth/token";
+	private String AUTH_SERVER_URI = "http://linkedby-ecommerce.com.br:8282/api-servicos-erp-dev/oauth/token";
 	
 	private String QPM_PASSWORD_GRANT = "?grant_type=password&username=portalvendas&password=123";
 	
@@ -26,10 +34,14 @@ public class AutenticacaoRest {
 	
 //	private String QPM_ACCESS_TOKEN = "?access_token=";
 	
+	
 	@SuppressWarnings({ "unchecked" })
 	public AuthTokenInfo sendTokenRequest() {
 		RestTemplate restTemplate = new RestTemplate();
 
+		System.out.println("AUTH_SERVER_URI: "+AUTH_SERVER_URI);
+		System.out.println("QPM_PASSWORD_GRANT: "+QPM_PASSWORD_GRANT);
+		
 		HttpEntity<String> request = new HttpEntity<String>(getHeadersWithClientCredentials());
 		ResponseEntity<Object> response = restTemplate.exchange(AUTH_SERVER_URI + QPM_PASSWORD_GRANT, HttpMethod.POST,
 				request, Object.class);
@@ -63,6 +75,7 @@ public class AutenticacaoRest {
 	private HttpHeaders getHeaders() {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(Arrays.asList(org.springframework.http.MediaType.APPLICATION_JSON));
+		headers.setContentType(MediaType.APPLICATION_JSON);
 		return headers;
 	}
 

@@ -89,4 +89,14 @@ public class StatusAcompanhamentoPedidoTO implements Serializable {
 		this.codigoBloqueioPedido = codigoBloqueioPedido;
 	}
 
+	@Override
+	public String toString() {
+		return "StatusAcompanhamentoPedidoTO [recId=" + recId + ", numeroPedidoErp=" + numeroPedidoErp
+				+ ", situacaoPedidoErp=" + situacaoPedidoErp + ", numeroPrePedidoErp=" + numeroPrePedidoErp
+				+ ", numeroRomaneio=" + numeroRomaneio + ", situacaoRomaneio=" + situacaoRomaneio + ", serieNFE="
+				+ serieNFE + ", numeroNFE=" + numeroNFE + ", codigoBloqueioPedido=" + codigoBloqueioPedido + "]";
+	}
+	
+	
+
 }

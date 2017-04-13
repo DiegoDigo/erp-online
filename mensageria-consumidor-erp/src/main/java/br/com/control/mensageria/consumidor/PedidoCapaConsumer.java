@@ -9,7 +9,6 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.messaging.Message;
 import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -48,7 +47,8 @@ public class PedidoCapaConsumer {
 		log.debug("### RECEBIDO O PEDIDO " + pedidoCapa.getRecId() + " DA FILA PEDIDOS ###");
 		log.info("### CAPA REC_ID: "+pedidoCapa.getRecId()+ " ###");
 		
-
+		try {
+			
 		preparaDatasPedido(pedidoCapa);
 
 		AcompanhamentoPedidoTO capaTO = pedidoCapaService.salvarCapa(pedidoCapa);
@@ -70,10 +70,12 @@ public class PedidoCapaConsumer {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
 
-		try {
-			log.debug("### PEDIDO CAPA : {} ###" + mapper.writeValueAsString(pedidoCapa));
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
+		log.debug("### PEDIDO CAPA : {} ###" + mapper.writeValueAsString(pedidoCapa));
+		
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			log.error(e.getCause() != null ? e.getCause().toString() : "");
+			log.error(e.getStackTrace() != null ? e.getStackTrace().toString() : "");
 		}
 	}
 
