@@ -25,8 +25,7 @@ public class FamiliaController extends AbstractController {
 
 	@RequestMapping(value = RotasRest.LISTAR, method = RequestMethod.GET, headers = "Accept=application/json")
 	public MensagemRetorno listar(@RequestParam(value = "mensagem") MensagemRecebida<Familia> mensagem) {
-		List<Familia> familiasEncontradas = servicoFamilia
-				.listarTodos(mensagem.getIdentificacao().getMatriculaAssociada());
+		List<Familia> familiasEncontradas = servicoFamilia.listarTodos();
 		return new MensagemRetorno(HttpStatus.OK, "Listagem retornada com Sucesso", familiasEncontradas,
 				mensagem.getIdentificacao());
 	}

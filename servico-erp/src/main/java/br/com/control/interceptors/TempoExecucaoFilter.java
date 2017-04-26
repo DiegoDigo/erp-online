@@ -12,6 +12,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,6 +30,8 @@ import br.com.control.portal.integracao.TipoOperacao;
 @Component
 public class TempoExecucaoFilter implements Filter {
 
+	private static final Logger logger = LoggerFactory.getLogger(TempoExecucaoFilter.class);
+	
 	@Autowired
 	private AuditoriaService auditoriaService;
 
@@ -62,13 +66,22 @@ public class TempoExecucaoFilter implements Filter {
 			auditoria.getIdentificacao().setServicoAcessado(servico);
 			auditoriaService.salvar(auditoria);
 
+			
+			logger.info("### ACESSANDO SERVICO ERP ###");
+			logger.info("--> serviço: "+servico);
+			logger.info("--> usuário: "+auditoria.getIdentificacao().getUsuarioOrigemServico());
+			logger.info("--> sistem origem: "+auditoria.getIdentificacao().getOrigem());
+			logger.info("--> sistem destino: "+auditoria.getIdentificacao().getDestino());
+			
 			// EXECUTA O CONTEUDO
 			chain.doFilter(request, response);
-
+			
 			// APOS A EXECUCAO DO CONTEUDO
 			Calendar calendarioFim = Calendar.getInstance();
 			auditoria.setDataFimExecucaoServico(calendarioFim);
 			auditoria.setDuracao(calculaDiferencaEntreDatas(calendarioInicio.getTime(), calendarioFim.getTime()));
+			logger.info("--> duração de: "+auditoria.getDuracao());
+			logger.info("--------------------------------------------------");
 			auditoriaService.salvar(auditoria);
 		} catch (InvalidFormatException e) {
 			throw new RuntimeException("Erro ao converter a mensagem recebida, verifique o formato da mensagem!");

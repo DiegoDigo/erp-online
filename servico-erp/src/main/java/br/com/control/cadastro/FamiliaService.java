@@ -14,7 +14,7 @@ public class FamiliaService {
 	@Autowired
 	private FamiliaProdutoDao familiaDao;
 
-	public List<Familia> listarTodos(String numeroMatricula) {
+	public List<Familia> listarTodos() {
 		return familiaDao.listaTodasAsFamiliasDaMatricula();
 	}
 

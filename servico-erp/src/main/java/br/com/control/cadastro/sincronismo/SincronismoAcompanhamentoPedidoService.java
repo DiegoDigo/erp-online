@@ -34,9 +34,9 @@ public class SincronismoAcompanhamentoPedidoService {
 		StatusAcompanhamentoPedido status = recuperaStatusPedidos(codigoPrePedidoERP);
 		if (status != null) {
 			StatusAcompanhamentoPedidoTO to = new StatusAcompanhamentoPedidoTO(status);
-			LOG.info("------> STATUS PEDIDO: "+codigoPrePedidoERP+" é: "+ to);
+			LOG.info("--> status pedido: "+codigoPrePedidoERP+" é: "+ to.recuperaStatus());
 			pedidoCapaProducer.sendMessage(to);
-			LOG.debug("------> ENVIOU O PEDIDO "+codigoPrePedidoERP+" PARA O PORTAL");
+			LOG.info("--> enviou o pedido: "+codigoPrePedidoERP+" para o portal");
 		}else{
 			LOG.error("Não foi encontrado nenhum pedido com o código de pré pedido: "+codigoPrePedidoERP);
 		}

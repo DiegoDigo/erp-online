@@ -168,7 +168,7 @@ public class SinalizadorPortalController extends AbstractController {
 
 	@RequestMapping(value = RotasRest.RAIZ_ACOMPANHAMENTO, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortal(@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
-		logger.info("------> ENTROU NA API REST DE ACOMPANHAMENTO DE PEDIDO");
+		logger.info("### SINALIZADOR -> ACOMPANHAMENTO DE PEDIDO");
 		acompanhamentoCapaPedidoService.enviaParaOPortal(sinalizadorPortalService.retornaCodigoERP(mensagem));
 		return null;
 	}
@@ -178,6 +178,8 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroGrupo(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		logger.info("### SINALIZADOR -> GRUPO PRODUTO");
+		
 		String codigoGrupo = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		Grupo grupo = grupoService.recuperaGrupo(codigoGrupo);
 
@@ -197,6 +199,8 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroFamilia(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		logger.info("### SINALIZADOR -> FAMILIA PRODUTO");
+		
 		String codigoFamilia = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		Familia familia = familiaService.recuperaFamilia(codigoFamilia);
 
@@ -215,6 +219,8 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroMarca(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		logger.info("### SINALIZADOR -> MARCA PRODUTO");
+		
 		String codigoMarca = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		Marca marca = marcaService.recuperaMarca(codigoMarca);
 
@@ -234,6 +240,8 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroCategoria(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		logger.info("### SINALIZADOR -> CATEGORIA PRODUTO");
+		
 		String codigoCategoria = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		Categoria categoria = categoriaService.recuperaCategoria(codigoCategoria);
 
@@ -252,6 +260,8 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroCanal(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		logger.info("### SINALIZADOR -> CANAL");
+		
 		String codigoCanal = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		Canal canal = canalService.recuperaCanal(codigoCanal);
 
@@ -270,6 +280,8 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroProduto(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		logger.info("### SINALIZADOR -> PRODUTO");
+		
 		String codigoProduto = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		Produto produto = produtoService.recuperarProduto(codigoProduto);
 
@@ -288,6 +300,8 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroTipoCobranca(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		logger.info("### SINALIZADOR -> TIPO COBRANCA");
+		
 		String codigoTipoCobranca = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		TipoCobranca tipoCobranca = tipoCobrancaService.recuperarTipoCobranca(codigoTipoCobranca);
 
@@ -306,6 +320,8 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroCondicaoPagamento(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		logger.info("### SINALIZADOR -> CONDICAO PAGAMENTO");
+		
 		String codigoCondicaoPagamento = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		CondicaoPagamento condicaoPagamento = condicaoPagamentoService
 				.recuperarCondicaoPagamento(codigoCondicaoPagamento);
@@ -325,6 +341,8 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroOcorrencia(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		logger.info("### SINALIZADOR -> OCORRENCIA");
+		
 		String codigoOcorrencia = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		Ocorrencia ocorrencia = ocorrenciaService.recuperarOcorrencia(codigoOcorrencia);
 
@@ -343,6 +361,8 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroDetalheProdutoCombo(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		logger.info("### SINALIZADOR -> COMBO");
+		
 		List<DetalheComboProdutoTO> combosProdutoTO = new ArrayList<>();
 
 		String codigoCombo = sinalizadorPortalService.retornaCodigoERP(mensagem);
@@ -367,6 +387,8 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroOrigemLogradouro(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		logger.info("### SINALIZADOR -> CLIENTE ENDERECO");
+		
 		List<ClienteEnderecoTO> clienteEnderecoTOs = new ArrayList<>();
 
 		String codigoClienteEndereco = sinalizadorPortalService.retornaCodigoERP(mensagem);
@@ -392,6 +414,8 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroVendedor(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		logger.info("### SINALIZADOR -> VENDEDOR");
+		
 		String codigoVendedor = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		Vendedor vendedor = vendedorService.recuperarVendedor(codigoVendedor);
 
@@ -411,6 +435,8 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroClienteVendedor(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		logger.info("### SINALIZADOR -> CLIENTE VENDEDOR");
+		
 		String codigoVendedorCliente = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		List<VendedorCliente> vendedorClientes = vendedorClienteService
 				.recuperarClientesVendedor(codigoVendedorCliente);
@@ -435,6 +461,8 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroCliente(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		logger.info("### SINALIZADOR -> CLIENTE");
+		
 		String codigoCliente = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		Cliente cliente = clienteService.recuperarCliente(Integer.valueOf(codigoCliente));
 
@@ -453,6 +481,8 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroTipoEndereco(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		logger.info("### SINALIZADOR -> TIPO ENDERECO");
+		
 		String codigoTipoEndereco = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		TipoEndereco tipoEndereco = tipoEnderecoService.recuperarTipoEndereco(codigoTipoEndereco);
 
@@ -471,6 +501,8 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroTipoCobrancaCliente(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		logger.info("### SINALIZADOR -> TIPO COBRANCA CLIENTE");
+		
 		String codigoTipoCobrancaCliente = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		TipoCobrancaCliente tipoCobrancaCliente = tipoCobrancaClienteService
 				.recuperarTipoCobrancaCliente(codigoTipoCobrancaCliente);
@@ -491,6 +523,8 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroMovimentoFinanceiro(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		logger.info("### SINALIZADOR -> MOVIMENTO FINANCEIRO");
+		
 		String codigoMovimentoFinanceiro = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		MovimentoFinanceiro movimentoFinanceiroBase = movimentoFinanceiroService
 				.buscarMovimentoFinanceiro(Integer.valueOf(codigoMovimentoFinanceiro));
@@ -511,6 +545,8 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoComodato(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		logger.info("### SINALIZADOR -> COMODATO");
+		
 		String codigoComodato = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		Comodato comodatoBase = comodatoService.listarComodato(codigoComodato);
 
@@ -529,6 +565,8 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoHistoricoPedidoCapa(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		logger.info("### SINALIZADOR -> HISTORICO PEDIDO CAPA");
+		
 		String codigoHistoricoPedidoCapa = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		HistoricoPedidoCapa historioPedidoCapa = historicoPedidoCapaService
 				.buscarHistoricoCapa(codigoHistoricoPedidoCapa);
@@ -549,6 +587,8 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoHistoricoPedidoItem(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		logger.info("### SINALIZADOR -> HISTORICO PEDIDO ITEM");
+		
 		String codigoHistoricoPedidoItem = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		List<HistoricoPedidoItem> historioPedidoItem = historicoPedidoItemService
 				.buscarItemPedido(codigoHistoricoPedidoItem);
@@ -573,6 +613,8 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoBandaPrecoCapa(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		logger.info("### SINALIZADOR -> BANDA PRECO CAPA");
+		
 		String codigoBandaPreco = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		BandaPreco bandaPreco = bandaPrecoService.buscarBanda(codigoBandaPreco);
 
@@ -591,6 +633,8 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoBandaPrecoItem(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		logger.info("### SINALIZADOR -> BANDA PRECO ITEM");
+		
 		List<BandaPrecoItemTO> bandaPrecoItensTO = new ArrayList<>();
 		String codigoBandaPrecoItem = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		List<BandaPrecoItem> bandaPrecoItens = bandaPrecoItemService.buscaBandaPrecoItem(codigoBandaPrecoItem);

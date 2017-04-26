@@ -2,6 +2,7 @@ package br.com.control.portal.mensageria.to;
 
 import java.io.Serializable;
 
+import br.com.control.portal.enums.StatusPedidoEnum;
 import br.com.control.vendas.cadastro.modelo.pedido.acompanhemanto.StatusAcompanhamentoPedido;
 
 public class StatusAcompanhamentoPedidoTO implements Serializable {
@@ -17,6 +18,17 @@ public class StatusAcompanhamentoPedidoTO implements Serializable {
 	private String numeroNFE;
 	private String codigoBloqueioPedido;
 	
+	public StatusPedidoEnum recuperaStatus() {
+		if (getSituacaoPedidoErp() != null && getSituacaoPedidoErp().equals("8")) {
+			return StatusPedidoEnum.ENTREGUE;
+		} else if (getNumeroRomaneio() != null && !getNumeroRomaneio().equals("0")) {
+			return StatusPedidoEnum.SEPARACAO;
+		} else if (getSituacaoPedidoErp() != null && getSituacaoPedidoErp().equals("0")) {
+			return StatusPedidoEnum.APROVADO;
+		} else {
+			return StatusPedidoEnum.ANALISE;
+		}
+	}
 	
 	
 	public StatusAcompanhamentoPedidoTO() {
