@@ -13,6 +13,7 @@ public class MovimentoFinanceiro implements Serializable {
 	private Timestamp dataVencimento;
 	private String mod;
 	private String numeroDocumento;
+	private String numeroPedido;
 	private String tipoRegistro;
 	private float valor;
 	public Long getRecId() {
@@ -69,5 +70,10 @@ public class MovimentoFinanceiro implements Serializable {
 	public void setValor(float valor) {
 		this.valor = valor;
 	}
-	
+	public String getNumeroPedido() {
+		return numeroPedido;
+	}
+	public void setNumeroPedido(String numeroPedido) {
+		this.numeroPedido = numeroPedido;
+	}
 }

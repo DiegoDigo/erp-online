@@ -22,6 +22,7 @@ public class MovimentoFinanceiroRowMapper implements RowMapper<MovimentoFinancei
 		movimento.setDataVencimento(converterStringTimeStamp(rs.getString("DATA_VENCIMENTO")));
 		movimento.setMod(rs.getString("MOD"));
 		movimento.setNumeroDocumento(rs.getString("NUMERO_DOCUMENTO").trim());
+		movimento.setNumeroPedido(rs.getString("NUMERO_PEDIDO").trim());
 		movimento.setTipoRegistro(rs.getString("TIPO_REGISTRO"));
 		movimento.setValor(rs.getFloat("VALOR"));
 		return movimento;
