@@ -26,8 +26,6 @@ public class PedidoCapaConsumer {
 
 	private static Logger log = LoggerFactory.getLogger(PedidoCapaConsumer.class);
 
-	public static final String FILA_PEDIDOS = "pedidos";
-
 	@Autowired
 	private PedidoCapaService pedidoCapaService;
 
@@ -40,12 +38,12 @@ public class PedidoCapaConsumer {
 	@Autowired
 	private FormatacaoUtil util;
 
-	@JmsListener(destination = FILA_PEDIDOS)
+	@JmsListener(destination = "${portal_ambiente}_pedidos")
 	public void receiveMessage(final Message<PedidoCapaTO> message) throws JMSException {
 		PedidoCapaTO pedidoCapa = message.getPayload();
 
-		log.debug("### RECEBIDO O PEDIDO " + pedidoCapa.getRecId() + " DA FILA PEDIDOS ###");
-		log.info("### CAPA REC_ID: "+pedidoCapa.getRecId()+ " ###");
+		log.info("### RECEBIDO O PEDIDO " + pedidoCapa.getRecId() + " DA FILA PEDIDOS ###");
+		log.info("--> recId da capa: "+pedidoCapa.getRecId());
 		
 		try {
 			
@@ -58,19 +56,19 @@ public class PedidoCapaConsumer {
 			pedidoItemService.salvarItem(item);
 		}
 		
-		log.info("### NUMERO PRE-PEDIDO ERP: " + capaTO.getNumeroPedidoGestao() + " ###");
-		log.info("### STATUS PEDIDO: "+capaTO.getStatusAcompanhamentoPedido()+" ###");
+		log.info("--> numero pré-pedido erp: " + capaTO.getNumeroPedidoGestao());
 
 		StatusAcompanhamentoPedidoTO status = new StatusAcompanhamentoPedidoTO();
 		status.setNumeroPrePedidoErp(capaTO.getNumeroPedidoGestao());
 		status.setRecId(capaTO.getRecId());
 
+		log.info("--> status pedido: "+status.recuperaStatus());
 		producer.sendMessage(status);
 
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
 
-		log.debug("### PEDIDO CAPA : {} ###" + mapper.writeValueAsString(pedidoCapa));
+		log.debug("### DADOS DO PEDIDO CAPA : {} ###" + mapper.writeValueAsString(pedidoCapa));
 		
 		} catch (Exception e) {
 			log.error(e.getMessage());
@@ -78,7 +76,7 @@ public class PedidoCapaConsumer {
 			log.error(e.getStackTrace() != null ? e.getStackTrace().toString() : "");
 		}
 	}
-
+	
 	private void preparaDatasPedido(PedidoCapaTO pedidoCapa) {
 		String dataVencimento = util.formataData(pedidoCapa.getDataHoraEmissao(), "yyyyMMdd");
 		String dataEmissao = util.formataData(pedidoCapa.getDataHoraEmissao(), "yyyyMMdd");

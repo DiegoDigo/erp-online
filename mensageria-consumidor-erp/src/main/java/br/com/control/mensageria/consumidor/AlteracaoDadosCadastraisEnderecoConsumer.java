@@ -22,21 +22,20 @@ public class AlteracaoDadosCadastraisEnderecoConsumer {
 
 	private static Logger log = LoggerFactory.getLogger(AlteracaoDadosCadastraisEnderecoConsumer.class);
 
-	private static final String FILA_ALTERACAO_DADOS_CADASTRAIS_CONTATO = "alteracao_dados_cadastrais_contato";
-
 	
 	@Autowired
 	private ClienteService clienteService;
 	
 
-	@JmsListener(destination = FILA_ALTERACAO_DADOS_CADASTRAIS_CONTATO)
+	@JmsListener(destination = "${portal_ambiente}_alteracao_dados_cadastrais_contato")
 	public void receiveMessage(final Message<ClienteTO> message) throws JMSException {
 		ClienteTO clienteTO = message.getPayload();
 
-		log.debug("### RECEBIDO ALTERAÇAO DO CONTATO DO CLIENTE " + clienteTO.getCpfCnpj() + " DA ALTERAÇÃO DE DADOS CADASTRAIS CONTATO ###");
+		log.info("### RECEBIDO ALTERAÇAO DO CONTATO DO CLIENTE " +clienteTO.getRazaoSocial() +" - "+ clienteTO.getCpfCnpj() + " DA FILA DE ALTERAÇÃO DE DADOS CADASTRAIS CONTATO ###");
 
 		// Salvar pré-cadastro
 		clienteService.alterarDados(new Cliente(clienteTO));
+		log.info("--> dados do cliente: " + clienteTO.getRazaoSocial() +" alterados no erp");
 
 		// FIXME: Rever para o caso do gestão devolver um código ERP para o
 		// Portal
@@ -46,7 +45,7 @@ public class AlteracaoDadosCadastraisEnderecoConsumer {
 		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
 
 		try {
-			log.debug("### Altera_Dados_Cadastrais : {} ###" + mapper.writeValueAsString(clienteTO));
+			log.info("--> dados cadastrais alterados: {}" + mapper.writeValueAsString(clienteTO));
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}

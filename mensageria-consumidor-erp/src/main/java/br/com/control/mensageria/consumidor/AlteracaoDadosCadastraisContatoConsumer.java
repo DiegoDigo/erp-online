@@ -24,23 +24,22 @@ public class AlteracaoDadosCadastraisContatoConsumer {
 
 	private static Logger log = LoggerFactory.getLogger(AlteracaoDadosCadastraisContatoConsumer.class);
 
-	private static final String FILA_ALTERACAO_DADOS_CADASTRAIS_ENDERECO = "alteracao_dados_cadastrais_endereco";
-
 	
 	@Autowired
 	private ClienteEnderecoService clienteEnderecoService;
 	
 
-	@JmsListener(destination = FILA_ALTERACAO_DADOS_CADASTRAIS_ENDERECO)
+	@JmsListener(destination = "${portal_ambiente}_alteracao_dados_cadastrais_endereco")
 	public void receiveMessage(final Message<ClienteEnderecoTO> message) throws JMSException {
 		@SuppressWarnings("unchecked")
 		List<ClienteEnderecoTO> clienteEnderecoTOs = (List<ClienteEnderecoTO>) message.getPayload();
 		for (ClienteEnderecoTO clienteEnderecoTO : clienteEnderecoTOs) {
-			log.debug("### RECEBIDO ALTERAÇÃO DO ENDEREÇO DO CLIENTE " + clienteEnderecoTO.getCodigoClienteERP() + " DA ALTERAÇÃO DE DADOS CADASTRAIS ENDERECO ###");
+			log.debug("### RECEBIDO ALTERAÇÃO DO ENDEREÇO DO CLIENTE " + clienteEnderecoTO.getCodigoClienteERP() + " DA FILA DE ALTERAÇÃO DE DADOS CADASTRAIS ENDERECO ###");
 
 			// Salvar pré-cadastro
 			clienteEnderecoService.alterarDados(new ClienteEndereco(clienteEnderecoTO));
-
+			log.info("--> dados do endereço alterados no erp");
+			
 			// FIXME: Rever para o caso do gestão devolver um código ERP para o
 			// Portal
 			// producer.sendMessage(status);
@@ -49,7 +48,7 @@ public class AlteracaoDadosCadastraisContatoConsumer {
 			mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
 
 			try {
-				log.debug("### Altera_Dados_Cadastrais : {} ###" + mapper.writeValueAsString(clienteEnderecoTO));
+				log.debug("### dados do endereço alterado : {} ###" + mapper.writeValueAsString(clienteEnderecoTO));
 			} catch (JsonProcessingException e) {
 				e.printStackTrace();
 			}

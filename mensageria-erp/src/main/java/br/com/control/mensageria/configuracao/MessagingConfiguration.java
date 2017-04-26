@@ -13,13 +13,9 @@ public class MessagingConfiguration {
 
 	@Value("${default_url_broker}")
 	public String DEFAULT_BROKER_URL;
-
-	private static final String FILA_PEDIDOS = "pedidos";
-	private static final String FILA_ACOMPANHAMENTO = "acompanhamento";
-	private static final String FILA_SINCRONISMO_CADASTRO = "sincronismo_cadastro";
-	private static final String FILA_LIBERACAO_PEDIDO = "liberacao_pedido";
-	private static final String FILA_ALTERACAO_DADOS_CADASTRAIS_CONTATO = "alteracao_dados_cadastrais_contato";
-	private static final String FILA_ALTERACAO_DADOS_CADASTRAIS_ENDERECO = "alteracao_dados_cadastrais_endereco";
+	
+	@Value("${portal_ambiente}")
+	private String ambiente;
 
 	@Bean
 	public ActiveMQConnectionFactory connectionFactory() {
@@ -35,7 +31,7 @@ public class MessagingConfiguration {
 	public JmsTemplate jmsTemplateFilaPedidos() {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactory());
-		template.setDefaultDestinationName(FILA_PEDIDOS);
+		template.setDefaultDestinationName(ambiente+"_pedidos");
 		return template;
 	}
 
@@ -43,7 +39,7 @@ public class MessagingConfiguration {
 	public JmsTemplate jmsTemplateAcompanhamentoPedidos() {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactory());
-		template.setDefaultDestinationName(FILA_ACOMPANHAMENTO);
+		template.setDefaultDestinationName(ambiente+"_acompanhamento");
 		return template;
 	}
 
@@ -51,28 +47,28 @@ public class MessagingConfiguration {
 	public JmsTemplate jmsTemplateSincronismoCadastro() {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactory());
-		template.setDefaultDestinationName(FILA_SINCRONISMO_CADASTRO);
+		template.setDefaultDestinationName(ambiente+"_sincronismo_cadastro");
 		return template;
 	}
 	@Bean
 	public JmsTemplate jmsTemplateLiberacaoPedido() {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactory());
-		template.setDefaultDestinationName(FILA_LIBERACAO_PEDIDO);
+		template.setDefaultDestinationName(ambiente+"_liberacao_pedido");
 		return template;
 	}
 	@Bean
 	public JmsTemplate jmsTemplateAlteracaoDadosCadastraisContato() {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactory());
-		template.setDefaultDestinationName(FILA_ALTERACAO_DADOS_CADASTRAIS_CONTATO);
+		template.setDefaultDestinationName(ambiente+"_alteracao_dados_cadastrais_contato");
 		return template;
 	}
 	@Bean
 	public JmsTemplate jmsTemplateAlteracaoDadosCadastraisEndereco() {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactory());
-		template.setDefaultDestinationName(FILA_ALTERACAO_DADOS_CADASTRAIS_ENDERECO);
+		template.setDefaultDestinationName(ambiente+"_alteracao_dados_cadastrais_endereco");
 		return template;
 	}
 

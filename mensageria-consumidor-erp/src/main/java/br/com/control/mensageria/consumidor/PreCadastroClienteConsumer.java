@@ -22,17 +22,15 @@ public class PreCadastroClienteConsumer {
 
 	private static Logger log = LoggerFactory.getLogger(PreCadastroClienteConsumer.class);
 
-	private static final String FILA_PRE_CADASTRO_CLIENTE = "pre_cadastro_cliente";
-
 	@Autowired
 	private ClienteService clienteService;
 
-	@JmsListener(destination = FILA_PRE_CADASTRO_CLIENTE)
+	@JmsListener(destination = "${portal_ambiente}_pre_cadastro_cliente")
 	public void receiveMessage(final Message<ClienteTO> message) throws JMSException {
 
 		ClienteTO clienteTO = message.getPayload();
 
-		log.debug("### RECEBIDO O CLIENTE " + clienteTO.getCpfCnpj() + " DA FILA DE PRE CADASTRO ###");
+		log.info("### RECEBIDO O CLIENTE " + clienteTO.getCpfCnpj() + " DA FILA DE PRE CADASTRO ###");
 
 		// Salvar pré-cadastro
 		clienteService.salvar(new Cliente(clienteTO));

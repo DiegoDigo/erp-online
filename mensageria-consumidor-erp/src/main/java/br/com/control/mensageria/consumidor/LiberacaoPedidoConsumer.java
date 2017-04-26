@@ -17,22 +17,22 @@ public class LiberacaoPedidoConsumer {
 
 	private static Logger log = LoggerFactory.getLogger(LiberacaoPedidoConsumer.class);
 
-	private static final String FILA_LIBERACAO_PEDIDO = "liberacao_pedido";
-
 	@Autowired
 	private LiberacaoPedidoService liberacaoPedidoService;
 	
 
-	@JmsListener(destination = FILA_LIBERACAO_PEDIDO)
+	@JmsListener(destination = "${portal_ambiente}_liberacao_pedido")
 	public void receiveMessage(final Message<LiberacaoPedidoTO> message) throws JMSException {
 		LiberacaoPedidoTO liberacao = message.getPayload();
 
+		log.info("### RECEBIDO O PEDIDO " + liberacao.getNumeroPrePedidoGestao() + " DA FILA DE LIBERAÇÃO DE PEDIDOS ###");
+		
 		liberacaoPedidoService.liberarPedido(liberacao);
 		
 		if (liberacao.getStatusPedido().equals("0")) {
-			log.info("### PEDIDO " + liberacao.getNumeroPrePedidoGestao() + " LIBERADO ###");
+			log.info("--> pedido com numero pré-pedido: " + liberacao.getNumeroPrePedidoGestao() + " liberado no erp ###");
 		}else{
-			log.info("### PEDIDO " + liberacao.getNumeroPrePedidoGestao() + " RECUSADO ###");
+			log.info("--> pedido com numero pré-pedido: " + liberacao.getNumeroPrePedidoGestao() + " recusado no erp ###");
 		}
 	}
 
