@@ -1,7 +1,5 @@
 package br.com.control.mensageria.consumidor;
 
-import java.util.List;
-
 import javax.jms.JMSException;
 
 import org.slf4j.Logger;
@@ -15,9 +13,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.com.control.cadastro.ClienteEnderecoService;
-import br.com.control.portal.mensageria.to.ClienteEnderecoTO;
-import br.com.control.vendas.cadastro.modelo.cliente.ClienteEndereco;
+import br.com.control.cadastro.ClienteService;
+import br.com.control.portal.mensageria.to.ClienteTO;
+import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
 
 @Component
 public class AlteracaoDadosCadastraisContatoConsumer {
@@ -26,35 +24,30 @@ public class AlteracaoDadosCadastraisContatoConsumer {
 
 	
 	@Autowired
-	private ClienteEnderecoService clienteEnderecoService;
+	private ClienteService clienteService;
 	
+	@JmsListener(destination = "${portal_ambiente}_alteracao_dados_cadastrais_contato")
+	public void receiveMessage(final Message<ClienteTO> message) throws JMSException {
+		ClienteTO clienteTO = message.getPayload();
 
-	@JmsListener(destination = "${portal_ambiente}_alteracao_dados_cadastrais_endereco")
-	public void receiveMessage(final Message<ClienteEnderecoTO> message) throws JMSException {
-		@SuppressWarnings("unchecked")
-		List<ClienteEnderecoTO> clienteEnderecoTOs = (List<ClienteEnderecoTO>) message.getPayload();
-		for (ClienteEnderecoTO clienteEnderecoTO : clienteEnderecoTOs) {
-			log.debug("### RECEBIDO ALTERAÇÃO DO ENDEREÇO DO CLIENTE " + clienteEnderecoTO.getCodigoClienteERP() + " DA FILA DE ALTERAÇÃO DE DADOS CADASTRAIS ENDERECO ###");
+		log.info("### RECEBIDO ALTERAÇAO DO CONTATO DO CLIENTE " +clienteTO.getRazaoSocial() +" - "+ clienteTO.getCpfCnpj() + " DA FILA DE ALTERAÇÃO DE DADOS CADASTRAIS CONTATO ###");
 
-			// Salvar pré-cadastro
-			clienteEnderecoService.alterarDados(new ClienteEndereco(clienteEnderecoTO));
-			log.info("--> dados do endereço alterados no erp");
-			
-			// FIXME: Rever para o caso do gestão devolver um código ERP para o
-			// Portal
-			// producer.sendMessage(status);
+		// Salvar pré-cadastro
+		clienteService.alterarDados(new Cliente(clienteTO));
+		log.info("--> dados do cliente: " + clienteTO.getRazaoSocial() +" alterados no erp");
 
-			ObjectMapper mapper = new ObjectMapper();
-			mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
+		// FIXME: Rever para o caso do gestão devolver um código ERP para o
+		// Portal
+		// producer.sendMessage(status);
 
-			try {
-				log.debug("### dados do endereço alterado : {} ###" + mapper.writeValueAsString(clienteEnderecoTO));
-			} catch (JsonProcessingException e) {
-				e.printStackTrace();
-			}
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
+
+		try {
+			log.info("--> dados cadastrais alterados: {}" + mapper.writeValueAsString(clienteTO));
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
 		}
-		
 	}
-
 	
 }

@@ -112,7 +112,7 @@ public abstract class ClienteRestSincronismo {
 //			identificacao.setMatriculaAssociada(prop.getProperty("matricula_revenda"));
 //			identificacao.setServicoAcessado(prop.getProperty("servico_acessado"));
 //			identificacao.setUsuarioOrigemServico(prop.getProperty("usuario_origem"));
-			identificacao.setMatriculaAssociada("2222");
+			identificacao.setMatriculaAssociada("3333");
 			identificacao.setServicoAcessado("SINCRONISMO");
 			identificacao.setUsuarioOrigemServico("USUARIO ERP");
 
