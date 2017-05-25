@@ -70,6 +70,9 @@ public class ZipUtil {
 		if (node.isFile()) {
 			listaArquivos.add(generateZipEntry(node.toString()));
 		}
+		if(!node.exists()){
+			node.mkdir();
+		}
 		if (node.isDirectory()) {
 			String[] subNote = node.list();
 			for (String filename : subNote) {
