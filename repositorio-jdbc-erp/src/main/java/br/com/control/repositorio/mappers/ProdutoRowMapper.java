@@ -40,7 +40,7 @@ public class ProdutoRowMapper implements RowMapper<Produto>{
 		produto.setVendaMultiMinAv(rs.getInt("venda_multi_min_av"));
 		produto.setVendaMultiMinCx(rs.getInt("venda_multi_min_cx"));
 		produto.setVendeAvulso(rs.getBoolean("venda_avulso"));
-		produto.setVisibilidadePortal(rs.getInt("visibilidade_portal"));
+		produto.setVisibilidadePortal(0);
 		produto.setCodigoErpCategoria(rs.getString("CODIGO_CATEGORIA_PRODUTO_ERP"));
 		produto.setCodigoErpGrupo(rs.getString("CODIGO_GRUPO_PRODUTO_ERP"));
 		produto.setCodigoErpFamilia(rs.getString("CODIGO_FAMILIA_PRODUTO_ERP"));
