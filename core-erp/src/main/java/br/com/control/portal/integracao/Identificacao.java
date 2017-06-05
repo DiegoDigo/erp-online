@@ -28,6 +28,8 @@ public class Identificacao implements Serializable {
 
 	private String usuarioOrigemServico;
 
+	private Integer codigoEmpresa;
+
 	@Enumerated(EnumType.STRING)
 	private TipoOperacao tipoOperacao;
 
@@ -92,5 +94,13 @@ public class Identificacao implements Serializable {
 
 	public void setMatriculaAssociada(String matriculaAssociada) {
 		this.matriculaAssociada = matriculaAssociada;
+	}
+
+	public Integer getCodigoEmpresa() {
+		return codigoEmpresa;
+	}
+
+	public void setCodigoEmpresa(Integer codigoEmpresa) {
+		this.codigoEmpresa = codigoEmpresa;
 	}
 }

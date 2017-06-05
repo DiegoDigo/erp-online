@@ -14,7 +14,7 @@ import br.com.control.vendas.cadastro.modelo.preco.Preco;
 @Transactional
 public class PrecoDao extends JdbcDao<Preco> {
 
-	public List<Preco> listarPreco() {
+	public List<Preco> listarPreco(Integer codigoEmpresa) {
 		String declare = "DECLARE set int @TABELA_ANO = 2016;";
 		String declare2 = "DECLARE set int @TABELA_MES = 07;";
 		getJdbcTemplate().update(declare);

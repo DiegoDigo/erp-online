@@ -14,8 +14,8 @@ public class PrecoService {
 	@Autowired
 	private PrecoDao precoDao;
 
-	public List<Preco> listaPreco() {
-		return precoDao.listarPreco();
+	public List<Preco> listaPreco(Integer codigoEmpresa) {
+		return precoDao.listarPreco(codigoEmpresa);
 	}
 
 }
