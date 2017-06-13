@@ -60,7 +60,7 @@ public class SincronismosAgendadosService {
 		sincronismoAgendadoProducer.sendMessage(msg);
 	}
 
-	@Scheduled(cron = "periodo_sincronismo_historico_pedidos")
+	@Scheduled(cron = "${periodo_sincronismo_historico_pedidos}")
 	public void atualizaHistoricosPedidoCapaNoPortalDeVendas() {
 		LOG.info("### PROCESSO DE ATUALIZAÇÕES DE HISTÓRICO DE PEDIDOS CAPA AGENDADO PARA O PORTAL DE VENDAS WEB ###");
 		List<HistoricoPedidoCapa> listaDeHistoricosDaMatricula = historicoPedidoCapaService.listarHistoricoCapa();
