@@ -71,5 +71,13 @@ public class MessagingConfiguration {
 		template.setDefaultDestinationName(ambiente+"_alteracao_dados_cadastrais_endereco");
 		return template;
 	}
+	
+	@Bean
+	public JmsTemplate jmsTemplateSincronismoAgendado() {
+		JmsTemplate template = new JmsTemplate();
+		template.setConnectionFactory(connectionFactory());
+		template.setDefaultDestinationName(ambiente+"_sincronismo_agendado");
+		return template;
+	}
 
 }

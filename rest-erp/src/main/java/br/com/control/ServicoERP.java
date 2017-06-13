@@ -10,6 +10,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.jms.annotation.EnableJms;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import br.com.control.configuracao.ConfiguracaoWeb;
 
@@ -17,6 +18,7 @@ import br.com.control.configuracao.ConfiguracaoWeb;
 @Import({ ConfiguracaoWeb.class, ConexaoBanco.class })
 @EnableAspectJAutoProxy
 @EnableJms
+@EnableScheduling
 public class ServicoERP extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
