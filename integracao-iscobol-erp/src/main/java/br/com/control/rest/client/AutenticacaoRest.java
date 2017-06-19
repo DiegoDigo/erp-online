@@ -12,43 +12,48 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 public class AutenticacaoRest {
-	
-//	private String REST_SERVICE_URI = "http://172.30.24.113:8282/";
-//
-//	private String AUTH_SERVER_URI = "http://172.30.24.113:8282/oauth/token";
-//	
-//	private String QPM_PASSWORD_GRANT = "?grant_type=password&username=portalvendas&password=123";
-//	
-	private String REST_SERVICE_URI = "http://linkedby-ecommerce.com.br:8282/api-servicos-erp-apresentacao";
 
-	private String AUTH_SERVER_URI = "http://linkedby-ecommerce.com.br:8282/api-servicos-erp-apresentacao/oauth/token";
-	
+	private String REST_SERVICE_URI = "http://172.30.24.103:8282/";
+
+	private String AUTH_SERVER_URI = "http://172.30.24.103:8282/oauth/token";
+
 	private String QPM_PASSWORD_GRANT = "?grant_type=password&username=portalvendas&password=123";
-	
-//	private String REST_SERVICE_URI = "http://linkedby-ecommerce.com.br:8282/api-servicos-erp-homolog";
-//
-//	private String AUTH_SERVER_URI = "http://linkedby-ecommerce.com.br:8282/api-servicos-erp-homolog/oauth/token";
-//	
-//	private String QPM_PASSWORD_GRANT = "?grant_type=password&username=portalvendas&password=123";
-//	
-	
-//	private String QPM_ACCESS_TOKEN = "?access_token=";
-	
-	
+
+	// private String REST_SERVICE_URI =
+	// "http://linkedby-ecommerce.com.br:8282/api-servicos-erp-apresentacao";
+	//
+	// private String AUTH_SERVER_URI =
+	// "http://linkedby-ecommerce.com.br:8282/api-servicos-erp-apresentacao/oauth/token";
+	//
+	// private String QPM_PASSWORD_GRANT =
+	// "?grant_type=password&username=portalvendas&password=123";
+
+	// private String REST_SERVICE_URI =
+	// "http://linkedby-ecommerce.com.br:8282/api-servicos-erp-homolog";
+	//
+	// private String AUTH_SERVER_URI =
+	// "http://linkedby-ecommerce.com.br:8282/api-servicos-erp-homolog/oauth/token";
+	//
+	// private String QPM_PASSWORD_GRANT =
+	// "?grant_type=password&username=portalvendas&password=123";
+	//
+
+	// private String QPM_ACCESS_TOKEN = "?access_token=";
+
 	@SuppressWarnings({ "unchecked" })
 	public AuthTokenInfo sendTokenRequest() {
 		RestTemplate restTemplate = new RestTemplate();
 
-		System.out.println("AUTH_SERVER_URI: "+AUTH_SERVER_URI);
-		System.out.println("QPM_PASSWORD_GRANT: "+QPM_PASSWORD_GRANT);
-		
+		System.out.println("AUTH_SERVER_URI: " + AUTH_SERVER_URI);
+		System.out.println("QPM_PASSWORD_GRANT: " + QPM_PASSWORD_GRANT);
+
 		AuthTokenInfo tokenInfo = null;
 		try {
 			HttpEntity<String> request = new HttpEntity<String>(getHeadersWithClientCredentials());
-			System.out.println("REQUEST XXX: "+request);
-			ResponseEntity<Object> response = restTemplate.exchange(AUTH_SERVER_URI + QPM_PASSWORD_GRANT, HttpMethod.POST,
-					request, Object.class);
-			System.out.println("RESPONSE XXX: "+response);
+			System.out.println("REQUEST XXX: " + request);
+			ResponseEntity<Object> response = restTemplate.exchange(AUTH_SERVER_URI + QPM_PASSWORD_GRANT,
+					HttpMethod.POST, request, Object.class);
+			System.out.println("RESPONSE XXX: " + response);
 			LinkedHashMap<String, Object> map = (LinkedHashMap<String, Object>) response.getBody();
 
 			if (map != null) {
@@ -62,16 +67,16 @@ public class AutenticacaoRest {
 			} else {
 				System.out.println("No user exist----------");
 
-			}	
+			}
 		} catch (Exception e) {
-			System.out.println("MESSAGE XXX: "+e.getMessage());
-			System.out.println("CAUSE XXX: "+e.getCause());
+			System.out.println("MESSAGE XXX: " + e.getMessage());
+			System.out.println("CAUSE XXX: " + e.getCause());
 			e.printStackTrace();
 		}
-		
+
 		return tokenInfo;
 	}
-	
+
 	public HttpHeaders getHeadersWithClientCredentials() {
 		String plainClientCredentials = "PORTAL_VENDAS:002";
 		String base64ClientCredentials = new String(Base64.encodeBase64(plainClientCredentials.getBytes()));
@@ -111,5 +116,5 @@ public class AutenticacaoRest {
 	public void setQPM_PASSWORD_GRANT(String qPM_PASSWORD_GRANT) {
 		QPM_PASSWORD_GRANT = qPM_PASSWORD_GRANT;
 	}
-	
+
 }
