@@ -46,10 +46,10 @@ public class BandaPrecoItemTO implements Serializable {
 	}
 	public BandaPrecoItemTO(BandaPrecoItem bandaPrecoItem) {
 		super();
-		this.setCodigoTabelaPrecoERP(bandaPrecoItem.getCodigoBandaPrecoERP());
+		this.setCodigoTabelaPrecoERP(bandaPrecoItem.getCodigoTabelaPreco());
 		this.setDescontoMaximo(bandaPrecoItem.getDescontoMaximo());
 		this.setQuantidade(bandaPrecoItem.getQuantidade());
-		this.setCodigoBandaPrecoERP(bandaPrecoItem.getCodigoTabelaPrecoERP());
+		this.setCodigoBandaPrecoERP(bandaPrecoItem.getCodigoBandaPrecoERP());
 	}
 	
 	

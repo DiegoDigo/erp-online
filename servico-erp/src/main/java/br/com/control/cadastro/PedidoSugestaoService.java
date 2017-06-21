@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.control.dao.PedidoSugestaoDao;
-import br.com.control.portal.integracao.TabelasIntegracao;
-import br.com.control.repositorio.mappers.PedidoSugestaoRowMapper;
 import br.com.control.vendas.cadastro.modelo.pedido.PedidoSugestao;
 
 @Service
@@ -17,8 +15,7 @@ public class PedidoSugestaoService {
 	private PedidoSugestaoDao pedidoSugestaoDao;
 
 	public List<PedidoSugestao> listar() {
-		return pedidoSugestaoDao.selectViewSemWhere(TabelasIntegracao.VENDA_PEDIDO_SUGESTAO,
-				new PedidoSugestaoRowMapper());
+		return pedidoSugestaoDao.listarPedidosSugestao();
 	}
 
 }

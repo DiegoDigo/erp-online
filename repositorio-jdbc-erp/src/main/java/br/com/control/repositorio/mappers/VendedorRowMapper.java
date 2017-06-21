@@ -17,7 +17,7 @@ public class VendedorRowMapper implements RowMapper<Vendedor> {
 		vendedor.setTelefoneDdd(rs.getString("TELEFONE_DD").trim());
 		vendedor.setTelefoneTronco(rs.getString("TELEFONE_TRONCO"));
 		vendedor.setTipo(rs.getString("tipo"));
-		vendedor.setNome("teste");
+		vendedor.setNome(rs.getString("nome"));
 		return vendedor;
 	}
 

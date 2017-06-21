@@ -5,7 +5,7 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class BandaPrecoItem implements Serializable {
 	private Long recId;
-	private String codigoTabelaPrecoERP;
+	private String codigoTabelaPreco;
 	private Float descontoMaximo;
 	private Integer quantidade;
 	private String codigoBandaPrecoERP;
@@ -15,13 +15,13 @@ public class BandaPrecoItem implements Serializable {
 	public void setRecId(Long recId) {
 		this.recId = recId;
 	}
-	public String getCodigoTabelaPrecoERP() {
-		return codigoTabelaPrecoERP;
-	}
-	public void setCodigoTabelaPrecoERP(String codigoTabelaPrecoERP) {
-		this.codigoTabelaPrecoERP = codigoTabelaPrecoERP;
-	}
 	
+	public String getCodigoTabelaPreco() {
+		return codigoTabelaPreco;
+	}
+	public void setCodigoTabelaPreco(String codigoTabelaPreco) {
+		this.codigoTabelaPreco = codigoTabelaPreco;
+	}
 	public Float getDescontoMaximo() {
 		return descontoMaximo;
 	}
