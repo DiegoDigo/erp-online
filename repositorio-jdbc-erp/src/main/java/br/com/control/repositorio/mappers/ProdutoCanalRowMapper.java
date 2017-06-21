@@ -13,8 +13,8 @@ public class ProdutoCanalRowMapper implements RowMapper<ProdutoCanal> {
 	public ProdutoCanal mapRow(ResultSet rs, int rowNum) throws SQLException {
 		ProdutoCanal sugestao = new ProdutoCanal();
 		sugestao.setCodigoClienteErp(rs.getString("cod_cliente"));
-		sugestao.setCodigoCanalErp(rs.getString("cod_canal"));
-		sugestao.setCodigoProdutoErp(rs.getString("cod_produto_reduzido"));
+		sugestao.setCodigoCanalErp(rs.getString("erp_canal"));
+		sugestao.setCodigoProdutoErp(rs.getString("cod_produto"));
 		return sugestao;
 	}
 
