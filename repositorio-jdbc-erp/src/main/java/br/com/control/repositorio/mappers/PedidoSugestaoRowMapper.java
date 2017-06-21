@@ -12,9 +12,9 @@ public class PedidoSugestaoRowMapper implements RowMapper<PedidoSugestao> {
 	@Override
 	public PedidoSugestao mapRow(ResultSet rs, int rowNum) throws SQLException {
 		PedidoSugestao sugestao = new PedidoSugestao();
-		sugestao.setClienteRecId(rs.getString("cod_cliente"));
-		sugestao.setCanalRecId(rs.getString("cod_canal"));
-		sugestao.setProdutoRecId(rs.getString("cod_produto_reduzido"));
+		sugestao.setCodigoClienteErp(rs.getString("cod_cliente"));
+		sugestao.setCodigoCanalErp(rs.getString("cod_canal"));
+		sugestao.setCodigoProdutoErp(rs.getString("cod_produto_reduzido"));
 		sugestao.setQuantidadeCaixa(rs.getInt("qtd_cx"));
 		sugestao.setQuantidadeAvusla(rs.getInt("qtd_av"));
 		return sugestao;
