@@ -16,6 +16,7 @@ import br.com.control.rest.client.SincronismoCadastroGrupoProduto;
 import br.com.control.rest.client.SincronismoCadastroMarcaProduto;
 import br.com.control.rest.client.SincronismoCadastroOcorrencia;
 import br.com.control.rest.client.SincronismoCadastroProduto;
+import br.com.control.rest.client.SincronismoCadastroProdutoCanal;
 import br.com.control.rest.client.SincronismoCadastroTipoCobranca;
 import br.com.control.rest.client.SincronismoCadastroVendedor;
 import br.com.control.rest.client.SincronismoCadastroVendedorCliente;
@@ -78,6 +79,9 @@ public class SINALIZADOR implements IscobolCall {
 				}else if (CadastrosEnum.PRODUTO_COMBO == cadastro) {
 					SincronismoCadastroDetalheProdutoCombo rest = new SincronismoCadastroDetalheProdutoCombo();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PRODUTO_COMBO);
+				}else if (CadastrosEnum.PRODUTO_CANAL == cadastro) {
+					SincronismoCadastroProdutoCanal rest = new SincronismoCadastroProdutoCanal();
+					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PRODUTO_CANAL);
 				}else if (CadastrosEnum.CLIENTE_ENDERECO == cadastro) {
 					SincronismoCadastroEnderecoCliente rest = new SincronismoCadastroEnderecoCliente();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.CLIENTE_ENDERECO);
