@@ -14,8 +14,12 @@ public class PrecoService {
 	@Autowired
 	private PrecoDao precoDao;
 
-	public List<Preco> listaPreco(Integer codigoEmpresa) {
-		return precoDao.listarPreco(codigoEmpresa);
+	public List<Preco> listaPreco() {
+		return precoDao.listarPreco();
+	}
+	
+	public Preco recuperarTabelaPreco(String codigoPrecoProdutoErp) {
+		return precoDao.recuperarPreco(codigoPrecoProdutoErp);
 	}
 
 }

@@ -14,8 +14,8 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-import br.com.control.interceptors.ValidadorIdentificacaoRestAop;
 import br.com.control.interceptors.TempoExecucaoFilter;
+import br.com.control.interceptors.ValidadorIdentificacaoRestAop;
 
 @Configuration
 public class ConfiguracaoWeb extends WebMvcConfigurerAdapter {

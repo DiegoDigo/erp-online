@@ -28,7 +28,8 @@ public enum CadastrosEnum {
 	HISTORICO_PEDIDO_CAPA,
 	COMODATO,
 	BANDA_PRECO_CAPA,
-	BANDA_PRECO_ITEM;
+	BANDA_PRECO_ITEM,
+	TABELA_PRECO;
 
 	public static CadastrosEnum recuperaCadastro(String nome) {
 		for (CadastrosEnum cadastro : CadastrosEnum.values()) {
