@@ -28,6 +28,7 @@ import br.com.control.cadastro.MarcaService;
 import br.com.control.cadastro.MovimentoFinanceiroService;
 import br.com.control.cadastro.OcorrenciaService;
 import br.com.control.cadastro.PedidoPendenteLiberacaoService;
+import br.com.control.cadastro.PedidoSugestaoService;
 import br.com.control.cadastro.PrecoService;
 import br.com.control.cadastro.ProdutoService;
 import br.com.control.cadastro.SinalizadorPortalService;
@@ -78,6 +79,7 @@ import br.com.control.vendas.cadastro.modelo.ocorrencia.Ocorrencia;
 import br.com.control.vendas.cadastro.modelo.pedido.HistoricoPedidoCapa;
 import br.com.control.vendas.cadastro.modelo.pedido.HistoricoPedidoItem;
 import br.com.control.vendas.cadastro.modelo.pedido.PedidoPendenteLiberacao;
+import br.com.control.vendas.cadastro.modelo.pedido.PedidoSugestao;
 import br.com.control.vendas.cadastro.modelo.preco.BandaPreco;
 import br.com.control.vendas.cadastro.modelo.preco.BandaPrecoItem;
 import br.com.control.vendas.cadastro.modelo.preco.Preco;
@@ -171,6 +173,9 @@ public class SinalizadorPortalController extends AbstractController {
 
 	@Autowired
 	private BandaPrecoItemService bandaPrecoItemService;
+
+	@Autowired
+	private PedidoSugestaoService pedidoSugestaoService;
 
 	@Autowired
 	private PedidoPendenteLiberacaoService pedidoPendenteLiberacaoService;
@@ -348,6 +353,16 @@ public class SinalizadorPortalController extends AbstractController {
 
 		CondicaoPagamentoTO condicaoPagamentoTO = new CondicaoPagamentoTO(condicaoPagamento);
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, condicaoPagamentoTO, "Condições de Pagemanto");
+	}
+	
+	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
+			+ RotasRest.RAIZ_PEDIDO + RotasRest.RAIZ_SUGESTAO, method = RequestMethod.POST, headers = "Accept=application/json")
+	public MensagemRetorno sinalizaPortalSincronismoCadastroPedidoSugestao(
+			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+		
+		logger.info("### SINALIZADOR -> PEDIDO SUGESTAO");
+		List<PedidoSugestao> sugestoes = pedidoSugestaoService.listar();
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, sugestoes, "Pedidos Sugestão");
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO

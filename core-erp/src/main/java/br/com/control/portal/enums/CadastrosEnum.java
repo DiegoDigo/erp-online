@@ -30,7 +30,8 @@ public enum CadastrosEnum {
 	BANDA_PRECO_CAPA,
 	BANDA_PRECO_ITEM,
 	TABELA_PRECO,
-	PEDIDO_BLOQUEADO;
+	PEDIDO_BLOQUEADO,
+	PEDIDO_SUGESTAO;
 
 	public static CadastrosEnum recuperaCadastro(String nome) {
 		for (CadastrosEnum cadastro : CadastrosEnum.values()) {

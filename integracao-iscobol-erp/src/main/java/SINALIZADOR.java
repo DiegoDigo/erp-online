@@ -26,6 +26,7 @@ import br.com.control.rest.client.SincronismoHistoricoPedidoCapa;
 import br.com.control.rest.client.SincronismoHistoricoPedidoItem;
 import br.com.control.rest.client.SincronismoMovimentoFinanceiro;
 import br.com.control.rest.client.SincronismoPedidoBloqueado;
+import br.com.control.rest.client.SincronismoPedidoSugestao;
 import br.com.control.rest.client.SincronismoTipoCobrancaCliente;
 import br.com.control.rest.client.SincronismoTipoEndereco;
 
@@ -127,6 +128,9 @@ public class SINALIZADOR implements IscobolCall {
 				}else if (CadastrosEnum.PEDIDO_BLOQUEADO == cadastro) {
 					SincronismoPedidoBloqueado rest = new SincronismoPedidoBloqueado();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PEDIDO_BLOQUEADO);
+				}else if (CadastrosEnum.PEDIDO_SUGESTAO == cadastro) {
+					SincronismoPedidoSugestao rest = new SincronismoPedidoSugestao();
+					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PEDIDO_SUGESTAO);
 				}
 
 			}

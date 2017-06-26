@@ -42,7 +42,6 @@ public class SincronismosAgendadosService {
 	@Value("${numero_matricula_empresa}")
 	private String matriculaEmpresa;
 
-
 	@Autowired
 	private SincronismoAgendadoProducer sincronismoAgendadoProducer;
 
@@ -76,16 +75,23 @@ public class SincronismosAgendadosService {
 
 	@Scheduled(cron = "${periodo_sincronismo_movimento_financeiro}")
 	public void atualizaMovimentosFinanceirosNoPortalDeVendas() {
-		LOG.info("### PROCESSO DE ATUALIZAÇÕES DE MOVIMENTOS FINANCEIROS AGENDADO PARA O PORTAL DE VENDAS WEB ###");
-		List<MovimentoFinanceiro> listaDeMovimentosDaMatricula = movimentoFinanceiroService.listar();
-		List<MovimentoFinanceiroTO> movimentosFinanceirosTO = new ArrayList<>();
-		for (MovimentoFinanceiro movimentoFinanceiro : listaDeMovimentosDaMatricula) {
-			MovimentoFinanceiroTO movimentoFinanceiroTO = new MovimentoFinanceiroTO(movimentoFinanceiro);
-			movimentosFinanceirosTO.add(movimentoFinanceiroTO);
+		try {
+			LOG.info("### PROCESSO DE ATUALIZAÇÕES DE MOVIMENTOS FINANCEIROS AGENDADO PARA O PORTAL DE VENDAS WEB ###");
+			List<MovimentoFinanceiro> listaDeMovimentosDaMatricula = movimentoFinanceiroService.listar();
+			LOG.info("--> Lista com " + listaDeMovimentosDaMatricula.size() + " movimentos.");
+			List<MovimentoFinanceiroTO> movimentosFinanceirosTO = new ArrayList<>();
+			for (MovimentoFinanceiro movimentoFinanceiro : listaDeMovimentosDaMatricula) {
+				MovimentoFinanceiroTO movimentoFinanceiroTO = new MovimentoFinanceiroTO(movimentoFinanceiro);
+				movimentosFinanceirosTO.add(movimentoFinanceiroTO);
+			}
+			MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Movimentos Financeiros Listados com sucessos !",
+					movimentosFinanceirosTO, criaIdentificacao(CadastrosEnum.MOVIMENTO_FINANCEIRO));
+			LOG.info("--> enviando para a fila.");
+			sincronismoAgendadoProducer.sendMessage(msg);
+			LOG.info("--> enviado para a fila.");
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Movimentos Financeiros Listados com sucessos !",
-				movimentosFinanceirosTO, criaIdentificacao(CadastrosEnum.MOVIMENTO_FINANCEIRO));
-		sincronismoAgendadoProducer.sendMessage(msg);
 	}
 
 	private Identificacao criaIdentificacao(CadastrosEnum cadastro) {
