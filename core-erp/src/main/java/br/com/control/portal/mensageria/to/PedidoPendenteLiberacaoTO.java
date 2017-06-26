@@ -1,17 +1,18 @@
-package br.com.control.vendas.cadastro.modelo.pedido;
+package br.com.control.portal.mensageria.to;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import br.com.control.portal.enums.StatusLiberacaoPedido;
+import br.com.control.vendas.cadastro.modelo.pedido.PedidoPendenteLiberacao;
 
-@SuppressWarnings("serial")
-public class PedidoPendenteLiberacao implements Serializable {
-	
+public class PedidoPendenteLiberacaoTO implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private Boolean ativo;
-	private Timestamp dataHoraEmissaoPedido;
-	private Timestamp dataVencimento;
+	private Date dataHoraEmissaoPedido;
+	private Date dataVencimento;
 	private float descontoFinanceiro;
 	private String numeroPedido;
 	private float percentualDesconto;
@@ -25,30 +26,22 @@ public class PedidoPendenteLiberacao implements Serializable {
 	private String codigoVendedor;
 	private String nomeVendedor;
 	private String descricaoBloqueio;
-
-
-	public String getCodigoVendedor() {
-		return codigoVendedor;
-	}
-
-	public void setCodigoVendedor(String codigoVendedor) {
-		this.codigoVendedor = codigoVendedor;
-	}
-
-	public String getNomeVendedor() {
-		return nomeVendedor;
-	}
-
-	public void setNomeVendedor(String nomeVendedor) {
-		this.nomeVendedor = nomeVendedor;
-	}
-
-	public String getDescricaoBloqueio() {
-		return descricaoBloqueio;
-	}
-
-	public void setDescricaoBloqueio(String descricaoBloqueio) {
-		this.descricaoBloqueio = descricaoBloqueio;
+	
+	public PedidoPendenteLiberacaoTO(PedidoPendenteLiberacao pedidoPendenteLiberacao) {
+		setAtivo(pedidoPendenteLiberacao.getAtivo());
+		setDataHoraEmissaoPedido(pedidoPendenteLiberacao.getDataHoraEmissaoPedido());
+		setDataVencimento(pedidoPendenteLiberacao.getDataVencimento());
+		setDescontoFinanceiro(pedidoPendenteLiberacao.getDescontoFinanceiro());
+		setNumeroPedido(pedidoPendenteLiberacao.getNumeroPedido());
+		setTaxaFinanceira(pedidoPendenteLiberacao.getTaxaFinanceira());
+		setValorDevolucao(pedidoPendenteLiberacao.getValorDevolucao());
+		setValorPedido(pedidoPendenteLiberacao.getValorPedido());
+		setCodigoClienteERP(pedidoPendenteLiberacao.getCodigoClienteERP());
+		setCondicaoPagamentoERP(pedidoPendenteLiberacao.getCondicaoPagamentoERP());
+		setTipoCobrancaERP(pedidoPendenteLiberacao.getTipoCobrancaERP());
+		setCodigoVendedor(pedidoPendenteLiberacao.getCodigoVendedor());
+		setNomeVendedor(pedidoPendenteLiberacao.getNomeVendedor());
+		setDescricaoBloqueio(pedidoPendenteLiberacao.getDescricaoBloqueio());
 	}
 
 	public Boolean getAtivo() {
@@ -58,21 +51,25 @@ public class PedidoPendenteLiberacao implements Serializable {
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
+	
+	
 
-	public Timestamp getDataHoraEmissaoPedido() {
+
+	public Date getDataHoraEmissaoPedido() {
 		return dataHoraEmissaoPedido;
 	}
 
-	public void setDataHoraEmissaoPedido(Timestamp dataHoraEmissaoPedido) {
-		this.dataHoraEmissaoPedido = dataHoraEmissaoPedido;
-	}
 
-	public Timestamp getDataVencimento() {
+	public Date getDataVencimento() {
 		return dataVencimento;
 	}
 
-	public void setDataVencimento(Timestamp dataVencimento) {
+	public void setDataVencimento(Date dataVencimento) {
 		this.dataVencimento = dataVencimento;
+	}
+
+	public void setDataHoraEmissaoPedido(Date dataHoraEmissaoPedido) {
+		this.dataHoraEmissaoPedido = dataHoraEmissaoPedido;
 	}
 
 	public float getDescontoFinanceiro() {
@@ -138,7 +135,6 @@ public class PedidoPendenteLiberacao implements Serializable {
 	public void setCodigoClienteERP(String codigoClienteERP) {
 		this.codigoClienteERP = codigoClienteERP;
 	}
-
 	public String getCondicaoPagamentoERP() {
 		return condicaoPagamentoERP;
 	}
@@ -153,6 +149,30 @@ public class PedidoPendenteLiberacao implements Serializable {
 
 	public void setTipoCobrancaERP(String tipoCobrancaERP) {
 		this.tipoCobrancaERP = tipoCobrancaERP;
+	}
+
+	public String getCodigoVendedor() {
+		return codigoVendedor;
+	}
+
+	public void setCodigoVendedor(String codigoVendedor) {
+		this.codigoVendedor = codigoVendedor;
+	}
+
+	public String getNomeVendedor() {
+		return nomeVendedor;
+	}
+
+	public void setNomeVendedor(String nomeVendedor) {
+		this.nomeVendedor = nomeVendedor;
+	}
+
+	public String getDescricaoBloqueio() {
+		return descricaoBloqueio;
+	}
+
+	public void setDescricaoBloqueio(String descricaoBloqueio) {
+		this.descricaoBloqueio = descricaoBloqueio;
 	}
 
 }

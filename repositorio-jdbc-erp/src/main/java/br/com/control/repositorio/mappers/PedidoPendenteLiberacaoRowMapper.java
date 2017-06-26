@@ -19,7 +19,7 @@ public class PedidoPendenteLiberacaoRowMapper  implements RowMapper<PedidoPenden
 			pedidoLiberacao.setAtivo(rs.getBoolean("ativo"));
 			pedidoLiberacao.setCodigoClienteERP(rs.getString("codigo_cliente_rec_id"));
 //			pedidoLiberacao.setCodigoMotivoDevolucao(rs.getString("codigo_motivo_devolucao"));
-			pedidoLiberacao.setCondicaoPagamentoERP(rs.getLong("codigo_condicao_pagamento_rec_id"));
+			pedidoLiberacao.setCondicaoPagamentoERP(String.valueOf(rs.getLong("codigo_condicao_pagamento_rec_id")));
 			pedidoLiberacao.setDataHoraEmissaoPedido(FormatacaoUtil.converterStringTimeStamp(rs.getString("data_hora_emissao_pedido")));
 			pedidoLiberacao.setDataVencimento(FormatacaoUtil.converterStringTimeStamp(rs.getString("data_hora_emissao_pedido")));
 			pedidoLiberacao.setDescontoFinanceiro(rs.getInt("desconto_financeiro"));
@@ -27,7 +27,7 @@ public class PedidoPendenteLiberacaoRowMapper  implements RowMapper<PedidoPenden
 			pedidoLiberacao.setPercentualDesconto(rs.getFloat("percentual_desconto"));
 			pedidoLiberacao.setStatusPedido(StatusLiberacaoPedido.recuperaPorNome(rs.getString("status_pedido")));
 			pedidoLiberacao.setTaxaFinanceira(rs.getFloat("taxa_financeiro"));
-			pedidoLiberacao.setTipoCobrancaERP(rs.getLong("codigo_tipo_cobranca_rec_id"));
+			pedidoLiberacao.setTipoCobrancaERP(String.valueOf(rs.getLong("codigo_tipo_cobranca_rec_id")));
 			pedidoLiberacao.setValorDevolucao(rs.getFloat("valor_devolucao"));
 			pedidoLiberacao.setValorPedido(rs.getFloat("valor_pedido"));
 			pedidoLiberacao.setCodigoVendedor(rs.getString("CODIGO_VENDEDOR") != null ? rs.getString("CODIGO_VENDEDOR").trim() : null);

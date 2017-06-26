@@ -22,10 +22,10 @@ public class PedidoPendenteLiberacaoDao extends JdbcDao<PedidoPendenteLiberacao>
 		return selectViewSemWhere(TabelasIntegracao.PEDIDO_BLOQUEADO, new PedidoPendenteLiberacaoRowMapper());
 	}
 	
-	public List<PedidoPendenteLiberacao> buscarPedidoBloqueado(String codigoPedidoERP) {
+	public PedidoPendenteLiberacao buscarPedidoBloqueado(String codigoPedidoERP) {
 		String declare = String.format("DECLARE SET VARCHAR(12) @CODIGO_PEDIDO = '%s'", codigoPedidoERP);
 		getJdbcTemplate().update(declare);
-		return selectViewSemWhere(TabelasIntegracao.PEDIDO_BLOQUEADO, new PedidoPendenteLiberacaoRowMapper());
+		return selectViewSingle(TabelasIntegracao.PEDIDO_BLOQUEADO, new PedidoPendenteLiberacaoRowMapper());
 	}
 	
 }

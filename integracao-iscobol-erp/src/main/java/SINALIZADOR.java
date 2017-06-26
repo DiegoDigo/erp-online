@@ -24,6 +24,8 @@ import br.com.control.rest.client.SincronismoCadastroVendedorCliente;
 import br.com.control.rest.client.SincronismoComodato;
 import br.com.control.rest.client.SincronismoHistoricoPedidoCapa;
 import br.com.control.rest.client.SincronismoHistoricoPedidoItem;
+import br.com.control.rest.client.SincronismoMovimentoFinanceiro;
+import br.com.control.rest.client.SincronismoPedidoBloqueado;
 import br.com.control.rest.client.SincronismoTipoCobrancaCliente;
 import br.com.control.rest.client.SincronismoTipoEndereco;
 
@@ -105,7 +107,7 @@ public class SINALIZADOR implements IscobolCall {
 					SincronismoTipoCobrancaCliente rest = new SincronismoTipoCobrancaCliente();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.TIPO_COBRANCA_CLIENTE);
 				}else if (CadastrosEnum.MOVIMENTO_FINANCEIRO == cadastro) {
-					SincronismoTipoCobrancaCliente rest = new SincronismoTipoCobrancaCliente();
+					SincronismoMovimentoFinanceiro rest = new SincronismoMovimentoFinanceiro();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.MOVIMENTO_FINANCEIRO);
 				}else if (CadastrosEnum.COMODATO == cadastro) {
 					SincronismoComodato rest = new SincronismoComodato();
@@ -122,6 +124,9 @@ public class SINALIZADOR implements IscobolCall {
 				}else if (CadastrosEnum.BANDA_PRECO_ITEM == cadastro) {
 					SincronismoBandaPrecoItem rest = new SincronismoBandaPrecoItem();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.BANDA_PRECO_ITEM);
+				}else if (CadastrosEnum.PEDIDO_BLOQUEADO == cadastro) {
+					SincronismoPedidoBloqueado rest = new SincronismoPedidoBloqueado();
+					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PEDIDO_BLOQUEADO);
 				}
 
 			}

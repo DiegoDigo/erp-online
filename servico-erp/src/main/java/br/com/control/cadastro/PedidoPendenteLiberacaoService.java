@@ -17,5 +17,9 @@ public class PedidoPendenteLiberacaoService {
 	public List<PedidoPendenteLiberacao> listarPedidoBloqueado(){
 		return pedidoBloqueadosDao.listaTodosPedidoBloqueado();
 	}
+	
+	public PedidoPendenteLiberacao recuperarPedidoPendenteLiberacao(String codigoPedido) {
+		return pedidoBloqueadosDao.buscarPedidoBloqueado(codigoPedido);
+	}
 
 }
