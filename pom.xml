@@ -36,6 +36,7 @@
 		<module>mensageria-consumidor-erp</module>
 		<module>mensageria-produtor-erp</module>
 		<module>integracao-iscobol-erp</module>
+		<module>front-end</module>
 	</modules>
 
 	<parent>
