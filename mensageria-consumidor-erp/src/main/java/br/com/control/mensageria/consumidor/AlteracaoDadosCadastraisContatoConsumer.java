@@ -30,7 +30,7 @@ public class AlteracaoDadosCadastraisContatoConsumer {
 	public void receiveMessage(final Message<ClienteTO> message) throws JMSException {
 		ClienteTO clienteTO = message.getPayload();
 
-		log.info("### RECEBIDO ALTERAÇAO DO CONTATO DO CLIENTE " +clienteTO.getRazaoSocial() +" - "+ clienteTO.getCpfCnpj() + " DA FILA DE ALTERAÇÃO DE DADOS CADASTRAIS CONTATO ###");
+		log.info("### RECEBIDO ALTERACAO DO CONTATO DO CLIENTE " +clienteTO.getRazaoSocial() +" - "+ clienteTO.getCpfCnpj() + " DA FILA DE ALTERACAO DE DADOS CADASTRAIS CONTATO ###");
 
 		// Salvar pré-cadastro
 		clienteService.alterarDados(new Cliente(clienteTO));

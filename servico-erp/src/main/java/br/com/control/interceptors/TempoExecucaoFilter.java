@@ -69,8 +69,8 @@ public class TempoExecucaoFilter implements Filter {
 				
 				
 				logger.info("### ACESSANDO SERVICO ERP ###");
-				logger.info("--> serviço: "+servico);
-				logger.info("--> usuário: "+auditoria.getIdentificacao().getUsuarioOrigemServico());
+				logger.info("--> servico: "+servico);
+				logger.info("--> usuario: "+auditoria.getIdentificacao().getUsuarioOrigemServico());
 				logger.info("--> sistem origem: "+auditoria.getIdentificacao().getOrigem());
 				logger.info("--> sistem destino: "+auditoria.getIdentificacao().getDestino());
 				
@@ -81,7 +81,7 @@ public class TempoExecucaoFilter implements Filter {
 				Calendar calendarioFim = Calendar.getInstance();
 				auditoria.setDataFimExecucaoServico(calendarioFim);
 				auditoria.setDuracao(calculaDiferencaEntreDatas(calendarioInicio.getTime(), calendarioFim.getTime()));
-				logger.info("--> duração de: "+auditoria.getDuracao());
+				logger.info("--> duracao de: "+auditoria.getDuracao());
 				logger.info("--------------------------------------------------");
 				auditoriaService.salvar(auditoria);
 			}

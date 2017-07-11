@@ -56,7 +56,7 @@ public class PedidoCapaConsumer {
 			pedidoItemService.salvarItem(item);
 		}
 		
-		log.info("--> numero pré-pedido erp: " + capaTO.getNumeroPedidoGestao());
+		log.info("--> numero pre-pedido erp: " + capaTO.getNumeroPedidoGestao());
 
 		StatusAcompanhamentoPedidoTO status = new StatusAcompanhamentoPedidoTO();
 		status.setNumeroPrePedidoErp(capaTO.getNumeroPedidoGestao());

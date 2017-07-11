@@ -25,7 +25,7 @@ public class LiberacaoPedidoConsumer {
 	public void receiveMessage(final Message<LiberacaoPedidoTO> message) throws JMSException {
 		LiberacaoPedidoTO liberacao = message.getPayload();
 
-		log.info("### RECEBIDO O PEDIDO " + liberacao.getNumeroPedidoGestao() + " DA FILA DE LIBERAÇÃO DE PEDIDOS ###");
+		log.info("### RECEBIDO O PEDIDO " + liberacao.getNumeroPedidoGestao() + " DA FILA DE LIBERACAO DE PEDIDOS ###");
 		
 		liberacaoPedidoService.liberarPedido(liberacao);
 		

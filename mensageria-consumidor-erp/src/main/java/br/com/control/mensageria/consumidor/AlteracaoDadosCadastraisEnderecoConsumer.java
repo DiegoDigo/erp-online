@@ -32,11 +32,11 @@ public class AlteracaoDadosCadastraisEnderecoConsumer {
 		@SuppressWarnings("unchecked")
 		List<ClienteEnderecoTO> clienteEnderecoTOs = (List<ClienteEnderecoTO>) message.getPayload();
 		for (ClienteEnderecoTO clienteEnderecoTO : clienteEnderecoTOs) {
-			log.debug("### RECEBIDO ALTERAÇÃO DO ENDEREÇO DO CLIENTE " + clienteEnderecoTO.getCodigoClienteERP() + " DA FILA DE ALTERAÇÃO DE DADOS CADASTRAIS ENDERECO ###");
+			log.debug("### RECEBIDO ALTERACAO DO ENDERECO DO CLIENTE " + clienteEnderecoTO.getCodigoClienteERP() + " DA FILA DE ALTERACAO DE DADOS CADASTRAIS ENDERECO ###");
 
 			// Salvar pré-cadastro
 			clienteEnderecoService.alterarDados(new ClienteEndereco(clienteEnderecoTO));
-			log.info("--> dados do endereço alterados no erp");
+			log.info("--> dados do endereco alterados no erp");
 			
 			// FIXME: Rever para o caso do gestão devolver um código ERP para o
 			// Portal
@@ -46,7 +46,7 @@ public class AlteracaoDadosCadastraisEnderecoConsumer {
 			mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
 
 			try {
-				log.debug("### dados do endereço alterado : {} ###" + mapper.writeValueAsString(clienteEnderecoTO));
+				log.debug("### dados do endereco alterado : {} ###" + mapper.writeValueAsString(clienteEnderecoTO));
 			} catch (JsonProcessingException e) {
 				e.printStackTrace();
 			}

@@ -47,7 +47,7 @@ public class SincronismosAgendadosService {
 
 	@Scheduled(cron = "${periodo_sincronismo_comodato}")
 	public void atualizaComodatosNoPortalDeVendas() {
-		LOG.info("### PROCESSO DE ATUALIZAÇÕES DE COMODATO AGENDADO PARA O PORTAL DE VENDAS WEB ###");
+		LOG.info("### PROCESSO DE ATUALIZACOES DE COMODATO AGENDADO PARA O PORTAL DE VENDAS WEB ###");
 		List<Comodato> listaDeComodatosDaMatricula = comodatoService.listarComodato();
 		List<ComodatoTO> comodatosTO = new ArrayList<>();
 		for (Comodato comodato : listaDeComodatosDaMatricula) {
@@ -61,14 +61,14 @@ public class SincronismosAgendadosService {
 
 	@Scheduled(cron = "${periodo_sincronismo_historico_pedidos}")
 	public void atualizaHistoricosPedidoCapaNoPortalDeVendas() {
-		LOG.info("### PROCESSO DE ATUALIZAÇÕES DE HISTÓRICO DE PEDIDOS CAPA AGENDADO PARA O PORTAL DE VENDAS WEB ###");
+		LOG.info("### PROCESSO DE ATUALIZACOES DE HISTORICO DE PEDIDOS CAPA AGENDADO PARA O PORTAL DE VENDAS WEB ###");
 		List<HistoricoPedidoCapa> listaDeHistoricosDaMatricula = historicoPedidoCapaService.listarHistoricoCapa();
 		List<HistoricoPedidoCapaTO> historicosTO = new ArrayList<>();
 		for (HistoricoPedidoCapa historico : listaDeHistoricosDaMatricula) {
 			HistoricoPedidoCapaTO historicoTO = new HistoricoPedidoCapaTO(historico);
 			historicosTO.add(historicoTO);
 		}
-		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Comodatos Listado com sucessos !", historicosTO,
+		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Historicos Listado com sucessos !", historicosTO,
 				criaIdentificacao(CadastrosEnum.HISTORICO_PEDIDO_CAPA));
 		sincronismoAgendadoProducer.sendMessage(msg);
 	}
@@ -76,7 +76,7 @@ public class SincronismosAgendadosService {
 	@Scheduled(cron = "${periodo_sincronismo_movimento_financeiro}")
 	public void atualizaMovimentosFinanceirosNoPortalDeVendas() {
 		try {
-			LOG.info("### PROCESSO DE ATUALIZAÇÕES DE MOVIMENTOS FINANCEIROS AGENDADO PARA O PORTAL DE VENDAS WEB ###");
+			LOG.info("### PROCESSO DE ATUALIZACOES DE MOVIMENTOS FINANCEIROS AGENDADO PARA O PORTAL DE VENDAS WEB ###");
 			List<MovimentoFinanceiro> listaDeMovimentosDaMatricula = movimentoFinanceiroService.listar();
 			LOG.info("--> Lista com " + listaDeMovimentosDaMatricula.size() + " movimentos.");
 			List<MovimentoFinanceiroTO> movimentosFinanceirosTO = new ArrayList<>();
