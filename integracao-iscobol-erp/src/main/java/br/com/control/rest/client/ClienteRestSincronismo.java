@@ -21,6 +21,8 @@ import br.com.control.portal.enums.CadastrosEnum;
 
 public abstract class ClienteRestSincronismo {
 	
+	private static final String MATRICULA_EMPRESA = "2966";
+	
 	Properties prop = new Properties();
 	
 	
@@ -112,7 +114,7 @@ public abstract class ClienteRestSincronismo {
 //			identificacao.setMatriculaAssociada(prop.getProperty("matricula_revenda"));
 //			identificacao.setServicoAcessado(prop.getProperty("servico_acessado"));
 //			identificacao.setUsuarioOrigemServico(prop.getProperty("usuario_origem"));
-			identificacao.setMatriculaAssociada("3333");
+			identificacao.setMatriculaAssociada(MATRICULA_EMPRESA);
 			identificacao.setServicoAcessado("SINCRONISMO");
 			identificacao.setUsuarioOrigemServico("USUARIO ERP");
 

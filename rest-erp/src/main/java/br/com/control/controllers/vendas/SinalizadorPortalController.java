@@ -414,8 +414,11 @@ public class SinalizadorPortalController extends AbstractController {
 
 		List<DetalheComboProdutoTO> combosProdutoTO = new ArrayList<>();
 
+		
 		String codigoCombo = sinalizadorPortalService.retornaCodigoERP(mensagem);
+		logger.info("--> CODIGO COMBO: "+codigoCombo);
 		List<DetalheComboProduto> comboProduto = detalheProdutoComboService.recuperarComboProduto(codigoCombo);
+		logger.info("--> COMBOS ENCONTRADOS: "+comboProduto.size());
 
 		if (comboProduto == null || comboProduto.isEmpty()) {
 			String msg = "Combo Produto com código: " + codigoCombo + " não encontrado no DBMaker!";
