@@ -9,7 +9,7 @@ public class LiberacaoPedidoTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@SequenciaParametrosProcedure(index = 1)
-	private BigDecimal numeroPrePedidoGestao;
+	private BigDecimal numeroPedidoGestao;
 	
 	@SequenciaParametrosProcedure(index = 2)
 	private String statusPedido;
@@ -17,12 +17,12 @@ public class LiberacaoPedidoTO implements Serializable {
 	@SequenciaParametrosProcedure(index = 3, isRetornoProcedure = true)
 	private int retorno;
 
-	public BigDecimal getNumeroPrePedidoGestao() {
-		return numeroPrePedidoGestao;
+	public BigDecimal getNumeroPedidoGestao() {
+		return numeroPedidoGestao;
 	}
 
-	public void setNumeroPrePedidoGestao(BigDecimal numeroPrePedidoGestao) {
-		this.numeroPrePedidoGestao = numeroPrePedidoGestao;
+	public void setNumeroPedidoGestao(BigDecimal numeroPedidoGestao) {
+		this.numeroPedidoGestao = numeroPedidoGestao;
 	}
 
 	public String getStatusPedido() {

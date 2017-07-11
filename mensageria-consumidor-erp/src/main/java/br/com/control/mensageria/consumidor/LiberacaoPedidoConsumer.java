@@ -25,14 +25,14 @@ public class LiberacaoPedidoConsumer {
 	public void receiveMessage(final Message<LiberacaoPedidoTO> message) throws JMSException {
 		LiberacaoPedidoTO liberacao = message.getPayload();
 
-		log.info("### RECEBIDO O PEDIDO " + liberacao.getNumeroPrePedidoGestao() + " DA FILA DE LIBERAÇÃO DE PEDIDOS ###");
+		log.info("### RECEBIDO O PEDIDO " + liberacao.getNumeroPedidoGestao() + " DA FILA DE LIBERAÇÃO DE PEDIDOS ###");
 		
 		liberacaoPedidoService.liberarPedido(liberacao);
 		
 		if (liberacao.getStatusPedido().equals("0")) {
-			log.info("--> pedido com numero pré-pedido: " + liberacao.getNumeroPrePedidoGestao() + " liberado no erp ###");
+			log.info("--> pedido com numero: " + liberacao.getNumeroPedidoGestao() + " liberado no erp ###");
 		}else{
-			log.info("--> pedido com numero pré-pedido: " + liberacao.getNumeroPrePedidoGestao() + " recusado no erp ###");
+			log.info("--> pedido com numero: " + liberacao.getNumeroPedidoGestao() + " recusado no erp ###");
 		}
 	}
 
