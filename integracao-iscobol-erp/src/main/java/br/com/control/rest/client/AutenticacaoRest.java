@@ -14,9 +14,10 @@ import org.springframework.web.client.RestTemplate;
 public class AutenticacaoRest {
 
 	// GALANTE
-	private String REST_SERVICE_URI = "http://172.30.24.103:8282/";
-	private String AUTH_SERVER_URI = "http://172.30.24.103:8282/oauth/token";
-	private String QPM_PASSWORD_GRANT = "?grant_type=password&username=portalvendas&password=123";
+	// private String REST_SERVICE_URI = "http://172.30.24.103:8282/";
+	// private String AUTH_SERVER_URI = "http://172.30.24.103:8282/oauth/token";
+	// private String QPM_PASSWORD_GRANT =
+	// "?grant_type=password&username=portalvendas&password=123";
 
 	// RASA
 	// private String REST_SERVICE_URI = "http://172.30.24.113:8282/";
@@ -41,12 +42,9 @@ public class AutenticacaoRest {
 	// "?grant_type=password&username=portalvendas&password=123";
 
 	// DESENVOLVIMENTO
-	// private String REST_SERVICE_URI =
-	// "http://linkedby-ecommerce.com.br:8282/api-servicos-erp-dev";
-	// private String AUTH_SERVER_URI =
-	// "http://linkedby-ecommerce.com.br:8282/api-servicos-erp-dev/oauth/token";
-	// private String QPM_PASSWORD_GRANT =
-	// "?grant_type=password&username=portalvendas&password=123";
+	private String REST_SERVICE_URI = "http://linkedby-ecommerce.com.br:8282/api-servicos-erp-dev";
+	private String AUTH_SERVER_URI = "http://linkedby-ecommerce.com.br:8282/api-servicos-erp-dev/oauth/token";
+	private String QPM_PASSWORD_GRANT = "?grant_type=password&username=portalvendas&password=123";
 
 	// PRODUÇÃO
 	// private String REST_SERVICE_URI =

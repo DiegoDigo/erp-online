@@ -755,27 +755,32 @@ public class SinalizadorPortalController extends AbstractController {
 		}
 
 		BandaPrecoTO bandaPrecoTo = new BandaPrecoTO(bandaPreco);
-		sincronismoCadastoService.enviaParaOPortal(mensagem, bandaPrecoTo, "Banda Preço");
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, bandaPrecoTo, "Banda Preço");
 
-		logger.info("### SINALIZADOR -> BANDA PRECO ITEM ###");
-
-		List<BandaPrecoItemTO> bandaPrecoItensTO = new ArrayList<>();
-		String codigoBandaPrecoItem = sinalizadorPortalService.retornaCodigoERP(mensagem);
-		logger.info("--> codigo erp: " + codigoBandaPrecoItem);
-		logger.info("------------------------------------------------------");
-		List<BandaPrecoItem> bandaPrecoItens = bandaPrecoItemService.buscaBandaPrecoItem(codigoBandaPrecoItem);
-
-		if (codigoBandaPrecoItem == null || codigoBandaPrecoItem.isEmpty()) {
-			String msg = "Banda Preco Item com codigo: " + codigoBandaPrecoItem + " nao encontrado no DBMaker!";
-			logger.warn(msg);
-			return null;
-		}
-
-		for (BandaPrecoItem bandaPrecoItem : bandaPrecoItens) {
-			BandaPrecoItemTO bandaPrecoItemTO = new BandaPrecoItemTO(bandaPrecoItem);
-			bandaPrecoItensTO.add(bandaPrecoItemTO);
-		}
-		return sincronismoCadastoService.enviaParaOPortal(mensagem, bandaPrecoItensTO, "Banda Preço Item");
+		// logger.info("### SINALIZADOR -> BANDA PRECO ITEM ###");
+		//
+		// List<BandaPrecoItemTO> bandaPrecoItensTO = new ArrayList<>();
+		// String codigoBandaPrecoItem =
+		// sinalizadorPortalService.retornaCodigoERP(mensagem);
+		// logger.info("--> codigo erp: " + codigoBandaPrecoItem);
+		// logger.info("------------------------------------------------------");
+		// List<BandaPrecoItem> bandaPrecoItens =
+		// bandaPrecoItemService.buscaBandaPrecoItem(codigoBandaPrecoItem);
+		//
+		// if (codigoBandaPrecoItem == null || codigoBandaPrecoItem.isEmpty()) {
+		// String msg = "Banda Preco Item com codigo: " + codigoBandaPrecoItem +
+		// " nao encontrado no DBMaker!";
+		// logger.warn(msg);
+		// return null;
+		// }
+		//
+		// for (BandaPrecoItem bandaPrecoItem : bandaPrecoItens) {
+		// BandaPrecoItemTO bandaPrecoItemTO = new
+		// BandaPrecoItemTO(bandaPrecoItem);
+		// bandaPrecoItensTO.add(bandaPrecoItemTO);
+		// }
+		// return sincronismoCadastoService.enviaParaOPortal(mensagem,
+		// bandaPrecoItensTO, "Banda Preço Item");
 
 	}
 

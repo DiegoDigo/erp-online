@@ -15,8 +15,9 @@ import br.com.control.vendas.cadastro.modelo.produto.ProdutoCanal;
 public class ProdutoCanalDao extends JdbcDao<ProdutoCanal> {
 
 	public List<ProdutoCanal> listarProdutosCanal() {
-		return selectViewSemWhere(TabelasIntegracao.CADASTRO_PRODUTO_CANAL,
-				new ProdutoCanalRowMapper());
+		String declare = "declare set  bigint @ID = 0;";
+		getJdbcTemplate().update(declare);
+		return selectViewSemWhere(TabelasIntegracao.CADASTRO_PRODUTO_CANAL, new ProdutoCanalRowMapper());
 	}
-	
+
 }
