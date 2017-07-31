@@ -31,11 +31,12 @@ import br.com.control.rest.client.SincronismoTipoEndereco;
 
 public class SINALIZADOR implements IscobolCall {
 
-	public static void main(String[] args) {
-		SINALIZADOR sinalizador = new SINALIZADOR();
-		String[] param = { "CADASTRO|" + CadastrosEnum.BANDA_PRECO + "|000000000000000000000000104            00000|" };
-		sinalizador.call(param);
-	}
+	// public static void main(String[] args) {
+	// SINALIZADOR sinalizador = new SINALIZADOR();
+	// String[] param = { "CADASTRO|" + CadastrosEnum.BANDA_PRECO +
+	// "|000000000000000000000000104 00000|" };
+	// sinalizador.call(param);
+	// }
 
 	@Override
 	public Object call(Object[] argv) {
@@ -55,8 +56,12 @@ public class SINALIZADOR implements IscobolCall {
 				SincronismoAcompanhamentoPedido clienteREST = new SincronismoAcompanhamentoPedido();
 				clienteREST.sinalizaPortalAtualizacao(parametroRecebido, null);
 			} else if (acao.equals("CADASTRO")) {
+
 				String nomeCadastro = valoresQuebrados[1];
+				System.out.println("--> NOME CADASTRO: " + nomeCadastro);
+
 				CadastrosEnum cadastro = CadastrosEnum.recuperaCadastro(nomeCadastro);
+				System.out.println("--> CADASTRO: " + cadastro);
 
 				if (CadastrosEnum.GRUPO_PRODUTO == cadastro) {
 					SincronismoCadastroGrupoProduto rest = new SincronismoCadastroGrupoProduto();
@@ -126,6 +131,7 @@ public class SINALIZADOR implements IscobolCall {
 					SincronismoHistoricoPedidoItem rest = new SincronismoHistoricoPedidoItem();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.HISTORICO_PEDIDO_ITEM);
 				} else if (CadastrosEnum.BANDA_PRECO == cadastro) {
+					System.out.println("Vai processar o sincronismo de Banda Preco");
 					SincronismoBandaPrecoCapa rest = new SincronismoBandaPrecoCapa();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.BANDA_PRECO);
 				} else if (CadastrosEnum.PEDIDO_BLOQUEADO == cadastro) {
@@ -148,7 +154,6 @@ public class SINALIZADOR implements IscobolCall {
 			System.out.println("### SAIU DO SINALIZADOR COM ERROS ###");
 			return NumericVar.literal(1, false);
 		}
-
 	}
 
 	@Override
