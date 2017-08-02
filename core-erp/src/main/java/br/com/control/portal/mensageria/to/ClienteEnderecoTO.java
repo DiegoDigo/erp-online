@@ -84,7 +84,7 @@ public class ClienteEnderecoTO implements Serializable {
 		return codigoTipoEnderecoERP;
 	}
 	public void setCodigoTipoEnderecoERP(String codigoTipoEnderecoERP) {
-		codigoTipoEnderecoERP = codigoTipoEnderecoERP;
+		this.codigoTipoEnderecoERP = codigoTipoEnderecoERP;
 	}
 	public ClienteEnderecoTO(ClienteEndereco clienteEndereco) {
 		super();
