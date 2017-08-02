@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.control.dao.ClienteDao;
+import br.com.control.portal.mensageria.to.ClienteTO;
 import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
 
 @Service
@@ -14,13 +15,8 @@ public class ClienteService {
 	@Autowired
 	private ClienteDao clienteDao;
 
-	public Cliente salvar(Cliente cliente) {
-		clienteDao.salvar(cliente);
-		return null;
-	}
-	public Cliente alterarDados(Cliente cliente) {
-		clienteDao.alterarDadosCadastrais(cliente);
-		return null;
+	public void salvarOuAlterar(ClienteTO cliente) {
+		clienteDao.salvarOuAlterar(cliente);
 	}
 
 	public List<Cliente> listarTodos() {

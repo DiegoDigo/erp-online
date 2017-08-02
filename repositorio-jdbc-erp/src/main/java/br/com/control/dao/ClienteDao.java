@@ -6,10 +6,13 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import br.com.control.portal.integracao.ProcedureIntegracao;
 import br.com.control.portal.integracao.TabelasIntegracao;
+import br.com.control.portal.mensageria.to.ClienteTO;
 import br.com.control.repositorio.mappers.ClienteRowMapper;
 import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
 
@@ -17,6 +20,8 @@ import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
 @Transactional
 public class ClienteDao extends JdbcDao<Cliente> {
 
+	private static final Logger logger = LoggerFactory.getLogger(ClienteDao.class);
+	
 	public List<Cliente> listaTodosClientesDaMatricula() {
 		String declare = "DECLARE set int @CODIGO_CLIENTE = 0";
 		getJdbcTemplate().update(declare);
@@ -30,10 +35,12 @@ public class ClienteDao extends JdbcDao<Cliente> {
 	}
 
 	@Transactional
-	public void salvar(Cliente cliente) {
-		CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERT_PRE_CADASTRO_CLIENTE);
+	public void salvarOuAlterar(ClienteTO cliente) {
+		CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERE_ALTERA_CLIENTE);
 		preparaExecucaoProcedure(cliente, stmt);
 		try {
+			logger.info("PROC INSERT/UPDATE PDV - CODIGO RETORNO: "+stmt.getInt(38));
+			logger.info("PROC INSERT/UPDATE PDV - MSG RETORNO: "+stmt.getString(39));
 			stmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -41,42 +48,4 @@ public class ClienteDao extends JdbcDao<Cliente> {
 		}
 	}
 	
-	@Transactional
-	public void alterarDadosCadastrais(Cliente cliente) {
-		CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.ALTERACAO_PRE_CADASTRO_CLIENTE);
-		preparaExecucaoProcedure(cliente, stmt);
-		try {
-			stmt.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			e.getMessage();
-		}
-	}
-
-	// public AcompanhamentoPedidoTO salvarCapaPedido(PedidoCapaTO pedido) {
-	// CallableStatement stmt =
-	// preparaChamadaProcedure(ProcedureIntegracao.INSERT_PEDIDO_CAPA);
-	// preparaExecucaoProcedure(pedido, stmt);
-	//
-	// try {
-	// AcompanhamentoPedidoTO pedidoTO = new AcompanhamentoPedidoTO();
-	// pedidoTO.setRecId(pedido.getRecId());
-	// pedidoTO.setNumeroPedidoGestao(formatacaoUtil.formataData(pedido.getDataHoraEmissao(),
-	// "yyyyMMdd")
-	// + completaComZeros(String.valueOf(stmt.getLong(12))));
-	//
-	// // FIXME: rever o valor do status de acompanhamento de pedido. Está
-	// // 1 fake abaixo
-	// pedidoTO.setStatusAcompanhamentoPedido(1L);
-	// stmt.close();
-	// return pedidoTO;
-	// } catch (SQLException e) {
-	// e.printStackTrace();
-	// throw new RuntimeException(e);
-	// } finally {
-	// closeConnection();
-	// }
-	//
-	// }
-
 }

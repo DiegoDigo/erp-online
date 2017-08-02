@@ -6,10 +6,18 @@ import br.com.control.portal.mensageria.to.PedidoCapaTO;
 import br.com.control.portal.mensageria.to.PedidoItemTO;
 
 public enum ProcedureIntegracao {
-	INSERT_PEDIDO_CAPA("SP_INSERT_PREPEDIDO_CP", PedidoCapaTO.class), INSERT_PEDIDO_ITEM("SP_INSERT_PREPEDIDO_ITEM",
-			PedidoItemTO.class), LIBERACAO_PEDIDO("SP_LIB_PEDIDO",
-					LiberacaoPedidoTO.class), INSERT_PRE_CADASTRO_CLIENTE("",
-							ClienteTO.class), ALTERACAO_PRE_CADASTRO_CLIENTE("", ClienteTO.class);
+	INSERT_PEDIDO_CAPA(
+			"SP_INSERT_PREPEDIDO_CP",
+			PedidoCapaTO.class),
+	INSERT_PEDIDO_ITEM(
+			"SP_INSERT_PREPEDIDO_ITEM",
+			PedidoItemTO.class),
+	LIBERACAO_PEDIDO(
+			"SP_LIB_PEDIDO",
+			LiberacaoPedidoTO.class),
+	INSERE_ALTERA_CLIENTE(
+			"SP_CRIA_ATUALIZA_CLIENTE",
+			ClienteTO.class);
 
 	private String procedure;
 	private Class<?> classe;

@@ -32,7 +32,7 @@ public class ClienteEnderecoDao extends JdbcDao<ClienteEndereco> {
 
 	@Transactional
 	public void alterarEndereco(ClienteEndereco clienteEndereco) {
-		CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.ALTERACAO_PRE_CADASTRO_CLIENTE);
+		CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERE_ALTERA_CLIENTE);
 		preparaExecucaoProcedure(clienteEndereco, stmt);
 		try {
 			stmt.close();
