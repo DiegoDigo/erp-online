@@ -18,8 +18,8 @@ public class BandaPrecoItemService {
 		return bandaPrecoItemDao.listar();
 	}
 
-	public List<BandaPrecoItem> buscaBandaPrecoItem(String codigoBandaPreco) {
+	public List<BandaPrecoItem> buscaBandaPrecoItem(Integer codigoBandaPreco) {
 		return bandaPrecoItemDao.buscarBandaItem(codigoBandaPreco);
 	}
-	
+
 }

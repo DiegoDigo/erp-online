@@ -18,10 +18,10 @@ public class BandaPrecoRowMapper implements RowMapper<BandaPreco> {
 		banda.setCodigoPastaCli(rs.getString("CODIGO_PASTA_CLI"));
 		banda.setDescricao(rs.getString("descricao"));
 		banda.setOrigemBanda(rs.getString("origem_banda").trim());
-//		banda.setRecId(rs.getLong("rec_id"));
+		// banda.setRecId(rs.getLong("rec_id"));
 		banda.setRegiaoCliente(rs.getString("regiao_cliente"));
 		banda.setUnidade(rs.getInt("unidade"));
-		banda.setCodigoErp(rs.getString("CODIGO_BANDA_PRECO_ERP"));
+		banda.setCodigoErp(rs.getInt("CODIGO_BANDA_PRECO_ERP"));
 		banda.setCodigoGrupoCanalCli(rs.getString("CODIGO_GRUPO_CANAL_CLI"));
 		banda.setCodigoMarcaProdutoERP(rs.getString("CODIGO_MARCA_PRODUTO_ERP"));
 		banda.setCodigoGrupoProdutoERP(rs.getString("CODIGO_GRUPO_PRODUTO_ERP"));
@@ -30,11 +30,12 @@ public class BandaPrecoRowMapper implements RowMapper<BandaPreco> {
 		banda.setCodigoProdutoERP(rs.getString("CODIGO_PRODUTO_ERP"));
 		banda.setCodigoFamiliaProdutoERP(rs.getString("CODIGO_FAMILIA_PRODUTO_ERP"));
 		banda.setCodigoCondicaoPagamentoERP(rs.getString("CODIGO_CONDICAO_PAGAMENTO_ERP"));
-		
-		//FIXME: mudar o valor abaixo quando inserirem este campo "ordem" e "modo" na view
+
+		// FIXME: mudar o valor abaixo quando inserirem este campo "ordem" e
+		// "modo" na view
 		banda.setOrdem(1);
 		banda.setModo(1);
-		
+
 		return banda;
 	}
 
