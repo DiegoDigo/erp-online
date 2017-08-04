@@ -17,9 +17,15 @@ public class ClienteEnderecoTO implements Serializable {
 	private String ufEndereco;
 	private String origemLogradouroERP;
 	private String codigoClienteERP;
-	private String CodigoTipoEnderecoERP;
+	private String codigoTipoEnderecoERP;
+	private String tipoEndereco;
 	
-	
+	public String getTipoEndereco() {
+		return tipoEndereco;
+	}
+	public void setTipoEndereco(String tipoEndereco) {
+		this.tipoEndereco = tipoEndereco;
+	}
 	public String getBairro() {
 		return bairro;
 	}
@@ -75,10 +81,10 @@ public class ClienteEnderecoTO implements Serializable {
 		this.codigoClienteERP = codigoClienteERP;
 	}
 	public String getCodigoTipoEnderecoERP() {
-		return CodigoTipoEnderecoERP;
+		return codigoTipoEnderecoERP;
 	}
 	public void setCodigoTipoEnderecoERP(String codigoTipoEnderecoERP) {
-		CodigoTipoEnderecoERP = codigoTipoEnderecoERP;
+		this.codigoTipoEnderecoERP = codigoTipoEnderecoERP;
 	}
 	public ClienteEnderecoTO(ClienteEndereco clienteEndereco) {
 		super();
@@ -91,7 +97,7 @@ public class ClienteEnderecoTO implements Serializable {
 		this.ufEndereco = clienteEndereco.getUfEndereco();
 		this.origemLogradouroERP = clienteEndereco.getOrigemLogradouroERP();
 		this.codigoClienteERP = clienteEndereco.getCodigoClienteERP();
-		this.CodigoTipoEnderecoERP = clienteEndereco.getCodigoTipoEnderecoERP();;
+		this.codigoTipoEnderecoERP = clienteEndereco.getCodigoTipoEnderecoERP();;
 	}
 	public ClienteEnderecoTO() {}
 		

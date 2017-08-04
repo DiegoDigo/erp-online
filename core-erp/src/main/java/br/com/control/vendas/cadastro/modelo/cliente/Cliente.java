@@ -317,8 +317,8 @@ public class Cliente implements Serializable {
 		this.inconformidadeCadastro = cliente.getInconformidadeCadastro();
 		this.sigla = cliente.getSigla();
 		this.subCanal = cliente.getSubCanal();
-		this.telefoneDdd = cliente.getTelefoneDdd();
-		this.telefoneTronco = cliente.getTelefoneTronco();
+		this.telefoneDdd = String.valueOf(cliente.getTelefoneDdd());
+		this.telefoneTronco = String.valueOf(cliente.getTelefoneTronco());
 		this.usoVerbaRestritoProduto = cliente.getUsoVerbaRestritoProduto();
 		this.codigoErpCanal = cliente.getCodigoErpCanal();
 		this.codigoErpCondicaoPagamento = cliente.getCodigoErpCondicaoPagamento();

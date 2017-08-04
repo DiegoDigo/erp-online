@@ -2,233 +2,650 @@ package br.com.control.portal.mensageria.to;
 
 import java.io.Serializable;
 
+import br.com.control.annotation.SequenciaParametrosProcedure;
 import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
 
+/**
+ * @author rasa.lariguet
+ *
+ */
 public class ClienteTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
+	@SequenciaParametrosProcedure(index = 1)
+	private int codigoEmpresa;
+	@SequenciaParametrosProcedure(index = 2)
+	private String contato;
+	@SequenciaParametrosProcedure(index = 3)
+	private String email;
+	@SequenciaParametrosProcedure(index = 4)
+	private String cargo;
+	@SequenciaParametrosProcedure(index = 5)
+	private int telefoneDdd;
+	@SequenciaParametrosProcedure(index = 6)
+	private int telefoneTronco;
+	@SequenciaParametrosProcedure(index = 7)
+	private int celularDdd;
+	@SequenciaParametrosProcedure(index = 8)
+	private int celular;
+	@SequenciaParametrosProcedure(index = 9)
+	private String razaoSocial;
+	@SequenciaParametrosProcedure(index = 10)
+	private String sigla;
+	@SequenciaParametrosProcedure(index = 11)
+	private String cpfCnpj;
+	@SequenciaParametrosProcedure(index = 12)
+	private String rg;
+
+	// ENDERECO FATURAMENTO
+	@SequenciaParametrosProcedure(index = 13)
+	private String tipoLogradouroFaturamento;
+	@SequenciaParametrosProcedure(index = 14)
+	private String enderecoFaturamento;
+	@SequenciaParametrosProcedure(index = 15)
+	private String numeroFaturamento;
+	@SequenciaParametrosProcedure(index = 16)
+	private String pontoReferenciaFaturamento;
+	@SequenciaParametrosProcedure(index = 17)
+	private String bairroFaturamento;
+	@SequenciaParametrosProcedure(index = 18)
+	private String municipioFaturamento;
+	@SequenciaParametrosProcedure(index = 19)
+	private String ufEnderecoFaturamento;
+	@SequenciaParametrosProcedure(index = 20)
+	private int cepEnderecoFaturamento;
+
+	// ENDERECO COBRANCA
+	@SequenciaParametrosProcedure(index = 21)
+	private String tipoLogradouroCobranca;
+	@SequenciaParametrosProcedure(index = 22)
+	private String enderecoCobranca;
+	@SequenciaParametrosProcedure(index = 23)
+	private String numeroCobranca;
+	@SequenciaParametrosProcedure(index = 24)
+	private String pontoReferenciaCobranca;
+	@SequenciaParametrosProcedure(index = 25)
+	private String bairroCobranca;
+	@SequenciaParametrosProcedure(index = 26)
+	private String municipioCobranca;
+	@SequenciaParametrosProcedure(index = 27)
+	private String ufEnderecoCobranca;
+	@SequenciaParametrosProcedure(index = 28)
+	private int cepEnderecoCobranca;
+
+	// ENDERECO ENTREGA
+	@SequenciaParametrosProcedure(index = 29)
+	private String tipoLogradouroEntrega;
+	@SequenciaParametrosProcedure(index = 30)
+	private String enderecoEntrega;
+	@SequenciaParametrosProcedure(index = 31)
+	private String numeroEntrega;
+	@SequenciaParametrosProcedure(index = 32)
+	private String pontoReferenciaEntrega;
+	@SequenciaParametrosProcedure(index = 33)
+	private String bairroEntrega;
+	@SequenciaParametrosProcedure(index = 34)
+	private String municipioEntrega;
+	@SequenciaParametrosProcedure(index = 35)
+	private String ufEnderecoEntrega;
+	@SequenciaParametrosProcedure(index = 36)
+	private int cepEnderecoEntrega;
+	
+	@SequenciaParametrosProcedure(index = 37)
+	private String codigoTabpreco;
+	
+	@SequenciaParametrosProcedure(index = 38, isRetornoProcedure=true)
+	private int statusMsg;
+
+	@SequenciaParametrosProcedure(index = 39, isRetornoProcedure=true)
+	private String msg;
 
 	private String codigoErp;
 	private Boolean abateIcms;
 	private Boolean ativo;
 	private float bonusDisponivel;
 	private String classe;
-	private String codigoTabpreco;
-	private String contato;
-	private String cpfCnpj;
 	private Boolean desprezaTaxaFinanceira;
 	private String diaSemana;
-	private Integer diasEntrega;
-	private String email;
+	private int diasEntrega;
 	private Boolean ignoraBandaPreco;
 	private float limiteCredito;
 	private String motivoBloqClasse20;
 	private String motivoBloqueioJuridico;
 	private String numeroCliente;
-	private Integer pasta;
-	private String razaoSocial;
+	private int pasta;
+
 	private String regiaoCliente;
-    private Integer registroAlterado;
+	private int registroAlterado;
 	private Boolean restricaoComercial;
- 	private String inconformidadeCadastro;
-	private String sigla;	 
+	private String inconformidadeCadastro;
+
 	private String subCanal;
-	private String telefoneDdd;
-	private String telefoneTronco;
-	private Integer usoVerbaRestritoProduto;
+
+	private int usoVerbaRestritoProduto;
 	private String codigoErpCanal;
 	private String codigoErpCondicaoPagamento;
 	private String codigoErpTipoCobranca;
+
+	public int getStatusMsg() {
+		return statusMsg;
+	}
+
+	public void setStatusMsg(int statusMsg) {
+		this.statusMsg = statusMsg;
+	}
+
+	public String getMsg() {
+		if(msg == null){
+			msg = "";
+		}
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
+	public String getRg() {
+		if(rg == null){
+			rg = "";
+		}
+		return rg;
+	}
+
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
+
+	public String getTipoLogradouroFaturamento() {
+		return tipoLogradouroFaturamento;
+	}
+
+	public void setTipoLogradouroFaturamento(String tipoLogradouroFaturamento) {
+		this.tipoLogradouroFaturamento = tipoLogradouroFaturamento;
+	}
+
+	public String getTipoLogradouroEntrega() {
+		return tipoLogradouroEntrega;
+	}
+
+	public void setTipoLogradouroEntrega(String tipoLogradouroEntrega) {
+		this.tipoLogradouroEntrega = tipoLogradouroEntrega;
+	}
+
+	public String getTipoLogradouroCobranca() {
+		return tipoLogradouroCobranca;
+	}
+
+	public void setTipoLogradouroCobranca(String tipoLogradouroCobranca) {
+		this.tipoLogradouroCobranca = tipoLogradouroCobranca;
+	}
+
+	public int getCodigoEmpresa() {
+		return codigoEmpresa;
+	}
+
+	public void setCodigoEmpresa(int codigoEmpresa) {
+		this.codigoEmpresa = codigoEmpresa;
+	}
+
+	public String getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
+
+	public String getBairroEntrega() {
+		return bairroEntrega;
+	}
+
+	public void setBairroEntrega(String bairroEntrega) {
+		this.bairroEntrega = bairroEntrega;
+	}
+
+	public int getCepEnderecoEntrega() {
+		return cepEnderecoEntrega;
+	}
+
+	public void setCepEnderecoEntrega(int cepEnderecoEntrega) {
+		this.cepEnderecoEntrega = cepEnderecoEntrega;
+	}
+
+	public String getEnderecoEntrega() {
+		return enderecoEntrega;
+	}
+
+	public void setEnderecoEntrega(String enderecoEntrega) {
+		this.enderecoEntrega = enderecoEntrega;
+	}
+
+	public String getMunicipioEntrega() {
+		return municipioEntrega;
+	}
+
+	public void setMunicipioEntrega(String municipioEntrega) {
+		this.municipioEntrega = municipioEntrega;
+	}
+
+	public String getNumeroEntrega() {
+		return numeroEntrega;
+	}
+
+	public void setNumeroEntrega(String numeroEntrega) {
+		this.numeroEntrega = numeroEntrega;
+	}
+
+	public String getPontoReferenciaEntrega() {
+		if(pontoReferenciaEntrega == null){
+			pontoReferenciaEntrega = "";
+		}
+		return pontoReferenciaEntrega;
+	}
+
+	public void setPontoReferenciaEntrega(String pontoReferenciaEntrega) {
+		this.pontoReferenciaEntrega = pontoReferenciaEntrega;
+	}
+
+	public String getUfEnderecoEntrega() {
+		return ufEnderecoEntrega;
+	}
+
+	public void setUfEnderecoEntrega(String ufEnderecoEntrega) {
+		this.ufEnderecoEntrega = ufEnderecoEntrega;
+	}
+
+
+	public String getBairroCobranca() {
+		return bairroCobranca;
+	}
+
+	public void setBairroCobranca(String bairroCobranca) {
+		this.bairroCobranca = bairroCobranca;
+	}
+
+	public int getCepEnderecoCobranca() {
+		return cepEnderecoCobranca;
+	}
+
+	public void setCepEnderecoCobranca(int cepEnderecoCobranca) {
+		this.cepEnderecoCobranca = cepEnderecoCobranca;
+	}
+
+	public String getEnderecoCobranca() {
+		return enderecoCobranca;
+	}
+
+	public void setEnderecoCobranca(String enderecoCobranca) {
+		this.enderecoCobranca = enderecoCobranca;
+	}
+
+	public String getMunicipioCobranca() {
+		return municipioCobranca;
+	}
+
+	public void setMunicipioCobranca(String municipioCobranca) {
+		this.municipioCobranca = municipioCobranca;
+	}
+
+	public String getNumeroCobranca() {
+		return numeroCobranca;
+	}
+
+	public void setNumeroCobranca(String numeroCobranca) {
+		this.numeroCobranca = numeroCobranca;
+	}
+
+	public String getPontoReferenciaCobranca() {
+		if(pontoReferenciaCobranca == null){
+			pontoReferenciaCobranca = "";
+		}
+		return pontoReferenciaCobranca;
+	}
+
+	public void setPontoReferenciaCobranca(String pontoReferenciaCobranca) {
+		this.pontoReferenciaCobranca = pontoReferenciaCobranca;
+	}
+
+	public String getUfEnderecoCobranca() {
+		return ufEnderecoCobranca;
+	}
+
+	public void setUfEnderecoCobranca(String ufEnderecoCobranca) {
+		this.ufEnderecoCobranca = ufEnderecoCobranca;
+	}
+
+
+	public String getBairroFaturamento() {
+		return bairroFaturamento;
+	}
+
+	public void setBairroFaturamento(String bairroFaturamento) {
+		this.bairroFaturamento = bairroFaturamento;
+	}
+
+	public int getCepEnderecoFaturamento() {
+		return cepEnderecoFaturamento;
+	}
+
+	public void setCepEnderecoFaturamento(int cepEnderecoFaturamento) {
+		this.cepEnderecoFaturamento = cepEnderecoFaturamento;
+	}
+
+	public String getEnderecoFaturamento() {
+		return enderecoFaturamento;
+	}
+
+	public void setEnderecoFaturamento(String enderecoFaturamento) {
+		this.enderecoFaturamento = enderecoFaturamento;
+	}
+
+	public String getMunicipioFaturamento() {
+		return municipioFaturamento;
+	}
+
+	public void setMunicipioFaturamento(String municipioFaturamento) {
+		this.municipioFaturamento = municipioFaturamento;
+	}
+
+	public String getNumeroFaturamento() {
+		return numeroFaturamento;
+	}
+
+	public void setNumeroFaturamento(String numeroFaturamento) {
+		this.numeroFaturamento = numeroFaturamento;
+	}
+
+	public String getPontoReferenciaFaturamento() {
+		if(pontoReferenciaFaturamento == null){
+			pontoReferenciaFaturamento = "";
+		}
+		return pontoReferenciaFaturamento;
+	}
+
+	public void setPontoReferenciaFaturamento(String pontoReferenciaFaturamento) {
+		this.pontoReferenciaFaturamento = pontoReferenciaFaturamento;
+	}
+
+	public String getUfEnderecoFaturamento() {
+		return ufEnderecoFaturamento;
+	}
+
+	public void setUfEnderecoFaturamento(String ufEnderecoFaturamento) {
+		this.ufEnderecoFaturamento = ufEnderecoFaturamento;
+	}
+
+	public int getCelularDdd() {
+		return celularDdd;
+	}
+
+	public void setCelularDdd(int celularDdd) {
+		this.celularDdd = celularDdd;
+	}
+
+	public int getCelular() {
+		return celular;
+	}
+
+	public void setCelular(int celular) {
+		this.celular = celular;
+	}
+
 	public String getCodigoErp() {
 		return codigoErp;
 	}
+
 	public void setCodigoErp(String codigoErp) {
 		this.codigoErp = codigoErp;
 	}
+
 	public Boolean getAbateIcms() {
 		return abateIcms;
 	}
+
 	public void setAbateIcms(Boolean abateIcms) {
 		this.abateIcms = abateIcms;
 	}
+
 	public Boolean getAtivo() {
 		return ativo;
 	}
+
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
+
 	public float getBonusDisponivel() {
 		return bonusDisponivel;
 	}
+
 	public void setBonusDisponivel(float bonusDisponivel) {
 		this.bonusDisponivel = bonusDisponivel;
 	}
+
 	public String getClasse() {
 		return classe;
 	}
+
 	public void setClasse(String classe) {
 		this.classe = classe;
 	}
+
 	public String getCodigoTabpreco() {
 		return codigoTabpreco;
 	}
+
 	public void setCodigoTabpreco(String codigoTabpreco) {
 		this.codigoTabpreco = codigoTabpreco;
 	}
+
 	public String getContato() {
 		return contato;
 	}
+
 	public void setContato(String contato) {
 		this.contato = contato;
 	}
+
 	public String getCpfCnpj() {
 		return cpfCnpj;
 	}
+
 	public void setCpfCnpj(String cpfCnpj) {
 		this.cpfCnpj = cpfCnpj;
 	}
+
 	public Boolean getDesprezaTaxaFinanceira() {
 		return desprezaTaxaFinanceira;
 	}
+
 	public void setDesprezaTaxaFinanceira(Boolean desprezaTaxaFinanceira) {
 		this.desprezaTaxaFinanceira = desprezaTaxaFinanceira;
 	}
+
 	public String getDiaSemana() {
 		return diaSemana;
 	}
+
 	public void setDiaSemana(String diaSemana) {
 		this.diaSemana = diaSemana;
 	}
-	public Integer getDiasEntrega() {
+
+	public int getDiasEntrega() {
 		return diasEntrega;
 	}
-	public void setDiasEntrega(Integer diasEntrega) {
+
+	public void setDiasEntrega(int diasEntrega) {
 		this.diasEntrega = diasEntrega;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public Boolean getIgnoraBandaPreco() {
 		return ignoraBandaPreco;
 	}
+
 	public void setIgnoraBandaPreco(Boolean ignoraBandaPreco) {
 		this.ignoraBandaPreco = ignoraBandaPreco;
 	}
+
 	public float getLimiteCredito() {
 		return limiteCredito;
 	}
+
 	public void setLimiteCredito(float limiteCredito) {
 		this.limiteCredito = limiteCredito;
 	}
+
 	public String getMotivoBloqClasse20() {
 		return motivoBloqClasse20;
 	}
+
 	public void setMotivoBloqClasse20(String motivoBloqClasse20) {
 		this.motivoBloqClasse20 = motivoBloqClasse20;
 	}
+
 	public String getMotivoBloqueioJuridico() {
 		return motivoBloqueioJuridico;
 	}
+
 	public void setMotivoBloqueioJuridico(String motivoBloqueioJuridico) {
 		this.motivoBloqueioJuridico = motivoBloqueioJuridico;
 	}
+
 	public String getNumeroCliente() {
 		return numeroCliente;
 	}
+
 	public void setNumeroCliente(String numeroCliente) {
 		this.numeroCliente = numeroCliente;
 	}
-	public Integer getPasta() {
+
+	public int getPasta() {
 		return pasta;
 	}
-	public void setPasta(Integer pasta) {
+
+	public void setPasta(int pasta) {
 		this.pasta = pasta;
 	}
+
 	public String getRazaoSocial() {
 		return razaoSocial;
 	}
+
 	public void setRazaoSocial(String razaoSocial) {
 		this.razaoSocial = razaoSocial;
 	}
+
 	public String getRegiaoCliente() {
 		return regiaoCliente;
 	}
+
 	public void setRegiaoCliente(String regiaoCliente) {
 		this.regiaoCliente = regiaoCliente;
 	}
-	public Integer getRegistroAlterado() {
+
+	public int getRegistroAlterado() {
 		return registroAlterado;
 	}
-	public void setRegistroAlterado(Integer registroAlterado) {
+
+	public void setRegistroAlterado(int registroAlterado) {
 		this.registroAlterado = registroAlterado;
 	}
+
 	public Boolean getRestricaoComercial() {
 		return restricaoComercial;
 	}
+
 	public void setRestricaoComercial(Boolean restricaoComercial) {
 		this.restricaoComercial = restricaoComercial;
 	}
+
 	public String getInconformidadeCadastro() {
 		return inconformidadeCadastro;
 	}
+
 	public void setInconformidadeCadastro(String inconformidadeCadastro) {
 		this.inconformidadeCadastro = inconformidadeCadastro;
 	}
+
 	public String getSigla() {
 		return sigla;
 	}
+
 	public void setSigla(String sigla) {
 		this.sigla = sigla;
 	}
+
 	public String getSubCanal() {
 		return subCanal;
 	}
+
 	public void setSubCanal(String subCanal) {
 		this.subCanal = subCanal;
 	}
-	public String getTelefoneDdd() {
+
+	public int getTelefoneDdd() {
 		return telefoneDdd;
 	}
-	public void setTelefoneDdd(String telefoneDdd) {
+
+	public void setTelefoneDdd(int telefoneDdd) {
 		this.telefoneDdd = telefoneDdd;
 	}
-	public String getTelefoneTronco() {
+
+	public int getTelefoneTronco() {
 		return telefoneTronco;
 	}
-	public void setTelefoneTronco(String telefoneTronco) {
+
+	public void setTelefoneTronco(int telefoneTronco) {
 		this.telefoneTronco = telefoneTronco;
 	}
-	public Integer getUsoVerbaRestritoProduto() {
+
+	public int getUsoVerbaRestritoProduto() {
 		return usoVerbaRestritoProduto;
 	}
-	public void setUsoVerbaRestritoProduto(Integer usoVerbaRestritoProduto) {
+
+	public void setUsoVerbaRestritoProduto(int usoVerbaRestritoProduto) {
 		this.usoVerbaRestritoProduto = usoVerbaRestritoProduto;
 	}
+
 	public String getCodigoErpCanal() {
 		return codigoErpCanal;
 	}
+
 	public void setCodigoErpCanal(String codigoErpCanal) {
 		this.codigoErpCanal = codigoErpCanal;
 	}
+
 	public String getCodigoErpCondicaoPagamento() {
 		return codigoErpCondicaoPagamento;
 	}
+
 	public void setCodigoErpCondicaoPagamento(String codigoErpCondicaoPagamento) {
 		this.codigoErpCondicaoPagamento = codigoErpCondicaoPagamento;
 	}
+
 	public String getCodigoErpTipoCobranca() {
 		return codigoErpTipoCobranca;
 	}
+
 	public void setCodigoErpTipoCobranca(String codigoErpTipoCobranca) {
 		this.codigoErpTipoCobranca = codigoErpTipoCobranca;
 	}
-	public ClienteTO() {}
-	
+
+	public ClienteTO() {
+	}
+
 	public ClienteTO(Cliente cliente) {
-		
+
 		this.codigoErp = cliente.getCodigoErp();
 		this.abateIcms = cliente.getAbateIcms();
 		this.ativo = cliente.getAtivo();
@@ -247,24 +664,19 @@ public class ClienteTO implements Serializable {
 		this.motivoBloqueioJuridico = cliente.getMotivoBloqueioJuridico();
 		this.numeroCliente = cliente.getNumeroCliente();
 		this.pasta = cliente.getPasta();
-		this.razaoSocial =	cliente.getRazaoSocial();
+		this.razaoSocial = cliente.getRazaoSocial();
 		this.regiaoCliente = cliente.getRegiaoCliente();
 		this.registroAlterado = cliente.getRegistroAlterado();
 		this.restricaoComercial = cliente.getRestricaoComercial();
 		this.inconformidadeCadastro = cliente.getInconformidadeCadastro();
 		this.sigla = cliente.getSigla();
 		this.subCanal = cliente.getSubCanal();
-		this.telefoneDdd = cliente.getTelefoneDdd();
-		this.telefoneTronco = cliente.getTelefoneTronco();
+		this.telefoneDdd = Integer.valueOf(cliente.getTelefoneDdd());
+		this.telefoneTronco = Integer.valueOf(cliente.getTelefoneTronco());
 		this.usoVerbaRestritoProduto = cliente.getUsoVerbaRestritoProduto();
 		this.codigoErpCanal = cliente.getCodigoErpCanal();
-		this.codigoErpCondicaoPagamento = cliente.getCodigoErpCondicaoPagamento() ;
+		this.codigoErpCondicaoPagamento = cliente.getCodigoErpCondicaoPagamento();
 		this.codigoErpTipoCobranca = cliente.getCodigoErpTipoCobranca();
 	}
-	
-	
-	
-	
-	
-	
+
 }
