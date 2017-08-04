@@ -795,7 +795,8 @@ public class SinalizadorPortalController extends AbstractController {
 		String codigoBandaPrecoItem = sinalizadorPortalService.retornaCodigoERP(mensagem);
 		logger.info("--> codigo erp: " + codigoBandaPrecoItem);
 		logger.info("------------------------------------------------------");
-		List<BandaPrecoItem> bandaPrecoItens = bandaPrecoItemService.buscaBandaPrecoItem(codigoBandaPrecoItem);
+		List<BandaPrecoItem> bandaPrecoItens = bandaPrecoItemService
+				.buscaBandaPrecoItem(Integer.parseInt(codigoBandaPrecoItem));
 
 		if (codigoBandaPrecoItem == null || codigoBandaPrecoItem.isEmpty()) {
 			String msg = "Banda Preco Item com codigo: " + codigoBandaPrecoItem + " nao encontrado no DBMaker!";
