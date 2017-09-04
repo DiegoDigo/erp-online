@@ -14,7 +14,7 @@ public class BandaPrecoItemRowMapper implements RowMapper<BandaPrecoItem> {
 		BandaPrecoItem banda = new BandaPrecoItem();
 		banda.setCodigoBandaPrecoERP(rs.getInt("CODIGO_BANDA_PRECO_ERP"));
 		banda.setCodigoTabelaPreco(rs.getString("codigo_tabpreco_erp"));
-		banda.setDescontoMaximo(rs.getFloat("desconto_maximo"));
+		// banda.setDescontoMaximo(rs.getFloat("desconto_maximo"));
 		banda.setQuantidade(rs.getInt("quantidade"));
 		return banda;
 	}

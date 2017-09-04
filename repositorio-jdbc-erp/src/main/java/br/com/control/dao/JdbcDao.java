@@ -34,7 +34,7 @@ public class JdbcDao<T> {
 
 	@Value("${spring.secondDatasource.database.driverClassName}")
 	private String driverErp;
-	
+
 	@Value("${schema_database}")
 	private String schemaDatabase;
 
@@ -47,13 +47,13 @@ public class JdbcDao<T> {
 	}
 
 	public List<T> selectViewSemWhere(TabelasIntegracao tabela, RowMapper<T> rowMapper) {
-		String sql = "select * from " + schemaDatabase+"."+tabela.getViewERP();
+		String sql = "select * from " + schemaDatabase + "." + tabela.getViewERP();
 		List<T> dados = getJdbcTemplate().query(sql, rowMapper);
 		return dados;
 	}
 
 	public T selectViewSingle(TabelasIntegracao tabela, RowMapper<T> rowMapper) {
-		String sql = "select * from " + schemaDatabase+"."+tabela.getViewERP();
+		String sql = "select * from " + schemaDatabase + "." + tabela.getViewERP();
 		List<T> dados = getJdbcTemplate().query(sql, rowMapper);
 		if (!dados.isEmpty()) {
 			return dados.get(0);
@@ -103,7 +103,7 @@ public class JdbcDao<T> {
 				}
 			}
 
-			String call = "{call " + schemaDatabase+"."+procedure.getProcedure() + "(";
+			String call = "{call " + schemaDatabase + "." + procedure.getProcedure() + "(";
 			for (int i = 0; i < cont; i++) {
 				call += "?,";
 			}

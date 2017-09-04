@@ -1,9 +1,6 @@
 package br.com.control.vendas.cadastro.modelo.pedido;
 
-import java.io.Serializable;
-
-@SuppressWarnings("serial")
-public class PedidoSugestao implements Serializable {
+public class PedidoSugestao {
 
 	private String codigoCanalErp;
 	private String codigoProdutoErp;

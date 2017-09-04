@@ -6,7 +6,7 @@ import java.io.Serializable;
 public class BandaPrecoItem implements Serializable {
 	private Long recId;
 	private String codigoTabelaPreco;
-	private Float descontoMaximo;
+	private float descontoMaximo;
 	private Integer quantidade;
 	private Integer codigoBandaPrecoERP;
 
@@ -26,11 +26,11 @@ public class BandaPrecoItem implements Serializable {
 		this.codigoTabelaPreco = codigoTabelaPreco;
 	}
 
-	public Float getDescontoMaximo() {
+	public float getDescontoMaximo() {
 		return descontoMaximo;
 	}
 
-	public void setDescontoMaximo(Float descontoMaximo) {
+	public void setDescontoMaximo(float descontoMaximo) {
 		this.descontoMaximo = descontoMaximo;
 	}
 

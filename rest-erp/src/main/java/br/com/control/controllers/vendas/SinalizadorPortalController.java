@@ -59,6 +59,7 @@ import br.com.control.portal.mensageria.to.MarcaTO;
 import br.com.control.portal.mensageria.to.MovimentoFinanceiroTO;
 import br.com.control.portal.mensageria.to.OcorrenciaTO;
 import br.com.control.portal.mensageria.to.PedidoPendenteLiberacaoTO;
+import br.com.control.portal.mensageria.to.PedidoSugestaoTO;
 import br.com.control.portal.mensageria.to.PrecoTO;
 import br.com.control.portal.mensageria.to.ProdutoTO;
 import br.com.control.portal.mensageria.to.TipoCobrancaClienteTO;
@@ -381,7 +382,12 @@ public class SinalizadorPortalController extends AbstractController {
 
 		logger.info("### SINALIZADOR -> PEDIDOS SUGESTAO ###");
 		List<PedidoSugestao> sugestoes = pedidoSugestaoService.listar();
-		return sincronismoCadastoService.enviaParaOPortal(mensagem, sugestoes, "Pedidos Sugestao");
+		List<PedidoSugestaoTO> pedidosSugestaoTO = new ArrayList<>();
+		for (PedidoSugestao pedidoSugestao : sugestoes) {
+			pedidosSugestaoTO.add(new PedidoSugestaoTO(pedidoSugestao));
+		}
+
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, pedidosSugestaoTO, "Pedidos Sugestao");
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
@@ -755,33 +761,28 @@ public class SinalizadorPortalController extends AbstractController {
 		}
 
 		BandaPrecoTO bandaPrecoTo = new BandaPrecoTO(bandaPreco);
-		return sincronismoCadastoService.enviaParaOPortal(mensagem, bandaPrecoTo, "Banda Preço");
+		MensagemRetorno enviaParaOPortal = sincronismoCadastoService.enviaParaOPortal(mensagem, bandaPrecoTo,
+				"Banda Preço");
 
-		// logger.info("### SINALIZADOR -> BANDA PRECO ITEM ###");
-		//
-		// List<BandaPrecoItemTO> bandaPrecoItensTO = new ArrayList<>();
+		logger.info("### SINALIZADOR -> BANDA PRECO ITEM ###");
+
+		List<BandaPrecoItemTO> bandaPrecoItensTO = new ArrayList<>();
 		// String codigoBandaPrecoItem =
 		// sinalizadorPortalService.retornaCodigoERP(mensagem);
 		// logger.info("--> codigo erp: " + codigoBandaPrecoItem);
-		// logger.info("------------------------------------------------------");
-		// List<BandaPrecoItem> bandaPrecoItens =
-		// bandaPrecoItemService.buscaBandaPrecoItem(codigoBandaPrecoItem);
-		//
-		// if (codigoBandaPrecoItem == null || codigoBandaPrecoItem.isEmpty()) {
-		// String msg = "Banda Preco Item com codigo: " + codigoBandaPrecoItem +
-		// " nao encontrado no DBMaker!";
-		// logger.warn(msg);
-		// return null;
-		// }
-		//
-		// for (BandaPrecoItem bandaPrecoItem : bandaPrecoItens) {
-		// BandaPrecoItemTO bandaPrecoItemTO = new
-		// BandaPrecoItemTO(bandaPrecoItem);
-		// bandaPrecoItensTO.add(bandaPrecoItemTO);
-		// }
-		// return sincronismoCadastoService.enviaParaOPortal(mensagem,
-		// bandaPrecoItensTO, "Banda Preço Item");
+		logger.info("------------------------------------------------------");
+		List<BandaPrecoItem> bandaPrecoItens = bandaPrecoItemService
+				.buscaBandaPrecoItem(Integer.parseInt(codigoBandaPreco));
 
+		for (BandaPrecoItem bandaPrecoItem : bandaPrecoItens) {
+			BandaPrecoItemTO bandaPrecoItemTO = new BandaPrecoItemTO(bandaPrecoItem);
+			bandaPrecoItensTO.add(bandaPrecoItemTO);
+		}
+
+		MensagemRetorno enviaParaOPortal2 = sincronismoCadastoService.enviaParaOPortal(mensagem, bandaPrecoItensTO,
+				"Banda Preço Item");
+
+		return enviaParaOPortal;
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_BANDA + RotasRest.RAIZ_PRECO
