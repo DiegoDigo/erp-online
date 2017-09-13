@@ -42,17 +42,18 @@ public class PedidoCapaConsumer {
 	public void receiveMessage(final Message<PedidoCapaTO> message) throws JMSException {
 		PedidoCapaTO pedidoCapa = message.getPayload();
 
+		
 		log.info("### RECEBIDO O PEDIDO " + pedidoCapa.getRecId() + " DA FILA PEDIDOS ###");
-		log.info("--> recId da capa: "+pedidoCapa.getRecId());
+		log.info("--> capa recebida: "+pedidoCapa);
 		
 		try {
 			
-		preparaDatasPedido(pedidoCapa);
+//		preparaDatasPedido(pedidoCapa);
 
 		AcompanhamentoPedidoTO capaTO = pedidoCapaService.salvarCapa(pedidoCapa);
 
 		for (PedidoItemTO item : pedidoCapa.getItens()) {
-			item.setNumeroPrePedidoGestao(capaTO.getNumeroPedidoGestao());
+			item.setNumeroPrePedidoGestao(Long.valueOf(capaTO.getNumeroPedidoGestao()));
 			pedidoItemService.salvarItem(item);
 		}
 		
@@ -77,13 +78,13 @@ public class PedidoCapaConsumer {
 		}
 	}
 	
-	private void preparaDatasPedido(PedidoCapaTO pedidoCapa) {
-		String dataVencimento = util.formataData(pedidoCapa.getDataHoraEmissao(), "yyyyMMdd");
-		String dataEmissao = util.formataData(pedidoCapa.getDataHoraEmissao(), "yyyyMMdd");
-		String horaEmissao = util.formataData(pedidoCapa.getDataHoraEmissao(), "HHmm");
-		pedidoCapa.setDataVencimento(Integer.valueOf(dataVencimento));
-		pedidoCapa.setDataEmissao(Integer.valueOf(dataEmissao));
-		pedidoCapa.setHoraEmissao(Integer.valueOf(horaEmissao));
-	}
+//	private void preparaDatasPedido(PedidoCapaTO pedidoCapa) {
+//		String dataVencimento = util.formataData(pedidoCapa.getDataHoraEmissao(), "yyyyMMdd");
+//		String dataEmissao = util.formataData(pedidoCapa.getDataHoraEmissao(), "yyyyMMdd");
+//		String horaEmissao = util.formataData(pedidoCapa.getDataHoraEmissao()\, "HHmm");
+//		pedidoCapa.setDataVencimento(Integer.valueOf(dataVencimento));
+//		pedidoCapa.setDataEmissao(Integer.valueOf(dataEmissao));
+//		pedidoCapa.setHoraEmissao(Integer.valueOf(horaEmissao));
+//	}
 
 }

@@ -9,76 +9,111 @@ public class PedidoItemTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private long recId;
-
+	
 	@SequenciaParametrosProcedure(index = 1)
-	private String numeroPrePedidoGestao;
+	private int codigoEmpresa;
+	
 	@SequenciaParametrosProcedure(index = 2)
-	private long sequenciaItem;
+	private long numeroPrePedidoGestao;
+	
 	@SequenciaParametrosProcedure(index = 3)
-	private String codigoOcorrencia;
+	private int sequenciaItem;
+	
 	@SequenciaParametrosProcedure(index = 4)
-	private String codigoReduzidoProduto;
+	private int codigoOcorrencia;
+	
 	@SequenciaParametrosProcedure(index = 5)
-	private long quantidadeCaixa;
+	private long codigoReduzidoProduto;
+	
 	@SequenciaParametrosProcedure(index = 6)
-	private long quantidadeAvulsa;
+	private int quantidadeCaixa;
+	
 	@SequenciaParametrosProcedure(index = 7)
-	private BigDecimal desconto;
+	private int quantidadeAvulsa;
+	
+
 	@SequenciaParametrosProcedure(index = 8)
-	private String codigoTabelaPreco;
+	private int codigoTabelaPreco;
+	
 	@SequenciaParametrosProcedure(index = 9)
-	private BigDecimal valorTotal;
+	private BigDecimal desconto;
+	
 	@SequenciaParametrosProcedure(index = 10)
-	private BigDecimal valorCaixa;
+	private BigDecimal valorLiquido;
+	
 	@SequenciaParametrosProcedure(index = 11)
-	private BigDecimal valorAvulso;
-	@SequenciaParametrosProcedure(index = 12, isRetornoProcedure = true)
-	private long codigoCapaPedido = 0;
-	@SequenciaParametrosProcedure(index = 13, isRetornoProcedure = true)
-	private long dataPedido = 0;
-	@SequenciaParametrosProcedure(index = 14, isRetornoProcedure = true)
-	private long sequenciaPedido = 0;
+	private BigDecimal valorBruto;
+	
+	@SequenciaParametrosProcedure(index = 12)
+	private BigDecimal precoUnitarioCaixa;
+	
+	@SequenciaParametrosProcedure(index = 13)
+	private BigDecimal precoUnitarioAvulso;
+	
+	@SequenciaParametrosProcedure(index = 14)
+	private String combo;
+	
+	@SequenciaParametrosProcedure(index = 15, isRetornoProcedure = true)
+	private int statusRetorno;
+	
+	@SequenciaParametrosProcedure(index = 16, isRetornoProcedure = true)
+	private String msgRetorno;
+	
+	
+	
 	public long getRecId() {
 		return recId;
 	}
 	public void setRecId(long recId) {
 		this.recId = recId;
 	}
-	public String getNumeroPrePedidoGestao() {
+	public int getCodigoEmpresa() {
+		return codigoEmpresa;
+	}
+	public void setCodigoEmpresa(int codigoEmpresa) {
+		this.codigoEmpresa = codigoEmpresa;
+	}
+	public long getNumeroPrePedidoGestao() {
 		return numeroPrePedidoGestao;
 	}
-	public void setNumeroPrePedidoGestao(String numeroPrePedidoGestao) {
+	public void setNumeroPrePedidoGestao(long numeroPrePedidoGestao) {
 		this.numeroPrePedidoGestao = numeroPrePedidoGestao;
 	}
-	public long getSequenciaItem() {
+	public int getSequenciaItem() {
 		return sequenciaItem;
 	}
-	public void setSequenciaItem(long sequenciaItem) {
+	public void setSequenciaItem(int sequenciaItem) {
 		this.sequenciaItem = sequenciaItem;
 	}
-	public String getCodigoOcorrencia() {
+	public int getCodigoOcorrencia() {
 		return codigoOcorrencia;
 	}
-	public void setCodigoOcorrencia(String codigoOcorrencia) {
+	public void setCodigoOcorrencia(int codigoOcorrencia) {
 		this.codigoOcorrencia = codigoOcorrencia;
 	}
-	public String getCodigoReduzidoProduto() {
+	public long getCodigoReduzidoProduto() {
 		return codigoReduzidoProduto;
 	}
-	public void setCodigoReduzidoProduto(String codigoReduzidoProduto) {
+	public void setCodigoReduzidoProduto(long codigoReduzidoProduto) {
 		this.codigoReduzidoProduto = codigoReduzidoProduto;
 	}
-	public long getQuantidadeCaixa() {
+	public int getQuantidadeCaixa() {
 		return quantidadeCaixa;
 	}
-	public void setQuantidadeCaixa(long quantidadeCaixa) {
+	public void setQuantidadeCaixa(int quantidadeCaixa) {
 		this.quantidadeCaixa = quantidadeCaixa;
 	}
-	public long getQuantidadeAvulsa() {
+	public int getQuantidadeAvulsa() {
 		return quantidadeAvulsa;
 	}
-	public void setQuantidadeAvulsa(long quantidadeAvulsa) {
+	public void setQuantidadeAvulsa(int quantidadeAvulsa) {
 		this.quantidadeAvulsa = quantidadeAvulsa;
+	}
+	public int getCodigoTabelaPreco() {
+		return codigoTabelaPreco;
+	}
+	public void setCodigoTabelaPreco(int codigoTabelaPreco) {
+		this.codigoTabelaPreco = codigoTabelaPreco;
 	}
 	public BigDecimal getDesconto() {
 		return desconto;
@@ -86,46 +121,47 @@ public class PedidoItemTO implements Serializable {
 	public void setDesconto(BigDecimal desconto) {
 		this.desconto = desconto;
 	}
-	public String getCodigoTabelaPreco() {
-		return codigoTabelaPreco;
+	public BigDecimal getValorLiquido() {
+		return valorLiquido;
 	}
-	public void setCodigoTabelaPreco(String codigoTabelaPreco) {
-		this.codigoTabelaPreco = codigoTabelaPreco;
+	public void setValorLiquido(BigDecimal valorLiquido) {
+		this.valorLiquido = valorLiquido;
 	}
-	public BigDecimal getValorTotal() {
-		return valorTotal;
+	public BigDecimal getValorBruto() {
+		return valorBruto;
 	}
-	public void setValorTotal(BigDecimal valorTotal) {
-		this.valorTotal = valorTotal;
+	public void setValorBruto(BigDecimal valorBruto) {
+		this.valorBruto = valorBruto;
 	}
-	public BigDecimal getValorCaixa() {
-		return valorCaixa;
+	public BigDecimal getPrecoUnitarioCaixa() {
+		return precoUnitarioCaixa;
 	}
-	public void setValorCaixa(BigDecimal valorCaixa) {
-		this.valorCaixa = valorCaixa;
+	public void setPrecoUnitarioCaixa(BigDecimal precoUnitarioCaixa) {
+		this.precoUnitarioCaixa = precoUnitarioCaixa;
 	}
-	public BigDecimal getValorAvulso() {
-		return valorAvulso;
+	public BigDecimal getPrecoUnitarioAvulso() {
+		return precoUnitarioAvulso;
 	}
-	public void setValorAvulso(BigDecimal valorAvulso) {
-		this.valorAvulso = valorAvulso;
+	public void setPrecoUnitarioAvulso(BigDecimal precoUnitarioAvulso) {
+		this.precoUnitarioAvulso = precoUnitarioAvulso;
 	}
-	public long getCodigoCapaPedido() {
-		return codigoCapaPedido;
+	public String getCombo() {
+		return combo;
 	}
-	public void setCodigoCapaPedido(long codigoCapaPedido) {
-		this.codigoCapaPedido = codigoCapaPedido;
+	public void setCombo(String combo) {
+		this.combo = combo;
 	}
-	public long getDataPedido() {
-		return dataPedido;
+	public int getStatusRetorno() {
+		return statusRetorno;
 	}
-	public void setDataPedido(long dataPedido) {
-		this.dataPedido = dataPedido;
+	public void setStatusRetorno(int statusRetorno) {
+		this.statusRetorno = statusRetorno;
 	}
-	public long getSequenciaPedido() {
-		return sequenciaPedido;
+	public String getMsgRetorno() {
+		return msgRetorno;
 	}
-	public void setSequenciaPedido(long sequenciaPedido) {
-		this.sequenciaPedido = sequenciaPedido;
+	public void setMsgRetorno(String msgRetorno) {
+		this.msgRetorno = msgRetorno;
 	}
+	
 }

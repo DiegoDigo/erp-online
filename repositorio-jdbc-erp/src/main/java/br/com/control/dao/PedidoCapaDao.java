@@ -30,13 +30,13 @@ public class PedidoCapaDao extends JdbcDao<PedidoCapaTO> {
 	
 	@Transactional
 	public AcompanhamentoPedidoTO salvarCapaPedido(PedidoCapaTO pedido) {
-		CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERT_PEDIDO_CAPA);
+		CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERT_CAPA_PRE_PEDIDO);
 		preparaExecucaoProcedure(pedido, stmt);
 
 		try {
 			AcompanhamentoPedidoTO pedidoTO = new AcompanhamentoPedidoTO();
 			pedidoTO.setRecId(pedido.getRecId());
-			pedidoTO.setNumeroPedidoGestao(formatacaoUtil.formataData(pedido.getDataHoraEmissao(), "yyyyMMdd") + completaComZeros(String.valueOf(stmt.getLong(12))));
+			pedidoTO.setNumeroPedidoGestao(String.valueOf(stmt.getLong(13)));
 			
 			//FIXME: rever o valor do status de acompanhamento de pedido. Está 1 fake abaixo
 			pedidoTO.setStatusAcompanhamentoPedido(1L);

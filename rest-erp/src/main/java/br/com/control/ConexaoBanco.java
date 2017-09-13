@@ -102,7 +102,6 @@ public class ConexaoBanco {
 		pool.setUrl(urlDbMaker);
 		pool.setUsername(userDbMaker);
 		pool.setPassword(passwordDbMaker);
-
 		pool.setInitialSize(1);
 		pool.setMaxActive(1);
 		pool.setRemoveAbandoned(true);

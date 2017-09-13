@@ -14,7 +14,7 @@ import br.com.control.vendas.cadastro.modelo.pedido.PedidoItem;
 public class PedidoItemDao extends JdbcDao<PedidoItem> {
 
 	public AcompanhamentoPedidoTO salvarItemPedido(PedidoItemTO pedidoItem) {
-		CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERT_PEDIDO_ITEM);
+		CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERT_ITEM_PRE_PEDIDO);
 		preparaExecucaoProcedure(pedidoItem, stmt);
 
 		try {

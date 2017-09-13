@@ -2,9 +2,7 @@ package br.com.control.portal.mensageria.to;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import br.com.control.annotation.SequenciaParametrosProcedure;
@@ -15,29 +13,47 @@ public class PedidoCapaTO implements Serializable {
 	private long recId;
 
 	@SequenciaParametrosProcedure(index = 1)
-	private String cliente;
+	private int codigoEmpresa;
 	@SequenciaParametrosProcedure(index = 2)
-	private String tipoCobranca;
+	private int codigoTabelaPreco;
 	@SequenciaParametrosProcedure(index = 3)
-	private String condicaoPagamento;
+	private int codigoClienteErp;
 	@SequenciaParametrosProcedure(index = 4)
-	private BigDecimal valorDesconto;
+	private String cpfCnpj;
 	@SequenciaParametrosProcedure(index = 5)
-	private float percTaxaFinanc;
+	private String origem;
 	@SequenciaParametrosProcedure(index = 6)
-	private String vendedor;
+	private String codigoVendedor;
 	@SequenciaParametrosProcedure(index = 7)
-	private BigDecimal valorLiquido;
+	private int tipoCobranca;
 	@SequenciaParametrosProcedure(index = 8)
-	private int dataVencimento;
+	private int condicaoPagamento;
 	@SequenciaParametrosProcedure(index = 9)
-	private int dataEmissao;
+	private float desconto;
 	@SequenciaParametrosProcedure(index = 10)
-	private int horaEmissao;
+	private float percTaxaFinanc;
 	@SequenciaParametrosProcedure(index = 11)
-	private String usuario;
-	@SequenciaParametrosProcedure(index = 12, isRetornoProcedure = true)
+	private BigDecimal valorLiquido;
+	@SequenciaParametrosProcedure(index = 12)
+	private int dataEmissao;
+	@SequenciaParametrosProcedure(index = 13, isRetornoProcedure = true)
 	private long numeroPrePedidoGestao;
+	@SequenciaParametrosProcedure(index = 14, isRetornoProcedure = true)
+	private int statusRetorno;
+	@SequenciaParametrosProcedure(index = 15, isRetornoProcedure = true)
+	private String msgRetorno = "";	
+	
+	
+	@Override
+	public String toString() {
+		return "PedidoCapaTO [recId=" + recId + ", codigoEmpresa=" + codigoEmpresa + ", codigoTabelaPreco="
+				+ codigoTabelaPreco + ", codigoClienteErp=" + codigoClienteErp + ", cpfCnpj=" + cpfCnpj + ", origem="
+				+ origem + ", codigoVendedor=" + codigoVendedor + ", tipoCobranca=" + tipoCobranca
+				+ ", condicaoPagamento=" + condicaoPagamento + ", desconto=" + desconto + ", percTaxaFinanc="
+				+ percTaxaFinanc + ", valorLiquido=" + valorLiquido + ", dataEmissao=" + dataEmissao
+				+ ", numeroPrePedidoGestao=" + numeroPrePedidoGestao + ", statusRetorno=" + statusRetorno
+				+ ", msgRetorno=" + msgRetorno + ", itens=" + itens + "]";
+	}
 
 	private List<PedidoItemTO> itens = new ArrayList<>();
 
@@ -49,90 +65,6 @@ public class PedidoCapaTO implements Serializable {
 		this.itens = itens;
 	}
 
-	private Long statusPedido;
-	private Boolean ativo;
-	private Timestamp dataHoraEmissao;
-	private Timestamp dataHoraVenciamento;
-	private int horaVencimento;
-	private Date dataPrimeiraParcela;
-	private String observacao;
-	private Boolean pedidoAberto;
-	private Boolean pedidoBloqueado;
-	private Boolean pedidoTransmitido;
-	private float percDesconto;
-	private Boolean permiteErpAjustarPedido;
-	private int qtdeAvulsa;
-	private int qtdeCaixa;
-	private int tipoEntrega;
-	private BigDecimal valorBonificado;
-	private BigDecimal valorBruto;
-	private BigDecimal valorFinal;
-	private BigDecimal valorVerba;
-
-	public Long getStatusPedido() {
-		return statusPedido;
-	}
-
-	public void setStatusPedido(Long statusPedido) {
-		this.statusPedido = statusPedido;
-	}
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-	public Timestamp getDataHoraVenciamento() {
-		return dataHoraVenciamento;
-	}
-
-	public void setDataHoraVenciamento(Timestamp dataHoraVenciamento) {
-		this.dataHoraVenciamento = dataHoraVenciamento;
-	}
-
-	public int getDataVencimento() {
-		return dataVencimento;
-	}
-
-	public void setDataVencimento(int dataVencimento) {
-		this.dataVencimento = dataVencimento;
-	}
-
-	public int getHoraVencimento() {
-		return horaVencimento;
-	}
-
-	public void setHoraVencimento(int horaVencimento) {
-		this.horaVencimento = horaVencimento;
-	}
-
-	public int getDataEmissao() {
-		return dataEmissao;
-	}
-
-	public void setDataEmissao(int dataEmissao) {
-		this.dataEmissao = dataEmissao;
-	}
-
-	public int getHoraEmissao() {
-		return horaEmissao;
-	}
-
-	public void setHoraEmissao(int horaEmissao) {
-		this.horaEmissao = horaEmissao;
-	}
-
-	public String getVendedor() {
-		return vendedor;
-	}
-
-	public void setVendedor(String vendedor) {
-		this.vendedor = vendedor;
-	}
-
 	public long getRecId() {
 		return recId;
 	}
@@ -141,76 +73,76 @@ public class PedidoCapaTO implements Serializable {
 		this.recId = recId;
 	}
 
-	public Boolean getAtivo() {
-		return ativo;
+	public int getCodigoEmpresa() {
+		return codigoEmpresa;
 	}
 
-	public void setAtivo(Boolean ativo) {
-		this.ativo = ativo;
+	public void setCodigoEmpresa(int codigoEmpresa) {
+		this.codigoEmpresa = codigoEmpresa;
 	}
 
-	public Timestamp getDataHoraEmissao() {
-		return dataHoraEmissao;
+	public int getCodigoTabelaPreco() {
+		return codigoTabelaPreco;
 	}
 
-	public void setDataHoraEmissao(Timestamp dataHoraEmissao) {
-		this.dataHoraEmissao = dataHoraEmissao;
+	public void setCodigoTabelaPreco(int codigoTabelaPreco) {
+		this.codigoTabelaPreco = codigoTabelaPreco;
 	}
 
-	public Date getDataPrimeiraParcela() {
-		return dataPrimeiraParcela;
+	public int getCodigoClienteErp() {
+		return codigoClienteErp;
 	}
 
-	public void setDataPrimeiraParcela(Date dataPrimeiraParcela) {
-		this.dataPrimeiraParcela = dataPrimeiraParcela;
+	public void setCodigoClienteErp(int codigoClienteErp) {
+		this.codigoClienteErp = codigoClienteErp;
 	}
 
-	public long getNumeroPrePedidoGestao() {
-		return numeroPrePedidoGestao;
+	public String getCpfCnpj() {
+		return cpfCnpj;
 	}
 
-	public void setNumeroPrePedidoGestao(long numeroPrePedidoGestao) {
-		this.numeroPrePedidoGestao = numeroPrePedidoGestao;
+	public void setCpfCnpj(String cpfCnpj) {
+		this.cpfCnpj = cpfCnpj;
 	}
 
-	public String getObservacao() {
-		return observacao;
+	public String getOrigem() {
+		return origem;
 	}
 
-	public void setObservacao(String observacao) {
-		this.observacao = observacao;
+	public void setOrigem(String origem) {
+		this.origem = origem;
 	}
 
-	public Boolean getPedidoAberto() {
-		return pedidoAberto;
+	public String getCodigoVendedor() {
+		return codigoVendedor;
 	}
 
-	public void setPedidoAberto(Boolean pedidoAberto) {
-		this.pedidoAberto = pedidoAberto;
+	public void setCodigoVendedor(String codigoVendedor) {
+		this.codigoVendedor = codigoVendedor;
 	}
 
-	public Boolean getPedidoBloqueado() {
-		return pedidoBloqueado;
+	public int getTipoCobranca() {
+		return tipoCobranca;
 	}
 
-	public void setPedidoBloqueado(Boolean pedidoBloqueado) {
-		this.pedidoBloqueado = pedidoBloqueado;
+	public void setTipoCobranca(int tipoCobranca) {
+		this.tipoCobranca = tipoCobranca;
 	}
 
-	public Boolean getPedidoTransmitido() {
-		return pedidoTransmitido;
+	public int getCondicaoPagamento() {
+		return condicaoPagamento;
 	}
 
-	public void setPedidoTransmitido(Boolean pedidoTransmitido) {
-		this.pedidoTransmitido = pedidoTransmitido;
+	public void setCondicaoPagamento(int condicaoPagamento) {
+		this.condicaoPagamento = condicaoPagamento;
 	}
 
-	public float getPercDesconto() {
-		return percDesconto;
+	public float getDesconto() {
+		return desconto;
 	}
 
-	public void setPercDesconto(float percDesconto) {
-		this.percDesconto = percDesconto;
+	public void setDesconto(float desconto) {
+		this.desconto = desconto;
 	}
 
 	public float getPercTaxaFinanc() {
@@ -221,70 +153,6 @@ public class PedidoCapaTO implements Serializable {
 		this.percTaxaFinanc = percTaxaFinanc;
 	}
 
-	public Boolean getPermiteErpAjustarPedido() {
-		return permiteErpAjustarPedido;
-	}
-
-	public void setPermiteErpAjustarPedido(Boolean permiteErpAjustarPedido) {
-		this.permiteErpAjustarPedido = permiteErpAjustarPedido;
-	}
-
-	public int getQtdeAvulsa() {
-		return qtdeAvulsa;
-	}
-
-	public void setQtdeAvulsa(int qtdeAvulsa) {
-		this.qtdeAvulsa = qtdeAvulsa;
-	}
-
-	public int getQtdeCaixa() {
-		return qtdeCaixa;
-	}
-
-	public void setQtdeCaixa(int qtdeCaixa) {
-		this.qtdeCaixa = qtdeCaixa;
-	}
-
-	public int getTipoEntrega() {
-		return tipoEntrega;
-	}
-
-	public void setTipoEntrega(int tipoEntrega) {
-		this.tipoEntrega = tipoEntrega;
-	}
-
-	public BigDecimal getValorBonificado() {
-		return valorBonificado;
-	}
-
-	public void setValorBonificado(BigDecimal valorBonificado) {
-		this.valorBonificado = valorBonificado;
-	}
-
-	public BigDecimal getValorBruto() {
-		return valorBruto;
-	}
-
-	public void setValorBruto(BigDecimal valorBruto) {
-		this.valorBruto = valorBruto;
-	}
-
-	public BigDecimal getValorDesconto() {
-		return valorDesconto;
-	}
-
-	public void setValorDesconto(BigDecimal valorDesconto) {
-		this.valorDesconto = valorDesconto;
-	}
-
-	public BigDecimal getValorFinal() {
-		return valorFinal;
-	}
-
-	public void setValorFinal(BigDecimal valorFinal) {
-		this.valorFinal = valorFinal;
-	}
-
 	public BigDecimal getValorLiquido() {
 		return valorLiquido;
 	}
@@ -293,36 +161,36 @@ public class PedidoCapaTO implements Serializable {
 		this.valorLiquido = valorLiquido;
 	}
 
-	public BigDecimal getValorVerba() {
-		return valorVerba;
+	public int getDataEmissao() {
+		return dataEmissao;
 	}
 
-	public void setValorVerba(BigDecimal valorVerba) {
-		this.valorVerba = valorVerba;
+	public void setDataEmissao(int dataEmissao) {
+		this.dataEmissao = dataEmissao;
 	}
 
-	public String getCliente() {
-		return cliente;
+	public long getNumeroPrePedidoGestao() {
+		return numeroPrePedidoGestao;
 	}
 
-	public void setCliente(String cliente) {
-		this.cliente = cliente;
+	public void setNumeroPrePedidoGestao(long numeroPrePedidoGestao) {
+		this.numeroPrePedidoGestao = numeroPrePedidoGestao;
 	}
 
-	public String getCondicaoPagamento() {
-		return condicaoPagamento;
+	public int getStatusRetorno() {
+		return statusRetorno;
 	}
 
-	public void setCondicaoPagamento(String condicaoPagamento) {
-		this.condicaoPagamento = condicaoPagamento;
+	public void setStatusRetorno(int statusRetorno) {
+		this.statusRetorno = statusRetorno;
 	}
 
-	public String getTipoCobranca() {
-		return tipoCobranca;
+	public String getMsgRetorno() {
+		return msgRetorno;
 	}
 
-	public void setTipoCobranca(String tipoCobranca) {
-		this.tipoCobranca = tipoCobranca;
+	public void setMsgRetorno(String msgRetorno) {
+		this.msgRetorno = msgRetorno;
 	}
 
 }
