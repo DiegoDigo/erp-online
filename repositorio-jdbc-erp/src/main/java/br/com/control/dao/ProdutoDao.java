@@ -21,6 +21,8 @@ public class ProdutoDao extends JdbcDao<Produto> {
 		getJdbcTemplate().update(declare2);
 		String declare3 = "DECLARE set date @CODIGO_SEQUENCIA = 0;";
 		getJdbcTemplate().update(declare3);
+		String declare4 = "DECLARE set int @DISP_PORTAL_WEB = 1;";
+		getJdbcTemplate().update(declare4);
 		return selectViewSemWhere(TabelasIntegracao.CADASTRO_PRODUTO, new ProdutoRowMapper());
 	}
 
@@ -31,6 +33,9 @@ public class ProdutoDao extends JdbcDao<Produto> {
 		getJdbcTemplate().update(declare2);
 		String declare3 = "DECLARE set date @CODIGO_SEQUENCIA = 0;";
 		getJdbcTemplate().update(declare3);		
+		//2 para TODOS, ativos e não
+		String declare4 = "DECLARE set int @DISP_PORTAL_WEB = 2;";
+		getJdbcTemplate().update(declare4);		
 		return selectViewSingle(TabelasIntegracao.CADASTRO_PRODUTO, new ProdutoRowMapper());
 	}
 

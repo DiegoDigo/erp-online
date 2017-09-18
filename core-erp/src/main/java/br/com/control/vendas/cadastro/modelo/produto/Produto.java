@@ -36,6 +36,15 @@ public class Produto implements Serializable {
 	private String codigoErpFamilia;
 	private String codigoErpGrupo;
 	private String codigoErpMarca;
+	private boolean produtoDisponivelPortal;
+
+	public boolean isProdutoDisponivelPortal() {
+		return produtoDisponivelPortal;
+	}
+
+	public void setProdutoDisponivelPortal(boolean produtoDisponivelPortal) {
+		this.produtoDisponivelPortal = produtoDisponivelPortal;
+	}
 
 	public Long getRecId() {
 		return recId;
