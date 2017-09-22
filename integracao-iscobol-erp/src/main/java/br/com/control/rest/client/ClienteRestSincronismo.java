@@ -1,5 +1,8 @@
 package br.com.control.rest.client;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.util.Arrays;
 import java.util.Properties;
@@ -21,10 +24,7 @@ import br.com.control.portal.enums.CadastrosEnum;
 
 public abstract class ClienteRestSincronismo {
 	
-	private static final String MATRICULA_EMPRESA = "2966";
-	
 	Properties prop = new Properties();
-	
 	
 	public void sinalizaPortalAtualizacao(String conteudo, CadastrosEnum cadastroASincronizar) {
 		System.out.println("### ENTROU NO ClienteRestSincronismo::"+conteudo.split("\\|")[0]+" ###");
@@ -104,31 +104,43 @@ public abstract class ClienteRestSincronismo {
 	 */
 	public void atualizaValoresPropriedades(Identificacao identificacao) {
 
-//		InputStream input = null;
+		InputStream input = null;
 
-//		try {
+		try {
+			
+//			System.out.println("ZZZZZZZZZZZZZZZZZZZZZ: " +getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
+			
+			String pathComJar = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+        	String[] split = pathComJar.split("/");
+			
+			String caminho = "";
+        	for(int i = 0; i<split.length - 1; i++){
+        		caminho += "/"+split[i];
+        	}
+			
+			input = new FileInputStream(caminho+"/integracao-is-cobol.properties");
 
-//			input = new FileInputStream("integracao-is-cobol.properties");
-
-//			prop.load(input);
-//			identificacao.setMatriculaAssociada(prop.getProperty("matricula_revenda"));
-//			identificacao.setServicoAcessado(prop.getProperty("servico_acessado"));
-//			identificacao.setUsuarioOrigemServico(prop.getProperty("usuario_origem"));
-			identificacao.setMatriculaAssociada(MATRICULA_EMPRESA);
-			identificacao.setServicoAcessado("SINCRONISMO");
+			prop.load(input);
+			System.out.println("MATRICULA ARQUIVO PROPRIEDADES: "+prop.getProperty("matricula_revenda"));
+			
+			identificacao.setMatriculaAssociada(prop.getProperty("matricula_revenda"));
+			identificacao.setServicoAcessado("SINCRONISMO CADASTRO");
 			identificacao.setUsuarioOrigemServico("USUARIO ERP");
+//			identificacao.setMatriculaAssociada(MATRICULA_EMPRESA);
+//			identificacao.setServicoAcessado("SINCRONISMO");
+//			identificacao.setUsuarioOrigemServico("USUARIO ERP");
 
-//		} catch (IOException ex) {
-//			ex.printStackTrace();
-//		} finally {
-//			if (input != null) {
-//				try {
-//					input.close();
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		}
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
 	  }
 	

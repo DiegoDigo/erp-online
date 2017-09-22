@@ -1,7 +1,12 @@
 package br.com.control.rest.client;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.Properties;
 
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.http.HttpEntity;
@@ -10,6 +15,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
+
+import br.com.control.portal.integracao.Sistema;
 
 public class AutenticacaoRest {
 
@@ -34,9 +41,12 @@ public class AutenticacaoRest {
 	// "?grant_type=password&username=portalvendas&password=123";
 
 	// HOMOLOGAÇÃO
-	private String REST_SERVICE_URI = "http://linkedby-ecommerce.com.br:8282/api-servicos-erp-homolog";
-	private String AUTH_SERVER_URI = "http://linkedby-ecommerce.com.br:8282/api-servicos-erp-homolog/oauth/token";
-	private String QPM_PASSWORD_GRANT = "?grant_type=password&username=portalvendas&password=123";
+	// private String REST_SERVICE_URI =
+	// "http://linkedby-ecommerce.com.br:8282/api-servicos-erp-homolog";
+	// private String AUTH_SERVER_URI =
+	// "http://linkedby-ecommerce.com.br:8282/api-servicos-erp-homolog/oauth/token";
+	// private String QPM_PASSWORD_GRANT =
+	// "?grant_type=password&username=portalvendas&password=123";
 
 	// DESENVOLVIMENTO
 	// private String REST_SERVICE_URI =
@@ -56,20 +66,24 @@ public class AutenticacaoRest {
 
 	// private String QPM_ACCESS_TOKEN = "?access_token=";
 
+	private Properties prop = new Properties();
+
+	public AutenticacaoRest() {
+		loadArquivoPropriedades();
+	}
+
 	@SuppressWarnings({ "unchecked" })
 	public AuthTokenInfo sendTokenRequest() {
 		RestTemplate restTemplate = new RestTemplate();
 
-		System.out.println("AUTH_SERVER_URI: " + AUTH_SERVER_URI);
-		System.out.println("QPM_PASSWORD_GRANT: " + QPM_PASSWORD_GRANT);
+		System.out.println("AUTH_SERVER_URI: " + getAUTH_SERVER_URI());
+		System.out.println("QPM_PASSWORD_GRANT: " + getQPM_PASSWORD_GRANT());
 
 		AuthTokenInfo tokenInfo = null;
 		try {
 			HttpEntity<String> request = new HttpEntity<String>(getHeadersWithClientCredentials());
-			System.out.println("REQUEST XXX: " + request);
-			ResponseEntity<Object> response = restTemplate.exchange(AUTH_SERVER_URI + QPM_PASSWORD_GRANT,
+			ResponseEntity<Object> response = restTemplate.exchange(getAUTH_SERVER_URI() + getQPM_PASSWORD_GRANT(),
 					HttpMethod.POST, request, Object.class);
-			System.out.println("RESPONSE XXX: " + response);
 			LinkedHashMap<String, Object> map = (LinkedHashMap<String, Object>) response.getBody();
 
 			if (map != null) {
@@ -81,7 +95,7 @@ public class AutenticacaoRest {
 				tokenInfo.setScope((String) map.get("scope"));
 				System.out.println(tokenInfo);
 			} else {
-				System.out.println("No user exist----------");
+				System.out.println("Usuário não encontrado para o token----------");
 
 			}
 		} catch (Exception e) {
@@ -94,7 +108,7 @@ public class AutenticacaoRest {
 	}
 
 	public HttpHeaders getHeadersWithClientCredentials() {
-		String plainClientCredentials = "PORTAL_VENDAS:002";
+		String plainClientCredentials = Sistema.PORTAL_VENDAS + ":" + Sistema.PORTAL_VENDAS.getSegredo();
 		String base64ClientCredentials = new String(Base64.encodeBase64(plainClientCredentials.getBytes()));
 
 		HttpHeaders headers = getHeaders();
@@ -109,28 +123,47 @@ public class AutenticacaoRest {
 		return headers;
 	}
 
+	private void loadArquivoPropriedades() {
+        prop = new Properties();
+        try {
+        	
+        	String pathComJar = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+        	String[] split = pathComJar.split("/");
+        	
+        	String caminho = "";
+        	for(int i = 0; i<split.length - 1; i++){
+        		caminho += "/"+split[i];
+        	}
+        	
+        	
+//        	System.out.println("WWWWWWWWWWWWWWWWWWWWWW: " +caminho);
+        	InputStream inputStream = new FileInputStream(caminho+"/integracao-is-cobol.properties");
+            prop.load(inputStream);
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+	}
+
 	public String getREST_SERVICE_URI() {
+		String REST_SERVICE_URI = prop.getProperty("url_erp_online") + prop.getProperty("contexto_erp_online");
+		System.out.println("REST_SERVICE_URI: " + REST_SERVICE_URI);
 		return REST_SERVICE_URI;
 	}
 
-	public void setREST_SERVICE_URI(String rEST_SERVICE_URI) {
-		REST_SERVICE_URI = rEST_SERVICE_URI;
-	}
-
 	public String getAUTH_SERVER_URI() {
+		String AUTH_SERVER_URI = prop.getProperty("url_erp_online") + prop.getProperty("contexto_erp_online")
+				+ "/oauth/token";
+		System.out.println("AUTH_SERVER_URI: " + AUTH_SERVER_URI);
 		return AUTH_SERVER_URI;
 	}
 
-	public void setAUTH_SERVER_URI(String aUTH_SERVER_URI) {
-		AUTH_SERVER_URI = aUTH_SERVER_URI;
-	}
-
 	public String getQPM_PASSWORD_GRANT() {
+		String QPM_PASSWORD_GRANT = "?grant_type=password&username=" + prop.getProperty("usuario_erp_online")
+				+ "&password=" + prop.getProperty("senha_erp_online");
+		System.out.println("QPM_PASSWORD_GRANT: " + QPM_PASSWORD_GRANT);
 		return QPM_PASSWORD_GRANT;
-	}
-
-	public void setQPM_PASSWORD_GRANT(String qPM_PASSWORD_GRANT) {
-		QPM_PASSWORD_GRANT = qPM_PASSWORD_GRANT;
 	}
 
 }
