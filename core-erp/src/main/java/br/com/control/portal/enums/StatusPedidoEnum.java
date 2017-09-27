@@ -2,9 +2,21 @@ package br.com.control.portal.enums;
 
 public enum StatusPedidoEnum {
 
-	ANALISE(1, "Análise", "Estamos analisando seu pedido!"), APROVADO(2, "Aprovado", "Aprovamos seu pedido"), SEPARACAO(
-			3, "Separação", "Estamos separando seu pedido para entrega!"), DESPACHADO(4, "Despachado",
-					"Seu pedido saiu para entrega!"), ENTREGUE(5, "Entregue", "Pedido entregue");
+	ANALISE(1,
+			"Análise",
+			"Estamos analisando seu pedido!"),
+	APROVADO(	2,
+				"Aprovado",
+				"Aprovamos seu pedido"),
+	SEPARACAO(	3,
+				"Separação",
+				"Estamos separando seu pedido para entrega!"),
+	DESPACHADO(	4,
+				"Despachado",
+				"Seu pedido saiu para entrega!"),
+	ENTREGUE(	5,
+				"Entregue",
+				"Pedido entregue");
 
 	private String status;
 	private String descricao;

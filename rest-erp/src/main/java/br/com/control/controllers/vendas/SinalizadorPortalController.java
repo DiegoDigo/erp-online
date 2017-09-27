@@ -746,6 +746,8 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoBandaPrecoCapa(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
+		List<BandaPrecoItemTO> bandaPrecoItensTO = new ArrayList<>();
+
 		logger.info("### SINALIZADOR -> BANDA PRECO CAPA ###");
 
 		String codigoBandaPreco = sinalizadorPortalService.retornaCodigoERP(mensagem);
@@ -761,26 +763,28 @@ public class SinalizadorPortalController extends AbstractController {
 		}
 
 		BandaPrecoTO bandaPrecoTo = new BandaPrecoTO(bandaPreco);
-		MensagemRetorno enviaParaOPortal = sincronismoCadastoService.enviaParaOPortal(mensagem, bandaPrecoTo,
-				"Banda Preço");
 
-		logger.info("### SINALIZADOR -> BANDA PRECO ITEM ###");
-
-		List<BandaPrecoItemTO> bandaPrecoItensTO = new ArrayList<>();
-		// String codigoBandaPrecoItem =
-		// sinalizadorPortalService.retornaCodigoERP(mensagem);
-		// logger.info("--> codigo erp: " + codigoBandaPrecoItem);
+		String codigoBandaPrecoItem = sinalizadorPortalService.retornaCodigoERP(mensagem);
+		logger.info("--> codigo erp: " + codigoBandaPrecoItem);
 		logger.info("------------------------------------------------------");
 		List<BandaPrecoItem> bandaPrecoItens = bandaPrecoItemService
-				.buscaBandaPrecoItem(Integer.parseInt(codigoBandaPreco));
+				.buscaBandaPrecoItem(Integer.parseInt(codigoBandaPrecoItem));
+
+		if (codigoBandaPrecoItem == null || codigoBandaPrecoItem.isEmpty()) {
+			String msg = "Banda Preco Item com codigo: " + codigoBandaPrecoItem + " nao encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
 
 		for (BandaPrecoItem bandaPrecoItem : bandaPrecoItens) {
 			BandaPrecoItemTO bandaPrecoItemTO = new BandaPrecoItemTO(bandaPrecoItem);
 			bandaPrecoItensTO.add(bandaPrecoItemTO);
 		}
 
-		MensagemRetorno enviaParaOPortal2 = sincronismoCadastoService.enviaParaOPortal(mensagem, bandaPrecoItensTO,
-				"Banda Preço Item");
+		bandaPrecoTo.setBandaItens(bandaPrecoItensTO);
+
+		MensagemRetorno enviaParaOPortal = sincronismoCadastoService.enviaParaOPortal(mensagem, bandaPrecoTo,
+				"Banda Preço");
 
 		return enviaParaOPortal;
 	}

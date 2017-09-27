@@ -5,7 +5,7 @@ public class SincronismoBandaPrecoItem extends ClienteRestSincronismo {
 	@Override
 	public String defineCodigoErp(String conteudo) {
 		String[] split = conteudo.split("\\|");
-		return split[3];
+		return split[2];
 	}
 
 	@Override

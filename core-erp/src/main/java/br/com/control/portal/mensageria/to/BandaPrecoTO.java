@@ -1,6 +1,8 @@
 package br.com.control.portal.mensageria.to;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.control.vendas.cadastro.modelo.preco.BandaPreco;
 
@@ -28,6 +30,7 @@ public class BandaPrecoTO implements Serializable {
 	private String codigoMarcaProdutoERP;
 	private String codigoProdutoERP;
 	private String codigoCondicaoPagamentoERP;
+	private List<BandaPrecoItemTO> bandaItens = new ArrayList<>();
 
 	public String getCodigoCondicaoPagamentoERP() {
 		return codigoCondicaoPagamentoERP;
@@ -213,6 +216,14 @@ public class BandaPrecoTO implements Serializable {
 
 	public BandaPrecoTO() {
 
+	}
+
+	public List<BandaPrecoItemTO> getBandaItens() {
+		return bandaItens;
+	}
+
+	public void setBandaItens(List<BandaPrecoItemTO> bandaItens) {
+		this.bandaItens = bandaItens;
 	}
 
 }

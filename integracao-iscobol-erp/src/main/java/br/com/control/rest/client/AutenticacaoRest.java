@@ -124,26 +124,25 @@ public class AutenticacaoRest {
 	}
 
 	private void loadArquivoPropriedades() {
-        prop = new Properties();
-        try {
-        	
-        	String pathComJar = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
-        	String[] split = pathComJar.split("/");
-        	
-        	String caminho = "";
-        	for(int i = 0; i<split.length - 1; i++){
-        		caminho += "/"+split[i];
-        	}
-        	
-        	
-//        	System.out.println("WWWWWWWWWWWWWWWWWWWWWW: " +caminho);
-        	InputStream inputStream = new FileInputStream(caminho+"/integracao-is-cobol.properties");
-            prop.load(inputStream);
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+		prop = new Properties();
+		try {
+
+			String pathComJar = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+			String[] split = pathComJar.split("/");
+
+			String caminho = "";
+			for (int i = 0; i < split.length - 1; i++) {
+				caminho += "/" + split[i];
+			}
+
+			// System.out.println("WWWWWWWWWWWWWWWWWWWWWW: " +caminho);
+			InputStream inputStream = new FileInputStream(caminho + "/integracao-is-cobol.properties");
+			prop.load(inputStream);
+		} catch (FileNotFoundException ex) {
+			ex.printStackTrace();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	public String getREST_SERVICE_URI() {
