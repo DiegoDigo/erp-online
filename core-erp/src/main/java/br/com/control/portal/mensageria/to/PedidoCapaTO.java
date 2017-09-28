@@ -41,9 +41,10 @@ public class PedidoCapaTO implements Serializable {
 	@SequenciaParametrosProcedure(index = 14, isRetornoProcedure = true)
 	private int statusRetorno;
 	@SequenciaParametrosProcedure(index = 15, isRetornoProcedure = true)
-	private String msgRetorno = "";	
-	
-	
+	private String msgRetorno = "";
+
+	private List<PedidoItemTO> itens = new ArrayList<>();
+
 	@Override
 	public String toString() {
 		return "PedidoCapaTO [recId=" + recId + ", codigoEmpresa=" + codigoEmpresa + ", codigoTabelaPreco="
@@ -54,8 +55,6 @@ public class PedidoCapaTO implements Serializable {
 				+ ", numeroPrePedidoGestao=" + numeroPrePedidoGestao + ", statusRetorno=" + statusRetorno
 				+ ", msgRetorno=" + msgRetorno + ", itens=" + itens + "]";
 	}
-
-	private List<PedidoItemTO> itens = new ArrayList<>();
 
 	public List<PedidoItemTO> getItens() {
 		return itens;

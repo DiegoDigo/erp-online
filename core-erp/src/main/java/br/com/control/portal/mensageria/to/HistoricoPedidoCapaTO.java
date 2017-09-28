@@ -2,12 +2,14 @@ package br.com.control.portal.mensageria.to;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import br.com.control.vendas.cadastro.modelo.pedido.HistoricoPedidoCapa;
 
 public class HistoricoPedidoCapaTO implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	private Boolean ativo;
@@ -25,7 +27,7 @@ public class HistoricoPedidoCapaTO implements Serializable {
 	private String condicaoPagamentoERP;
 	private String tipoCobrancaERP;
 
-
+	private List<HistoricoPedidoItemTO> historicoPedidoItens = new ArrayList<>();
 
 	public Boolean getAtivo() {
 		return ativo;
@@ -123,7 +125,6 @@ public class HistoricoPedidoCapaTO implements Serializable {
 		this.codigoClienteERP = codigoClienteERP;
 	}
 
-	
 	public String getCondicaoPagamentoERP() {
 		return condicaoPagamentoERP;
 	}
@@ -140,8 +141,9 @@ public class HistoricoPedidoCapaTO implements Serializable {
 		this.tipoCobrancaERP = tipoCobrancaERP;
 	}
 
-	public HistoricoPedidoCapaTO(){}
-	
+	public HistoricoPedidoCapaTO() {
+	}
+
 	public HistoricoPedidoCapaTO(HistoricoPedidoCapa historicoPedidoCapa) {
 		this.ativo = historicoPedidoCapa.getAtivo();
 		this.codigoMotivoDevolucao = historicoPedidoCapa.getCodigoMotivoDevolucao();
@@ -158,7 +160,13 @@ public class HistoricoPedidoCapaTO implements Serializable {
 		this.condicaoPagamentoERP = historicoPedidoCapa.getCondicaoPagamentoERP();
 		this.tipoCobrancaERP = historicoPedidoCapa.getTipoCobrancaERP();
 	}
-	
-	
+
+	public List<HistoricoPedidoItemTO> getHistoricoPedidoItens() {
+		return historicoPedidoItens;
+	}
+
+	public void setHistoricoPedidoItens(List<HistoricoPedidoItemTO> historicoPedidoItens) {
+		this.historicoPedidoItens = historicoPedidoItens;
+	}
 
 }

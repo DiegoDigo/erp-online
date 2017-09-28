@@ -22,7 +22,6 @@ import br.com.control.rest.client.SincronismoCadastroVendedor;
 import br.com.control.rest.client.SincronismoCadastroVendedorCliente;
 import br.com.control.rest.client.SincronismoComodato;
 import br.com.control.rest.client.SincronismoHistoricoPedidoCapa;
-import br.com.control.rest.client.SincronismoHistoricoPedidoItem;
 import br.com.control.rest.client.SincronismoMovimentoFinanceiro;
 import br.com.control.rest.client.SincronismoPedidoBloqueado;
 import br.com.control.rest.client.SincronismoPedidoSugestao;
@@ -31,12 +30,11 @@ import br.com.control.rest.client.SincronismoTipoEndereco;
 
 public class SINALIZADOR implements IscobolCall {
 
-	// public static void main(String[] args) {
-	// SINALIZADOR sinalizador = new SINALIZADOR();
-	// String[] param = { "CADASTRO|" + CadastrosEnum.BANDA_PRECO +
-	// "|000000000000000000000000104 00000|" };
-	// sinalizador.call(param);
-	// }
+	public static void main(String[] args) {
+		SINALIZADOR sinalizador = new SINALIZADOR();
+		String[] param = { "CADASTRO|" + CadastrosEnum.HISTORICO_PEDIDO_CAPA + "|201708140001|" };
+		sinalizador.call(param);
+	}
 
 	@Override
 	public Object call(Object[] argv) {
@@ -125,11 +123,9 @@ public class SINALIZADOR implements IscobolCall {
 					SincronismoComodato rest = new SincronismoComodato();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.COMODATO);
 				} else if (CadastrosEnum.HISTORICO_PEDIDO_CAPA == cadastro) {
+					System.out.println("Vai processar o sincronismo de Historico Pedido Capa");
 					SincronismoHistoricoPedidoCapa rest = new SincronismoHistoricoPedidoCapa();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.HISTORICO_PEDIDO_CAPA);
-				} else if (CadastrosEnum.HISTORICO_PEDIDO_ITEM == cadastro) {
-					SincronismoHistoricoPedidoItem rest = new SincronismoHistoricoPedidoItem();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.HISTORICO_PEDIDO_ITEM);
 				} else if (CadastrosEnum.BANDA_PRECO == cadastro) {
 					System.out.println("Vai processar o sincronismo de Banda Preco");
 					SincronismoBandaPrecoCapa rest = new SincronismoBandaPrecoCapa();

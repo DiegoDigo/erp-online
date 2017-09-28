@@ -709,24 +709,16 @@ public class SinalizadorPortalController extends AbstractController {
 		}
 
 		HistoricoPedidoCapaTO historicoPedidoCapaTO = new HistoricoPedidoCapaTO(historioPedidoCapa);
-		return sincronismoCadastoService.enviaParaOPortal(mensagem, historicoPedidoCapaTO, "Historico Pedido Capa");
-	}
-
-	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_HISTORICO + RotasRest.RAIZ_PEDIDO
-			+ RotasRest.RAIZ_ITEM, method = RequestMethod.POST, headers = "Accept=application/json")
-	public MensagemRetorno sinalizaPortalSincronismoHistoricoPedidoItem(
-			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
-
-		logger.info("### SINALIZADOR -> HISTORICO PEDIDO ITEM ###");
+		// sincronismoCadastoService.enviaParaOPortal(mensagem,
+		// historicoPedidoCapaTO, "Historico Pedido Capa");
 
 		String codigoHistoricoPedidoItem = sinalizadorPortalService.retornaCodigoERP(mensagem);
-
 		logger.info("--> codigo erp: " + codigoHistoricoPedidoItem);
 		logger.info("------------------------------------------------------");
-		List<HistoricoPedidoItem> historioPedidoItem = historicoPedidoItemService
+		List<HistoricoPedidoItem> historicoPedidoItens = historicoPedidoItemService
 				.buscarItemPedido(codigoHistoricoPedidoItem);
 
-		if (historioPedidoItem == null || historioPedidoItem.isEmpty()) {
+		if (codigoHistoricoPedidoItem == null || codigoHistoricoPedidoItem.isEmpty()) {
 			String msg = "Historico Pedido Item com codigo: " + codigoHistoricoPedidoItem
 					+ " nao encontrado no DBMaker!";
 			logger.warn(msg);
@@ -734,11 +726,20 @@ public class SinalizadorPortalController extends AbstractController {
 		}
 
 		List<HistoricoPedidoItemTO> historicoPedidoItensTO = new ArrayList<>();
-		for (HistoricoPedidoItem historicoPedidoItem : historioPedidoItem) {
+
+		for (HistoricoPedidoItem historicoPedidoItem : historicoPedidoItens) {
 			HistoricoPedidoItemTO historicoPedidoItemTO = new HistoricoPedidoItemTO(historicoPedidoItem);
+
 			historicoPedidoItensTO.add(historicoPedidoItemTO);
 		}
-		return sincronismoCadastoService.enviaParaOPortal(mensagem, historicoPedidoItensTO, "Historico Pedido Item");
+
+		historicoPedidoCapaTO.setHistoricoPedidoItens(historicoPedidoItensTO);
+
+		MensagemRetorno enviaParaOPortal = sincronismoCadastoService.enviaParaOPortal(mensagem, historicoPedidoCapaTO,
+				"Historico Pedido Capa");
+
+		return enviaParaOPortal;
+
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_BANDA + RotasRest.RAIZ_PRECO
@@ -789,31 +790,36 @@ public class SinalizadorPortalController extends AbstractController {
 		return enviaParaOPortal;
 	}
 
-	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_BANDA + RotasRest.RAIZ_PRECO
-			+ RotasRest.RAIZ_ITEM, method = RequestMethod.POST, headers = "Accept=application/json")
-	public MensagemRetorno sinalizaPortalSincronismoBandaPrecoItem(
-			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
-
-		logger.info("### SINALIZADOR -> BANDA PRECO ITEM ###");
-
-		List<BandaPrecoItemTO> bandaPrecoItensTO = new ArrayList<>();
-		String codigoBandaPrecoItem = sinalizadorPortalService.retornaCodigoERP(mensagem);
-		logger.info("--> codigo erp: " + codigoBandaPrecoItem);
-		logger.info("------------------------------------------------------");
-		List<BandaPrecoItem> bandaPrecoItens = bandaPrecoItemService
-				.buscaBandaPrecoItem(Integer.parseInt(codigoBandaPrecoItem));
-
-		if (codigoBandaPrecoItem == null || codigoBandaPrecoItem.isEmpty()) {
-			String msg = "Banda Preco Item com codigo: " + codigoBandaPrecoItem + " nao encontrado no DBMaker!";
-			logger.warn(msg);
-			return null;
-		}
-
-		for (BandaPrecoItem bandaPrecoItem : bandaPrecoItens) {
-			BandaPrecoItemTO bandaPrecoItemTO = new BandaPrecoItemTO(bandaPrecoItem);
-			bandaPrecoItensTO.add(bandaPrecoItemTO);
-		}
-		return sincronismoCadastoService.enviaParaOPortal(mensagem, bandaPrecoItensTO, "Banda Preço Item");
-	}
+	// @RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_BANDA +
+	// RotasRest.RAIZ_PRECO
+	// + RotasRest.RAIZ_ITEM, method = RequestMethod.POST, headers =
+	// "Accept=application/json")
+	// public MensagemRetorno sinalizaPortalSincronismoBandaPrecoItem(
+	// @RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+	//
+	// logger.info("### SINALIZADOR -> BANDA PRECO ITEM ###");
+	//
+	// List<BandaPrecoItemTO> bandaPrecoItensTO = new ArrayList<>();
+	// String codigoBandaPrecoItem =
+	// sinalizadorPortalService.retornaCodigoERP(mensagem);
+	// logger.info("--> codigo erp: " + codigoBandaPrecoItem);
+	// logger.info("------------------------------------------------------");
+	// List<BandaPrecoItem> bandaPrecoItens = bandaPrecoItemService
+	// .buscaBandaPrecoItem(Integer.parseInt(codigoBandaPrecoItem));
+	//
+	// if (codigoBandaPrecoItem == null || codigoBandaPrecoItem.isEmpty()) {
+	// String msg = "Banda Preco Item com codigo: " + codigoBandaPrecoItem + "
+	// nao encontrado no DBMaker!";
+	// logger.warn(msg);
+	// return null;
+	// }
+	//
+	// for (BandaPrecoItem bandaPrecoItem : bandaPrecoItens) {
+	// BandaPrecoItemTO bandaPrecoItemTO = new BandaPrecoItemTO(bandaPrecoItem);
+	// bandaPrecoItensTO.add(bandaPrecoItemTO);
+	// }
+	// return sincronismoCadastoService.enviaParaOPortal(mensagem,
+	// bandaPrecoItensTO, "Banda Preço Item");
+	// }
 
 }
