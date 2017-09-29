@@ -12,6 +12,8 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,6 +28,9 @@ import br.com.control.repositorio.ConnectionFactoryDBMaker;
 
 @Repository
 public class JdbcDao<T> {
+
+	private static final Logger logger = LoggerFactory.getLogger(JdbcDao.class);
+	
 	private DataSource dataSource;
 
 	private JdbcTemplate jdbcTemplate;
@@ -49,6 +54,7 @@ public class JdbcDao<T> {
 	public List<T> selectViewSemWhere(TabelasIntegracao tabela, RowMapper<T> rowMapper) {
 		String sql = "select * from " + schemaDatabase + "." + tabela.getViewERP();
 		List<T> dados = getJdbcTemplate().query(sql, rowMapper);
+		logger.info("--> itens retornados: "+dados.size());
 		return dados;
 	}
 
