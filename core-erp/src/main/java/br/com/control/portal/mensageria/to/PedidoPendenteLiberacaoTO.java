@@ -26,7 +26,7 @@ public class PedidoPendenteLiberacaoTO implements Serializable {
 	private String codigoVendedor;
 	private String nomeVendedor;
 	private String descricaoBloqueio;
-	
+
 	public PedidoPendenteLiberacaoTO(PedidoPendenteLiberacao pedidoPendenteLiberacao) {
 		setAtivo(pedidoPendenteLiberacao.getAtivo());
 		setDataHoraEmissaoPedido(pedidoPendenteLiberacao.getDataHoraEmissaoPedido());
@@ -42,6 +42,7 @@ public class PedidoPendenteLiberacaoTO implements Serializable {
 		setCodigoVendedor(pedidoPendenteLiberacao.getCodigoVendedor());
 		setNomeVendedor(pedidoPendenteLiberacao.getNomeVendedor());
 		setDescricaoBloqueio(pedidoPendenteLiberacao.getDescricaoBloqueio());
+		setStatusPedido(pedidoPendenteLiberacao.getStatusPedido());
 	}
 
 	public Boolean getAtivo() {
@@ -51,14 +52,10 @@ public class PedidoPendenteLiberacaoTO implements Serializable {
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
-	
-	
-
 
 	public Date getDataHoraEmissaoPedido() {
 		return dataHoraEmissaoPedido;
 	}
-
 
 	public Date getDataVencimento() {
 		return dataVencimento;
@@ -135,6 +132,7 @@ public class PedidoPendenteLiberacaoTO implements Serializable {
 	public void setCodigoClienteERP(String codigoClienteERP) {
 		this.codigoClienteERP = codigoClienteERP;
 	}
+
 	public String getCondicaoPagamentoERP() {
 		return condicaoPagamentoERP;
 	}

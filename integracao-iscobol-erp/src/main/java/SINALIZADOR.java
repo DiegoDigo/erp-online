@@ -30,11 +30,12 @@ import br.com.control.rest.client.SincronismoTipoEndereco;
 
 public class SINALIZADOR implements IscobolCall {
 
-	public static void main(String[] args) {
-		SINALIZADOR sinalizador = new SINALIZADOR();
-		String[] param = { "CADASTRO|" + CadastrosEnum.HISTORICO_PEDIDO_CAPA + "|201708140001|" };
-		sinalizador.call(param);
-	}
+	// public static void main(String[] args) {
+	// SINALIZADOR sinalizador = new SINALIZADOR();
+	// String[] param = { "CADASTRO|" + CadastrosEnum.STATUS_PEDIDO +
+	// "|201709150003|" };
+	// sinalizador.call(param);
+	// }
 
 	@Override
 	public Object call(Object[] argv) {
@@ -130,9 +131,9 @@ public class SINALIZADOR implements IscobolCall {
 					System.out.println("Vai processar o sincronismo de Banda Preco");
 					SincronismoBandaPrecoCapa rest = new SincronismoBandaPrecoCapa();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.BANDA_PRECO);
-				} else if (CadastrosEnum.PEDIDO_BLOQUEADO == cadastro) {
+				} else if (CadastrosEnum.STATUS_PEDIDO == cadastro) {
 					SincronismoPedidoBloqueado rest = new SincronismoPedidoBloqueado();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PEDIDO_BLOQUEADO);
+					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.STATUS_PEDIDO);
 				} else if (CadastrosEnum.PEDIDO_SUGESTAO == cadastro) {
 					SincronismoPedidoSugestao rest = new SincronismoPedidoSugestao();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PEDIDO_SUGESTAO);

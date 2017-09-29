@@ -3,6 +3,8 @@ package br.com.control.vendas.cadastro.modelo.pedido;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+import br.com.control.portal.enums.StatusLiberacaoPedido;
+
 @SuppressWarnings("serial")
 public class PedidoLiberado implements Serializable {
 
@@ -10,6 +12,7 @@ public class PedidoLiberado implements Serializable {
 	private Timestamp dataHoraLiberacao;
 	private Long codigoPedidoRecID;
 	private Long CodigoUsuarioPortal;
+	private StatusLiberacaoPedido statusPedido;
 	private Long matricualRecID;
 
 	public Long getRecId() {
@@ -50,6 +53,14 @@ public class PedidoLiberado implements Serializable {
 
 	public void setMatricualRecID(Long matricualRecID) {
 		this.matricualRecID = matricualRecID;
+	}
+
+	public StatusLiberacaoPedido getStatusPedido() {
+		return statusPedido;
+	}
+
+	public void setStatusPedido(StatusLiberacaoPedido statusPedido) {
+		this.statusPedido = statusPedido;
 	}
 
 }
