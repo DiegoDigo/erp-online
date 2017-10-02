@@ -31,11 +31,11 @@ import br.com.control.rest.client.SincronismoTipoEndereco;
 
 public class SINALIZADOR implements IscobolCall {
 
-	public static void main(String[] args) {
-		SINALIZADOR sinalizador = new SINALIZADOR();
-		String[] param = { "CADASTRO|" + CadastrosEnum.PAROCO + "|10|" };
-		sinalizador.call(param);
-	}
+	// public static void main(String[] args) {
+	// SINALIZADOR sinalizador = new SINALIZADOR();
+	// String[] param = { "CADASTRO|" + CadastrosEnum.PAROCO + "|10|" };
+	// sinalizador.call(param);
+	// }
 
 	@Override
 	public Object call(Object[] argv) {
