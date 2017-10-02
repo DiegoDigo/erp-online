@@ -1,6 +1,6 @@
 package br.com.control.rest.client;
 
-public class SincronismoPedidoSugestao extends ClienteRestSincronismo {
+public class SincronismoParoco extends ClienteRestSincronismo {
 
 	@Override
 	public String defineCodigoErp(String conteudo) {

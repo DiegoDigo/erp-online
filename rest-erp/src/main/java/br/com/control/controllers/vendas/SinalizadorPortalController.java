@@ -27,6 +27,7 @@ import br.com.control.cadastro.HistoricoPedidoItemService;
 import br.com.control.cadastro.MarcaService;
 import br.com.control.cadastro.MovimentoFinanceiroService;
 import br.com.control.cadastro.OcorrenciaService;
+import br.com.control.cadastro.ParocoService;
 import br.com.control.cadastro.PedidoPendenteLiberacaoService;
 import br.com.control.cadastro.PedidoSugestaoService;
 import br.com.control.cadastro.PrecoService;
@@ -58,6 +59,7 @@ import br.com.control.portal.mensageria.to.HistoricoPedidoItemTO;
 import br.com.control.portal.mensageria.to.MarcaTO;
 import br.com.control.portal.mensageria.to.MovimentoFinanceiroTO;
 import br.com.control.portal.mensageria.to.OcorrenciaTO;
+import br.com.control.portal.mensageria.to.ParocoTO;
 import br.com.control.portal.mensageria.to.PedidoPendenteLiberacaoTO;
 import br.com.control.portal.mensageria.to.PedidoSugestaoTO;
 import br.com.control.portal.mensageria.to.PrecoTO;
@@ -89,6 +91,7 @@ import br.com.control.vendas.cadastro.modelo.produto.DetalheComboProduto;
 import br.com.control.vendas.cadastro.modelo.produto.Familia;
 import br.com.control.vendas.cadastro.modelo.produto.Grupo;
 import br.com.control.vendas.cadastro.modelo.produto.Marca;
+import br.com.control.vendas.cadastro.modelo.produto.Paroco;
 import br.com.control.vendas.cadastro.modelo.produto.Produto;
 import br.com.control.vendas.cadastro.modelo.tipoCobranca.TipoCobranca;
 import br.com.control.vendas.cadastro.modelo.vendedor.Vendedor;
@@ -180,6 +183,9 @@ public class SinalizadorPortalController extends AbstractController {
 
 	@Autowired
 	private PedidoPendenteLiberacaoService pedidoPendenteLiberacaoService;
+
+	@Autowired
+	private ParocoService parocoService;
 
 	@Autowired
 	private PrecoService precoService;
@@ -786,6 +792,33 @@ public class SinalizadorPortalController extends AbstractController {
 
 		MensagemRetorno enviaParaOPortal = sincronismoCadastoService.enviaParaOPortal(mensagem, bandaPrecoTo,
 				"Banda Preço");
+
+		return enviaParaOPortal;
+	}
+
+	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
+			+ RotasRest.RAIZ_PAROCO, method = RequestMethod.POST, headers = "Accept=application/json")
+	public MensagemRetorno sinalizaPortalSincronismoParoco(
+			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+
+		logger.info("### SINALIZADOR -> CADASTRO PAROCO ###");
+
+		String codigoParocoErp = sinalizadorPortalService.retornaCodigoERP(mensagem);
+
+		logger.info("--> codigo erp: " + codigoParocoErp);
+		logger.info("------------------------------------------------------");
+
+		Paroco paroco = parocoService.recuperaParoco(codigoParocoErp);
+
+		if (paroco == null) {
+			String msg = "Paroco com codigo: " + codigoParocoErp + " nao encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
+		ParocoTO parocoTo = new ParocoTO(paroco);
+
+		MensagemRetorno enviaParaOPortal = sincronismoCadastoService.enviaParaOPortal(mensagem, parocoTo, "Paroco");
 
 		return enviaParaOPortal;
 	}

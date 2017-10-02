@@ -23,6 +23,7 @@ import br.com.control.rest.client.SincronismoCadastroVendedorCliente;
 import br.com.control.rest.client.SincronismoComodato;
 import br.com.control.rest.client.SincronismoHistoricoPedidoCapa;
 import br.com.control.rest.client.SincronismoMovimentoFinanceiro;
+import br.com.control.rest.client.SincronismoParoco;
 import br.com.control.rest.client.SincronismoPedidoBloqueado;
 import br.com.control.rest.client.SincronismoPedidoSugestao;
 import br.com.control.rest.client.SincronismoTipoCobrancaCliente;
@@ -32,8 +33,7 @@ public class SINALIZADOR implements IscobolCall {
 
 	// public static void main(String[] args) {
 	// SINALIZADOR sinalizador = new SINALIZADOR();
-	// String[] param = { "CADASTRO|" + CadastrosEnum.STATUS_PEDIDO +
-	// "|201709150003|" };
+	// String[] param = { "CADASTRO|" + CadastrosEnum.PAROCO + "|0|" };
 	// sinalizador.call(param);
 	// }
 
@@ -137,12 +137,17 @@ public class SINALIZADOR implements IscobolCall {
 				} else if (CadastrosEnum.PEDIDO_SUGESTAO == cadastro) {
 					SincronismoPedidoSugestao rest = new SincronismoPedidoSugestao();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PEDIDO_SUGESTAO);
+				} else if (CadastrosEnum.PAROCO == cadastro) {
+					SincronismoParoco rest = new SincronismoParoco();
+					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PAROCO);
 				}
 			}
 
 			System.out.println("### SAIU DO SINALIZADOR SEM ERROS ###");
 			return NumericVar.literal(0, false);
-		} catch (Exception e) {
+		} catch (
+
+		Exception e) {
 			e.printStackTrace();
 			System.out.println("Mensagem: " + e.getMessage());
 			System.out.println("Causa: " + e.getCause());
