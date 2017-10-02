@@ -91,14 +91,14 @@ public class ClienteTO implements Serializable {
 	private String ufEnderecoEntrega;
 	@SequenciaParametrosProcedure(index = 36)
 	private int cepEnderecoEntrega;
-	
+
 	@SequenciaParametrosProcedure(index = 37)
 	private String codigoTabpreco;
-	
-	@SequenciaParametrosProcedure(index = 38, isRetornoProcedure=true)
+
+	@SequenciaParametrosProcedure(index = 38, isRetornoProcedure = true)
 	private int statusMsg;
 
-	@SequenciaParametrosProcedure(index = 39, isRetornoProcedure=true)
+	@SequenciaParametrosProcedure(index = 39, isRetornoProcedure = true)
 	private String msg;
 
 	private String codigoErp;
@@ -137,7 +137,7 @@ public class ClienteTO implements Serializable {
 	}
 
 	public String getMsg() {
-		if(msg == null){
+		if (msg == null) {
 			msg = "";
 		}
 		return msg;
@@ -148,7 +148,7 @@ public class ClienteTO implements Serializable {
 	}
 
 	public String getRg() {
-		if(rg == null){
+		if (rg == null) {
 			rg = "";
 		}
 		return rg;
@@ -195,7 +195,7 @@ public class ClienteTO implements Serializable {
 	}
 
 	public void setCargo(String cargo) {
-		this.cargo = cargo;
+		this.cargo = cargo == null ? "-" : cargo;
 	}
 
 	public String getBairroEntrega() {
@@ -239,7 +239,7 @@ public class ClienteTO implements Serializable {
 	}
 
 	public String getPontoReferenciaEntrega() {
-		if(pontoReferenciaEntrega == null){
+		if (pontoReferenciaEntrega == null) {
 			pontoReferenciaEntrega = "";
 		}
 		return pontoReferenciaEntrega;
@@ -256,7 +256,6 @@ public class ClienteTO implements Serializable {
 	public void setUfEnderecoEntrega(String ufEnderecoEntrega) {
 		this.ufEnderecoEntrega = ufEnderecoEntrega;
 	}
-
 
 	public String getBairroCobranca() {
 		return bairroCobranca;
@@ -299,7 +298,7 @@ public class ClienteTO implements Serializable {
 	}
 
 	public String getPontoReferenciaCobranca() {
-		if(pontoReferenciaCobranca == null){
+		if (pontoReferenciaCobranca == null) {
 			pontoReferenciaCobranca = "";
 		}
 		return pontoReferenciaCobranca;
@@ -316,7 +315,6 @@ public class ClienteTO implements Serializable {
 	public void setUfEnderecoCobranca(String ufEnderecoCobranca) {
 		this.ufEnderecoCobranca = ufEnderecoCobranca;
 	}
-
 
 	public String getBairroFaturamento() {
 		return bairroFaturamento;
@@ -359,7 +357,7 @@ public class ClienteTO implements Serializable {
 	}
 
 	public String getPontoReferenciaFaturamento() {
-		if(pontoReferenciaFaturamento == null){
+		if (pontoReferenciaFaturamento == null) {
 			pontoReferenciaFaturamento = "";
 		}
 		return pontoReferenciaFaturamento;
@@ -677,6 +675,7 @@ public class ClienteTO implements Serializable {
 		this.codigoErpCanal = cliente.getCodigoErpCanal();
 		this.codigoErpCondicaoPagamento = cliente.getCodigoErpCondicaoPagamento();
 		this.codigoErpTipoCobranca = cliente.getCodigoErpTipoCobranca();
+		this.cargo = "teste";
 	}
 
 }

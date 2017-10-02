@@ -21,7 +21,7 @@ import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
 public class ClienteDao extends JdbcDao<Cliente> {
 
 	private static final Logger logger = LoggerFactory.getLogger(ClienteDao.class);
-	
+
 	public List<Cliente> listaTodosClientesDaMatricula() {
 		String declare = "DECLARE set int @CODIGO_CLIENTE = 0";
 		getJdbcTemplate().update(declare);
@@ -36,16 +36,17 @@ public class ClienteDao extends JdbcDao<Cliente> {
 
 	@Transactional
 	public void salvarOuAlterar(ClienteTO cliente) {
+		cliente.setCargo("");
 		CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERE_ALTERA_CLIENTE);
 		preparaExecucaoProcedure(cliente, stmt);
 		try {
-			logger.info("PROC INSERT/UPDATE PDV - CODIGO RETORNO: "+stmt.getInt(38));
-			logger.info("PROC INSERT/UPDATE PDV - MSG RETORNO: "+stmt.getString(39));
+			logger.info("PROC INSERT/UPDATE PDV - CODIGO RETORNO: " + stmt.getInt(38));
+			logger.info("PROC INSERT/UPDATE PDV - MSG RETORNO: " + stmt.getString(39));
 			stmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			e.getMessage();
 		}
 	}
-	
+
 }
