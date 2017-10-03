@@ -25,9 +25,9 @@ public class ParocoTO implements Serializable {
 	 * @param paroco
 	 */
 	public ParocoTO(Paroco paroco) {
-		this.setCodigoEmpresaErp(codigoEmpresaErp);
-		this.setCodigoTabelaPreco(codigoTabelaPreco);
-		this.setCodigoClienteErp(codigoClienteErp);
+		this.setCodigoEmpresaErp(paroco.getCodigoEmpresaErp());
+		this.setCodigoTabelaPreco(paroco.getCodigoTabelaPreco());
+		this.setCodigoClienteErp(paroco.getCodigoClienteErp());
 	}
 
 	public String getCodigoErp() {
