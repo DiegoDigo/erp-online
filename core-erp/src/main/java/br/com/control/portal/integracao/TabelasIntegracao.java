@@ -88,7 +88,9 @@ public enum TabelasIntegracao {
 	CADASTRO_PRODUTO_CANAL(	"",
 							"VW_CANAL_VS_PRODUTO"),
 	CADASTRO_PAROCO("",
-					"VW_PAROCO");
+					"VW_PAROCO"),
+	PEDIDO_ITEM_CORTADO("",
+						"VW_ITEM_CORTADO_PREPEDIDO");
 
 	private String tabelaERP;
 	private String viewERP;

@@ -25,17 +25,18 @@ import br.com.control.rest.client.SincronismoHistoricoPedidoCapa;
 import br.com.control.rest.client.SincronismoMovimentoFinanceiro;
 import br.com.control.rest.client.SincronismoParoco;
 import br.com.control.rest.client.SincronismoPedidoBloqueado;
+import br.com.control.rest.client.SincronismoPedidoItemCortado;
 import br.com.control.rest.client.SincronismoPedidoSugestao;
 import br.com.control.rest.client.SincronismoTipoCobrancaCliente;
 import br.com.control.rest.client.SincronismoTipoEndereco;
 
 public class SINALIZADOR implements IscobolCall {
 
-	// public static void main(String[] args) {
-	// SINALIZADOR sinalizador = new SINALIZADOR();
-	// String[] param = { "CADASTRO|" + CadastrosEnum.PAROCO + "|10|" };
-	// sinalizador.call(param);
-	// }
+	public static void main(String[] args) {
+		SINALIZADOR sinalizador = new SINALIZADOR();
+		String[] param = { "CADASTRO|" + CadastrosEnum.PAROCO + "|10|" };
+		sinalizador.call(param);
+	}
 
 	@Override
 	public Object call(Object[] argv) {
@@ -140,6 +141,9 @@ public class SINALIZADOR implements IscobolCall {
 				} else if (CadastrosEnum.PAROCO == cadastro) {
 					SincronismoParoco rest = new SincronismoParoco();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PAROCO);
+				} else if (CadastrosEnum.PEDIDO_ITEM_CORTADO == cadastro) {
+					SincronismoPedidoItemCortado rest = new SincronismoPedidoItemCortado();
+					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PEDIDO_ITEM_CORTADO);
 				}
 			}
 
