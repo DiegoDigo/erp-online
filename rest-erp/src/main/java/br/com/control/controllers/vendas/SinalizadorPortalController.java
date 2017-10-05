@@ -28,6 +28,7 @@ import br.com.control.cadastro.MarcaService;
 import br.com.control.cadastro.MovimentoFinanceiroService;
 import br.com.control.cadastro.OcorrenciaService;
 import br.com.control.cadastro.ParocoService;
+import br.com.control.cadastro.PedidoItemCortadoService;
 import br.com.control.cadastro.PedidoPendenteLiberacaoService;
 import br.com.control.cadastro.PedidoSugestaoService;
 import br.com.control.cadastro.PrecoService;
@@ -81,6 +82,7 @@ import br.com.control.vendas.cadastro.modelo.condicaoPagamento.CondicaoPagamento
 import br.com.control.vendas.cadastro.modelo.ocorrencia.Ocorrencia;
 import br.com.control.vendas.cadastro.modelo.pedido.HistoricoPedidoCapa;
 import br.com.control.vendas.cadastro.modelo.pedido.HistoricoPedidoItem;
+import br.com.control.vendas.cadastro.modelo.pedido.PedidoItemCortado;
 import br.com.control.vendas.cadastro.modelo.pedido.PedidoPendenteLiberacao;
 import br.com.control.vendas.cadastro.modelo.pedido.PedidoSugestao;
 import br.com.control.vendas.cadastro.modelo.preco.BandaPreco;
@@ -186,6 +188,9 @@ public class SinalizadorPortalController extends AbstractController {
 
 	@Autowired
 	private ParocoService parocoService;
+
+	@Autowired
+	private PedidoItemCortadoService pedidoItemCortadoService;
 
 	@Autowired
 	private PrecoService precoService;
@@ -819,6 +824,34 @@ public class SinalizadorPortalController extends AbstractController {
 		ParocoTO parocoTo = new ParocoTO(paroco);
 
 		MensagemRetorno enviaParaOPortal = sincronismoCadastoService.enviaParaOPortal(mensagem, parocoTo, "Paroco");
+
+		return enviaParaOPortal;
+	}
+
+	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_PEDIDO + RotasRest.RAIZ_ITEM
+			+ RotasRest.RAIZ_CORTADO, method = RequestMethod.POST, headers = "Accept=application/json")
+	public MensagemRetorno sinalizaPortalSincronismoPedidoItemCortado(
+			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+
+		logger.info("### SINALIZADOR -> CADASTRO PAROCO ###");
+
+		String numeroPrepedido = sinalizadorPortalService.retornaCodigoERP(mensagem);
+
+		logger.info("--> Pré-Pedido: " + numeroPrepedido);
+		logger.info("------------------------------------------------------");
+
+		List<PedidoItemCortado> itensCortados = pedidoItemCortadoService.listar();
+
+		if (itensCortados == null) {
+			String msg = "Paroco com codigo: " + numeroPrepedido + " nao encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
+		// ParocoTO parocoTo = new ParocoTO(itensCortados);
+
+		MensagemRetorno enviaParaOPortal = sincronismoCadastoService.enviaParaOPortal(mensagem, itensCortados,
+				"Itens Cortados");
 
 		return enviaParaOPortal;
 	}

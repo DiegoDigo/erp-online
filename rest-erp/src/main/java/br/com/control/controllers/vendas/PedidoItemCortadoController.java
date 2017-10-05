@@ -7,24 +7,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.control.cadastro.PedidoSugestaoService;
+import br.com.control.cadastro.PedidoItemCortadoService;
 import br.com.control.controllers.AbstractController;
 import br.com.control.portal.integracao.MensagemRecebida;
 import br.com.control.portal.integracao.MensagemRetorno;
 import br.com.control.rotas.RotasRest;
-import br.com.control.vendas.cadastro.modelo.pedido.PedidoSugestao;
+import br.com.control.vendas.cadastro.modelo.pedido.PedidoItemCortado;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_PEDIDO + RotasRest.RAIZ_SUGESTAO)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_PEDIDO + RotasRest.RAIZ_ITEM + RotasRest.RAIZ_CORTADO)
 public class PedidoItemCortadoController extends AbstractController {
 
 	@Autowired
-	private PedidoSugestaoService pedidoSugestaoService;
+	private PedidoItemCortadoService pedidoItemCortadoService;
 
 	@RequestMapping(value = RotasRest.LISTAR, method = RequestMethod.GET, headers = "Accept=application/json")
-	public MensagemRetorno listar(@RequestParam("mensagem") MensagemRecebida<PedidoSugestao> mensagem) {
-		return new MensagemRetorno(HttpStatus.OK, "Pedido Sugestao listado com sucesso !",
-				pedidoSugestaoService.listar(), mensagem.getIdentificacao());
+	public MensagemRetorno listar(@RequestParam("mensagem") MensagemRecebida<PedidoItemCortado> mensagem) {
+		return new MensagemRetorno(HttpStatus.OK, "Pedido Item Cortado listado com sucesso !",
+				pedidoItemCortadoService.listar(), mensagem.getIdentificacao());
 	}
 
 }

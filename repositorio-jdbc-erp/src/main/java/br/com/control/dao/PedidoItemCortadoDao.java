@@ -9,9 +9,11 @@ import br.com.control.repositorio.mappers.PedidoItemCortadoRowMapper;
 import br.com.control.vendas.cadastro.modelo.pedido.PedidoItemCortado;
 
 @Repository
-public class PedidoItensCortadosDao extends JdbcDao<PedidoItemCortado> {
+public class PedidoItemCortadoDao extends JdbcDao<PedidoItemCortado> {
 
-	public List<PedidoItemCortado> listar() {
+	public List<PedidoItemCortado> recuperarItensCortados(String numeroPrePedido) {
+		String declare = "DECLARE set bigint @COD_PRE_PEDIDO =  + numeroPrePedido + ;";
+		getJdbcTemplate().update(declare);
 		return selectViewSemWhere(TabelasIntegracao.PEDIDO_ITEM_CORTADO, new PedidoItemCortadoRowMapper());
 	}
 

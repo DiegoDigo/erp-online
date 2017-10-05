@@ -39,6 +39,7 @@ public class RotasRest {
 	public static final String RAIZ_BLOQUEADO = "/bloqueado";
 	public static final String RAIZ_SUGESTAO = "/sugestao";
 	public static final String RAIZ_PAROCO = "/paroco";
+	public static final String RAIZ_CORTADO = "/cortado";
 
 	public static final String ESTABELECIMENTOS_TIPOS = "/estabelecimentos/tipos";
 	public static final String CONEXAO = "/conexao";

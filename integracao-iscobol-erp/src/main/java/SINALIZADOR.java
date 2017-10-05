@@ -34,7 +34,7 @@ public class SINALIZADOR implements IscobolCall {
 
 	public static void main(String[] args) {
 		SINALIZADOR sinalizador = new SINALIZADOR();
-		String[] param = { "CADASTRO|" + CadastrosEnum.PAROCO + "|10|" };
+		String[] param = { "CADASTRO|" + CadastrosEnum.PEDIDO_ITEM_CORTADO + "|10|" };
 		sinalizador.call(param);
 	}
 
