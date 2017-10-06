@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.control.dao.PedidoItemCortadoDao;
-import br.com.control.portal.integracao.TabelasIntegracao;
-import br.com.control.repositorio.mappers.PedidoItemCortadoRowMapper;
 import br.com.control.vendas.cadastro.modelo.pedido.PedidoItemCortado;
 
 @Service
@@ -17,8 +15,11 @@ public class PedidoItemCortadoService {
 	private PedidoItemCortadoDao pedidoItemCortadoDao;
 
 	public List<PedidoItemCortado> listar() {
-		return pedidoItemCortadoDao.selectViewSemWhere(TabelasIntegracao.PEDIDO_ITEM_CORTADO,
-				new PedidoItemCortadoRowMapper());
+		return pedidoItemCortadoDao.listar();
+	}
+
+	public List<PedidoItemCortado> recuperarItensCordados(String numeroPrePedido) {
+		return pedidoItemCortadoDao.recuperarItensCortados(numeroPrePedido);
 	}
 
 }
