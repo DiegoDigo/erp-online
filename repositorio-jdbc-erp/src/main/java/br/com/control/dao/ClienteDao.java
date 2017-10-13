@@ -36,16 +36,17 @@ public class ClienteDao extends JdbcDao<Cliente> {
 
 	@Transactional
 	public void salvarOuAlterar(ClienteTO cliente) {
-		cliente.setCargo("");
 		CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERE_ALTERA_CLIENTE);
 		preparaExecucaoProcedure(cliente, stmt);
 		try {
-			logger.info("PROC INSERT/UPDATE PDV - CODIGO RETORNO: " + stmt.getInt(38));
-			logger.info("PROC INSERT/UPDATE PDV - MSG RETORNO: " + stmt.getString(39));
+			logger.info("PROC INSERT/UPDATE PDV - CODIGO RETORNO: " + stmt.getInt(53));
+			logger.info("PROC INSERT/UPDATE PDV - MSG RETORNO: " + stmt.getString(54));
 			stmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			e.getMessage();
+		} finally{
+			closeConnection();
 		}
 	}
 

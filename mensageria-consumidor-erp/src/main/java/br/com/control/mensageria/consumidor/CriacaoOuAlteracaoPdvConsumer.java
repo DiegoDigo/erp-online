@@ -1,5 +1,7 @@
 package br.com.control.mensageria.consumidor;
 
+import java.math.BigDecimal;
+
 import javax.jms.JMSException;
 
 import org.slf4j.Logger;
@@ -24,6 +26,17 @@ public class CriacaoOuAlteracaoPdvConsumer {
 	@JmsListener(destination = "${portal_ambiente}_alteracao_dados_cadastrais_contato")
 	public void receiveMessage(final Message<ClienteTO> message) throws JMSException {
 		ClienteTO clienteTO = message.getPayload();
+//		clienteTO.setLatitude(BigDecimal.ZERO);
+//		clienteTO.setLongitude(BigDecimal.ZERO);
+//		clienteTO.setEmail("teste@teste.com");
+//		clienteTO.setRg("432223332");
+//		clienteTO.setPontoReferenciaFaturamento("fat");
+//		clienteTO.setPontoReferenciaEntrega("ent");
+//		clienteTO.setPontoReferenciaCobranca("cob");
+//		clienteTO.setMotivoBloqueio("Mot");
+//		clienteTO.setInscricaoEstadual("IE");
+		
+		System.out.println(clienteTO);
 		log.info("### RECEBIDO ALTERACAO DO CONTATO DO CLIENTE " +clienteTO.getRazaoSocial() +" - "+ clienteTO.getCpfCnpj() + " DA FILA DE ALTERACAO DE DADOS CADASTRAIS CONTATO ###");
 		clienteService.salvarOuAlterar(clienteTO);
 		log.info("--> dados do cliente: " + clienteTO.getRazaoSocial() +" inseridos/alterados no erp");

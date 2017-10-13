@@ -13,7 +13,7 @@ public enum ProcedureIntegracao {
 	INSERT_CAPA_PRE_PEDIDO("SP_INSERT_CAPAPREPEDIDO", PedidoCapaTO.class),
 	INSERT_ITEM_PRE_PEDIDO("SP_INSERT_ITEMPREPEDIDO", PedidoItemTO.class),
 	LIBERACAO_PEDIDO("SP_LIB_PEDIDO", LiberacaoPedidoTO.class),
-	INSERE_ALTERA_CLIENTE("SP_CRIA_ATUALIZA_CLIENTE", ClienteTO.class);
+	INSERE_ALTERA_CLIENTE("SP_CRIA_ATUALIZA_CLIENTE_SFA", ClienteTO.class);
 
 	private String procedure;
 	private Class<?> classe;

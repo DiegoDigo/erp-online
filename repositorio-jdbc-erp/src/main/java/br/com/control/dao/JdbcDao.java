@@ -154,6 +154,9 @@ public class JdbcDao<T> {
 						throw new RuntimeException("O campo " + atributos[i].getName()
 								+ " veio nulo da Origem, não é possível realizar o processo");
 					}
+				
+					//exibe o tipo, nome do campo e valor do campo da procedure para debug em caso de problemas.
+//					System.out.println(atributos[i].getType() + " - " + atributos[i].getName() + " : "+ invokeGetBean);
 
 					metodoSetStatement.setAccessible(true);
 

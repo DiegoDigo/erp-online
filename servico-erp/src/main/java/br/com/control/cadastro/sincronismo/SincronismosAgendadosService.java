@@ -59,19 +59,19 @@ public class SincronismosAgendadosService {
 		sincronismoAgendadoProducer.sendMessage(msg);
 	}
 
-	@Scheduled(cron = "${periodo_sincronismo_historico_pedidos}")
-	public void atualizaHistoricosPedidoCapaNoPortalDeVendas() {
-		LOG.info("### PROCESSO DE ATUALIZACOES DE HISTORICO DE PEDIDOS CAPA AGENDADO PARA O PORTAL DE VENDAS WEB ###");
-		List<HistoricoPedidoCapa> listaDeHistoricosDaMatricula = historicoPedidoCapaService.listarHistoricoCapa();
-		List<HistoricoPedidoCapaTO> historicosTO = new ArrayList<>();
-		for (HistoricoPedidoCapa historico : listaDeHistoricosDaMatricula) {
-			HistoricoPedidoCapaTO historicoTO = new HistoricoPedidoCapaTO(historico);
-			historicosTO.add(historicoTO);
-		}
-		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Historicos Listado com sucessos !", historicosTO,
-				criaIdentificacao(CadastrosEnum.HISTORICO_PEDIDO_CAPA));
-		sincronismoAgendadoProducer.sendMessage(msg);
-	}
+//	@Scheduled(cron = "${periodo_sincronismo_historico_pedidos}")
+//	public void atualizaHistoricosPedidoCapaNoPortalDeVendas() {
+//		LOG.info("### PROCESSO DE ATUALIZACOES DE HISTORICO DE PEDIDOS CAPA AGENDADO PARA O PORTAL DE VENDAS WEB ###");
+//		List<HistoricoPedidoCapa> listaDeHistoricosDaMatricula = historicoPedidoCapaService.listarHistoricoCapa();
+//		List<HistoricoPedidoCapaTO> historicosTO = new ArrayList<>();
+//		for (HistoricoPedidoCapa historico : listaDeHistoricosDaMatricula) {
+//			HistoricoPedidoCapaTO historicoTO = new HistoricoPedidoCapaTO(historico);
+//			historicosTO.add(historicoTO);
+//		}
+//		MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Historicos Listado com sucessos !", historicosTO,
+//				criaIdentificacao(CadastrosEnum.HISTORICO_PEDIDO_CAPA));
+//		sincronismoAgendadoProducer.sendMessage(msg);
+//	}
 
 	@Scheduled(cron = "${periodo_sincronismo_movimento_financeiro}")
 	public void atualizaMovimentosFinanceirosNoPortalDeVendas() {

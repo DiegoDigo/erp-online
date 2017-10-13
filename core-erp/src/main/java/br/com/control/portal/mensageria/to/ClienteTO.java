@@ -1,6 +1,7 @@
 package br.com.control.portal.mensageria.to;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import br.com.control.annotation.SequenciaParametrosProcedure;
 import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
@@ -93,19 +94,52 @@ public class ClienteTO implements Serializable {
 	private int cepEnderecoEntrega;
 
 	@SequenciaParametrosProcedure(index = 37)
-	private String codigoTabpreco;
+	private int codigoTabpreco;
+	
+	
+	@SequenciaParametrosProcedure(index = 38)
+	private String origem;
+	@SequenciaParametrosProcedure(index = 39)
+	private String canal;
+	@SequenciaParametrosProcedure(index = 40)
+	private String motivoBloqueio;
+	@SequenciaParametrosProcedure(index = 41)
+	private String inscricaoEstadual;
+	@SequenciaParametrosProcedure(index = 42)
+	private int condicaoPagamento;
+	@SequenciaParametrosProcedure(index = 43)
+	private int tipoCobranca;
+	@SequenciaParametrosProcedure(index = 44)
+	private int subCanal;
+	@SequenciaParametrosProcedure(index = 45)
+	private BigDecimal latitude;
+	@SequenciaParametrosProcedure(index = 46)
+	private BigDecimal longitude;
+	@SequenciaParametrosProcedure(index = 47)
+	private String vendedor;
+	@SequenciaParametrosProcedure(index = 48)
+	private int codigoPasta;
+	@SequenciaParametrosProcedure(index = 49)
+	private int sequenciaPasta;
+	@SequenciaParametrosProcedure(index = 50)
+	private int regiaoInclusao;
+	@SequenciaParametrosProcedure(index = 51)
+	private int classe;
+	@SequenciaParametrosProcedure(index = 52)
+	private int alterado;
 
-	@SequenciaParametrosProcedure(index = 38, isRetornoProcedure = true)
+	@SequenciaParametrosProcedure(index = 53, isRetornoProcedure = true)
 	private int statusMsg;
 
-	@SequenciaParametrosProcedure(index = 39, isRetornoProcedure = true)
+	@SequenciaParametrosProcedure(index = 54, isRetornoProcedure = true)
 	private String msg;
+	
+	
 
 	private String codigoErp;
 	private Boolean abateIcms;
 	private Boolean ativo;
 	private float bonusDisponivel;
-	private String classe;
 	private Boolean desprezaTaxaFinanceira;
 	private String diaSemana;
 	private int diasEntrega;
@@ -121,7 +155,6 @@ public class ClienteTO implements Serializable {
 	private Boolean restricaoComercial;
 	private String inconformidadeCadastro;
 
-	private String subCanal;
 
 	private int usoVerbaRestritoProduto;
 	private String codigoErpCanal;
@@ -423,19 +456,11 @@ public class ClienteTO implements Serializable {
 		this.bonusDisponivel = bonusDisponivel;
 	}
 
-	public String getClasse() {
-		return classe;
-	}
-
-	public void setClasse(String classe) {
-		this.classe = classe;
-	}
-
-	public String getCodigoTabpreco() {
+	public int getCodigoTabpreco() {
 		return codigoTabpreco;
 	}
 
-	public void setCodigoTabpreco(String codigoTabpreco) {
+	public void setCodigoTabpreco(int codigoTabpreco) {
 		this.codigoTabpreco = codigoTabpreco;
 	}
 
@@ -583,13 +608,6 @@ public class ClienteTO implements Serializable {
 		this.sigla = sigla;
 	}
 
-	public String getSubCanal() {
-		return subCanal;
-	}
-
-	public void setSubCanal(String subCanal) {
-		this.subCanal = subCanal;
-	}
 
 	public int getTelefoneDdd() {
 		return telefoneDdd;
@@ -648,8 +666,8 @@ public class ClienteTO implements Serializable {
 		this.abateIcms = cliente.getAbateIcms();
 		this.ativo = cliente.getAtivo();
 		this.bonusDisponivel = cliente.getBonusDisponivel();
-		this.classe = cliente.getClasse();
-		this.codigoTabpreco = cliente.getCodigoTabpreco();
+		this.classe = Integer.valueOf(cliente.getClasse());
+		this.codigoTabpreco = Integer.valueOf(cliente.getCodigoTabpreco());
 		this.contato = cliente.getContato();
 		this.cpfCnpj = cliente.getCpfCnpj();
 		this.desprezaTaxaFinanceira = cliente.getDesprezaTaxaFinanceira();
@@ -668,7 +686,7 @@ public class ClienteTO implements Serializable {
 		this.restricaoComercial = cliente.getRestricaoComercial();
 		this.inconformidadeCadastro = cliente.getInconformidadeCadastro();
 		this.sigla = cliente.getSigla();
-		this.subCanal = cliente.getSubCanal();
+		this.subCanal = Integer.valueOf(cliente.getSubCanal());
 		this.telefoneDdd = Integer.valueOf(cliente.getTelefoneDdd());
 		this.telefoneTronco = Integer.valueOf(cliente.getTelefoneTronco());
 		this.usoVerbaRestritoProduto = cliente.getUsoVerbaRestritoProduto();
@@ -677,5 +695,164 @@ public class ClienteTO implements Serializable {
 		this.codigoErpTipoCobranca = cliente.getCodigoErpTipoCobranca();
 		this.cargo = "teste";
 	}
+
+	public String getOrigem() {
+		return origem;
+	}
+
+	public void setOrigem(String origem) {
+		this.origem = origem;
+	}
+
+	public String getCanal() {
+		return canal;
+	}
+
+	public void setCanal(String canal) {
+		this.canal = canal;
+	}
+
+	public String getMotivoBloqueio() {
+		return motivoBloqueio;
+	}
+
+	public void setMotivoBloqueio(String motivoBloqueio) {
+		this.motivoBloqueio = motivoBloqueio;
+	}
+
+	public String getInscricaoEstadual() {
+		return inscricaoEstadual;
+	}
+
+	public void setInscricaoEstadual(String inscricaoEstadual) {
+		this.inscricaoEstadual = inscricaoEstadual;
+	}
+
+	public int getCondicaoPagamento() {
+		return condicaoPagamento;
+	}
+
+	public void setCondicaoPagamento(int condicaoPagamento) {
+		this.condicaoPagamento = condicaoPagamento;
+	}
+
+	public int getTipoCobranca() {
+		return tipoCobranca;
+	}
+
+	public void setTipoCobranca(int tipoCobranca) {
+		this.tipoCobranca = tipoCobranca;
+	}
+
+	public int getSubCanal() {
+		return subCanal;
+	}
+
+	public void setSubCanal(int subCanal) {
+		this.subCanal = subCanal;
+	}
+
+	public BigDecimal getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(BigDecimal latitude) {
+		this.latitude = latitude;
+	}
+
+	public BigDecimal getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(BigDecimal longitude) {
+		this.longitude = longitude;
+	}
+
+	public String getVendedor() {
+		return vendedor;
+	}
+
+	public void setVendedor(String vendedor) {
+		this.vendedor = vendedor;
+	}
+
+	public int getCodigoPasta() {
+		return codigoPasta;
+	}
+
+	public void setCodigoPasta(int codigoPasta) {
+		this.codigoPasta = codigoPasta;
+	}
+
+	public int getSequenciaPasta() {
+		return sequenciaPasta;
+	}
+
+	public void setSequenciaPasta(int sequenciaPasta) {
+		this.sequenciaPasta = sequenciaPasta;
+	}
+
+	public int getRegiaoInclusao() {
+		return regiaoInclusao;
+	}
+
+	public void setRegiaoInclusao(int regiaoInclusao) {
+		this.regiaoInclusao = regiaoInclusao;
+	}
+
+	public int getClasse() {
+		return classe;
+	}
+
+	public void setClasse(int classe) {
+		this.classe = classe;
+	}
+
+	public int getAlterado() {
+		return alterado;
+	}
+
+	public void setAlterado(int alterado) {
+		this.alterado = alterado;
+	}
+
+	@Override
+	public String toString() {
+		return "ClienteTO [codigoEmpresa=" + codigoEmpresa + ", contato=" + contato + ", email=" + email + ", cargo="
+				+ cargo + ", telefoneDdd=" + telefoneDdd + ", telefoneTronco=" + telefoneTronco + ", celularDdd="
+				+ celularDdd + ", celular=" + celular + ", razaoSocial=" + razaoSocial + ", sigla=" + sigla
+				+ ", cpfCnpj=" + cpfCnpj + ", rg=" + rg + ", tipoLogradouroFaturamento=" + tipoLogradouroFaturamento
+				+ ", enderecoFaturamento=" + enderecoFaturamento + ", numeroFaturamento=" + numeroFaturamento
+				+ ", pontoReferenciaFaturamento=" + pontoReferenciaFaturamento + ", bairroFaturamento="
+				+ bairroFaturamento + ", municipioFaturamento=" + municipioFaturamento + ", ufEnderecoFaturamento="
+				+ ufEnderecoFaturamento + ", cepEnderecoFaturamento=" + cepEnderecoFaturamento
+				+ ", tipoLogradouroCobranca=" + tipoLogradouroCobranca + ", enderecoCobranca=" + enderecoCobranca
+				+ ", numeroCobranca=" + numeroCobranca + ", pontoReferenciaCobranca=" + pontoReferenciaCobranca
+				+ ", bairroCobranca=" + bairroCobranca + ", municipioCobranca=" + municipioCobranca
+				+ ", ufEnderecoCobranca=" + ufEnderecoCobranca + ", cepEnderecoCobranca=" + cepEnderecoCobranca
+				+ ", tipoLogradouroEntrega=" + tipoLogradouroEntrega + ", enderecoEntrega=" + enderecoEntrega
+				+ ", numeroEntrega=" + numeroEntrega + ", pontoReferenciaEntrega=" + pontoReferenciaEntrega
+				+ ", bairroEntrega=" + bairroEntrega + ", municipioEntrega=" + municipioEntrega + ", ufEnderecoEntrega="
+				+ ufEnderecoEntrega + ", cepEnderecoEntrega=" + cepEnderecoEntrega + ", codigoTabpreco="
+				+ codigoTabpreco + ", origem=" + origem + ", canal=" + canal + ", motivoBloqueio=" + motivoBloqueio
+				+ ", inscricaoEstadual=" + inscricaoEstadual + ", condicaoPagamento=" + condicaoPagamento
+				+ ", tipoCobranca=" + tipoCobranca + ", subCanal=" + subCanal + ", latitude=" + latitude
+				+ ", longitude=" + longitude + ", vendedor=" + vendedor + ", codigoPasta=" + codigoPasta
+				+ ", sequenciaPasta=" + sequenciaPasta + ", regiaoInclusao=" + regiaoInclusao + ", classe=" + classe
+				+ ", alterado=" + alterado + ", statusMsg=" + statusMsg + ", msg=" + msg + ", codigoErp=" + codigoErp
+				+ ", abateIcms=" + abateIcms + ", ativo=" + ativo + ", bonusDisponivel=" + bonusDisponivel
+				+ ", desprezaTaxaFinanceira=" + desprezaTaxaFinanceira + ", diaSemana=" + diaSemana + ", diasEntrega="
+				+ diasEntrega + ", ignoraBandaPreco=" + ignoraBandaPreco + ", limiteCredito=" + limiteCredito
+				+ ", motivoBloqClasse20=" + motivoBloqClasse20 + ", motivoBloqueioJuridico=" + motivoBloqueioJuridico
+				+ ", numeroCliente=" + numeroCliente + ", pasta=" + pasta + ", regiaoCliente=" + regiaoCliente
+				+ ", registroAlterado=" + registroAlterado + ", restricaoComercial=" + restricaoComercial
+				+ ", inconformidadeCadastro=" + inconformidadeCadastro + ", usoVerbaRestritoProduto="
+				+ usoVerbaRestritoProduto + ", codigoErpCanal=" + codigoErpCanal + ", codigoErpCondicaoPagamento="
+				+ codigoErpCondicaoPagamento + ", codigoErpTipoCobranca=" + codigoErpTipoCobranca + "]";
+	}
+	
+	
+	
+	
 
 }

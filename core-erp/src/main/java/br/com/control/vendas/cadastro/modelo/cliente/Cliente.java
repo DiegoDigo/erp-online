@@ -296,8 +296,8 @@ public class Cliente implements Serializable {
 		this.abateIcms = cliente.getAbateIcms();
 		this.ativo = cliente.getAtivo();
 		this.bonusDisponivel = cliente.getBonusDisponivel();
-		this.classe = cliente.getClasse();
-		this.codigoTabpreco = cliente.getCodigoTabpreco();
+		this.classe = String.valueOf(cliente.getClasse());
+		this.codigoTabpreco = String.valueOf(cliente.getCodigoTabpreco());
 		this.contato = cliente.getContato();
 		this.cpfCnpj = cliente.getCpfCnpj();
 		this.desprezaTaxaFinanceira = cliente.getDesprezaTaxaFinanceira();
@@ -316,7 +316,7 @@ public class Cliente implements Serializable {
 		this.restricaoComercial = cliente.getRestricaoComercial();
 		this.inconformidadeCadastro = cliente.getInconformidadeCadastro();
 		this.sigla = cliente.getSigla();
-		this.subCanal = cliente.getSubCanal();
+		this.subCanal = String.valueOf(cliente.getSubCanal());
 		this.telefoneDdd = String.valueOf(cliente.getTelefoneDdd());
 		this.telefoneTronco = String.valueOf(cliente.getTelefoneTronco());
 		this.usoVerbaRestritoProduto = cliente.getUsoVerbaRestritoProduto();
