@@ -32,11 +32,12 @@ import br.com.control.rest.client.SincronismoTipoEndereco;
 
 public class SINALIZADOR implements IscobolCall {
 
-	public static void main(String[] args) {
-		SINALIZADOR sinalizador = new SINALIZADOR();
-		String[] param = { "CADASTRO|" + CadastrosEnum.PEDIDO_ITEM_CORTADO + "|10|" };
-		sinalizador.call(param);
-	}
+	// public static void main(String[] args) {
+	// SINALIZADOR sinalizador = new SINALIZADOR();
+	// String[] param = { "CADASTRO|" + CadastrosEnum.CORTE_ITEM_PREPEDIDO +
+	// "|10|" };
+	// sinalizador.call(param);
+	// }
 
 	@Override
 	public Object call(Object[] argv) {
@@ -141,9 +142,9 @@ public class SINALIZADOR implements IscobolCall {
 				} else if (CadastrosEnum.PAROCO == cadastro) {
 					SincronismoParoco rest = new SincronismoParoco();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PAROCO);
-				} else if (CadastrosEnum.PEDIDO_ITEM_CORTADO == cadastro) {
+				} else if (CadastrosEnum.CORTE_ITEM_PREPEDIDO == cadastro) {
 					SincronismoPedidoItemCortado rest = new SincronismoPedidoItemCortado();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PEDIDO_ITEM_CORTADO);
+					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.CORTE_ITEM_PREPEDIDO);
 				}
 			}
 

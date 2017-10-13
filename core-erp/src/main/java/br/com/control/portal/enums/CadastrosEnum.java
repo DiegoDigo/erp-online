@@ -31,7 +31,7 @@ public enum CadastrosEnum {
 	STATUS_PEDIDO,
 	PEDIDO_SUGESTAO,
 	PAROCO,
-	PEDIDO_ITEM_CORTADO;
+	CORTE_ITEM_PREPEDIDO;
 
 	public static CadastrosEnum recuperaCadastro(String nome) {
 		for (CadastrosEnum cadastro : CadastrosEnum.values()) {
