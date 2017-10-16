@@ -90,7 +90,9 @@ public enum TabelasIntegracao {
 	CADASTRO_PAROCO("",
 					"VW_PAROCO"),
 	PEDIDO_ITEM_CORTADO("",
-						"VW_ITEM_CORTADO_PREPEDIDO");
+						"VW_ITEM_CORTADO_PREPEDIDO"),
+	VISITAS("",
+			"VW_VISITAS");
 
 	private String tabelaERP;
 	private String viewERP;
