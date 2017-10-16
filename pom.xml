@@ -191,6 +191,14 @@
 				<artefato.nome>api-servicos-erp-apresentacao</artefato.nome>
 			</properties>
 		</profile>
+		<profile>
+			<id>6410</id>
+			<properties>
+				<packaging.type>war</packaging.type>
+				<server.url>C:\PortalIntegracao\tomcat\webapps</server.url>
+				<artefato.nome>api-servicos-erp-6410</artefato.nome>
+			</properties>
+		</profile>
 	</profiles>
 
 
