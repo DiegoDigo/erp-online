@@ -30,7 +30,7 @@ import br.com.control.repositorio.ConnectionFactoryDBMaker;
 public class JdbcDao<T> {
 
 	private static final Logger logger = LoggerFactory.getLogger(JdbcDao.class);
-	
+
 	private DataSource dataSource;
 
 	private JdbcTemplate jdbcTemplate;
@@ -54,7 +54,7 @@ public class JdbcDao<T> {
 	public List<T> selectViewSemWhere(TabelasIntegracao tabela, RowMapper<T> rowMapper) {
 		String sql = "select * from " + schemaDatabase + "." + tabela.getViewERP();
 		List<T> dados = getJdbcTemplate().query(sql, rowMapper);
-		logger.info("--> itens retornados: "+dados.size());
+		logger.info("--> itens retornados: " + dados.size());
 		return dados;
 	}
 
@@ -100,12 +100,11 @@ public class JdbcDao<T> {
 
 	public CallableStatement preparaChamadaProcedure(ProcedureIntegracao procedure) {
 		try {
-
 			int cont = 0;
 			Field[] atributos = procedure.getClasse().getDeclaredFields();
 			for (int i = 0; i < atributos.length; i++) {
 				if (atributos[i].getDeclaredAnnotationsByType(SequenciaParametrosProcedure.class).length > 0) {
-//					System.out.println("atributo procedure: "+atributos[i].getName());
+					System.out.println("atributo procedure: " + atributos[i].getName());
 					cont++;
 				}
 			}
@@ -154,9 +153,11 @@ public class JdbcDao<T> {
 						throw new RuntimeException("O campo " + atributos[i].getName()
 								+ " veio nulo da Origem, não é possível realizar o processo");
 					}
-				
-					//exibe o tipo, nome do campo e valor do campo da procedure para debug em caso de problemas.
-//					System.out.println(atributos[i].getType() + " - " + atributos[i].getName() + " : "+ invokeGetBean);
+
+					// exibe o tipo, nome do campo e valor do campo da procedure
+					// para debug em caso de problemas.
+					// System.out.println(atributos[i].getType() + " - " +
+					// atributos[i].getName() + " : "+ invokeGetBean);
 
 					metodoSetStatement.setAccessible(true);
 

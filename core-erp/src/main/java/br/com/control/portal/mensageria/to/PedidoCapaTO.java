@@ -36,49 +36,11 @@ public class PedidoCapaTO implements Serializable {
 	private BigDecimal valorLiquido;
 	@SequenciaParametrosProcedure(index = 12)
 	private int dataEmissao;
-	
-	
-	
-	private int regiao;
-	private String dia;
-	private int carga;
-	private String rota;
-	private BigDecimal valorBruto;
-	private BigDecimal valorLiquidoSfa;
-	private BigDecimal valorBonificado;
-	private BigDecimal valorDesconto;
-	private BigDecimal valorVerba;
-	private BigDecimal valorFinal;
-	private String codigoMotivoNaoCompra;
-	private int horaInicialPedido;
-	private int horaFinalPedido;
-	private String statusTransmitidoWebService;
-	private String pedidoAberto;
-	private String pedidoBloqueado;
-	private int duracaoPedido;
-	private BigDecimal gpsLatitude;
-	private BigDecimal gpsLongitude;
-	private String tecnologiaUtiliz;
-	private int distanciaGPS;
-	private int qtdSatelites;
-	private String imediato;
-	private BigDecimal bonusUtilizado;
-	private BigDecimal observacao;
-	private BigDecimal valorImpostoBarreira;
-	private BigDecimal valorVerbaGeradaGL;
-	private BigDecimal valorVerbaUtilizadaGL;
-	private int pedidoTransmitido;
-	private int horaInicialPedidoTZ;
-	private int horaFinalPedidoTZ;
-	private int desbloqueioGPSERP;
-	
-	
-	
-	@SequenciaParametrosProcedure(index = 57, isRetornoProcedure = true)
+	@SequenciaParametrosProcedure(index = 13, isRetornoProcedure = true)
 	private long numeroPrePedidoGestao;
-	@SequenciaParametrosProcedure(index = 58, isRetornoProcedure = true)
+	@SequenciaParametrosProcedure(index = 14, isRetornoProcedure = true)
 	private int statusRetorno;
-	@SequenciaParametrosProcedure(index = 59, isRetornoProcedure = true)
+	@SequenciaParametrosProcedure(index = 15, isRetornoProcedure = true)
 	private String msgRetorno = "";
 
 	private List<PedidoItemTO> itens = new ArrayList<>();

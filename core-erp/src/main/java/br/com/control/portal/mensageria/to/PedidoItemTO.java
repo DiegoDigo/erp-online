@@ -52,61 +52,10 @@ public class PedidoItemTO implements Serializable {
 	@SequenciaParametrosProcedure(index = 14)
 	private String combo;
 
-	@SequenciaParametrosProcedure(index = 15)
-	private int CARGA;
-	@SequenciaParametrosProcedure(index = 16)
-	private String ACAOMERCADO;
-	@SequenciaParametrosProcedure(index = 17)
-	private String TPVENDA;
-	@SequenciaParametrosProcedure(index = 18)
-	private String TIPO_RECOLHE;
-	@SequenciaParametrosProcedure(index = 19)
-	private String MOTIVO;
-	@SequenciaParametrosProcedure(index = 20)
-	private String FLAGDEV;
-	@SequenciaParametrosProcedure(index = 21)
-	private int NUMFAT;
-	@SequenciaParametrosProcedure(index = 22)
-	private String SERIE;
-	@SequenciaParametrosProcedure(index = 23)
-	private BigDecimal VALORDESC1;
-	@SequenciaParametrosProcedure(index = 24)
-	private BigDecimal VALORVERBA1;
-	@SequenciaParametrosProcedure(index = 25)
-	private BigDecimal VALORBON1;
-	@SequenciaParametrosProcedure(index = 26)
-	private String NUM_ATV_CEV;
-	@SequenciaParametrosProcedure(index = 27)
-	private int FLAG_BANDA;
-	@SequenciaParametrosProcedure(index = 28)
-	private int FLAG_ACAOMERC;
-	@SequenciaParametrosProcedure(index = 29)
-	private String VENALTBONI;
-	@SequenciaParametrosProcedure(index = 30)
-	private int ACAO_QTD_AUTO;
-	@SequenciaParametrosProcedure(index = 31)
-	private BigDecimal BONUS_GERADO;
-	@SequenciaParametrosProcedure(index = 32)
-	private BigDecimal BONUS_UTILIZADO;
-	@SequenciaParametrosProcedure(index = 33)
-	private int FAIXA_BANDA_ORIG;
-	@SequenciaParametrosProcedure(index = 34)
-	private BigDecimal VALOR_IMPBARREIR;
-	@SequenciaParametrosProcedure(index = 35)
-	private int PERFILTAB;
-	@SequenciaParametrosProcedure(index = 36)
-	private BigDecimal VAL_VERBA_UTILIZA;
-	@SequenciaParametrosProcedure(index = 37)
-	private int COD_VERBA_GERADA;
-	@SequenciaParametrosProcedure(index = 38)
-	private String APLICOU_VERBA;
-	@SequenciaParametrosProcedure(index = 39)
-	private int HORI;
-
-	@SequenciaParametrosProcedure(index = 40, isRetornoProcedure = true)
+	@SequenciaParametrosProcedure(index = 15, isRetornoProcedure = true)
 	private int statusRetorno;
 
-	@SequenciaParametrosProcedure(index = 41, isRetornoProcedure = true)
+	@SequenciaParametrosProcedure(index = 16, isRetornoProcedure = true)
 	private String msgRetorno;
 
 	public long getRecId() {
