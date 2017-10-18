@@ -22,12 +22,10 @@ public class Comodato implements Serializable {
 	private String patrimonioDois;
 	private String codigoProdutoERP;
 	private Integer quantidade;
-	private Long tabelaPrecoRecId;
 	private String tecnologiaUtilizada;
 	private String tipoStatus;
 	private float valorItem;
 
-	
 	public String getCodigoModelo() {
 		return codigoModelo;
 	}
@@ -132,8 +130,6 @@ public class Comodato implements Serializable {
 		this.patrimonioDois = patrimonioDois;
 	}
 
-	
-
 	public String getCodigoProdutoERP() {
 		return codigoProdutoERP;
 	}
@@ -148,14 +144,6 @@ public class Comodato implements Serializable {
 
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
-	}
-
-	public Long getTabelaPrecoRecId() {
-		return tabelaPrecoRecId;
-	}
-
-	public void setTabelaPrecoRecId(Long tabelaPrecoRecId) {
-		this.tabelaPrecoRecId = tabelaPrecoRecId;
 	}
 
 	public String getTecnologiaUtilizada() {
@@ -189,7 +177,5 @@ public class Comodato implements Serializable {
 	public void setCodigoClienteERP(String codigoClienteERP) {
 		this.codigoClienteERP = codigoClienteERP;
 	}
-	
-	
 
 }

@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 import br.com.control.vendas.cadastro.modelo.Comodato;
 
 public class ComodatoTO implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	private String codigoClienteERP;
@@ -25,15 +25,14 @@ public class ComodatoTO implements Serializable {
 	private String patrimonioDois;
 	private String codigoProdutoERP;
 	private Integer quantidade;
-	private Long tabelaPrecoRecId;
 	private String tecnologiaUtilizada;
 	private String tipoStatus;
 	private float valorItem;
 
-	
 	public ComodatoTO() {
-		
+
 	}
+
 	public ComodatoTO(Comodato comodatoBase) {
 		super();
 		this.codigoClienteERP = comodatoBase.getCodigoClienteERP();
@@ -52,13 +51,10 @@ public class ComodatoTO implements Serializable {
 		this.patrimonioDois = comodatoBase.getPatrimonioDois();
 		this.codigoProdutoERP = comodatoBase.getCodigoProdutoERP();
 		this.quantidade = comodatoBase.getQuantidade();
-		this.tabelaPrecoRecId = comodatoBase.getTabelaPrecoRecId();
 		this.tecnologiaUtilizada = comodatoBase.getTecnologiaUtilizada();
 		this.tipoStatus = comodatoBase.getTipoStatus();
 		this.valorItem = comodatoBase.getValorItem();
 	}
-
-	
 
 	public String getCodigoModelo() {
 		return codigoModelo;
@@ -164,8 +160,6 @@ public class ComodatoTO implements Serializable {
 		this.patrimonioDois = patrimonioDois;
 	}
 
-	
-
 	public String getCodigoProdutoERP() {
 		return codigoProdutoERP;
 	}
@@ -180,14 +174,6 @@ public class ComodatoTO implements Serializable {
 
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
-	}
-
-	public Long getTabelaPrecoRecId() {
-		return tabelaPrecoRecId;
-	}
-
-	public void setTabelaPrecoRecId(Long tabelaPrecoRecId) {
-		this.tabelaPrecoRecId = tabelaPrecoRecId;
 	}
 
 	public String getTecnologiaUtilizada() {
@@ -221,7 +207,5 @@ public class ComodatoTO implements Serializable {
 	public void setCodigoClienteERP(String codigoClienteERP) {
 		this.codigoClienteERP = codigoClienteERP;
 	}
-	
-	
 
 }
