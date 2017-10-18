@@ -36,7 +36,7 @@
 		<module>mensageria-consumidor-erp</module>
 		<module>mensageria-produtor-erp</module>
 		<module>integracao-iscobol-erp</module>
-		<module>front-end</module>
+<!-- 		<module>front-end</module> -->
 	</modules>
 
 	<parent>
@@ -95,16 +95,11 @@
 			<groupId>org.springframework.security.oauth</groupId>
 			<artifactId>spring-security-oauth2</artifactId>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>postgresql</groupId> -->
-<!-- 			<artifactId>postgresql</artifactId> -->
-<!-- 			<version>9.1-901-1.jdbc4</version> -->
-<!-- 		</dependency> -->
 		<dependency>
 	    	<groupId>org.postgresql</groupId>
 	    	<artifactId>postgresql</artifactId>
 	    	<version>9.4.1211</version>
-	  	</dependency>
+	    </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
@@ -152,7 +147,7 @@
 			<id>LOCAL</id>
 			<properties>
 				<packaging.type>war</packaging.type>
-				<artefato.nome>api-servicos-erp</artefato.nome>
+				<artefato.nome>erp-online</artefato.nome>
 			</properties>
 			<activation>
 				<activeByDefault>true</activeByDefault>
@@ -163,7 +158,7 @@
 			<properties>
 				<packaging.type>war</packaging.type>
 				<server.url>C:\PortalIntegracao\tomcat\webapps</server.url>
-				<artefato.nome>api-servicos-erp-dev</artefato.nome>
+				<artefato.nome>erp-online-dev</artefato.nome>
 			</properties>
 		</profile>
 		<profile>
@@ -171,7 +166,7 @@
 			<properties>
 				<packaging.type>war</packaging.type>
 				<server.url>C:\PortalIntegracao\tomcat\webapps</server.url>
-				<artefato.nome>api-servicos-erp-homolog</artefato.nome>
+				<artefato.nome>erp-online-homolog</artefato.nome>
 			</properties>
 		</profile>
 
@@ -180,23 +175,31 @@
 			<properties>
 				<packaging.type>war</packaging.type>
 				<server.url>C:\PortalIntegracao\tomcat\webapps</server.url>
-				<artefato.nome>api-servicos-erp-prd</artefato.nome>
+				<artefato.nome>erp-online-prd</artefato.nome>
 			</properties>
 		</profile>
 		<profile>
-			<id>APRESENTACAO</id>
+			<id>2966</id>
 			<properties>
 				<packaging.type>war</packaging.type>
-				<server.url>C:\PortalIntegracao\tomcat\webapps</server.url>
-				<artefato.nome>api-servicos-erp-apresentacao</artefato.nome>
+				<server.url>C:\PortalVendasWeb\ambientes\apresentacao\2966\</server.url>
+				<artefato.nome>erp-online-2966</artefato.nome>
 			</properties>
 		</profile>
 		<profile>
 			<id>6410</id>
 			<properties>
 				<packaging.type>war</packaging.type>
-				<server.url>C:\PortalIntegracao\tomcat\webapps</server.url>
-				<artefato.nome>api-servicos-erp-6410</artefato.nome>
+				<server.url>C:\PortalVendasWeb\ambientes\apresentacao\6410\</server.url>
+				<artefato.nome>erp-online-6410</artefato.nome>
+			</properties>
+		</profile>
+		<profile>
+			<id>6461</id>
+			<properties>
+				<packaging.type>war</packaging.type>
+				<server.url>C:\PortalVendasWeb\ambientes\piloto\6461\</server.url>
+				<artefato.nome>erp-online-6461</artefato.nome>
 			</properties>
 		</profile>
 	</profiles>
