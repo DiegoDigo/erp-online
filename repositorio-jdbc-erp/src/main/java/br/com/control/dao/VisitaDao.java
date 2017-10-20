@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import br.com.control.portal.integracao.ProcedureIntegracao;
@@ -20,9 +18,15 @@ import br.com.control.vendas.cadastro.modelo.cliente.Visita;
 @Transactional
 public class VisitaDao extends JdbcDao<Visita> {
 
-	private static final Logger logger = LoggerFactory.getLogger(VisitaDao.class);
-
 	public List<Visita> listaTodas() {
+		String declare = "DECLARE set int @pasta = 9999;";
+		getJdbcTemplate().update(declare);
+		return selectViewSemWhere(TabelasIntegracao.VISITAS, new VisitaRowMapper());
+	}
+
+	public List<Visita> recuperaPorPasta(Integer numeroPasta) {
+		String declare = "DECLARE set int @pasta = " + numeroPasta + ";";
+		getJdbcTemplate().update(declare);
 		return selectViewSemWhere(TabelasIntegracao.VISITAS, new VisitaRowMapper());
 	}
 
