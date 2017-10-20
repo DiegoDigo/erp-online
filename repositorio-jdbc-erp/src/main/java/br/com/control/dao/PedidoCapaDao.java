@@ -36,7 +36,7 @@ public class PedidoCapaDao extends JdbcDao<PedidoCapaTO> {
 		try {
 			AcompanhamentoPedidoTO pedidoTO = new AcompanhamentoPedidoTO();
 			pedidoTO.setRecId(pedido.getRecId());
-			pedidoTO.setNumeroPedidoGestao(String.valueOf(stmt.getLong(13)));
+			pedidoTO.setNumeroPedidoGestao(String.valueOf(stmt.getLong(42)));
 			
 			//FIXME: rever o valor do status de acompanhamento de pedido. Está 1 fake abaixo
 			pedidoTO.setStatusAcompanhamentoPedido(1L);

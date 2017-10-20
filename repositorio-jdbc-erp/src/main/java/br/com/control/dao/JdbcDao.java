@@ -24,7 +24,6 @@ import org.springframework.stereotype.Repository;
 import br.com.control.annotation.SequenciaParametrosProcedure;
 import br.com.control.portal.integracao.ProcedureIntegracao;
 import br.com.control.portal.integracao.TabelasIntegracao;
-import br.com.control.repositorio.ConnectionFactoryDBMaker;
 
 @Repository
 public class JdbcDao<T> {
@@ -87,16 +86,16 @@ public class JdbcDao<T> {
 		return dataSource;
 	}
 
-	@Autowired
-	private ConnectionFactoryDBMaker connectionFactory;
+//	@Autowired
+//	private ConnectionFactoryDBMaker connectionFactory;
+//
+//	public ConnectionFactoryDBMaker getConnectionFactory() {
+//		return connectionFactory;
+//	}
 
-	public ConnectionFactoryDBMaker getConnectionFactory() {
-		return connectionFactory;
-	}
-
-	public void setConnectionFactory(ConnectionFactoryDBMaker connectionFactory) {
-		this.connectionFactory = connectionFactory;
-	}
+//	public void setConnectionFactory(ConnectionFactoryDBMaker connectionFactory) {
+//		this.connectionFactory = connectionFactory;
+//	}
 
 	public CallableStatement preparaChamadaProcedure(ProcedureIntegracao procedure) {
 		try {
@@ -104,7 +103,7 @@ public class JdbcDao<T> {
 			Field[] atributos = procedure.getClasse().getDeclaredFields();
 			for (int i = 0; i < atributos.length; i++) {
 				if (atributos[i].getDeclaredAnnotationsByType(SequenciaParametrosProcedure.class).length > 0) {
-					System.out.println("atributo procedure: " + atributos[i].getName());
+//					System.out.println("atributo procedure: " + atributos[i].getName());
 					cont++;
 				}
 			}
@@ -116,7 +115,7 @@ public class JdbcDao<T> {
 			call = call.substring(0, call.length() - 1);
 			call += ")}";
 
-			this.connection = connectionFactory.getConnection();
+			this.connection = getDataSource().getConnection();
 
 			return connection.prepareCall(call);
 		} catch (SQLException e) {
@@ -156,8 +155,8 @@ public class JdbcDao<T> {
 
 					// exibe o tipo, nome do campo e valor do campo da procedure
 					// para debug em caso de problemas.
-					// System.out.println(atributos[i].getType() + " - " +
-					// atributos[i].getName() + " : "+ invokeGetBean);
+//					 System.out.println(atributos[i].getType() + " - " +
+//					 atributos[i].getName() + " : "+ invokeGetBean);
 
 					metodoSetStatement.setAccessible(true);
 

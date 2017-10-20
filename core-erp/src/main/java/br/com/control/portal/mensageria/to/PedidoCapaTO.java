@@ -15,45 +15,341 @@ public class PedidoCapaTO implements Serializable {
 	@SequenciaParametrosProcedure(index = 1)
 	private int codigoEmpresa;
 	@SequenciaParametrosProcedure(index = 2)
-	private int codigoTabelaPreco;
-	@SequenciaParametrosProcedure(index = 3)
 	private int codigoClienteErp;
-	@SequenciaParametrosProcedure(index = 4)
+	@SequenciaParametrosProcedure(index = 3)
 	private String cpfCnpj;
-	@SequenciaParametrosProcedure(index = 5)
+	@SequenciaParametrosProcedure(index = 4)
 	private String origem;
-	@SequenciaParametrosProcedure(index = 6)
+	@SequenciaParametrosProcedure(index = 5)
 	private String codigoVendedor;
-	@SequenciaParametrosProcedure(index = 7)
+	@SequenciaParametrosProcedure(index = 6)
 	private int tipoCobranca;
-	@SequenciaParametrosProcedure(index = 8)
+	@SequenciaParametrosProcedure(index = 7)
 	private int condicaoPagamento;
-	@SequenciaParametrosProcedure(index = 9)
+	@SequenciaParametrosProcedure(index = 8)
 	private float desconto;
-	@SequenciaParametrosProcedure(index = 10)
+	@SequenciaParametrosProcedure(index = 9)
 	private float percTaxaFinanc;
-	@SequenciaParametrosProcedure(index = 11)
+	@SequenciaParametrosProcedure(index = 10)
 	private BigDecimal valorLiquido;
-	@SequenciaParametrosProcedure(index = 12)
+	@SequenciaParametrosProcedure(index = 11)
 	private int dataEmissao;
-	@SequenciaParametrosProcedure(index = 13, isRetornoProcedure = true)
+
+	@SequenciaParametrosProcedure(index = 12)
+	private int regiao;
+	@SequenciaParametrosProcedure(index = 13)
+	private int dia;
+	@SequenciaParametrosProcedure(index = 14)
+	private int carga;
+	@SequenciaParametrosProcedure(index = 15)
+	private String rota;
+	@SequenciaParametrosProcedure(index = 16)
+	private BigDecimal valorBruto;
+	@SequenciaParametrosProcedure(index = 17)
+	private BigDecimal valorLiquidoSFA;
+	@SequenciaParametrosProcedure(index = 18)
+	private BigDecimal valorBonificado;
+	@SequenciaParametrosProcedure(index = 19)
+	private BigDecimal valorDesconto;
+	@SequenciaParametrosProcedure(index = 20)
+	private BigDecimal valorVerba;
+	@SequenciaParametrosProcedure(index = 21)
+	private BigDecimal valorFinal;
+	@SequenciaParametrosProcedure(index = 22)
+	private String codigoMotivoNaoCompra;
+	@SequenciaParametrosProcedure(index = 23)
+	private int horaInicialPedido;
+	@SequenciaParametrosProcedure(index = 24)
+	private int horaFinalPedido;
+	@SequenciaParametrosProcedure(index = 25)
+	private String statusTransmitidoWebService;
+	@SequenciaParametrosProcedure(index = 26)
+	private String pedidoAberto;
+	@SequenciaParametrosProcedure(index = 27)
+	private String pedidoBloqueado;
+	@SequenciaParametrosProcedure(index = 28)
+	private int duracaoPedido;
+	@SequenciaParametrosProcedure(index = 29)
+	private BigDecimal gpsLatitude;
+	@SequenciaParametrosProcedure(index = 30)
+	private BigDecimal gpsLongitude;
+	@SequenciaParametrosProcedure(index = 31)
+	private String tecnologiaUtiliz;
+	@SequenciaParametrosProcedure(index = 32)
+	private int distanciaGPS;
+	@SequenciaParametrosProcedure(index = 33)
+	private int qtdSatelites;
+	@SequenciaParametrosProcedure(index = 34)
+	private String imediato;
+	@SequenciaParametrosProcedure(index = 35)
+	private BigDecimal bonusUtilizado;
+	@SequenciaParametrosProcedure(index = 36)
+	private String observacao;
+	@SequenciaParametrosProcedure(index = 37)
+	private BigDecimal valorImpostoBarreira;
+	@SequenciaParametrosProcedure(index = 38)
+	private BigDecimal valorVerbaGeradaGL;
+	@SequenciaParametrosProcedure(index = 39)
+	private BigDecimal valorVerbaUtilizadaGL;
+	@SequenciaParametrosProcedure(index = 40)
+	private int pedidoTransmitido;
+	@SequenciaParametrosProcedure(index = 41)
+	private int desbloqueioGPSERP;
+
+	@SequenciaParametrosProcedure(index = 42, isRetornoProcedure = true)
 	private long numeroPrePedidoGestao;
-	@SequenciaParametrosProcedure(index = 14, isRetornoProcedure = true)
+	@SequenciaParametrosProcedure(index = 43, isRetornoProcedure = true)
 	private int statusRetorno;
-	@SequenciaParametrosProcedure(index = 15, isRetornoProcedure = true)
+	@SequenciaParametrosProcedure(index = 44, isRetornoProcedure = true)
 	private String msgRetorno = "";
 
 	private List<PedidoItemTO> itens = new ArrayList<>();
 
 	@Override
 	public String toString() {
-		return "PedidoCapaTO [recId=" + recId + ", codigoEmpresa=" + codigoEmpresa + ", codigoTabelaPreco="
-				+ codigoTabelaPreco + ", codigoClienteErp=" + codigoClienteErp + ", cpfCnpj=" + cpfCnpj + ", origem="
-				+ origem + ", codigoVendedor=" + codigoVendedor + ", tipoCobranca=" + tipoCobranca
-				+ ", condicaoPagamento=" + condicaoPagamento + ", desconto=" + desconto + ", percTaxaFinanc="
-				+ percTaxaFinanc + ", valorLiquido=" + valorLiquido + ", dataEmissao=" + dataEmissao
-				+ ", numeroPrePedidoGestao=" + numeroPrePedidoGestao + ", statusRetorno=" + statusRetorno
-				+ ", msgRetorno=" + msgRetorno + ", itens=" + itens + "]";
+		return "PedidoCapaTO [recId=" + recId + ", codigoEmpresa=" + codigoEmpresa + ", codigoClienteErp="
+				+ codigoClienteErp + ", cpfCnpj=" + cpfCnpj + ", origem=" + origem + ", codigoVendedor="
+				+ codigoVendedor + ", tipoCobranca=" + tipoCobranca + ", condicaoPagamento=" + condicaoPagamento
+				+ ", desconto=" + desconto + ", percTaxaFinanc=" + percTaxaFinanc + ", valorLiquido=" + valorLiquido
+				+ ", dataEmissao=" + dataEmissao + ", regiao=" + regiao + ", dia=" + dia + ", carga=" + carga
+				+ ", rota=" + rota + ", valorBruto=" + valorBruto + ", valorLiquidoSFA=" + valorLiquidoSFA
+				+ ", valorBonificado=" + valorBonificado + ", valorDesconto=" + valorDesconto + ", valorVerba="
+				+ valorVerba + ", valorFinal=" + valorFinal + ", codigoMotivoNaoCompra=" + codigoMotivoNaoCompra
+				+ ", horaInicialPedido=" + horaInicialPedido + ", horaFinalPedido=" + horaFinalPedido
+				+ ", statusTransmitidoWebService=" + statusTransmitidoWebService + ", pedidoAberto=" + pedidoAberto
+				+ ", pedidoBloqueado=" + pedidoBloqueado + ", duracaoPedido=" + duracaoPedido + ", gpsLatitude="
+				+ gpsLatitude + ", gpsLongitude=" + gpsLongitude + ", tecnologiaUtiliz=" + tecnologiaUtiliz
+				+ ", distanciaGPS=" + distanciaGPS + ", qtdSatelites=" + qtdSatelites + ", imediato=" + imediato
+				+ ", bonusUtilizado=" + bonusUtilizado + ", observacao=" + observacao + ", valorImpostoBarreira="
+				+ valorImpostoBarreira + ", valorVerbaGeradaGL=" + valorVerbaGeradaGL + ", valorVerbaUtilizadaGL="
+				+ valorVerbaUtilizadaGL + ", pedidoTransmitido=" + pedidoTransmitido +  ", desbloqueioGPSERP="
+				+ desbloqueioGPSERP + ", numeroPrePedidoGestao=" + numeroPrePedidoGestao + ", statusRetorno="
+				+ statusRetorno + ", msgRetorno=" + msgRetorno + ", itens=" + itens + "]";
+	}
+
+	public int getRegiao() {
+		return regiao;
+	}
+
+	public void setRegiao(int regiao) {
+		this.regiao = regiao;
+	}
+
+	public int getDia() {
+		return dia;
+	}
+
+	public void setDia(int dia) {
+		this.dia = dia;
+	}
+
+	public int getCarga() {
+		return carga;
+	}
+
+	public void setCarga(int carga) {
+		this.carga = carga;
+	}
+
+	public String getRota() {
+		return rota;
+	}
+
+	public void setRota(String rota) {
+		this.rota = rota;
+	}
+
+	public BigDecimal getValorBruto() {
+		return valorBruto;
+	}
+
+	public void setValorBruto(BigDecimal valorBruto) {
+		this.valorBruto = valorBruto;
+	}
+
+	public BigDecimal getValorLiquidoSFA() {
+		return valorLiquidoSFA;
+	}
+
+	public void setValorLiquidoSFA(BigDecimal valorLiquidoSFA) {
+		this.valorLiquidoSFA = valorLiquidoSFA;
+	}
+
+	public BigDecimal getValorBonificado() {
+		return valorBonificado;
+	}
+
+	public void setValorBonificado(BigDecimal valorBonificado) {
+		this.valorBonificado = valorBonificado;
+	}
+
+	public BigDecimal getValorDesconto() {
+		return valorDesconto;
+	}
+
+	public void setValorDesconto(BigDecimal valorDesconto) {
+		this.valorDesconto = valorDesconto;
+	}
+
+	public BigDecimal getValorVerba() {
+		return valorVerba;
+	}
+
+	public void setValorVerba(BigDecimal valorVerba) {
+		this.valorVerba = valorVerba;
+	}
+
+	public BigDecimal getValorFinal() {
+		return valorFinal;
+	}
+
+	public void setValorFinal(BigDecimal valorFinal) {
+		this.valorFinal = valorFinal;
+	}
+
+	public String getCodigoMotivoNaoCompra() {
+		return codigoMotivoNaoCompra;
+	}
+
+	public void setCodigoMotivoNaoCompra(String codigoMotivoNaoCompra) {
+		this.codigoMotivoNaoCompra = codigoMotivoNaoCompra;
+	}
+
+	public String getStatusTransmitidoWebService() {
+		return statusTransmitidoWebService;
+	}
+
+	public void setStatusTransmitidoWebService(String statusTransmitidoWebService) {
+		this.statusTransmitidoWebService = statusTransmitidoWebService;
+	}
+
+	public String getPedidoAberto() {
+		return pedidoAberto;
+	}
+
+	public void setPedidoAberto(String pedidoAberto) {
+		this.pedidoAberto = pedidoAberto;
+	}
+
+	public String getPedidoBloqueado() {
+		return pedidoBloqueado;
+	}
+
+	public void setPedidoBloqueado(String pedidoBloqueado) {
+		this.pedidoBloqueado = pedidoBloqueado;
+	}
+
+	public int getDuracaoPedido() {
+		return duracaoPedido;
+	}
+
+	public void setDuracaoPedido(int duracaoPedido) {
+		this.duracaoPedido = duracaoPedido;
+	}
+
+	public BigDecimal getGpsLatitude() {
+		return gpsLatitude;
+	}
+
+	public void setGpsLatitude(BigDecimal gpsLatitude) {
+		this.gpsLatitude = gpsLatitude;
+	}
+
+	public BigDecimal getGpsLongitude() {
+		return gpsLongitude;
+	}
+
+	public void setGpsLongitude(BigDecimal gpsLongitude) {
+		this.gpsLongitude = gpsLongitude;
+	}
+
+	public String getTecnologiaUtiliz() {
+		return tecnologiaUtiliz;
+	}
+
+	public void setTecnologiaUtiliz(String tecnologiaUtiliz) {
+		this.tecnologiaUtiliz = tecnologiaUtiliz;
+	}
+
+	public int getDistanciaGPS() {
+		return distanciaGPS;
+	}
+
+	public void setDistanciaGPS(int distanciaGPS) {
+		this.distanciaGPS = distanciaGPS;
+	}
+
+	public int getQtdSatelites() {
+		return qtdSatelites;
+	}
+
+	public void setQtdSatelites(int qtdSatelites) {
+		this.qtdSatelites = qtdSatelites;
+	}
+
+	public String getImediato() {
+		return imediato;
+	}
+
+	public void setImediato(String imediato) {
+		this.imediato = imediato;
+	}
+
+	public BigDecimal getBonusUtilizado() {
+		return bonusUtilizado;
+	}
+
+	public void setBonusUtilizado(BigDecimal bonusUtilizado) {
+		this.bonusUtilizado = bonusUtilizado;
+	}
+
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
+
+	public BigDecimal getValorImpostoBarreira() {
+		return valorImpostoBarreira;
+	}
+
+	public void setValorImpostoBarreira(BigDecimal valorImpostoBarreira) {
+		this.valorImpostoBarreira = valorImpostoBarreira;
+	}
+
+	public BigDecimal getValorVerbaGeradaGL() {
+		return valorVerbaGeradaGL;
+	}
+
+	public void setValorVerbaGeradaGL(BigDecimal valorVerbaGeradaGL) {
+		this.valorVerbaGeradaGL = valorVerbaGeradaGL;
+	}
+
+	public BigDecimal getValorVerbaUtilizadaGL() {
+		return valorVerbaUtilizadaGL;
+	}
+
+	public void setValorVerbaUtilizadaGL(BigDecimal valorVerbaUtilizadaGL) {
+		this.valorVerbaUtilizadaGL = valorVerbaUtilizadaGL;
+	}
+
+	public int getPedidoTransmitido() {
+		return pedidoTransmitido;
+	}
+
+	public void setPedidoTransmitido(int pedidoTransmitido) {
+		this.pedidoTransmitido = pedidoTransmitido;
+	}
+
+
+	public int getDesbloqueioGPSERP() {
+		return desbloqueioGPSERP;
+	}
+
+	public void setDesbloqueioGPSERP(int desbloqueioGPSERP) {
+		this.desbloqueioGPSERP = desbloqueioGPSERP;
 	}
 
 	public List<PedidoItemTO> getItens() {
@@ -78,14 +374,6 @@ public class PedidoCapaTO implements Serializable {
 
 	public void setCodigoEmpresa(int codigoEmpresa) {
 		this.codigoEmpresa = codigoEmpresa;
-	}
-
-	public int getCodigoTabelaPreco() {
-		return codigoTabelaPreco;
-	}
-
-	public void setCodigoTabelaPreco(int codigoTabelaPreco) {
-		this.codigoTabelaPreco = codigoTabelaPreco;
 	}
 
 	public int getCodigoClienteErp() {
@@ -190,6 +478,22 @@ public class PedidoCapaTO implements Serializable {
 
 	public void setMsgRetorno(String msgRetorno) {
 		this.msgRetorno = msgRetorno;
+	}
+
+	public int getHoraInicialPedido() {
+		return horaInicialPedido;
+	}
+
+	public void setHoraInicialPedido(int horaInicialPedido) {
+		this.horaInicialPedido = horaInicialPedido;
+	}
+
+	public int getHoraFinalPedido() {
+		return horaFinalPedido;
+	}
+
+	public void setHoraFinalPedido(int horaFinalPedido) {
+		this.horaFinalPedido = horaFinalPedido;
 	}
 
 }

@@ -49,13 +49,62 @@ public class PedidoItemTO implements Serializable {
 	@SequenciaParametrosProcedure(index = 13)
 	private BigDecimal precoUnitarioAvulso;
 
-	@SequenciaParametrosProcedure(index = 14)
-	private String combo;
+//	@SequenciaParametrosProcedure(index = 14)
+//	private String combo;
 
-	@SequenciaParametrosProcedure(index = 15, isRetornoProcedure = true)
+	
+	@SequenciaParametrosProcedure(index = 14)
+	private int carga;
+	@SequenciaParametrosProcedure(index = 15)
+	private BigDecimal valorBonificado;
+	@SequenciaParametrosProcedure(index = 16)
+	private BigDecimal valorDesconto;
+	@SequenciaParametrosProcedure(index = 17)
+	private BigDecimal valorVerba;
+	@SequenciaParametrosProcedure(index = 18)
+	private String numAtivoCev;
+	@SequenciaParametrosProcedure(index = 19)
+	private String codigoMotivoOcorrencia;
+	@SequenciaParametrosProcedure(index = 20)
+    private String flagDev;
+	@SequenciaParametrosProcedure(index = 21)
+    private String codigoBandaPreco;
+	@SequenciaParametrosProcedure(index = 22)
+    private String codigoAcaoSolavanco;
+	@SequenciaParametrosProcedure(index = 23)
+    private int itemAlteradoBandaPreco;
+	@SequenciaParametrosProcedure(index = 24)
+    private int itemOrigemAcaoSolavanco;
+	@SequenciaParametrosProcedure(index = 25)
+    private String tipoRecolhimento;
+	@SequenciaParametrosProcedure(index = 26)
+    private String permiteAlterarQtdBonificada;
+	@SequenciaParametrosProcedure(index = 27)
+    private int acaoQtdAutorizada;
+	@SequenciaParametrosProcedure(index = 28)
+    private BigDecimal bonusGerado;
+	@SequenciaParametrosProcedure(index = 29)
+    private BigDecimal valorImpostoBarreira;
+	@SequenciaParametrosProcedure(index = 30)
+    private BigDecimal bonusUtilizado;
+	@SequenciaParametrosProcedure(index = 31)
+    private int faixaBandaOrigem;
+	@SequenciaParametrosProcedure(index = 32)
+    private int perfilTabela;
+	@SequenciaParametrosProcedure(index = 33)
+    private BigDecimal valorVerbaUtilizadaGL;
+	@SequenciaParametrosProcedure(index = 34)
+    private int codigoVerbaGeradaGL;
+	@SequenciaParametrosProcedure(index = 35)
+    private String itemValidadoBonificaoAutomatica;
+	@SequenciaParametrosProcedure(index = 36)
+    private int horaInicialPedido;
+
+
+	@SequenciaParametrosProcedure(index = 37, isRetornoProcedure = true)
 	private int statusRetorno;
 
-	@SequenciaParametrosProcedure(index = 16, isRetornoProcedure = true)
+	@SequenciaParametrosProcedure(index = 38, isRetornoProcedure = true)
 	private String msgRetorno;
 
 	public long getRecId() {
@@ -170,13 +219,6 @@ public class PedidoItemTO implements Serializable {
 		this.precoUnitarioAvulso = precoUnitarioAvulso;
 	}
 
-	public String getCombo() {
-		return combo;
-	}
-
-	public void setCombo(String combo) {
-		this.combo = combo;
-	}
 
 	public int getStatusRetorno() {
 		return statusRetorno;
@@ -192,6 +234,190 @@ public class PedidoItemTO implements Serializable {
 
 	public void setMsgRetorno(String msgRetorno) {
 		this.msgRetorno = msgRetorno;
+	}
+
+	public int getCarga() {
+		return carga;
+	}
+
+	public void setCarga(int carga) {
+		this.carga = carga;
+	}
+
+	public BigDecimal getValorBonificado() {
+		return valorBonificado;
+	}
+
+	public void setValorBonificado(BigDecimal valorBonificado) {
+		this.valorBonificado = valorBonificado;
+	}
+
+	public BigDecimal getValorDesconto() {
+		return valorDesconto;
+	}
+
+	public void setValorDesconto(BigDecimal valorDesconto) {
+		this.valorDesconto = valorDesconto;
+	}
+
+	public BigDecimal getValorVerba() {
+		return valorVerba;
+	}
+
+	public void setValorVerba(BigDecimal valorVerba) {
+		this.valorVerba = valorVerba;
+	}
+
+	public String getNumAtivoCev() {
+		return numAtivoCev;
+	}
+
+	public void setNumAtivoCev(String numAtivoCev) {
+		this.numAtivoCev = numAtivoCev;
+	}
+
+	public String getCodigoMotivoOcorrencia() {
+		return codigoMotivoOcorrencia;
+	}
+
+	public void setCodigoMotivoOcorrencia(String codigoMotivoOcorrencia) {
+		this.codigoMotivoOcorrencia = codigoMotivoOcorrencia;
+	}
+
+	public String getFlagDev() {
+		return flagDev;
+	}
+
+	public void setFlagDev(String flagDev) {
+		this.flagDev = flagDev;
+	}
+
+	public String getCodigoBandaPreco() {
+		return codigoBandaPreco;
+	}
+
+	public void setCodigoBandaPreco(String codigoBandaPreco) {
+		this.codigoBandaPreco = codigoBandaPreco;
+	}
+
+	public String getCodigoAcaoSolavanco() {
+		return codigoAcaoSolavanco;
+	}
+
+	public void setCodigoAcaoSolavanco(String codigoAcaoSolavanco) {
+		this.codigoAcaoSolavanco = codigoAcaoSolavanco;
+	}
+
+	public int getItemAlteradoBandaPreco() {
+		return itemAlteradoBandaPreco;
+	}
+
+	public void setItemAlteradoBandaPreco(int itemAlteradoBandaPreco) {
+		this.itemAlteradoBandaPreco = itemAlteradoBandaPreco;
+	}
+
+	public int getItemOrigemAcaoSolavanco() {
+		return itemOrigemAcaoSolavanco;
+	}
+
+	public void setItemOrigemAcaoSolavanco(int itemOrigemAcaoSolavanco) {
+		this.itemOrigemAcaoSolavanco = itemOrigemAcaoSolavanco;
+	}
+
+	public String getTipoRecolhimento() {
+		return tipoRecolhimento;
+	}
+
+	public void setTipoRecolhimento(String tipoRecolhimento) {
+		this.tipoRecolhimento = tipoRecolhimento;
+	}
+
+	public String getPermiteAlterarQtdBonificada() {
+		return permiteAlterarQtdBonificada;
+	}
+
+	public void setPermiteAlterarQtdBonificada(String permiteAlterarQtdBonificada) {
+		this.permiteAlterarQtdBonificada = permiteAlterarQtdBonificada;
+	}
+
+	public int getAcaoQtdAutorizada() {
+		return acaoQtdAutorizada;
+	}
+
+	public void setAcaoQtdAutorizada(int acaoQtdAutorizada) {
+		this.acaoQtdAutorizada = acaoQtdAutorizada;
+	}
+
+	public BigDecimal getBonusGerado() {
+		return bonusGerado;
+	}
+
+	public void setBonusGerado(BigDecimal bonusGerado) {
+		this.bonusGerado = bonusGerado;
+	}
+
+	public BigDecimal getValorImpostoBarreira() {
+		return valorImpostoBarreira;
+	}
+
+	public void setValorImpostoBarreira(BigDecimal valorImpostoBarreira) {
+		this.valorImpostoBarreira = valorImpostoBarreira;
+	}
+
+	public BigDecimal getBonusUtilizado() {
+		return bonusUtilizado;
+	}
+
+	public void setBonusUtilizado(BigDecimal bonusUtilizado) {
+		this.bonusUtilizado = bonusUtilizado;
+	}
+
+	public int getFaixaBandaOrigem() {
+		return faixaBandaOrigem;
+	}
+
+	public void setFaixaBandaOrigem(int faixaBandaOrigem) {
+		this.faixaBandaOrigem = faixaBandaOrigem;
+	}
+
+	public int getPerfilTabela() {
+		return perfilTabela;
+	}
+
+	public void setPerfilTabela(int perfilTabela) {
+		this.perfilTabela = perfilTabela;
+	}
+
+	public BigDecimal getValorVerbaUtilizadaGL() {
+		return valorVerbaUtilizadaGL;
+	}
+
+	public void setValorVerbaUtilizadaGL(BigDecimal valorVerbaUtilizadaGL) {
+		this.valorVerbaUtilizadaGL = valorVerbaUtilizadaGL;
+	}
+
+	public int getCodigoVerbaGeradaGL() {
+		return codigoVerbaGeradaGL;
+	}
+
+	public void setCodigoVerbaGeradaGL(int codigoVerbaGeradaGL) {
+		this.codigoVerbaGeradaGL = codigoVerbaGeradaGL;
+	}
+
+	public String getItemValidadoBonificaoAutomatica() {
+		return itemValidadoBonificaoAutomatica;
+	}
+
+	public void setItemValidadoBonificaoAutomatica(String itemValidadoBonificaoAutomatica) {
+		this.itemValidadoBonificaoAutomatica = itemValidadoBonificaoAutomatica;
+	}
+
+	public int getHoraInicialPedido() {
+		return horaInicialPedido;
+	}
+
+	public void setHoraInicialPedido(int horaInicialPedido) {
+		this.horaInicialPedido = horaInicialPedido;
 	}
 
 }
