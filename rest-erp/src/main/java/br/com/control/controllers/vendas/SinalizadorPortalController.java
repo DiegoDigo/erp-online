@@ -38,6 +38,7 @@ import br.com.control.cadastro.TipoCobrancaClienteService;
 import br.com.control.cadastro.TipoEnderecoService;
 import br.com.control.cadastro.VendedorClienteService;
 import br.com.control.cadastro.VendedorService;
+import br.com.control.cadastro.VisitaService;
 import br.com.control.cadastro.sincronismo.SincronismoAcompanhamentoPedidoService;
 import br.com.control.cadastro.sincronismo.SincronismoCadastroService;
 import br.com.control.cadastro.tipoCobranca.TipoCobrancaService;
@@ -70,6 +71,7 @@ import br.com.control.portal.mensageria.to.TipoCobrancaTO;
 import br.com.control.portal.mensageria.to.TipoEnderecoTO;
 import br.com.control.portal.mensageria.to.VendedorClienteTO;
 import br.com.control.portal.mensageria.to.VendedorTO;
+import br.com.control.portal.mensageria.to.VisitaTO;
 import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.Comodato;
 import br.com.control.vendas.cadastro.modelo.MovimentoFinanceiro;
@@ -78,6 +80,7 @@ import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
 import br.com.control.vendas.cadastro.modelo.cliente.ClienteEndereco;
 import br.com.control.vendas.cadastro.modelo.cliente.TipoCobrancaCliente;
 import br.com.control.vendas.cadastro.modelo.cliente.TipoEndereco;
+import br.com.control.vendas.cadastro.modelo.cliente.Visita;
 import br.com.control.vendas.cadastro.modelo.condicaoPagamento.CondicaoPagamento;
 import br.com.control.vendas.cadastro.modelo.ocorrencia.Ocorrencia;
 import br.com.control.vendas.cadastro.modelo.pedido.HistoricoPedidoCapa;
@@ -194,6 +197,9 @@ public class SinalizadorPortalController extends AbstractController {
 
 	@Autowired
 	private PrecoService precoService;
+
+	@Autowired
+	private VisitaService visitaService;
 
 	@RequestMapping(value = RotasRest.RAIZ_ACOMPANHAMENTO, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortal(@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
@@ -848,12 +854,38 @@ public class SinalizadorPortalController extends AbstractController {
 			return null;
 		}
 
-		// ParocoTO parocoTo = new ParocoTO(itensCortados);
-
 		MensagemRetorno enviaParaOPortal = sincronismoCadastoService.enviaParaOPortal(mensagem, itensCortados,
 				"Itens Cortados");
 
 		return enviaParaOPortal;
+	}
+
+	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
+			+ RotasRest.RAIZ_VISITAS, method = RequestMethod.POST, headers = "Accept=application/json")
+	public MensagemRetorno sinalizaPortalSincronismoCadastroVisitas(
+			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+
+		logger.info("### SINALIZADOR -> VISITAS ###");
+
+		String numeroPasta = sinalizadorPortalService.retornaCodigoERP(mensagem);
+
+		logger.info("--> número pasta erp: " + numeroPasta);
+		logger.info("------------------------------------------------------");
+		List<Visita> diasVisitas = visitaService.recuperaPorPasta(Integer.parseInt(numeroPasta));
+
+		if (diasVisitas.isEmpty()) {
+			String msg = "Não forma encontrados dias de visita para a pasta com codigo: " + numeroPasta
+					+ " no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+		List<VisitaTO> visitas = new ArrayList<>();
+		for (Visita visita : diasVisitas) {
+			VisitaTO visitaTO = new VisitaTO(visita);
+			visitas.add(visitaTO);
+		}
+
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, visitas, "Tipo de Cobrança Cliente");
 	}
 
 	// @RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_BANDA +

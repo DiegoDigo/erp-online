@@ -86,16 +86,17 @@ public class JdbcDao<T> {
 		return dataSource;
 	}
 
-//	@Autowired
-//	private ConnectionFactoryDBMaker connectionFactory;
-//
-//	public ConnectionFactoryDBMaker getConnectionFactory() {
-//		return connectionFactory;
-//	}
+	// @Autowired
+	// private ConnectionFactoryDBMaker connectionFactory;
+	//
+	// public ConnectionFactoryDBMaker getConnectionFactory() {
+	// return connectionFactory;
+	// }
 
-//	public void setConnectionFactory(ConnectionFactoryDBMaker connectionFactory) {
-//		this.connectionFactory = connectionFactory;
-//	}
+	// public void setConnectionFactory(ConnectionFactoryDBMaker
+	// connectionFactory) {
+	// this.connectionFactory = connectionFactory;
+	// }
 
 	public CallableStatement preparaChamadaProcedure(ProcedureIntegracao procedure) {
 		try {
@@ -103,7 +104,7 @@ public class JdbcDao<T> {
 			Field[] atributos = procedure.getClasse().getDeclaredFields();
 			for (int i = 0; i < atributos.length; i++) {
 				if (atributos[i].getDeclaredAnnotationsByType(SequenciaParametrosProcedure.class).length > 0) {
-//					System.out.println("atributo procedure: " + atributos[i].getName());
+					System.out.println("atributo procedure: " + atributos[i].getName());
 					cont++;
 				}
 			}
@@ -155,8 +156,8 @@ public class JdbcDao<T> {
 
 					// exibe o tipo, nome do campo e valor do campo da procedure
 					// para debug em caso de problemas.
-//					 System.out.println(atributos[i].getType() + " - " +
-//					 atributos[i].getName() + " : "+ invokeGetBean);
+					// System.out.println(atributos[i].getType() + " - " +
+					// atributos[i].getName() + " : "+ invokeGetBean);
 
 					metodoSetStatement.setAccessible(true);
 

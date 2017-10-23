@@ -3,6 +3,7 @@ package br.com.control.portal.mensageria.to;
 import java.io.Serializable;
 
 import br.com.control.annotation.SequenciaParametrosProcedure;
+import br.com.control.vendas.cadastro.modelo.cliente.Visita;
 
 public class VisitaTO implements Serializable {
 
@@ -19,4 +20,30 @@ public class VisitaTO implements Serializable {
 		this.numeroDias = numeroDias;
 	}
 
+	private Integer numeroPasta;
+	private String diasVisita;
+
+	public Integer getNumeroPasta() {
+		return numeroPasta;
+	}
+
+	public void setNumeroPasta(Integer numeroPasta) {
+		this.numeroPasta = numeroPasta;
+	}
+
+	public String getDiasVisita() {
+		return diasVisita;
+	}
+
+	public void setDiasVisita(String diasVisita) {
+		this.diasVisita = diasVisita;
+	}
+
+	public VisitaTO() {
+	}
+
+	public VisitaTO(Visita visita) {
+		this.setDiasVisita(visita.getDiaVisita());
+		this.setNumeroPasta(visita.getNumeroPasta());
+	}
 }
