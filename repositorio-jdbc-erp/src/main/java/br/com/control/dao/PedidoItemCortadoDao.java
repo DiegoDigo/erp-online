@@ -18,7 +18,7 @@ public class PedidoItemCortadoDao extends JdbcDao<PedidoItemCortado> {
 	}
 
 	public List<PedidoItemCortado> recuperarItensCortados(String numeroPrePedido) {
-		String declare = "DECLARE set bigint @COD_PRE_PEDIDO =  + numeroPrePedido + ;";
+		String declare = "DECLARE set bigint @COD_PRE_PEDIDO = "  + numeroPrePedido + ";";
 		getJdbcTemplate().update(declare);
 		return selectViewSemWhere(TabelasIntegracao.PEDIDO_ITEM_CORTADO, new PedidoItemCortadoRowMapper());
 	}

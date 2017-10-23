@@ -833,14 +833,14 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoPedidoItemCortado(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		logger.info("### SINALIZADOR -> CADASTRO PAROCO ###");
+		logger.info("### SINALIZADOR -> ITENS CORTADOS ###");
 
 		String numeroPrepedido = sinalizadorPortalService.retornaCodigoERP(mensagem);
 
 		logger.info("--> Pré-Pedido: " + numeroPrepedido);
 		logger.info("------------------------------------------------------");
 
-		List<PedidoItemCortado> itensCortados = pedidoItemCortadoService.listar();
+		List<PedidoItemCortado> itensCortados = pedidoItemCortadoService.recuperarItensCordados(numeroPrepedido);
 
 		if (itensCortados == null) {
 			String msg = "Paroco com codigo: " + numeroPrepedido + " nao encontrado no DBMaker!";

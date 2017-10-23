@@ -67,8 +67,7 @@ public class SINALIZADOR implements IscobolCall {
 				if (CadastrosEnum.GRUPO_PRODUTO == cadastro) {
 					SincronismoCadastroGrupoProduto rest = new SincronismoCadastroGrupoProduto();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.GRUPO_PRODUTO);
-				}
-				if (CadastrosEnum.TABELA_PRECO == cadastro) {
+				}else if (CadastrosEnum.TABELA_PRECO == cadastro) {
 					SincronismoCadastroTabelaPreco rest = new SincronismoCadastroTabelaPreco();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.TABELA_PRECO);
 				} else if (CadastrosEnum.FAMILIA_PRODUTO == cadastro) {
