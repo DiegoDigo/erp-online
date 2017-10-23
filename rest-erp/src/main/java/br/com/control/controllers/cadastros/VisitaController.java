@@ -18,7 +18,7 @@ import br.com.control.vendas.cadastro.modelo.cliente.Visita;
 import br.com.control.vendas.cadastro.modelo.vendedor.Vendedor;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_VISITA)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_VISITAS)
 public class VisitaController extends AbstractController {
 
 	@Autowired
@@ -29,6 +29,5 @@ public class VisitaController extends AbstractController {
 		List<Visita> visitas = visitaService.listarTodos();
 		return new MensagemRetorno(HttpStatus.OK, "Dias de visita listados com sucesso !", visitas,
 				mensagem.getIdentificacao());
-
 	}
 }

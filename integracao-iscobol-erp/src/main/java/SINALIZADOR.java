@@ -29,13 +29,13 @@ import br.com.control.rest.client.SincronismoPedidoItemCortado;
 import br.com.control.rest.client.SincronismoPedidoSugestao;
 import br.com.control.rest.client.SincronismoTipoCobrancaCliente;
 import br.com.control.rest.client.SincronismoTipoEndereco;
+import br.com.control.rest.client.SincronismoVisitas;
 
 public class SINALIZADOR implements IscobolCall {
 
 	// public static void main(String[] args) {
 	// SINALIZADOR sinalizador = new SINALIZADOR();
-	// String[] param = { "CADASTRO|" + CadastrosEnum.CORTE_ITEM_PREPEDIDO +
-	// "|10|" };
+	// String[] param = { "CADASTRO|" + CadastrosEnum.VISITAS + "|1|" };
 	// sinalizador.call(param);
 	// }
 
@@ -145,6 +145,9 @@ public class SINALIZADOR implements IscobolCall {
 				} else if (CadastrosEnum.CORTE_ITEM_PREPEDIDO == cadastro) {
 					SincronismoPedidoItemCortado rest = new SincronismoPedidoItemCortado();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.CORTE_ITEM_PREPEDIDO);
+				} else if (CadastrosEnum.VISITAS == cadastro) {
+					SincronismoVisitas rest = new SincronismoVisitas();
+					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.VISITAS);
 				}
 			}
 

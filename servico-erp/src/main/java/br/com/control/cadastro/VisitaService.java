@@ -20,6 +20,11 @@ public class VisitaService {
 		return visitaDao.listaTodas();
 	}
 
+	public List<Visita> recuperaPorPasta(Integer numeroPasta) {
+		this.processarVisitas(90);
+		return visitaDao.recuperaPorPasta(numeroPasta);
+	}
+
 	public void processarVisitas(int numeroDias) {
 		VisitaTO visita = new VisitaTO();
 		visita.setNumeroDias(numeroDias);
