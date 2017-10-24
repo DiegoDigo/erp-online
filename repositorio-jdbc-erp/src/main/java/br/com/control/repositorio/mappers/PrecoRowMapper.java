@@ -2,8 +2,6 @@ package br.com.control.repositorio.mappers;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import org.springframework.jdbc.core.RowMapper;
 
@@ -37,7 +35,7 @@ public class PrecoRowMapper implements RowMapper<Preco> {
 		preco.setValIpi(rs.getFloat("val_ipi"));
 		preco.setValor(rs.getBigDecimal("valor"));
 		preco.setCodigoErpProduto(String.valueOf(rs.getLong("codigo_produto_erp")));
-		System.out.println(rowNum +" - "+ new SimpleDateFormat("dd/MM/yyyy - HH:mm:SS").format(Calendar.getInstance().getTime()));
+//		System.out.println(rowNum +" - "+ new SimpleDateFormat("dd/MM/yyyy - HH:mm:SS").format(Calendar.getInstance().getTime()));
 		return preco;
 	}
 }

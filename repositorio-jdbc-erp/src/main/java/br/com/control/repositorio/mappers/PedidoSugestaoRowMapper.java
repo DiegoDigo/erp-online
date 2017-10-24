@@ -17,7 +17,7 @@ public class PedidoSugestaoRowMapper implements RowMapper<PedidoSugestao> {
 		sugestao.setCodigoProdutoErp(rs.getString("cod_produto_reduzido"));
 		sugestao.setQuantidadeCaixa(rs.getInt("qtd_cx"));
 		sugestao.setQuantidadeAvusla(rs.getInt("qtd_av"));
-		System.out.println("Sugestao RowMapper: " + rowNum);
+//		System.out.println("Sugestao RowMapper: " + rowNum);
 
 		// System.out.println(" ---- > Pedido Sugestão");
 		// System.out.println("Produto:" + sugestao.getCodigoProdutoErp());
