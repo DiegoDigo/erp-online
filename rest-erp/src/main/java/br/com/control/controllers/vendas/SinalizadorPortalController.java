@@ -62,6 +62,7 @@ import br.com.control.portal.mensageria.to.MarcaTO;
 import br.com.control.portal.mensageria.to.MovimentoFinanceiroTO;
 import br.com.control.portal.mensageria.to.OcorrenciaTO;
 import br.com.control.portal.mensageria.to.ParocoTO;
+import br.com.control.portal.mensageria.to.PedidoItemCortadoTO;
 import br.com.control.portal.mensageria.to.PedidoPendenteLiberacaoTO;
 import br.com.control.portal.mensageria.to.PedidoSugestaoTO;
 import br.com.control.portal.mensageria.to.PrecoTO;
@@ -854,7 +855,13 @@ public class SinalizadorPortalController extends AbstractController {
 			return null;
 		}
 
-		MensagemRetorno enviaParaOPortal = sincronismoCadastoService.enviaParaOPortal(mensagem, itensCortados,
+		List<PedidoItemCortadoTO> itensCortadosTO = new ArrayList<>();
+		for (PedidoItemCortado pedidoItemCortado : itensCortados) {
+			PedidoItemCortadoTO itemCortadoTO = new PedidoItemCortadoTO(pedidoItemCortado);
+			itensCortadosTO.add(itemCortadoTO);
+		}
+
+		MensagemRetorno enviaParaOPortal = sincronismoCadastoService.enviaParaOPortal(mensagem, itensCortadosTO,
 				"Itens Cortados");
 
 		return enviaParaOPortal;
