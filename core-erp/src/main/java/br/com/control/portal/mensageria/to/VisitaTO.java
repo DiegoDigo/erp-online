@@ -1,6 +1,7 @@
 package br.com.control.portal.mensageria.to;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import br.com.control.annotation.SequenciaParametrosProcedure;
 import br.com.control.vendas.cadastro.modelo.cliente.Visita;
@@ -21,7 +22,7 @@ public class VisitaTO implements Serializable {
 	}
 
 	private Integer numeroPasta;
-	private String diasVisita;
+	private Timestamp diasVisita;
 
 	public Integer getNumeroPasta() {
 		return numeroPasta;
@@ -31,11 +32,11 @@ public class VisitaTO implements Serializable {
 		this.numeroPasta = numeroPasta;
 	}
 
-	public String getDiasVisita() {
+	public Timestamp getDiasVisita() {
 		return diasVisita;
 	}
 
-	public void setDiasVisita(String diasVisita) {
+	public void setDiasVisita(Timestamp diasVisita) {
 		this.diasVisita = diasVisita;
 	}
 

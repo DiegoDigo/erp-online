@@ -19,7 +19,7 @@ import br.com.control.vendas.cadastro.modelo.cliente.Visita;
 public class VisitaDao extends JdbcDao<Visita> {
 
 	public List<Visita> listaTodas() {
-		String declare = "DECLARE set int @pasta = 9999;";
+		String declare = "DECLARE set int @pasta = 0;";
 		getJdbcTemplate().update(declare);
 		return selectViewSemWhere(TabelasIntegracao.VISITAS, new VisitaRowMapper());
 	}
