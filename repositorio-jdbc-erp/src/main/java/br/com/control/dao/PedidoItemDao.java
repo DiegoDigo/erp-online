@@ -14,12 +14,12 @@ import br.com.control.vendas.cadastro.modelo.pedido.PedidoItem;
 public class PedidoItemDao extends JdbcDao<PedidoItem> {
 
 	public AcompanhamentoPedidoTO salvarItemPedido(PedidoItemTO pedidoItem) {
-		CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERT_ITEM_PRE_PEDIDO);
-		preparaExecucaoProcedure(pedidoItem, stmt);
 
 		try {
+			CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERT_ITEM_PRE_PEDIDO);
+			preparaExecucaoProcedure(pedidoItem, stmt);
 			stmt.close();
-		} catch (SQLException e) {
+		} catch (SQLException | RuntimeException e) {
 			e.printStackTrace();
 		} finally {
 			closeConnection();

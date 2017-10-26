@@ -30,10 +30,10 @@ public class PedidoCapaDao extends JdbcDao<PedidoCapaTO> {
 	
 	@Transactional
 	public AcompanhamentoPedidoTO salvarCapaPedido(PedidoCapaTO pedido) {
-		CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERT_CAPA_PRE_PEDIDO);
-		preparaExecucaoProcedure(pedido, stmt);
 
 		try {
+			CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERT_CAPA_PRE_PEDIDO);
+			preparaExecucaoProcedure(pedido, stmt);
 			AcompanhamentoPedidoTO pedidoTO = new AcompanhamentoPedidoTO();
 			pedidoTO.setRecId(pedido.getRecId());
 			pedidoTO.setNumeroPedidoGestao(String.valueOf(stmt.getLong(42)));
@@ -42,7 +42,7 @@ public class PedidoCapaDao extends JdbcDao<PedidoCapaTO> {
 			pedidoTO.setStatusAcompanhamentoPedido(1L);
 			stmt.close();
 			return pedidoTO;
-		} catch (SQLException e) {
+		} catch (SQLException | RuntimeException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		} finally{
