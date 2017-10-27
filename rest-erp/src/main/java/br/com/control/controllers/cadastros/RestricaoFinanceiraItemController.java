@@ -15,7 +15,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.RestricaoFinanceiraItem;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_RESTRICAO + RotasRest.RAIZ_FINANCEIRO + RotasRest.RAIZ_ITEM)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_RESTRICAO + RotasRest.RAIZ_FINANCEIRA + RotasRest.RAIZ_ITEM)
 public class RestricaoFinanceiraItemController extends AbstractController {
 
 	@Autowired
@@ -23,7 +23,8 @@ public class RestricaoFinanceiraItemController extends AbstractController {
 
 	@RequestMapping(value = RotasRest.LISTAR, method = RequestMethod.GET, headers = "Accept=application/json")
 	public MensagemRetorno listar(@RequestParam("mensagem") MensagemRecebida<RestricaoFinanceiraItem> mensagem) {
-		return new MensagemRetorno(HttpStatus.OK, "Restricao financeira item listado com sucesso !", restricaoFinanceiraItemService.listar(), mensagem.getIdentificacao());
+		return new MensagemRetorno(HttpStatus.OK, "Restricao financeira item listado com sucesso !",
+				restricaoFinanceiraItemService.listar(), mensagem.getIdentificacao());
 	}
 
 }

@@ -33,6 +33,7 @@ public class RotasRest {
 	public static final String RAIZ_FINANCEIRO = "/financeiro";
 	public static final String RAIZ_COMODATO = "/comodato";
 	public static final String RAIZ_RESTRICAO = "/restricao";
+	public static final String RAIZ_FINANCEIRA = "/financeira";
 	public static final String RAIZ_COMERCIAL = "/comercial";
 	public static final String RAIZ_LIBERADO = "/liberado";
 	public static final String RAIZ_RECUSADO = "/recusado";

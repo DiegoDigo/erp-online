@@ -27,6 +27,7 @@ import br.com.control.rest.client.SincronismoParoco;
 import br.com.control.rest.client.SincronismoPedidoBloqueado;
 import br.com.control.rest.client.SincronismoPedidoItemCortado;
 import br.com.control.rest.client.SincronismoPedidoSugestao;
+import br.com.control.rest.client.SincronismoRestricaoFinanceira;
 import br.com.control.rest.client.SincronismoTipoCobrancaCliente;
 import br.com.control.rest.client.SincronismoTipoEndereco;
 import br.com.control.rest.client.SincronismoVisitas;
@@ -124,15 +125,16 @@ public class SINALIZADOR implements IscobolCall {
 				} else if (CadastrosEnum.MOVIMENTO_FINANCEIRO == cadastro) {
 					SincronismoMovimentoFinanceiro rest = new SincronismoMovimentoFinanceiro();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.MOVIMENTO_FINANCEIRO);
+				} else if (CadastrosEnum.RESTRICAO_FINANCEIRA == cadastro) {
+					SincronismoRestricaoFinanceira rest = new SincronismoRestricaoFinanceira();
+					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.RESTRICAO_FINANCEIRA);
 				} else if (CadastrosEnum.COMODATO == cadastro) {
 					SincronismoComodato rest = new SincronismoComodato();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.COMODATO);
 				} else if (CadastrosEnum.HISTORICO_PEDIDO_CAPA == cadastro) {
-					System.out.println("Vai processar o sincronismo de Historico Pedido Capa");
 					SincronismoHistoricoPedidoCapa rest = new SincronismoHistoricoPedidoCapa();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.HISTORICO_PEDIDO_CAPA);
 				} else if (CadastrosEnum.BANDA_PRECO == cadastro) {
-					System.out.println("Vai processar o sincronismo de Banda Preco");
 					SincronismoBandaPrecoCapa rest = new SincronismoBandaPrecoCapa();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.BANDA_PRECO);
 				} else if (CadastrosEnum.STATUS_PEDIDO == cadastro) {
