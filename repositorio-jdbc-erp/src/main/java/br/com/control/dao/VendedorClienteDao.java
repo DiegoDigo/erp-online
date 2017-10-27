@@ -12,13 +12,13 @@ import br.com.control.vendas.cadastro.modelo.vendedor.VendedorCliente;
 public class VendedorClienteDao extends JdbcDao<VendedorCliente> {
 
 	public List<VendedorCliente> listar() {
-		String declare = "DECLARE set char(3) @CODIGO_VENDEDOR= '';";
+		String declare = "DECLARE set char(20) @CODIGO_CLIENTE = '';";
 		getJdbcTemplate().update(declare);
 		return selectViewSemWhere(TabelasIntegracao.CADASTRO_VENDEDOR_CLIENTE, new VendedorClienteRowMapper());
 	}
 
 	public List<VendedorCliente> recuperarClientesVendedor(String codigoErp) {
-		String declare = String.format("DECLARE set char(3) @CODIGO_VENDEDOR= '%s';", codigoErp);
+		String declare = String.format("DECLARE set char(20) @CODIGO_CLIENTE= '%s';", codigoErp);
 		getJdbcTemplate().update(declare);
 		return selectViewSemWhere(TabelasIntegracao.CADASTRO_VENDEDOR_CLIENTE, new VendedorClienteRowMapper());
 	}
