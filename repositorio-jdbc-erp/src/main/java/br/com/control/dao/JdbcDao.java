@@ -104,7 +104,7 @@ public class JdbcDao<T> {
 			Field[] atributos = procedure.getClasse().getDeclaredFields();
 			for (int i = 0; i < atributos.length; i++) {
 				if (atributos[i].getDeclaredAnnotationsByType(SequenciaParametrosProcedure.class).length > 0) {
-					System.out.println("atributo procedure: " + atributos[i].getName());
+//					System.out.println("atributo procedure: " + atributos[i].getName());
 					cont++;
 				}
 			}
