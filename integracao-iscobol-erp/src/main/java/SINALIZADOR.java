@@ -35,7 +35,10 @@ public class SINALIZADOR implements IscobolCall {
 
 	// public static void main(String[] args) {
 	// SINALIZADOR sinalizador = new SINALIZADOR();
-	// String[] param = { "CADASTRO|" + CadastrosEnum.VISITAS + "|1|" };
+	// // String[] param = { "CADASTRO|" + CadastrosEnum.CORTE_ITEM_PREPEDIDO +
+	// // "|201710240006|" };
+	// String[] param = { "CADASTRO|" + CadastrosEnum.VENDEDOR_CLIENTE +
+	// "|00010084|" };
 	// sinalizador.call(param);
 	// }
 
@@ -67,7 +70,7 @@ public class SINALIZADOR implements IscobolCall {
 				if (CadastrosEnum.GRUPO_PRODUTO == cadastro) {
 					SincronismoCadastroGrupoProduto rest = new SincronismoCadastroGrupoProduto();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.GRUPO_PRODUTO);
-				}else if (CadastrosEnum.TABELA_PRECO == cadastro) {
+				} else if (CadastrosEnum.TABELA_PRECO == cadastro) {
 					SincronismoCadastroTabelaPreco rest = new SincronismoCadastroTabelaPreco();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.TABELA_PRECO);
 				} else if (CadastrosEnum.FAMILIA_PRODUTO == cadastro) {
