@@ -11,14 +11,14 @@ import br.com.control.repositorio.mappers.RestricaoFinanceiraRowMapper;
 import br.com.control.vendas.cadastro.modelo.RestricaoFinanceira;
 
 @Service
-public class RestricaoFinanceiroService {
+public class RestricaoFinanceiraService {
 
 	@Autowired
 	private RestricaoFinanceiraDao restricaoFinanceiraDao;
 
 	public List<RestricaoFinanceira> listar() {
-		return restricaoFinanceiraDao.selectViewSemWhere(TabelasIntegracao.CADASTRO_RESTRICAO_FINANCEIRA, new RestricaoFinanceiraRowMapper());
-
+		return restricaoFinanceiraDao.selectViewSemWhere(TabelasIntegracao.CADASTRO_RESTRICAO_FINANCEIRA,
+				new RestricaoFinanceiraRowMapper());
 	}
 
 }

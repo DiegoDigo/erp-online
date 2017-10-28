@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.control.cadastro.RestricaoFinanceiroService;
+import br.com.control.cadastro.RestricaoFinanceiraService;
 import br.com.control.controllers.AbstractController;
 import br.com.control.portal.integracao.MensagemRecebida;
 import br.com.control.portal.integracao.MensagemRetorno;
@@ -19,7 +19,7 @@ import br.com.control.vendas.cadastro.modelo.RestricaoFinanceira;
 public class RestricaoFinanceiraController extends AbstractController {
 
 	@Autowired
-	private RestricaoFinanceiroService restricaoFinanceiroService;
+	private RestricaoFinanceiraService restricaoFinanceiroService;
 
 	@RequestMapping(value = RotasRest.LISTAR, method = RequestMethod.GET, headers = "Accept=application/json")
 	public MensagemRetorno listar(@RequestParam("mensagem") MensagemRecebida<RestricaoFinanceira> mensagem) {
