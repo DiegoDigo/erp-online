@@ -7,7 +7,7 @@ public class RestricaoFinanceiraItem implements Serializable {
 
 	private Long recId;
 	private String codigoTabelaPreco;
-	private Long restricaoFinanceira;
+	private String restricaoFinanceira;
 
 	public Long getRecId() {
 		return recId;
@@ -25,11 +25,11 @@ public class RestricaoFinanceiraItem implements Serializable {
 		this.codigoTabelaPreco = codigoTabelaPreco;
 	}
 
-	public Long getRestricaoFinanceira() {
+	public String getRestricaoFinanceira() {
 		return restricaoFinanceira;
 	}
 
-	public void setRestricaoFinanceira(Long restricaoFinanceira) {
+	public void setRestricaoFinanceira(String restricaoFinanceira) {
 		this.restricaoFinanceira = restricaoFinanceira;
 	}
 

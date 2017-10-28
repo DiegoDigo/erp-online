@@ -12,8 +12,8 @@ public class RestricaoFinanceiraItemRowMapper implements RowMapper<RestricaoFina
 	@Override
 	public RestricaoFinanceiraItem mapRow(ResultSet rs, int rowNum) throws SQLException {
 		RestricaoFinanceiraItem item = new RestricaoFinanceiraItem();
-		item.setCodigoTabelaPreco(rs.getString("codigo_tabela_preco"));
-		item.setRestricaoFinanceira(rs.getLong("codigo_retricao_financeira"));
+		item.setCodigoTabelaPreco(rs.getString("codigo_tabela_preco").trim());
+		item.setRestricaoFinanceira(rs.getString("codigo_restricao_financeira").trim());
 		return item;
 	}
 
