@@ -33,6 +33,8 @@ import br.com.control.cadastro.PedidoPendenteLiberacaoService;
 import br.com.control.cadastro.PedidoSugestaoService;
 import br.com.control.cadastro.PrecoService;
 import br.com.control.cadastro.ProdutoService;
+import br.com.control.cadastro.RestricaoFinanceiraItemService;
+import br.com.control.cadastro.RestricaoFinanceiraService;
 import br.com.control.cadastro.SinalizadorPortalService;
 import br.com.control.cadastro.TipoCobrancaClienteService;
 import br.com.control.cadastro.TipoEnderecoService;
@@ -67,6 +69,8 @@ import br.com.control.portal.mensageria.to.PedidoPendenteLiberacaoTO;
 import br.com.control.portal.mensageria.to.PedidoSugestaoTO;
 import br.com.control.portal.mensageria.to.PrecoTO;
 import br.com.control.portal.mensageria.to.ProdutoTO;
+import br.com.control.portal.mensageria.to.RestricaoFinanceiraItemTO;
+import br.com.control.portal.mensageria.to.RestricaoFinanceiraTO;
 import br.com.control.portal.mensageria.to.TipoCobrancaClienteTO;
 import br.com.control.portal.mensageria.to.TipoCobrancaTO;
 import br.com.control.portal.mensageria.to.TipoEnderecoTO;
@@ -76,6 +80,8 @@ import br.com.control.portal.mensageria.to.VisitaTO;
 import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.Comodato;
 import br.com.control.vendas.cadastro.modelo.MovimentoFinanceiro;
+import br.com.control.vendas.cadastro.modelo.RestricaoFinanceira;
+import br.com.control.vendas.cadastro.modelo.RestricaoFinanceiraItem;
 import br.com.control.vendas.cadastro.modelo.canal.Canal;
 import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
 import br.com.control.vendas.cadastro.modelo.cliente.ClienteEndereco;
@@ -201,6 +207,12 @@ public class SinalizadorPortalController extends AbstractController {
 
 	@Autowired
 	private VisitaService visitaService;
+
+	@Autowired
+	private RestricaoFinanceiraService restricaoFinanceiraService;
+
+	@Autowired
+	private RestricaoFinanceiraItemService restricaoFinanceiraItemService;
 
 	@RequestMapping(value = RotasRest.RAIZ_ACOMPANHAMENTO, method = RequestMethod.POST, headers = "Accept=application/json")
 	public MensagemRetorno sinalizaPortal(@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
@@ -895,36 +907,54 @@ public class SinalizadorPortalController extends AbstractController {
 		return sincronismoCadastoService.enviaParaOPortal(mensagem, visitas, "Tipo de Cobrança Cliente");
 	}
 
-	// @RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_BANDA +
-	// RotasRest.RAIZ_PRECO
-	// + RotasRest.RAIZ_ITEM, method = RequestMethod.POST, headers =
-	// "Accept=application/json")
-	// public MensagemRetorno sinalizaPortalSincronismoBandaPrecoItem(
-	// @RequestParam("mensagem") MensagemRecebida<String> mensagem) {
-	//
-	// logger.info("### SINALIZADOR -> BANDA PRECO ITEM ###");
-	//
-	// List<BandaPrecoItemTO> bandaPrecoItensTO = new ArrayList<>();
-	// String codigoBandaPrecoItem =
-	// sinalizadorPortalService.retornaCodigoERP(mensagem);
-	// logger.info("--> codigo erp: " + codigoBandaPrecoItem);
-	// logger.info("------------------------------------------------------");
-	// List<BandaPrecoItem> bandaPrecoItens = bandaPrecoItemService
-	// .buscaBandaPrecoItem(Integer.parseInt(codigoBandaPrecoItem));
-	//
-	// if (codigoBandaPrecoItem == null || codigoBandaPrecoItem.isEmpty()) {
-	// String msg = "Banda Preco Item com codigo: " + codigoBandaPrecoItem + "
-	// nao encontrado no DBMaker!";
-	// logger.warn(msg);
-	// return null;
-	// }
-	//
-	// for (BandaPrecoItem bandaPrecoItem : bandaPrecoItens) {
-	// BandaPrecoItemTO bandaPrecoItemTO = new BandaPrecoItemTO(bandaPrecoItem);
-	// bandaPrecoItensTO.add(bandaPrecoItemTO);
-	// }
-	// return sincronismoCadastoService.enviaParaOPortal(mensagem,
-	// bandaPrecoItensTO, "Banda Preço Item");
-	// }
+	@RequestMapping(value = RotasRest.RAIZ_CADASTRO + RotasRest.RAIZ_RESTRICAO
+			+ RotasRest.RAIZ_FINANCEIRA, method = RequestMethod.POST, headers = "Accept=application/json")
+	public MensagemRetorno sinalizaPortalSincronismoRestricaoFinanceira(
+			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+
+		List<RestricaoFinanceiraItemTO> restricaoFinanceiraItensTO = new ArrayList<>();
+
+		logger.info("### SINALIZADOR -> RESTRICAO FINANCEIRA ###");
+
+		String codigoRestricaoFinanceiraErp = sinalizadorPortalService.retornaCodigoERP(mensagem);
+
+		logger.info("--> codigo restricao erp: " + codigoRestricaoFinanceiraErp);
+		logger.info("------------------------------------------------------");
+		RestricaoFinanceira restricaoFinanceira = restricaoFinanceiraService
+				.buscarPorCodigoErp(codigoRestricaoFinanceiraErp);
+
+		if (restricaoFinanceira == null) {
+			String msg = "Restricao Financeira com codigo: " + codigoRestricaoFinanceiraErp
+					+ " nao encontrado no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
+		RestricaoFinanceiraTO restricaoFinanceiraTo = new RestricaoFinanceiraTO(restricaoFinanceira);
+
+		logger.info("--> codigo erp: " + codigoRestricaoFinanceiraErp);
+		logger.info("------------------------------------------------------");
+		List<RestricaoFinanceiraItem> restricaoFinanceiraItens = restricaoFinanceiraItemService
+				.buscarPorCodigoErp(codigoRestricaoFinanceiraErp);
+
+		if (restricaoFinanceira == null || restricaoFinanceiraItens.isEmpty()) {
+			String msg = "Não encontramos Itens de Restrição Financeira para: " + codigoRestricaoFinanceiraErp
+					+ " no DBMaker!";
+			logger.warn(msg);
+			return null;
+		}
+
+		for (RestricaoFinanceiraItem restricaoItem : restricaoFinanceiraItens) {
+			RestricaoFinanceiraItemTO restricaoFinanceiraItemTO = new RestricaoFinanceiraItemTO(restricaoItem);
+			restricaoFinanceiraItensTO.add(restricaoFinanceiraItemTO);
+		}
+
+		restricaoFinanceiraTo.setRestricaoItens(restricaoFinanceiraItensTO);
+
+		MensagemRetorno enviaParaOPortal = sincronismoCadastoService.enviaParaOPortal(mensagem, restricaoFinanceiraTo,
+				"Restricao Financeira");
+
+		return enviaParaOPortal;
+	}
 
 }
