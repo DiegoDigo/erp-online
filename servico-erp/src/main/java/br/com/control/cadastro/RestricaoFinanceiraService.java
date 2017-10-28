@@ -21,4 +21,8 @@ public class RestricaoFinanceiraService {
 				new RestricaoFinanceiraRowMapper());
 	}
 
+	public RestricaoFinanceira buscarPorCodigoErp(String codigoErp) {
+		return restricaoFinanceiraDao.buscarPorCodigoErp(codigoErp);
+	}
+
 }
