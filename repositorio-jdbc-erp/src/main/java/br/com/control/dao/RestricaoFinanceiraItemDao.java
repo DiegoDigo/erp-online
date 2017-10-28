@@ -19,7 +19,7 @@ public class RestricaoFinanceiraItemDao extends JdbcDao<RestricaoFinanceiraItem>
 	}
 
 	public List<RestricaoFinanceiraItem> buscarPorCodigoErp(String codigoRestricaoFinanceiraErp) {
-		String variavelSql = String.format("DECLARE SET varchar(255) @CODIGO_RESTRICAO = %s ",
+		String variavelSql = String.format("DECLARE SET varchar(255) @CODIGO_RESTRICAO = '%s' ",
 				codigoRestricaoFinanceiraErp);
 		getJdbcTemplate().update(variavelSql);
 		return selectViewSemWhere(TabelasIntegracao.CADASTRO_RESTRICAO_FINANCEIRA_ITEM,

@@ -18,7 +18,7 @@ public class RestricaoFinanceiraDao extends JdbcDao<RestricaoFinanceira> {
 	}
 
 	public RestricaoFinanceira buscarPorCodigoErp(String codigoErp) {
-		String variavelSql = String.format("DECLARE SET varchar(255) @CODIGO_RESTRICAO = %s ", codigoErp);
+		String variavelSql = String.format("DECLARE SET varchar(255) @CODIGO_RESTRICAO = '%s' ", codigoErp);
 		getJdbcTemplate().update(variavelSql);
 		return selectViewSingle(TabelasIntegracao.CADASTRO_RESTRICAO_FINANCEIRA, new RestricaoFinanceiraRowMapper());
 	}
