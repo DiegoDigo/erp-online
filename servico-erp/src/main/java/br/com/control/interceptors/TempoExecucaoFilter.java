@@ -68,7 +68,7 @@ public class TempoExecucaoFilter implements Filter {
 				auditoriaService.salvar(auditoria);
 				
 				
-				logger.info("### ACESSANDO SERVICO ERP ###");
+				logger.info("### ACESSANDO ERP ONLINE ###");
 				logger.info("--> servico: "+servico);
 				logger.info("--> usuario: "+auditoria.getIdentificacao().getUsuarioOrigemServico());
 				logger.info("--> sistem origem: "+auditoria.getIdentificacao().getOrigem());

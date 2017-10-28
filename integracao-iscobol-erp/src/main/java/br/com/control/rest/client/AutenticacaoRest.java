@@ -76,8 +76,8 @@ public class AutenticacaoRest {
 	public AuthTokenInfo sendTokenRequest() {
 		RestTemplate restTemplate = new RestTemplate();
 
-		System.out.println("AUTH_SERVER_URI: " + getAUTH_SERVER_URI());
-		System.out.println("QPM_PASSWORD_GRANT: " + getQPM_PASSWORD_GRANT());
+//		System.out.println("AUTH_SERVER_URI: " + getAUTH_SERVER_URI());
+//		System.out.println("QPM_PASSWORD_GRANT: " + getQPM_PASSWORD_GRANT());
 
 		AuthTokenInfo tokenInfo = null;
 		try {
@@ -93,7 +93,7 @@ public class AutenticacaoRest {
 				tokenInfo.setRefresh_token((String) map.get("refresh_token"));
 				tokenInfo.setExpires_in((int) map.get("expires_in"));
 				tokenInfo.setScope((String) map.get("scope"));
-				System.out.println(tokenInfo);
+//				System.out.println(tokenInfo);
 			} else {
 				System.out.println("Usuário não encontrado para o token----------");
 
@@ -147,21 +147,21 @@ public class AutenticacaoRest {
 
 	public String getREST_SERVICE_URI() {
 		String REST_SERVICE_URI = prop.getProperty("url_erp_online") + prop.getProperty("contexto_erp_online");
-		System.out.println("REST_SERVICE_URI: " + REST_SERVICE_URI);
+//		System.out.println("REST_SERVICE_URI: " + REST_SERVICE_URI);
 		return REST_SERVICE_URI;
 	}
 
 	public String getAUTH_SERVER_URI() {
 		String AUTH_SERVER_URI = prop.getProperty("url_erp_online") + prop.getProperty("contexto_erp_online")
 				+ "/oauth/token";
-		System.out.println("AUTH_SERVER_URI: " + AUTH_SERVER_URI);
+//		System.out.println("AUTH_SERVER_URI: " + AUTH_SERVER_URI);
 		return AUTH_SERVER_URI;
 	}
 
 	public String getQPM_PASSWORD_GRANT() {
 		String QPM_PASSWORD_GRANT = "?grant_type=password&username=" + prop.getProperty("usuario_erp_online")
 				+ "&password=" + prop.getProperty("senha_erp_online");
-		System.out.println("QPM_PASSWORD_GRANT: " + QPM_PASSWORD_GRANT);
+//		System.out.println("QPM_PASSWORD_GRANT: " + QPM_PASSWORD_GRANT);
 		return QPM_PASSWORD_GRANT;
 	}
 

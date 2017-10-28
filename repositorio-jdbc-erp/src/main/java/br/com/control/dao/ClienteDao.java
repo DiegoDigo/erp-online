@@ -36,15 +36,17 @@ public class ClienteDao extends JdbcDao<Cliente> {
 
 	@Transactional
 	public void salvarOuAlterar(ClienteTO cliente) {
-		CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERE_ALTERA_CLIENTE);
-		preparaExecucaoProcedure(cliente, stmt);
 		try {
-			logger.info("PROC INSERT/UPDATE PDV - CODIGO RETORNO: " + stmt.getInt(53));
-			logger.info("PROC INSERT/UPDATE PDV - MSG RETORNO: " + stmt.getString(54));
+			logger.info("### CHAMANDO PROCEDURE: "+ProcedureIntegracao.INSERE_ALTERA_CLIENTE.getProcedure());
+			CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERE_ALTERA_CLIENTE);
+			preparaExecucaoProcedure(cliente, stmt);
+			logger.info("--> CODIGO RETORNO PROC: "+stmt.getInt(53));
+			logger.info("--> MSG RETORNO PROC: "+stmt.getString(54));
+			logger.info("--> CLIENTE SALVO NO DBMAKER: "+cliente.getRazaoSocial());
 			stmt.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			e.getMessage();
+		} catch (SQLException | RuntimeException e) {
+			logger.error("--> ERRO AO TENTAR SALVAR O CLIENTE: "+cliente.getRazaoSocial());
+			logger.error("--> "+e.getMessage());
 		} finally{
 			closeConnection();
 		}

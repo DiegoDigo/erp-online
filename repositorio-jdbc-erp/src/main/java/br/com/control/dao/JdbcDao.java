@@ -53,7 +53,7 @@ public class JdbcDao<T> {
 	public List<T> selectViewSemWhere(TabelasIntegracao tabela, RowMapper<T> rowMapper) {
 		String sql = "select * from " + schemaDatabase + "." + tabela.getViewERP();
 		List<T> dados = getJdbcTemplate().query(sql, rowMapper);
-		logger.info("--> itens retornados: " + dados.size());
+		logger.info("--> quantidade itens retornados: " + dados.size());
 		return dados;
 	}
 
@@ -61,8 +61,10 @@ public class JdbcDao<T> {
 		String sql = "select * from " + schemaDatabase + "." + tabela.getViewERP();
 		List<T> dados = getJdbcTemplate().query(sql, rowMapper);
 		if (!dados.isEmpty()) {
+			logger.info("--> registro encontrado no DBMaker");
 			return dados.get(0);
 		}
+		logger.info("--> registro não encontrado no DBMaker");
 		return null;
 	}
 
@@ -150,6 +152,8 @@ public class JdbcDao<T> {
 					Object invokeGetBean = metodoGetBean.invoke(obj);
 
 					if (invokeGetBean == null) {
+						logger.error("O campo " + atributos[i].getName()
+								+ " veio nulo da Origem, não é possível realizar o processo");
 						throw new RuntimeException("O campo " + atributos[i].getName()
 								+ " veio nulo da Origem, não é possível realizar o processo");
 					}

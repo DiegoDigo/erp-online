@@ -47,27 +47,26 @@ public class SINALIZADOR implements IscobolCall {
 	public Object call(Object[] argv) {
 
 		try {
-			System.out.println("### ENTROU NO SINALIZADOR ###");
+			System.out.println("\n\n### ENTROU NO SINALIZADOR ###");
 
 			String parametroRecebido = argv[0].toString();
 			System.out.println("--> Parametro Recebido: " + parametroRecebido);
 
 			String[] valoresQuebrados = parametroRecebido.split("\\|");
 			String acao = valoresQuebrados[0];
-			System.out.println("--> ACAO: ATUALIZACAO DE " + acao);
+//			System.out.println("--> ACAO: ATUALIZACAO DE " + acao);
 
 			if (acao.equals("PEDIDO")) {
-				System.out.println("---> PARAMETRO RECEBIDO DO GESTÃO: " + parametroRecebido);
 				SincronismoAcompanhamentoPedido clienteREST = new SincronismoAcompanhamentoPedido();
 				clienteREST.sinalizaPortalAtualizacao(parametroRecebido, null);
 			} else if (acao.equals("CADASTRO")) {
 
 				String nomeCadastro = valoresQuebrados[1];
-				System.out.println("--> NOME CADASTRO: " + nomeCadastro);
+//				System.out.println("--> NOME CADASTRO: " + nomeCadastro);
 
 				CadastrosEnum cadastro = CadastrosEnum.recuperaCadastro(nomeCadastro);
-				System.out.println("--> CADASTRO: " + cadastro);
-
+//				System.out.println("--> CADASTRO: " + cadastro);
+				
 				if (CadastrosEnum.GRUPO_PRODUTO == cadastro) {
 					SincronismoCadastroGrupoProduto rest = new SincronismoCadastroGrupoProduto();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.GRUPO_PRODUTO);
