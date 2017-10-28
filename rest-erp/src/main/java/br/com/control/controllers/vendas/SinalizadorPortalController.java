@@ -206,7 +206,7 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortal(@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 		logger.info("### SINALIZADOR -> ACOMPANHAMENTO DE PEDIDO ###");
 		String codigoErp = sinalizadorPortalService.retornaCodigoERP(mensagem);
-		logger.info("--> codigo erp: " + codigoErp);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoErp);
 		logger.info("------------------------------------------------------");
 		acompanhamentoCapaPedidoService.enviaParaOPortal(codigoErp);
 		return null;
@@ -220,7 +220,7 @@ public class SinalizadorPortalController extends AbstractController {
 		logger.info("### SINALIZADOR -> GRUPO PRODUTO ###");
 
 		String codigoGrupo = sinalizadorPortalService.retornaCodigoERP(mensagem);
-		logger.info("--> codigo erp: " + codigoGrupo);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoGrupo);
 		logger.info("------------------------------------------------------");
 		Grupo grupo = grupoService.recuperaGrupo(codigoGrupo);
 
@@ -243,7 +243,7 @@ public class SinalizadorPortalController extends AbstractController {
 		logger.info("### SINALIZADOR -> FAMILIA PRODUTO ###");
 
 		String codigoFamilia = sinalizadorPortalService.retornaCodigoERP(mensagem);
-		logger.info("--> codigo erp: " + codigoFamilia);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoFamilia);
 		logger.info("------------------------------------------------------");
 		Familia familia = familiaService.recuperaFamilia(codigoFamilia);
 
@@ -264,7 +264,7 @@ public class SinalizadorPortalController extends AbstractController {
 
 		logger.info("### SINALIZADOR -> MARCA PRODUTO ###");
 		String codigoMarca = sinalizadorPortalService.retornaCodigoERP(mensagem);
-		logger.info("--> codigo erp: " + codigoMarca);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoMarca);
 		logger.info("------------------------------------------------------");
 
 		Marca marca = marcaService.recuperaMarca(codigoMarca);
@@ -288,7 +288,7 @@ public class SinalizadorPortalController extends AbstractController {
 		logger.info("### SINALIZADOR -> CATEGORIA PRODUTO ###");
 
 		String codigoCategoria = sinalizadorPortalService.retornaCodigoERP(mensagem);
-		logger.info("--> codigo erp: " + codigoCategoria);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoCategoria);
 		logger.info("------------------------------------------------------");
 		Categoria categoria = categoriaService.recuperaCategoria(codigoCategoria);
 
@@ -310,7 +310,7 @@ public class SinalizadorPortalController extends AbstractController {
 		logger.info("### SINALIZADOR -> CANAL ###");
 
 		String codigoCanal = sinalizadorPortalService.retornaCodigoERP(mensagem);
-		logger.info("--> codigo erp: " + codigoCanal);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoCanal);
 		logger.info("------------------------------------------------------");
 		Canal canal = canalService.recuperaCanal(codigoCanal);
 
@@ -332,7 +332,7 @@ public class SinalizadorPortalController extends AbstractController {
 		logger.info("### SINALIZADOR -> PRODUTO ###");
 
 		String codigoProduto = sinalizadorPortalService.retornaCodigoERP(mensagem);
-		logger.info("--> codigo erp: " + codigoProduto);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoProduto);
 		logger.info("------------------------------------------------------");
 
 		Produto produto = produtoService.recuperarProduto(codigoProduto);
@@ -356,7 +356,7 @@ public class SinalizadorPortalController extends AbstractController {
 
 		String codigoTipoCobranca = sinalizadorPortalService.retornaCodigoERP(mensagem);
 
-		logger.info("--> codigo erp: " + codigoTipoCobranca);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoTipoCobranca);
 		logger.info("------------------------------------------------------");
 		TipoCobranca tipoCobranca = tipoCobrancaService.recuperarTipoCobranca(codigoTipoCobranca);
 
@@ -378,7 +378,7 @@ public class SinalizadorPortalController extends AbstractController {
 		logger.info("### SINALIZADOR -> CONDICAO PAGAMENTO ###");
 
 		String codigoCondicaoPagamento = sinalizadorPortalService.retornaCodigoERP(mensagem);
-		logger.info("--> codigo erp: " + codigoCondicaoPagamento);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoCondicaoPagamento);
 		logger.info("------------------------------------------------------");
 		CondicaoPagamento condicaoPagamento = condicaoPagamentoService
 				.recuperarCondicaoPagamento(codigoCondicaoPagamento);
@@ -416,7 +416,7 @@ public class SinalizadorPortalController extends AbstractController {
 		logger.info("### SINALIZADOR -> OCORRENCIA");
 
 		String codigoOcorrencia = sinalizadorPortalService.retornaCodigoERP(mensagem);
-		logger.info("--> codigo erp: " + codigoOcorrencia);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoOcorrencia);
 		logger.info("------------------------------------------------------");
 		Ocorrencia ocorrencia = ocorrenciaService.recuperarOcorrencia(codigoOcorrencia);
 
@@ -438,7 +438,7 @@ public class SinalizadorPortalController extends AbstractController {
 		logger.info("### SINALIZADOR -> PEDIDO BLOQUEADO ###");
 
 		String codigoPedido = sinalizadorPortalService.retornaCodigoERP(mensagem);
-		logger.info("--> codigo erp: " + codigoPedido);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoPedido);
 		logger.info("------------------------------------------------------");
 		PedidoPendenteLiberacao pedidoPendenteLiberacao = pedidoPendenteLiberacaoService
 				.recuperarPedidoPendenteLiberacao(codigoPedido);
@@ -465,7 +465,7 @@ public class SinalizadorPortalController extends AbstractController {
 
 		String codigoCombo = sinalizadorPortalService.retornaCodigoERP(mensagem);
 
-		logger.info("--> codigo erp: " + codigoCombo);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoCombo);
 		List<DetalheComboProduto> comboProduto = detalheProdutoComboService.recuperarComboProduto(codigoCombo);
 		logger.info("--> combos encontrados: " + comboProduto.size());
 		logger.info("------------------------------------------------------");
@@ -494,7 +494,7 @@ public class SinalizadorPortalController extends AbstractController {
 		List<ClienteEnderecoTO> clienteEnderecoTOs = new ArrayList<>();
 
 		String codigoClienteEndereco = sinalizadorPortalService.retornaCodigoERP(mensagem);
-		logger.info("--> codigo erp: " + codigoClienteEndereco);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoClienteEndereco);
 		logger.info("------------------------------------------------------");
 		List<ClienteEndereco> clienteEnderecos = clienteEnderecoServico
 				.recuperarTipoEnderecoCodigoERP(codigoClienteEndereco);
@@ -521,7 +521,7 @@ public class SinalizadorPortalController extends AbstractController {
 		logger.info("### SINALIZADOR -> VENDEDOR");
 
 		String codigoVendedor = sinalizadorPortalService.retornaCodigoERP(mensagem);
-		logger.info("--> codigo erp: " + codigoVendedor);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoVendedor);
 		logger.info("------------------------------------------------------");
 		Vendedor vendedor = vendedorService.recuperarVendedor(codigoVendedor);
 
@@ -544,7 +544,7 @@ public class SinalizadorPortalController extends AbstractController {
 		logger.info("### SINALIZADOR -> TABELA PRECO ###");
 		String codigoTabelaPrecoProdutoErp = sinalizadorPortalService.retornaCodigoERP(mensagem);
 
-		logger.info("--> codigo erp: " + codigoTabelaPrecoProdutoErp);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoTabelaPrecoProdutoErp);
 		logger.info("------------------------------------------------------");
 		Preco preco = precoService.recuperarTabelaPreco(codigoTabelaPrecoProdutoErp);
 
@@ -568,7 +568,7 @@ public class SinalizadorPortalController extends AbstractController {
 
 		String codigoVendedorCliente = sinalizadorPortalService.retornaCodigoERP(mensagem);
 
-		logger.info("--> codigo erp: " + codigoVendedorCliente);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoVendedorCliente);
 		logger.info("------------------------------------------------------");
 		List<VendedorCliente> vendedorClientes = vendedorClienteService
 				.recuperarClientesVendedor(codigoVendedorCliente);
@@ -596,7 +596,7 @@ public class SinalizadorPortalController extends AbstractController {
 		logger.info("### SINALIZADOR -> CLIENTE ###");
 
 		String codigoCliente = sinalizadorPortalService.retornaCodigoERP(mensagem);
-		logger.info("--> codigo erp: " + codigoCliente);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoCliente);
 		logger.info("------------------------------------------------------");
 		Cliente cliente = clienteService.recuperarCliente(Integer.valueOf(codigoCliente));
 
@@ -619,7 +619,7 @@ public class SinalizadorPortalController extends AbstractController {
 
 		String codigoTipoEndereco = sinalizadorPortalService.retornaCodigoERP(mensagem);
 
-		logger.info("--> codigo erp: " + codigoTipoEndereco);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoTipoEndereco);
 		logger.info("------------------------------------------------------");
 		TipoEndereco tipoEndereco = tipoEnderecoService.recuperarTipoEndereco(codigoTipoEndereco);
 
@@ -642,7 +642,7 @@ public class SinalizadorPortalController extends AbstractController {
 
 		String codigoTipoCobrancaCliente = sinalizadorPortalService.retornaCodigoERP(mensagem);
 
-		logger.info("--> codigo erp: " + codigoTipoCobrancaCliente);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoTipoCobrancaCliente);
 		logger.info("------------------------------------------------------");
 		TipoCobrancaCliente tipoCobrancaCliente = tipoCobrancaClienteService
 				.recuperarTipoCobrancaCliente(codigoTipoCobrancaCliente);
@@ -666,7 +666,7 @@ public class SinalizadorPortalController extends AbstractController {
 		logger.info("### SINALIZADOR -> MOVIMENTO FINANCEIRO ###");
 
 		String codigoMovimentoFinanceiro = sinalizadorPortalService.retornaCodigoERP(mensagem);
-		logger.info("--> codigo erp: " + codigoMovimentoFinanceiro);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoMovimentoFinanceiro);
 		logger.info("------------------------------------------------------");
 		MovimentoFinanceiro movimentoFinanceiroBase = movimentoFinanceiroService
 				.buscarMovimentoFinanceiro(Integer.valueOf(codigoMovimentoFinanceiro));
@@ -691,7 +691,7 @@ public class SinalizadorPortalController extends AbstractController {
 
 		String codigoComodato = sinalizadorPortalService.retornaCodigoERP(mensagem);
 
-		logger.info("--> codigo erp: " + codigoComodato);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoComodato);
 		logger.info("------------------------------------------------------");
 		Comodato comodatoBase = comodatoService.listarComodato(codigoComodato);
 
@@ -714,7 +714,7 @@ public class SinalizadorPortalController extends AbstractController {
 
 		String codigoHistoricoPedidoCapa = sinalizadorPortalService.retornaCodigoERP(mensagem);
 
-		logger.info("--> codigo erp: " + codigoHistoricoPedidoCapa);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoHistoricoPedidoCapa);
 		logger.info("------------------------------------------------------");
 		HistoricoPedidoCapa historioPedidoCapa = historicoPedidoCapaService
 				.buscarHistoricoCapa(codigoHistoricoPedidoCapa);
@@ -731,7 +731,7 @@ public class SinalizadorPortalController extends AbstractController {
 		// historicoPedidoCapaTO, "Historico Pedido Capa");
 
 		String codigoHistoricoPedidoItem = sinalizadorPortalService.retornaCodigoERP(mensagem);
-		logger.info("--> codigo erp: " + codigoHistoricoPedidoItem);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoHistoricoPedidoItem);
 		logger.info("------------------------------------------------------");
 		List<HistoricoPedidoItem> historicoPedidoItens = historicoPedidoItemService
 				.buscarItemPedido(codigoHistoricoPedidoItem);
@@ -771,7 +771,7 @@ public class SinalizadorPortalController extends AbstractController {
 
 		String codigoBandaPreco = sinalizadorPortalService.retornaCodigoERP(mensagem);
 
-		logger.info("--> codigo erp: " + codigoBandaPreco);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoBandaPreco);
 		logger.info("------------------------------------------------------");
 		BandaPreco bandaPreco = bandaPrecoService.buscarBanda(codigoBandaPreco);
 
@@ -784,7 +784,7 @@ public class SinalizadorPortalController extends AbstractController {
 		BandaPrecoTO bandaPrecoTo = new BandaPrecoTO(bandaPreco);
 
 		String codigoBandaPrecoItem = sinalizadorPortalService.retornaCodigoERP(mensagem);
-		logger.info("--> codigo erp: " + codigoBandaPrecoItem);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoBandaPrecoItem);
 		logger.info("------------------------------------------------------");
 		List<BandaPrecoItem> bandaPrecoItens = bandaPrecoItemService
 				.buscaBandaPrecoItem(Integer.parseInt(codigoBandaPrecoItem));
@@ -817,7 +817,7 @@ public class SinalizadorPortalController extends AbstractController {
 
 		String codigoParocoErp = sinalizadorPortalService.retornaCodigoERP(mensagem);
 
-		logger.info("--> codigo erp: " + codigoParocoErp);
+		logger.info("--> codigo passado pelo sinalizador: " + codigoParocoErp);
 		logger.info("------------------------------------------------------");
 
 		Paroco paroco = parocoService.recuperaParoco(codigoParocoErp);

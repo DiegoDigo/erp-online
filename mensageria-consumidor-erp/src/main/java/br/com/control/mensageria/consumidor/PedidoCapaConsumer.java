@@ -42,49 +42,53 @@ public class PedidoCapaConsumer {
 	public void receiveMessage(final Message<PedidoCapaTO> message) throws JMSException {
 		PedidoCapaTO pedidoCapa = message.getPayload();
 
-		
-		log.info("### RECEBIDO O PEDIDO " + pedidoCapa.getRecId() + " DA FILA PEDIDOS ###");
-		log.info("--> capa recebida: "+pedidoCapa);
-		
+		log.info("### RECEBIDO DA FILA O PEDIDO " + pedidoCapa.getRecId() + " VINDO DO "+pedidoCapa.getOrigem()+"###");
+		log.info("--> capa recebida: " + pedidoCapa);
+
 		try {
-			
-//		preparaDatasPedido(pedidoCapa);
 
-		AcompanhamentoPedidoTO capaTO = pedidoCapaService.salvarCapa(pedidoCapa);
+			// preparaDatasPedido(pedidoCapa);
 
-		for (PedidoItemTO item : pedidoCapa.getItens()) {
-			item.setNumeroPrePedidoGestao(Long.valueOf(capaTO.getNumeroPedidoGestao()));
-			pedidoItemService.salvarItem(item);
-		}
-		
-		log.info("--> numero pre-pedido erp: " + capaTO.getNumeroPedidoGestao());
+			AcompanhamentoPedidoTO capaTO = pedidoCapaService.salvarCapa(pedidoCapa);
 
-		StatusAcompanhamentoPedidoTO status = new StatusAcompanhamentoPedidoTO();
-		status.setNumeroPrePedidoErp(capaTO.getNumeroPedidoGestao());
-		status.setRecId(capaTO.getRecId());
+			if (capaTO != null) {
+				for (PedidoItemTO item : pedidoCapa.getItens()) {
+					item.setNumeroPrePedidoGestao(Long.valueOf(capaTO.getNumeroPedidoGestao()));
+					pedidoItemService.salvarItem(item);
+				}
 
-		log.info("--> status pedido: "+status.recuperaStatus());
-		producer.sendMessage(status);
+				log.info("--> numero pre-pedido gerado no erp: " + capaTO.getNumeroPedidoGestao());
 
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
+				StatusAcompanhamentoPedidoTO status = new StatusAcompanhamentoPedidoTO();
+				status.setNumeroPrePedidoErp(capaTO.getNumeroPedidoGestao());
+				status.setRecId(capaTO.getRecId());
 
-		log.debug("### DADOS DO PEDIDO CAPA : {} ###" + mapper.writeValueAsString(pedidoCapa));
-		
+				log.info("--> status pedido: " + status.recuperaStatus());
+				producer.sendMessage(status);
+
+				ObjectMapper mapper = new ObjectMapper();
+				mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
+
+//				log.debug("### DADOS DO PEDIDO CAPA :" + mapper.writeValueAsString(pedidoCapa));
+			}
+
 		} catch (Exception e) {
 			log.error(e.getMessage());
 			log.error(e.getCause() != null ? e.getCause().toString() : "");
 			log.error(e.getStackTrace() != null ? e.getStackTrace().toString() : "");
 		}
 	}
-	
-//	private void preparaDatasPedido(PedidoCapaTO pedidoCapa) {
-//		String dataVencimento = util.formataData(pedidoCapa.getDataHoraEmissao(), "yyyyMMdd");
-//		String dataEmissao = util.formataData(pedidoCapa.getDataHoraEmissao(), "yyyyMMdd");
-//		String horaEmissao = util.formataData(pedidoCapa.getDataHoraEmissao()\, "HHmm");
-//		pedidoCapa.setDataVencimento(Integer.valueOf(dataVencimento));
-//		pedidoCapa.setDataEmissao(Integer.valueOf(dataEmissao));
-//		pedidoCapa.setHoraEmissao(Integer.valueOf(horaEmissao));
-//	}
+
+	// private void preparaDatasPedido(PedidoCapaTO pedidoCapa) {
+	// String dataVencimento = util.formataData(pedidoCapa.getDataHoraEmissao(),
+	// "yyyyMMdd");
+	// String dataEmissao = util.formataData(pedidoCapa.getDataHoraEmissao(),
+	// "yyyyMMdd");
+	// String horaEmissao = util.formataData(pedidoCapa.getDataHoraEmissao()\,
+	// "HHmm");
+	// pedidoCapa.setDataVencimento(Integer.valueOf(dataVencimento));
+	// pedidoCapa.setDataEmissao(Integer.valueOf(dataEmissao));
+	// pedidoCapa.setHoraEmissao(Integer.valueOf(horaEmissao));
+	// }
 
 }

@@ -420,4 +420,28 @@ public class PedidoItemTO implements Serializable {
 		this.horaInicialPedido = horaInicialPedido;
 	}
 
+	@Override
+	public String toString() {
+		return "PedidoItemTO [recId=" + recId + ", codigoEmpresa=" + codigoEmpresa + ", numeroPrePedidoGestao="
+				+ numeroPrePedidoGestao + ", sequenciaItem=" + sequenciaItem + ", codigoOcorrencia=" + codigoOcorrencia
+				+ ", codigoReduzidoProduto=" + codigoReduzidoProduto + ", quantidadeCaixa=" + quantidadeCaixa
+				+ ", quantidadeAvulsa=" + quantidadeAvulsa + ", codigoTabelaPreco=" + codigoTabelaPreco + ", desconto="
+				+ desconto + ", valorLiquido=" + valorLiquido + ", valorBruto=" + valorBruto + ", precoUnitarioCaixa="
+				+ precoUnitarioCaixa + ", precoUnitarioAvulso=" + precoUnitarioAvulso + ", carga=" + carga
+				+ ", valorBonificado=" + valorBonificado + ", valorDesconto=" + valorDesconto + ", valorVerba="
+				+ valorVerba + ", numAtivoCev=" + numAtivoCev + ", codigoMotivoOcorrencia=" + codigoMotivoOcorrencia
+				+ ", flagDev=" + flagDev + ", codigoBandaPreco=" + codigoBandaPreco + ", codigoAcaoSolavanco="
+				+ codigoAcaoSolavanco + ", itemAlteradoBandaPreco=" + itemAlteradoBandaPreco
+				+ ", itemOrigemAcaoSolavanco=" + itemOrigemAcaoSolavanco + ", tipoRecolhimento=" + tipoRecolhimento
+				+ ", permiteAlterarQtdBonificada=" + permiteAlterarQtdBonificada + ", acaoQtdAutorizada="
+				+ acaoQtdAutorizada + ", bonusGerado=" + bonusGerado + ", valorImpostoBarreira=" + valorImpostoBarreira
+				+ ", bonusUtilizado=" + bonusUtilizado + ", faixaBandaOrigem=" + faixaBandaOrigem + ", perfilTabela="
+				+ perfilTabela + ", valorVerbaUtilizadaGL=" + valorVerbaUtilizadaGL + ", codigoVerbaGeradaGL="
+				+ codigoVerbaGeradaGL + ", itemValidadoBonificaoAutomatica=" + itemValidadoBonificaoAutomatica
+				+ ", horaInicialPedido=" + horaInicialPedido + ", statusRetorno=" + statusRetorno + ", msgRetorno="
+				+ msgRetorno + "]";
+	}
+
+	
+	
 }
