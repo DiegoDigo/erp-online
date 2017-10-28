@@ -1,6 +1,8 @@
 package br.com.control.portal.mensageria.to;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.control.vendas.cadastro.modelo.RestricaoFinanceira;
 
@@ -18,6 +20,7 @@ public class RestricaoFinanceiraTO implements Serializable {
 	private float valorMinimoPedido;
 	private Long condicaoPagamento;
 	private Long tipoCobranca;
+	private List<RestricaoFinanceiraItemTO> restricaoItens = new ArrayList<>();
 
 	public Long getRecId() {
 		return recId;
@@ -97,6 +100,14 @@ public class RestricaoFinanceiraTO implements Serializable {
 
 	public void setTipoCobranca(Long tipoCobranca) {
 		this.tipoCobranca = tipoCobranca;
+	}
+
+	public List<RestricaoFinanceiraItemTO> getRestricaoItens() {
+		return restricaoItens;
+	}
+
+	public void setRestricaoItens(List<RestricaoFinanceiraItemTO> restricaoItens) {
+		this.restricaoItens = restricaoItens;
 	}
 
 	public RestricaoFinanceiraTO(RestricaoFinanceira restricaoFinanceira) {
