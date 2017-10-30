@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import br.com.control.annotation.SequenciaParametrosProcedure;
 import br.com.control.portal.integracao.ProcedureIntegracao;
 import br.com.control.portal.mensageria.to.AcompanhamentoPedidoTO;
 import br.com.control.portal.mensageria.to.PedidoItemTO;
@@ -23,6 +24,10 @@ public class PedidoItemDao extends JdbcDao<PedidoItem> {
 			logger.info("### PREPARANDO CHAMADA PROCEDURE: "+ProcedureIntegracao.INSERT_ITEM_PRE_PEDIDO.getProcedure());
 			CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERT_ITEM_PRE_PEDIDO);
 			preparaExecucaoProcedure(pedidoItem, stmt);
+
+			logger.info("--> STATUS RETORNO PEDIDO ITEM: " + String.valueOf(stmt.getInt(37)));
+			logger.info("--> MENSAGEM RETORNO PEDIDO ITEM: " + String.valueOf(stmt.getString(38)));
+			
 			stmt.close();
 		} catch (SQLException | RuntimeException e) {
 			logger.error("--> ERRO AO TENTAR SALVAR O ITEM DA SEQUENCIA: "+pedidoItem.getSequenciaItem());

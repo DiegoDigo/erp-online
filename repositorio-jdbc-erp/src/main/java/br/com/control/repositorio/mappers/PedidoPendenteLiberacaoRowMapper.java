@@ -25,7 +25,7 @@ public class PedidoPendenteLiberacaoRowMapper  implements RowMapper<PedidoPenden
 			pedidoLiberacao.setDescontoFinanceiro(rs.getInt("desconto_financeiro"));
 			pedidoLiberacao.setNumeroPedido(rs.getString("numero_pedido"));
 			pedidoLiberacao.setPercentualDesconto(rs.getFloat("percentual_desconto"));
-			pedidoLiberacao.setStatusPedido(StatusLiberacaoPedido.recuperaPorNome(rs.getString("status_pedido")));
+			pedidoLiberacao.setStatusPedido(StatusLiberacaoPedido.recuperaPorCodigo(rs.getString("status_pedido")));
 			pedidoLiberacao.setTaxaFinanceira(rs.getFloat("taxa_financeiro"));
 			pedidoLiberacao.setTipoCobrancaERP(String.valueOf(rs.getLong("codigo_tipo_cobranca_rec_id")));
 			pedidoLiberacao.setValorDevolucao(rs.getFloat("valor_devolucao"));
