@@ -95,12 +95,15 @@ public class PedidoCapaTO implements Serializable {
 	private int pedidoTransmitido;
 	@SequenciaParametrosProcedure(index = 41)
 	private int desbloqueioGPSERP;
+	
+	@SequenciaParametrosProcedure(index = 42)
+	private int dataPrimeiraParcela=0;
 
-	@SequenciaParametrosProcedure(index = 42, isRetornoProcedure = true)
-	private long numeroPrePedidoGestao;
 	@SequenciaParametrosProcedure(index = 43, isRetornoProcedure = true)
-	private int statusRetorno;
+	private long numeroPrePedidoGestao;
 	@SequenciaParametrosProcedure(index = 44, isRetornoProcedure = true)
+	private int statusRetorno;
+	@SequenciaParametrosProcedure(index = 45, isRetornoProcedure = true)
 	private String msgRetorno = "";
 
 	private List<PedidoItemTO> itens = new ArrayList<>();
@@ -494,6 +497,14 @@ public class PedidoCapaTO implements Serializable {
 
 	public void setHoraFinalPedido(int horaFinalPedido) {
 		this.horaFinalPedido = horaFinalPedido;
+	}
+
+	public int getDataPrimeiraParcela() {
+		return dataPrimeiraParcela;
+	}
+
+	public void setDataPrimeiraParcela(int dataPrimeiraParcela) {
+		this.dataPrimeiraParcela = dataPrimeiraParcela;
 	}
 
 }
