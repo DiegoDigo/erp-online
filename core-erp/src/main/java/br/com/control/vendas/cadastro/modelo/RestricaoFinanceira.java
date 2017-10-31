@@ -8,7 +8,7 @@ public class RestricaoFinanceira implements Serializable {
 	private Long recId;
 	private Boolean ativo;
 	private String codigoRestricaoFinanceira;
-	private float desconto;
+	private float descontoItem;
 	private float descontoMaximo;
 	private float taxa;
 	private float valorMaximoPedido;
@@ -40,12 +40,12 @@ public class RestricaoFinanceira implements Serializable {
 		this.codigoRestricaoFinanceira = codigoRestricaoFinanceira;
 	}
 
-	public float getDesconto() {
-		return desconto;
+	public float getDescontoItem() {
+		return descontoItem;
 	}
 
-	public void setDesconto(float desconto) {
-		this.desconto = desconto;
+	public void setDescontoItem(float descontoItem) {
+		this.descontoItem = descontoItem;
 	}
 
 	public float getDescontoMaximo() {
