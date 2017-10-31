@@ -38,7 +38,7 @@ public class Cliente implements Serializable {
 	private String codigoErpCanal;
 	private String codigoErpCondicaoPagamento;
 	private String codigoErpTipoCobranca;
-	// private Boolean disponivelPortal;
+	 private Boolean disponivelPortal;
 
 	public String getCodigoErp() {
 		return codigoErp;
@@ -326,11 +326,11 @@ public class Cliente implements Serializable {
 		this.codigoErpTipoCobranca = cliente.getCodigoErpTipoCobranca();
 	}
 
-	// public Boolean getDisponivelPortal() {
-	// return disponivelPortal;
-	// }
-	//
-	// public void setDisponivelPortal(Boolean disponivelPortal) {
-	// this.disponivelPortal = disponivelPortal;
-	// }
+	public Boolean getDisponivelPortal() {
+		return disponivelPortal;
+	}
+
+	public void setDisponivelPortal(Boolean disponivelPortal) {
+		this.disponivelPortal = disponivelPortal;
+	 }
 }
