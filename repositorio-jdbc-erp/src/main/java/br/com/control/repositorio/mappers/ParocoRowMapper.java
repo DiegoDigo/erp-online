@@ -14,7 +14,10 @@ public class ParocoRowMapper implements RowMapper<Paroco> {
 	@Override
 	public Paroco mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Paroco paroco = new Paroco();
-		paroco.setCodigoTabelaPreco(rs.getString("CODIGO_TABELA_PRECO_ERP").trim());
+		
+		String mesTabela2Digitos = preparaZeroEsquerdaMesTabela(rs.getInt("MES_TABELA_CARGA"));
+		String tabelaPreco = String.valueOf(rs.getInt("ANO_TABELA_CARGA") + mesTabela2Digitos);
+		paroco.setCodigoTabelaPreco(tabelaPreco);
 		paroco.setCodigoClienteErp(rs.getString("CODIGO_CLIENTE_ERP").trim());
 		paroco.setCodigoEmpresaErp(rs.getString("CODIGO_EMPRESA").trim());
 
@@ -27,4 +30,12 @@ public class ParocoRowMapper implements RowMapper<Paroco> {
 		return paroco;
 	}
 
+	
+	private String preparaZeroEsquerdaMesTabela(int mesTabela){
+		String mesTabelaString = String.valueOf(mesTabela);
+		if(mesTabelaString != null && mesTabelaString.length()==1){
+			return "0"+mesTabelaString;
+		}
+		return mesTabelaString;
+	}
 }
