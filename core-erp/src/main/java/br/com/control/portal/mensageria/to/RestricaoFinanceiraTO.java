@@ -18,8 +18,8 @@ public class RestricaoFinanceiraTO implements Serializable {
 	private float taxa;
 	private float valorMaximoPedido;
 	private float valorMinimoPedido;
-	private Long condicaoPagamento;
-	private Long tipoCobranca;
+	private Long codigoCondicaoPagamentoERP;
+	private Long codigoTipoCobrancaERP;
 	private List<RestricaoFinanceiraItemTO> restricaoItens = new ArrayList<>();
 
 	public Long getRecId() {
@@ -86,22 +86,6 @@ public class RestricaoFinanceiraTO implements Serializable {
 		this.valorMinimoPedido = valorMinimoPedido;
 	}
 
-	public Long getCondicaoPagamento() {
-		return condicaoPagamento;
-	}
-
-	public void setCondicaoPagamento(Long condicaoPagamento) {
-		this.condicaoPagamento = condicaoPagamento;
-	}
-
-	public Long getTipoCobranca() {
-		return tipoCobranca;
-	}
-
-	public void setTipoCobranca(Long tipoCobranca) {
-		this.tipoCobranca = tipoCobranca;
-	}
-
 	public List<RestricaoFinanceiraItemTO> getRestricaoItens() {
 		return restricaoItens;
 	}
@@ -113,13 +97,29 @@ public class RestricaoFinanceiraTO implements Serializable {
 	public RestricaoFinanceiraTO(RestricaoFinanceira restricaoFinanceira) {
 		this.setAtivo(restricaoFinanceira.getAtivo());
 		this.setCodigoRestricaoFinanceira(restricaoFinanceira.getCodigoRestricaoFinanceira());
-		this.setTipoCobranca(restricaoFinanceira.getTipoCobranca());
-		this.setCondicaoPagamento(restricaoFinanceira.getCondicaoPagamento());
+		this.setCodigoTipoCobrancaERP(restricaoFinanceira.getCodigoTipoCobrancaERP());
+		this.setCodigoCondicaoPagamentoERP(restricaoFinanceira.getCodigoCondicaoPagamentoERP());
 		this.setDescontoItem(restricaoFinanceira.getDescontoItem());
 		this.setDescontoMaximo(restricaoFinanceira.getDescontoMaximo());
 		this.setTaxa(restricaoFinanceira.getTaxa());
 		this.setValorMinimoPedido(restricaoFinanceira.getValorMinimoPedido());
 		this.setValorMaximoPedido(restricaoFinanceira.getValorMaximoPedido());
+	}
+
+	public Long getCodigoCondicaoPagamentoERP() {
+		return codigoCondicaoPagamentoERP;
+	}
+
+	public void setCodigoCondicaoPagamentoERP(Long codigoCondicaoPagamentoERP) {
+		this.codigoCondicaoPagamentoERP = codigoCondicaoPagamentoERP;
+	}
+
+	public Long getCodigoTipoCobrancaERP() {
+		return codigoTipoCobrancaERP;
+	}
+
+	public void setCodigoTipoCobrancaERP(Long codigoTipoCobrancaERP) {
+		this.codigoTipoCobrancaERP = codigoTipoCobrancaERP;
 	}
 
 }

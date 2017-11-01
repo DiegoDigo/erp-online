@@ -13,8 +13,8 @@ public class RestricaoFinanceira implements Serializable {
 	private float taxa;
 	private float valorMaximoPedido;
 	private float valorMinimoPedido;
-	private Long condicaoPagamento;
-	private Long tipoCobranca;
+	private Long codigoCondicaoPagamentoERP;
+	private Long codigoTipoCobrancaERP;
 
 	public Long getRecId() {
 		return recId;
@@ -80,20 +80,20 @@ public class RestricaoFinanceira implements Serializable {
 		this.valorMinimoPedido = valorMinimoPedido;
 	}
 
-	public Long getCondicaoPagamento() {
-		return condicaoPagamento;
+	public Long getCodigoCondicaoPagamentoERP() {
+		return codigoCondicaoPagamentoERP;
 	}
 
-	public void setCondicaoPagamento(Long condicaoPagamento) {
-		this.condicaoPagamento = condicaoPagamento;
+	public void setCodigoCondicaoPagamentoERP(Long codigoCondicaoPagamentoERP) {
+		this.codigoCondicaoPagamentoERP = codigoCondicaoPagamentoERP;
 	}
 
-	public Long getTipoCobranca() {
-		return tipoCobranca;
+	public Long getCodigoTipoCobrancaERP() {
+		return codigoTipoCobrancaERP;
 	}
 
-	public void setTipoCobranca(Long tipoCobranca) {
-		this.tipoCobranca = tipoCobranca;
+	public void setCodigoTipoCobrancaERP(Long codigoTipoCobrancaERP) {
+		this.codigoTipoCobrancaERP = codigoTipoCobrancaERP;
 	}
 
 }
