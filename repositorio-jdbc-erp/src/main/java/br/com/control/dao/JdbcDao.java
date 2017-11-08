@@ -106,7 +106,8 @@ public class JdbcDao<T> {
 			Field[] atributos = procedure.getClasse().getDeclaredFields();
 			for (int i = 0; i < atributos.length; i++) {
 				if (atributos[i].getDeclaredAnnotationsByType(SequenciaParametrosProcedure.class).length > 0) {
-//					System.out.println("atributo procedure: " + atributos[i].getName());
+					// System.out.println("atributo procedure: " +
+					// atributos[i].getName());
 					cont++;
 				}
 			}
@@ -122,6 +123,7 @@ public class JdbcDao<T> {
 
 			return connection.prepareCall(call);
 		} catch (SQLException e) {
+			logger.error("Erro ao executar chamada ao DBMAKER: " + e);
 			throw new RuntimeException(e);
 		}
 
@@ -131,6 +133,7 @@ public class JdbcDao<T> {
 		try {
 			connection.close();
 		} catch (SQLException e) {
+			logger.error("Erro ao Fechar a conexão com o BANCO: " + e);
 			throw new RuntimeException("Erro ao Fechar a conexão com o BANCO: " + e);
 		}
 	}
