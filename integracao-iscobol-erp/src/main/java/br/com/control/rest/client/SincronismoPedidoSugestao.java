@@ -10,7 +10,7 @@ public class SincronismoPedidoSugestao extends ClienteRestSincronismo {
 
 	@Override
 	public String getServicoSincronismo() {
-		return "/servicos/erp/sinaliza/cadastro/paroco";
+		return "/servicos/erp/sinaliza/cadastro/pedido/sugestao";
 	}
 
 }
