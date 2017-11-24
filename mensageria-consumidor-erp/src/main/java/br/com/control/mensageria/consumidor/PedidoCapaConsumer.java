@@ -47,8 +47,6 @@ public class PedidoCapaConsumer {
 
 		try {
 
-			// preparaDatasPedido(pedidoCapa);
-
 			AcompanhamentoPedidoTO capaTO = pedidoCapaService.salvarCapa(pedidoCapa);
 
 			if (capaTO != null) {
@@ -76,6 +74,7 @@ public class PedidoCapaConsumer {
 			log.error(e.getMessage());
 			log.error(e.getCause() != null ? e.getCause().toString() : "");
 			log.error(e.getStackTrace() != null ? e.getStackTrace().toString() : "");
+			throw new RuntimeException(e);
 		}
 	}
 
