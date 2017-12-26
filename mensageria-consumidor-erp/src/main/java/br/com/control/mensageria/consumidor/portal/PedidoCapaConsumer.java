@@ -1,4 +1,4 @@
-package br.com.control.mensageria.consumidor;
+package br.com.control.mensageria.consumidor.portal;
 
 import javax.jms.JMSException;
 

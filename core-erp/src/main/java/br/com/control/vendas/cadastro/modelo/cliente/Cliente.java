@@ -333,4 +333,23 @@ public class Cliente implements Serializable {
 	public void setDisponivelPortal(Boolean disponivelPortal) {
 		this.disponivelPortal = disponivelPortal;
 	 }
+
+	@Override
+	public String toString() {
+		return "Cliente [codigoErp=" + codigoErp + ", abateIcms=" + abateIcms + ", ativo=" + ativo
+				+ ", bonusDisponivel=" + bonusDisponivel + ", classe=" + classe + ", codigoTabpreco=" + codigoTabpreco
+				+ ", contato=" + contato + ", cpfCnpj=" + cpfCnpj + ", desprezaTaxaFinanceira=" + desprezaTaxaFinanceira
+				+ ", diaSemana=" + diaSemana + ", diasEntrega=" + diasEntrega + ", email=" + email
+				+ ", ignoraBandaPreco=" + ignoraBandaPreco + ", limiteCredito=" + limiteCredito
+				+ ", motivoBloqClasse20=" + motivoBloqClasse20 + ", motivoBloqueioJuridico=" + motivoBloqueioJuridico
+				+ ", numeroCliente=" + numeroCliente + ", pasta=" + pasta + ", razaoSocial=" + razaoSocial
+				+ ", regiaoCliente=" + regiaoCliente + ", registroAlterado=" + registroAlterado
+				+ ", restricaoComercial=" + restricaoComercial + ", inconformidadeCadastro=" + inconformidadeCadastro
+				+ ", sigla=" + sigla + ", subCanal=" + subCanal + ", telefoneDdd=" + telefoneDdd + ", telefoneTronco="
+				+ telefoneTronco + ", usoVerbaRestritoProduto=" + usoVerbaRestritoProduto + ", codigoErpCanal="
+				+ codigoErpCanal + ", codigoErpCondicaoPagamento=" + codigoErpCondicaoPagamento
+				+ ", codigoErpTipoCobranca=" + codigoErpTipoCobranca + ", disponivelPortal=" + disponivelPortal + "]";
+	}
+	
+	
 }

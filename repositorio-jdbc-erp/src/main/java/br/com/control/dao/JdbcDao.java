@@ -57,6 +57,13 @@ public class JdbcDao<T> {
 		return dados;
 	}
 
+	public List<T> selectViewSemWhere(String view, RowMapper<T> rowMapper) {
+		String sql = "select * from " + schemaDatabase + "." + view;
+		List<T> dados = getJdbcTemplate().query(sql, rowMapper);
+		logger.info("--> quantidade itens retornados: " + dados.size());
+		return dados;
+	}
+
 	public T selectViewSingle(TabelasIntegracao tabela, RowMapper<T> rowMapper) {
 		String sql = "select * from " + schemaDatabase + "." + tabela.getViewERP();
 		List<T> dados = getJdbcTemplate().query(sql, rowMapper);

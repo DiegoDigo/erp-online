@@ -2,6 +2,10 @@ package br.com.control.vendas.cadastro.modelo.pedido.acompanhemanto;
 
 import java.io.Serializable;
 
+/**
+ * @author rasa.lariguet
+ *
+ */
 @SuppressWarnings("serial")
 public class StatusAcompanhamentoPedido implements Serializable {
 	
@@ -69,5 +73,12 @@ public class StatusAcompanhamentoPedido implements Serializable {
 	public void setCodigoBloqueioPedido(String codigoBloqueioPedido) {
 		this.codigoBloqueioPedido = codigoBloqueioPedido;
 	}
-
+	@Override
+	public String toString() {
+		return "StatusAcompanhamentoPedido [recId=" + recId + ", numeroPedidoErp=" + numeroPedidoErp
+				+ ", situacaoPedidoErp=" + situacaoPedidoErp + ", numeroPrePedidoErp=" + numeroPrePedidoErp
+				+ ", numeroRomaneio=" + numeroRomaneio + ", situacaoRomaneio=" + situacaoRomaneio + ", serieNFE="
+				+ serieNFE + ", numeroNFE=" + numeroNFE + ", codigoBloqueioPedido=" + codigoBloqueioPedido + "]";
+	}
+	
 }
