@@ -6,7 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.control.portal.integracao.TabelasIntegracao;
+import br.com.control.portal.integracao.ViewsIntegracaoERP;
 import br.com.control.repositorio.mappers.PedidoSugestaoRowMapper;
 import br.com.control.vendas.cadastro.modelo.pedido.PedidoSugestao;
 
@@ -15,7 +15,7 @@ import br.com.control.vendas.cadastro.modelo.pedido.PedidoSugestao;
 public class PedidoSugestaoDao extends JdbcDao<PedidoSugestao> {
 
 	public List<PedidoSugestao> listarPedidosSugestao() {
-		return selectViewSemWhere(TabelasIntegracao.VENDA_PEDIDO_SUGESTAO,
+		return selectViewSemWhere(ViewsIntegracaoERP.VW_PEDIDO_SUGESTAO,
 				new PedidoSugestaoRowMapper());
 	}
 	

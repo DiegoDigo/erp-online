@@ -18,7 +18,7 @@ public class ProdutoService {
 		return produtoDao.listarProdutos();
 	}
 
-	public Produto recuperarProduto(String codigoProdutoErp) {
+	public Produto recuperaProduto(String codigoProdutoErp) {
 		return produtoDao.recuperarProduto(codigoProdutoErp);
 	}
 }

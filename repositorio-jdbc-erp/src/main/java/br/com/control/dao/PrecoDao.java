@@ -6,7 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.control.portal.integracao.TabelasIntegracao;
+import br.com.control.portal.integracao.ViewsIntegracaoERP;
 import br.com.control.repositorio.mappers.PrecoRowMapper;
 import br.com.control.vendas.cadastro.modelo.preco.Preco;
 
@@ -19,7 +19,7 @@ public class PrecoDao extends JdbcDao<Preco> {
 		getJdbcTemplate().update(codTab);
 		String codProd = "DECLARE set bigint @COD_PRODUTO = 0;";
 		getJdbcTemplate().update(codProd);
-		return selectViewSemWhere(TabelasIntegracao.CADASTRO_PRECO, new PrecoRowMapper());
+		return selectViewSemWhere(ViewsIntegracaoERP.VW_PRECO_PRODUTO, new PrecoRowMapper());
 	}
 	
 	public Preco recuperarPreco(String codigoPrecoProdutoErp) {
@@ -27,7 +27,7 @@ public class PrecoDao extends JdbcDao<Preco> {
 		getJdbcTemplate().update(codTab);
 		String codProd = "DECLARE set bigint @COD_PRODUTO = "+codigoPrecoProdutoErp.substring(8, codigoPrecoProdutoErp.length())+";";
 		getJdbcTemplate().update(codProd);
-		return selectViewSingle(TabelasIntegracao.CADASTRO_PRECO, new PrecoRowMapper());
+		return selectViewSingle(ViewsIntegracaoERP.VW_PRECO_PRODUTO, new PrecoRowMapper());
 	}
 
 }

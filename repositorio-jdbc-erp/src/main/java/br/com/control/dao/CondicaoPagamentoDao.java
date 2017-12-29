@@ -6,7 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.control.portal.integracao.TabelasIntegracao;
+import br.com.control.portal.integracao.ViewsIntegracaoERP;
 import br.com.control.repositorio.mappers.CondicaoPagamentoRowMapper;
 import br.com.control.vendas.cadastro.modelo.condicaoPagamento.CondicaoPagamento;
 
@@ -17,13 +17,13 @@ public class CondicaoPagamentoDao extends JdbcDao<CondicaoPagamento> {
 	public List<CondicaoPagamento> listarCondicoesPagamento() {
 		String declare = "DECLARE set date @CODIGO_CONDICAO_PAGAMENTO  = 0;";
 		getJdbcTemplate().update(declare);
-		return selectViewSemWhere(TabelasIntegracao.CADASTRO_CONDICAO_PAGAMENTO, new CondicaoPagamentoRowMapper());
+		return selectViewSemWhere(ViewsIntegracaoERP.VW_CONDICAO_PAGAMENTO, new CondicaoPagamentoRowMapper());
 	}
 
 	public CondicaoPagamento recuperarCondicaoPagamento(String codigoCondicaoPagamentoErp) {
 		String declare = "DECLARE set int @CODIGO_CONDICAO_PAGAMENTO= " + codigoCondicaoPagamentoErp + ";";
 		getJdbcTemplate().update(declare);
-		return selectViewSingle(TabelasIntegracao.CADASTRO_CONDICAO_PAGAMENTO, new CondicaoPagamentoRowMapper());
+		return selectViewSingle(ViewsIntegracaoERP.VW_CONDICAO_PAGAMENTO, new CondicaoPagamentoRowMapper());
 	}
 
 }

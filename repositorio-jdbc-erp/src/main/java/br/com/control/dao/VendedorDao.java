@@ -6,7 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.control.portal.integracao.TabelasIntegracao;
+import br.com.control.portal.integracao.ViewsIntegracaoERP;
 import br.com.control.repositorio.mappers.VendedorRowMapper;
 import br.com.control.vendas.cadastro.modelo.vendedor.Vendedor;
 
@@ -17,13 +17,13 @@ public class VendedorDao extends JdbcDao<Vendedor> {
 	public List<Vendedor> listarVendedores() {
 		String declare = "DECLARE set char(3) @CODIGO_VENDEDOR = '';";
 		getJdbcTemplate().update(declare);
-		return selectViewSemWhere(TabelasIntegracao.CADASTRO_VENDEDOR, new VendedorRowMapper());
+		return selectViewSemWhere(ViewsIntegracaoERP.VW_VENDEDOR, new VendedorRowMapper());
 	}
 
 	public Vendedor recuperarVendedor(String codigoErp) {
 		String declare = String.format("DECLARE set char(3) @CODIGO_VENDEDOR = '%s' ;",  codigoErp );
 		getJdbcTemplate().update(declare);
-		return selectViewSingle(TabelasIntegracao.CADASTRO_VENDEDOR, new VendedorRowMapper());
+		return selectViewSingle(ViewsIntegracaoERP.VW_VENDEDOR, new VendedorRowMapper());
 	}
 
 }

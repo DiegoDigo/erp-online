@@ -6,7 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.control.portal.integracao.TabelasIntegracao;
+import br.com.control.portal.integracao.ViewsIntegracaoERP;
 import br.com.control.repositorio.mappers.CanalRowMapper;
 import br.com.control.vendas.cadastro.modelo.canal.Canal;
 
@@ -17,13 +17,13 @@ public class CanalDao extends JdbcDao<Canal> {
 	public List<Canal> listarCanal() {
 		String declare = "DECLARE set char(2) @CODIGO_CANAL  = '';";
 		getJdbcTemplate().update(declare);
-		return selectViewSemWhere(TabelasIntegracao.CADASTRO_CANAL, new CanalRowMapper());
+		return selectViewSemWhere(ViewsIntegracaoERP.VW_CANAL_VENDA, new CanalRowMapper());
 	}
 
 	public Canal recuperarCanal(String codigoCanalErp) {
 		String declare = String.format("DECLARE set char(2) @CODIGO_CANAL= '%s';", codigoCanalErp );
 		getJdbcTemplate().update(declare);
-		return selectViewSingle(TabelasIntegracao.CADASTRO_CANAL, new CanalRowMapper());
+		return selectViewSingle(ViewsIntegracaoERP.VW_CANAL_VENDA, new CanalRowMapper());
 	}
 
 }

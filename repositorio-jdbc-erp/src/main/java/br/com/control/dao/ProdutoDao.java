@@ -6,7 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.control.portal.integracao.TabelasIntegracao;
+import br.com.control.portal.integracao.ViewsIntegracaoERP;
 import br.com.control.repositorio.mappers.ProdutoRowMapper;
 import br.com.control.vendas.cadastro.modelo.produto.Produto;
 
@@ -23,7 +23,7 @@ public class ProdutoDao extends JdbcDao<Produto> {
 		getJdbcTemplate().update(declare3);
 		String declare4 = "DECLARE set int @DISP_PORTAL_WEB = 1;";
 		getJdbcTemplate().update(declare4);
-		return selectViewSemWhere(TabelasIntegracao.CADASTRO_PRODUTO, new ProdutoRowMapper());
+		return selectViewSemWhere(ViewsIntegracaoERP.VW_PRODUTO, new ProdutoRowMapper());
 	}
 
 	public Produto recuperarProduto(String codigoErp) {
@@ -36,7 +36,7 @@ public class ProdutoDao extends JdbcDao<Produto> {
 		//2 para TODOS, ativos e não
 		String declare4 = "DECLARE set int @DISP_PORTAL_WEB = 2;";
 		getJdbcTemplate().update(declare4);		
-		return selectViewSingle(TabelasIntegracao.CADASTRO_PRODUTO, new ProdutoRowMapper());
+		return selectViewSingle(ViewsIntegracaoERP.VW_PRODUTO, new ProdutoRowMapper());
 	}
 
 }

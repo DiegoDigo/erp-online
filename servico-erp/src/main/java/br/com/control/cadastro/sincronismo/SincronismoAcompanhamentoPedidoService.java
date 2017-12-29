@@ -30,15 +30,17 @@ public class SincronismoAcompanhamentoPedidoService {
 		return acompanhamentoPedidoDao.recuperaAcompanhamentoPedido(codigoPrePedidoERP);
 	}
 
-	public void enviaParaOPortal(String codigoPrePedidoERP) {
+	public StatusAcompanhamentoPedidoTO enviaParaOPortal(String codigoPrePedidoERP) {
 		StatusAcompanhamentoPedido status = recuperaStatusPedidos(codigoPrePedidoERP);
 		if (status != null) {
 			StatusAcompanhamentoPedidoTO to = new StatusAcompanhamentoPedidoTO(status);
 			LOG.info("--> status pedido: "+codigoPrePedidoERP+" : "+ to.recuperaStatus());
 			pedidoCapaProducer.sendMessage(to);
 			LOG.info("--> enviou o pedido: "+codigoPrePedidoERP+" para o portal");
+			return to;
 		}else{
 			LOG.error("Nao foi encontrado nenhum pedido com o codigo de pre pedido: "+codigoPrePedidoERP);
+			return null;
 		}
 	}
 

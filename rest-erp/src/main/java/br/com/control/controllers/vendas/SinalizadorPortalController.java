@@ -347,7 +347,7 @@ public class SinalizadorPortalController extends AbstractController {
 		logger.info("--> codigo passado pelo sinalizador: " + codigoProduto);
 		logger.info("------------------------------------------------------");
 
-		Produto produto = produtoService.recuperarProduto(codigoProduto);
+		Produto produto = produtoService.recuperaProduto(codigoProduto);
 
 		if (produto == null) {
 			String msg = "Produto com codigo: " + codigoProduto + " nao encontrado no DBMaker!";

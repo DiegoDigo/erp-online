@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import br.com.control.portal.integracao.ProcedureIntegracao;
-import br.com.control.portal.integracao.TabelasIntegracao;
+import br.com.control.portal.integracao.ViewsIntegracaoERP;
 import br.com.control.portal.mensageria.to.ClienteTO;
 import br.com.control.repositorio.mappers.ClienteRowMapper;
 import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
@@ -25,13 +25,13 @@ public class ClienteDao extends JdbcDao<Cliente> {
 	public List<Cliente> listaTodosClientesDaMatricula() {
 		String declare = "DECLARE set int @CODIGO_CLIENTE = 0";
 		getJdbcTemplate().update(declare);
-		return selectViewSemWhere(TabelasIntegracao.CADASTRO_CLIENTE, new ClienteRowMapper());
+		return selectViewSemWhere(ViewsIntegracaoERP.VW_CLIENTE, new ClienteRowMapper());
 	}
 
 	public Cliente recuperarCliente(int codigoClienteErp) {
 		String declare = "DECLARE SET INT @CODIGO_CLIENTE = " + codigoClienteErp;
 		getJdbcTemplate().update(declare);
-		return selectViewSingle(TabelasIntegracao.CADASTRO_CLIENTE, new ClienteRowMapper());
+		return selectViewSingle(ViewsIntegracaoERP.VW_CLIENTE, new ClienteRowMapper());
 	}
 
 	@Transactional

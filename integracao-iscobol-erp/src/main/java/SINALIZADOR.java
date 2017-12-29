@@ -136,9 +136,9 @@ public class SINALIZADOR implements IscobolCall {
 				} else if (CadastrosEnum.BANDA_PRECO == cadastro) {
 					SincronismoBandaPrecoCapa rest = new SincronismoBandaPrecoCapa();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.BANDA_PRECO);
-				} else if (CadastrosEnum.STATUS_PEDIDO == cadastro) {
+				} else if (CadastrosEnum.PEDIDO_PENDENTE_LIBERACAO == cadastro) {
 					SincronismoPedidoBloqueado rest = new SincronismoPedidoBloqueado();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.STATUS_PEDIDO);
+					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PEDIDO_PENDENTE_LIBERACAO);
 				} else if (CadastrosEnum.PEDIDO_SUGESTAO == cadastro) {
 					SincronismoPedidoSugestao rest = new SincronismoPedidoSugestao();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PEDIDO_SUGESTAO);

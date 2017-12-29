@@ -23,7 +23,7 @@ import org.springframework.stereotype.Repository;
 
 import br.com.control.annotation.SequenciaParametrosProcedure;
 import br.com.control.portal.integracao.ProcedureIntegracao;
-import br.com.control.portal.integracao.TabelasIntegracao;
+import br.com.control.portal.integracao.ViewsIntegracaoERP;
 
 @Repository
 public class JdbcDao<T> {
@@ -50,7 +50,7 @@ public class JdbcDao<T> {
 		Class.forName(driverErp);
 	}
 
-	public List<T> selectViewSemWhere(TabelasIntegracao tabela, RowMapper<T> rowMapper) {
+	public List<T> selectViewSemWhere(ViewsIntegracaoERP tabela, RowMapper<T> rowMapper) {
 		String sql = "select * from " + schemaDatabase + "." + tabela.getViewERP();
 		List<T> dados = getJdbcTemplate().query(sql, rowMapper);
 		logger.info("--> quantidade itens retornados: " + dados.size());
@@ -64,7 +64,7 @@ public class JdbcDao<T> {
 		return dados;
 	}
 
-	public T selectViewSingle(TabelasIntegracao tabela, RowMapper<T> rowMapper) {
+	public T selectViewSingle(ViewsIntegracaoERP tabela, RowMapper<T> rowMapper) {
 		String sql = "select * from " + schemaDatabase + "." + tabela.getViewERP();
 		List<T> dados = getJdbcTemplate().query(sql, rowMapper);
 		if (!dados.isEmpty()) {

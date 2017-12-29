@@ -6,7 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.control.portal.integracao.TabelasIntegracao;
+import br.com.control.portal.integracao.ViewsIntegracaoERP;
 import br.com.control.repositorio.mappers.TipoEnderecoRowMapper;
 import br.com.control.vendas.cadastro.modelo.cliente.TipoEndereco;
   
@@ -19,7 +19,7 @@ public class TipoEnderecoDao extends JdbcDao<TipoEndereco> {
 		getJdbcTemplate().update(declare);		
 		String declare2 = "DECLARE set varchar(4) @sigla = '' ";
 		getJdbcTemplate().update(declare2);		
-		return selectViewSemWhere(TabelasIntegracao.CADASTRO_TIPO_ENDERECO,
+		return selectViewSemWhere(ViewsIntegracaoERP.VW_TIPO_ENDERECO,
 				new TipoEnderecoRowMapper());
 	}
 	
@@ -28,7 +28,7 @@ public class TipoEnderecoDao extends JdbcDao<TipoEndereco> {
 		getJdbcTemplate().update(declare);
 		String declare2 = String.format("DECLARE set varchar(4) @sigla = '%s'", sigla);
 		getJdbcTemplate().update(declare2);
-		return selectViewSingle(TabelasIntegracao.CADASTRO_TIPO_ENDERECO,
+		return selectViewSingle(ViewsIntegracaoERP.VW_TIPO_ENDERECO,
 				new TipoEnderecoRowMapper());
 	}
 }
