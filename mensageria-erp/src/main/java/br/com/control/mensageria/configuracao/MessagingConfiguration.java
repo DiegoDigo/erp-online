@@ -2,10 +2,9 @@ package br.com.control.mensageria.configuracao;
 
 import java.util.Arrays;
 
+import javax.annotation.Resource;
 import javax.jms.ConnectionFactory;
-import javax.jms.QueueConnectionFactory;
 
-import org.apache.activemq.broker.BrokerService;
 import org.apache.activemq.spring.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,6 +15,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.JmsListenerContainerFactory;
 import org.springframework.jms.core.JmsTemplate;
+import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 public class MessagingConfiguration {
@@ -28,6 +28,9 @@ public class MessagingConfiguration {
 	
 	@Value("${portal_ambiente}")
 	private String ambiente;
+	
+	@Resource
+	private PlatformTransactionManager transactionManager;
 	
 	
 
@@ -81,8 +84,11 @@ public class MessagingConfiguration {
 		connectionFactory.setTrustedPackages(Arrays.asList("br.com.control.portal.mensageria.to", "java.lang", "br.com.control.portal.filter",
 				"java.util", "java.math", "java.sql"));
 		System.setProperty("org.apache.activemq.SERIALIZABLE_PACKAGES", "*");
+		
 		return connectionFactory;
 	}
+	
+	
     
 
     @Bean
@@ -90,6 +96,9 @@ public class MessagingConfiguration {
     		 DefaultJmsListenerContainerFactoryConfigurer configurer) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         configurer.configure(factory, connectionFactory);
+        
+        factory.setSessionTransacted(true);
+		factory.setTransactionManager(transactionManager);
         return factory;
     }
 
@@ -99,6 +108,8 @@ public class MessagingConfiguration {
             DefaultJmsListenerContainerFactoryConfigurer configurer) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         configurer.configure(factory, connectionFactory);
+        factory.setSessionTransacted(true);
+		factory.setTransactionManager(transactionManager);
         return factory;
     }
 	
