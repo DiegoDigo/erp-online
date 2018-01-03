@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.control.dao.ProdutoCanalDao;
-import br.com.control.vendas.cadastro.modelo.canal.Canal;
 import br.com.control.vendas.cadastro.modelo.produto.ProdutoCanal;
 
 @Service

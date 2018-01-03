@@ -11,7 +11,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import br.com.control.cadastro.ComodatoService;
-import br.com.control.cadastro.HistoricoPedidoCapaService;
 import br.com.control.cadastro.MovimentoFinanceiroService;
 import br.com.control.mensageria.produtor.SincronismoAgendadoProducer;
 import br.com.control.portal.enums.CadastrosEnum;
@@ -19,11 +18,9 @@ import br.com.control.portal.integracao.Identificacao;
 import br.com.control.portal.integracao.MensagemRetorno;
 import br.com.control.portal.integracao.Sistema;
 import br.com.control.portal.mensageria.to.ComodatoTO;
-import br.com.control.portal.mensageria.to.HistoricoPedidoCapaTO;
 import br.com.control.portal.mensageria.to.MovimentoFinanceiroTO;
 import br.com.control.vendas.cadastro.modelo.Comodato;
 import br.com.control.vendas.cadastro.modelo.MovimentoFinanceiro;
-import br.com.control.vendas.cadastro.modelo.pedido.HistoricoPedidoCapa;
 
 @Service
 public class SincronismosAgendadosService {
@@ -35,9 +32,6 @@ public class SincronismosAgendadosService {
 
 	@Autowired
 	private MovimentoFinanceiroService movimentoFinanceiroService;
-
-	@Autowired
-	private HistoricoPedidoCapaService historicoPedidoCapaService;
 
 	@Value("${numero_matricula_empresa}")
 	private String matriculaEmpresa;

@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import br.com.control.annotation.SequenciaParametrosProcedure;
 import br.com.control.portal.integracao.ProcedureIntegracao;
 import br.com.control.portal.mensageria.to.AcompanhamentoPedidoTO;
 import br.com.control.portal.mensageria.to.PedidoItemTO;

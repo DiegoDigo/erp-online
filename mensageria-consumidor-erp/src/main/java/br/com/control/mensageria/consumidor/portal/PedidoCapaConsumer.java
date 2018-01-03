@@ -19,7 +19,6 @@ import br.com.control.portal.mensageria.to.AcompanhamentoPedidoTO;
 import br.com.control.portal.mensageria.to.PedidoCapaTO;
 import br.com.control.portal.mensageria.to.PedidoItemTO;
 import br.com.control.portal.mensageria.to.StatusAcompanhamentoPedidoTO;
-import br.com.control.util.FormatacaoUtil;
 
 @Component
 public class PedidoCapaConsumer {
@@ -34,9 +33,6 @@ public class PedidoCapaConsumer {
 
 	@Autowired
 	private PedidoCapaProducer producer;
-
-	@Autowired
-	private FormatacaoUtil util;
 
 	@JmsListener(destination = "${portal_ambiente}_pedidos")
 	public void receiveMessage(final Message<PedidoCapaTO> message) throws JMSException {
