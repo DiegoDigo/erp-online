@@ -30,6 +30,10 @@ public class PrecoProdutoConsumer extends ERPConsumer{
 	public void sinalizaStatusPedido(final Message<String> message) throws JMSException {
 		String codigoErp = message.getPayload();
 		log.info("### VW_PRECO_PRODUTO: "+codigoErp);
+		if (codigoErp.length() == 8) {
+			log.warn("Não é possível atualizar capa de Preço!");
+			return;
+		}
 		
 		Preco preco = precoService.recuperarTabelaPreco(codigoErp);
 		if (preco == null) {

@@ -9,9 +9,9 @@ public class BandaPrecoItemTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long recId;
-	private String codigoTabelaPrecoERP;
-	//private float descontoMaximo;
 	private Integer quantidade;
+	private String codigoTabelaPrecoERP;
+	private float descontoMaximo;
 	private Integer codigoBandaPrecoERP;
 
 	public Long getRecId() {
@@ -46,10 +46,18 @@ public class BandaPrecoItemTO implements Serializable {
 		this.codigoBandaPrecoERP = codigoBandaPrecoERP;
 	}
 
+	public float getDescontoMaximo() {
+		return descontoMaximo;
+	}
+
+	public void setDescontoMaximo(float descontoMaximo) {
+		this.descontoMaximo = descontoMaximo;
+	}
+
 	public BandaPrecoItemTO(BandaPrecoItem bandaPrecoItem) {
 		super();
 		this.setCodigoTabelaPrecoERP(bandaPrecoItem.getCodigoTabelaPreco());
-//		this.setDescontoMaximo(bandaPrecoItem.getDescontoMaximo());
+		this.setDescontoMaximo(bandaPrecoItem.getDescontoMaximo());
 		this.setQuantidade(bandaPrecoItem.getQuantidade());
 		this.setCodigoBandaPrecoERP(bandaPrecoItem.getCodigoBandaPrecoERP());
 	}
