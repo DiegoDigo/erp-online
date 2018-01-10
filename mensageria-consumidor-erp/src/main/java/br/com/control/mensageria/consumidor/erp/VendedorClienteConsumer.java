@@ -8,13 +8,10 @@ import javax.jms.JMSException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jms.annotation.JmsListener;
 import org.springframework.messaging.Message;
 import org.springframework.stereotype.Component;
 
 import br.com.control.cadastro.VendedorClienteService;
-import br.com.control.cadastro.sincronismo.SincronismoCadastroService;
-import br.com.control.portal.enums.CadastrosEnum;
 import br.com.control.portal.mensageria.to.VendedorClienteTO;
 import br.com.control.vendas.cadastro.modelo.vendedor.VendedorCliente;
 
@@ -24,29 +21,27 @@ public class VendedorClienteConsumer extends ERPConsumer{
 	private static Logger log = LoggerFactory.getLogger(VendedorClienteConsumer.class);
 
 	@Autowired
-	private SincronismoCadastroService sincronismoCadastroService;
-	
-	@Autowired
 	private VendedorClienteService vendedorClienteService;
 
-	@JmsListener(destination = "VW_VENDEDOR_CLIENTE", containerFactory = "jmsListenerContainerFactoryJControl")
-	public void sinalizaStatusPedido(final Message<String> message) throws JMSException {
+	public List<VendedorClienteTO> recuperaVendedoresClienteTO(final Message<String> message) throws JMSException {
 		String codigoErp = message.getPayload();
 		log.info("### VW_VENDEDOR_CLIENTE: "+codigoErp);
 		
 		List<VendedorCliente> vendedorClientes = vendedorClienteService.recuperarClientesVendedor(codigoErp);
 		if (vendedorClientes == null || vendedorClientes.isEmpty()) {
 			log.warn("Vendedor Cliente com codigo: " + codigoErp + " nao encontrado no DBMaker!");
-			return;
+			return null;
 		}
 
-		List<VendedorClienteTO> vendedorClientesTO = new ArrayList<VendedorClienteTO>();
+		List<VendedorClienteTO> vendedoresClienteTO = new ArrayList<VendedorClienteTO>();
 		for (VendedorCliente vendedorCliente : vendedorClientes) {
-			vendedorClientesTO.add(new VendedorClienteTO(vendedorCliente));
+			vendedoresClienteTO.add(new VendedorClienteTO(vendedorCliente));
 		}
 
-		sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.VENDEDOR_CLIENTE), vendedorClientesTO, "Vendedor do Cliente");
-		log.info("--> Vendedor Cliente com codigo: " + codigoErp + " enviado para o Portal!");
+		return vendedoresClienteTO;
+		
+//		sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.VENDEDOR_CLIENTE), vendedorClientesTO, "Vendedor do Cliente");
+//		log.info("--> Vendedor Cliente com codigo: " + codigoErp + " enviado para o Portal!");
 	}
 
 }

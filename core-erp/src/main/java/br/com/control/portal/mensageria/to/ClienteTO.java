@@ -2,6 +2,7 @@ package br.com.control.portal.mensageria.to;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 import br.com.control.annotation.SequenciaParametrosProcedure;
 import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
@@ -160,6 +161,37 @@ public class ClienteTO implements Serializable {
 	private String codigoErpCanal;
 	private String codigoErpCondicaoPagamento;
 	private String codigoErpTipoCobranca;
+	
+	
+	private TipoCobrancaClienteTO tipoCobrancaClienteTO;
+	private List<VendedorClienteTO> vendedoresClienteTO;
+	private List<ClienteEnderecoTO> enderecosClienteTO;
+	
+	
+	public List<ClienteEnderecoTO> getEnderecosClienteTO() {
+		return enderecosClienteTO;
+	}
+
+	public void setEnderecosClienteTO(List<ClienteEnderecoTO> enderecosClienteTO) {
+		this.enderecosClienteTO = enderecosClienteTO;
+	}
+
+	public TipoCobrancaClienteTO getTipoCobrancaClienteTO() {
+		return tipoCobrancaClienteTO;
+	}
+
+	public void setTipoCobrancaClienteTO(TipoCobrancaClienteTO tipoCobrancaClienteTO) {
+		this.tipoCobrancaClienteTO = tipoCobrancaClienteTO;
+	}
+
+
+	public List<VendedorClienteTO> getVendedoresClienteTO() {
+		return vendedoresClienteTO;
+	}
+
+	public void setVendedoresClienteTO(List<VendedorClienteTO> vendedoresClienteTO) {
+		this.vendedoresClienteTO = vendedoresClienteTO;
+	}
 
 	public int getStatusMsg() {
 		return statusMsg;
