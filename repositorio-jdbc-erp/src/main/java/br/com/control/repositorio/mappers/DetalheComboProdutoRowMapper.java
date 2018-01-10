@@ -17,9 +17,18 @@ public class DetalheComboProdutoRowMapper implements RowMapper<DetalheComboProdu
 		detalhe.setCodigoProdutoERP(rs.getString("CODIGO_PRODUTO_ERP"));
 		detalhe.setQuantidadeCaixa(rs.getInt("quantidade_caixa"));
 		detalhe.setQuantidadeAvulso(rs.getInt("quantidade_avulso"));
+		detalhe.setOcorrencia(completaComZeros(rs.getString("CODIGO_OCOR_ERP")));
 		return detalhe;
 	}
 	
-	
+	private static String completaComZeros(String valor){
+		String zeros = "";
+		if (valor.length() < 3) {
+			for (int i = valor.length(); i < 3; i++) {
+				zeros += "0";
+			}
+		}
+		return zeros + valor;
+	}
 
 }

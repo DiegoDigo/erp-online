@@ -8,11 +8,16 @@ public class DetalheComboProduto implements Serializable{
 	public Long recId;
 	public Integer quantidadeAvulso;
 	public Integer quantidadeCaixa;
+	public String ocorrencia;
 	public String codigoProdutoERP;
 	public String codigoProdutoComboERP;
 	 
-	
-	
+	public String getOcorrencia() {
+		return ocorrencia;
+	}
+	public void setOcorrencia(String ocorrencia) {
+		this.ocorrencia = ocorrencia;
+	}
 	public Long getRecId() {
 		return recId;
 	}

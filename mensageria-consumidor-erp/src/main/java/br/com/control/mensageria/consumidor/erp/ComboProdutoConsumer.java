@@ -1,8 +1,5 @@
 package br.com.control.mensageria.consumidor.erp;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.jms.JMSException;
 
 import org.slf4j.Logger;
@@ -35,19 +32,16 @@ public class ComboProdutoConsumer extends ERPConsumer{
 		log.info("### VW_COMBO_PRODUTO: "+codigoErp);
 		
 
-		List<DetalheComboProduto> comboProduto = detalheComboProdutoService.recuperarComboProduto(codigoErp);
-		if (comboProduto == null || comboProduto.isEmpty()) {
+		DetalheComboProduto comboProduto = detalheComboProdutoService.recuperarComboProduto(codigoErp);
+		if (comboProduto == null) {
 			String msg = "Combo Produto com codigo: " + codigoErp + " nao encontrado no DBMaker!";
 			log.warn(msg);
 			return;
 		}
 
-		List<DetalheComboProdutoTO> combosProdutoTO = new ArrayList<>();
-		for (DetalheComboProduto detalheComboProduto : comboProduto) {
-			combosProdutoTO.add(new DetalheComboProdutoTO(detalheComboProduto));
-		}
+		DetalheComboProdutoTO comboProdutoTO = new DetalheComboProdutoTO(comboProduto);
 
-		sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.PRODUTO_COMBO), combosProdutoTO, "Detalhe combo produto");
+		sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.PRODUTO_COMBO), comboProdutoTO, "Detalhe combo produto");
 		log.info("--> Combo Produto com codigo: " + codigoErp + " enviado para o Portal!");
 	}
 

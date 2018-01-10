@@ -471,28 +471,28 @@ public class SinalizadorPortalController extends AbstractController {
 	public MensagemRetorno sinalizaPortalSincronismoCadastroDetalheProdutoCombo(
 			@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		logger.info("### SINALIZADOR -> COMBO ###");
-
-		List<DetalheComboProdutoTO> combosProdutoTO = new ArrayList<>();
-
-		String codigoCombo = sinalizadorPortalService.retornaCodigoERP(mensagem);
-
-		logger.info("--> codigo passado pelo sinalizador: " + codigoCombo);
-		List<DetalheComboProduto> comboProduto = detalheProdutoComboService.recuperarComboProduto(codigoCombo);
-		logger.info("--> combos encontrados: " + comboProduto.size());
-		logger.info("------------------------------------------------------");
-
-		if (comboProduto == null || comboProduto.isEmpty()) {
-			String msg = "Combo Produto com codigo: " + codigoCombo + " nao encontrado no DBMaker!";
-			logger.warn(msg);
-			return null;
-		}
-
-		for (DetalheComboProduto detalheComboProduto : comboProduto) {
-			combosProdutoTO.add(new DetalheComboProdutoTO(detalheComboProduto));
-		}
-
-		return sincronismoCadastoService.enviaParaOPortal(mensagem, combosProdutoTO, "Detalhe combo produto");
+//		logger.info("### SINALIZADOR -> COMBO ###");
+//
+//		List<DetalheComboProdutoTO> combosProdutoTO = new ArrayList<>();
+//
+//		String codigoCombo = sinalizadorPortalService.retornaCodigoERP(mensagem);
+//
+//		logger.info("--> codigo passado pelo sinalizador: " + codigoCombo);
+//		List<DetalheComboProduto> comboProduto = detalheProdutoComboService.recuperarComboProduto(codigoCombo);
+//		logger.info("--> combos encontrados: " + comboProduto.size());
+//		logger.info("------------------------------------------------------");
+//
+//		if (comboProduto == null || comboProduto.isEmpty()) {
+//			String msg = "Combo Produto com codigo: " + codigoCombo + " nao encontrado no DBMaker!";
+//			logger.warn(msg);
+//			return null;
+//		}
+//
+//		for (DetalheComboProduto detalheComboProduto : comboProduto) {
+//			combosProdutoTO.add(new DetalheComboProdutoTO(detalheComboProduto));
+//		}
+//
+		return sincronismoCadastoService.enviaParaOPortal(mensagem, null, "Detalhe combo produto");
 
 	}
 

@@ -10,8 +10,17 @@ public class DetalheComboProdutoTO implements Serializable {
 
 	private Integer quantidadeCaixa;
 	private Integer quantidadeAvulso;
+	private String ocorrencia;
 	public String codigoProdutoERP;
 	public String codigoProdutoComboERP;
+
+	public String getOcorrencia() {
+		return ocorrencia;
+	}
+
+	public void setOcorrencia(String ocorrencia) {
+		this.ocorrencia = ocorrencia;
+	}
 
 	public String getCodigoProdutoERP() {
 		return codigoProdutoERP;

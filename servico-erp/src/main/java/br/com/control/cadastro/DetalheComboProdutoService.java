@@ -20,7 +20,7 @@ public class DetalheComboProdutoService {
 	}
 	
 
-	public List<DetalheComboProduto> recuperarComboProduto(String codigoProdutoComboErp) {		
+	public DetalheComboProduto recuperarComboProduto(String codigoProdutoComboErp) {		
 		return detalheComboProdutoDao.recuperarComboProduto(codigoProdutoComboErp);
 	}
 
