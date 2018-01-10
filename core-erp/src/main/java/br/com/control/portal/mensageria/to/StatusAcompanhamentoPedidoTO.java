@@ -30,6 +30,10 @@ public class StatusAcompanhamentoPedidoTO implements Serializable {
 		}
 	}
 	
+	public boolean pedidoEstaBloquado() {
+		return situacaoPedidoErp.equals("5") || situacaoPedidoErp.equals("7");
+	}
+	
 	
 	public StatusAcompanhamentoPedidoTO() {
 	}

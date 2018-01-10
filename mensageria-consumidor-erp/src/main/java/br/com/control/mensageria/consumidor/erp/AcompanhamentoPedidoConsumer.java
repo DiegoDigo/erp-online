@@ -14,15 +14,18 @@ import org.springframework.stereotype.Component;
 
 import br.com.control.cadastro.HistoricoPedidoCapaService;
 import br.com.control.cadastro.HistoricoPedidoItemService;
+import br.com.control.cadastro.PedidoPendenteLiberacaoService;
 import br.com.control.cadastro.sincronismo.SincronismoAcompanhamentoPedidoService;
 import br.com.control.cadastro.sincronismo.SincronismoCadastroService;
 import br.com.control.portal.enums.CadastrosEnum;
 import br.com.control.portal.enums.StatusPedidoEnum;
 import br.com.control.portal.mensageria.to.HistoricoPedidoCapaTO;
 import br.com.control.portal.mensageria.to.HistoricoPedidoItemTO;
+import br.com.control.portal.mensageria.to.PedidoPendenteLiberacaoTO;
 import br.com.control.portal.mensageria.to.StatusAcompanhamentoPedidoTO;
 import br.com.control.vendas.cadastro.modelo.pedido.HistoricoPedidoCapa;
 import br.com.control.vendas.cadastro.modelo.pedido.HistoricoPedidoItem;
+import br.com.control.vendas.cadastro.modelo.pedido.PedidoPendenteLiberacao;
 
 @Component
 public class AcompanhamentoPedidoConsumer extends ERPConsumer {
@@ -41,6 +44,10 @@ public class AcompanhamentoPedidoConsumer extends ERPConsumer {
 	@Autowired
 	private SincronismoCadastroService sincronismoCadastroService;
 	
+	
+	@Autowired
+	private PedidoPendenteLiberacaoService pedidoPendenteLiberacaoService;
+	
 
 	@JmsListener(destination = "VW_ACOMPANHAMENTO_PEDIDO", containerFactory = "jmsListenerContainerFactoryJControl")
 	public void sinalizaStatusPedido(final Message<String> message) throws JMSException {
@@ -50,9 +57,32 @@ public class AcompanhamentoPedidoConsumer extends ERPConsumer {
 		if(statusAcompanhamentoTO != null && recuperaStatusDoPedido(statusAcompanhamentoTO) == StatusPedidoEnum.ANALISE){
 			sinalizaHistoricoPedidoAprovado(codigoErp);
 		}
+		
+		if(statusAcompanhamentoTO != null && statusAcompanhamentoTO.pedidoEstaBloquado()) {
+			sinalizaPedidoPendenteLiberacao(codigoErp);
+		}
+		
 	
 	}
 	
+	private void sinalizaPedidoPendenteLiberacao(String codigoErp) {
+		log.info("### VW_PEDIDO_PENDENTE_LIBERACAO: "+codigoErp);
+		
+		
+		PedidoPendenteLiberacao pedidoPendenteLiberacao = pedidoPendenteLiberacaoService
+				.recuperarPedidoPendenteLiberacao(codigoErp);
+
+		if (pedidoPendenteLiberacao == null) {
+			log.warn("Pedido com codigo: " + codigoErp + " nao encontrado no DBMaker!");
+			return;
+		}
+
+		PedidoPendenteLiberacaoTO pedidoPendenteLiberacaoTO = new PedidoPendenteLiberacaoTO(pedidoPendenteLiberacao);
+		sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.PEDIDO_PENDENTE_LIBERACAO), pedidoPendenteLiberacaoTO,
+				"Pedido Pendente Liberação");
+		
+	}
+
 	public StatusPedidoEnum recuperaStatusDoPedido(StatusAcompanhamentoPedidoTO status) {
 		if (status.getSituacaoPedidoErp() != null && status.getSituacaoPedidoErp().equals("8")) {
 			return StatusPedidoEnum.ENTREGUE;
@@ -92,8 +122,6 @@ public class AcompanhamentoPedidoConsumer extends ERPConsumer {
 
 			historicoPedidoCapaTO.setHistoricoPedidoItens(historicoPedidoItensTO);
 		}
-
-		
 
 		sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.HISTORICO_PEDIDO_CAPA), historicoPedidoCapaTO,
 				"Historico Pedido Capa");
