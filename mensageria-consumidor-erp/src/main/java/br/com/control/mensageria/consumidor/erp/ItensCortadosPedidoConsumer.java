@@ -43,7 +43,7 @@ public class ItensCortadosPedidoConsumer extends ERPConsumer {
 		
 		List<PedidoItemCortado> itensCortados = pedidoItemCortadoService.recuperarItensCordados(Integer.valueOf(codigoEmpresaErp), codigoPrePedidoErp);
 
-		if (itensCortados == null) {
+		if (itensCortados == null || itensCortados.isEmpty()) {
 			String msg = "Nao foram encontrados itens cortados para codigo: " + codigoErp + " no DBMaker!";
 			log.warn(msg);
 			return;
