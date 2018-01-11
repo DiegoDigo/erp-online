@@ -19,7 +19,6 @@ import br.com.control.cadastro.ClienteEnderecoService;
 import br.com.control.cadastro.ClienteService;
 import br.com.control.cadastro.ComodatoService;
 import br.com.control.cadastro.CondicaoPagamentoService;
-import br.com.control.cadastro.DetalheComboProdutoService;
 import br.com.control.cadastro.FamiliaService;
 import br.com.control.cadastro.GrupoService;
 import br.com.control.cadastro.HistoricoPedidoCapaService;
@@ -55,7 +54,6 @@ import br.com.control.portal.mensageria.to.ClienteEnderecoTO;
 import br.com.control.portal.mensageria.to.ClienteTO;
 import br.com.control.portal.mensageria.to.ComodatoTO;
 import br.com.control.portal.mensageria.to.CondicaoPagamentoTO;
-import br.com.control.portal.mensageria.to.DetalheComboProdutoTO;
 import br.com.control.portal.mensageria.to.FamiliaTO;
 import br.com.control.portal.mensageria.to.GrupoTO;
 import br.com.control.portal.mensageria.to.HistoricoPedidoCapaTO;
@@ -99,7 +97,6 @@ import br.com.control.vendas.cadastro.modelo.preco.BandaPreco;
 import br.com.control.vendas.cadastro.modelo.preco.BandaPrecoItem;
 import br.com.control.vendas.cadastro.modelo.preco.Preco;
 import br.com.control.vendas.cadastro.modelo.produto.Categoria;
-import br.com.control.vendas.cadastro.modelo.produto.DetalheComboProduto;
 import br.com.control.vendas.cadastro.modelo.produto.Familia;
 import br.com.control.vendas.cadastro.modelo.produto.Grupo;
 import br.com.control.vendas.cadastro.modelo.produto.Marca;
@@ -141,9 +138,6 @@ public class SinalizadorPortalController extends AbstractController {
 
 	@Autowired
 	private TipoCobrancaService tipoCobrancaService;
-
-	@Autowired
-	private DetalheComboProdutoService detalheProdutoComboService;
 
 	@Autowired
 	private CondicaoPagamentoService condicaoPagamentoService;
