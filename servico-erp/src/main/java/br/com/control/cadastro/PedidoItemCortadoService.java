@@ -18,8 +18,8 @@ public class PedidoItemCortadoService {
 		return pedidoItemCortadoDao.listar();
 	}
 
-	public List<PedidoItemCortado> recuperarItensCordados(String numeroPrePedido) {
-		return pedidoItemCortadoDao.recuperarItensCortados(numeroPrePedido);
+	public List<PedidoItemCortado> recuperarItensCordados(int codigoEmpresa, String numeroPrePedido) {
+		return pedidoItemCortadoDao.recuperarItensCortados(codigoEmpresa, numeroPrePedido);
 	}
 
 }

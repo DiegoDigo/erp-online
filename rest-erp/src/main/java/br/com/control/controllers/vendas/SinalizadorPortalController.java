@@ -855,11 +855,12 @@ public class SinalizadorPortalController extends AbstractController {
 		logger.info("### SINALIZADOR -> ITENS CORTADOS ###");
 
 		String numeroPrepedido = sinalizadorPortalService.retornaCodigoERP(mensagem);
+		int codigoEmpresa = 061;
 
 		logger.info("--> Pré-Pedido: " + numeroPrepedido);
 		logger.info("------------------------------------------------------");
 
-		List<PedidoItemCortado> itensCortados = pedidoItemCortadoService.recuperarItensCordados(numeroPrepedido);
+		List<PedidoItemCortado> itensCortados = pedidoItemCortadoService.recuperarItensCordados(codigoEmpresa, numeroPrepedido);
 
 		if (itensCortados == null) {
 			String msg = "Paroco com codigo: " + numeroPrepedido + " nao encontrado no DBMaker!";

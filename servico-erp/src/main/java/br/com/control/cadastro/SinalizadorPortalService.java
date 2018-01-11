@@ -1,5 +1,7 @@
 package br.com.control.cadastro;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -20,5 +22,5 @@ public class SinalizadorPortalService {
 		
 		return codigoErp;
 	}
-	
+		
 }
