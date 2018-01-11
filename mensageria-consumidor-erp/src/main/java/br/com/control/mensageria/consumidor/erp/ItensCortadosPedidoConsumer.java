@@ -36,7 +36,7 @@ public class ItensCortadosPedidoConsumer extends ERPConsumer {
 		
 		String codigoErp = message.getPayload();
 		String codigoEmpresaErp = codigoErp.substring(0, 3);
-		String codigoPrePedidoErp = codigoErp.substring(3, 14);
+		String codigoPrePedidoErp = codigoErp.substring(3, 15);
 		
 		
 		log.info("VW_ITEM_CORTADO_PRE_PEDIDO: "+codigoErp);

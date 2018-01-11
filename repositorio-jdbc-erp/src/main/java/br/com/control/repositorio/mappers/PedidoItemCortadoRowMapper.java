@@ -17,7 +17,7 @@ public class PedidoItemCortadoRowMapper implements RowMapper<PedidoItemCortado> 
 		itemCortado.setQuantidadeCaixa(rs.getInt("QTDS_PRODUTO"));
 		itemCortado.setQuantidadeAvulsa(rs.getInt("QTD_PRODUTO"));
 		itemCortado.setMotivo(rs.getString("MOTIVO"));
-		System.out.println("PedidoItemCortado RowMapper: " + rowNum);
+		itemCortado.setItem(rs.getInt("ITEM"));
 		return itemCortado;
 	}
 
