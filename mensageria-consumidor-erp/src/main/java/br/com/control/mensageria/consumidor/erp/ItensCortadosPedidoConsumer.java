@@ -28,14 +28,20 @@ public class ItensCortadosPedidoConsumer extends ERPConsumer {
 	
 	@Autowired
 	private PedidoItemCortadoService pedidoItemCortadoService;
-	
+		
 
 	@JmsListener(destination = "VW_ITEM_CORTADO_PRE_PEDIDO", containerFactory = "jmsListenerContainerFactoryJControl")
 	public void sinalizaStatusPedido(final Message<String> message) throws JMSException {
+		
+		
 		String codigoErp = message.getPayload();
+		String codigoEmpresaErp = codigoErp.substring(0, 3);
+		String codigoPrePedidoErp = codigoErp.substring(3, 14);
+		
+		
 		log.info("VW_ITEM_CORTADO_PRE_PEDIDO: "+codigoErp);
 		
-		List<PedidoItemCortado> itensCortados = pedidoItemCortadoService.recuperarItensCordados(codigoErp);
+		List<PedidoItemCortado> itensCortados = pedidoItemCortadoService.recuperarItensCordados(Integer.valueOf(codigoEmpresaErp), codigoPrePedidoErp);
 
 		if (itensCortados == null) {
 			String msg = "Nao foram encontrados itens cortados para codigo: " + codigoErp + " no DBMaker!";
