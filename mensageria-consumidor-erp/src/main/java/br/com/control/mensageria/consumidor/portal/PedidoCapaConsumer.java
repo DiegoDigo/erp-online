@@ -38,7 +38,8 @@ public class PedidoCapaConsumer {
 	public void receiveMessage(final Message<PedidoCapaTO> message) throws JMSException {
 		PedidoCapaTO pedidoCapa = message.getPayload();
 
-		log.info("### RECEBIDO DA FILA O PEDIDO " + pedidoCapa.getRecId() + " VINDO DO "+pedidoCapa.getOrigem()+"###");
+		log.info("___________________________________________________________");
+		log.info("### RECEBIDO DA FILA O PEDIDO " + pedidoCapa.getRecId() + " VINDO DO "+pedidoCapa.getOrigem()+" ###");
 		log.info("--> capa recebida: " + pedidoCapa);
 
 		try {
@@ -48,16 +49,16 @@ public class PedidoCapaConsumer {
 			if (capaTO != null) {
 				for (PedidoItemTO item : pedidoCapa.getItens()) {
 					item.setNumeroPrePedidoGestao(Long.valueOf(capaTO.getNumeroPedidoGestao()));
-					pedidoItemService.salvarItem(item);
+					pedidoItemService.salvarItem(item, capaTO.getNumeroPedidoGestao());
 				}
-
-				log.info("--> numero pre-pedido gerado no erp: " + capaTO.getNumeroPedidoGestao());
 
 				StatusAcompanhamentoPedidoTO status = new StatusAcompanhamentoPedidoTO();
 				status.setNumeroPrePedidoErp(capaTO.getNumeroPedidoGestao());
 				status.setRecId(capaTO.getRecId());
-
 				log.info("--> status pedido: " + status.recuperaStatus());
+				log.info("___________________________________________________________");
+
+
 				producer.sendMessage(status);
 
 				ObjectMapper mapper = new ObjectMapper();

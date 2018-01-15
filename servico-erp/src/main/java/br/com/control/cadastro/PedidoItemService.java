@@ -13,8 +13,8 @@ public class PedidoItemService {
 	@Autowired
 	private PedidoItemDao pedidoItemDao;
 
-	public AcompanhamentoPedidoTO salvarItem(PedidoItemTO pedidoItem) {
-		return pedidoItemDao.salvarItemPedido(pedidoItem);
+	public AcompanhamentoPedidoTO salvarItem(PedidoItemTO pedidoItem, String numeroPrePedido) {
+		return pedidoItemDao.salvarItemPedido(pedidoItem, numeroPrePedido);
 	}
 	
 }

@@ -16,12 +16,13 @@
 
 	<appender name="dailyRollingFileAppender"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<File>${LOG_PATH}/servicos-erp.log</File>
+		<File>${LOG_PATH}/erp-online.log</File>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<!-- daily rollover -->
-			<FileNamePattern>${LOG_PATH}/log_erp_dia.%d{dd-MM-yyyy}.log</FileNamePattern>
+			<FileNamePattern>${LOG_PATH}/erp-online.%d{yyyy-MM-dd-HH}.%i.log</FileNamePattern>
+	        <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+	            <maxFileSize>100000KB</maxFileSize>
+	        </timeBasedFileNamingAndTriggeringPolicy>
 
-			<!-- keep 30 days' worth of history -->
 			<maxHistory>30</maxHistory>
 		</rollingPolicy>
 

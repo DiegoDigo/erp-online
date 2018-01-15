@@ -22,7 +22,7 @@ public class PedidoCapaDao extends JdbcDao<PedidoCapaTO> {
 
 		AcompanhamentoPedidoTO pedidoTO = new AcompanhamentoPedidoTO();
 		try {
-			logger.info("### PREPARANDO CHAMADA PROCEDURE: "+ProcedureIntegracao.INSERT_CAPA_PRE_PEDIDO.getProcedure());
+			logger.info("### CHAMANDO PROCEDURE PEDIDO CAPA");
 			CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERT_CAPA_PRE_PEDIDO);
 			preparaExecucaoProcedure(pedido, stmt);
 			pedidoTO.setRecId(pedido.getRecId());

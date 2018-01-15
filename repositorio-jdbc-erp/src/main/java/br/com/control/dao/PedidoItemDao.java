@@ -17,15 +17,13 @@ public class PedidoItemDao extends JdbcDao<PedidoItem> {
 
 	private static final Logger logger = LoggerFactory.getLogger(PedidoItemDao.class);
 	
-	public AcompanhamentoPedidoTO salvarItemPedido(PedidoItemTO pedidoItem) {
+	public AcompanhamentoPedidoTO salvarItemPedido(PedidoItemTO pedidoItem, String numeroPrePedido) {
 
 		try {
-			logger.info("### PREPARANDO CHAMADA PROCEDURE: "+ProcedureIntegracao.INSERT_ITEM_PRE_PEDIDO.getProcedure());
+			logger.info("--> CHAMANDO PROCEDURE ITEM: "+pedidoItem.getSequenciaItem()+" PARA PRE PEDIDO: "+numeroPrePedido);
 			CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERT_ITEM_PRE_PEDIDO);
 			preparaExecucaoProcedure(pedidoItem, stmt);
 
-			logger.info("--> STATUS RETORNO PEDIDO ITEM: " + String.valueOf(stmt.getInt(37)));
-			logger.info("--> MENSAGEM RETORNO PEDIDO ITEM: " + String.valueOf(stmt.getString(38)));
 			
 			stmt.close();
 		} catch (SQLException | RuntimeException e) {
