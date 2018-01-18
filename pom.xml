@@ -213,6 +213,14 @@
 				<artefato.nome>erp-online-6461</artefato.nome>
 			</properties>
 		</profile>
+		<profile>
+			<id>2016</id>
+			<properties>
+				<packaging.type>war</packaging.type>
+				<server.url>C:\PortalVendasWeb\ambientes\2016\</server.url>
+				<artefato.nome>erp-online-2016</artefato.nome>
+			</properties>
+		</profile>
 	</profiles>
 
 
