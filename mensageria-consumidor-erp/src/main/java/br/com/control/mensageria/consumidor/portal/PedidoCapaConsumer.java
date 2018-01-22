@@ -34,7 +34,7 @@ public class PedidoCapaConsumer {
 	@Autowired
 	private PedidoCapaProducer producer;
 
-	@JmsListener(destination = "${portal_ambiente}_pedidos")
+	@JmsListener(destination = "${prefixo_ambiente_fila}_pedidos")
 	public void receiveMessage(final Message<PedidoCapaTO> message) throws JMSException {
 		PedidoCapaTO pedidoCapa = message.getPayload();
 

@@ -27,7 +27,7 @@ public class AlteracaoDadosCadastraisEnderecoConsumer {
 	@Autowired
 	private ClienteEnderecoService clienteEnderecoService;
 	
-	@JmsListener(destination = "${portal_ambiente}_alteracao_dados_cadastrais_endereco")
+	@JmsListener(destination = "${prefixo_ambiente_fila}_alteracao_dados_cadastrais_endereco")
 	public void receiveMessage(final Message<ClienteEnderecoTO> message) throws JMSException {
 		@SuppressWarnings("unchecked")
 		List<ClienteEnderecoTO> clienteEnderecoTOs = (List<ClienteEnderecoTO>) message.getPayload();

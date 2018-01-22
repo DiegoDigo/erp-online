@@ -20,13 +20,13 @@ import org.springframework.transaction.PlatformTransactionManager;
 @Configuration
 public class MessagingConfiguration {
 
-	@Value("${default_url_broker}")
+	@Value("${fila_portal_erp_online}")
 	public String FILA_PORTAL;
 	
-	@Value("${fila_jcontrol}")
+	@Value("${fila_jcontrol_erp_online}")
 	public String FILA_JCONTROL;
 	
-	@Value("${portal_ambiente}")
+	@Value("${prefixo_ambiente_fila}")
 	private String ambiente;
 	
 	@Resource
