@@ -138,6 +138,7 @@ public class JdbcDao<T> {
 
 	public void closeConnection() {
 		try {
+			logger.info("ERP-ONKINE ***** FECHANDO A CONEXÃO COM O DBMAKER *****");
 			connection.close();
 		} catch (SQLException e) {
 			logger.error("Erro ao Fechar a conexão com o BANCO: " + e);
