@@ -10,6 +10,16 @@ public class Paroco implements Serializable {
 	private String codigoClienteErp;
 
 	private String codigoEmpresaErp;
+	
+	private String senhaLiberacaoPedido;
+	
+	public String getSenhaLiberacaoPedido() {
+		return senhaLiberacaoPedido;
+	}
+
+	public void setSenhaLiberacaoPedido(String senhaLiberacaoPedido) {
+		this.senhaLiberacaoPedido = senhaLiberacaoPedido;
+	}
 
 	public String getCodigoTabelaPreco() {
 		return codigoTabelaPreco;

@@ -15,6 +15,16 @@ public class ParocoTO implements Serializable {
 	private String codigoClienteErp;
 
 	private String codigoEmpresaErp;
+	
+	private String senhaLiberacaoPedido;
+	
+	public String getSenhaLiberacaoPedido() {
+		return senhaLiberacaoPedido;
+	}
+
+	public void setSenhaLiberacaoPedido(String senhaLiberacaoPedido) {
+		this.senhaLiberacaoPedido = senhaLiberacaoPedido;
+	}
 
 	public ParocoTO() {
 	}
@@ -28,6 +38,7 @@ public class ParocoTO implements Serializable {
 		this.setCodigoEmpresaErp(paroco.getCodigoEmpresaErp());
 		this.setCodigoTabelaPreco(paroco.getCodigoTabelaPreco());
 		this.setCodigoClienteErp(paroco.getCodigoClienteErp());
+		this.setSenhaLiberacaoPedido(paroco.getSenhaLiberacaoPedido());
 	}
 
 	public String getCodigoErp() {
