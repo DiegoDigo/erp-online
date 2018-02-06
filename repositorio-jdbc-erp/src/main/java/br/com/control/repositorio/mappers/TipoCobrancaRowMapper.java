@@ -18,6 +18,16 @@ public class TipoCobrancaRowMapper implements RowMapper<TipoCobranca> {
 		tipoCobranca.setRed(rs.getInt("red"));
 		tipoCobranca.setRedF(rs.getInt("red_f"));
 		tipoCobranca.setAtivo(rs.getBoolean("ativo"));
+		tipoCobranca.setTiposCobrancasPermitidos(rs.getInt("PERM01") + ";" 
+				+ rs.getInt("PERM02") + ";" 
+				+ rs.getInt("PERM03") + ";" 
+				+ rs.getInt("PERM04") + ";" 
+				+ rs.getInt("PERM05") + ";" 
+				+ rs.getInt("PERM06") + ";"
+				+ rs.getInt("PERM07") + ";" 
+				+ rs.getInt("PERM08") + ";" 
+				+ rs.getInt("PERM09"));
+
 		return tipoCobranca;
 	}
 

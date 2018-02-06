@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 import br.com.control.vendas.cadastro.modelo.tipoCobranca.TipoCobranca;
 
+/**
+ * @author rasa.lariguet
+ *
+ */
 public class TipoCobrancaTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -14,6 +18,15 @@ public class TipoCobrancaTO implements Serializable {
 	private Integer prazo;
 	private Integer red;
 	private Integer redF;
+	private String tiposCobrancasPermitidos;
+
+	public String getTiposCobrancasPermitidos() {
+		return tiposCobrancasPermitidos;
+	}
+
+	public void setTiposCobrancasPermitidos(String tiposCobrancasPermitidos) {
+		this.tiposCobrancasPermitidos = tiposCobrancasPermitidos;
+	}
 
 	public Boolean getAtivo() {
 		return ativo;
@@ -73,6 +86,7 @@ public class TipoCobrancaTO implements Serializable {
 		this.setPrazo(tipoCobranca.getPrazo());
 		this.setRed(tipoCobranca.getRed());
 		this.setRedF(tipoCobranca.getRedF());
+		this.setTiposCobrancasPermitidos(tipoCobranca.getTiposCobrancasPermitidos());
 
 	}
 }
