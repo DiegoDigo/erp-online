@@ -3,7 +3,7 @@ package br.com.control.vendas.cadastro.modelo.pedido;
 public class HistoricoPedidoItem {
 
 	private String numeroItemPedido;
-	private float precoProduto;
+	private float precoItemTotal;
 	private Integer quantidadeAvulsa;
 	private Integer quantidadeCaixa;
 	private String codigoOcorrenciaErp;
@@ -19,12 +19,13 @@ public class HistoricoPedidoItem {
 		this.numeroItemPedido = numeroItemPedido;
 	}
 
-	public float getPrecoProduto() {
-		return precoProduto;
+	
+	public float getPrecoItemTotal() {
+		return precoItemTotal;
 	}
 
-	public void setPrecoProduto(float precoProduto) {
-		this.precoProduto = precoProduto;
+	public void setPrecoItemTotal(float precoItemTotal) {
+		this.precoItemTotal = precoItemTotal;
 	}
 
 	public Integer getQuantidadeAvulsa() {

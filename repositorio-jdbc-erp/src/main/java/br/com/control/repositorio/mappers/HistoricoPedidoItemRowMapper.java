@@ -16,7 +16,7 @@ public class HistoricoPedidoItemRowMapper implements RowMapper<HistoricoPedidoIt
 		historico.setNumeroItemPedido(rs.getString("numero_item_pedido"));
 		historico.setCodigoOcorrenciaErp(rs.getString("codigo_ocorrencia_rec_id"));
 		historico.setCodigoPrecoErp(rs.getString("codigo_tabela_preco_rec_id"));
-		historico.setPrecoProduto(rs.getFloat("preco_produto"));
+		historico.setPrecoItemTotal(rs.getFloat("preco_item_total"));
 		historico.setCodigoProdutoErp(rs.getString("codigo_produto_rec_id"));
 		historico.setQuantidadeAvulsa(rs.getInt("quantidade_avulsa"));
 		historico.setQuantidadeCaixa(rs.getInt("quantidade_caixa"));
