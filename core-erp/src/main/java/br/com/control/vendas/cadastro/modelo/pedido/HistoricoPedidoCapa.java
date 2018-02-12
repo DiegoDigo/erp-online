@@ -18,11 +18,45 @@ public class HistoricoPedidoCapa implements Serializable {
 	private float taxaFinanceira;
 	private float valorDevolucao;
 	private float valorPedido;
-	private String codigoClienteERP;
-	private String condicaoPagamentoERP;
-	private String tipoCobrancaERP;
+	private String codigoClienteErp;
+	private String cnpjCpf;
+	private String razaoSocial;
+	private String condicaoPagamentoErp;
+	private String descricaoCondicaoPagamento;
+	private String tipoCobrancaErp;
+	private String descricaoTipoCobranca;
 
+	public String getCnpjCpf() {
+		return cnpjCpf;
+	}
 
+	public void setCnpjCpf(String cnpjCpf) {
+		this.cnpjCpf = cnpjCpf;
+	}
+
+	public String getRazaoSocial() {
+		return razaoSocial;
+	}
+
+	public void setRazaoSocial(String razaoSocial) {
+		this.razaoSocial = razaoSocial;
+	}
+
+	public String getDescricaoCondicaoPagamento() {
+		return descricaoCondicaoPagamento;
+	}
+
+	public void setDescricaoCondicaoPagamento(String descricaoCondicaoPagamento) {
+		this.descricaoCondicaoPagamento = descricaoCondicaoPagamento;
+	}
+
+	public String getDescricaoTipoCobranca() {
+		return descricaoTipoCobranca;
+	}
+
+	public void setDescricaoTipoCobranca(String descricaoTipoCobranca) {
+		this.descricaoTipoCobranca = descricaoTipoCobranca;
+	}
 
 	public Boolean getAtivo() {
 		return ativo;
@@ -112,29 +146,30 @@ public class HistoricoPedidoCapa implements Serializable {
 		this.valorPedido = valorPedido;
 	}
 
-	public String getCodigoClienteERP() {
-		return codigoClienteERP;
+	public String getCodigoClienteErp() {
+		return codigoClienteErp;
 	}
 
-	public void setCodigoClienteERP(String codigoClienteERP) {
-		this.codigoClienteERP = codigoClienteERP;
+	public void setCodigoClienteErp(String codigoClienteErp) {
+		this.codigoClienteErp = codigoClienteErp;
 	}
 
-	public String getCondicaoPagamentoERP() {
-		return condicaoPagamentoERP;
+	public String getCondicaoPagamentoErp() {
+		return condicaoPagamentoErp;
 	}
 
-	public void setCondicaoPagamentoERP(String condicaoPagamentoERP) {
-		this.condicaoPagamentoERP = condicaoPagamentoERP;
+	public void setCondicaoPagamentoErp(String condicaoPagamentoErp) {
+		this.condicaoPagamentoErp = condicaoPagamentoErp;
 	}
 
-	public String getTipoCobrancaERP() {
-		return tipoCobrancaERP;
+	public String getTipoCobrancaErp() {
+		return tipoCobrancaErp;
 	}
 
-	public void setTipoCobrancaERP(String tipoCobrancaERP) {
-		this.tipoCobrancaERP = tipoCobrancaERP;
+	public void setTipoCobrancaErp(String tipoCobrancaErp) {
+		this.tipoCobrancaErp = tipoCobrancaErp;
 	}
+
 
 	
 

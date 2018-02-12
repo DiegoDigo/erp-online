@@ -16,6 +16,24 @@ public class HistoricoPedidoItemTO implements Serializable {
 	private String codigoPrecoErp;
 	private String codigoProdutoErp;
 	private String historicoPedidoCapaErp;
+	private String descricaoProduto;
+	private String descricaoOcorrencia;
+	
+	public String getDescricaoProduto() {
+		return descricaoProduto;
+	}
+
+	public void setDescricaoProduto(String descricaoProduto) {
+		this.descricaoProduto = descricaoProduto;
+	}
+
+	public String getDescricaoOcorrencia() {
+		return descricaoOcorrencia;
+	}
+
+	public void setDescricaoOcorrencia(String descricaoOcorrencia) {
+		this.descricaoOcorrencia = descricaoOcorrencia;
+	}
 
 	public String getNumeroItemPedido() {
 		return numeroItemPedido;
@@ -91,8 +109,7 @@ public class HistoricoPedidoItemTO implements Serializable {
 		this.codigoPrecoErp = historicoPedidoItem.getCodigoPrecoErp();
 		this.codigoProdutoErp = historicoPedidoItem.getCodigoProdutoErp();
 		this.historicoPedidoCapaErp = historicoPedidoItem.getHistoricoPedidoCapaErp();
+		this.descricaoOcorrencia = historicoPedidoItem.getDescricaoOcorrencia();
+		this.descricaoProduto = historicoPedidoItem.getDescricaoProduto();
 	}
-	
-	
-
 }

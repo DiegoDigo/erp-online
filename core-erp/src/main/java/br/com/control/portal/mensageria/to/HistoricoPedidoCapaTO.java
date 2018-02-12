@@ -23,9 +23,46 @@ public class HistoricoPedidoCapaTO implements Serializable {
 	private float taxaFinanceira;
 	private float valorDevolucao;
 	private float valorPedido;
-	private String codigoClienteERP;
-	private String condicaoPagamentoERP;
-	private String tipoCobrancaERP;
+	private String codigoClienteErp;
+	private String condicaoPagamentoErp;
+	private String tipoCobrancaErp;
+	public String getCnpjCpf() {
+		return cnpjCpf;
+	}
+
+	public void setCnpjCpf(String cnpjCpf) {
+		this.cnpjCpf = cnpjCpf;
+	}
+
+	public String getRazaoSocial() {
+		return razaoSocial;
+	}
+
+	public void setRazaoSocial(String razaoSocial) {
+		this.razaoSocial = razaoSocial;
+	}
+
+	public String getDescricaoCondicaoPagamento() {
+		return descricaoCondicaoPagamento;
+	}
+
+	public void setDescricaoCondicaoPagamento(String descricaoCondicaoPagamento) {
+		this.descricaoCondicaoPagamento = descricaoCondicaoPagamento;
+	}
+
+	public String getDescricaoTipoCobranca() {
+		return descricaoTipoCobranca;
+	}
+
+	public void setDescricaoTipoCobranca(String descricaoTipoCobranca) {
+		this.descricaoTipoCobranca = descricaoTipoCobranca;
+	}
+
+	private String cnpjCpf;
+	private String razaoSocial;
+	private String descricaoCondicaoPagamento;
+	private String descricaoTipoCobranca;
+	
 
 	private List<HistoricoPedidoItemTO> historicoPedidoItens = new ArrayList<>();
 
@@ -117,30 +154,38 @@ public class HistoricoPedidoCapaTO implements Serializable {
 		this.valorPedido = valorPedido;
 	}
 
-	public String getCodigoClienteERP() {
-		return codigoClienteERP;
+	public String getCodigoClienteErp() {
+		return codigoClienteErp;
 	}
 
-	public void setCodigoClienteERP(String codigoClienteERP) {
-		this.codigoClienteERP = codigoClienteERP;
+	public void setCodigoClienteErp(String codigoClienteErp) {
+		this.codigoClienteErp = codigoClienteErp;
 	}
 
-	public String getCondicaoPagamentoERP() {
-		return condicaoPagamentoERP;
+	public String getCondicaoPagamentoErp() {
+		return condicaoPagamentoErp;
 	}
 
-	public void setCondicaoPagamentoERP(String condicaoPagamentoERP) {
-		this.condicaoPagamentoERP = condicaoPagamentoERP;
+	public void setCondicaoPagamentoErp(String condicaoPagamentoErp) {
+		this.condicaoPagamentoErp = condicaoPagamentoErp;
 	}
 
-	public String getTipoCobrancaERP() {
-		return tipoCobrancaERP;
+	public String getTipoCobrancaErp() {
+		return tipoCobrancaErp;
 	}
 
-	public void setTipoCobrancaERP(String tipoCobrancaERP) {
-		this.tipoCobrancaERP = tipoCobrancaERP;
+	public void setTipoCobrancaErp(String tipoCobrancaErp) {
+		this.tipoCobrancaErp = tipoCobrancaErp;
 	}
 
+	public List<HistoricoPedidoItemTO> getHistoricoPedidoItens() {
+		return historicoPedidoItens;
+	}
+
+	public void setHistoricoPedidoItens(List<HistoricoPedidoItemTO> historicoPedidoItens) {
+		this.historicoPedidoItens = historicoPedidoItens;
+	}
+	
 	public HistoricoPedidoCapaTO() {
 	}
 
@@ -156,17 +201,13 @@ public class HistoricoPedidoCapaTO implements Serializable {
 		this.taxaFinanceira = historicoPedidoCapa.getTaxaFinanceira();
 		this.valorDevolucao = historicoPedidoCapa.getValorDevolucao();
 		this.valorPedido = historicoPedidoCapa.getValorPedido();
-		this.codigoClienteERP = historicoPedidoCapa.getCodigoClienteERP();
-		this.condicaoPagamentoERP = historicoPedidoCapa.getCondicaoPagamentoERP();
-		this.tipoCobrancaERP = historicoPedidoCapa.getTipoCobrancaERP();
-	}
-
-	public List<HistoricoPedidoItemTO> getHistoricoPedidoItens() {
-		return historicoPedidoItens;
-	}
-
-	public void setHistoricoPedidoItens(List<HistoricoPedidoItemTO> historicoPedidoItens) {
-		this.historicoPedidoItens = historicoPedidoItens;
-	}
+		this.codigoClienteErp = historicoPedidoCapa.getCodigoClienteErp();
+		this.condicaoPagamentoErp = historicoPedidoCapa.getCondicaoPagamentoErp();
+		this.tipoCobrancaErp = historicoPedidoCapa.getTipoCobrancaErp();
+		this.cnpjCpf = historicoPedidoCapa.getCnpjCpf();
+		this.razaoSocial = historicoPedidoCapa.getRazaoSocial();
+		this.descricaoTipoCobranca = historicoPedidoCapa.getDescricaoTipoCobranca();
+		this.descricaoCondicaoPagamento = historicoPedidoCapa.getDescricaoCondicaoPagamento();
+	}	
 
 }
