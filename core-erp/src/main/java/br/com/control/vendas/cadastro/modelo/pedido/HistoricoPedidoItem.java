@@ -10,8 +10,8 @@ public class HistoricoPedidoItem {
 	private String codigoPrecoErp;
 	private String codigoProdutoErp;
 	private String historicoPedidoCapaErp;
-	private String descricaoProduto;
-	private String descricaoOcorrencia;
+//	private String descricaoProduto;
+//	private String descricaoOcorrencia;
 
 	public String getNumeroItemPedido() {
 		return numeroItemPedido;
@@ -77,21 +77,21 @@ public class HistoricoPedidoItem {
 		this.historicoPedidoCapaErp = historicoPedidoCapaErp;
 	}
 
-	public String getDescricaoProduto() {
-		return descricaoProduto;
-	}
-
-	public void setDescricaoProduto(String descricaoProduto) {
-		this.descricaoProduto = descricaoProduto;
-	}
-
-	public String getDescricaoOcorrencia() {
-		return descricaoOcorrencia;
-	}
-
-	public void setDescricaoOcorrencia(String descricaoOcorrencia) {
-		this.descricaoOcorrencia = descricaoOcorrencia;
-	}
-	
+//	public String getDescricaoProduto() {
+//		return descricaoProduto;
+//	}
+//
+//	public void setDescricaoProduto(String descricaoProduto) {
+//		this.descricaoProduto = descricaoProduto;
+//	}
+//
+//	public String getDescricaoOcorrencia() {
+//		return descricaoOcorrencia;
+//	}
+//
+//	public void setDescricaoOcorrencia(String descricaoOcorrencia) {
+//		this.descricaoOcorrencia = descricaoOcorrencia;
+//	}
+//	
 	
 }

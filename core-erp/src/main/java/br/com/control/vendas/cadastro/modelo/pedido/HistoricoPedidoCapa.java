@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 
+/**
+ * @author rodrigo.galante
+ *
+ */
 @SuppressWarnings("serial")
 public class HistoricoPedidoCapa implements Serializable {
 
@@ -19,43 +23,70 @@ public class HistoricoPedidoCapa implements Serializable {
 	private float valorDevolucao;
 	private float valorPedido;
 	private String codigoClienteErp;
-	private String cnpjCpf;
-	private String razaoSocial;
+//	private String cnpjCpf;
+//	private String razaoSocial;
 	private String condicaoPagamentoErp;
-	private String descricaoCondicaoPagamento;
+//	private String descricaoCondicaoPagamento;
 	private String tipoCobrancaErp;
-	private String descricaoTipoCobranca;
+//	private String descricaoTipoCobranca;
+	private String notaFiscal;
+	private String serieFiscal;
+	private String chaveEletronica;
 
-	public String getCnpjCpf() {
-		return cnpjCpf;
+//	public String getCnpjCpf() {
+//		return cnpjCpf;
+//	}
+//
+//	public void setCnpjCpf(String cnpjCpf) {
+//		this.cnpjCpf = cnpjCpf;
+//	}
+//
+//	public String getRazaoSocial() {
+//		return razaoSocial;
+//	}
+//
+//	public void setRazaoSocial(String razaoSocial) {
+//		this.razaoSocial = razaoSocial;
+//	}
+//
+//	public String getDescricaoCondicaoPagamento() {
+//		return descricaoCondicaoPagamento;
+//	}
+//
+//	public void setDescricaoCondicaoPagamento(String descricaoCondicaoPagamento) {
+//		this.descricaoCondicaoPagamento = descricaoCondicaoPagamento;
+//	}
+//
+//	public String getDescricaoTipoCobranca() {
+//		return descricaoTipoCobranca;
+//	}
+//
+//	public void setDescricaoTipoCobranca(String descricaoTipoCobranca) {
+//		this.descricaoTipoCobranca = descricaoTipoCobranca;
+//	}
+
+	public String getChaveEletronica() {
+		return chaveEletronica;
 	}
 
-	public void setCnpjCpf(String cnpjCpf) {
-		this.cnpjCpf = cnpjCpf;
+	public void setChaveEletronica(String chaveEletronica) {
+		this.chaveEletronica = chaveEletronica;
 	}
 
-	public String getRazaoSocial() {
-		return razaoSocial;
+	public String getNotaFiscal() {
+		return notaFiscal;
 	}
 
-	public void setRazaoSocial(String razaoSocial) {
-		this.razaoSocial = razaoSocial;
+	public void setNotaFiscal(String notaFiscal) {
+		this.notaFiscal = notaFiscal;
 	}
 
-	public String getDescricaoCondicaoPagamento() {
-		return descricaoCondicaoPagamento;
+	public String getSerieFiscal() {
+		return serieFiscal;
 	}
 
-	public void setDescricaoCondicaoPagamento(String descricaoCondicaoPagamento) {
-		this.descricaoCondicaoPagamento = descricaoCondicaoPagamento;
-	}
-
-	public String getDescricaoTipoCobranca() {
-		return descricaoTipoCobranca;
-	}
-
-	public void setDescricaoTipoCobranca(String descricaoTipoCobranca) {
-		this.descricaoTipoCobranca = descricaoTipoCobranca;
+	public void setSerieFiscal(String serieFiscal) {
+		this.serieFiscal = serieFiscal;
 	}
 
 	public Boolean getAtivo() {
@@ -169,8 +200,4 @@ public class HistoricoPedidoCapa implements Serializable {
 	public void setTipoCobrancaErp(String tipoCobrancaErp) {
 		this.tipoCobrancaErp = tipoCobrancaErp;
 	}
-
-
-	
-
 }

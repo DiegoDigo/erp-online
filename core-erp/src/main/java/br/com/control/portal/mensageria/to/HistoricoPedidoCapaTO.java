@@ -204,10 +204,10 @@ public class HistoricoPedidoCapaTO implements Serializable {
 		this.codigoClienteErp = historicoPedidoCapa.getCodigoClienteErp();
 		this.condicaoPagamentoErp = historicoPedidoCapa.getCondicaoPagamentoErp();
 		this.tipoCobrancaErp = historicoPedidoCapa.getTipoCobrancaErp();
-		this.cnpjCpf = historicoPedidoCapa.getCnpjCpf();
-		this.razaoSocial = historicoPedidoCapa.getRazaoSocial();
-		this.descricaoTipoCobranca = historicoPedidoCapa.getDescricaoTipoCobranca();
-		this.descricaoCondicaoPagamento = historicoPedidoCapa.getDescricaoCondicaoPagamento();
+//		this.cnpjCpf = historicoPedidoCapa.getCnpjCpf();
+//		this.razaoSocial = historicoPedidoCapa.getRazaoSocial();
+//		this.descricaoTipoCobranca = historicoPedidoCapa.getDescricaoTipoCobranca();
+//		this.descricaoCondicaoPagamento = historicoPedidoCapa.getDescricaoCondicaoPagamento();
 	}	
 
 }

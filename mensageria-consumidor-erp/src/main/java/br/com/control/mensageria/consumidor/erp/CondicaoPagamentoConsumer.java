@@ -41,5 +41,4 @@ public class CondicaoPagamentoConsumer extends ERPConsumer{
 		sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.CONDICAO_PAGAMENTO), condicaoPagamentoTO, "Condições de Pagemanto");
 		log.info("--> Condicao Pagamento com codigo: " + codigoErp + " enviado para o Portal!");
 	}
-
 }
