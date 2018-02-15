@@ -26,6 +26,10 @@ public class HistoricoPedidoCapaTO implements Serializable {
 	private String codigoClienteErp;
 	private String condicaoPagamentoErp;
 	private String tipoCobrancaErp;
+	private String notaFiscal;
+	private String serieFiscal;
+	private String chaveEletronica;
+	
 	public String getCnpjCpf() {
 		return cnpjCpf;
 	}
@@ -178,6 +182,31 @@ public class HistoricoPedidoCapaTO implements Serializable {
 		this.tipoCobrancaErp = tipoCobrancaErp;
 	}
 
+	public String getNotaFiscal() {
+		return notaFiscal;
+	}
+
+	public void setNotaFiscal(String notaFiscal) {
+		this.notaFiscal = notaFiscal;
+	}
+
+	public String getSerieFiscal() {
+		return serieFiscal;
+	}
+
+	public void setSerieFiscal(String serieFiscal) {
+		this.serieFiscal = serieFiscal;
+	}
+
+	public String getChaveEletronica() {
+		return chaveEletronica;
+	}
+
+	public void setChaveEletronica(String chaveEletronica) {
+		this.chaveEletronica = chaveEletronica;
+	}
+
+
 	public List<HistoricoPedidoItemTO> getHistoricoPedidoItens() {
 		return historicoPedidoItens;
 	}
@@ -196,6 +225,10 @@ public class HistoricoPedidoCapaTO implements Serializable {
 		this.dataVencimento = (Timestamp) historicoPedidoCapa.getDataVencimento();
 		this.descontoFinanceiro = historicoPedidoCapa.getDescontoFinanceiro();
 		this.numeroPedido = historicoPedidoCapa.getNumeroPedido();
+//		this.cnpjCpf = historicoPedidoCapa.getCnpjCpf();
+//		this.razaoSocial = historicoPedidoCapa.getRazaoSocial();
+//		this.descricaoTipoCobranca = historicoPedidoCapa.getDescricaoTipoCobranca();
+//		this.descricaoCondicaoPagamento = historicoPedidoCapa.getDescricaoCondicaoPagamento();		
 		this.percentualDesconto = historicoPedidoCapa.getPercentualDesconto();
 		this.statusPedido = historicoPedidoCapa.getStatusPedido();
 		this.taxaFinanceira = historicoPedidoCapa.getTaxaFinanceira();
@@ -204,10 +237,9 @@ public class HistoricoPedidoCapaTO implements Serializable {
 		this.codigoClienteErp = historicoPedidoCapa.getCodigoClienteErp();
 		this.condicaoPagamentoErp = historicoPedidoCapa.getCondicaoPagamentoErp();
 		this.tipoCobrancaErp = historicoPedidoCapa.getTipoCobrancaErp();
-//		this.cnpjCpf = historicoPedidoCapa.getCnpjCpf();
-//		this.razaoSocial = historicoPedidoCapa.getRazaoSocial();
-//		this.descricaoTipoCobranca = historicoPedidoCapa.getDescricaoTipoCobranca();
-//		this.descricaoCondicaoPagamento = historicoPedidoCapa.getDescricaoCondicaoPagamento();
+		this.notaFiscal = historicoPedidoCapa.getNotaFiscal();
+		this.serieFiscal = historicoPedidoCapa.getSerieFiscal();
+		this.chaveEletronica = historicoPedidoCapa.getChaveEletronica();
 	}	
 
 }
