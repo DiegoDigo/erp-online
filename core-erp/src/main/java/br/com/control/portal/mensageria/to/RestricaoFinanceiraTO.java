@@ -96,7 +96,7 @@ public class RestricaoFinanceiraTO implements Serializable {
 
 	public RestricaoFinanceiraTO(RestricaoFinanceira restricaoFinanceira) {
 		this.setAtivo(restricaoFinanceira.getAtivo());
-		this.setCodigoRestricaoFinanceira(restricaoFinanceira.getCodigoRestricaoFinanceira());
+		this.setCodigoRestricaoFinanceira(restricaoFinanceira.getCodigoRestricaoFinanceiraERP());
 		this.setCodigoTipoCobrancaERP(restricaoFinanceira.getCodigoTipoCobrancaERP());
 		this.setCodigoCondicaoPagamentoERP(restricaoFinanceira.getCodigoCondicaoPagamentoERP());
 		this.setDescontoItem(restricaoFinanceira.getDescontoItem());

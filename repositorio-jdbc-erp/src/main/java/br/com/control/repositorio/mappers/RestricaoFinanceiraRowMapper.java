@@ -13,7 +13,7 @@ public class RestricaoFinanceiraRowMapper implements RowMapper<RestricaoFinancei
 	public RestricaoFinanceira mapRow(ResultSet rs, int rowNum) throws SQLException {
 		RestricaoFinanceira financeira = new RestricaoFinanceira();
 		financeira.setAtivo(rs.getBoolean("ativo"));
-		financeira.setCodigoRestricaoFinanceira(rs.getString("codigo_restricao_financeira"));
+		financeira.setCodigoRestricaoFinanceiraERP(rs.getString("codigo_restricao_financeira"));
 		financeira.setCodigoCondicaoPagamentoERP(rs.getLong("codigo_condicao_pagamento_rec_id"));
 		financeira.setDescontoItem(rs.getFloat("desconto"));
 		financeira.setDescontoMaximo(rs.getFloat("desconto_maximo"));
