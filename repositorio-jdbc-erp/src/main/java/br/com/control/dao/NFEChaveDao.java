@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import br.com.control.portal.integracao.ViewsIntegracaoERP;
@@ -15,8 +13,6 @@ import br.com.control.repositorio.mappers.NFEChaveRowMapper;
 @Repository
 @Transactional
 public class NFEChaveDao extends JdbcDao<NfeChaveTO> {
-
-	private static final Logger logger = LoggerFactory.getLogger(NFEChaveDao.class);
 
 	public List<NfeChaveTO> listaTodos() {
 		String declare = "DECLARE set int @NNF = 0;";
