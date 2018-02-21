@@ -182,7 +182,7 @@
 		</profile>
 
 		<profile>
-			<id>PRD</id>
+			<id>pre_producao</id>
 			<properties>
 				<packaging.type>war</packaging.type>
 				<server.url>C:\PortalIntegracao\tomcat\webapps</server.url>
