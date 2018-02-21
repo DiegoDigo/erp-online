@@ -17,10 +17,10 @@ public class HistroricoPedidoCapaRowMapper implements RowMapper<HistoricoPedidoC
 		try {		
 			historico.setAtivo(rs.getBoolean("ativo"));
 			historico.setCodigoClienteErp(rs.getString("codigo_cliente_rec_id"));
-//			historico.setCnpjCpf(rs.getString("CNPJ_CPF").trim());
-//			historico.setRazaoSocial(rs.getString("RAZAO_CLIENTE").trim());
-//			historico.setDescricaoCondicaoPagamento(rs.getString("DESCRICAO_CONDICAO_PAGAMENTO").trim());
-//			historico.setDescricaoTipoCobranca(rs.getString("DESCRICAO_TIPO_COBRANCA").trim());
+			historico.setCnpjCpf(rs.getString("CNPJ_CPF").trim());
+			historico.setRazaoSocial(rs.getString("RAZAO_CLIENTE").trim());
+			historico.setDescricaoCondicaoPagamento(rs.getString("DESCRICAO_CONDICAO_PAGAMENTO").trim());
+			historico.setDescricaoTipoCobranca(rs.getString("DESCRICAO_TIPO_COBRANCA").trim());
 			historico.setCodigoMotivoDevolucao(rs.getString("codigo_motivo_devolucao").trim());
 			historico.setCondicaoPagamentoErp(rs.getString("codigo_condicao_pagamento_rec_id"));	
 			historico.setDataHoraEmissaoPedido(FormatacaoUtil.converterStringTimeStamp(rs.getString("data_hora_emissao_pedido")));
@@ -34,8 +34,8 @@ public class HistroricoPedidoCapaRowMapper implements RowMapper<HistoricoPedidoC
 			historico.setValorDevolucao(rs.getFloat("valor_devolucao"));
 			historico.setValorPedido(rs.getFloat("valor_pedido"));
 			historico.setSerieFiscal(rs.getString("SFISCAL"));
-			historico.setNotaFiscal(rs.getString("NFISCAL"));
-			historico.setChaveEletronica(rs.getString("CHAVE_ELETRONICA"));
+			historico.setNotaFiscalInicial(rs.getString("NFISCAL_INI"));
+			historico.setNotaFiscalFinal(rs.getString("NFISCAL_ULT"));
 			
 		} catch (ParseException e) {
 			e.printStackTrace();

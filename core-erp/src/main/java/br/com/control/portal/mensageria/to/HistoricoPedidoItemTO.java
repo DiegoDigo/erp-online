@@ -10,30 +10,23 @@ public class HistoricoPedidoItemTO implements Serializable {
 
 	private String numeroItemPedido;
 	private float precoProduto;
+	private float precoItemTotal;
 	private Integer quantidadeAvulsa;
 	private Integer quantidadeCaixa;
 	private String codigoOcorrenciaErp;
 	private String codigoPrecoErp;
 	private String codigoProdutoErp;
 	private String historicoPedidoCapaErp;
-//	private String descricaoProduto;
-//	private String descricaoOcorrencia;
+	private String descricaoProduto;
+	private String descricaoOcorrencia;
 	
-//	public String getDescricaoProduto() {
-//		return descricaoProduto;
-//	}
-//
-//	public void setDescricaoProduto(String descricaoProduto) {
-//		this.descricaoProduto = descricaoProduto;
-//	}
-//
-//	public String getDescricaoOcorrencia() {
-//		return descricaoOcorrencia;
-//	}
-//
-//	public void setDescricaoOcorrencia(String descricaoOcorrencia) {
-//		this.descricaoOcorrencia = descricaoOcorrencia;
-//	}
+	public float getPrecoItemTotal() {
+		return precoItemTotal;
+	}
+
+	public void setPrecoItemTotal(float precoItemTotal) {
+		this.precoItemTotal = precoItemTotal;
+	}
 
 	public String getNumeroItemPedido() {
 		return numeroItemPedido;
@@ -101,6 +94,22 @@ public class HistoricoPedidoItemTO implements Serializable {
 		this.historicoPedidoCapaErp = historicoPedidoCapaErp;
 	}
 
+	public String getDescricaoProduto() {
+		return descricaoProduto;
+	}
+
+	public void setDescricaoProduto(String descricaoProduto) {
+		this.descricaoProduto = descricaoProduto;
+	}
+
+	public String getDescricaoOcorrencia() {
+		return descricaoOcorrencia;
+	}
+
+	public void setDescricaoOcorrencia(String descricaoOcorrencia) {
+		this.descricaoOcorrencia = descricaoOcorrencia;
+	}
+
 	public HistoricoPedidoItemTO(HistoricoPedidoItem historicoPedidoItem) {
 		this.numeroItemPedido = historicoPedidoItem.getNumeroItemPedido();
 		this.quantidadeAvulsa = historicoPedidoItem.getQuantidadeAvulsa();
@@ -108,8 +117,9 @@ public class HistoricoPedidoItemTO implements Serializable {
 		this.codigoOcorrenciaErp = historicoPedidoItem.getCodigoOcorrenciaErp();
 		this.codigoPrecoErp = historicoPedidoItem.getCodigoPrecoErp();
 		this.codigoProdutoErp = historicoPedidoItem.getCodigoProdutoErp();
+		this.precoItemTotal = historicoPedidoItem.getPrecoItemTotal();
 		this.historicoPedidoCapaErp = historicoPedidoItem.getHistoricoPedidoCapaErp();
-//		this.descricaoOcorrencia = historicoPedidoItem.getDescricaoOcorrencia();
-//		this.descricaoProduto = historicoPedidoItem.getDescricaoProduto();
+		this.descricaoOcorrencia = historicoPedidoItem.getDescricaoOcorrencia();
+		this.descricaoProduto = historicoPedidoItem.getDescricaoProduto();
 	}
 }

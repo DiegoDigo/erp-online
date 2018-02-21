@@ -23,62 +23,62 @@ public class HistoricoPedidoCapa implements Serializable {
 	private float valorDevolucao;
 	private float valorPedido;
 	private String codigoClienteErp;
-//	private String cnpjCpf;
-//	private String razaoSocial;
+	private String cnpjCpf;
+	private String razaoSocial;
 	private String condicaoPagamentoErp;
-//	private String descricaoCondicaoPagamento;
+	private String descricaoCondicaoPagamento;
 	private String tipoCobrancaErp;
-//	private String descricaoTipoCobranca;
-	private String notaFiscal;
+	private String descricaoTipoCobranca;
+	private String notaFiscalInicial;
+	private String notaFiscalFinal;
 	private String serieFiscal;
-	private String chaveEletronica;
 
-//	public String getCnpjCpf() {
-//		return cnpjCpf;
-//	}
-//
-//	public void setCnpjCpf(String cnpjCpf) {
-//		this.cnpjCpf = cnpjCpf;
-//	}
-//
-//	public String getRazaoSocial() {
-//		return razaoSocial;
-//	}
-//
-//	public void setRazaoSocial(String razaoSocial) {
-//		this.razaoSocial = razaoSocial;
-//	}
-//
-//	public String getDescricaoCondicaoPagamento() {
-//		return descricaoCondicaoPagamento;
-//	}
-//
-//	public void setDescricaoCondicaoPagamento(String descricaoCondicaoPagamento) {
-//		this.descricaoCondicaoPagamento = descricaoCondicaoPagamento;
-//	}
-//
-//	public String getDescricaoTipoCobranca() {
-//		return descricaoTipoCobranca;
-//	}
-//
-//	public void setDescricaoTipoCobranca(String descricaoTipoCobranca) {
-//		this.descricaoTipoCobranca = descricaoTipoCobranca;
-//	}
-
-	public String getChaveEletronica() {
-		return chaveEletronica;
+	public String getCnpjCpf() {
+		return cnpjCpf;
 	}
 
-	public void setChaveEletronica(String chaveEletronica) {
-		this.chaveEletronica = chaveEletronica;
+	public void setCnpjCpf(String cnpjCpf) {
+		this.cnpjCpf = cnpjCpf;
 	}
 
-	public String getNotaFiscal() {
-		return notaFiscal;
+	public String getRazaoSocial() {
+		return razaoSocial;
 	}
 
-	public void setNotaFiscal(String notaFiscal) {
-		this.notaFiscal = notaFiscal;
+	public void setRazaoSocial(String razaoSocial) {
+		this.razaoSocial = razaoSocial;
+	}
+
+	public String getDescricaoCondicaoPagamento() {
+		return descricaoCondicaoPagamento;
+	}
+
+	public void setDescricaoCondicaoPagamento(String descricaoCondicaoPagamento) {
+		this.descricaoCondicaoPagamento = descricaoCondicaoPagamento;
+	}
+
+	public String getDescricaoTipoCobranca() {
+		return descricaoTipoCobranca;
+	}
+
+	public void setDescricaoTipoCobranca(String descricaoTipoCobranca) {
+		this.descricaoTipoCobranca = descricaoTipoCobranca;
+	}
+
+	public String getNotaFiscalInicial() {
+		return notaFiscalInicial;
+	}
+
+	public void setNotaFiscalInicial(String notaFiscalInicial) {
+		this.notaFiscalInicial = notaFiscalInicial;
+	}
+
+	public String getNotaFiscalFinal() {
+		return notaFiscalFinal;
+	}
+
+	public void setNotaFiscalFinal(String notaFiscalFinal) {
+		this.notaFiscalFinal = notaFiscalFinal;
 	}
 
 	public String getSerieFiscal() {
@@ -116,6 +116,8 @@ public class HistoricoPedidoCapa implements Serializable {
 	public Date getDataVencimento() {
 		return dataVencimento;
 	}
+	
+	
 
 	public void setDataVencimento(Timestamp dataVencimento) {
 		this.dataVencimento = dataVencimento;

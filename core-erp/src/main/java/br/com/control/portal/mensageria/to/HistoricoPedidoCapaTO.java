@@ -26,9 +26,14 @@ public class HistoricoPedidoCapaTO implements Serializable {
 	private String codigoClienteErp;
 	private String condicaoPagamentoErp;
 	private String tipoCobrancaErp;
-	private String notaFiscal;
+	private String notaFiscalInicial;
+	private String notaFiscalFinal;
 	private String serieFiscal;
 	private String chaveEletronica;
+	private String cnpjCpf;
+	private String razaoSocial;
+	private String descricaoCondicaoPagamento;
+	private String descricaoTipoCobranca;	
 	
 	public String getCnpjCpf() {
 		return cnpjCpf;
@@ -61,12 +66,6 @@ public class HistoricoPedidoCapaTO implements Serializable {
 	public void setDescricaoTipoCobranca(String descricaoTipoCobranca) {
 		this.descricaoTipoCobranca = descricaoTipoCobranca;
 	}
-
-	private String cnpjCpf;
-	private String razaoSocial;
-	private String descricaoCondicaoPagamento;
-	private String descricaoTipoCobranca;
-	
 
 	private List<HistoricoPedidoItemTO> historicoPedidoItens = new ArrayList<>();
 
@@ -182,12 +181,20 @@ public class HistoricoPedidoCapaTO implements Serializable {
 		this.tipoCobrancaErp = tipoCobrancaErp;
 	}
 
-	public String getNotaFiscal() {
-		return notaFiscal;
+	public String getNotaFiscalInicial() {
+		return notaFiscalInicial;
 	}
 
-	public void setNotaFiscal(String notaFiscal) {
-		this.notaFiscal = notaFiscal;
+	public void setNotaFiscalInicial(String notaFiscalInicial) {
+		this.notaFiscalInicial = notaFiscalInicial;
+	}
+
+	public String getNotaFiscalFinal() {
+		return notaFiscalFinal;
+	}
+
+	public void setNotaFiscalFinal(String notaFiscalFinal) {
+		this.notaFiscalFinal = notaFiscalFinal;
 	}
 
 	public String getSerieFiscal() {
@@ -225,10 +232,10 @@ public class HistoricoPedidoCapaTO implements Serializable {
 		this.dataVencimento = (Timestamp) historicoPedidoCapa.getDataVencimento();
 		this.descontoFinanceiro = historicoPedidoCapa.getDescontoFinanceiro();
 		this.numeroPedido = historicoPedidoCapa.getNumeroPedido();
-//		this.cnpjCpf = historicoPedidoCapa.getCnpjCpf();
-//		this.razaoSocial = historicoPedidoCapa.getRazaoSocial();
-//		this.descricaoTipoCobranca = historicoPedidoCapa.getDescricaoTipoCobranca();
-//		this.descricaoCondicaoPagamento = historicoPedidoCapa.getDescricaoCondicaoPagamento();		
+		this.cnpjCpf = historicoPedidoCapa.getCnpjCpf();
+		this.razaoSocial = historicoPedidoCapa.getRazaoSocial();
+		this.descricaoTipoCobranca = historicoPedidoCapa.getDescricaoTipoCobranca();
+		this.descricaoCondicaoPagamento = historicoPedidoCapa.getDescricaoCondicaoPagamento();		
 		this.percentualDesconto = historicoPedidoCapa.getPercentualDesconto();
 		this.statusPedido = historicoPedidoCapa.getStatusPedido();
 		this.taxaFinanceira = historicoPedidoCapa.getTaxaFinanceira();
@@ -237,9 +244,9 @@ public class HistoricoPedidoCapaTO implements Serializable {
 		this.codigoClienteErp = historicoPedidoCapa.getCodigoClienteErp();
 		this.condicaoPagamentoErp = historicoPedidoCapa.getCondicaoPagamentoErp();
 		this.tipoCobrancaErp = historicoPedidoCapa.getTipoCobrancaErp();
-		this.notaFiscal = historicoPedidoCapa.getNotaFiscal();
+		this.notaFiscalInicial = historicoPedidoCapa.getNotaFiscalInicial();
+		this.notaFiscalFinal = historicoPedidoCapa.getNotaFiscalFinal();
 		this.serieFiscal = historicoPedidoCapa.getSerieFiscal();
-		this.chaveEletronica = historicoPedidoCapa.getChaveEletronica();
 	}	
 
 }
