@@ -186,7 +186,7 @@
 			<properties>
 				<packaging.type>war</packaging.type>
 				<server.url>C:\PortalIntegracao\tomcat\webapps</server.url>
-				<artefato.nome>erp-online-prd</artefato.nome>
+				<artefato.nome>erp-online-pre_producao</artefato.nome>
 			</properties>
 		</profile>
 		<profile>

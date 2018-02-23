@@ -16,7 +16,7 @@ public class NFEChaveDao extends JdbcDao<NfeChaveTO> {
 
 	public List<NfeChaveTO> listaTodos() {
 		String declare = "DECLARE set int @NNF = 0;";
-		String declare1 = "DECLARE set int @SNF = '';";
+		String declare1 = "DECLARE set char(10) @SNF = '';";
 		getJdbcTemplate().update(declare);
 		getJdbcTemplate().update(declare1);
 		return selectViewSemWhere(ViewsIntegracaoERP.VW_CH_NFISCAL, new NFEChaveRowMapper());
@@ -24,7 +24,7 @@ public class NFEChaveDao extends JdbcDao<NfeChaveTO> {
 
 	public NfeChaveTO recuperaPorNumeroNota(String numeroNFE, String sequencia) {
 		String declare = "DECLARE set int @NNF = "+numeroNFE+";";
-		String declare1 = "DECLARE set int @SNF = '"+sequencia+"';";
+		String declare1 = "DECLARE set char(10) @SNF = '"+sequencia+"';";
 		getJdbcTemplate().update(declare);
 		getJdbcTemplate().update(declare1);
 		return selectViewSingle(ViewsIntegracaoERP.VW_CH_NFISCAL, new NFEChaveRowMapper());
