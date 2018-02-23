@@ -55,7 +55,7 @@ public class AcompanhamentoPedidoConsumer extends ERPConsumer {
 		log.info("VW_ACOMPANHAMENTO_PEDIDO: "+codigoErp);
 		StatusAcompanhamentoPedidoTO statusAcompanhamentoTO = sincronismoAcompanhamentoPedidoService.enviaParaOPortal(codigoErp.trim());
 		if(statusAcompanhamentoTO != null && (recuperaStatusDoPedido(statusAcompanhamentoTO) == StatusPedidoEnum.ANALISE || recuperaStatusDoPedido(statusAcompanhamentoTO) == StatusPedidoEnum.APROVADO)){
-			sinalizaHistoricoPedidoAprovado(codigoErp);
+			sinalizaHistoricoPedidoAprovado(codigoErp, origemPedidoEhPortal(statusAcompanhamentoTO));
 		}
 		
 		if(statusAcompanhamentoTO != null && statusAcompanhamentoTO.pedidoEstaBloquado()) {
@@ -63,6 +63,10 @@ public class AcompanhamentoPedidoConsumer extends ERPConsumer {
 		}
 		
 	
+	}
+
+	private boolean origemPedidoEhPortal(StatusAcompanhamentoPedidoTO statusAcompanhamentoTO) {
+		return statusAcompanhamentoTO.getNumeroPrePedidoErp() != null;
 	}
 	
 	private void sinalizaPedidoPendenteLiberacao(String codigoErp) {
@@ -95,7 +99,7 @@ public class AcompanhamentoPedidoConsumer extends ERPConsumer {
 		}
 	}
 
-	private void sinalizaHistoricoPedidoAprovado(String codigoErp) {
+	private void sinalizaHistoricoPedidoAprovado(String codigoErp, boolean origemPortal) {
 		log.info("### VW_HISTORICO_PEDIDO_CAPA: "+codigoErp);
 
 		HistoricoPedidoCapa historioPedidoCapa = historicoPedidoCapaService.buscarHistoricoCapa(codigoErp);
@@ -105,7 +109,7 @@ public class AcompanhamentoPedidoConsumer extends ERPConsumer {
 			return;
 		}
 
-		HistoricoPedidoCapaTO historicoPedidoCapaTO = new HistoricoPedidoCapaTO(historioPedidoCapa);
+		HistoricoPedidoCapaTO historicoPedidoCapaTO = new HistoricoPedidoCapaTO(historioPedidoCapa, origemPortal);
 
 		List<HistoricoPedidoItem> historicoPedidoItens = historicoPedidoItemService
 				.buscarItemPedido(codigoErp);

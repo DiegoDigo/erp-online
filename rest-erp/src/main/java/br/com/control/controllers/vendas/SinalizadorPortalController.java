@@ -732,7 +732,7 @@ public class SinalizadorPortalController extends AbstractController {
 			return null;
 		}
 
-		HistoricoPedidoCapaTO historicoPedidoCapaTO = new HistoricoPedidoCapaTO(historioPedidoCapa);
+		HistoricoPedidoCapaTO historicoPedidoCapaTO = new HistoricoPedidoCapaTO(historioPedidoCapa, false);
 		// sincronismoCadastoService.enviaParaOPortal(mensagem,
 		// historicoPedidoCapaTO, "Historico Pedido Capa");
 

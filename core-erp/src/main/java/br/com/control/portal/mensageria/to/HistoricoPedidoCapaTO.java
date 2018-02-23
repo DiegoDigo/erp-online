@@ -34,7 +34,16 @@ public class HistoricoPedidoCapaTO implements Serializable {
 	private String razaoSocial;
 	private String descricaoCondicaoPagamento;
 	private String descricaoTipoCobranca;	
+	private boolean origemPortal;
 	
+	public boolean isOrigemPortal() {
+		return origemPortal;
+	}
+
+	public void setOrigemPortal(boolean origemPortal) {
+		this.origemPortal = origemPortal;
+	}
+
 	public String getCnpjCpf() {
 		return cnpjCpf;
 	}
@@ -225,7 +234,7 @@ public class HistoricoPedidoCapaTO implements Serializable {
 	public HistoricoPedidoCapaTO() {
 	}
 
-	public HistoricoPedidoCapaTO(HistoricoPedidoCapa historicoPedidoCapa) {
+	public HistoricoPedidoCapaTO(HistoricoPedidoCapa historicoPedidoCapa, boolean origemPortal) {
 		this.ativo = historicoPedidoCapa.getAtivo();
 		this.codigoMotivoDevolucao = historicoPedidoCapa.getCodigoMotivoDevolucao();
 		this.dataHoraEmissaoPedido = (Timestamp) historicoPedidoCapa.getDataHoraEmissaoPedido();
@@ -247,6 +256,7 @@ public class HistoricoPedidoCapaTO implements Serializable {
 		this.notaFiscalInicial = historicoPedidoCapa.getNotaFiscalInicial();
 		this.notaFiscalFinal = historicoPedidoCapa.getNotaFiscalFinal();
 		this.serieFiscal = historicoPedidoCapa.getSerieFiscal();
+		this.origemPortal = origemPortal;
 	}	
 
 }
