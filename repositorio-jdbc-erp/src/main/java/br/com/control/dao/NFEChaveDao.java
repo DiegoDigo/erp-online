@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import br.com.control.portal.integracao.ViewsIntegracaoERP;
 import br.com.control.portal.mensageria.to.NfeChaveTO;
 import br.com.control.repositorio.mappers.NFEChaveRowMapper;
+import br.com.control.vendas.cadastro.modelo.pedido.ChaveNfe;
 
 @Repository
 @Transactional

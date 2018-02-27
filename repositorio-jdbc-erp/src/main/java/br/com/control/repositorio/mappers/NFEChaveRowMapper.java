@@ -15,8 +15,9 @@ public class NFEChaveRowMapper implements RowMapper<NfeChaveTO> {
 	public NfeChaveTO mapRow(ResultSet rs, int rowNum) throws SQLException {
 
 		NfeChaveTO nfeChave = new NfeChaveTO();
-		nfeChave.setNumeroNFE(rs.getString("VDFATNFR_NNF"));
-		nfeChave.setChaveNFE(rs.getString("VDFATNFR_IDENT_NF"));
+		nfeChave.setNotaFiscalNumero(rs.getString("VDFATNFR_NNF"));
+		nfeChave.setChaveEletronica(rs.getString("VDFATNFR_IDENT_NF"));
+		nfeChave.setSerieFiscal(rs.getString("VDFATNFR_SERIE"));
 		return nfeChave;
 	}
 }
