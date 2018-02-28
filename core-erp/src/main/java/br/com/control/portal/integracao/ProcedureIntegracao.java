@@ -4,6 +4,7 @@ import br.com.control.portal.mensageria.to.ClienteTO;
 import br.com.control.portal.mensageria.to.LiberacaoPedidoTO;
 import br.com.control.portal.mensageria.to.PedidoCapaTO;
 import br.com.control.portal.mensageria.to.PedidoItemTO;
+import br.com.control.portal.mensageria.to.PrePagamentoTO;
 import br.com.control.portal.mensageria.to.VisitaTO;
 
 public enum ProcedureIntegracao {
@@ -23,7 +24,10 @@ public enum ProcedureIntegracao {
 							ClienteTO.class),
 
 	ATUALIZAR_VISITAS(	"SP_CRIA_VISITA",
-						VisitaTO.class);
+						VisitaTO.class),
+
+	PRE_PAGAMENTO(	"SP_PRE_PAGAMENTOS",
+			PrePagamentoTO.class);
 
 	private String procedure;
 	private Class<?> classe;
