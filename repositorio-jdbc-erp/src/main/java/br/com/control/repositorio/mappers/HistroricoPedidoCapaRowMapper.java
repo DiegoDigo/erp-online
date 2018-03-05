@@ -24,7 +24,7 @@ public class HistroricoPedidoCapaRowMapper implements RowMapper<HistoricoPedidoC
 			historico.setCodigoMotivoDevolucao(rs.getString("codigo_motivo_devolucao").trim());
 			historico.setCondicaoPagamentoErp(rs.getString("codigo_condicao_pagamento_rec_id"));	
 			historico.setDataHoraEmissaoPedido(FormatacaoUtil.converterStringTimeStamp(rs.getString("data_hora_emissao_pedido")));
-			historico.setDataVencimento(FormatacaoUtil.converterStringTimeStamp(rs.getString("data_hora_emissao_pedido")));
+			historico.setDataVencimento(FormatacaoUtil.converterStringTimeStamp(rs.getString("data_vencimento")));
 			historico.setDescontoFinanceiro(rs.getInt("desconto_financeiro"));
 			historico.setNumeroPedido(rs.getString("numero_pedido"));
 			historico.setPercentualDesconto(rs.getFloat("percentual_desconto"));
