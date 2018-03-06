@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 import br.com.control.annotation.SequenciaParametrosProcedure;
 
+/**
+ * @author rasa.lariguet
+ *
+ */
 public class PrePagamentoTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -45,8 +49,24 @@ public class PrePagamentoTO implements Serializable {
 	private String codigoOperacao;
 	@SequenciaParametrosProcedure(index = 19)
 	private String numeroBoleto;
+	@SequenciaParametrosProcedure(index = 20, isRetornoProcedure = true)
+	private int statusRetorno;
+	@SequenciaParametrosProcedure(index = 21, isRetornoProcedure = true)
+	private String msgRetorno = "";
 	
 	
+	public int getStatusRetorno() {
+		return statusRetorno;
+	}
+	public void setStatusRetorno(int statusRetorno) {
+		this.statusRetorno = statusRetorno;
+	}
+	public String getMsgRetorno() {
+		return msgRetorno;
+	}
+	public void setMsgRetorno(String msgRetorno) {
+		this.msgRetorno = msgRetorno;
+	}
 	public int getDataPagamento() {
 		return dataPagamento;
 	}
@@ -161,5 +181,18 @@ public class PrePagamentoTO implements Serializable {
 	public void setNumeroBoleto(String numeroBoleto) {
 		this.numeroBoleto = numeroBoleto;
 	}
+	@Override
+	public String toString() {
+		return "PrePagamentoTO [codigoEmpresa=" + codigoEmpresa + ", codigoClienteErp=" + codigoClienteErp
+				+ ", numeroTitulo=" + numeroTitulo + ", tipoLancamento=" + tipoLancamento + ", dataEmissao="
+				+ dataEmissao + ", dataVencimento=" + dataVencimento + ", dataPagamento=" + dataPagamento
+				+ ", valorTitulo=" + valorTitulo + ", valorPagamento=" + valorPagamento + ", percentualJuros="
+				+ percentualJuros + ", valorJuros=" + valorJuros + ", percentualMora=" + percentualMora + ", valorMora="
+				+ valorMora + ", percentualDesconto=" + percentualDesconto + ", valorDesconto=" + valorDesconto
+				+ ", percentualOperacao=" + percentualOperacao + ", valorOperacao=" + valorOperacao
+				+ ", codigoOperacao=" + codigoOperacao + ", numeroBoleto=" + numeroBoleto + "]";
+	}
 
+	
+	
 }

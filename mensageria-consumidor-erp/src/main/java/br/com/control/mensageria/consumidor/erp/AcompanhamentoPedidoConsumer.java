@@ -54,7 +54,7 @@ public class AcompanhamentoPedidoConsumer extends ERPConsumer {
 		String codigoErp = message.getPayload();
 		log.info("VW_ACOMPANHAMENTO_PEDIDO: "+codigoErp);
 		StatusAcompanhamentoPedidoTO statusAcompanhamentoTO = sincronismoAcompanhamentoPedidoService.enviaParaOPortal(codigoErp.trim());
-		if(statusAcompanhamentoTO != null && (recuperaStatusDoPedido(statusAcompanhamentoTO) == StatusPedidoEnum.ANALISE || recuperaStatusDoPedido(statusAcompanhamentoTO) == StatusPedidoEnum.APROVADO)){
+		if(statusAcompanhamentoTO != null && !statusAcompanhamentoTO.getSituacaoPedidoErp().equals("9") && (recuperaStatusDoPedido(statusAcompanhamentoTO) == StatusPedidoEnum.ANALISE || recuperaStatusDoPedido(statusAcompanhamentoTO) == StatusPedidoEnum.APROVADO)){
 			sinalizaHistoricoPedidoAprovado(codigoErp, origemPedidoEhPortal(statusAcompanhamentoTO));
 		}
 		
