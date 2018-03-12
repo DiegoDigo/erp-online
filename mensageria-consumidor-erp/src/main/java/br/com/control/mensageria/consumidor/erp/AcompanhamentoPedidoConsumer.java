@@ -66,7 +66,7 @@ public class AcompanhamentoPedidoConsumer extends ERPConsumer {
 	}
 
 	private boolean origemPedidoEhPortal(StatusAcompanhamentoPedidoTO statusAcompanhamentoTO) {
-		return statusAcompanhamentoTO.getNumeroPrePedidoErp() != null;
+		return statusAcompanhamentoTO.getNumeroPrePedidoErp() != null && !statusAcompanhamentoTO.getNumeroPrePedidoErp().equals("0");
 	}
 	
 	private void sinalizaPedidoPendenteLiberacao(String codigoErp) {
