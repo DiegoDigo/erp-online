@@ -99,12 +99,14 @@ public class PedidoItemTO implements Serializable {
     private String itemValidadoBonificaoAutomatica;
 	@SequenciaParametrosProcedure(index = 36)
     private int horaInicialPedido;
+	@SequenciaParametrosProcedure(index = 37)
+	private String ultimoItem;
 
-
-	@SequenciaParametrosProcedure(index = 37, isRetornoProcedure = true)
-	private int statusRetorno;
 
 	@SequenciaParametrosProcedure(index = 38, isRetornoProcedure = true)
+	private int statusRetorno;
+
+	@SequenciaParametrosProcedure(index = 39, isRetornoProcedure = true)
 	private String msgRetorno;
 
 	public long getRecId() {
@@ -419,6 +421,14 @@ public class PedidoItemTO implements Serializable {
 	public void setHoraInicialPedido(int horaInicialPedido) {
 		this.horaInicialPedido = horaInicialPedido;
 	}
+	
+	public String getUltimoItem() {
+		return ultimoItem;
+	}
+
+	public void setUltimoItem(String ultimoItem) {
+		this.ultimoItem = ultimoItem;
+	}
 
 	@Override
 	public String toString() {
@@ -442,6 +452,7 @@ public class PedidoItemTO implements Serializable {
 				+ msgRetorno + "]";
 	}
 
+	
 	
 	
 }

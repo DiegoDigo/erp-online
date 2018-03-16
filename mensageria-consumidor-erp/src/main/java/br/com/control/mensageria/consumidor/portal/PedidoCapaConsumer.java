@@ -47,9 +47,12 @@ public class PedidoCapaConsumer {
 			AcompanhamentoPedidoTO capaTO = pedidoCapaService.salvarCapa(pedidoCapa);
 
 			if (capaTO != null) {
+				int cont = 1;
 				for (PedidoItemTO item : pedidoCapa.getItens()) {
 					item.setNumeroPrePedidoGestao(Long.valueOf(capaTO.getNumeroPedidoGestao()));
+					item.setUltimoItem(pedidoCapa.getItens().size() == cont ? "S" : "N");
 					pedidoItemService.salvarItem(item, capaTO.getNumeroPedidoGestao());
+					cont++;
 				}
 
 				StatusAcompanhamentoPedidoTO status = new StatusAcompanhamentoPedidoTO();
