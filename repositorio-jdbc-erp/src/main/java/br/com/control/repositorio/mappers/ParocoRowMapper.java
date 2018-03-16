@@ -20,7 +20,7 @@ public class ParocoRowMapper implements RowMapper<Paroco> {
 		paroco.setCodigoTabelaPreco(tabelaPreco);
 		paroco.setCodigoClienteErp(rs.getString("CODIGO_CLIENTE_ERP").trim());
 		paroco.setCodigoEmpresaErp(rs.getString("CODIGO_EMPRESA").trim());
-		paroco.setUsaBandaPreco(rs.getInt("usa-banda-prec"));
+		paroco.setUsaBandaPreco(rs.getInt("USA_BANDEIRA"));
 		paroco.setSenhaLiberacaoPedido(rs.getString("SENHA_LIB") == null ? "" : rs.getString("SENHA_LIB").trim());
 
 //		System.out.println(" --> PAROCO");
