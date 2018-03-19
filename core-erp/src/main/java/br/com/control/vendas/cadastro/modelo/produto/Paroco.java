@@ -15,9 +15,69 @@ public class Paroco implements Serializable {
 	
 	private String senhaLiberacaoPedido;
 	
+    private int restricaFinanceira;
+    
+    private int restricaoComercial;
+    
+    private int bandaFamFamc;
+    
+    private int bandaRegPasta;
+    
+    private int bandaVendedorSupervisorGerente;
+    
+    private int bandaCanCgrpCan;
+	
 	
 	public int getUsaBandaPreco() {
 		return usaBandaPreco;
+	}
+
+	public int getRestricaFinanceira() {
+		return restricaFinanceira;
+	}
+
+	public void setRestricaFinanceira(int restricaFinanceira) {
+		this.restricaFinanceira = restricaFinanceira;
+	}
+
+	public int getRestricaoComercial() {
+		return restricaoComercial;
+	}
+
+	public void setRestricaoComercial(int restricaoComercial) {
+		this.restricaoComercial = restricaoComercial;
+	}
+
+	public int getBandaFamFamc() {
+		return bandaFamFamc;
+	}
+
+	public void setBandaFamFamc(int bandaFamFamc) {
+		this.bandaFamFamc = bandaFamFamc;
+	}
+
+	public int getBandaRegPasta() {
+		return bandaRegPasta;
+	}
+
+	public void setBandaRegPasta(int bandaRegPasta) {
+		this.bandaRegPasta = bandaRegPasta;
+	}
+
+	public int getBandaVendedorSupervisorGerente() {
+		return bandaVendedorSupervisorGerente;
+	}
+
+	public void setBandaVendedorSupervisorGerente(int bandaVendedorSupervisorGerente) {
+		this.bandaVendedorSupervisorGerente = bandaVendedorSupervisorGerente;
+	}
+
+	public int getBandaCanCgrpCan() {
+		return bandaCanCgrpCan;
+	}
+
+	public void setBandaCanCgrpCan(int bandaCanCgrpCan) {
+		this.bandaCanCgrpCan = bandaCanCgrpCan;
 	}
 
 	public void setUsaBandaPreco(int usaBandaPreco) {
