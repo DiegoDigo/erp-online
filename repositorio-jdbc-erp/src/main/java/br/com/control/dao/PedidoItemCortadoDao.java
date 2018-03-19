@@ -16,7 +16,7 @@ public class PedidoItemCortadoDao extends JdbcDao<PedidoItemCortado> {
 		String codemp = "DECLARE set int @codemp = 0;";
 		getJdbcTemplate().update(declare);
 		getJdbcTemplate().update(codemp);
-		return selectViewSemWhere(ViewsIntegracaoERP.VW_ITEM_CORTADO_PREPEDIDO, new PedidoItemCortadoRowMapper());
+		return selectViewSemWhere(ViewsIntegracaoERP.VW_ITEM_CORTADO_PRE_PEDIDO, new PedidoItemCortadoRowMapper());
 	}
 
 	public List<PedidoItemCortado> recuperarItensCortados(int codigo_empresa, String numeroPrePedido) {
@@ -24,7 +24,7 @@ public class PedidoItemCortadoDao extends JdbcDao<PedidoItemCortado> {
 		String codemp = "DECLARE set int @codemp = "  + codigo_empresa + ";";
 		getJdbcTemplate().update(pre_pedido);
 		getJdbcTemplate().update(codemp);
-		return selectViewSemWhere(ViewsIntegracaoERP.VW_ITEM_CORTADO_PREPEDIDO, new PedidoItemCortadoRowMapper());
+		return selectViewSemWhere(ViewsIntegracaoERP.VW_ITEM_CORTADO_PRE_PEDIDO, new PedidoItemCortadoRowMapper());
 	}
 	
 	public Integer count() {
@@ -32,7 +32,7 @@ public class PedidoItemCortadoDao extends JdbcDao<PedidoItemCortado> {
 		String codemp = "DECLARE set int @codemp = 0;";
 		getJdbcTemplate().update(declare);
 		getJdbcTemplate().update(codemp);
-		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_ITEM_CORTADO_PREPEDIDO;
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_ITEM_CORTADO_PRE_PEDIDO;
 		return contaRegistros(sql);
 	}
 }
