@@ -2,7 +2,6 @@ package br.com.control.portal.mensageria.to;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,9 +58,9 @@ public class PedidoCapaTO implements Serializable {
 	@SequenciaParametrosProcedure(index = 22)
 	private String codigoMotivoNaoCompra;
 	@SequenciaParametrosProcedure(index = 23)
-	private BigInteger horaInicialPedido;
+	private Long horaInicialPedido;
 	@SequenciaParametrosProcedure(index = 24)
-	private BigInteger horaFinalPedido;
+	private Long horaFinalPedido;
 	@SequenciaParametrosProcedure(index = 25)
 	private String statusTransmitidoWebService;
 	@SequenciaParametrosProcedure(index = 26)
@@ -484,19 +483,19 @@ public class PedidoCapaTO implements Serializable {
 		this.msgRetorno = msgRetorno;
 	}
 
-	public BigInteger getHoraInicialPedido() {
+	public Long getHoraInicialPedido() {
 		return horaInicialPedido;
 	}
 
-	public void setHoraInicialPedido(BigInteger horaInicialPedido) {
+	public void setHoraInicialPedido(Long horaInicialPedido) {
 		this.horaInicialPedido = horaInicialPedido;
 	}
 
-	public BigInteger getHoraFinalPedido() {
+	public Long getHoraFinalPedido() {
 		return horaFinalPedido;
 	}
 
-	public void setHoraFinalPedido(BigInteger horaFinalPedido) {
+	public void setHoraFinalPedido(Long horaFinalPedido) {
 		this.horaFinalPedido = horaFinalPedido;
 	}
 
