@@ -21,5 +21,9 @@ public class TipoEnderecoService {
 	public TipoEndereco recuperarTipoEndereco(String retornaCodigoERP) {
 		return tipoEnderecoDao.recuperaTipoEndereco(retornaCodigoERP);
 	}
+	
+	public Integer count() {
+		return tipoEnderecoDao.count();
+	}
 
 }

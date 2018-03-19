@@ -25,5 +25,14 @@ public class RestricaoFinanceiraItemDao extends JdbcDao<RestricaoFinanceiraItem>
 		return selectViewSemWhere(ViewsIntegracaoERP.VW_RESTRICAO_FINANCEIRA_ITEM,
 				new RestricaoFinanceiraItemRowMapper());
 	}
+	
+	
+	public Integer count() {
+		String variavelSql = String.format("DECLARE SET varchar(255) @CODIGO_RESTRICAO = ''");
+		getJdbcTemplate().update(variavelSql);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_RESTRICAO_FINANCEIRA_ITEM;
+		return contaRegistros(sql);
+	}
+	
 
 }

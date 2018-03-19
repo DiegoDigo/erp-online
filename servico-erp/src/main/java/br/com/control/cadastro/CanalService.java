@@ -22,5 +22,9 @@ public class CanalService {
 	public Canal recuperaCanal(String codigoCanalErp) {
 		return canalDao.recuperarCanal(codigoCanalErp);
 	}
+	
+	public Integer count() {
+		return canalDao.count();
+	}
 
 }

@@ -25,5 +25,12 @@ public class VendedorDao extends JdbcDao<Vendedor> {
 		getJdbcTemplate().update(declare);
 		return selectViewSingle(ViewsIntegracaoERP.VW_VENDEDOR, new VendedorRowMapper());
 	}
+	
+	public Integer count() {
+		String declare = "DECLARE set char(3) @CODIGO_VENDEDOR = '';";
+		getJdbcTemplate().update(declare);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_VENDEDOR;
+		return contaRegistros(sql);
+	}
 
 }

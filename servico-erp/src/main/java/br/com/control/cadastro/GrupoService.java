@@ -20,4 +20,8 @@ public class GrupoService {
 	public Grupo recuperaGrupo(String codigoGrupoErp) {		
 		return grupoDao.recuperarGrupo(codigoGrupoErp);
 	}
+	
+	public Integer count() {
+		return grupoDao.count();
+	}
 }

@@ -21,5 +21,10 @@ public class BandaPrecoService {
 	public BandaPreco buscarBanda(String codigoBanda) {
 		return bandaPrecoDao.buscarBanda(codigoBanda);
 	}
+	
+	public Integer count() {
+		return bandaPrecoDao.count();
+	}
+	
 
 }

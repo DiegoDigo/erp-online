@@ -29,5 +29,14 @@ public class PrecoDao extends JdbcDao<Preco> {
 		getJdbcTemplate().update(codProd);
 		return selectViewSingle(ViewsIntegracaoERP.VW_PRECO_PRODUTO, new PrecoRowMapper());
 	}
+	
+	public Integer count() {
+		String codTab = "DECLARE set bigint @COD_TABELA = 0;";
+		getJdbcTemplate().update(codTab);
+		String codProd = "DECLARE set bigint @COD_PRODUTO = 0;";
+		getJdbcTemplate().update(codProd);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_PRECO_PRODUTO;
+		return contaRegistros(sql);
+	}
 
 }

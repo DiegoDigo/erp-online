@@ -22,4 +22,8 @@ public class RestricaoFinanceiraService {
 		return restricaoFinanceiraDao.buscarPorCodigoErp(codigoErp);
 	}
 
+	public Integer count() {
+		return restricaoFinanceiraDao.count();
+	}
+
 }

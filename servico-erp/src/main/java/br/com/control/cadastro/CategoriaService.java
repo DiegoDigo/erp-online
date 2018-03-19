@@ -21,4 +21,8 @@ public class CategoriaService {
 	public Categoria recuperaCategoria(String codigoCategoriaErp) {
 		return categoriaDao.recuperarCategoria(codigoCategoriaErp);
 	}
+	
+	public Integer count() {
+		return categoriaDao.count();
+	}
 }

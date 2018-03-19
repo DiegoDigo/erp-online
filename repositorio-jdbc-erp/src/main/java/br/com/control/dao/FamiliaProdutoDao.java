@@ -25,4 +25,11 @@ public class FamiliaProdutoDao extends JdbcDao<Familia> {
 		getJdbcTemplate().update(declare);
 		return selectViewSingle(ViewsIntegracaoERP.VW_FAMILIA_PRODUTO, new FamiliaRowMapper());
 	}
+	
+	public Integer count() {
+		String declare = "DECLARE set date @CODIGO_FAMILIA = 0;";
+		getJdbcTemplate().update(declare);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_FAMILIA_PRODUTO;
+		return contaRegistros(sql);
+	}
 }

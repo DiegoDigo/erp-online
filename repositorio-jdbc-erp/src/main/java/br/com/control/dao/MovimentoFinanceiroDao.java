@@ -23,5 +23,12 @@ public class MovimentoFinanceiroDao extends JdbcDao<MovimentoFinanceiro> {
 		getJdbcTemplate().update(declare);
 		return selectViewSemWhere(ViewsIntegracaoERP.VW_MOVIMENTO_FINANCEIRO, new MovimentoFinanceiroRowMapper());
 	}
+	
+	public Integer count() {
+		String declare = "DECLARE set int @DATA_OPERACAO = 0";
+		getJdbcTemplate().update(declare);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_MOVIMENTO_FINANCEIRO;
+		return contaRegistros(sql);
+	}
 
 }

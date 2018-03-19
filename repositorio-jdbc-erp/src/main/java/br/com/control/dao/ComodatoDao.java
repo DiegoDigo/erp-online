@@ -22,5 +22,12 @@ public class ComodatoDao extends JdbcDao<Comodato> {
 		getJdbcTemplate().update(declare);
 		return selectViewSemWhere(ViewsIntegracaoERP.VW_COMODATO, new ComodatoRowMapper());
 	}
+	
+	public Integer count() {
+		String declare = "DECLARE set Integer @CODIGO_CEV = 0 ";
+		getJdbcTemplate().update(declare);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_COMODATO;
+		return contaRegistros(sql);
+	}
 
 }

@@ -21,5 +21,9 @@ public class BandaPrecoItemService {
 	public List<BandaPrecoItem> buscaBandaPrecoItem(Integer codigoBandaPreco) {
 		return bandaPrecoItemDao.buscarBandaItem(codigoBandaPreco);
 	}
+	
+	public Integer count() {
+		return bandaPrecoItemDao.count();
+	}
 
 }

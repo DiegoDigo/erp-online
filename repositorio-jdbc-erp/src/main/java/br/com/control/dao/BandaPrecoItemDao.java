@@ -22,5 +22,12 @@ public class BandaPrecoItemDao extends JdbcDao<BandaPrecoItem> {
 		getJdbcTemplate().update(variavelSql);
 		return selectViewSemWhere(ViewsIntegracaoERP.VW_BANDA_PRECO_ITEM, new BandaPrecoItemRowMapper());
 	}
+	
+	public Integer count() {
+		String declare = "DECLARE SET INTEGER @CODIGO_BANDA = 0";
+		getJdbcTemplate().update(declare);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_RESTRICAO_FINANCEIRA_ITEM;
+		return contaRegistros(sql);
+	}
 
 }

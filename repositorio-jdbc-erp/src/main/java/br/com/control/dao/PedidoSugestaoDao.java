@@ -19,4 +19,9 @@ public class PedidoSugestaoDao extends JdbcDao<PedidoSugestao> {
 				new PedidoSugestaoRowMapper());
 	}
 	
+	public Integer count() {
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_PEDIDO_SUGESTAO;
+		return contaRegistros(sql);
+	}
+	
 }

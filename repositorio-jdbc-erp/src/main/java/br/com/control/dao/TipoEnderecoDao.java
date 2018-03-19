@@ -31,4 +31,13 @@ public class TipoEnderecoDao extends JdbcDao<TipoEndereco> {
 		return selectViewSingle(ViewsIntegracaoERP.VW_TIPO_ENDERECO,
 				new TipoEnderecoRowMapper());
 	}
+	
+	public Integer count() {
+		String declare = "DECLARE set int @ATIVO = 1";
+		getJdbcTemplate().update(declare);		
+		String declare2 = "DECLARE set varchar(255) @sigla = '' ";
+		getJdbcTemplate().update(declare2);		
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_TIPO_ENDERECO;
+		return contaRegistros(sql);
+	}
 }

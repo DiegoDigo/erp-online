@@ -21,5 +21,9 @@ public class HistoricoPedidoItemService {
 	public List<HistoricoPedidoItem> buscarItemPedido(String numeroPedido) {
 		return historicoPedidoItemDao.listarPedidoItemDaCapa(numeroPedido);
 	}
+	
+	public Integer count() {
+		return historicoPedidoItemDao.count();
+	}
 
 }

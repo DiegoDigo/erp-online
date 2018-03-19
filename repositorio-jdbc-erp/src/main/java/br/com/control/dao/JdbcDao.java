@@ -41,6 +41,31 @@ public class JdbcDao<T> {
 
 	@Value("${schema_database}")
 	private String schemaDatabase;
+	
+
+	public Integer contaRegistros(String sql) {
+		Integer count = 0;
+		try {
+			count = getJdbcTemplate().queryForObject(sql, new Object[]{}, Integer.class);
+		}catch(RuntimeException e) {
+			if(e.getMessage().contains("this view exists but it is invalid")) {
+				count = -2;
+			}else if(e.getMessage().contains("table or view does not exist")) {
+				count = -3;
+			}else {
+				count = -1;
+			}
+		}
+		return count;
+	}
+	
+	public String getSchemaDatabase() {
+		return schemaDatabase;
+	}
+
+	public void setSchemaDatabase(String schemaDatabase) {
+		this.schemaDatabase = schemaDatabase;
+	}
 
 	@Autowired
 	@Qualifier("dbmakerDataSource")

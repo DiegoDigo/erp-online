@@ -30,5 +30,14 @@ public class NFEChaveDao extends JdbcDao<NfeChaveTO> {
 		getJdbcTemplate().update(declare1);
 		return selectViewSingle(ViewsIntegracaoERP.VW_CH_NFISCAL, new NFEChaveRowMapper());
 	}
+	
+	public Integer count() {
+		String declare = "DECLARE set int @NNF = 0;";
+		String declare1 = "DECLARE set char(10) @SNF = '';";
+		getJdbcTemplate().update(declare);
+		getJdbcTemplate().update(declare1);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_CH_NFISCAL;
+		return contaRegistros(sql);
+	}
 
 }

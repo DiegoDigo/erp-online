@@ -25,5 +25,12 @@ public class CanalDao extends JdbcDao<Canal> {
 		getJdbcTemplate().update(declare);
 		return selectViewSingle(ViewsIntegracaoERP.VW_CANAL_VENDA, new CanalRowMapper());
 	}
+	
+	public Integer count() {
+		String declare = "DECLARE set char(2) @CODIGO_CANAL  = '';";
+		getJdbcTemplate().update(declare);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_CANAL_VENDA;
+		return contaRegistros(sql);
+	}
 
 }

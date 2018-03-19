@@ -25,5 +25,12 @@ public class OcorrenciaDao extends JdbcDao<Ocorrencia> {
 		getJdbcTemplate().update(declare);
 		return selectViewSingle(ViewsIntegracaoERP.VW_OCORRENCIA, new OcorrenciaRowMapper());
 	}
+	
+	public Integer count() {
+		String declare = "DECLARE set varchar(3) @CODIGO_OCORRENCIA  = '';";
+		getJdbcTemplate().update(declare);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_OCORRENCIA;
+		return contaRegistros(sql);
+	}
 
 }

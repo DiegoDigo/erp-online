@@ -25,5 +25,12 @@ public class HistoricoPedidoItemDao extends JdbcDao<HistoricoPedidoItem> {
 		getJdbcTemplate().update(declare);	
 		return selectViewSemWhere(ViewsIntegracaoERP.VW_HISTORICO_PEDIDO_ITEM, new HistoricoPedidoItemRowMapper());
 	}
+	
+	public Integer count() {
+		String declare = "DECLARE set varchar(12) @numero_pedido = '' " ;
+		getJdbcTemplate().update(declare);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_HISTORICO_PEDIDO_ITEM;
+		return contaRegistros(sql);
+	}
 
 }

@@ -21,5 +21,10 @@ public class HistoricoPedidoCapaService {
 	public HistoricoPedidoCapa buscarHistoricoCapa(String CodigoERP) {
 		return historicoPedidoCapaDao.buscarHistoricoPedidoCapa(CodigoERP);
 	}
+	
+	public Integer count() {
+		return historicoPedidoCapaDao.count();
+	}
+	
 
 }

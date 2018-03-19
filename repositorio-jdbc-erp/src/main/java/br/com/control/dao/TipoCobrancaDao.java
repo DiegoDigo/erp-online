@@ -25,5 +25,12 @@ public class TipoCobrancaDao extends JdbcDao<TipoCobranca> {
 		getJdbcTemplate().update(declare);
 		return selectViewSingle(ViewsIntegracaoERP.VW_TIPO_COBRANCA, new TipoCobrancaRowMapper());
 	}
+	
+	public Integer count() {
+		String declare = "DECLARE set date @CODIGO_TIPO_COBRANCA  = 0;";
+		getJdbcTemplate().update(declare);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_TIPO_COBRANCA;
+		return contaRegistros(sql);
+	}
 
 }

@@ -25,4 +25,11 @@ public class HistoricoPedidoCapaDao extends JdbcDao<HistoricoPedidoCapa> {
 		getJdbcTemplate().update(declare);
 		return selectViewSingle(ViewsIntegracaoERP.VW_HISTORICO_PEDIDO_CAPA, new HistroricoPedidoCapaRowMapper());
 	}
+	
+	public Integer count() {
+		String declare = "DECLARE set varchar(12) @numero_pedido = '' ";
+		getJdbcTemplate().update(declare);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_HISTORICO_PEDIDO_CAPA;
+		return contaRegistros(sql);
+	}
 }

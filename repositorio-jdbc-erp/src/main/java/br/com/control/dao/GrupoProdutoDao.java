@@ -25,5 +25,12 @@ public class GrupoProdutoDao extends JdbcDao<Grupo> {
 		getJdbcTemplate().update(declare);
 		return selectViewSingle(ViewsIntegracaoERP.VW_GRUPO_PRODUTO, new GrupoRowMapper());
 	}
+	
+	public Integer count() {
+		String declare = "DECLARE set int @CODIGO_GRUPO_PRODUTO = 0;";
+		getJdbcTemplate().update(declare);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_GRUPO_PRODUTO;
+		return contaRegistros(sql);
+	}
 
 }

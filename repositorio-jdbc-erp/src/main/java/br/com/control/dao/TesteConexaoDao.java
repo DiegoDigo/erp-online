@@ -18,9 +18,9 @@ import br.com.control.vendas.cadastro.modelo.cliente.Cliente;
 
 @Repository
 @Transactional
-public class ClienteDao extends JdbcDao<Cliente> {
+public class TesteConexaoDao extends JdbcDao<Cliente> {
 
-	private static final Logger logger = LoggerFactory.getLogger(ClienteDao.class);
+	private static final Logger logger = LoggerFactory.getLogger(TesteConexaoDao.class);
 
 	public List<Cliente> listaTodosClientesDaMatricula() {
 		String declare = "DECLARE set int @CODIGO_CLIENTE = 0";
@@ -32,13 +32,6 @@ public class ClienteDao extends JdbcDao<Cliente> {
 		String declare = "DECLARE SET INT @CODIGO_CLIENTE = " + codigoClienteErp;
 		getJdbcTemplate().update(declare);
 		return selectViewSingle(ViewsIntegracaoERP.VW_CLIENTE, new ClienteRowMapper());
-	}
-	
-	public Integer count() {
-		String declare = "DECLARE set int @CODIGO_CLIENTE = 0";
-		getJdbcTemplate().update(declare);
-		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_CLIENTE;
-		return contaRegistros(sql);
 	}
 
 	@Transactional

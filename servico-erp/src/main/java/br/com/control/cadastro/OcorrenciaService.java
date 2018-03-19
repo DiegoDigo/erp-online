@@ -21,5 +21,9 @@ public class OcorrenciaService {
 	public Ocorrencia recuperarOcorrencia(String codigoOcorrenciaErp) {
 		return ocorrenciaDao.recuperarOcorrencia(codigoOcorrenciaErp);
 	}
+	
+	public Integer count() {
+		return ocorrenciaDao.count();
+	}
 
 }

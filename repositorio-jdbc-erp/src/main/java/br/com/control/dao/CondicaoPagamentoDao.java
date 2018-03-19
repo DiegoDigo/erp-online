@@ -25,5 +25,12 @@ public class CondicaoPagamentoDao extends JdbcDao<CondicaoPagamento> {
 		getJdbcTemplate().update(declare);
 		return selectViewSingle(ViewsIntegracaoERP.VW_CONDICAO_PAGAMENTO, new CondicaoPagamentoRowMapper());
 	}
+	
+	public Integer count() {
+		String declare = "DECLARE set date @CODIGO_CONDICAO_PAGAMENTO  = 0;";
+		getJdbcTemplate().update(declare);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_CONDICAO_PAGAMENTO;
+		return contaRegistros(sql);
+	}
 
 }

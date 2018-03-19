@@ -22,4 +22,8 @@ public class TipoCobrancaClienteService {
 		return tipoCobrancaClienteDao.recuperarTipoCobrancaCliente(retornaCodigoERP);
 	}
 
+	public Integer count() {
+		return tipoCobrancaClienteDao.count();
+	}
+
 }

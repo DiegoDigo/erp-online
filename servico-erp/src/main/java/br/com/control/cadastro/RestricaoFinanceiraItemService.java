@@ -21,5 +21,9 @@ public class RestricaoFinanceiraItemService {
 	public List<RestricaoFinanceiraItem> buscarPorCodigoErp(String codigoRestricaoFinanceiraErp) {
 		return restricaoFinanceiraItemDao.buscarPorCodigoErp(codigoRestricaoFinanceiraErp);
 	}
+	
+	public Integer count() {
+		return restricaoFinanceiraItemDao.count();
+	}
 
 }

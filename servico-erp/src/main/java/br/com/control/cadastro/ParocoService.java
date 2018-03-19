@@ -21,4 +21,8 @@ public class ParocoService {
 	public Paroco recuperaParoco(String codigoParocoErp) {
 		return parocoDao.recuperarParoco(codigoParocoErp);
 	}
+
+	public Integer count() {
+		return parocoDao.count();
+	}
 }

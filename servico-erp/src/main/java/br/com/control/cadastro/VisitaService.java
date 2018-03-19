@@ -30,4 +30,8 @@ public class VisitaService {
 		visita.setNumeroDias(numeroDias);
 		visitaDao.processarVisitas(visita);
 	}
+	
+	public Integer count() {
+		return visitaDao.count();
+	}
 }

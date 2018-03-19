@@ -22,4 +22,11 @@ public class MarcaProdutoDao extends JdbcDao<Marca> {
 		getJdbcTemplate().update(declare);
 		return selectViewSingle(ViewsIntegracaoERP.VW_MARCA_PRODUTO, new MarcaRowMapper());
 	}
+	
+	public Integer count() {
+		String declare = "DECLARE set int @CODIGO_MARCA_PRODUTO = 0;";
+		getJdbcTemplate().update(declare);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_MARCA_PRODUTO;
+		return contaRegistros(sql);
+	}
 }

@@ -24,7 +24,11 @@ public class ClienteEnderecoService {
 	
 	public void alterarDados(ClienteEndereco clienteEndereco) {
 		clienteEnderecoDao.	alterarEndereco(clienteEndereco);
-		
 	}
 
+	public Integer count() {
+		return clienteEnderecoDao.count();
+	}
+	
+	
 }

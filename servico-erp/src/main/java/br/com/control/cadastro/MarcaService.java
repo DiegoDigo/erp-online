@@ -21,4 +21,8 @@ public class MarcaService {
 	public Marca recuperaMarca(String codigoMarcaErp) {
 		return marcaDao.recuperarMarca(codigoMarcaErp);
 	}
+	
+	public Integer count() {
+		return marcaDao.count();
+	}
 }

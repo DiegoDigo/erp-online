@@ -21,5 +21,9 @@ public class CondicaoPagamentoService {
 	public CondicaoPagamento recuperarCondicaoPagamento(String codigoCondicaoPagamentoErp) {
 		return condicaoPagamentoDao.recuperarCondicaoPagamento(codigoCondicaoPagamentoErp);
 	}
+	
+	public Integer count() {
+		return condicaoPagamentoDao.count();
+	}
 
 }

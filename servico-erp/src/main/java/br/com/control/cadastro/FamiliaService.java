@@ -21,4 +21,8 @@ public class FamiliaService {
 	public Familia recuperaFamilia(String codigoErp) {
 		return familiaDao.recuperaFamilia(codigoErp);
 	}
+	
+	public Integer count() {
+		return familiaDao.count();
+	}
 }

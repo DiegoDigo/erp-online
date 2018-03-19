@@ -31,5 +31,14 @@ public class TipoCobrancaClienteDao extends JdbcDao<TipoCobrancaCliente> {
 		return selectViewSemWhere(ViewsIntegracaoERP.VW_TIPO_COBRANCA_CLIENTE,
 				new TipoCobrancaClienteRowMapper());
 	}
+	
+	public Integer count() {
+		String declare = "DECLARE set int @ATIVO = 1";
+		getJdbcTemplate().update(declare);
+		String declare2 = "DECLARE set VARCHAR(8) @codigoclienteerp = ''";
+		getJdbcTemplate().update(declare2);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_TIPO_COBRANCA_CLIENTE;
+		return contaRegistros(sql);
+	}
 
 }

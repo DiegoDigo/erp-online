@@ -22,4 +22,19 @@ public class ParocoDao extends JdbcDao<Paroco> {
 		getJdbcTemplate().update(declare);
 		return selectViewSingle(ViewsIntegracaoERP.VW_PAROCO, new ParocoRowMapper());
 	}
+
+	public Integer count() {
+		try {
+			String declare = "DECLARE set int @CODIGO_EMPRESA = 0;";
+			getJdbcTemplate().update(declare);
+			String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_PAROCO;
+			return contaRegistros(sql);
+		}catch (Exception e) {
+			if(e.getMessage().contains("number of connections exceeds user license")) {
+				return -3;
+			}else {
+				return -1;
+			}
+		}
+	}
 }

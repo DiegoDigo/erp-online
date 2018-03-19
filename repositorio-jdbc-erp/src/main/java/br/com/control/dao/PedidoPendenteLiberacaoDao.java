@@ -28,4 +28,11 @@ public class PedidoPendenteLiberacaoDao extends JdbcDao<PedidoPendenteLiberacao>
 		return selectViewSingle(ViewsIntegracaoERP.VW_PEDIDO_PENDENTE_LIBERACAO, new PedidoPendenteLiberacaoRowMapper());
 	}
 	
+	public Integer count() {
+		String declare = "DECLARE SET VARCHAR(12) @CODIGO_PEDIDO = '' ";
+		getJdbcTemplate().update(declare);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_PEDIDO_PENDENTE_LIBERACAO;
+		return contaRegistros(sql);
+	}
+	
 }

@@ -22,5 +22,9 @@ public class TipoCobrancaService {
 	public TipoCobranca recuperarTipoCobranca(String codigoTipoCobrancaErp) {
 		return tipoCobrancaDao.recuperarTipoCobranca(codigoTipoCobrancaErp);
 	}
+	
+	public Integer count() {
+		return tipoCobrancaDao.count();
+	}
 
 }

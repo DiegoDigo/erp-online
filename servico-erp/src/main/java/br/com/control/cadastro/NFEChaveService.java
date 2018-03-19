@@ -23,5 +23,10 @@ public class NFEChaveService {
 	public NfeChaveTO recuperarPorNumeroNota(String numeroNota, String sequencia) {
 		return nfeChaveDao.recuperaPorNumeroNota(numeroNota, sequencia);
 	}
+	
+	
+	public Integer count() {
+		return nfeChaveDao.count();
+	}
 
 }

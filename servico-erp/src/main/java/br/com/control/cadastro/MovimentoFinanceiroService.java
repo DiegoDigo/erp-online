@@ -22,6 +22,10 @@ public class MovimentoFinanceiroService {
 		return movimentoFinanceiroDao.buscarMovimentoFinanceiro(dataOperacao);
 	}
 	
+	public Integer count() {
+		return movimentoFinanceiroDao.count();
+	}
+	
 	
 
 }

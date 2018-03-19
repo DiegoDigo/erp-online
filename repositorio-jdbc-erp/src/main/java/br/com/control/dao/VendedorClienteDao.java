@@ -22,4 +22,11 @@ public class VendedorClienteDao extends JdbcDao<VendedorCliente> {
 		getJdbcTemplate().update(declare);
 		return selectViewSemWhere(ViewsIntegracaoERP.VW_VENDEDOR_CLIENTE, new VendedorClienteRowMapper());
 	}
+	
+	public Integer count() {
+		String declare = "DECLARE set varchar(20) @CODIGO_CLIENTE = '';";
+		getJdbcTemplate().update(declare);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_VENDEDOR_CLIENTE;
+		return contaRegistros(sql);
+	}
 }

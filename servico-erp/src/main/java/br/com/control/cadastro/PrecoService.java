@@ -21,5 +21,9 @@ public class PrecoService {
 	public Preco recuperarTabelaPreco(String codigoPrecoProdutoErp) {
 		return precoDao.recuperarPreco(codigoPrecoProdutoErp);
 	}
+	
+	public Integer count() {
+		return precoDao.count();
+	}
 
 }

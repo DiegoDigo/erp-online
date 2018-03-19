@@ -26,4 +26,13 @@ public class PedidoItemCortadoDao extends JdbcDao<PedidoItemCortado> {
 		getJdbcTemplate().update(codemp);
 		return selectViewSemWhere(ViewsIntegracaoERP.VW_ITEM_CORTADO_PREPEDIDO, new PedidoItemCortadoRowMapper());
 	}
+	
+	public Integer count() {
+		String declare = "DECLARE set bigint @COD_PRE_PEDIDO = 0;";
+		String codemp = "DECLARE set int @codemp = 0;";
+		getJdbcTemplate().update(declare);
+		getJdbcTemplate().update(codemp);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_ITEM_CORTADO_PREPEDIDO;
+		return contaRegistros(sql);
+	}
 }

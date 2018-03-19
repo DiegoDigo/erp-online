@@ -27,5 +27,11 @@ public class ClienteService {
 	public Cliente recuperarCliente(int codigoClienteErp) {
 		return clienteDao.recuperarCliente(codigoClienteErp);
 	}
+	
+	public Integer count() {
+		return clienteDao.count();
+	}
+	
+	
 
 }

@@ -21,5 +21,10 @@ public class PedidoItemCortadoService {
 	public List<PedidoItemCortado> recuperarItensCordados(int codigoEmpresa, String numeroPrePedido) {
 		return pedidoItemCortadoDao.recuperarItensCortados(codigoEmpresa, numeroPrePedido);
 	}
+	
+	public Integer count() {
+		return pedidoItemCortadoDao.count();
+	}
+
 
 }

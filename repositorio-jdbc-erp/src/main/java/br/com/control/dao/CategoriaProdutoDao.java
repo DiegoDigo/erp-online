@@ -25,4 +25,11 @@ public class CategoriaProdutoDao extends JdbcDao<Categoria> {
 		getJdbcTemplate().update(declare);
 		return selectViewSingle(ViewsIntegracaoERP.VW_CATEGORIA_PRODUTO, new CategoriaRowMapper());
 	}
+	
+	public Integer count() {
+		String declare = "DECLARE set date @CODIGO_CATEGORIA_PRODUTO = 0;";
+		getJdbcTemplate().update(declare);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_CATEGORIA_PRODUTO;
+		return contaRegistros(sql);
+	}
 }

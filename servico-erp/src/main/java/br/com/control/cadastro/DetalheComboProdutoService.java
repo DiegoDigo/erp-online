@@ -23,5 +23,9 @@ public class DetalheComboProdutoService {
 	public DetalheComboProduto recuperarComboProduto(String codigoProdutoComboErp) {		
 		return detalheComboProdutoDao.recuperarComboProduto(codigoProdutoComboErp);
 	}
+	
+	public Integer count() {
+		return detalheComboProdutoDao.count();
+	}
 
 }

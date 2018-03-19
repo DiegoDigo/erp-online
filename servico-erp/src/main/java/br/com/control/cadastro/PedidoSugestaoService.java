@@ -17,5 +17,10 @@ public class PedidoSugestaoService {
 	public List<PedidoSugestao> listar() {
 		return pedidoSugestaoDao.listarPedidosSugestao();
 	}
+	
+	public Integer count() {
+		return pedidoSugestaoDao.count();
+	}
+
 
 }

@@ -22,4 +22,9 @@ public class PedidoPendenteLiberacaoService {
 		return pedidoBloqueadosDao.buscarPedidoBloqueado(codigoPedido);
 	}
 
+	public Integer count() {
+		return pedidoBloqueadosDao.count();
+	}
+	
+	
 }

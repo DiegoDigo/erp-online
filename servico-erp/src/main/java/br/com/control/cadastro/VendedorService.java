@@ -21,5 +21,10 @@ public class VendedorService {
 	public Vendedor recuperarVendedor(String codigoErp) {
 		return vendedorDao.recuperarVendedor(codigoErp);
 	}
+	
+	
+	public Integer count() {
+		return vendedorDao.count();
+	}
 
 }

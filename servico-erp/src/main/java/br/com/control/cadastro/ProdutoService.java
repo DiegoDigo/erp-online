@@ -21,4 +21,8 @@ public class ProdutoService {
 	public Produto recuperaProduto(String codigoProdutoErp) {
 		return produtoDao.recuperarProduto(codigoProdutoErp);
 	}
+	
+	public Integer count() {
+		return produtoDao.count();
+	}
 }

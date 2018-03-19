@@ -21,5 +21,10 @@ public class ComodatoService {
 	public Comodato listarComodato(String codigoERP) {
 		return comodatoDao.buscarComodato(codigoERP);
 	}
+	
+
+	public Integer count() {
+		return comodatoDao.count();
+	}
 
 }

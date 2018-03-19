@@ -21,5 +21,9 @@ public class VendedorClienteService {
 	public List<VendedorCliente> recuperarClientesVendedor(String codigoErp) {
 		return vendedorClienteDao.recuperarClientesVendedor(codigoErp);
 	}
+	
+	public Integer count() {
+		return vendedorClienteDao.count();
+	}
 
 }

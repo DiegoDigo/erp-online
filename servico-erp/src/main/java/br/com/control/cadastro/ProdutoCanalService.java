@@ -23,4 +23,8 @@ public class ProdutoCanalService {
 		return produtoCanalDao.recuperaProdutoCanal(codigoErp);
 	}
 	
+	public Integer count() {
+		return produtoCanalDao.count();
+	}
+	
 }

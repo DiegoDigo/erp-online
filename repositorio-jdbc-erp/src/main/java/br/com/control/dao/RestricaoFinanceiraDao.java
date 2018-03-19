@@ -22,4 +22,11 @@ public class RestricaoFinanceiraDao extends JdbcDao<RestricaoFinanceira> {
 		getJdbcTemplate().update(variavelSql);
 		return selectViewSingle(ViewsIntegracaoERP.VW_RESTRICAO_FINANCEIRA_CAPA, new RestricaoFinanceiraRowMapper());
 	}
+
+	public Integer count() {
+		String declare = String.format("DECLARE SET varchar(255) @CODIGO_RESTRICAO = ''");
+		getJdbcTemplate().update(declare);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_RESTRICAO_FINANCEIRA_CAPA;
+		return contaRegistros(sql);
+	}
 }

@@ -25,5 +25,12 @@ public class BandaPrecoDao extends JdbcDao<BandaPreco> {
 		getJdbcTemplate().update(variavelSql);
 		return selectViewSingle(ViewsIntegracaoERP.VW_BANDA_PRECO_CAPA, new BandaPrecoRowMapper());
 	}
+	
+	public Integer count() {
+		String declare = "DECLARE SET INTEGER @CODIGO_BANDA = 0 ";
+		getJdbcTemplate().update(declare);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_BANDA_PRECO_CAPA;
+		return contaRegistros(sql);
+	}
 
 }

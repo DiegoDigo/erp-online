@@ -29,6 +29,13 @@ public class ClienteEnderecoDao extends JdbcDao<ClienteEndereco> {
 		getJdbcTemplate().update(declare);
 		return selectViewSemWhere(ViewsIntegracaoERP.VW_ENDERECO, new ClienteEnderecoRowMapper());
 	}
+	
+	public Integer count() {
+		String declare = "DECLARE set date @CODIGO_CLIENTE = 0";
+		getJdbcTemplate().update(declare);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_ENDERECO;
+		return contaRegistros(sql);
+	}
 
 	@Transactional
 	public void alterarEndereco(ClienteEndereco clienteEndereco) {

@@ -38,5 +38,18 @@ public class ProdutoDao extends JdbcDao<Produto> {
 		getJdbcTemplate().update(declare4);		
 		return selectViewSingle(ViewsIntegracaoERP.VW_PRODUTO, new ProdutoRowMapper());
 	}
+	
+	public Integer count() {
+		String declare = "DECLARE set date @CODIGO_PROD = 0;";
+		getJdbcTemplate().update(declare);
+		String declare2 = "DECLARE set date @CODIGO_FAMILIA = 0;";
+		getJdbcTemplate().update(declare2);
+		String declare3 = "DECLARE set date @CODIGO_SEQUENCIA = 0;";
+		getJdbcTemplate().update(declare3);
+		String declare4 = "DECLARE set int @DISP_PORTAL_WEB = 1;";
+		getJdbcTemplate().update(declare4);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_PRODUTO;
+		return contaRegistros(sql);
+	}
 
 }

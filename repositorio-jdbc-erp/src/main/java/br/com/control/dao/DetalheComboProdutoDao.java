@@ -27,4 +27,11 @@ public class DetalheComboProdutoDao extends JdbcDao<DetalheComboProduto> {
 		getJdbcTemplate().update(declare);
 		return selectViewSingle(ViewsIntegracaoERP.VW_COMBO_PRODUTO, new DetalheComboProdutoRowMapper());
 	}
+	
+	public Integer count() {
+		String declare = "DECLARE set varchar(27) @CODIGO_COMBO = '0';";
+		getJdbcTemplate().update(declare);
+		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_COMBO_PRODUTO;
+		return contaRegistros(sql);
+	}
 }
