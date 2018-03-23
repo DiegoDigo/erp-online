@@ -176,7 +176,7 @@
 			<properties>
 				<packaging.type>war</packaging.type>
 				<server.url>C:\PortalIntegracao\tomcat\webapps</server.url>
-				<artefato.nome>portal-rest-dev</artefato.nome>
+				<artefato.nome>erp-online-dev</artefato.nome>
 			</properties>
 			<dependencies>
 				<dependency>
