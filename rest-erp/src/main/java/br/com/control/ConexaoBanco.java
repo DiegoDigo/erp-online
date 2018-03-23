@@ -70,17 +70,31 @@ public class ConexaoBanco {
 		return DataSourceBuilder.create().build();
 	}
 	
-	@Profile("prd")
+	@Profile("pre_producao")
 	@Bean
 	public DataSource conexao3() {
-		logger.warn("############################################------> PRD" + passwordPostgre);
+		logger.warn("############################################------> PRE PRODUCAO" + passwordPostgre);
 		return DataSourceBuilder.create().build();
 	}
 	
-	@Profile("apresentacao")
+	@Profile("2966-apresentacao")
 	@Bean
 	public DataSource conexao4() {
-		logger.warn("############################################------> APRESENTACAO" + passwordPostgre);
+		logger.warn("############################################------> APRESENTACAO 2966" + passwordPostgre);
+		return DataSourceBuilder.create().build();
+	}
+	
+	@Profile("2016-apresentacao")
+	@Bean
+	public DataSource conexao5() {
+		logger.warn("############################################------> APRESENTACAO 2016" + passwordPostgre);
+		return DataSourceBuilder.create().build();
+	}
+
+	@Profile("6461-apresentacao")
+	@Bean
+	public DataSource conexao6() {
+		logger.warn("############################################------> APRESENTACAO 6461" + passwordPostgre);
 		return DataSourceBuilder.create().build();
 	}
 	
