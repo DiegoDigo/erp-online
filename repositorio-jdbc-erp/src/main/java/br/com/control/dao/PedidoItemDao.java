@@ -19,7 +19,6 @@ public class PedidoItemDao extends JdbcDao<PedidoItem> {
 	
 	public AcompanhamentoPedidoTO salvarItemPedido(PedidoItemTO pedidoItem, String numeroPrePedido) {
 
-		
 		try {
 			logger.info("--> CHAMANDO PROCEDURE ITEM: "+pedidoItem.getSequenciaItem()+" PARA PRE PEDIDO: "+numeroPrePedido);
 			CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERT_ITEM_PRE_PEDIDO);
