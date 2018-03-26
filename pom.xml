@@ -170,9 +170,10 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 		</profile>
-		
+	
+	
 		<profile>
-			<id>dev</id>
+			<id>DEV</id>
 			<properties>
 				<packaging.type>war</packaging.type>
 				<server.url>C:\PortalIntegracao\tomcat\webapps</server.url>
@@ -212,15 +213,6 @@
 			</build>
 		</profile>
 		
-<!-- 		<profile> -->
-<!-- 			<id>DEV</id> -->
-<!-- 			<properties> -->
-<!-- 				<packaging.type>war</packaging.type> -->
-<!-- 				<server.url>C:\PortalIntegracao\tomcat\webapps</server.url> -->
-<!-- 				<artefato.nome>erp-online-dev</artefato.nome> -->
-<!-- 			</properties> -->
-<!-- 		</profile> -->
-
 
 		<profile>
 			<id>HOMOLOG</id>
@@ -303,33 +295,130 @@
 				</plugins>
 			</build>
 		</profile>
+		
+		<profile>
+			<id>APRESENTACAO-6461</id>
+			<properties>
+				<packaging.type>war</packaging.type>
+				<server.url>C:\PortalIntegracao\tomcat\webapps</server.url>
+				<artefato.nome>erp-online-apresentacao-6461</artefato.nome>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-web</artifactId>
+					<exclusions>
+						<exclusion>
+							<groupId>org.springframework.boot</groupId>
+							<artifactId>spring-boot-starter-tomcat</artifactId>
+						</exclusion>
+					</exclusions>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<!-- COPIA O ARQUIVO .properties DO SPRING DE ACORDO COM O PROFILE -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<configuration>
+							<webResources>
+								<resource>
+									<directory>src/main/resources/apresentacao/6461</directory>
+									<targetPath>/WEB-INF/classes</targetPath>
+									<includes>
+										<include>application.properties</include>
+									</includes>
+								</resource>
+							</webResources>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+			
+		<profile>
+			<id>APRESENTACAO-2966</id>
+			<properties>
+				<packaging.type>war</packaging.type>
+				<server.url>C:\PortalIntegracao\tomcat\webapps</server.url>
+				<artefato.nome>erp-online-apresentacao-2966</artefato.nome>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-web</artifactId>
+					<exclusions>
+						<exclusion>
+							<groupId>org.springframework.boot</groupId>
+							<artifactId>spring-boot-starter-tomcat</artifactId>
+						</exclusion>
+					</exclusions>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<!-- COPIA O ARQUIVO .properties DO SPRING DE ACORDO COM O PROFILE -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<configuration>
+							<webResources>
+								<resource>
+									<directory>src/main/resources/apresentacao/2966</directory>
+									<targetPath>/WEB-INF/classes</targetPath>
+									<includes>
+										<include>application.properties</include>
+									</includes>
+								</resource>
+							</webResources>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 
 		<profile>
-			<id>2966-apresentacao</id>
+			<id>APRESENTACAO-2016</id>
 			<properties>
 				<packaging.type>war</packaging.type>
 				<server.url>C:\PortalIntegracao\tomcat\webapps</server.url>
-				<artefato.nome>erp-online-2966-apresentacao</artefato.nome>
+				<artefato.nome>erp-online-apresentacao-2016</artefato.nome>
 			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-web</artifactId>
+					<exclusions>
+						<exclusion>
+							<groupId>org.springframework.boot</groupId>
+							<artifactId>spring-boot-starter-tomcat</artifactId>
+						</exclusion>
+					</exclusions>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<!-- COPIA O ARQUIVO .properties DO SPRING DE ACORDO COM O PROFILE -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<configuration>
+							<webResources>
+								<resource>
+									<directory>src/main/resources/apresentacao/2016</directory>
+									<targetPath>/WEB-INF/classes</targetPath>
+									<includes>
+										<include>application.properties</include>
+									</includes>
+								</resource>
+							</webResources>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
-		<profile>
-			<id>6461-apresentacao</id>
-			<properties>
-				<packaging.type>war</packaging.type>
-				<server.url>C:\PortalIntegracao\tomcat\webapps</server.url>
-				<artefato.nome>erp-online-6461-apresentacao</artefato.nome>
-			</properties>
-		</profile>
-		<profile>
-			<id>2016-apresentacao</id>
-			<properties>
-				<packaging.type>war</packaging.type>
-				<server.url>C:\PortalIntegracao\tomcat\webapps</server.url>
-				<artefato.nome>erp-online-2016-apresentacao</artefato.nome>
-			</properties>
-		</profile>
-		
-		
 
 	</profiles>
 
