@@ -220,6 +220,8 @@
 <!-- 				<artefato.nome>erp-online-dev</artefato.nome> -->
 <!-- 			</properties> -->
 <!-- 		</profile> -->
+
+
 		<profile>
 			<id>HOMOLOG</id>
 			<properties>
@@ -227,6 +229,38 @@
 				<server.url>C:\PortalIntegracao\tomcat\webapps</server.url>
 				<artefato.nome>erp-online-homolog</artefato.nome>
 			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-web</artifactId>
+					<exclusions>
+						<exclusion>
+							<groupId>org.springframework.boot</groupId>
+							<artifactId>spring-boot-starter-tomcat</artifactId>
+						</exclusion>
+					</exclusions>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<!-- COPIA O ARQUIVO .properties DO SPRING DE ACORDO COM O PROFILE -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<configuration>
+							<webResources>
+								<resource>
+									<directory>src/main/resources/fluxo_trabalho/homolog</directory>
+									<targetPath>/WEB-INF/classes</targetPath>
+									<includes>
+										<include>application.properties</include>
+									</includes>
+								</resource>
+							</webResources>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 
 		<profile>
@@ -236,8 +270,40 @@
 				<server.url>C:\PortalIntegracao\tomcat\webapps</server.url>
 				<artefato.nome>erp-online-pre_producao</artefato.nome>
 			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-web</artifactId>
+					<exclusions>
+						<exclusion>
+							<groupId>org.springframework.boot</groupId>
+							<artifactId>spring-boot-starter-tomcat</artifactId>
+						</exclusion>
+					</exclusions>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<!-- COPIA O ARQUIVO .properties DO SPRING DE ACORDO COM O PROFILE -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<configuration>
+							<webResources>
+								<resource>
+									<directory>src/main/resources/fluxo_trabalho/pre_prod</directory>
+									<targetPath>/WEB-INF/classes</targetPath>
+									<includes>
+										<include>application.properties</include>
+									</includes>
+								</resource>
+							</webResources>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
-		
+
 		<profile>
 			<id>2966-apresentacao</id>
 			<properties>
