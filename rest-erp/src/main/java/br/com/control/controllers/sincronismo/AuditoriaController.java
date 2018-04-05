@@ -28,10 +28,11 @@ public class AuditoriaController extends AbstractController {
 			@RequestParam(value = "mensagem") MensagemRecebida<Auditoria> mensagem) {
 		
 		Pageable pageable = new PageRequest(mensagem.getPagina(), mensagem.getQuantidadePorPagina());
-
 		
 		return new MensagemRetorno(HttpStatus.OK, "Auditorias Listados com sucesso !",
-				auditoriaService.buscarAuditoriaPorMatricula(matricula, pageable), mensagem.getIdentificacao());
+				auditoriaService.buscarAuditoriaPorMatricula(mensagem.getDataInicio(), 
+						mensagem.getDataFim(),
+						matricula, pageable), mensagem.getIdentificacao());
 	}
 
 }
