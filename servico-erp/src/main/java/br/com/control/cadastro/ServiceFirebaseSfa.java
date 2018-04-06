@@ -55,7 +55,7 @@ public class ServiceFirebaseSfa {
 			
 			BlobInfo blobInfo = BlobInfo
 					.newBuilder(BUCKET_NAME,
-							"licenca-" + LICENCA + "/vendedor-" + pegarCodigoVendedor(file) + "/" + file.getName())
+							"cargas_rx/licenca-" + LICENCA + "/vendedor-" + pegarCodigoVendedor(file) + "/" + file.getName())
 					.setAcl(roles).build();
 
 			storage.create(blobInfo, gerarArquivo(file));
