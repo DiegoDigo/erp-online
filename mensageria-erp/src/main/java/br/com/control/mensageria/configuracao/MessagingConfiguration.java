@@ -71,8 +71,9 @@ public class MessagingConfiguration {
 	public ActiveMQConnectionFactory connectionFactoryPortal() {
 		ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
 		connectionFactory.setBrokerURL(FILA_PORTAL);
-		connectionFactory.setTrustedPackages(Arrays.asList("br.com.control.portal.mensageria.to", "java.lang", "br.com.control.portal.filter",
-				"java.util", "java.math", "java.sql"));
+		connectionFactory.setTrustedPackages(Arrays.asList("br.com.control.portal.mensageria.to",
+				"java.lang", "br.com.control.portal.filter",
+				"java.util", "java.math"));
 		System.setProperty("org.apache.activemq.SERIALIZABLE_PACKAGES", "*");
 		return connectionFactory;
 	}
@@ -112,8 +113,6 @@ public class MessagingConfiguration {
 		factory.setTransactionManager(transactionManager);
         return factory;
     }
-	
-
 
 
 	@Bean
@@ -176,5 +175,11 @@ public class MessagingConfiguration {
 		template.setDefaultDestinationName(ambiente+"_sincronismo_agendado");
 		return template;
 	}
-
+	@Bean
+	public JmsTemplate jmsTemplatePesquisaSfaMensal() {
+		JmsTemplate template = new JmsTemplate();
+		template.setConnectionFactory(connectionFactoryPortal());
+		template.setDefaultDestinationName(ambiente+"_pesquisa_mensal_sfa");
+		return template;
+	}
 }
