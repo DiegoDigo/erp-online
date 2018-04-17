@@ -179,7 +179,7 @@ public class MessagingConfiguration {
 	public JmsTemplate jmsTemplatePesquisaSfaMensal() {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactoryPortal());
-		template.setDefaultDestinationName(ambiente+"_pesquisa_mensal_sfa");
+		template.setDefaultDestinationName(ambiente+"_pesquisa_mensal_sfa ");
 		return template;
 	}
 }
