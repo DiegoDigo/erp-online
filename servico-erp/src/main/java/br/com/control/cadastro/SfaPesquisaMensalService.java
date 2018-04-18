@@ -13,6 +13,7 @@ public class SfaPesquisaMensalService {
 	private SfaPesquisaMensalDao sfaPesquisaMensalDao;
 
 	public void salvarPesquisaSfaMensal(SfaPesquisaMensalTO sfaPesquisaMensal) {
+		sfaPesquisaMensal.setMsgRetorno("");
 		sfaPesquisaMensalDao.salvarPesquisaMensalSfa(sfaPesquisaMensal);
 	}
 

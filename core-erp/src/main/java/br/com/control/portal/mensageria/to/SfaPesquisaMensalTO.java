@@ -9,7 +9,6 @@ public class SfaPesquisaMensalTO  implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	
 	@SequenciaParametrosProcedure(index = 1)
 	private String codigoVendedor;
 	@SequenciaParametrosProcedure(index = 2)
@@ -29,30 +28,29 @@ public class SfaPesquisaMensalTO  implements Serializable {
 	@SequenciaParametrosProcedure(index = 9)
 	private String qtdCompra;	
 	@SequenciaParametrosProcedure(index = 10)
-	private BigDecimal precoCompra = BigDecimal.ZERO;
+	private BigDecimal precoCompra;
 	@SequenciaParametrosProcedure(index = 11)
-	private BigDecimal precoVenda = BigDecimal.ZERO;
+	private BigDecimal precoVenda;
 	@SequenciaParametrosProcedure(index = 12, isRetornoProcedure = true)
-	private Integer statusRetorno;
+	private int statusRetorno;
 	@SequenciaParametrosProcedure(index = 13, isRetornoProcedure = true)
 	private String msgRetorno = "";
 	
-
 	@Override
 	public String toString() {		
 		return "PesquisaMensalSfa : [ codigoVendedor: "+ codigoVendedor +
 				" regiaoCliente: "+ regiaoCliente + " numeroCliente: "+ numeroCliente +
 				" codigoPesquisa: " + codigoPesquisa +" codigoProduto: "+ codigoProduto +
-				" codigoConcorrente: " + codigoConcorrente +" codigoConcorrente: "+ codigoConcorrente +
+				" codigoConcorrente: " + codigoConcorrente +
 				" codigoMotivo: "+ codigoMotivo +" dataInclusao:" +dataInclusao+ " qtdCompra: "+ qtdCompra +
 				" precoCompra: "+ precoCompra +" precoVenda: "+precoVenda +" ]";
 	}	
 	
 	
-	public Integer getStatusRetorno() {
+	public int getStatusRetorno() {
 		return statusRetorno;
 	}
-	public void setStatusRetorno(Integer statusRetorno) {
+	public void setStatusRetorno(int statusRetorno) {
 		this.statusRetorno = statusRetorno;
 	}
 	public String getMsgRetorno() {
