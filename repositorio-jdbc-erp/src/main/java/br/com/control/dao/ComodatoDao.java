@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import br.com.control.portal.dto.ComodatoDTO;
 import br.com.control.portal.integracao.ViewsIntegracaoERP;
 import br.com.control.repositorio.mappers.ComodatoRowMapper;
 import br.com.control.vendas.cadastro.modelo.Comodato;
@@ -28,6 +29,11 @@ public class ComodatoDao extends JdbcDao<Comodato> {
 		getJdbcTemplate().update(declare);
 		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_COMODATO;
 		return contaRegistros(sql);
+	}
+
+	public List<ComodatoDTO> retirarComodato(List<ComodatoDTO> comodatos) {
+		// TODO Auto-generated method stub
+		return comodatos;
 	}
 
 }

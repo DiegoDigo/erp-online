@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.control.dao.ComodatoDao;
+import br.com.control.portal.dto.ComodatoDTO;
 import br.com.control.vendas.cadastro.modelo.Comodato;
 
 @Service
@@ -22,6 +23,9 @@ public class ComodatoService {
 		return comodatoDao.buscarComodato(codigoERP);
 	}
 	
+	public List<ComodatoDTO> retirarComodato(List<ComodatoDTO> comodatos) {
+		return comodatoDao.retirarComodato(comodatos);
+	}
 
 	public Integer count() {
 		return comodatoDao.count();
