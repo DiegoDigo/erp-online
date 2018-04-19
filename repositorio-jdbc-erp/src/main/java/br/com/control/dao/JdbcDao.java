@@ -152,7 +152,8 @@ public class JdbcDao<T> {
 			call += ")}";
 
 			this.connection = getDataSource().getConnection();
-
+			System.out.println("TESTE de chamada da procedure");
+			System.out.println(call);
 			return connection.prepareCall(call);
 		} catch (SQLException e) {
 			logger.error("Erro ao executar chamada ao DBMAKER: " + e);
