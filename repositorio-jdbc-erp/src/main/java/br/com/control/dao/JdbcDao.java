@@ -156,6 +156,7 @@ public class JdbcDao<T> {
 			System.out.println(call);
 			return connection.prepareCall(call);
 		} catch (SQLException e) {
+			System.out.println("Erro ao executar chamada ao DBMAKER: " + e);
 			logger.error("Erro ao executar chamada ao DBMAKER: " + e);
 			throw new RuntimeException(e);
 		}
