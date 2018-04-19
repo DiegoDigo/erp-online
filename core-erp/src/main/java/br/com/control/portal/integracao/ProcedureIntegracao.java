@@ -5,6 +5,7 @@ import br.com.control.portal.mensageria.to.LiberacaoPedidoTO;
 import br.com.control.portal.mensageria.to.PedidoCapaTO;
 import br.com.control.portal.mensageria.to.PedidoItemTO;
 import br.com.control.portal.mensageria.to.PrePagamentoTO;
+import br.com.control.portal.mensageria.to.SfaPesquisaMensalTO;
 import br.com.control.portal.mensageria.to.VisitaTO;
 
 public enum ProcedureIntegracao {
@@ -27,7 +28,10 @@ public enum ProcedureIntegracao {
 						VisitaTO.class),
 
 	PRE_PAGAMENTO(	"SP_PRE_PAGAMENTOS",
-			PrePagamentoTO.class);
+			PrePagamentoTO.class),
+	
+	PESQUISA_MENSAL_SFA("SP_PESQUISA_MENSAL",
+			SfaPesquisaMensalTO.class);
 
 	private String procedure;
 	private Class<?> classe;

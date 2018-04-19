@@ -151,16 +151,15 @@ public class JdbcDao<T> {
 			call = call.substring(0, call.length() - 1);
 			call += ")}";
 
-			this.connection = getDataSource().getConnection();
-
+			this.connection = getDataSource().getConnection();			
 			return connection.prepareCall(call);
-		} catch (SQLException e) {
+		} catch (SQLException e) {			
 			logger.error("Erro ao executar chamada ao DBMAKER: " + e);
 			throw new RuntimeException(e);
 		}
 
 	}
-
+	
 	public void closeConnection() {
 		try {
 			logger.info("ERP-ONLINE ***** FECHANDO A CONEXÃO COM O DBMAKER *****");

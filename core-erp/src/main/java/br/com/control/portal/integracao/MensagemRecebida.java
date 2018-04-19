@@ -1,6 +1,7 @@
 package br.com.control.portal.integracao;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -17,6 +18,9 @@ public class MensagemRecebida<T> implements Serializable {
 	
 	private int quantidadePorPagina;
 
+	private Calendar dataInicio;
+	
+	private Calendar dataFim;
 
 	@Value("${numero_matricula_empresa}")
 	private String matriculaAssociada;
@@ -35,6 +39,21 @@ public class MensagemRecebida<T> implements Serializable {
 		this.identificacao.setMatriculaAssociada(matriculaAssociada);
 	}
 
+	public Calendar getDataInicio() {
+		return dataInicio;
+	}
+
+	public void setDataInicio(Calendar dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+
+	public Calendar getDataFim() {
+		return dataFim;
+	}
+
+	public void setDataFim(Calendar dataFim) {
+		this.dataFim = dataFim;
+	}
 
 	public T getConteudo() {
 		return conteudo;
