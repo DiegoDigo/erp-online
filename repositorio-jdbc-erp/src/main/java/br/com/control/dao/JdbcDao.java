@@ -160,7 +160,7 @@ public class JdbcDao<T> {
 		}
 
 	}
-
+	
 	public void closeConnection() {
 		try {
 			logger.info("ERP-ONLINE ***** FECHANDO A CONEXÃO COM O DBMAKER *****");

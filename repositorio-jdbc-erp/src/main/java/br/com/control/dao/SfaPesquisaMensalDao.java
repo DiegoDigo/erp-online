@@ -24,7 +24,7 @@ public class SfaPesquisaMensalDao extends JdbcDao<PrePagamentoTO> {
 			logger.info("### CHAMANDO PROCEDURE PESQUISA MENSAL SFA");
 			CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.PESQUISA_MENSAL_SFA);
 			preparaExecucaoProcedure(sfaPesquisaMensal, stmt);
-			logger.info("--> PESQUISA MENSAL SFA SALVO NO DBMAKER: "+sfaPesquisaMensal.getCodigoPesquisa());
+			logger.info("--> PESQUISA MENSAL SFA SALVA NO DBMAKER: "+sfaPesquisaMensal.getCodigoPesquisa());
 			stmt.close();
 		} catch (SQLException | RuntimeException e) {
 			logger.error("--> ERRO AO TENTAR SALVAR A PESQUISA MENSAL SFA COM NUMERO : "+sfaPesquisaMensal.getCodigoPesquisa());

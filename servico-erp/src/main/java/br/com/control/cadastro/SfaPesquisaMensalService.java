@@ -14,6 +14,9 @@ public class SfaPesquisaMensalService {
 
 	public void salvarPesquisaSfaMensal(SfaPesquisaMensalTO sfaPesquisaMensal) {
 		sfaPesquisaMensal.setMsgRetorno("");
+		if(sfaPesquisaMensal.getCodigoMotivo().isEmpty()) { 
+			sfaPesquisaMensal.setCodigoMotivo("*");
+		}
 		sfaPesquisaMensalDao.salvarPesquisaMensalSfa(sfaPesquisaMensal);
 	}
 

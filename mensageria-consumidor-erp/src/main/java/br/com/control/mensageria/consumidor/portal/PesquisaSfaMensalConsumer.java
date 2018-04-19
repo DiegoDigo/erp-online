@@ -23,9 +23,8 @@ public class PesquisaSfaMensalConsumer {
 	@JmsListener(destination = "${prefixo_ambiente_fila}_pesquisa_mensal_sfa")
 	public void receiveMessage(final Message<SfaPesquisaMensalTO> message) throws JMSException {
 		SfaPesquisaMensalTO sfaPesquisaMensalTO = message.getPayload();
-
 		log.info("___________________________________________________________");
-		log.info("### RECEBIDO DA FILA O A PESQUISA DO CLIENTE : " + sfaPesquisaMensalTO.getNumeroCliente() +"###");
+		log.info("### RECEBIDO DA FILA O A PESQUISA  : " + sfaPesquisaMensalTO.getCodigoPesquisa() +"###");
 		log.info("--> pesquisa mensal recebida: " + sfaPesquisaMensalTO);
 		try {
 			sfaPesquisaMensalService.salvarPesquisaSfaMensal(sfaPesquisaMensalTO);

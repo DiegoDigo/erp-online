@@ -30,7 +30,7 @@ public class SfaPesquisaMensalTO  implements Serializable {
 	@SequenciaParametrosProcedure(index = 10)
 	private BigDecimal precoCompra;
 	@SequenciaParametrosProcedure(index = 11)
-	private BigDecimal precoVenda;
+	private BigDecimal precoVenda;	
 	@SequenciaParametrosProcedure(index = 12, isRetornoProcedure = true)
 	private int statusRetorno;
 	@SequenciaParametrosProcedure(index = 13, isRetornoProcedure = true)
@@ -47,12 +47,6 @@ public class SfaPesquisaMensalTO  implements Serializable {
 	}	
 	
 	
-	public int getStatusRetorno() {
-		return statusRetorno;
-	}
-	public void setStatusRetorno(int statusRetorno) {
-		this.statusRetorno = statusRetorno;
-	}
 	public String getMsgRetorno() {
 		return msgRetorno;
 	}
@@ -104,7 +98,7 @@ public class SfaPesquisaMensalTO  implements Serializable {
 	public String getDataInclusao() {
 		return dataInclusao;
 	}
-	public void setDataInclusao(String dataInclusao) {
+	public void setDataInclusao(String dataInclusao) {		
 		this.dataInclusao = dataInclusao;
 	}
 	public String getQtdCompra() {
@@ -124,6 +118,16 @@ public class SfaPesquisaMensalTO  implements Serializable {
 	}
 	public void setPrecoVenda(BigDecimal precoVenda) {
 		this.precoVenda = precoVenda;
+	}
+
+
+	public int getStatusRetorno() {
+		return statusRetorno;
+	}
+
+
+	public void setStatusRetorno(int statusRetorno) {
+		this.statusRetorno = statusRetorno;
 	}
 
 

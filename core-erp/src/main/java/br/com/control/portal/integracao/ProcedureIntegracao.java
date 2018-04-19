@@ -30,7 +30,7 @@ public enum ProcedureIntegracao {
 	PRE_PAGAMENTO(	"SP_PRE_PAGAMENTOS",
 			PrePagamentoTO.class),
 	
-	PESQUISA_MENSAL_SFA("PESQUISA_MENSAL",
+	PESQUISA_MENSAL_SFA("SP_PESQUISA_MENSAL",
 			SfaPesquisaMensalTO.class);
 
 	private String procedure;
