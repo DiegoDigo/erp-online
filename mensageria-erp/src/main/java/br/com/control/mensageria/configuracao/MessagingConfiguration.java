@@ -143,7 +143,7 @@ public class MessagingConfiguration {
 	public JmsTemplate jmsTemplateSincronismoPedidoSugestao() {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactoryPortal());
-		template.setDefaultDestinationName(ambiente+"_sincronismo_cadastro");
+		template.setDefaultDestinationName(ambiente+"_sincronismo_pedido_sugestao");
 		return template;
 	}
 	
@@ -152,7 +152,7 @@ public class MessagingConfiguration {
 	public JmsTemplate jmsTemplateSincronismoCadastro() {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactoryPortal());
-		template.setDefaultDestinationName(ambiente+"_sincronismo_pedido_sugestao");
+		template.setDefaultDestinationName(ambiente+"_sincronismo_cadastro");
 		return template;
 	}
 	
