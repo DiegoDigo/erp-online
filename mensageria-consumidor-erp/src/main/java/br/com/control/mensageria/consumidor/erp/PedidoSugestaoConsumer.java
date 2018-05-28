@@ -13,7 +13,7 @@ import org.springframework.messaging.Message;
 import org.springframework.stereotype.Component;
 
 import br.com.control.cadastro.PedidoSugestaoService;
-import br.com.control.cadastro.sincronismo.SincronismoCadastroService;
+import br.com.control.cadastro.sincronismo.SincronismoPedidoSugestaoService;
 import br.com.control.portal.enums.CadastrosEnum;
 import br.com.control.portal.mensageria.to.PedidoSugestaoTO;
 import br.com.control.vendas.cadastro.modelo.pedido.PedidoSugestao;
@@ -24,7 +24,7 @@ public class PedidoSugestaoConsumer extends ERPConsumer{
 	private static Logger log = LoggerFactory.getLogger(PedidoSugestaoConsumer.class);
 
 	@Autowired
-	private SincronismoCadastroService sincronismoCadastroService;
+	private SincronismoPedidoSugestaoService sincronismoPedidoSugestaoService;
 	
 	@Autowired
 	private PedidoSugestaoService pedidoSugestaoService;
@@ -40,7 +40,7 @@ public class PedidoSugestaoConsumer extends ERPConsumer{
 			pedidosSugestaoTO.add(new PedidoSugestaoTO(pedidoSugestao));
 		}
 
-		sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.PEDIDO_SUGESTAO), pedidosSugestaoTO, "Pedidos Sugestao");
+		sincronismoPedidoSugestaoService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.PEDIDO_SUGESTAO), pedidosSugestaoTO, "Pedidos Sugestao");
 		log.info("--> Pedidos Sugestao com codigo: " + codigoErp + " enviados para o Portal!");
 	}
 

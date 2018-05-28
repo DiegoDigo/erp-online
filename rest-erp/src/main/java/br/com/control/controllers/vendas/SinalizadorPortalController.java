@@ -42,6 +42,7 @@ import br.com.control.cadastro.VendedorService;
 import br.com.control.cadastro.VisitaService;
 import br.com.control.cadastro.sincronismo.SincronismoAcompanhamentoPedidoService;
 import br.com.control.cadastro.sincronismo.SincronismoCadastroService;
+import br.com.control.cadastro.sincronismo.SincronismoPedidoSugestaoService;
 import br.com.control.cadastro.tipoCobranca.TipoCobrancaService;
 import br.com.control.controllers.AbstractController;
 import br.com.control.portal.integracao.MensagemRecebida;
@@ -117,6 +118,9 @@ public class SinalizadorPortalController extends AbstractController {
 
 	@Autowired
 	private SincronismoCadastroService sincronismoCadastoService;
+	
+	@Autowired
+	private SincronismoPedidoSugestaoService sincronismoPedidoSugestaoService;
 
 	@Autowired
 	private GrupoService grupoService;
@@ -411,7 +415,7 @@ public class SinalizadorPortalController extends AbstractController {
 			pedidosSugestaoTO.add(new PedidoSugestaoTO(pedidoSugestao));
 		}
 
-		return sincronismoCadastoService.enviaParaOPortal(mensagem, pedidosSugestaoTO, "Pedidos Sugestao");
+		return sincronismoPedidoSugestaoService.enviaParaOPortal(mensagem, pedidosSugestaoTO, "Pedidos Sugestao");
 	}
 
 	@RequestMapping(value = RotasRest.RAIZ_CADASTRO
