@@ -23,4 +23,5 @@ public class ConfiguracaoRest {
 	public ViewResolver viewResolver() {
 		return new BeanNameViewResolver();
 	}
+	
 }
