@@ -18,7 +18,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.Comodato;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_COMODATO)
+@RequestMapping(RotasRest.RAIZ + RotasRest.RAIZ_COMODATO)
 public class ComodatoController extends AbstractController {
 
 	@Autowired
@@ -26,17 +26,17 @@ public class ComodatoController extends AbstractController {
 
 	@RequestMapping(value = RotasRest.LISTAR, method = RequestMethod.GET, headers = "Accept=application/json")
 	public MensagemRetorno listar(@RequestParam("mensagem") MensagemRecebida<Comodato> mensagem) {
-		return new MensagemRetorno(HttpStatus.OK, "Comodatos Listado com sucessos !", comodatoService.listarComodato(), mensagem.getIdentificacao());
+		return new MensagemRetorno(HttpStatus.OK, "Comodatos Listado com sucessos !", comodatoService.listarComodato(),
+				mensagem.getIdentificacao());
 	}
 
 	@RequestMapping(value = RotasRest.RETIRAR, method = RequestMethod.GET, headers = "Accept=application/json")
 	public MensagemRetorno solicitarRetirada(@RequestParam("mensagem") MensagemRecebida<List<ComodatoDTO>> mensagem) {
-		
+
 		List<ComodatoDTO> listaComodatos = mensagem.getConteudo();
-		
-		return new MensagemRetorno(HttpStatus.OK, "Solicitacão de retirada de comodato feita com sucesso !", 
-				comodatoService.retirarComodato(listaComodatos),
-				mensagem.getIdentificacao());
+
+		return new MensagemRetorno(HttpStatus.OK, "Solicitacão de retirada de comodato feita com sucesso !",
+				comodatoService.retirarComodato(listaComodatos), mensagem.getIdentificacao());
 	}
 
 }
