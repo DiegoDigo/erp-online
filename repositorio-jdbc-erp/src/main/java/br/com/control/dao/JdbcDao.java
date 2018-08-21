@@ -24,6 +24,8 @@ import org.springframework.stereotype.Repository;
 import br.com.control.annotation.SequenciaParametrosProcedure;
 import br.com.control.portal.integracao.ProcedureIntegracao;
 import br.com.control.portal.integracao.ViewsIntegracaoERP;
+import net.gpedro.integrations.slack.SlackApi;
+import net.gpedro.integrations.slack.SlackMessage;
 
 @Repository
 public class JdbcDao<T> {
@@ -42,6 +44,14 @@ public class JdbcDao<T> {
 	@Value("${schema_database}")
 	private String schemaDatabase;
 	
+	@Value("${numero_matricula_empresa}")
+	private String matriculaAssociada;
+
+	@Value("${url_slack}")
+	private String url_slack;
+
+	@Value("${channel_slack}")
+	private String channel_slack;
 
 	public Integer contaRegistros(String sql) {
 		Integer count = 0;
@@ -155,6 +165,11 @@ public class JdbcDao<T> {
 			return connection.prepareCall(call);
 		} catch (SQLException e) {			
 			logger.error("Erro ao executar chamada ao DBMAKER: " + e);
+
+			// notifica via sendgrid que houve um erro de comunicação com o banco
+			SlackApi api = new SlackApi(url_slack);
+			api.call(new SlackMessage(channel_slack, matriculaAssociada, "Erro ao executar chamada ao DBMAKER: " + e.getMessage() + "-" + e.getSQLState()));
+
 			throw new RuntimeException(e);
 		}
 

@@ -140,22 +140,12 @@ public class MessagingConfiguration {
 	}
 
 	@Bean
-	public JmsTemplate jmsTemplateSincronismoPedidoSugestao() {
-		JmsTemplate template = new JmsTemplate();
-		template.setConnectionFactory(connectionFactoryPortal());
-		template.setDefaultDestinationName(ambiente+"_sincronismo_pedido_sugestao");
-		return template;
-	}
-	
-
-	@Bean
 	public JmsTemplate jmsTemplateSincronismoCadastro() {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactoryPortal());
 		template.setDefaultDestinationName(ambiente+"_sincronismo_cadastro");
 		return template;
 	}
-	
 	@Bean
 	public JmsTemplate jmsTemplateLiberacaoPedido() {
 		JmsTemplate template = new JmsTemplate();
