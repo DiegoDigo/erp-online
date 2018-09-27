@@ -1,0 +1,4 @@
+# Deny access to filenames starting with dot(.)
+<FilesMatch "\.(png|json|map|js)$">
+Deny from all
+</FilesMatch>

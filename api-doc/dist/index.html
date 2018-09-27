@@ -1,0 +1,256 @@
+<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Swagger UI</title>
+  <link rel="stylesheet" type="text/css" href="./swagger-ui.css">
+  <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
+  <style>
+    html {
+      box-sizing: border-box;
+      overflow: -moz-scrollbars-vertical;
+      overflow-y: scroll;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    body {
+      margin: 0;
+      background: #fafafa;
+    }
+
+    tbody>* {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Full-width input fields */
+
+    lbody input[type=text],
+    input[type=password] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    /* Set a style for all buttons */
+
+    lbody button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    lbody button:hover {
+      opacity: 0.8;
+    }
+
+    /* Extra styles for the cancel button */
+
+    lbody .cancelbtn {
+      width: auto;
+      padding: 10px 18px;
+      background-color: #f44336;
+    }
+
+    /* Center the image and position the close button */
+
+    lbody .imgcontainer {
+      text-align: center;
+      margin: 24px 0 12px 0;
+      position: relative;
+    }
+
+    lbody img.avatar {
+      width: 30%;
+      border-radius: 50%;
+    }
+
+    lbody .container {
+      padding: 16px;
+    }
+
+    lbody span.psw {
+      float: right;
+      padding-top: 16px;
+    }
+
+    /* The Modal (background) */
+
+    lbody .modal {
+      display: block;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+      padding-top: 10vh;
+    }
+
+    /* Modal Content/Box */
+
+    lbody .modal-content {
+      background-color: #fefefe;
+      margin: 0% auto 15% auto;
+      /* 5% from the top, 15% from the bottom and centered */
+      border: 1px solid #888;
+      width: 40%;
+      /* Could be more or less, depending on screen size */
+    }
+
+    /* The Close Button (x) */
+
+    lbody .close {
+      position: absolute;
+      right: 25px;
+      top: 0;
+      color: #000;
+      font-size: 35px;
+      font-weight: bold;
+    }
+    
+    .topbar {
+      display: none;
+    }
+
+    lbody .close:hover,
+    .close:focus {
+      color: red;
+      cursor: pointer;
+    }
+
+    /* Add Zoom Animation */
+
+    lbody .animate {
+      -webkit-animation: animatezoom 0.6s;
+      animation: animatezoom 0.6s
+    }
+
+    @-webkit-keyframes animatezoom {
+      from {
+        -webkit-transform: scale(0)
+      }
+      to {
+        -webkit-transform: scale(1)
+      }
+    }
+
+    @keyframes animatezoom {
+      from {
+        transform: scale(0)
+      }
+      to {
+        transform: scale(1)
+      }
+    }
+
+    /* Change styles for span and cancel button on extra small screens */
+
+    @media screen and (max-width: 300px) {
+      span.psw {
+        display: block;
+        float: none;
+      }
+      .cancelbtn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="swagger-ui"></div>
+
+  <script src="./swagger-ui-bundle.js"> </script>
+  <script src="./swagger-ui-standalone-preset.js"> </script>
+
+
+  <lbody>
+    <div id="loginPg" class="loginPage">
+
+      <!-- The Modal -->
+      <div class="modal">
+
+        <!-- Modal Content -->
+        <div class="modal-content animate">
+
+          <div class="container" style="background-color:#f1f1f1">
+            <div class="imgcontainer">
+              <img src="linkedby.png" alt="logo">
+            </div>
+          </div>
+
+          <div class="container">
+            <b>Username</b>
+            <input type="text" placeholder="Enter Username" id="user" required>
+
+            <b>Password</b>
+            <input type="password" placeholder="Enter Password" id="pass" required>
+
+            <button id="login" type="submit" onclick="login()">Login</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </lbody>
+  <script src="./swagger-ui-bundle.js"> </script>
+  <script src="./swagger-ui-standalone-preset.js"> </script>
+  <script>
+
+    var modal = document.getElementById('login');
+    var user = document.getElementById('user');
+    var pass = document.getElementById('pass');
+    var loginPage = document.getElementById('loginPg');
+
+    function login() {
+      //TODO: remove static Login. Add a file and protect with .htaccess
+      //obfuscade script https://obfuscator.io
+      //obfuscade html http://snapbuilder.com/code_snippet_generator/obfuscate_html_source_code/
+      if (user.value == "Doc" && pass.value == "ERP") {
+        const ui = SwaggerUIBundle({
+          url: "http://localhost:3002/swagger.json",
+          dom_id: '#swagger-ui',
+          deepLinking: true,
+          presets: [
+            SwaggerUIBundle.presets.apis,
+            SwaggerUIStandalonePreset
+          ],
+          plugins: [
+            SwaggerUIBundle.plugins.DownloadUrl
+          ],
+          layout: "StandaloneLayout"
+        })
+        loginPage.style.display = "none";
+        window.ui = ui
+      }
+    }
+  </script>
+</body>
+
+</html>
