@@ -5,6 +5,7 @@ import javax.jms.JMSException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.messaging.Message;
 import org.springframework.stereotype.Component;
@@ -34,7 +35,8 @@ public class PedidoCapaConsumer {
 	@Autowired
 	private PedidoCapaProducer producer;
 
-	@JmsListener(destination = "${prefixo_ambiente_fila}_pedidos")
+
+	@JmsListener(destination = "${prefixo_ambiente_fila}_pedidos_${numero_matricula_empresa}")
 	public void receiveMessage(final Message<PedidoCapaTO> message) throws JMSException {
 		PedidoCapaTO pedidoCapa = message.getPayload();
 

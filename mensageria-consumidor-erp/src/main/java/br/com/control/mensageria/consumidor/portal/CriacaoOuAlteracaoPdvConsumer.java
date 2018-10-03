@@ -20,7 +20,7 @@ public class CriacaoOuAlteracaoPdvConsumer {
 	@Autowired
 	private ClienteService clienteService;
 
-	@JmsListener(destination = "${prefixo_ambiente_fila}_alteracao_dados_cadastrais_contato")
+	@JmsListener(destination = "${prefixo_ambiente_fila}_alteracao_dados_cadastrais_contato_${numero_matricula_empresa}")
 	public void receiveMessage(final Message<ClienteTO> message) throws JMSException {
 		ClienteTO clienteTO = message.getPayload();
 		// clienteTO.setLatitude(BigDecimal.ZERO);

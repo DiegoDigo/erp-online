@@ -28,6 +28,9 @@ public class MessagingConfiguration {
 	
 	@Value("${prefixo_ambiente_fila}")
 	private String ambiente;
+
+	@Value("${numero_matricula_empresa}")
+	private String matricula;
 	
 	@Resource
 	private PlatformTransactionManager transactionManager;
@@ -127,7 +130,7 @@ public class MessagingConfiguration {
 	public JmsTemplate jmsTemplateFilaPedidos() {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactoryPortal());
-		template.setDefaultDestinationName(ambiente+"_pedidos");
+		template.setDefaultDestinationName(ambiente+"_pedidos_" + matricula);
 		return template;
 	}
 
@@ -135,7 +138,7 @@ public class MessagingConfiguration {
 	public JmsTemplate jmsTemplateAcompanhamentoPedidos() {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactoryPortal());
-		template.setDefaultDestinationName(ambiente+"_acompanhamento");
+		template.setDefaultDestinationName(ambiente+"_acompanhamento_" + matricula);
 		return template;
 	}
 
@@ -143,28 +146,28 @@ public class MessagingConfiguration {
 	public JmsTemplate jmsTemplateSincronismoCadastro() {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactoryPortal());
-		template.setDefaultDestinationName(ambiente+"_sincronismo_cadastro");
+		template.setDefaultDestinationName(ambiente+"_sincronismo_cadastro_" + matricula);
 		return template;
 	}
 	@Bean
 	public JmsTemplate jmsTemplateLiberacaoPedido() {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactoryPortal());
-		template.setDefaultDestinationName(ambiente+"_liberacao_pedido");
+		template.setDefaultDestinationName(ambiente+"_liberacao_pedido_" + matricula);
 		return template;
 	}
 	@Bean
 	public JmsTemplate jmsTemplateAlteracaoDadosCadastraisContato() {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactoryPortal());
-		template.setDefaultDestinationName(ambiente+"_alteracao_dados_cadastrais_contato");
+		template.setDefaultDestinationName(ambiente+"_alteracao_dados_cadastrais_contato_" + matricula);
 		return template;
 	}
 	@Bean
 	public JmsTemplate jmsTemplateAlteracaoDadosCadastraisEndereco() {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactoryPortal());
-		template.setDefaultDestinationName(ambiente+"_alteracao_dados_cadastrais_endereco");
+		template.setDefaultDestinationName(ambiente+"_alteracao_dados_cadastrais_endereco_" + matricula);
 		return template;
 	}
 	
@@ -172,14 +175,14 @@ public class MessagingConfiguration {
 	public JmsTemplate jmsTemplateSincronismoAgendado() {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactoryPortal());
-		template.setDefaultDestinationName(ambiente+"_sincronismo_agendado");
+		template.setDefaultDestinationName(ambiente+"_sincronismo_agendado_" + matricula);
 		return template;
 	}
 	@Bean
 	public JmsTemplate jmsTemplatePesquisaSfaMensal() {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactoryPortal());
-		template.setDefaultDestinationName(ambiente+"_pesquisa_mensal_sfa ");
+		template.setDefaultDestinationName(ambiente+"_pesquisa_mensal_sfa_" + matricula);
 		return template;
 	}
 }
