@@ -20,7 +20,7 @@ public class PesquisaSfaMensalConsumer {
 	@Autowired
 	private SfaPesquisaMensalService sfaPesquisaMensalService;
 
-	@JmsListener(destination = "${prefixo_ambiente_fila}_pesquisa_mensal_sfa")
+	@JmsListener(destination = "${prefixo_ambiente_fila}_pesquisa_mensal_sfa_${numero_matricula_empresa}")
 	public void receiveMessage(final Message<SfaPesquisaMensalTO> message) throws JMSException {
 		SfaPesquisaMensalTO sfaPesquisaMensalTO = message.getPayload();
 		log.info("___________________________________________________________");

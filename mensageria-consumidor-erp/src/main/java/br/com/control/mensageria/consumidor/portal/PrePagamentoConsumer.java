@@ -20,7 +20,7 @@ public class PrePagamentoConsumer {
 	@Autowired
 	private PrePagamentoService prePagamentoService;
 
-	@JmsListener(destination = "${prefixo_ambiente_fila}_pre_pagamentos")
+	@JmsListener(destination = "${prefixo_ambiente_fila}_pre_pagamentos_${numero_matricula_empresa}")
 	public void receiveMessage(final Message<PrePagamentoTO> message) throws JMSException {
 		PrePagamentoTO prePagamentoTO = message.getPayload();
 

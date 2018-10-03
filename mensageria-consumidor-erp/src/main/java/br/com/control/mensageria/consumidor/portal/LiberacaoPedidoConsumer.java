@@ -21,7 +21,7 @@ public class LiberacaoPedidoConsumer {
 	private LiberacaoPedidoService liberacaoPedidoService;
 	
 
-	@JmsListener(destination = "${prefixo_ambiente_fila}_liberacao_pedido")
+	@JmsListener(destination = "${prefixo_ambiente_fila}_liberacao_pedido_${numero_matricula_empresa}")
 	public void receiveMessage(final Message<LiberacaoPedidoTO> message) throws JMSException {
 		LiberacaoPedidoTO liberacao = message.getPayload();
 
