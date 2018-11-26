@@ -18,7 +18,7 @@ import br.com.control.rotas.RotasRest;
 import br.com.control.vendas.cadastro.modelo.Comodato;
 
 @RestController
-@RequestMapping(RotasRest.RAIZ_COMODATO)
+@RequestMapping(RotasRest.RAIZ +RotasRest.RAIZ_COMODATO)
 public class ComodatoController extends AbstractController {
 
 	@Autowired
