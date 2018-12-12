@@ -99,11 +99,14 @@ public class PedidoCapaTO implements Serializable {
 	@SequenciaParametrosProcedure(index = 42)
 	private int dataPrimeiraParcela=0;
 
-	@SequenciaParametrosProcedure(index = 43, isRetornoProcedure = true)
-	private long numeroPrePedidoGestao;
+	@SequenciaParametrosProcedure(index = 43)
+	private int codigoErpTerceiro=0;
+
 	@SequenciaParametrosProcedure(index = 44, isRetornoProcedure = true)
-	private int statusRetorno;
+	private long numeroPrePedidoGestao;
 	@SequenciaParametrosProcedure(index = 45, isRetornoProcedure = true)
+	private int statusRetorno;
+	@SequenciaParametrosProcedure(index = 46, isRetornoProcedure = true)
 	private String msgRetorno = "";
 
 	private List<PedidoItemTO> itens = new ArrayList<>();
@@ -507,4 +510,11 @@ public class PedidoCapaTO implements Serializable {
 		this.dataPrimeiraParcela = dataPrimeiraParcela;
 	}
 
+	public int getCodigoErpTerceiro() {
+		return codigoErpTerceiro;
+	}
+
+	public void setCodigoErpTerceiro(int codigoErpTerceiro) {
+		this.codigoErpTerceiro = codigoErpTerceiro;
+	}
 }
