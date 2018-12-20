@@ -26,7 +26,7 @@ public class PedidoCapaDao extends JdbcDao<PedidoCapaTO> {
 			CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERT_CAPA_PRE_PEDIDO);
 			preparaExecucaoProcedure(pedido, stmt);
 			pedidoTO.setRecId(pedido.getRecId());
-			pedidoTO.setNumeroPedidoGestao(String.valueOf(stmt.getLong(43)));
+			pedidoTO.setNumeroPedidoGestao(String.valueOf(stmt.getLong(44)));
 			
 			logger.info("--> PRÉ PEDIDO SALVO NO DBMAKER: "+pedidoTO.getNumeroPedidoGestao());
 			

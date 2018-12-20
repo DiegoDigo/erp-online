@@ -99,8 +99,8 @@ public class PedidoCapaTO implements Serializable {
 	@SequenciaParametrosProcedure(index = 42)
 	private int dataPrimeiraParcela=0;
 
-	@SequenciaParametrosProcedure(index = 43)
-	private int codigoErpTerceiro=0;
+	@SequenciaParametrosProcedure(index = 43, isRetornoProcedure = false)
+	private int codigoErpTerceiro;
 
 	@SequenciaParametrosProcedure(index = 44, isRetornoProcedure = true)
 	private long numeroPrePedidoGestao;
