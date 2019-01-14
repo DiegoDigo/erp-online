@@ -100,7 +100,7 @@ public class PedidoCapaTO implements Serializable {
 	private int dataPrimeiraParcela=0;
 
 	@SequenciaParametrosProcedure(index = 43, isRetornoProcedure = false)
-	private int codigoErpTerceiro;
+	private String codigoErpTerceiro;
 
 	@SequenciaParametrosProcedure(index = 44, isRetornoProcedure = true)
 	private long numeroPrePedidoGestao;
@@ -130,7 +130,7 @@ public class PedidoCapaTO implements Serializable {
 				+ valorImpostoBarreira + ", valorVerbaGeradaGL=" + valorVerbaGeradaGL + ", valorVerbaUtilizadaGL="
 				+ valorVerbaUtilizadaGL + ", pedidoTransmitido=" + pedidoTransmitido +  ", desbloqueioGPSERP="
 				+ desbloqueioGPSERP + ", numeroPrePedidoGestao=" + numeroPrePedidoGestao + ", statusRetorno="
-				+ statusRetorno + ", msgRetorno=" + msgRetorno + ", itens=" + itens + "]";
+				+ statusRetorno + ", msgRetorno=" + msgRetorno + ", itens=" + itens + " , codifoErpTerceiro=" + codigoErpTerceiro + "]";
 	}
 
 	public int getRegiao() {
@@ -510,11 +510,11 @@ public class PedidoCapaTO implements Serializable {
 		this.dataPrimeiraParcela = dataPrimeiraParcela;
 	}
 
-	public int getCodigoErpTerceiro() {
+	public String getCodigoErpTerceiro() {
 		return codigoErpTerceiro;
 	}
 
-	public void setCodigoErpTerceiro(int codigoErpTerceiro) {
+	public void setCodigoErpTerceiro(String codigoErpTerceiro) {
 		this.codigoErpTerceiro = codigoErpTerceiro;
 	}
 }

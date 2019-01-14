@@ -149,6 +149,7 @@ public class MessagingConfiguration {
 		template.setDefaultDestinationName(ambiente+"_sincronismo_cadastro_" + matricula);
 		return template;
 	}
+
 	@Bean
 	public JmsTemplate jmsTemplateLiberacaoPedido() {
 		JmsTemplate template = new JmsTemplate();

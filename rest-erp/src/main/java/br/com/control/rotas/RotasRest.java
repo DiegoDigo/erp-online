@@ -66,4 +66,6 @@ public class RotasRest {
 	public static final String BUSCAR = "/buscar";
 	public static final String RETIRAR = "/retirar";
 	public static final String SINALIZA = "/sinaliza";
+	public static final String BOLETO = "/boleto";
+
 }
