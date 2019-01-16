@@ -1,60 +1,57 @@
 package br.com.control.portal.integracao;
 
-import br.com.control.portal.mensageria.to.ClienteTO;
-import br.com.control.portal.mensageria.to.LiberacaoPedidoTO;
-import br.com.control.portal.mensageria.to.PedidoCapaTO;
-import br.com.control.portal.mensageria.to.PedidoItemTO;
-import br.com.control.portal.mensageria.to.PrePagamentoTO;
-import br.com.control.portal.mensageria.to.SfaPesquisaMensalTO;
-import br.com.control.portal.mensageria.to.VisitaTO;
+import br.com.control.portal.mensageria.to.*;
 
 public enum ProcedureIntegracao {
-	// REMOVER ESSAS DUAS APOS HOMOLOGAR AS NOVAS PROCS
-	INSERT_PEDIDO_CAPA(	"SP_INSERT_PREPEDIDO_CP",
-						PedidoCapaTO.class),
-	INSERT_PEDIDO_ITEM(	"SP_INSERT_PREPEDIDO_ITEM",
-						PedidoItemTO.class),
+    // REMOVER ESSAS DUAS APOS HOMOLOGAR AS NOVAS PROCS
+    INSERT_PEDIDO_CAPA("SP_INSERT_PREPEDIDO_CP",
+            PedidoCapaTO.class),
+    INSERT_PEDIDO_ITEM("SP_INSERT_PREPEDIDO_ITEM",
+            PedidoItemTO.class),
 
-	INSERT_CAPA_PRE_PEDIDO(	"SP_INSERT_CAPAPREPEDIDO",
-							PedidoCapaTO.class),
-	INSERT_ITEM_PRE_PEDIDO(	"SP_INSERT_ITEMPREPEDIDO",
-							PedidoItemTO.class),
-	LIBERACAO_PEDIDO(	"SP_LIBERA_PEDIDO",
-						LiberacaoPedidoTO.class),
-	INSERE_ALTERA_CLIENTE(	"SP_CRIA_ATUALIZA_CLIENTE",
-							ClienteTO.class),
+    INSERT_CAPA_PRE_PEDIDO("SP_INSERT_CAPAPREPEDIDO",
+            PedidoCapaTO.class),
+    INSERT_ITEM_PRE_PEDIDO("SP_INSERT_ITEMPREPEDIDO",
+            PedidoItemTO.class),
+    LIBERACAO_PEDIDO("SP_LIBERA_PEDIDO",
+            LiberacaoPedidoTO.class),
+    INSERE_ALTERA_CLIENTE("SP_CRIA_ATUALIZA_CLIENTE",
+            ClienteTO.class),
 
-	ATUALIZAR_VISITAS(	"SP_CRIA_VISITA",
-						VisitaTO.class),
+    ATUALIZAR_VISITAS("SP_CRIA_VISITA",
+            VisitaTO.class),
 
-	PRE_PAGAMENTO(	"SP_PRE_PAGAMENTOS",
-			PrePagamentoTO.class),
-	
-	PESQUISA_MENSAL_SFA("SP_PESQUISA_MENSAL",
-			SfaPesquisaMensalTO.class);
+    PRE_PAGAMENTO("SP_PRE_PAGAMENTOS",
+            PrePagamentoTO.class),
 
-	private String procedure;
-	private Class<?> classe;
+    PESQUISA_MENSAL_SFA("SP_PESQUISA_MENSAL",
+            SfaPesquisaMensalTO.class),
 
-	private ProcedureIntegracao(String procedure, Class<?> classe) {
-		this.procedure = procedure;
-		this.classe = classe;
-	}
+    CANCELAMENTO_PRE_PEDIDO("SP_CANCELAMENTO_PRE_PEDIDO",
+            CancelaPrePedido.class);
 
-	public String getProcedure() {
-		return procedure;
-	}
+    private String procedure;
+    private Class<?> classe;
 
-	public void setProcedure(String procedure) {
-		this.procedure = procedure;
-	}
+    private ProcedureIntegracao(String procedure, Class<?> classe) {
+        this.procedure = procedure;
+        this.classe = classe;
+    }
 
-	public Class<?> getClasse() {
-		return classe;
-	}
+    public String getProcedure() {
+        return procedure;
+    }
 
-	public void setClasse(Class<?> classe) {
-		this.classe = classe;
-	}
+    public void setProcedure(String procedure) {
+        this.procedure = procedure;
+    }
+
+    public Class<?> getClasse() {
+        return classe;
+    }
+
+    public void setClasse(Class<?> classe) {
+        this.classe = classe;
+    }
 
 }

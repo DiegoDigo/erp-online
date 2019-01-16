@@ -3,6 +3,7 @@ package br.com.control.dao;
 import java.sql.CallableStatement;
 import java.sql.SQLException;
 
+import br.com.control.portal.mensageria.to.CancelaPrePedido;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -41,6 +42,35 @@ public class PedidoCapaDao extends JdbcDao<PedidoCapaTO> {
 			closeConnection();
 		}
 		
+		return null;
+
+	}
+
+
+	@Transactional
+	public AcompanhamentoPedidoTO cancelarPrePedido(CancelaPrePedido pedido) {
+
+		AcompanhamentoPedidoTO pedidoTO = new AcompanhamentoPedidoTO();
+		try {
+			logger.info("### CHAMANDO PROCEDURE PEDIDO CAPA");
+			CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.CANCELAMENTO_PRE_PEDIDO);
+			preparaExecucaoProcedure(pedido, stmt);
+			pedidoTO.setRecId(pedido.getRecId());
+			pedidoTO.setNumeroPedidoGestao(String.valueOf(stmt.getLong(3)));
+
+			logger.info("--> PRÉ PEDIDO SALVO NO DBMAKER: "+pedidoTO.getNumeroPedidoGestao());
+
+			//FIXME: rever o valor do status de acompanhamento de pedido. Está 1 fake abaixo
+			pedidoTO.setStatusAcompanhamentoPedido(1L);
+			stmt.close();
+			return pedidoTO;
+		} catch (SQLException | RuntimeException e) {
+			logger.error("--> ERRO AO TENTAR SALVAR O PRE PEDIDO COM REC ID: "+pedido.getRecId()+" VINDO DO ");
+			logger.error("--> "+e.getMessage());
+		} finally{
+			closeConnection();
+		}
+
 		return null;
 
 	}

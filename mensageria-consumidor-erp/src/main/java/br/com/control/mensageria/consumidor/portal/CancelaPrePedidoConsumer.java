@@ -1,7 +1,11 @@
 package br.com.control.mensageria.consumidor.portal;
 
+import br.com.control.cadastro.PedidoCapaService;
 import br.com.control.cadastro.PrePagamentoService;
-import br.com.control.portal.mensageria.to.PrePagamentoTO;
+import br.com.control.mensageria.produtor.PedidoCapaProducer;
+import br.com.control.portal.mensageria.to.*;
+import com.fasterxml.jackson.databind.MapperFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,25 +18,41 @@ import javax.jms.JMSException;
 @Component
 public class CancelaPrePedidoConsumer {
 
-	private static Logger log = LoggerFactory.getLogger(CancelaPrePedidoConsumer.class);
+    private static Logger log = LoggerFactory.getLogger(CancelaPrePedidoConsumer.class);
 
-	@Autowired
-	private PrePagamentoService prePagamentoService;
+    @Autowired
+    private PrePagamentoService prePagamentoService;
 
-	@JmsListener(destination = "${prefixo_ambiente_fila}__cancelamento_pre_pedido_{numero_matricula_empresa}")
-	public void receiveMessage(final Message<PrePagamentoTO> message) throws JMSException {
-		PrePagamentoTO prePagamentoTO = message.getPayload();
+    @Autowired
+    private PedidoCapaService pedidoCapaService;
 
-		log.info("___________________________________________________________");
-		log.info("### RECEBIDO DA FILA O PRE PAGAMENTO DO TITULO: " + prePagamentoTO.getNumeroTitulo() +"###");
-		log.info("--> prePagamentoTO recebido: " + prePagamentoTO);
-		try {
-			prePagamentoService.salvarPrePagamento(prePagamentoTO);
-		} catch (Exception e) {
-			log.error(e.getMessage());
-			log.error(e.getCause() != null ? e.getCause().toString() : "");
-			log.error(e.getStackTrace() != null ? e.getStackTrace().toString() : "");
-			throw new RuntimeException(e);
-		}
-	}
+
+    @Autowired
+    private PedidoCapaProducer producer;
+
+
+    @JmsListener(destination = "${prefixo_ambiente_fila}__cancelamento_pre_pedido_${numero_matricula_empresa}")
+    public void receiveMessage(final Message<PedidoCapaTO> message) throws JMSException {
+        PedidoCapaTO pedidoCapa = message.getPayload();
+
+        CancelaPrePedido cancelaPrePedido = new CancelaPrePedido();
+        cancelaPrePedido.setCodigoEmpresa(pedidoCapa.getCodigoEmpresa());
+        cancelaPrePedido.setNumeroPedido(pedidoCapa.getNumeroPrePedidoGestao());
+
+
+        if (pedidoCapaService.CancelarPedido(cancelaPrePedido) != null){
+
+            log.info("___________________________________________________________");
+            log.info("### PRE PEDIDO CANCELADO " + pedidoCapa.getNumeroPrePedidoGestao() + " VINDO DO L ###");
+            log.info("--> pre pedido: " + pedidoCapa);
+
+        }else{
+
+            log.info("___________________________________________________________");
+            log.info("### PRE PEDIDO " + pedidoCapa.getNumeroPrePedidoGestao() + " NAO ENCONTRADO ###");
+            log.info("--> pre pedido: " + pedidoCapa);
+
+        }
+
+    }
 }

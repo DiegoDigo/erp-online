@@ -1,5 +1,6 @@
 package br.com.control.cadastro;
 
+import br.com.control.portal.mensageria.to.CancelaPrePedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,10 @@ public class PedidoCapaService {
 
 	public AcompanhamentoPedidoTO salvarCapa(PedidoCapaTO pedidoCapa) {
 		return pedidoCapaDao.salvarCapaPedido(pedidoCapa);
+	}
+
+	public AcompanhamentoPedidoTO CancelarPedido(CancelaPrePedido pedidoCapa) {
+		return pedidoCapaDao.cancelarPrePedido(pedidoCapa);
 	}
 
 }
