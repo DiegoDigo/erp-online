@@ -13,15 +13,15 @@ public class BoletoRowMapper implements RowMapper<Boleto> {
         Boleto boleto = new Boleto();
         boleto.setBancoBoleto(rs.getString("BANCO_BOLETO"));
         boleto.setLinhaDigitavelBoleto(rs.getString("LINHA_DIGITAVEL_BOLETO"));
-        boleto.setNomeClienteBoleto(rs.getString("BANCO_BOLETO"));
-        boleto.setBancoBoleto(rs.getString("NOME_CLIENTE_BOLETO"));
+        boleto.setNomeClienteBoleto(rs.getString("NOME_CLIENTE_BOLETO"));
+        boleto.setBancoBoleto(rs.getString("BANCO_BOLETO"));
+        boleto.setCodigoClienteErp(rs.getString("NUMERO_CLIENTE_BOLETO"));
         boleto.setDataEmissaoBoleto(rs.getString("DATA_EMISSAO_BOLETO"));
         boleto.setDataVencimentoBoleto(rs.getString("DATA_VENCIMENTO_BOLETO"));
         boleto.setAgenciaCodigoBeneficiarioBoleto(rs.getString("AGENCIA_CODIGO_BENEFICIARIO_BOLETO"));
         boleto.setNossoNumeroImpressaoBoleto(rs.getString("NOSSO_NUMERO_IMPRESSAO_BOLETO"));
         boleto.setNumeroDocumentoBoleto(rs.getString("NUMERO_DOCUMENTO_BOLETO"));
         boleto.setValorDocumentoBoleto(rs.getString("VALOR_DOCUMENTO_BOLETO"));
-        boleto.setBancoBoleto(rs.getString("BANCO_BOLETO"));
         boleto.setInstrucao1Boleto(rs.getString("INSTRUCAO1_BOLETO"));
         boleto.setInstrucao2Boleto(rs.getString("INSTRUCAO2_BOLETO"));
         boleto.setInstrucao3Boleto(rs.getString("INSTRUCAO3_BOLETO"));
