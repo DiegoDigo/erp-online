@@ -1,8 +1,12 @@
-package br.com.control.vendas.cadastro.modelo.pedido.pagamento;
+package br.com.control.portal.mensageria.to;
+
+import br.com.control.vendas.cadastro.modelo.pedido.pagamento.Boleto;
 
 import java.io.Serializable;
 
-public class Boleto implements Serializable {
+public class BoletoTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String bancoBoleto;
     private String linhaDigitavelBoleto;
@@ -62,22 +66,128 @@ public class Boleto implements Serializable {
     private String numeroBancoCnab;
     private String nossoNumero;
 
-    public Boleto() {}
-
-    public String getCodigoClienteErp() {
-        return codigoClienteErp;
+    public BoletoTO() {
     }
 
-    public String getNossoNumero() {
-        return nossoNumero;
-    }
-
-    public void setNossoNumero(String nossoNumero) {
+    public BoletoTO(String bancoBoleto, String linhaDigitavelBoleto, String nomeClienteBoleto, String codigoClienteErp, String dataEmissaoBoleto, String dataVencimentoBoleto, String agenciaCodigoBeneficiarioBoleto, String nossoNumeroImpressaoBoleto, String numeroDocumentoBoleto, String valorDocumentoBoleto, String instrucao1Boleto, String instrucao2Boleto, String instrucao3Boleto, String instrucao4Boleto, String instrucao5Boleto, String instrucao6Boleto, String instrucao7Boleto, String instrucao8Boleto, String instrucao9Boleto, String localPagamentoBoleto, String beneficiarioBoleto, String enderecoBeneficiarioBoleto, String cnpjBeneficiadrioBoleto, String dataBoleto, String especieDocumentoBoleto, String aceiteBoleto, String dataProcessamentoBoleto, String usoBancoBoleto, String carteiraBoleto, String especieMoedaBoleto, String quantidadeMoedaBoleto, String valorMoedaBoleto, String instrucoesBoleto, String descricaoDescontoBoleto, String descricaoOutraDeducoes, String descricaoMoraMultaBoleto, String descricaoOutrosAcrescimosBoleto, String cnpjClienteBoleto, String enderecoClienteBoleto, String municipioUfBoleto, String cepClienteBoleto, String pagadorAvalistaBoleto, String cnpjPagadorAvalistaBoleto, String linhaSac1Boleto, String linhaSac2Boleto, String linhaSac3Boleto, String linhaSac4Boleto, String codigoBarrasBoleto, String cnpjPagadorBoleto, String valorDescontoBoleto, String valorAcrescimoBoleto, String valorCobradoBoleto, String sacadorPagadorBoleto, String tamanhoCodigoBarras, String sequenciaBoletoGeracao, String numeroBancoCnab, String nossoNumero) {
+        this.bancoBoleto = bancoBoleto;
+        this.linhaDigitavelBoleto = linhaDigitavelBoleto;
+        this.nomeClienteBoleto = nomeClienteBoleto;
+        this.codigoClienteErp = codigoClienteErp;
+        this.dataEmissaoBoleto = dataEmissaoBoleto;
+        this.dataVencimentoBoleto = dataVencimentoBoleto;
+        this.agenciaCodigoBeneficiarioBoleto = agenciaCodigoBeneficiarioBoleto;
+        this.nossoNumeroImpressaoBoleto = nossoNumeroImpressaoBoleto;
+        this.numeroDocumentoBoleto = numeroDocumentoBoleto;
+        this.valorDocumentoBoleto = valorDocumentoBoleto;
+        this.instrucao1Boleto = instrucao1Boleto;
+        this.instrucao2Boleto = instrucao2Boleto;
+        this.instrucao3Boleto = instrucao3Boleto;
+        this.instrucao4Boleto = instrucao4Boleto;
+        this.instrucao5Boleto = instrucao5Boleto;
+        this.instrucao6Boleto = instrucao6Boleto;
+        this.instrucao7Boleto = instrucao7Boleto;
+        this.instrucao8Boleto = instrucao8Boleto;
+        this.instrucao9Boleto = instrucao9Boleto;
+        this.localPagamentoBoleto = localPagamentoBoleto;
+        this.beneficiarioBoleto = beneficiarioBoleto;
+        this.enderecoBeneficiarioBoleto = enderecoBeneficiarioBoleto;
+        this.cnpjBeneficiadrioBoleto = cnpjBeneficiadrioBoleto;
+        this.dataBoleto = dataBoleto;
+        this.especieDocumentoBoleto = especieDocumentoBoleto;
+        this.aceiteBoleto = aceiteBoleto;
+        this.dataProcessamentoBoleto = dataProcessamentoBoleto;
+        this.usoBancoBoleto = usoBancoBoleto;
+        this.carteiraBoleto = carteiraBoleto;
+        this.especieMoedaBoleto = especieMoedaBoleto;
+        this.quantidadeMoedaBoleto = quantidadeMoedaBoleto;
+        this.valorMoedaBoleto = valorMoedaBoleto;
+        this.instrucoesBoleto = instrucoesBoleto;
+        this.descricaoDescontoBoleto = descricaoDescontoBoleto;
+        this.descricaoOutraDeducoes = descricaoOutraDeducoes;
+        this.descricaoMoraMultaBoleto = descricaoMoraMultaBoleto;
+        this.descricaoOutrosAcrescimosBoleto = descricaoOutrosAcrescimosBoleto;
+        this.cnpjClienteBoleto = cnpjClienteBoleto;
+        this.enderecoClienteBoleto = enderecoClienteBoleto;
+        this.municipioUfBoleto = municipioUfBoleto;
+        this.cepClienteBoleto = cepClienteBoleto;
+        this.pagadorAvalistaBoleto = pagadorAvalistaBoleto;
+        this.cnpjPagadorAvalistaBoleto = cnpjPagadorAvalistaBoleto;
+        this.linhaSac1Boleto = linhaSac1Boleto;
+        this.linhaSac2Boleto = linhaSac2Boleto;
+        this.linhaSac3Boleto = linhaSac3Boleto;
+        this.linhaSac4Boleto = linhaSac4Boleto;
+        this.codigoBarrasBoleto = codigoBarrasBoleto;
+        this.cnpjPagadorBoleto = cnpjPagadorBoleto;
+        this.valorDescontoBoleto = valorDescontoBoleto;
+        this.valorAcrescimoBoleto = valorAcrescimoBoleto;
+        this.valorCobradoBoleto = valorCobradoBoleto;
+        this.sacadorPagadorBoleto = sacadorPagadorBoleto;
+        this.tamanhoCodigoBarras = tamanhoCodigoBarras;
+        this.sequenciaBoletoGeracao = sequenciaBoletoGeracao;
+        this.numeroBancoCnab = numeroBancoCnab;
         this.nossoNumero = nossoNumero;
     }
 
-    public void setCodigoClienteErp(String codigoClienteErp) {
-        this.codigoClienteErp = codigoClienteErp;
+
+    public BoletoTO(Boleto boleto) {
+        this.bancoBoleto = boleto.getBancoBoleto();
+        this.linhaDigitavelBoleto = boleto.getLinhaDigitavelBoleto();
+        this.nomeClienteBoleto = boleto.getNomeClienteBoleto();
+        this.codigoClienteErp = boleto.getCodigoClienteErp();
+        this.dataEmissaoBoleto = boleto.getDataEmissaoBoleto();
+        this.dataVencimentoBoleto = boleto.getDataVencimentoBoleto();
+        this.agenciaCodigoBeneficiarioBoleto = boleto.getAgenciaCodigoBeneficiarioBoleto();
+        this.nossoNumeroImpressaoBoleto = boleto.getNossoNumeroImpressaoBoleto();
+        this.numeroDocumentoBoleto = boleto.getNumeroDocumentoBoleto();
+        this.valorDocumentoBoleto = boleto.getValorDocumentoBoleto();
+        this.instrucao1Boleto = boleto.getInstrucao1Boleto();
+        this.instrucao2Boleto = boleto.getInstrucao2Boleto();
+        this.instrucao3Boleto = boleto.getInstrucao3Boleto();
+        this.instrucao4Boleto = boleto.getInstrucao4Boleto();
+        this.instrucao5Boleto = boleto.getInstrucao5Boleto();
+        this.instrucao6Boleto = boleto.getInstrucao6Boleto();
+        this.instrucao7Boleto = boleto.getInstrucao7Boleto();
+        this.instrucao8Boleto = boleto.getInstrucao8Boleto();
+        this.instrucao9Boleto = boleto.getInstrucao9Boleto();
+        this.localPagamentoBoleto = boleto.getLocalPagamentoBoleto();
+        this.beneficiarioBoleto = boleto.getBeneficiarioBoleto();
+        this.enderecoBeneficiarioBoleto = boleto.getEnderecoBeneficiarioBoleto();
+        this.cnpjBeneficiadrioBoleto = boleto.getCnpjBeneficiadrioBoleto();
+        this.dataBoleto = boleto.getDataBoleto();
+        this.especieDocumentoBoleto = boleto.getEspecieDocumentoBoleto();
+        this.aceiteBoleto = boleto.getAceiteBoleto();
+        this.dataProcessamentoBoleto = boleto.getDataProcessamentoBoleto();
+        this.usoBancoBoleto = boleto.getUsoBancoBoleto();
+        this.carteiraBoleto = boleto.getCarteiraBoleto();
+        this.especieMoedaBoleto = boleto.getEspecieMoedaBoleto();
+        this.quantidadeMoedaBoleto = boleto.getQuantidadeMoedaBoleto();
+        this.valorMoedaBoleto = boleto.getValorMoedaBoleto();
+        this.instrucoesBoleto = boleto.getInstrucoesBoleto();
+        this.descricaoDescontoBoleto = boleto.getDescricaoDescontoBoleto();
+        this.descricaoOutraDeducoes = boleto.getDescricaoOutraDeducoes();
+        this.descricaoMoraMultaBoleto = boleto.getDescricaoMoraMultaBoleto();
+        this.descricaoOutrosAcrescimosBoleto = boleto.getDescricaoOutrosAcrescimosBoleto();
+        this.cnpjClienteBoleto = boleto.getCnpjClienteBoleto();
+        this.enderecoClienteBoleto = boleto.getEnderecoClienteBoleto();
+        this.municipioUfBoleto = boleto.getMunicipioUfBoleto();
+        this.cepClienteBoleto = boleto.getCepClienteBoleto();
+        this.pagadorAvalistaBoleto = boleto.getPagadorAvalistaBoleto();
+        this.cnpjPagadorAvalistaBoleto = boleto.getCnpjPagadorAvalistaBoleto();
+        this.linhaSac1Boleto = boleto.getLinhaSac1Boleto();
+        this.linhaSac2Boleto = boleto.getLinhaSac2Boleto();
+        this.linhaSac3Boleto = boleto.getLinhaSac3Boleto();
+        this.linhaSac4Boleto = boleto.getLinhaSac4Boleto();
+        this.codigoBarrasBoleto = boleto.getCodigoBarrasBoleto();
+        this.cnpjPagadorBoleto = boleto.getCnpjPagadorBoleto();
+        this.valorDescontoBoleto = boleto.getValorDescontoBoleto();
+        this.valorAcrescimoBoleto = boleto.getValorAcrescimoBoleto();
+        this.valorCobradoBoleto = boleto.getValorCobradoBoleto();
+        this.sacadorPagadorBoleto = boleto.getSacadorPagadorBoleto();
+        this.tamanhoCodigoBarras = boleto.getTamanhoCodigoBarras();
+        this.sequenciaBoletoGeracao = boleto.getSequenciaBoletoGeracao();
+        this.numeroBancoCnab = boleto.getNumeroBancoCnab();
+        this.nossoNumero = boleto.getNossoNumero();
     }
 
     public String getBancoBoleto() {
@@ -102,6 +212,14 @@ public class Boleto implements Serializable {
 
     public void setNomeClienteBoleto(String nomeClienteBoleto) {
         this.nomeClienteBoleto = nomeClienteBoleto;
+    }
+
+    public String getCodigoClienteErp() {
+        return codigoClienteErp;
+    }
+
+    public void setCodigoClienteErp(String codigoClienteErp) {
+        this.codigoClienteErp = codigoClienteErp;
     }
 
     public String getDataEmissaoBoleto() {
@@ -504,6 +622,14 @@ public class Boleto implements Serializable {
         this.tamanhoCodigoBarras = tamanhoCodigoBarras;
     }
 
+    public String getSequenciaBoletoGeracao() {
+        return sequenciaBoletoGeracao;
+    }
+
+    public void setSequenciaBoletoGeracao(String sequenciaBoletoGeracao) {
+        this.sequenciaBoletoGeracao = sequenciaBoletoGeracao;
+    }
+
     public String getNumeroBancoCnab() {
         return numeroBancoCnab;
     }
@@ -512,11 +638,11 @@ public class Boleto implements Serializable {
         this.numeroBancoCnab = numeroBancoCnab;
     }
 
-    public String getSequenciaBoletoGeracao() {
-        return sequenciaBoletoGeracao;
+    public String getNossoNumero() {
+        return nossoNumero;
     }
 
-    public void setSequenciaBoletoGeracao(String sequenciaBoletoGeracao) {
-        this.sequenciaBoletoGeracao = sequenciaBoletoGeracao;
+    public void setNossoNumero(String nossoNumero) {
+        this.nossoNumero = nossoNumero;
     }
 }

@@ -3,6 +3,11 @@ package br.com.control.cadastro.sincronismo;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.control.BoletoService;
+import br.com.control.portal.mensageria.to.BoletoPedidoTO;
+import br.com.control.portal.mensageria.to.BoletoTO;
+import br.com.control.vendas.cadastro.modelo.pedido.pagamento.Boleto;
+import br.com.control.vendas.cadastro.modelo.pedido.pagamento.BoletoPedido;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,6 +37,10 @@ public class SincronismosAgendadosService {
 
 	@Autowired
 	private MovimentoFinanceiroService movimentoFinanceiroService;
+
+	@Autowired
+	private BoletoService boletoService;
+
 
 	@Value("${numero_matricula_empresa}")
 	private String matriculaEmpresa;
@@ -80,6 +89,51 @@ public class SincronismosAgendadosService {
 			}
 			MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Movimentos Financeiros Listados com sucessos !",
 					movimentosFinanceirosTO, criaIdentificacao(CadastrosEnum.MOVIMENTO_FINANCEIRO));
+			LOG.info("--> enviando para a fila.");
+			sincronismoAgendadoProducer.sendMessage(msg);
+			LOG.info("--> enviado para a fila.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Scheduled(cron = "${periodo_sincronismo_boleto}")
+	public void atualizaBoletoNoPortalDeVendas() {
+		try {
+			LOG.info("### PROCESSO DE ATUALIZACOES DE BOLETO AGENDADO PARA O PORTAL DE VENDAS WEB ###");
+			List<Boleto> boletos = boletoService.listar();
+			LOG.info("--> Lista com " + boletos.size() + " boletos.");
+
+            List<BoletoTO> boletoTOS = new ArrayList<>();
+            for (Boleto boleto : boletos) {
+                BoletoTO boletoTO = new BoletoTO(boleto);
+                boletoTOS.add(boletoTO);
+            }
+			MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Boleto Listados com sucessos !",
+                    boletoTOS, criaIdentificacao(CadastrosEnum.BOLETO));
+			LOG.info("--> enviando para a fila.");
+			sincronismoAgendadoProducer.sendMessage(msg);
+			LOG.info("--> enviado para a fila.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Scheduled(cron = "${periodo_sincronismo_boleto_pedido}")
+	public void atualizaBoletoPedidoNoPortalDeVendas() {
+		try {
+			LOG.info("### PROCESSO DE ATUALIZACOES DE BOLETO PEDIDO AGENDADO PARA O PORTAL DE VENDAS WEB ###");
+			List<BoletoPedido> boletoPedidos = boletoService.listarBoletoPedido();
+			LOG.info("--> Lista com " + boletoPedidos.size() + " boletos.");
+
+            List<BoletoPedidoTO> boletoPedidoTOS = new ArrayList<>();
+            for (BoletoPedido boletoPedido : boletoPedidos) {
+                BoletoPedidoTO boletoPedidoTO = new BoletoPedidoTO(boletoPedido);
+                boletoPedidoTOS.add(boletoPedidoTO);
+            }
+
+			MensagemRetorno msg = new MensagemRetorno(HttpStatus.OK, "Boleto Listados com sucessos !",
+                    boletoPedidoTOS, criaIdentificacao(CadastrosEnum.BOLETO_PEDIDO));
 			LOG.info("--> enviando para a fila.");
 			sincronismoAgendadoProducer.sendMessage(msg);
 			LOG.info("--> enviado para a fila.");
