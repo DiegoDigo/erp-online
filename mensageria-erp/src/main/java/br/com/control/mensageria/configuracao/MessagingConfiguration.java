@@ -91,9 +91,9 @@ public class MessagingConfiguration {
 		
 		return connectionFactory;
 	}
-	
-	
-    
+
+
+
 
     @Bean
     public JmsListenerContainerFactory<?> jmsListenerContainerFactoryPortal(ConnectionFactory connectionFactory,
