@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import javax.annotation.Resource;
 import javax.jms.ConnectionFactory;
+import javax.jms.Session;
 
 import org.apache.activemq.spring.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -100,7 +101,7 @@ public class MessagingConfiguration {
     		 DefaultJmsListenerContainerFactoryConfigurer configurer) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         configurer.configure(factory, connectionFactory);
-        
+		factory.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE);
         factory.setSessionTransacted(true);
 		factory.setTransactionManager(transactionManager);
         return factory;
@@ -113,6 +114,7 @@ public class MessagingConfiguration {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         configurer.configure(factory, connectionFactory);
         factory.setSessionTransacted(true);
+		factory.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE);
 		factory.setTransactionManager(transactionManager);
         return factory;
     }
