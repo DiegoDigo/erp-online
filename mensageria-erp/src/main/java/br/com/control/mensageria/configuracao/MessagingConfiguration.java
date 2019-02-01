@@ -74,7 +74,7 @@ public class MessagingConfiguration {
 	@Primary
 	public ActiveMQConnectionFactory connectionFactoryPortal() {
 		ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
-		connectionFactory.setBrokerURL(FILA_PORTAL);
+		connectionFactory.setBrokerURL(FILA_PORTAL + "?wireFormat.maxInactivityDuration=0");
 		connectionFactory.setTrustedPackages(Arrays.asList("br.com.control.portal.mensageria.to",
 				"java.lang", "br.com.control.portal.filter",
 				"java.util", "java.math"));
@@ -85,7 +85,7 @@ public class MessagingConfiguration {
 	@Bean
 	public ActiveMQConnectionFactory connectionFactoryJControl() {
 		ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
-		connectionFactory.setBrokerURL(FILA_JCONTROL);
+		connectionFactory.setBrokerURL(FILA_JCONTROL + "?wireFormat.maxInactivityDuration=0");
 		connectionFactory.setTrustedPackages(Arrays.asList("br.com.control.portal.mensageria.to", "java.lang", "br.com.control.portal.filter",
 				"java.util", "java.math", "java.sql"));
 		System.setProperty("org.apache.activemq.SERIALIZABLE_PACKAGES", "*");
