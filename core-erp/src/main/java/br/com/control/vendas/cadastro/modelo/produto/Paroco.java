@@ -26,8 +26,18 @@ public class Paroco implements Serializable {
     private int bandaVendedorSupervisorGerente;
     
     private int bandaCanCgrpCan;
-	
-	
+
+    private String ocorrenciaCevRecolhimento;
+
+
+	public String getOcorrenciaCevRecolhimento() {
+		return ocorrenciaCevRecolhimento;
+	}
+
+	public void setOcorrenciaCevRecolhimento(String ocorrenciaCevRecolhimento) {
+		this.ocorrenciaCevRecolhimento = ocorrenciaCevRecolhimento;
+	}
+
 	public int getUsaBandaPreco() {
 		return usaBandaPreco;
 	}

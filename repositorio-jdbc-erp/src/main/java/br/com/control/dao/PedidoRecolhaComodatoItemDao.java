@@ -1,0 +1,41 @@
+package br.com.control.dao;
+
+import br.com.control.portal.integracao.ProcedureIntegracao;
+import br.com.control.portal.mensageria.to.AcompanhamentoPedidoTO;
+import br.com.control.portal.mensageria.to.PedidoComodatoItemTO;
+import br.com.control.portal.mensageria.to.PedidoItemTO;
+import br.com.control.vendas.cadastro.modelo.pedido.PedidoItem;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
+
+import java.sql.CallableStatement;
+import java.sql.SQLException;
+
+@Repository
+public class PedidoRecolhaComodatoItemDao extends JdbcDao<PedidoItem> {
+
+	private static final Logger logger = LoggerFactory.getLogger(PedidoRecolhaComodatoItemDao.class);
+	
+	public AcompanhamentoPedidoTO salvarItemPedidoComodato(PedidoComodatoItemTO pedidoItem, String numeroPrePedido) {
+
+		try {
+			logger.info("--> CHAMANDO PROCEDURE COMODATO ITEM: "+pedidoItem.getSequenciaItem()+" PARA PRE PEDIDO: "+numeroPrePedido);
+			CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERT_PEDIDO_RETIRADA_COMODATO_ITEM);
+			preparaExecucaoProcedure(pedidoItem, stmt);
+
+			
+			stmt.close();
+		} catch (SQLException | RuntimeException e) {
+			logger.error("--> ERRO AO TENTAR SALVAR O ITEM DA SEQUENCIA: "+pedidoItem.getSequenciaItem());
+			logger.error("-->"+ e.getMessage());
+		} finally {
+			closeConnection();
+		}
+		AcompanhamentoPedidoTO pedidoTO = new AcompanhamentoPedidoTO();
+		pedidoTO.setRecId(pedidoItem.getRecId());
+		return pedidoTO;
+
+	}
+
+}

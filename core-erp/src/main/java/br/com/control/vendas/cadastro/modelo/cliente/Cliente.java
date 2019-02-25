@@ -38,6 +38,7 @@ public class Cliente implements Serializable {
 	private String codigoErpCanal;
 	private String codigoErpCondicaoPagamento;
 	private String codigoErpTipoCobranca;
+	private int celular;
 	 private Boolean disponivelPortal;
 
 	public String getCodigoErp() {
@@ -288,6 +289,14 @@ public class Cliente implements Serializable {
 		this.codigoErpTipoCobranca = codigoErpTipoCobranca;
 	}
 
+	public int getCelular() {
+		return celular;
+	}
+
+	public void setCelular(int celular) {
+		this.celular = celular;
+	}
+
 	public Cliente() {
 
 	}
@@ -324,6 +333,7 @@ public class Cliente implements Serializable {
 		this.codigoErpCanal = cliente.getCodigoErpCanal();
 		this.codigoErpCondicaoPagamento = cliente.getCodigoErpCondicaoPagamento();
 		this.codigoErpTipoCobranca = cliente.getCodigoErpTipoCobranca();
+		this.celular = cliente.getCelular();
 	}
 
 	public Boolean getDisponivelPortal() {

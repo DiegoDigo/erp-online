@@ -28,7 +28,13 @@ public enum ProcedureIntegracao {
             SfaPesquisaMensalTO.class),
 
     CANCELAMENTO_PRE_PEDIDO("SP_CANCELAMENTO_PRE_PEDIDO",
-            CancelaPrePedido.class);
+            CancelaPrePedido.class),
+
+    INSERT_PEDIDO_RETIRADA_COMODATO("SP_RETIRADA_COMODATO",
+            PedidoComodatoTO.class),
+
+    INSERT_PEDIDO_RETIRADA_COMODATO_ITEM("SP_RETIRADA_COMODATO_ITEM",
+            PedidoComodatoItemTO.class);
 
     private String procedure;
     private Class<?> classe;
