@@ -38,8 +38,8 @@ public class Cliente implements Serializable {
 	private String codigoErpCanal;
 	private String codigoErpCondicaoPagamento;
 	private String codigoErpTipoCobranca;
-	private int celular;
-	 private Boolean disponivelPortal;
+	private String celular;
+	private Boolean disponivelPortal;
 
 	public String getCodigoErp() {
 		return codigoErp;
@@ -289,11 +289,11 @@ public class Cliente implements Serializable {
 		this.codigoErpTipoCobranca = codigoErpTipoCobranca;
 	}
 
-	public int getCelular() {
+	public String getCelular() {
 		return celular;
 	}
 
-	public void setCelular(int celular) {
+	public void setCelular(String celular) {
 		this.celular = celular;
 	}
 

@@ -30,7 +30,7 @@ public class ClienteTO implements Serializable {
 	@SequenciaParametrosProcedure(index = 7)
 	private int celularDdd;
 	@SequenciaParametrosProcedure(index = 8)
-	private int celular;
+	private  String celular;
 	@SequenciaParametrosProcedure(index = 9)
 	private String razaoSocial;
 	@SequenciaParametrosProcedure(index = 10)
@@ -448,11 +448,11 @@ public class ClienteTO implements Serializable {
 		this.celularDdd = celularDdd;
 	}
 
-	public int getCelular() {
+	public String getCelular() {
 		return celular;
 	}
 
-	public void setCelular(int celular) {
+	public void setCelular(String celular) {
 		this.celular = celular;
 	}
 

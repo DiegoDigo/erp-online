@@ -101,7 +101,6 @@ public class MessagingConfiguration {
     		 DefaultJmsListenerContainerFactoryConfigurer configurer) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         configurer.configure(factory, connectionFactory);
-		factory.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE);
         factory.setSessionTransacted(true);
 		factory.setTransactionManager(transactionManager);
         return factory;
@@ -114,7 +113,6 @@ public class MessagingConfiguration {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         configurer.configure(factory, connectionFactory);
         factory.setSessionTransacted(true);
-		factory.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE);
 		factory.setTransactionManager(transactionManager);
         return factory;
     }
@@ -125,7 +123,6 @@ public class MessagingConfiguration {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactoryJControl());
 		template.setDefaultDestinationName("VW_CADASTRO_CLIENTE");
-		template.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE);
 		return template;
 	}
 
@@ -134,7 +131,6 @@ public class MessagingConfiguration {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactoryPortal());
 		template.setDefaultDestinationName(ambiente+"_pedidos_" + matricula);
-		template.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE);
 		return template;
 	}
 
@@ -143,7 +139,6 @@ public class MessagingConfiguration {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactoryPortal());
 		template.setDefaultDestinationName(ambiente+"_acompanhamento_" + matricula);
-		template.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE);
 		return template;
 	}
 
@@ -152,7 +147,6 @@ public class MessagingConfiguration {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactoryPortal());
 		template.setDefaultDestinationName(ambiente+"_sincronismo_cadastro_" + matricula);
-		template.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE);
 		return template;
 	}
 
@@ -161,7 +155,6 @@ public class MessagingConfiguration {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactoryPortal());
 		template.setDefaultDestinationName(ambiente+"_liberacao_pedido_" + matricula);
-		template.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE);
 		return template;
 	}
 	@Bean
@@ -169,7 +162,6 @@ public class MessagingConfiguration {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactoryPortal());
 		template.setDefaultDestinationName(ambiente+"_alteracao_dados_cadastrais_contato_" + matricula);
-		template.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE);
 		return template;
 	}
 	@Bean
@@ -177,7 +169,6 @@ public class MessagingConfiguration {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactoryPortal());
 		template.setDefaultDestinationName(ambiente+"_alteracao_dados_cadastrais_endereco_" + matricula);
-		template.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE);
 		return template;
 	}
 	
@@ -186,7 +177,6 @@ public class MessagingConfiguration {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactoryPortal());
 		template.setDefaultDestinationName(ambiente+"_sincronismo_agendado_" + matricula);
-		template.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE);
 		return template;
 	}
 	@Bean
@@ -194,7 +184,6 @@ public class MessagingConfiguration {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactoryPortal());
 		template.setDefaultDestinationName(ambiente+"_pesquisa_mensal_sfa_" + matricula);
-		template.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE);
 		return template;
 	}
 }
