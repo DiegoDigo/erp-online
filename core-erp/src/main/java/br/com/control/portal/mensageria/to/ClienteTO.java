@@ -725,6 +725,7 @@ public class ClienteTO implements Serializable {
 		this.codigoErpCanal = cliente.getCodigoErpCanal();
 		this.codigoErpCondicaoPagamento = cliente.getCodigoErpCondicaoPagamento();
 		this.codigoErpTipoCobranca = cliente.getCodigoErpTipoCobranca();
+		this.celular = cliente.getCelular();
 		this.cargo = "teste";
 	}
 
