@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.jms.JMSException;
 
+import br.com.control.cadastro.sincronismo.SincronismoCadastroService;
+import br.com.control.portal.enums.CadastrosEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,10 @@ public class EnderecoConsumer extends ERPConsumer{
 	@Autowired
 	private ClienteEnderecoService clienteEnderecoService;
 
+	@Autowired
+	SincronismoCadastroService sincronismoCadastroService;
+
+
 	public List<ClienteEnderecoTO> recuperaEnderecosClienteTO(final Message<String> message) throws JMSException {
 		String codigoErp = message.getPayload();
 		log.info("### VW_ENDERECO: "+codigoErp);
@@ -37,11 +43,12 @@ public class EnderecoConsumer extends ERPConsumer{
 		for (ClienteEndereco clienteEndereco : clienteEnderecos) {
 			clienteEnderecoTOs.add(new ClienteEnderecoTO(clienteEndereco));
 		}
+
+		sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.CLIENTE_ENDERECO), clienteEnderecoTOs, "Cliente Endereco");
+		log.info("--> Endereço com codi  go: " + codigoErp + " enviado para o Portal!");
 		
 		return clienteEnderecoTOs;
 
-//		sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.CLIENTE_ENDERECO), clienteEnderecoTOs, "Cliente Endereco");
-//		log.info("--> Endereço com codigo: " + codigoErp + " enviado para o Portal!");
 	}
 
 }

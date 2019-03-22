@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.jms.JMSException;
 
+import br.com.control.cadastro.sincronismo.SincronismoCadastroService;
+import br.com.control.portal.enums.CadastrosEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class VendedorClienteConsumer extends ERPConsumer{
 	@Autowired
 	private VendedorClienteService vendedorClienteService;
 
+	@Autowired
+	SincronismoCadastroService sincronismoCadastroService;
+
 	public List<VendedorClienteTO> recuperaVendedoresClienteTO(final Message<String> message) throws JMSException {
 		String codigoErp = message.getPayload();
 		log.info("### VW_VENDEDOR_CLIENTE: "+codigoErp);
@@ -38,10 +43,12 @@ public class VendedorClienteConsumer extends ERPConsumer{
 			vendedoresClienteTO.add(new VendedorClienteTO(vendedorCliente));
 		}
 
+		sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.VENDEDOR_CLIENTE), vendedoresClienteTO, "Vendedor do Cliente");
+		log.info("--> Vendedor Cliente com codigo: " + codigoErp + " enviado para o Portal!");
+
 		return vendedoresClienteTO;
 		
-//		sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.VENDEDOR_CLIENTE), vendedorClientesTO, "Vendedor do Cliente");
-//		log.info("--> Vendedor Cliente com codigo: " + codigoErp + " enviado para o Portal!");
+
 	}
 
 }
