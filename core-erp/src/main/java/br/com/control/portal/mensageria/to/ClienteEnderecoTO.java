@@ -19,7 +19,15 @@ public class ClienteEnderecoTO implements Serializable {
 	private String codigoClienteERP;
 	private String codigoTipoEnderecoERP;
 	private String tipoEndereco;
-	
+	private String complemento;
+
+	public String getComplemento() {
+		return this.complemento;
+	}
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
 	public String getTipoEndereco() {
 		return tipoEndereco;
 	}

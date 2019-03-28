@@ -18,6 +18,9 @@ public class ClienteEndereco implements Serializable {
 	private String origemLogradouroERP;
 	private String codigoClienteERP;
 	private String CodigoTipoEnderecoERP;
+	private String complemento;
+
+
 	public Long getRecId() {
 		return recId;
 	}
@@ -84,6 +87,12 @@ public class ClienteEndereco implements Serializable {
 	public void setCodigoTipoEnderecoERP(String codigoTipoEnderecoERP) {
 		CodigoTipoEnderecoERP = codigoTipoEnderecoERP;
 
+	}
+	public String getComplemento() {
+		return this.complemento;
+	}
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
 	}
 	
 	public ClienteEndereco() {}
