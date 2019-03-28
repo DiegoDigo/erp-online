@@ -108,6 +108,7 @@ public class ClienteEndereco implements Serializable {
 		this.origemLogradouroERP = clienteEnderecoTO.getOrigemLogradouroERP();
 		this.codigoClienteERP = clienteEnderecoTO.getCodigoClienteERP();
 		this.CodigoTipoEnderecoERP = clienteEnderecoTO.getCodigoTipoEnderecoERP();
+		this.complemento = clienteEnderecoTO.getComplemento();
 	}
 	
 	
