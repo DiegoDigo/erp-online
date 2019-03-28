@@ -14,8 +14,8 @@ public class VendedorClienteRowMapper implements RowMapper<VendedorCliente> {
 		VendedorCliente vendedor = new VendedorCliente();
 		vendedor.setAtivo(rs.getBoolean("ativo"));
 		vendedor.setCodigoClienteERP(rs.getString("CODIGO_CLIENTE_ERP").trim());
+		vendedor.setVendedor(rs.getInt("VENDEDOR"));
 		vendedor.setCodigoVendedorERP(rs.getString("CODIGO_VENDEDOR_ERP").trim());
-		
 		return vendedor;
 	}
 
