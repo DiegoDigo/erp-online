@@ -51,7 +51,7 @@ public class ClienteRowMapper implements RowMapper<Cliente> {
 		cliente.setCodigoErpCanal(rs.getString("codigo_canal_erp"));
 		cliente.setCodigoErpTipoCobranca(rs.getString("codigo_tipo_cobranca_erp"));
 		cliente.setDisponivelPortal(rs.getBoolean("disponivel_portal"));
-		cliente.setCelular(rs.getInt("celular"));
+		cliente.setCelular(rs.getString("celular"));
 
 		return cliente;
 	}

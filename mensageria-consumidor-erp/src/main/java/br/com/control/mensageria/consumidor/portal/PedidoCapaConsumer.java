@@ -1,18 +1,5 @@
 package br.com.control.mensageria.consumidor.portal;
 
-import javax.jms.JMSException;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.jms.annotation.JmsListener;
-import org.springframework.messaging.Message;
-import org.springframework.stereotype.Component;
-
-import com.fasterxml.jackson.databind.MapperFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import br.com.control.cadastro.PedidoCapaService;
 import br.com.control.cadastro.PedidoItemService;
 import br.com.control.mensageria.produtor.PedidoCapaProducer;
@@ -20,6 +7,16 @@ import br.com.control.portal.mensageria.to.AcompanhamentoPedidoTO;
 import br.com.control.portal.mensageria.to.PedidoCapaTO;
 import br.com.control.portal.mensageria.to.PedidoItemTO;
 import br.com.control.portal.mensageria.to.StatusAcompanhamentoPedidoTO;
+import com.fasterxml.jackson.databind.MapperFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.annotation.JmsListener;
+import org.springframework.messaging.Message;
+import org.springframework.stereotype.Component;
+
+import javax.jms.JMSException;
 
 @Component
 public class PedidoCapaConsumer {

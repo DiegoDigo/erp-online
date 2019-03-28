@@ -31,7 +31,7 @@ public class CancelaPrePedidoConsumer {
     private PedidoCapaProducer producer;
 
 
-    @JmsListener(destination = "${prefixo_ambiente_fila}__cancelamento_pre_pedido_${numero_matricula_empresa}")
+    @JmsListener(destination = "${prefixo_ambiente_fila}_cancelamento_pre_pedido_${numero_matricula_empresa}")
     public void receiveMessage(final Message<PedidoCapaTO> message) throws JMSException {
         PedidoCapaTO pedidoCapa = message.getPayload();
 
