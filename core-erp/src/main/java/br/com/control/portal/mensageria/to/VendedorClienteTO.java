@@ -11,7 +11,7 @@ public class VendedorClienteTO implements Serializable {
 	private Boolean ativo;
 	private String codigoClienteERP;
 	private String codigoVendedorERP;
-	private int vendedor;
+	private int tipoVendedor;
 
 	public Boolean getAtivo() {
 		return ativo;
@@ -33,12 +33,12 @@ public class VendedorClienteTO implements Serializable {
 		return codigoVendedorERP;
 	}
 
-	public int getVendedor() {
-		return vendedor;
+	public int getTipoVendedor() {
+		return tipoVendedor;
 	}
 
-	public void setVendedor(int vendedor) {
-		this.vendedor = vendedor;
+	public void setTipoVendedor(int tipoVendedor) {
+		this.tipoVendedor = tipoVendedor;
 	}
 
 	public void setCodigoVendedorERP(String codigoVendedorERP) {
@@ -49,7 +49,7 @@ public class VendedorClienteTO implements Serializable {
 		this.setCodigoClienteERP(vendedorCliente.getCodigoClienteERP());
 		this.setCodigoVendedorERP(vendedorCliente.getCodigoVendedorERP());
 		this.setAtivo(vendedorCliente.getAtivo());
-		this.setVendedor(vendedorCliente.getVendedor());
+		this.setTipoVendedor(vendedorCliente.getTipoVendedor());
 	}
 
 }
