@@ -36,6 +36,7 @@ public class HistroricoPedidoCapaRowMapper implements RowMapper<HistoricoPedidoC
 			historico.setSerieFiscal(rs.getString("SFISCAL"));
 			historico.setNotaFiscalInicial(rs.getString("NFISCAL_INI"));
 			historico.setNotaFiscalFinal(rs.getString("NFISCAL_ULT"));
+			historico.setNumeroPedidoERPReprogramado(rs.getString("numero_pedido_erp_reprogramado"));
 			
 		} catch (ParseException e) {
 			e.printStackTrace();

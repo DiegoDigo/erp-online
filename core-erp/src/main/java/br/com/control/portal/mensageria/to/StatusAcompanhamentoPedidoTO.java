@@ -17,7 +17,16 @@ public class StatusAcompanhamentoPedidoTO implements Serializable {
 	private String serieNFE;
 	private String numeroNFE;
 	private String codigoBloqueioPedido;
-	
+	private String numeroPedidoErpReprogramado;
+
+	public String getNumeroPedidoErpReprogramado() {
+		return numeroPedidoErpReprogramado;
+	}
+
+	public void setNumeroPedidoErpReprogramado(String numeroPedidoErpReprogramado) {
+		this.numeroPedidoErpReprogramado = numeroPedidoErpReprogramado;
+	}
+
 	public StatusPedidoEnum recuperaStatus() {
 		if (getSituacaoPedidoErp() != null && getSituacaoPedidoErp().equals("8")) {
 			return StatusPedidoEnum.ENTREGUE;
@@ -49,6 +58,7 @@ public class StatusAcompanhamentoPedidoTO implements Serializable {
 		this.serieNFE = status.getSerieNFE();
 		this.numeroNFE = status.getNumeroNFE();
 		this.codigoBloqueioPedido = status.getCodigoBloqueioPedido();
+		this.numeroPedidoErpReprogramado = status.getNumeroPedidoErpReprogramado();
 	}
 	public Long getRecId() {
 		return recId;

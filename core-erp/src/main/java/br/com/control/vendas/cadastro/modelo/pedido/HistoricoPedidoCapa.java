@@ -32,6 +32,16 @@ public class HistoricoPedidoCapa implements Serializable {
 	private String notaFiscalInicial;
 	private String notaFiscalFinal;
 	private String serieFiscal;
+	private String numeroPedidoERPReprogramado;
+
+	public String getNumeroPedidoERPReprogramado() {
+		return numeroPedidoERPReprogramado;
+	}
+
+	public void setNumeroPedidoERPReprogramado(String numeroPedidoERPReprogramado) {
+		this.numeroPedidoERPReprogramado = numeroPedidoERPReprogramado;
+	}
+
 
 	public String getCnpjCpf() {
 		return cnpjCpf;

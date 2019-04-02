@@ -20,6 +20,7 @@ public class StatusAcompanhamentoPedidoRowMapper implements RowMapper<StatusAcom
 		acompanhamento.setSerieNFE(rs.getString("SERIE_NFISCAL"));
 		acompanhamento.setNumeroNFE(rs.getString("NUMERO_NFISCAL"));
 		acompanhamento.setCodigoBloqueioPedido(rs.getString("CODIGO_BLOQ_PEDIDO"));
+		acompanhamento.setNumeroPedidoErpReprogramado(rs.getString("NUMERO_PEDIDO_ERP_REPROGRAMADO"));
 		return acompanhamento;
 	}
 

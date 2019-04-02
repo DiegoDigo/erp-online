@@ -35,7 +35,18 @@ public class HistoricoPedidoCapaTO implements Serializable {
 	private String descricaoCondicaoPagamento;
 	private String descricaoTipoCobranca;	
 	private boolean origemPortal;
-	
+
+	private String numeroPedidoERPReprogramado;
+
+	public String getNumeroPedidoERPReprogramado() {
+		return numeroPedidoERPReprogramado;
+	}
+
+	public void setNumeroPedidoERPReprogramado(String numeroPedidoERPReprogramado) {
+		this.numeroPedidoERPReprogramado = numeroPedidoERPReprogramado;
+	}
+
+
 	public boolean isOrigemPortal() {
 		return origemPortal;
 	}
@@ -257,6 +268,7 @@ public class HistoricoPedidoCapaTO implements Serializable {
 		this.notaFiscalFinal = historicoPedidoCapa.getNotaFiscalFinal();
 		this.serieFiscal = historicoPedidoCapa.getSerieFiscal();
 		this.origemPortal = origemPortal;
+		this.numeroPedidoERPReprogramado = historicoPedidoCapa.getNumeroPedidoERPReprogramado();
 	}	
 
 }

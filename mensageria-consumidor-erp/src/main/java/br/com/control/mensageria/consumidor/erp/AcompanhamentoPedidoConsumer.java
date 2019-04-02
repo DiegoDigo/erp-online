@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.jms.JMSException;
 
+import br.com.control.mensageria.produtor.PedidoCapaProducer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,108 +31,111 @@ import br.com.control.vendas.cadastro.modelo.pedido.PedidoPendenteLiberacao;
 @Component
 public class AcompanhamentoPedidoConsumer extends ERPConsumer {
 
-	private static Logger log = LoggerFactory.getLogger(AcompanhamentoPedidoConsumer.class);
+    private static Logger log = LoggerFactory.getLogger(AcompanhamentoPedidoConsumer.class);
 
-	@Autowired
-	private SincronismoAcompanhamentoPedidoService sincronismoAcompanhamentoPedidoService;
-	
-	@Autowired
-	private HistoricoPedidoCapaService historicoPedidoCapaService;
+    @Autowired
+    private SincronismoAcompanhamentoPedidoService sincronismoAcompanhamentoPedidoService;
 
-	@Autowired
-	private HistoricoPedidoItemService historicoPedidoItemService;
-	
-	@Autowired
-	private SincronismoCadastroService sincronismoCadastroService;
-	
-	
-	@Autowired
-	private PedidoPendenteLiberacaoService pedidoPendenteLiberacaoService;
-	
+    @Autowired
+    private HistoricoPedidoCapaService historicoPedidoCapaService;
 
-	@JmsListener(destination = "VW_ACOMPANHAMENTO_PEDIDO", containerFactory = "jmsListenerContainerFactoryJControl")
-	public void sinalizaStatusPedido(final Message<String> message) throws JMSException {
-		String codigoErp = message.getPayload();
-		log.info("VW_ACOMPANHAMENTO_PEDIDO: "+codigoErp);
-		StatusAcompanhamentoPedidoTO statusAcompanhamentoTO = sincronismoAcompanhamentoPedidoService.enviaParaOPortal(codigoErp.trim());
-		if(statusAcompanhamentoTO != null && !statusAcompanhamentoTO.getSituacaoPedidoErp().equals("9") && (recuperaStatusDoPedido(statusAcompanhamentoTO) == StatusPedidoEnum.ANALISE || recuperaStatusDoPedido(statusAcompanhamentoTO) == StatusPedidoEnum.APROVADO)){
-			sinalizaHistoricoPedidoAprovado(codigoErp, origemPedidoEhPortal(statusAcompanhamentoTO));
-		}
-		
-		if(statusAcompanhamentoTO != null && statusAcompanhamentoTO.pedidoEstaBloquado()) {
-			sinalizaPedidoPendenteLiberacao(codigoErp);
-		}
-		
-	
-	}
+    @Autowired
+    private HistoricoPedidoItemService historicoPedidoItemService;
 
-	private boolean origemPedidoEhPortal(StatusAcompanhamentoPedidoTO statusAcompanhamentoTO) {
-		return statusAcompanhamentoTO.getNumeroPrePedidoErp() != null && !statusAcompanhamentoTO.getNumeroPrePedidoErp().equals("0");
-	}
-	
-	private void sinalizaPedidoPendenteLiberacao(String codigoErp) {
-		log.info("### VW_PEDIDO_PENDENTE_LIBERACAO: "+codigoErp);
-		
-		
-		PedidoPendenteLiberacao pedidoPendenteLiberacao = pedidoPendenteLiberacaoService
-				.recuperarPedidoPendenteLiberacao(codigoErp);
+    @Autowired
+    private SincronismoCadastroService sincronismoCadastroService;
 
-		if (pedidoPendenteLiberacao == null) {
-			log.warn("Pedido com codigo: " + codigoErp + " nao encontrado no DBMaker!");
-			return;
-		}
 
-		PedidoPendenteLiberacaoTO pedidoPendenteLiberacaoTO = new PedidoPendenteLiberacaoTO(pedidoPendenteLiberacao);
-		sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.PEDIDO_PENDENTE_LIBERACAO), pedidoPendenteLiberacaoTO,
-				"Pedido Pendente Liberação");
-		
-	}
+    @Autowired
+    private PedidoPendenteLiberacaoService pedidoPendenteLiberacaoService;
 
-	public StatusPedidoEnum recuperaStatusDoPedido(StatusAcompanhamentoPedidoTO status) {
-		if (status.getSituacaoPedidoErp() != null && status.getSituacaoPedidoErp().equals("8")) {
-			return StatusPedidoEnum.ENTREGUE;
-		} else if (status.getNumeroRomaneio() != null && !status.getNumeroRomaneio().equals("0")) {
-			return StatusPedidoEnum.SEPARACAO;
-		} else if (status.getSituacaoPedidoErp() != null && status.getSituacaoPedidoErp().equals("0")) {
-			return StatusPedidoEnum.APROVADO;
-		} else {
-			return StatusPedidoEnum.ANALISE;
-		}
-	}
+    @Autowired
+    private PedidoCapaProducer pedidoCapaProducer;
 
-	private void sinalizaHistoricoPedidoAprovado(String codigoErp, boolean origemPortal) {
-		log.info("### VW_HISTORICO_PEDIDO_CAPA: "+codigoErp);
 
-		HistoricoPedidoCapa historioPedidoCapa = historicoPedidoCapaService.buscarHistoricoCapa(codigoErp);
+    @JmsListener(destination = "VW_ACOMPANHAMENTO_PEDIDO", containerFactory = "jmsListenerContainerFactoryJControl")
+    public void sinalizaStatusPedido(final Message<String> message) throws JMSException {
+        String codigoErp = message.getPayload();
+        log.info("VW_ACOMPANHAMENTO_PEDIDO: "+codigoErp);
+        StatusAcompanhamentoPedidoTO statusAcompanhamentoTO = sincronismoAcompanhamentoPedidoService.enviaParaOPortal(codigoErp.trim());
+        if(statusAcompanhamentoTO != null ){
+            sinalizaHistoricoPedidoAprovado(codigoErp, origemPedidoEhPortal(statusAcompanhamentoTO));
+        }
 
-		if (historioPedidoCapa == null) {
-			log.warn("Historico Pedido Capa com codigo: " + codigoErp+ " nao encontrado no DBMaker!");
-			return;
-		}
+        if(statusAcompanhamentoTO != null && statusAcompanhamentoTO.pedidoEstaBloquado()) {
+            sinalizaPedidoPendenteLiberacao(codigoErp);
+        }
 
-		HistoricoPedidoCapaTO historicoPedidoCapaTO = new HistoricoPedidoCapaTO(historioPedidoCapa, origemPortal);
 
-		List<HistoricoPedidoItem> historicoPedidoItens = historicoPedidoItemService
-				.buscarItemPedido(codigoErp);
+    }
 
-		if (codigoErp == null || codigoErp.isEmpty()) {
-			log.warn("Historico Pedido Item com codigo: " + codigoErp+ " nao encontrado no DBMaker!");
-		}else{
-			List<HistoricoPedidoItemTO> historicoPedidoItensTO = new ArrayList<>();
+    private boolean origemPedidoEhPortal(StatusAcompanhamentoPedidoTO statusAcompanhamentoTO) {
+        return statusAcompanhamentoTO.getNumeroPrePedidoErp() != null && !statusAcompanhamentoTO.getNumeroPrePedidoErp().equals("0");
+    }
 
-			for (HistoricoPedidoItem historicoPedidoItem : historicoPedidoItens) {
-				HistoricoPedidoItemTO historicoPedidoItemTO = new HistoricoPedidoItemTO(historicoPedidoItem);
-				historicoPedidoItensTO.add(historicoPedidoItemTO);
-			}
+    private void sinalizaPedidoPendenteLiberacao(String codigoErp) {
+        log.info("### VW_PEDIDO_PENDENTE_LIBERACAO: " + codigoErp);
 
-			historicoPedidoCapaTO.setHistoricoPedidoItens(historicoPedidoItensTO);
-		}
 
-		sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.HISTORICO_PEDIDO_CAPA), historicoPedidoCapaTO,
-				"Historico Pedido Capa");
-		
-		
-		log.info("--> Historico Pedido Capa com codigo: " + codigoErp + " enviado para o Portal!");
-	}
+        PedidoPendenteLiberacao pedidoPendenteLiberacao = pedidoPendenteLiberacaoService
+                .recuperarPedidoPendenteLiberacao(codigoErp);
+
+        if (pedidoPendenteLiberacao == null) {
+            log.warn("Pedido com codigo: " + codigoErp + " nao encontrado no DBMaker!");
+            return;
+        }
+
+        PedidoPendenteLiberacaoTO pedidoPendenteLiberacaoTO = new PedidoPendenteLiberacaoTO(pedidoPendenteLiberacao);
+        sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.PEDIDO_PENDENTE_LIBERACAO), pedidoPendenteLiberacaoTO,
+                "Pedido Pendente Liberação");
+
+    }
+
+    public StatusPedidoEnum recuperaStatusDoPedido(StatusAcompanhamentoPedidoTO status) {
+        if (status.getSituacaoPedidoErp() != null && status.getSituacaoPedidoErp().equals("8")) {
+            return StatusPedidoEnum.ENTREGUE;
+        } else if (status.getNumeroRomaneio() != null && !status.getNumeroRomaneio().equals("0")) {
+            return StatusPedidoEnum.SEPARACAO;
+        } else if (status.getSituacaoPedidoErp() != null && status.getSituacaoPedidoErp().equals("0")) {
+            return StatusPedidoEnum.APROVADO;
+        } else {
+            return StatusPedidoEnum.ANALISE;
+        }
+    }
+
+    private void sinalizaHistoricoPedidoAprovado(String codigoErp, boolean origemPortal) {
+        log.info("### VW_HISTORICO_PEDIDO_CAPA: " + codigoErp);
+
+        HistoricoPedidoCapa historioPedidoCapa = historicoPedidoCapaService.buscarHistoricoCapa(codigoErp);
+
+        if (historioPedidoCapa == null) {
+            log.warn("Historico Pedido Capa com codigo: " + codigoErp + " nao encontrado no DBMaker!");
+            return;
+        }
+
+        HistoricoPedidoCapaTO historicoPedidoCapaTO = new HistoricoPedidoCapaTO(historioPedidoCapa, origemPortal);
+
+        List<HistoricoPedidoItem> historicoPedidoItens = historicoPedidoItemService
+                .buscarItemPedido(codigoErp);
+
+        if (codigoErp == null || codigoErp.isEmpty()) {
+            log.warn("Historico Pedido Item com codigo: " + codigoErp + " nao encontrado no DBMaker!");
+        } else {
+            List<HistoricoPedidoItemTO> historicoPedidoItensTO = new ArrayList<>();
+
+            for (HistoricoPedidoItem historicoPedidoItem : historicoPedidoItens) {
+                HistoricoPedidoItemTO historicoPedidoItemTO = new HistoricoPedidoItemTO(historicoPedidoItem);
+                historicoPedidoItensTO.add(historicoPedidoItemTO);
+            }
+
+            historicoPedidoCapaTO.setHistoricoPedidoItens(historicoPedidoItensTO);
+        }
+
+        sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.HISTORICO_PEDIDO_CAPA), historicoPedidoCapaTO,
+                "Historico Pedido Capa");
+
+
+        log.info("--> Historico Pedido Capa com codigo: " + codigoErp + " enviado para o Portal!");
+    }
 
 }
