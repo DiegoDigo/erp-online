@@ -1,6 +1,7 @@
 package br.com.control.cadastro.sincronismo;
 
 import java.util.Calendar;
+import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +19,9 @@ public class AuditoriaSincronismoService {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public ResultadoPaginado<Auditoria>buscarAuditoriaPorMatricula(Calendar inicio, Calendar fim, String matricula, Pageable pageable){
+		TimeZone tz = TimeZone.getTimeZone("America/Sao_Paulo");
+		inicio.setTimeZone(tz);
+		fim.setTimeZone(tz);
 		return new ResultadoPaginado(auditoriaRepository.retornaSolicitacoesPorMatricula(inicio, fim, matricula, pageable));
 	}
 
