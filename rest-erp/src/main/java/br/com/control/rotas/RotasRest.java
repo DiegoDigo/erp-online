@@ -53,6 +53,7 @@ public class RotasRest {
 	public static final String RAIZ_CORTADO = "/cortado";
 	public static final String RAIZ_VISITAS = "/visitas";
 	public static final String RAIZ_NFE = "/nfe";
+	public static final String GLOBO_BROKER = "/globobroker";
 
 	public static final String ESTABELECIMENTOS_TIPOS = "/estabelecimentos/tipos";
 	public static final String CONEXAO = "/conexao";

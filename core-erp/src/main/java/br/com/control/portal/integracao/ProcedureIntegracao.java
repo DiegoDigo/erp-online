@@ -1,5 +1,6 @@
 package br.com.control.portal.integracao;
 
+import br.com.control.globobroker.model.envio.MovimentoFinanceiroGloboBroker;
 import br.com.control.portal.mensageria.to.ClienteTO;
 import br.com.control.portal.mensageria.to.LiberacaoPedidoTO;
 import br.com.control.portal.mensageria.to.PedidoCapaTO;
@@ -31,7 +32,14 @@ public enum ProcedureIntegracao {
 			PrePagamentoTO.class),
 	
 	PESQUISA_MENSAL_SFA("SP_PESQUISA_MENSAL",
-			SfaPesquisaMensalTO.class);
+			SfaPesquisaMensalTO.class),
+	
+	INSERT_MOVIMENTO_FINANCEIRO_GLOBAL_BROKER_TITULO_BAIXADO("SP_TITULOS_BAIXADOS",
+			MovimentoFinanceiroGloboBroker.class),
+	
+	INSERT_MOVIMENTO_FINANCEIRO_GLOBAL_BROKER_TITULO_ABERTO("SP_TITULOS_ABERTOS", MovimentoFinanceiroGloboBroker.class),
+	
+	CONFIRMACAO_ENVIO_PEDIDO_ERPTERC("SP_CONFIRMARCAO_ENVIO_PEDIDO_ERPTERC", br.com.control.globobroker.model.envio.ConfirmarEnvioErpTerceiroTO.class);	
 
 	private String procedure;
 	private Class<?> classe;

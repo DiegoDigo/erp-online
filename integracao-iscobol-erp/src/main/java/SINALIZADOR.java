@@ -1,6 +1,7 @@
 import com.iscobol.rts.IscobolCall;
 import com.iscobol.types.NumericVar;
 
+import br.com.control.globobroker.rest.client.SincronismoPedidoBroker;
 import br.com.control.portal.enums.CadastrosEnum;
 import br.com.control.rest.client.SincronismoAcompanhamentoPedido;
 import br.com.control.rest.client.SincronismoBandaPrecoCapa;
@@ -34,14 +35,11 @@ import br.com.control.rest.client.SincronismoVisitas;
 
 public class SINALIZADOR implements IscobolCall {
 
-	// public static void main(String[] args) {
-	// SINALIZADOR sinalizador = new SINALIZADOR();
-	// // String[] param = { "CADASTRO|" + CadastrosEnum.CORTE_ITEM_PREPEDIDO +
-	// // "|201710240006|" };
-	// String[] param = { "CADASTRO|" + CadastrosEnum.VENDEDOR_CLIENTE +
-	// "|00010084|" };
-	// sinalizador.call(param);
-	// }
+	public static void main(String[] args) {
+		SINALIZADOR sinalizador = new SINALIZADOR();
+		String[] param = { "PEDIDO_BROKER" };
+		sinalizador.call(param);
+	}
 
 	@Override
 	public Object call(Object[] argv) {
@@ -56,9 +54,15 @@ public class SINALIZADOR implements IscobolCall {
 			String acao = valoresQuebrados[0];
 //			System.out.println("--> ACAO: ATUALIZACAO DE " + acao);
 
+			if (acao.equals("PEDIDO_BROKER")) {
+				System.out.println("Entrou no Pedido Broker");
+				SincronismoPedidoBroker clienteRest = new SincronismoPedidoBroker();
+				clienteRest.sinalizaErpOnline(null, null);
+			}
+
 			if (acao.equals("PEDIDO")) {
 				SincronismoAcompanhamentoPedido clienteREST = new SincronismoAcompanhamentoPedido();
-				clienteREST.sinalizaPortalAtualizacao(parametroRecebido, null);
+				clienteREST.sinalizaErpOnline(parametroRecebido, null);
 			} else if (acao.equals("CADASTRO")) {
 
 				String nomeCadastro = valoresQuebrados[1];
@@ -66,91 +70,91 @@ public class SINALIZADOR implements IscobolCall {
 
 				CadastrosEnum cadastro = CadastrosEnum.recuperaCadastro(nomeCadastro);
 //				System.out.println("--> CADASTRO: " + cadastro);
-				
+
 				if (CadastrosEnum.GRUPO_PRODUTO == cadastro) {
 					SincronismoCadastroGrupoProduto rest = new SincronismoCadastroGrupoProduto();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.GRUPO_PRODUTO);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.GRUPO_PRODUTO);
 				} else if (CadastrosEnum.TABELA_PRECO == cadastro) {
 					SincronismoCadastroTabelaPreco rest = new SincronismoCadastroTabelaPreco();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.TABELA_PRECO);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.TABELA_PRECO);
 				} else if (CadastrosEnum.FAMILIA_PRODUTO == cadastro) {
 					SincronismoCadastroFamiliaProduto rest = new SincronismoCadastroFamiliaProduto();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.FAMILIA_PRODUTO);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.FAMILIA_PRODUTO);
 				} else if (CadastrosEnum.MARCA_PRODUTO == cadastro) {
 					SincronismoCadastroMarcaProduto rest = new SincronismoCadastroMarcaProduto();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.MARCA_PRODUTO);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.MARCA_PRODUTO);
 				} else if (CadastrosEnum.CATEGORIA_PRODUTO == cadastro) {
 					SincronismoCadastroCategoriaProduto rest = new SincronismoCadastroCategoriaProduto();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.CATEGORIA_PRODUTO);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.CATEGORIA_PRODUTO);
 				} else if (CadastrosEnum.PRODUTO == cadastro) {
 					SincronismoCadastroProduto rest = new SincronismoCadastroProduto();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PRODUTO);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.PRODUTO);
 				} else if (CadastrosEnum.CANAL == cadastro) {
 					SincronismoCadastroCanalProduto rest = new SincronismoCadastroCanalProduto();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.CANAL);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.CANAL);
 				} else if (CadastrosEnum.TIPO_COBRANCA == cadastro) {
 					SincronismoCadastroTipoCobranca rest = new SincronismoCadastroTipoCobranca();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.TIPO_COBRANCA);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.TIPO_COBRANCA);
 				} else if (CadastrosEnum.OCORRENCIA == cadastro) {
 					SincronismoCadastroOcorrencia rest = new SincronismoCadastroOcorrencia();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.OCORRENCIA);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.OCORRENCIA);
 				} else if (CadastrosEnum.CONDICAO_PAGAMENTO == cadastro) {
 					SincronismoCadastroCondicaoPagamento rest = new SincronismoCadastroCondicaoPagamento();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.CONDICAO_PAGAMENTO);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.CONDICAO_PAGAMENTO);
 				} else if (CadastrosEnum.PRODUTO_COMBO == cadastro) {
 					SincronismoCadastroDetalheProdutoCombo rest = new SincronismoCadastroDetalheProdutoCombo();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PRODUTO_COMBO);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.PRODUTO_COMBO);
 				} else if (CadastrosEnum.PRODUTO_CANAL == cadastro) {
 					SincronismoCadastroProdutoCanal rest = new SincronismoCadastroProdutoCanal();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PRODUTO_CANAL);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.PRODUTO_CANAL);
 				} else if (CadastrosEnum.CLIENTE_ENDERECO == cadastro) {
 					SincronismoCadastroEnderecoCliente rest = new SincronismoCadastroEnderecoCliente();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.CLIENTE_ENDERECO);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.CLIENTE_ENDERECO);
 				} else if (CadastrosEnum.VENDEDOR == cadastro) {
 					SincronismoCadastroVendedor rest = new SincronismoCadastroVendedor();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.VENDEDOR);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.VENDEDOR);
 				} else if (CadastrosEnum.VENDEDOR_CLIENTE == cadastro) {
 					SincronismoCadastroVendedorCliente rest = new SincronismoCadastroVendedorCliente();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.VENDEDOR_CLIENTE);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.VENDEDOR_CLIENTE);
 				} else if (CadastrosEnum.CLIENTE == cadastro) {
 					SincronismoCadastroCliente rest = new SincronismoCadastroCliente();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.CLIENTE);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.CLIENTE);
 				} else if (CadastrosEnum.TIPO_ENDERECO == cadastro) {
 					SincronismoTipoEndereco rest = new SincronismoTipoEndereco();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.TIPO_ENDERECO);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.TIPO_ENDERECO);
 				} else if (CadastrosEnum.TIPO_COBRANCA_CLIENTE == cadastro) {
 					SincronismoTipoCobrancaCliente rest = new SincronismoTipoCobrancaCliente();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.TIPO_COBRANCA_CLIENTE);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.TIPO_COBRANCA_CLIENTE);
 				} else if (CadastrosEnum.MOVIMENTO_FINANCEIRO == cadastro) {
 					SincronismoMovimentoFinanceiro rest = new SincronismoMovimentoFinanceiro();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.MOVIMENTO_FINANCEIRO);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.MOVIMENTO_FINANCEIRO);
 				} else if (CadastrosEnum.RESTRICAO_FINANCEIRA == cadastro) {
 					SincronismoRestricaoFinanceira rest = new SincronismoRestricaoFinanceira();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.RESTRICAO_FINANCEIRA);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.RESTRICAO_FINANCEIRA);
 				} else if (CadastrosEnum.COMODATO == cadastro) {
 					SincronismoComodato rest = new SincronismoComodato();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.COMODATO);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.COMODATO);
 				} else if (CadastrosEnum.HISTORICO_PEDIDO_CAPA == cadastro) {
 					SincronismoHistoricoPedidoCapa rest = new SincronismoHistoricoPedidoCapa();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.HISTORICO_PEDIDO_CAPA);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.HISTORICO_PEDIDO_CAPA);
 				} else if (CadastrosEnum.BANDA_PRECO == cadastro) {
 					SincronismoBandaPrecoCapa rest = new SincronismoBandaPrecoCapa();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.BANDA_PRECO);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.BANDA_PRECO);
 				} else if (CadastrosEnum.PEDIDO_PENDENTE_LIBERACAO == cadastro) {
 					SincronismoPedidoBloqueado rest = new SincronismoPedidoBloqueado();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PEDIDO_PENDENTE_LIBERACAO);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.PEDIDO_PENDENTE_LIBERACAO);
 				} else if (CadastrosEnum.PEDIDO_SUGESTAO == cadastro) {
 					SincronismoPedidoSugestao rest = new SincronismoPedidoSugestao();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PEDIDO_SUGESTAO);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.PEDIDO_SUGESTAO);
 				} else if (CadastrosEnum.PAROCO == cadastro) {
 					SincronismoParoco rest = new SincronismoParoco();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.PAROCO);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.PAROCO);
 				} else if (CadastrosEnum.CORTE_ITEM_PREPEDIDO == cadastro) {
 					SincronismoPedidoItemCortado rest = new SincronismoPedidoItemCortado();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.CORTE_ITEM_PREPEDIDO);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.CORTE_ITEM_PREPEDIDO);
 				} else if (CadastrosEnum.VISITAS == cadastro) {
 					SincronismoVisitas rest = new SincronismoVisitas();
-					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.VISITAS);
+					rest.sinalizaErpOnline(parametroRecebido, CadastrosEnum.VISITAS);
 				}
 			}
 

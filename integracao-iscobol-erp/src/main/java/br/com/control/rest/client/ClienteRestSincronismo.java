@@ -26,7 +26,7 @@ public abstract class ClienteRestSincronismo {
 	
 	Properties prop = new Properties();
 	
-	public void sinalizaPortalAtualizacao(String conteudo, CadastrosEnum cadastroASincronizar) {
+	public void sinalizaErpOnline(String conteudo, CadastrosEnum cadastroASincronizar) {
 //		System.out.println("--> Entrou no cliente rest para atualizar "+conteudo.split("\\|")[0]);
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(Arrays.asList(org.springframework.http.MediaType.APPLICATION_JSON));
@@ -55,11 +55,11 @@ public abstract class ClienteRestSincronismo {
 			RestTemplate restTemplate = new RestTemplate();
 			
 			HttpEntity<String> request = new HttpEntity<String>(getHeaders());
-//			System.out.println("############### TOKEN DO POST: "+tokenInfo.getAccess_token());
+			System.out.println("############### TOKEN DO POST: "+tokenInfo.getAccess_token());
 			System.out.println("--> Chamando url rest: "+url);
-//			System.out.println("FAZENDO O POST");
+			System.out.println("FAZENDO O POST");
 			restTemplate.postForLocation(uri, request);
-//			System.out.println("FEZ O POST");
+			System.out.println("FEZ O POST");
 			
 //			restTemplate.getForObject(uri, MensagemRetorno.class);
 		} catch (JsonProcessingException e) {
