@@ -1,6 +1,16 @@
 package br.com.control.portal.integracao;
 
-import br.com.control.portal.mensageria.to.*;
+import br.com.control.globobroker.model.envio.MovimentoFinanceiroGloboBroker;
+import br.com.control.portal.mensageria.to.CancelaPrePedido;
+import br.com.control.portal.mensageria.to.ClienteTO;
+import br.com.control.portal.mensageria.to.LiberacaoPedidoTO;
+import br.com.control.portal.mensageria.to.PedidoCapaTO;
+import br.com.control.portal.mensageria.to.PedidoComodatoItemTO;
+import br.com.control.portal.mensageria.to.PedidoComodatoTO;
+import br.com.control.portal.mensageria.to.PedidoItemTO;
+import br.com.control.portal.mensageria.to.PrePagamentoTO;
+import br.com.control.portal.mensageria.to.SfaPesquisaMensalTO;
+import br.com.control.portal.mensageria.to.VisitaTO;
 
 public enum ProcedureIntegracao {
     // REMOVER ESSAS DUAS APOS HOMOLOGAR AS NOVAS PROCS
@@ -34,7 +44,14 @@ public enum ProcedureIntegracao {
             PedidoComodatoTO.class),
 
     INSERT_PEDIDO_RETIRADA_COMODATO_ITEM("SP_RETIRADA_COMODATO_ITEM",
-            PedidoComodatoItemTO.class);
+            PedidoComodatoItemTO.class),
+	
+	INSERT_MOVIMENTO_FINANCEIRO_GLOBAL_BROKER_TITULO_BAIXADO("SP_TITULOS_BAIXADOS",
+			MovimentoFinanceiroGloboBroker.class),
+	
+	INSERT_MOVIMENTO_FINANCEIRO_GLOBAL_BROKER_TITULO_ABERTO("SP_TITULOS_ABERTOS", MovimentoFinanceiroGloboBroker.class),
+	
+	CONFIRMACAO_ENVIO_PEDIDO_ERPTERC("SP_CONFIRMARCAO_ENVIO_PEDIDO_ERPTERC", br.com.control.globobroker.model.envio.ConfirmarEnvioErpTerceiroTO.class);	
 
     private String procedure;
     private Class<?> classe;
