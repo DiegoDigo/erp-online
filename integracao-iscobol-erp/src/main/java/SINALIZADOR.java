@@ -35,11 +35,19 @@ import br.com.control.rest.client.SincronismoVisitas;
 
 public class SINALIZADOR implements IscobolCall {
 
-	 public static void main(String[] args) {
-	 SINALIZADOR sinalizador = new SINALIZADOR();
-	 String[] param = { "PEDIDO_BROKER" };
-	 sinalizador.call(param);
-	 }
+	//public static void main(String[] args) {
+//		SINALIZADOR sinalizador = new SINALIZADOR();
+//		String[] param = { "PEDIDO_BROKER" };
+//		sinalizador.call(param);
+		
+		// SINALIZADOR sinalizador = new SINALIZADOR();
+		 // String[] param = { "CADASTRO|" + CadastrosEnum.CORTE_ITEM_PREPEDIDO +
+		 // "|201710240006|" };
+		 //String[] param = { "CADASTRO|" + CadastrosEnum.VENDEDOR_CLIENTE +
+		 //"|00010084|" };
+		 //sinalizador.call(param);
+	//}
+	
 
 	@Override
 	public Object call(Object[] argv) {
@@ -53,8 +61,8 @@ public class SINALIZADOR implements IscobolCall {
 			String[] valoresQuebrados = parametroRecebido.split("\\|");
 			String acao = valoresQuebrados[0];
 //			System.out.println("--> ACAO: ATUALIZACAO DE " + acao);
-			
-			if(acao.equals("PEDIDO_BROKER")) {
+
+			if (acao.equals("PEDIDO_BROKER")) {
 				System.out.println("Entrou no Pedido Broker");
 				SincronismoPedidoBroker clienteRest = new SincronismoPedidoBroker();
 				clienteRest.sinalizaPortalAtualizacao(null, null);
@@ -70,7 +78,7 @@ public class SINALIZADOR implements IscobolCall {
 
 				CadastrosEnum cadastro = CadastrosEnum.recuperaCadastro(nomeCadastro);
 //				System.out.println("--> CADASTRO: " + cadastro);
-				
+
 				if (CadastrosEnum.GRUPO_PRODUTO == cadastro) {
 					SincronismoCadastroGrupoProduto rest = new SincronismoCadastroGrupoProduto();
 					rest.sinalizaPortalAtualizacao(parametroRecebido, CadastrosEnum.GRUPO_PRODUTO);
