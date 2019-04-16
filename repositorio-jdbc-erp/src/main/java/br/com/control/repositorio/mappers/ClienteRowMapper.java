@@ -15,14 +15,14 @@ public class ClienteRowMapper implements RowMapper<Cliente> {
 	public Cliente mapRow(ResultSet rs, int rowNum) throws SQLException {
 
 		Cliente cliente = new Cliente();
-		cliente.setCodigoErp(rs.getString("codigo_cliente_erp"));
+		cliente.setCodigoErp(rs.getString("codigo_cliente_erp").trim());
 		cliente.setAbateIcms(rs.getBoolean("abate_icms"));
 		cliente.setAtivo(rs.getBoolean("ativo"));
 		cliente.setBonusDisponivel(rs.getFloat("bonus_disponivel"));
-		cliente.setClasse(rs.getString("classe"));
-		cliente.setCodigoTabpreco(rs.getString("codigo_tabpreco"));
+		cliente.setClasse(rs.getString("classe").trim());
+		cliente.setCodigoTabpreco(rs.getString("codigo_tabpreco").trim());
 		cliente.setContato(rs.getString("contato").trim());
-		cliente.setCpfCnpj(rs.getString("cpf_cnpj"));
+		cliente.setCpfCnpj(rs.getString("cpf_cnpj").trim());
 		cliente.setDesprezaTaxaFinanceira(rs.getBoolean("despreza_taxa_Financeira"));
 		// FIXME: rever este trecho quando realmente for utilizar o dia da
 		// semana a view deverá mandar
@@ -34,24 +34,24 @@ public class ClienteRowMapper implements RowMapper<Cliente> {
 		// view deverá mandar
 		cliente.setInconformidadeCadastro("1");
 		cliente.setLimiteCredito(rs.getFloat("limite_credito"));
-		cliente.setMotivoBloqClasse20(rs.getString("motivo_bloq_classe_20"));
+		cliente.setMotivoBloqClasse20(rs.getString("motivo_bloq_classe_20").trim());
 		cliente.setMotivoBloqueioJuridico(rs.getString("motivo_bloqueio_juridico").trim());
-		cliente.setNumeroCliente(rs.getString("numero_cliente"));
+		cliente.setNumeroCliente(rs.getString("numero_cliente").trim());
 		cliente.setPasta(rs.getInt("pasta"));
 		cliente.setRazaoSocial(rs.getString("razao_social").trim());
-		cliente.setRegiaoCliente(rs.getString("REGIAO_CLIENTE"));
+		cliente.setRegiaoCliente(rs.getString("REGIAO_CLIENTE").trim());
 		cliente.setRegistroAlterado(rs.getInt("Registro_alterado"));
 		cliente.setRestricaoComercial(rs.getBoolean("RESTIRCAO_COMERCIAL"));
 		cliente.setSigla(rs.getString("sigla").trim());
-		cliente.setSubCanal(rs.getString("sub_canal"));
-		cliente.setTelefoneDdd(rs.getString("telefone_ddd"));
+		cliente.setSubCanal(rs.getString("sub_canal").trim());
+		cliente.setTelefoneDdd(rs.getString("telefone_ddd").trim());
 		cliente.setTelefoneTronco(rs.getString("telefone_tronco").trim());
 		cliente.setUsoVerbaRestritoProduto(rs.getInt("uso_verba_restrito_produto"));
-		cliente.setCodigoErpCondicaoPagamento(rs.getString("codigo_condicao_pagamento_erp"));
-		cliente.setCodigoErpCanal(rs.getString("codigo_canal_erp"));
-		cliente.setCodigoErpTipoCobranca(rs.getString("codigo_tipo_cobranca_erp"));
+		cliente.setCodigoErpCondicaoPagamento(rs.getString("codigo_condicao_pagamento_erp").trim());
+		cliente.setCodigoErpCanal(rs.getString("codigo_canal_erp").trim());
+		cliente.setCodigoErpTipoCobranca(rs.getString("codigo_tipo_cobranca_erp").trim());
 		cliente.setDisponivelPortal(rs.getBoolean("disponivel_portal"));
-		cliente.setCelular(rs.getString("celular"));
+		cliente.setCelular(rs.getString("celular").trim());
 
 		return cliente;
 	}

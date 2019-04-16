@@ -15,7 +15,7 @@ public class MotivoGeralRowMapper implements RowMapper<MotivoGeral> {
 		geral.setAtivo(rs.getBoolean("ativo"));
 		geral.setCodigoMotivoGeralERP(rs.getString("codigo_motivo_geral"));
 		geral.setDescricao(rs.getString("descricao").trim());
-		geral.setDescricaoReduzida(rs.getString("descricao_reduzida"));
+		geral.setDescricaoReduzida(rs.getString("descricao_reduzida").trim());
 		geral.setInfluiVenda(rs.getBoolean("INFUI_VENDA"));
 		geral.setPermiteVenda(rs.getBoolean("permite_venda"));
 //		geral.setRecId(rs.getLong("rec_id"));
