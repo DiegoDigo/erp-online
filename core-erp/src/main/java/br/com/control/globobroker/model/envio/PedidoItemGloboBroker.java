@@ -1,13 +1,15 @@
 package br.com.control.globobroker.model.envio;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.io.Serializable;
 import java.util.List;
 
+@JsonPropertyOrder({ "recId", "sequenciaItem", "codigoOcorrencia", "codigoProduto", "quantidadeInteira", "ValorInteiro", "ValorProdutoInteiro",
+"quantidadeUnitaria", "Valorunitario", "ValorProdutoUnitario", "valorDesconto", "valorLiquido"})
 public class PedidoItemGloboBroker implements Serializable {
 	private static final long serialVersionUID = 1L;
-
 
 	@JsonProperty("recId")
 	private String recId;

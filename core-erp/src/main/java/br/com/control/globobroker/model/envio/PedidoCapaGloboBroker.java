@@ -12,8 +12,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 		"num_logEnt", "complementoEnt", "bairroEnt", "cidadeEnt", "UFEnt", "DDD", "contato", "telefone", "email",
 		"cnae", "segmento", "condicaofaturamento", "NumeroPedidoJcontrol", "codigoVendedor", "tipoCobranca",
 		"condicaoPagamento", "dataEmissao", "dataVencimentoPrimeiraParcela", "dataentrega", "valorDesconto",
-		"valorAcrescimo", "valorLiquido", "placa", "atendente", "areaAtendente", "tipodepedido", "tipodefrete",
-		"itensPedido" })
+		"valorAcrescimo", "valorLiquido", "placa", "atendente", "areaAtendente", "tipodepedido", "tipodefrete"})
 public class PedidoCapaGloboBroker implements Serializable {
 	private static final long serialVersionUID = 1L;
 

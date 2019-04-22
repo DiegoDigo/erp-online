@@ -9,7 +9,7 @@ public class ConfirmarEnvioErpTerceiroTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@SequenciaParametrosProcedure(index = 1)
-	private String numeroPedidoJcontrol;
+	private long numeroPedidoJcontrol;
 
 	@SequenciaParametrosProcedure(index = 2)
 	private String numeroPedidoErpTerc;
@@ -23,11 +23,11 @@ public class ConfirmarEnvioErpTerceiroTO implements Serializable {
 	@SequenciaParametrosProcedure(index = 5, isRetornoProcedure = true)
 	private String msgRetorno = "";
 
-	public String getNumeroPedidoJcontrol() {
+	public long getNumeroPedidoJcontrol() {
 		return numeroPedidoJcontrol;
 	}
 
-	public void setNumeroPedidoJcontrol(String numeroPedidoJcontrol) {
+	public void setNumeroPedidoJcontrol(long numeroPedidoJcontrol) {
 		this.numeroPedidoJcontrol = numeroPedidoJcontrol;
 	}
 
