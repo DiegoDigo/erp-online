@@ -96,7 +96,7 @@ public class ClienteRestGloboBroker {
 
 					this.execute(pedido.getNumeroPedidoJcontrol(), resposta.getMessage().replace("Número do pedido ERP Terceiro: ", ""), "");
 				} else {
-					this.execute(pedido.getNumeroPedidoJcontrol(), "", resposta.getMessage());
+					this.execute(pedido.getNumeroPedidoJcontrol(), " N/A", resposta.getMessage());
 				}
 			} catch (JsonProcessingException e) {
 				logger.info("Erro na requisição MENSAGEM: " + e.getMessage() + " CAUSA: " + e.getCause());

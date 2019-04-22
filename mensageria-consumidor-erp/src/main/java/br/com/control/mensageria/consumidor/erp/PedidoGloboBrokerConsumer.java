@@ -29,7 +29,7 @@ public class PedidoGloboBrokerConsumer extends ERPConsumer{
     @Autowired
     private ClienteRestGloboBroker clienteRestGloboBroker;
 
-    @JmsListener(destination = "PEDIDO_BROKER", containerFactory = "jmsListenerContainerFactoryJControl")
+    @JmsListener(destination = "PEDIDO_BROKER")
 	public void sinalizaStatusPedido(final Message<String> message) throws JMSException {
 
 		logger.info("### PEDIDO_BROKER: ");
