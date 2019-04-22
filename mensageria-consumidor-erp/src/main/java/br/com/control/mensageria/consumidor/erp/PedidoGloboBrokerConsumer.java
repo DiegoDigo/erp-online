@@ -5,9 +5,6 @@ import br.com.control.globobroker.PedidoItemGloboBrokerService;
 import br.com.control.globobroker.model.envio.PedidoCapaGloboBroker;
 import br.com.control.globobroker.model.envio.PedidoItemGloboBroker;
 import br.com.control.globobroker.services.ClienteRestGloboBroker;
-import com.fasterxml.jackson.databind.MapperFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,10 +31,9 @@ public class PedidoGloboBrokerConsumer extends ERPConsumer{
 
     @JmsListener(destination = "PEDIDO_BROKER", containerFactory = "jmsListenerContainerFactoryJControl")
 	public void sinalizaStatusPedido(final Message<String> message) throws JMSException {
-		String codigoErp = message.getPayload();
 
 		logger.info("### PEDIDO_BROKER: ");
-        logger.info("### SINALIZADOR -> PEDIDO ERP TERCEIRO - GLOBO BROKER ###");
+        logger.info("### CHAMANDO PEDIDO ERP TERCEIRO - GLOBO BROKER ###");
         List<PedidoCapaGloboBroker> pedidos = pedidoCapaGloboBrokerService.listar();
         List<PedidoItemGloboBroker> itens = pedidoItemGloboBrokerService.listar();
 

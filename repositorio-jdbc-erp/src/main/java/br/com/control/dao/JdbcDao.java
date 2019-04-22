@@ -1,17 +1,10 @@
 package br.com.control.dao;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.math.BigDecimal;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Types;
-import java.util.List;
-
-import javax.sql.DataSource;
-
+import br.com.control.annotation.SequenciaParametrosProcedure;
+import br.com.control.portal.integracao.ProcedureIntegracao;
+import br.com.control.portal.integracao.ViewsIntegracaoERP;
+import net.gpedro.integrations.slack.SlackApi;
+import net.gpedro.integrations.slack.SlackMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +14,16 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import br.com.control.annotation.SequenciaParametrosProcedure;
-import br.com.control.portal.integracao.ProcedureIntegracao;
-import br.com.control.portal.integracao.ViewsIntegracaoERP;
-import net.gpedro.integrations.slack.SlackApi;
-import net.gpedro.integrations.slack.SlackMessage;
+import javax.sql.DataSource;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.math.BigDecimal;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Types;
+import java.util.List;
 
 @Repository
 public class JdbcDao<T> {
@@ -127,7 +125,7 @@ public class JdbcDao<T> {
 	}
 
 	public DataSource getDataSource() {
-		return dataSource;
+		return this.dataSource;
 	}
 
 	// @Autowired
@@ -161,7 +159,11 @@ public class JdbcDao<T> {
 			call = call.substring(0, call.length() - 1);
 			call += ")}";
 
-			this.connection = getDataSource().getConnection();			
+			logger.info("Monta a chamada: " + call);
+			System.out.println(getDataSource().getConnection());
+
+			connection = getDataSource().getConnection();
+
 			return connection.prepareCall(call);
 		} catch (SQLException e) {			
 			logger.error("Erro ao executar chamada ao DBMAKER: " + e);

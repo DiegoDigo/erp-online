@@ -87,7 +87,7 @@ public class MessagingConfiguration {
 		ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
 		connectionFactory.setBrokerURL(FILA_JCONTROL);
 		connectionFactory.setTrustedPackages(Arrays.asList("br.com.control.portal.mensageria.to", "java.lang", "br.com.control.portal.filter",
-				"java.util", "java.math", "java.sql"));
+				"java.util", "java.math", "java.sql", "br.com.control.globobroker.model.envio"));
 		System.setProperty("org.apache.activemq.SERIALIZABLE_PACKAGES", "*");
 		
 		return connectionFactory;

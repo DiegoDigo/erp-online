@@ -1,11 +1,10 @@
 package br.com.control.repositorio.mappers;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
+import br.com.control.vendas.cadastro.modelo.MotivoGeral;
 import org.springframework.jdbc.core.RowMapper;
 
-import br.com.control.vendas.cadastro.modelo.MotivoGeral;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class MotivoGeralRowMapper implements RowMapper<MotivoGeral> {
 

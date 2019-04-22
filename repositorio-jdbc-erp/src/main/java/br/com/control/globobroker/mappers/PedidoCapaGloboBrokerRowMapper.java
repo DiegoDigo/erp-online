@@ -6,7 +6,11 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 
 import br.com.control.globobroker.model.envio.PedidoCapaGloboBroker;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
+@Repository
+@Transactional
 public class PedidoCapaGloboBrokerRowMapper implements RowMapper<PedidoCapaGloboBroker> {
 
 	@Override	

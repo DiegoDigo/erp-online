@@ -2,6 +2,7 @@ package br.com.control.globobroker;
 
 import java.util.List;
 
+import br.com.control.globobroker.dao.ConfirmacaoEnvioErpTerceiroDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +16,15 @@ public class PedidoCapaGloboBrokerService {
 	@Autowired
 	private PedidoCapaGloboBrokerDao pedidoCapaDao;
 
+	@Autowired
+	private ConfirmacaoEnvioErpTerceiroDao confirmacaoEnvioErpTerceiroDao;
+
 	public List<PedidoCapaGloboBroker> listar() {
 		return pedidoCapaDao.listarPedidosBroker();
 	}
 
 	public void confirmarEnvio(ConfirmarEnvioErpTerceiroTO pedidoTO) {
-		pedidoCapaDao.confirmarEnvio(pedidoTO);
+		confirmacaoEnvioErpTerceiroDao.confirmarEnvio(pedidoTO);
 	}
 
 	public Integer count() {

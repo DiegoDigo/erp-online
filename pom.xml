@@ -791,7 +791,7 @@
 		</profile>
 
 		<profile>
-			<id>PRODUCAO-3485</id>
+			<id>3485</id>
 			<properties>
 				<packaging.type>war</packaging.type>
 				<server.url>C:\PortalIntegracao\tomcat\webapps</server.url>

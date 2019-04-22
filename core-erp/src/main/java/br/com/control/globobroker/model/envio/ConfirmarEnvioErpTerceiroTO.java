@@ -3,7 +3,9 @@ package br.com.control.globobroker.model.envio;
 import java.io.Serializable;
 
 import br.com.control.annotation.SequenciaParametrosProcedure;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ConfirmarEnvioErpTerceiroTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
