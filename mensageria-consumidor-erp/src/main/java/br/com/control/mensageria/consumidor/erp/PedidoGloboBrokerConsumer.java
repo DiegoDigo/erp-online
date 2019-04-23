@@ -46,11 +46,13 @@ public class PedidoGloboBrokerConsumer extends ERPConsumer{
             BigDecimal somaValoresLiquidoItensPedido = itensDoPedido.stream()
                     .map(item -> new BigDecimal(item.getValorLiquido())).reduce(BigDecimal.ZERO, BigDecimal::add);
 
-            DecimalFormat df = new DecimalFormat("#.##");
             System.out.println("Valor original: " + somaValoresLiquidoItensPedido);
-            System.out.println("Valor formatado: " + df.format(somaValoresLiquidoItensPedido.doubleValue()));
 
-            p.setValorLiquido(somaValoresLiquidoItensPedido.doubleValue());
+            BigDecimal bd = new BigDecimal(somaValoresLiquidoItensPedido.doubleValue()).setScale(2, RoundingMode.HALF_UP);
+            double valorLiquidoFormatado = bd.doubleValue();
+            System.out.println("Valor formatado: " + valorLiquidoFormatado);
+
+            p.setValorLiquido(valorLiquidoFormatado);
 
             p.setItensPedido(itensDoPedido);
 
