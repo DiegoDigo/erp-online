@@ -14,6 +14,8 @@ import org.springframework.stereotype.Component;
 
 import javax.jms.JMSException;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,7 +34,7 @@ public class PedidoGloboBrokerConsumer extends ERPConsumer{
     @JmsListener(destination = "PEDIDO_BROKER")
 	public void sinalizaStatusPedido(final Message<String> message) throws JMSException {
 
-		logger.info("### PEDIDO_BROKER: ");
+        logger.info("### PEDIDO_BROKER");
         logger.info("### CHAMANDO PEDIDO ERP TERCEIRO - GLOBO BROKER ###");
         List<PedidoCapaGloboBroker> pedidos = pedidoCapaGloboBrokerService.listar();
         List<PedidoItemGloboBroker> itens = pedidoItemGloboBrokerService.listar();
@@ -44,11 +46,17 @@ public class PedidoGloboBrokerConsumer extends ERPConsumer{
             BigDecimal somaValoresLiquidoItensPedido = itensDoPedido.stream()
                     .map(item -> new BigDecimal(item.getValorLiquido())).reduce(BigDecimal.ZERO, BigDecimal::add);
 
-            p.setValorLiquido(Double.parseDouble(somaValoresLiquidoItensPedido.toString()));
+            System.out.println("Valor original: " + somaValoresLiquidoItensPedido);
+
+            BigDecimal bd = new BigDecimal(somaValoresLiquidoItensPedido.doubleValue()).setScale(2, RoundingMode.HALF_UP);
+            double valorLiquidoFormatado = bd.doubleValue();
+            System.out.println("Valor formatado: " + valorLiquidoFormatado);
+
+            p.setValorLiquido(valorLiquidoFormatado);
 
             p.setItensPedido(itensDoPedido);
 
-            logger.info(" --> VAI SINALIZAR XXX");
+            logger.info(" --> VAI ENVIAR PEDIDO");
             logger.info(" ---> " + p.getEnderecoWebService().replace("/pedido", ""));
 
             // Sinaliza o ERp terceiro
@@ -57,5 +65,5 @@ public class PedidoGloboBrokerConsumer extends ERPConsumer{
         });
 
         logger.info("### FIM -> PEDIDO ERP TERCEIRO - GLOBO BROKER ###");
-	}
+    }
 }
