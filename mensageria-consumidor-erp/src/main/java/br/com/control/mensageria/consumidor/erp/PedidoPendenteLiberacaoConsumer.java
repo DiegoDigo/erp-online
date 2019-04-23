@@ -2,6 +2,7 @@ package br.com.control.mensageria.consumidor.erp;
 
 import javax.jms.JMSException;
 
+import br.com.control.portal.enums.StatusLiberacaoPedido;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
