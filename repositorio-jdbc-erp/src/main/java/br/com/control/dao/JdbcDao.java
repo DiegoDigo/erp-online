@@ -160,7 +160,6 @@ public class JdbcDao<T> {
 			call += ")}";
 
 			logger.info("Monta a chamada: " + call);
-			System.out.println(getDataSource().getConnection());
 
 			connection = getDataSource().getConnection();
 

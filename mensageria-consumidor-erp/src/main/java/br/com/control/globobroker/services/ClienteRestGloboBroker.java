@@ -24,108 +24,91 @@ import java.util.Arrays;
 @Service
 public class ClienteRestGloboBroker {
 
-	@Autowired
-	private PedidoCapaGloboBrokerService pedidoCapaGloboBrokerService;
+    @Autowired
+    private PedidoCapaGloboBrokerService pedidoCapaGloboBrokerService;
 
-	private static final Logger logger = LoggerFactory.getLogger(ClienteRestGloboBroker.class);
+    private static final Logger logger = LoggerFactory.getLogger(ClienteRestGloboBroker.class);
 
-	public void sinalizaErpTerceiro(String url, String usuario, String senha, PedidoCapaGloboBroker pedido) {
+    public void sinalizaErpTerceiro(String url, String usuario, String senha, PedidoCapaGloboBroker pedido) {
 
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
-		mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
 
-		try {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        headers.setContentType(MediaType.APPLICATION_JSON);
 
-			System.out.println("RESULTADO : " + mapper.writeValueAsString(pedido));
-			logger.info("RESULTADO : " + mapper.writeValueAsString(pedido));
+        AutenticacaoRestGloboBroker autenticacaoRest = new AutenticacaoRestGloboBroker();
+        AuthTokenInfo tokenInfo = autenticacaoRest.sendTokenRequest(url, usuario, senha);
 
-		} catch (JsonProcessingException e) {
-			System.out.println("MESSAGE XXX: " + e.getMessage());
-			System.out.println("CAUSE XXX: " + e.getCause());
-			e.printStackTrace();
-		}
+        headers.add("X-App-Token", tokenInfo.getToken());
+        HttpEntity<String> request;
 
-		HttpHeaders headers = new HttpHeaders();
-		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-		headers.setContentType(MediaType.APPLICATION_JSON);
+        try {
+            request = new HttpEntity<String>(mapper.writeValueAsString(pedido), headers);
+            RestTemplate restTemplate = new RestTemplate();
+            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
+            UriComponents uriComponents = builder.build();
+            URI uri = uriComponents.toUri();
+            ResponseEntity<Object> response = restTemplate.exchange(uri + "/pedido", HttpMethod.POST, request,
+                    Object.class);
 
-		AutenticacaoRestGloboBroker autenticacaoRest = new AutenticacaoRestGloboBroker();
-		AuthTokenInfo tokenInfo = autenticacaoRest.sendTokenRequest(url, usuario, senha);
+            try {
 
-		headers.add("X-App-Token", tokenInfo.getToken());
-		HttpEntity<String> request;
+                logger.info(" ---> Enviando objeto json para ERP Terceiros");
+                logger.info(" ---> " + mapper.writeValueAsString(pedido));
+                System.out.println(" ---> Enviando objeto json para ERP Terceiros");
+                System.out.println(" ---> " + mapper.writeValueAsString(pedido));
 
-		try {
-			System.out.println(mapper.writeValueAsString(pedido));
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
+                ObjectMapper objectMapper = new ObjectMapper();
+                RespostaErpTerceiroTO resposta = objectMapper.readValue(response.getBody().toString(),
+                        RespostaErpTerceiroTO.class);
 
-		try {
-			request = new HttpEntity<String>(mapper.writeValueAsString(pedido), headers);
-			RestTemplate restTemplate = new RestTemplate();
-			UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
-			UriComponents uriComponents = builder.build();
-			URI uri = uriComponents.toUri();
-			ResponseEntity<Object> response = restTemplate.exchange(uri + "/pedido", HttpMethod.POST, request,
-					Object.class);
+                logger.info(" ---> RESPOSTA da requisição");
+                logger.info(" ---> " + resposta.getMessage());
+                System.out.println(" ---> RESPOSTA da requisição");
+                System.out.println(" ---> " + resposta.getMessage());
 
-			try {
+                // Confirma o envio para o ERP terceiro
+                if (resposta.getStatus().equals(true)) {
 
-				logger.info("Enviando objeto json para ERP Terceiros...");
-				logger.info(mapper.writeValueAsString(pedido));
-				System.out.println(mapper.writeValueAsString(pedido));
+                    logger.info("Número do pedido ERP Terceiro: " + resposta.getMessage().replace("Número do pedido ERP Terceiro: ", ""));
+                    logger.info("Número do pedido JControl: " + pedido.getNumeroPedidoJcontrol());
 
-				ObjectMapper objectMapper = new ObjectMapper();
-				RespostaErpTerceiroTO resposta = objectMapper.readValue(response.getBody().toString(),
-						RespostaErpTerceiroTO.class);
+                    System.out.println("Número do pedido ERP Terceiro: " + resposta.getMessage().replace("Número do pedido ERP Terceiro: ", ""));
+                    System.out.println("Número do pedido JControl: " + pedido.getNumeroPedidoJcontrol());
 
-				logger.info("RESPOSTA da requisição...");
-				logger.info(resposta.getMessage());
-				System.out.println(resposta.getMessage());
+                    this.execute(pedido.getNumeroPedidoJcontrol(), resposta.getMessage().replace("Número do pedido ERP Terceiro: ", ""), "");
+                } else {
+                    this.execute(pedido.getNumeroPedidoJcontrol(), "", resposta.getMessage());
+                }
+            } catch (JsonProcessingException e) {
+                logger.info("Erro na requisição MENSAGEM: " + e.getMessage() + " CAUSA: " + e.getCause());
+            } catch (IOException e) {
+                logger.info("Erro na requisição MENSAGEM: " + e.getMessage() + " CAUSA: " + e.getCause());
+            }
+        } catch (JsonProcessingException e1) {
+            logger.info("Erro  MENSAGEM: " + e1.getMessage() + " CAUSA: " + e1.getCause());
+        } finally {
+            logger.info("TERMINOU");
+        }
+    }
 
-				// Confirma o envio para o ERP terceiro
-				if (resposta.getStatus().equals(true)) {
+    // Envio a confirmação do pedido para o erp
+    private void execute(String numeroPedidoJcontrol, String numeroPedidoErpTerceiro, String mensagem) {
+        logger.info(" Chama a notificação de envio do pedido  " + numeroPedidoJcontrol + " - " + numeroPedidoErpTerceiro + " - " + mensagem);
+        ConfirmarEnvioErpTerceiroTO pedidoTO = criaObjetoConfirmacaoEnvioErpTerceiro(numeroPedidoJcontrol,
+                numeroPedidoErpTerceiro, mensagem);
+        pedidoCapaGloboBrokerService.confirmarEnvio(pedidoTO);
+    }
 
-					logger.info("Número do pedido ERP Terceiro: " + resposta.getMessage().replace("Número do pedido ERP Terceiro: ", ""));
-					logger.info("Número do pedido JControl: " + pedido.getNumeroPedidoJcontrol());
-
-					System.out.println("Número do pedido ERP Terceiro: " + resposta.getMessage().replace("Número do pedido ERP Terceiro: ", ""));
-					System.out.println("Número do pedido JControl: " + pedido.getNumeroPedidoJcontrol());
-
-					this.execute(pedido.getNumeroPedidoJcontrol(), resposta.getMessage().replace("Número do pedido ERP Terceiro: ", ""), "");
-				} else {
-					this.execute(pedido.getNumeroPedidoJcontrol(), "", resposta.getMessage());
-				}
-			} catch (JsonProcessingException e) {
-				logger.info("Erro na requisição MENSAGEM: " + e.getMessage() + " CAUSA: " + e.getCause());
-				System.out.println(mapper.writeValueAsString(pedido));
-			} catch (IOException e) {
-				logger.info("Erro na requisição MENSAGEM: " + e.getMessage() + " CAUSA: " + e.getCause());
-			}
-		} catch (JsonProcessingException e1) {
-			logger.info("Erro  MENSAGEM: " + e1.getMessage() + " CAUSA: " + e1.getCause());
-		}
-		finally {
-			logger.info("TERMINOU");
-		}
-	}
-
-	// Envio a confirmação do pedido para o erp
-	private void execute(String numeroPedidoJcontrol, String numeroPedidoErpTerceiro, String mensagem) {
-		logger.info(" Chama a notificação de envio do pedido  " + numeroPedidoJcontrol + " - " +  numeroPedidoErpTerceiro + " - " + mensagem);
-		ConfirmarEnvioErpTerceiroTO pedidoTO = criaObjetoConfirmacaoEnvioErpTerceiro(numeroPedidoJcontrol,
-				numeroPedidoErpTerceiro, mensagem);
-		pedidoCapaGloboBrokerService.confirmarEnvio(pedidoTO);
-	}
-
-	private ConfirmarEnvioErpTerceiroTO criaObjetoConfirmacaoEnvioErpTerceiro(String numeroPedidoJcontrol,
-			String numeroPedidoErpTerceiro, String mensagem) {
-		ConfirmarEnvioErpTerceiroTO pedidoTO = new ConfirmarEnvioErpTerceiroTO();
-		pedidoTO.setNumeroPedidoJcontrol(Long.parseLong(numeroPedidoJcontrol));
-		pedidoTO.setNumeroPedidoErpTerc(numeroPedidoErpTerceiro);
-		pedidoTO.setMensagemErro(mensagem);
-		return pedidoTO;
-	}
+    private ConfirmarEnvioErpTerceiroTO criaObjetoConfirmacaoEnvioErpTerceiro(String numeroPedidoJcontrol,
+                                                                              String numeroPedidoErpTerceiro, String mensagem) {
+        ConfirmarEnvioErpTerceiroTO pedidoTO = new ConfirmarEnvioErpTerceiroTO();
+        pedidoTO.setNumeroPedidoJcontrol(Long.parseLong(numeroPedidoJcontrol));
+        pedidoTO.setNumeroPedidoErpTerc(numeroPedidoErpTerceiro);
+        pedidoTO.setMensagemErro(mensagem);
+        return pedidoTO;
+    }
 }
