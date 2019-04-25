@@ -36,7 +36,8 @@ public enum CadastrosEnum {
 	CHAVE_NFE,
 	BOLETO,
 	BOLETO_PEDIDO,
-	VISITAS;
+	VISITAS,
+	PEDIDO_BROKER;
 
 	public static CadastrosEnum recuperaCadastro(String nome) {
 		for (CadastrosEnum cadastro : CadastrosEnum.values()) {

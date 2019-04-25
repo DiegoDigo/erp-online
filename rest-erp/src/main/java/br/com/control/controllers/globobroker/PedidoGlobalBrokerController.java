@@ -36,9 +36,9 @@ public class PedidoGlobalBrokerController extends AbstractController {
 	private ClienteRestGloboBroker clienteRestGloboBroker;
 
 	@RequestMapping(method = RequestMethod.POST, headers = "Accept=application/json")
-	public void sinalizaPortalSincronismoCadastroGrupo(@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
+	public void sinalizaPortal(@RequestParam("mensagem") MensagemRecebida<String> mensagem) {
 
-		logger.info("### PEDIDO_BROKER");
+		logger.info("### PEDIDO_BROKER CONTROLLER");
 		logger.info("### CHAMANDO PEDIDO ERP TERCEIRO - GLOBO BROKER ###");
 		List<PedidoCapaGloboBroker> pedidos = pedidoCapaGloboBrokerService.listar();
 		List<PedidoItemGloboBroker> itens = pedidoItemGloboBrokerService.listar();

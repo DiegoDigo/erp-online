@@ -76,8 +76,8 @@ public class AutenticacaoRest {
 	public AuthTokenInfo sendTokenRequest() {
 		RestTemplate restTemplate = new RestTemplate();
 
-//		System.out.println("AUTH_SERVER_URI: " + getAUTH_SERVER_URI());
-//		System.out.println("QPM_PASSWORD_GRANT: " + getQPM_PASSWORD_GRANT());
+System.out.println("AUTH_SERVER_URI: " + getAUTH_SERVER_URI());
+System.out.println("QPM_PASSWORD_GRANT: " + getQPM_PASSWORD_GRANT());
 
 		AuthTokenInfo tokenInfo = null;
 		try {
@@ -93,7 +93,7 @@ public class AutenticacaoRest {
 				tokenInfo.setRefresh_token((String) map.get("refresh_token"));
 				tokenInfo.setExpires_in((int) map.get("expires_in"));
 				tokenInfo.setScope((String) map.get("scope"));
-//				System.out.println(tokenInfo);
+System.out.println(tokenInfo);
 			} else {
 				System.out.println("Usuário não encontrado para o token----------");
 
