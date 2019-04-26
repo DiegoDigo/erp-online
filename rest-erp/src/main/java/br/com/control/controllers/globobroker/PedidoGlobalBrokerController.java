@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -50,11 +51,20 @@ public class PedidoGlobalBrokerController extends AbstractController {
 			BigDecimal somaValoresLiquidoItensPedido = itensDoPedido.stream()
 					.map(item -> new BigDecimal(item.getValorLiquido())).reduce(BigDecimal.ZERO, BigDecimal::add);
 
-			p.setValorLiquido(Double.parseDouble(somaValoresLiquidoItensPedido.toString()));
+			System.out.println("Valor original: " + somaValoresLiquidoItensPedido);
+
+			BigDecimal bd = new BigDecimal(somaValoresLiquidoItensPedido.doubleValue()).setScale(2, RoundingMode.HALF_UP);
+			double valorLiquidoFormatado = bd.doubleValue();
+			System.out.println("Valor formatado: " + valorLiquidoFormatado);
+
+			p.setValorLiquido(valorLiquidoFormatado);
 
 			p.setItensPedido(itensDoPedido);
 
-			logger.info(" --> VAI SINALIZAR XXX");
+			logger.info(" --> VAI ENVIAR PEDIDO");
+			logger.info(" ---> " + p.getEnderecoWebService().replace("/pedido", ""));
+
+			logger.info(" --> MONTA A REQUISIÇÃO");
 			logger.info(" ---> " + p.getEnderecoWebService().replace("/pedido", ""));
 
 			// Sinaliza o ERp terceiro
@@ -65,3 +75,4 @@ public class PedidoGlobalBrokerController extends AbstractController {
 		logger.info("### FIM -> PEDIDO ERP TERCEIRO - GLOBO BROKER ###");
 	}
 }
+

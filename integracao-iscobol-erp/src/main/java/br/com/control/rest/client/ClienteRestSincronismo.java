@@ -37,7 +37,7 @@ public abstract class ClienteRestSincronismo {
 
         try {
             AutenticacaoRest autenticacaoRest = new AutenticacaoRest();
-            System.out.println("ENTROU NO TRY PARA PEGAR A AUTENTICACAO REST");
+            //System.out.println("ENTROU NO TRY PARA PEGAR A AUTENTICACAO REST");
             AuthTokenInfo tokenInfo = autenticacaoRest.sendTokenRequest();
             String SERVICO = getServicoSincronismo();
             String AUTH = "?access_token=" + tokenInfo.getAccess_token();
@@ -48,16 +48,16 @@ public abstract class ClienteRestSincronismo {
             UriComponents uriComponents = builder.build();
             URI uri = uriComponents.toUri();
 
-            System.out.println("----> URI: " + uri);
+            //System.out.println("----> URI: " + uri);
 
             RestTemplate restTemplate = new RestTemplate();
 
             HttpEntity<String> request = new HttpEntity<String>(getHeaders());
-            System.out.println("############### TOKEN DO POST: " + tokenInfo.getAccess_token());
-            System.out.println("--> Chamando url rest: " + url);
-            System.out.println("FAZENDO O POST");
+            //System.out.println("############### TOKEN DO POST: " + tokenInfo.getAccess_token());
+            //System.out.println("--> Chamando url rest: " + url);
+            //System.out.println("FAZENDO O POST");
             restTemplate.postForLocation(uri, request);
-            System.out.println("FEZ O POST");
+            //System.out.println("FEZ O POST");
 
            // restTemplate.getForObject(uri, MensagemRetorno.class);
         } catch (JsonProcessingException e) {
@@ -65,7 +65,7 @@ public abstract class ClienteRestSincronismo {
             System.out.println("ERRO" + e.getOriginalMessage());
             e.printStackTrace();
         }
-        System.out.println("### SAIU DO ClienteRestSincronismo::" + conteudo.split("\\|")[0] + " ###");
+        //System.out.println("### SAIU DO ClienteRestSincronismo::" + conteudo.split("\\|")[0] + " ###");
     }
 
 
@@ -115,7 +115,7 @@ public abstract class ClienteRestSincronismo {
             input = new FileInputStream(caminho + "/integracao-is-cobol.properties");
 
             prop.load(input);
-            System.out.println("--> Numero da Licença: " + prop.getProperty("matricula_revenda"));
+            //System.out.println("--> Numero da Licença: " + prop.getProperty("matricula_revenda"));
 
             identificacao.setMatriculaAssociada(prop.getProperty("matricula_revenda"));
             identificacao.setServicoAcessado("SINCRONISMO CADASTRO");

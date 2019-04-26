@@ -32,6 +32,5 @@ public class PedidoGloboBrokerConsumer extends ERPConsumer {
     public void sinalizaStatusPedido(final Message<String> message) throws JMSException {
         SincronismoPedidoBroker clienteRest = new SincronismoPedidoBroker();
         clienteRest.sinalizaPortalAtualizacao("", CadastrosEnum.PEDIDO_BROKER);
-
     }
 }
