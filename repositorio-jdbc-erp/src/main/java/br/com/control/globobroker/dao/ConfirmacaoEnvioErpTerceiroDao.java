@@ -12,7 +12,6 @@ import java.sql.SQLException;
 @Transactional
 public class ConfirmacaoEnvioErpTerceiroDao extends GloboBrokerJdbcDao<ConfirmarEnvioErpTerceiroTO> {
 
-    @Transactional
     public void confirmarEnvio(ConfirmarEnvioErpTerceiroTO pedido) {
         try {
             System.out.println("VAI CHAMAR A PROC " + ProcedureIntegracao.CONFIRMACAO_ENVIO_PEDIDO_ERPTERC);

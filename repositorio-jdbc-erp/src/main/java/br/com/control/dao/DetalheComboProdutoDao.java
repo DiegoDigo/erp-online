@@ -17,7 +17,7 @@ public class DetalheComboProdutoDao extends JdbcDao<DetalheComboProduto> {
 	
 
 	public List<DetalheComboProduto> listaTodosOsCombos() {
-		String declare = "DECLARE set varchar(27) @CODIGO_COMBO = '0';";
+		String declare = "DECLARE set varchar(27) @CODIGO_COMBO = '';";
 		getJdbcTemplate().update(declare);
 		return selectViewSemWhere(ViewsIntegracaoERP.VW_COMBO_PRODUTO, new DetalheComboProdutoRowMapper());
 	}
@@ -29,7 +29,7 @@ public class DetalheComboProdutoDao extends JdbcDao<DetalheComboProduto> {
 	}
 	
 	public Integer count() {
-		String declare = "DECLARE set varchar(27) @CODIGO_COMBO = '0';";
+		String declare = "DECLARE set varchar(27) @CODIGO_COMBO = '';";
 		getJdbcTemplate().update(declare);
 		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_COMBO_PRODUTO;
 		return contaRegistros(sql);
