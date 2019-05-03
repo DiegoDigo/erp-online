@@ -31,6 +31,9 @@ public class MessagingConfiguration {
     @Value("${numero_matricula_empresa}")
     private String matricula;
 
+    @Value("${portal_filas_concorrencia:1-100}")
+    private String concorrencia; // "1-100"
+
     @Resource
     private PlatformTransactionManager transactionManager;
 
@@ -58,22 +61,24 @@ public class MessagingConfiguration {
     }
 
     @Bean
-    public JmsListenerContainerFactory<?> jmsListenerContainerFactoryPortal(
+    public JmsListenerContainerFactory jmsListenerContainerFactoryPortal(
             @Qualifier("connectionFactoryPortal") ConnectionFactory connectionFactory,
            DefaultJmsListenerContainerFactoryConfigurer configurer) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         configurer.configure(factory, connectionFactory);
         factory.setSessionTransacted(true);
+        factory.setConcurrency(concorrencia);
         factory.setTransactionManager(transactionManager);
         return factory;
     }
 
     @Bean
-    public JmsListenerContainerFactory<?> jmsListenerContainerFactoryJControl(
+    public JmsListenerContainerFactory jmsListenerContainerFactoryJControl(
             @Qualifier("connectionFactoryJControl") ConnectionFactory connectionFactory,
             DefaultJmsListenerContainerFactoryConfigurer configurer) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         configurer.configure(factory, connectionFactory);
+        factory.setConcurrency(concorrencia);
         factory.setSessionTransacted(true);
         factory.setTransactionManager(transactionManager);
         return factory;
