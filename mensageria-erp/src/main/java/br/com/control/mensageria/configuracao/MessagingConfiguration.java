@@ -58,8 +58,9 @@ public class MessagingConfiguration {
     }
 
     @Bean
-    public JmsListenerContainerFactory<?> jmsListenerContainerFactoryPortal(ConnectionFactory connectionFactory,
-                                                                            DefaultJmsListenerContainerFactoryConfigurer configurer) {
+    public JmsListenerContainerFactory<?> jmsListenerContainerFactoryPortal(
+            @Qualifier("connectionFactoryPortal") ConnectionFactory connectionFactory,
+           DefaultJmsListenerContainerFactoryConfigurer configurer) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         configurer.configure(factory, connectionFactory);
         factory.setSessionTransacted(true);
