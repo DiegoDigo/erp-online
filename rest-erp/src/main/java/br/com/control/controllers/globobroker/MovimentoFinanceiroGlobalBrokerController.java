@@ -22,8 +22,7 @@ public class MovimentoFinanceiroGlobalBrokerController extends AbstractControlle
 
 	@RequestMapping(value = "/gravar", method = RequestMethod.POST, headers = "Accept=application/json")
 	public ResponseEntity<String> gravarTituloBaixado(@RequestBody MovimentoFinanceiroGloboBroker movimento) {
-		movimentoFinanceiroService.gravarTitulo(movimento);
-		return new ResponseEntity<String>("TITULOS GRAVADOS COM SUCESSO", HttpStatus.CREATED);
+		MovimentoFinanceiroGloboBroker result = movimentoFinanceiroService.gravarTitulo(movimento);
+		return new ResponseEntity<String>(result.getMensagemRetorno(), HttpStatus.OK);
 	}
-
 }

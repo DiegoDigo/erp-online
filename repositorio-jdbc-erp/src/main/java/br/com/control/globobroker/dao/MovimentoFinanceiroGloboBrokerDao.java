@@ -17,15 +17,20 @@ public class MovimentoFinanceiroGloboBrokerDao extends JdbcDao<MovimentoFinancei
 
 	private static final Logger logger = LoggerFactory.getLogger(MovimentoFinanceiroGloboBrokerDao.class);
 
-	
 	@Transactional
-	public void gravaTituloBaixado(MovimentoFinanceiroGloboBroker movimentoFinanceiroGloboBroker) {
+	public MovimentoFinanceiroGloboBroker gravaTituloBaixado(MovimentoFinanceiroGloboBroker movimentoFinanceiroGloboBroker) {
 		try {
 			CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERT_MOVIMENTO_FINANCEIRO_GLOBAL_BROKER_TITULO_BAIXADO);
 			preparaExecucaoProcedure(movimentoFinanceiroGloboBroker, stmt);
+
 			logger.info("--> CODIGO ERRO PROC: "+stmt.getString(12));
 			logger.info("--> MSG RETORNO PROC: "+stmt.getString(13));
+
+			movimentoFinanceiroGloboBroker.setCodigoErro(stmt.getString(12));
+			movimentoFinanceiroGloboBroker.setMensagemRetorno(stmt.getString(13));
 			stmt.close();
+
+			return movimentoFinanceiroGloboBroker;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -35,7 +40,7 @@ public class MovimentoFinanceiroGloboBrokerDao extends JdbcDao<MovimentoFinancei
 	@Transactional
 	public void gravaTituloAberto(MovimentoFinanceiroGloboBroker movimentoFinanceiroGlobalBroker) {
 		try {
-			CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERT_MOVIMENTO_FINANCEIRO_GLOBAL_BROKER_TITULO_ABERTO);
+			CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERT_MOVIMENTO_FINANCEIRO_GLOBAL_BROKER_TITULO_BAIXADO);
 			preparaExecucaoProcedure(movimentoFinanceiroGlobalBroker, stmt);
 			logger.info("--> CODIGO ERRO PROC: "+stmt.getString(12));
 			logger.info("--> MSG RETORNO PROC: "+stmt.getString(13));

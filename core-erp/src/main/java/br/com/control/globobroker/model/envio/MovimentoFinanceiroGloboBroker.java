@@ -11,7 +11,6 @@ public class MovimentoFinanceiroGloboBroker implements Serializable{
 	
 	@SequenciaParametrosProcedure(index = 1)
 	private String cpfCnpj;
-
 	@SequenciaParametrosProcedure(index = 2)
 	private String numeroTitulo;
 	@SequenciaParametrosProcedure(index = 3)
@@ -32,14 +31,14 @@ public class MovimentoFinanceiroGloboBroker implements Serializable{
 	private int tipoCobranca;
 	@SequenciaParametrosProcedure(index = 11)
 	private String nossoNumero;
-	
 	@SequenciaParametrosProcedure(index = 12, isRetornoProcedure=true)
 	private String codigoErro = "";
 	@SequenciaParametrosProcedure(index = 13, isRetornoProcedure=true)
 	private String mensagemRetorno = "";
-	
-	
+
+
 	private String numeroPedidoJcontrol;
+
 	private TipoMovimentoEnum tipoMovimento;
 
 	
