@@ -3,6 +3,8 @@ package br.com.control.globobroker.dao;
 import java.sql.CallableStatement;
 import java.sql.SQLException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,46 +15,35 @@ import br.com.control.portal.integracao.ProcedureIntegracao;
 @Repository
 public class MovimentoFinanceiroGloboBrokerDao extends JdbcDao<MovimentoFinanceiroGloboBroker> {
 
+	private static final Logger logger = LoggerFactory.getLogger(MovimentoFinanceiroGloboBrokerDao.class);
+
+	
 	@Transactional
-	public String gravaTituloBaixado(MovimentoFinanceiroGloboBroker movimentoFinanceiroGloboBroker) {
-		String mensagemRetorno = null;
-		System.out.println("Vai gravar o movimento fincaneiro");
+	public void gravaTituloBaixado(MovimentoFinanceiroGloboBroker movimentoFinanceiroGloboBroker) {
 		try {
-			CallableStatement stmt = preparaChamadaProcedure(
-					ProcedureIntegracao.INSERT_MOVIMENTO_FINANCEIRO_GLOBAL_BROKER_TITULO_BAIXADO);
+			CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERT_MOVIMENTO_FINANCEIRO_GLOBAL_BROKER_TITULO_BAIXADO);
 			preparaExecucaoProcedure(movimentoFinanceiroGloboBroker, stmt);
-
-			System.out.println(stmt);
-
+			logger.info("--> CODIGO ERRO PROC: "+stmt.getString(12));
+			logger.info("--> MSG RETORNO PROC: "+stmt.getString(13));
 			stmt.close();
-			mensagemRetorno = "Registro gravado com sucesso";
 		} catch (SQLException e) {
 			e.printStackTrace();
-			mensagemRetorno = e.getMessage();
+			throw new RuntimeException(e);
 		}
-
-		return mensagemRetorno;
 	}
 
 	@Transactional
-	public String gravaTituloAberto(MovimentoFinanceiroGloboBroker movimentoFinanceiroGlobalBroker) {
-		String mensagemRetorno = null;
-		System.out.println("Vai gravar o movimento fincaneiro");
+	public void gravaTituloAberto(MovimentoFinanceiroGloboBroker movimentoFinanceiroGlobalBroker) {
 		try {
-			CallableStatement stmt = preparaChamadaProcedure(
-					ProcedureIntegracao.INSERT_MOVIMENTO_FINANCEIRO_GLOBAL_BROKER_TITULO_ABERTO);
+			CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERT_MOVIMENTO_FINANCEIRO_GLOBAL_BROKER_TITULO_ABERTO);
 			preparaExecucaoProcedure(movimentoFinanceiroGlobalBroker, stmt);
-
-			System.out.println(stmt);
-
+			logger.info("--> CODIGO ERRO PROC: "+stmt.getString(12));
+			logger.info("--> MSG RETORNO PROC: "+stmt.getString(13));
 			stmt.close();
-			mensagemRetorno = "Registro gravado com sucesso";
 		} catch (SQLException e) {
 			e.printStackTrace();
-			mensagemRetorno = e.getMessage();
+			throw new RuntimeException(e);
 		}
-
-		return mensagemRetorno;
 	}
 
 }
