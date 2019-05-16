@@ -16,7 +16,7 @@ public class MovimentoFinanceiroRowMapper implements RowMapper<MovimentoFinancei
 	public MovimentoFinanceiro mapRow(ResultSet rs, int rowNum) throws SQLException {
 		MovimentoFinanceiro movimento = new MovimentoFinanceiro();
 		movimento.setCodigoClienteERP(rs.getString("CODIGO_CLIENTE_ERP"));
-		movimento.setCodigoProdutoERP(rs.getString("codigo_produto_ERP"));
+		movimento.setCodigoProdutoERP(rs.getString("codigo_produto_ERP") == null ? "" : rs.getString("codigo_produto_ERP"));
 		movimento.setDataOperacao(converterStringTimeStamp(rs.getString("DATA_OPERACAO")));
 		movimento.setDataVencimento(converterStringTimeStamp(rs.getString("DATA_VENCIMENTO")));
 		movimento.setMod(rs.getString("MOD"));

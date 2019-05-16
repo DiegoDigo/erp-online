@@ -50,7 +50,6 @@ public class ProdutoRowMapper implements RowMapper<Produto>{
 			produto.setProdutoDisponivelPortal(false);
 		}else{
 			produto.setProdutoDisponivelPortal(true);
-			
 		}
 		
 		return produto;

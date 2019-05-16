@@ -78,8 +78,7 @@ public class JdbcDao<T> {
 	}
 
 	@Autowired
-	@Qualifier("dbmakerDataSource")
-	public void setDataSource(DataSource dataSource) throws ClassNotFoundException {
+	public void setDataSource(@Qualifier("dbmakerDataSource") DataSource dataSource) throws ClassNotFoundException {
 		this.dataSource = dataSource;
 		jdbcTemplate = new JdbcTemplate(dataSource);
 		Class.forName(driverErp);
@@ -130,18 +129,6 @@ public class JdbcDao<T> {
 		return this.dataSource;
 	}
 
-	// @Autowired
-	// private ConnectionFactoryDBMaker connectionFactory;
-	//
-	// public ConnectionFactoryDBMaker getConnectionFactory() {
-	// return connectionFactory;
-	// }
-
-	// public void setConnectionFactory(ConnectionFactoryDBMaker
-	// connectionFactory) {
-	// this.connectionFactory = connectionFactory;
-	// }
-
 	public CallableStatement preparaChamadaProcedure(ProcedureIntegracao procedure) {
 		try {
 			int cont = 0;
@@ -169,7 +156,7 @@ public class JdbcDao<T> {
 		} catch (SQLException e) {			
 			logger.error("Erro ao executar chamada ao DBMAKER: " + e);
 
-			// notifica via sendgrid que houve um erro de comunicação com o banco
+			// notifica via Slack que houve um erro de comunicação com o banco
 			SlackApi api = new SlackApi(url_slack);
 			api.call(new SlackMessage(channel_slack, matriculaAssociada, "Erro ao executar chamada ao DBMAKER: " + e.getMessage() + "-" + e.getSQLState()));
 

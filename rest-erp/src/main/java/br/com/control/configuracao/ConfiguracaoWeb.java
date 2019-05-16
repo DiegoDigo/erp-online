@@ -2,6 +2,7 @@ package br.com.control.configuracao;
 
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -42,6 +43,8 @@ public class ConfiguracaoWeb extends WebMvcConfigurerAdapter {
 		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
+		mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS, true);
+		mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
 		mapper.enable(SerializationFeature.INDENT_OUTPUT);
 		converter.setObjectMapper(mapper);
 		converters.add(converter);

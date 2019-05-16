@@ -45,7 +45,6 @@ public class ComodatoRowMapper implements RowMapper<Comodato> {
 			java.sql.Timestamp dataTimeStamp = new java.sql.Timestamp(parsedDate.getTime());
 			return dataTimeStamp;
 		} catch (ParseException e) {
-			e.printStackTrace();
 			return null;
 		}
 	}
