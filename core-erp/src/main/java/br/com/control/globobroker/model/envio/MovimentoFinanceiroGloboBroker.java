@@ -12,67 +12,24 @@ public class MovimentoFinanceiroGloboBroker implements Serializable{
 	@SequenciaParametrosProcedure(index = 1)
 	private String cpfCnpj;
 	@SequenciaParametrosProcedure(index = 2)
-	private String numeroTitulo;
-	@SequenciaParametrosProcedure(index = 3)
 	private String numeroParcela;
+	@SequenciaParametrosProcedure(index = 3)
+	private int dataVencimento;
 	@SequenciaParametrosProcedure(index = 4)
-	private int tipoTitulo;
-	@SequenciaParametrosProcedure(index = 5)
-	private int dataEmissao;
-	@SequenciaParametrosProcedure(index = 6)
-	private int dataVencimento;	
-	@SequenciaParametrosProcedure(index = 7)
 	private int dataPagamento;
-	@SequenciaParametrosProcedure(index = 8)
+	@SequenciaParametrosProcedure(index = 5)
 	private float valorTitulo;
-	@SequenciaParametrosProcedure(index = 9)
+	@SequenciaParametrosProcedure(index = 6)
 	private int bancoBaixa;
-	@SequenciaParametrosProcedure(index = 10)
-	private int tipoCobranca;
-	@SequenciaParametrosProcedure(index = 11)
-	private String nossoNumero;
-	@SequenciaParametrosProcedure(index = 12, isRetornoProcedure=true)
+	@SequenciaParametrosProcedure(index = 7)
+	private String numeroPedidoJcontrol;
+	@SequenciaParametrosProcedure(index = 8, isRetornoProcedure=true)
 	private String codigoErro = "";
-	@SequenciaParametrosProcedure(index = 13, isRetornoProcedure=true)
+	@SequenciaParametrosProcedure(index = 9, isRetornoProcedure=true)
 	private String mensagemRetorno = "";
 
-
-	private String numeroPedidoJcontrol;
-
-	private TipoMovimentoEnum tipoMovimento;
-
-	
-	
 	public MovimentoFinanceiroGloboBroker() {
 		
-	}
-	
-	public boolean isTituloBaixado() {
-		return this.tipoMovimento == TipoMovimentoEnum.BAIXADO;
-	}
-
-	public boolean isTituloAberto() {
-		return this.tipoMovimento == TipoMovimentoEnum.ABERTO;
-	}
-	
-	public Long getRecId() {
-		return recId;
-	}
-
-	public TipoMovimentoEnum getTipoMovimento() {
-		return tipoMovimento;
-	}
-
-
-
-	public void setTipoMovimento(TipoMovimentoEnum tipoMovimento) {
-		this.tipoMovimento = tipoMovimento;
-	}
-
-
-
-	public void setRecId(Long recId) {
-		this.recId = recId;
 	}
 
 	public String getCpfCnpj() {
@@ -83,36 +40,12 @@ public class MovimentoFinanceiroGloboBroker implements Serializable{
 		this.cpfCnpj = cpfCnpj;
 	}
 
-	public String getNumeroTitulo() {
-		return numeroTitulo;
-	}
-
-	public void setNumeroTitulo(String numeroTitulo) {
-		this.numeroTitulo = numeroTitulo;
-	}
-
 	public String getNumeroParcela() {
 		return numeroParcela;
 	}
 
 	public void setNumeroParcela(String numeroParcela) {
 		this.numeroParcela = numeroParcela;
-	}
-
-	public int getTipoTitulo() {
-		return tipoTitulo;
-	}
-
-	public void setTipoTitulo(int tipoTitulo) {
-		this.tipoTitulo = tipoTitulo;
-	}
-
-	public int getDataEmissao() {
-		return dataEmissao;
-	}
-
-	public void setDataEmissao(int dataEmissao) {
-		this.dataEmissao = dataEmissao;
 	}
 
 	public int getDataVencimento() {
@@ -162,22 +95,6 @@ public class MovimentoFinanceiroGloboBroker implements Serializable{
 
 	public void setMensagemRetorno(String mensagemRetorno) {
 		this.mensagemRetorno = mensagemRetorno;
-	}
-
-	public int getTipoCobranca() {
-		return tipoCobranca;
-	}
-
-	public void setTipoCobranca(int tipoCobranca) {
-		this.tipoCobranca = tipoCobranca;
-	}
-
-	public String getNossoNumero() {
-		return nossoNumero;
-	}
-
-	public void setNossoNumero(String nossoNumero) {
-		this.nossoNumero = nossoNumero;
 	}
 
 	public String getNumeroPedidoJcontrol() {

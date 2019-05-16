@@ -13,6 +13,9 @@ import br.com.control.globobroker.MovimentoFinanceiroGloboBrokerService;
 import br.com.control.globobroker.model.envio.MovimentoFinanceiroGloboBroker;
 import br.com.control.rotas.RotasRest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping(RotasRest.RAIZ_GLOBO_BROKER +  RotasRest.RAIZ_MOVIMENTO + RotasRest.RAIZ_FINANCEIRO)
 public class MovimentoFinanceiroGlobalBrokerController extends AbstractController {

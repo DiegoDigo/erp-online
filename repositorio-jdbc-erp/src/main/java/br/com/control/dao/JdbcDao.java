@@ -135,8 +135,8 @@ public class JdbcDao<T> {
 			Field[] atributos = procedure.getClasse().getDeclaredFields();
 			for (int i = 0; i < atributos.length; i++) {
 				if (atributos[i].getDeclaredAnnotationsByType(SequenciaParametrosProcedure.class).length > 0) {
-					// System.out.println("atributo procedure: " +
-					// atributos[i].getName());
+//					 System.out.println("atributo procedure: " +
+//					 atributos[i].getName());
 					cont++;
 				}
 			}
@@ -148,12 +148,13 @@ public class JdbcDao<T> {
 			call = call.substring(0, call.length() - 1);
 			call += ")}";
 
-			logger.info("Monta a chamada: " + call);
+			//logger.info("Monta a chamada: " + call);
 
 			connection = getDataSource().getConnection();
 
 			return connection.prepareCall(call);
 		} catch (SQLException e) {			
+
 			logger.error("Erro ao executar chamada ao DBMAKER: " + e);
 
 			// notifica via Slack que houve um erro de comunicação com o banco
