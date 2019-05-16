@@ -54,7 +54,7 @@ public class OAuth2Configuracao extends WebSecurityConfigurerAdapter {
 
 		@Override
 		public void configure(HttpSecurity http) throws Exception {
-			http.authorizeRequests().antMatchers("/users").hasRole("ADMIN").antMatchers("/servicos/erp/**").authenticated();
+			http.authorizeRequests().antMatchers("/users").hasRole("ADMIN").antMatchers("/servicos/erp/**", "/globo/erp/**").authenticated();
 		}
 
 	}

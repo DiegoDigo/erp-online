@@ -2,31 +2,74 @@ package br.com.control.globobroker.model.envio;
 
 import java.io.Serializable;
 
+import br.com.control.annotation.SequenciaParametrosProcedure;
+
 public class MovimentoFinanceiroGloboBroker implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Long recId;
 	
+	@SequenciaParametrosProcedure(index = 1)
 	private String cpfCnpj;
+	@SequenciaParametrosProcedure(index = 2)
 	private String numeroTitulo;
+	@SequenciaParametrosProcedure(index = 3)
 	private String numeroParcela;
+	@SequenciaParametrosProcedure(index = 4)
 	private int tipoTitulo;
+	@SequenciaParametrosProcedure(index = 5)
 	private int dataEmissao;
+	@SequenciaParametrosProcedure(index = 6)
 	private int dataVencimento;	
+	@SequenciaParametrosProcedure(index = 7)
 	private int dataPagamento;
+	@SequenciaParametrosProcedure(index = 8)
 	private float valorTitulo;
+	@SequenciaParametrosProcedure(index = 9)
 	private int bancoBaixa;
+	@SequenciaParametrosProcedure(index = 10)
 	private int tipoCobranca;
+	@SequenciaParametrosProcedure(index = 11)
 	private String nossoNumero;
+	@SequenciaParametrosProcedure(index = 12, isRetornoProcedure=true)
+	private String codigoErro = "";
+	@SequenciaParametrosProcedure(index = 13, isRetornoProcedure=true)
+	private String mensagemRetorno = "";
+
+
 	private String numeroPedidoJcontrol;
+
+	private TipoMovimentoEnum tipoMovimento;
+
+	
 	
 	public MovimentoFinanceiroGloboBroker() {
 		
 	}
+	
+	public boolean isTituloBaixado() {
+		return this.tipoMovimento == TipoMovimentoEnum.BAIXADO;
+	}
 
+	public boolean isTituloAberto() {
+		return this.tipoMovimento == TipoMovimentoEnum.ABERTO;
+	}
+	
 	public Long getRecId() {
 		return recId;
 	}
+
+	public TipoMovimentoEnum getTipoMovimento() {
+		return tipoMovimento;
+	}
+
+
+
+	public void setTipoMovimento(TipoMovimentoEnum tipoMovimento) {
+		this.tipoMovimento = tipoMovimento;
+	}
+
+
 
 	public void setRecId(Long recId) {
 		this.recId = recId;
@@ -102,6 +145,23 @@ public class MovimentoFinanceiroGloboBroker implements Serializable{
 
 	public void setBancoBaixa(int bancoBaixa) {
 		this.bancoBaixa = bancoBaixa;
+	}
+	
+
+	public String getCodigoErro() {
+		return codigoErro;
+	}
+
+	public void setCodigoErro(String codigoErro) {
+		this.codigoErro = codigoErro;
+	}
+
+	public String getMensagemRetorno() {
+		return mensagemRetorno;
+	}
+
+	public void setMensagemRetorno(String mensagemRetorno) {
+		this.mensagemRetorno = mensagemRetorno;
 	}
 
 	public int getTipoCobranca() {

@@ -12,11 +12,7 @@ public class MovimentoFinanceiroGloboBrokerService {
 	@Autowired
 	private MovimentoFinanceiroGloboBrokerDao movimentoFinanceiroDao;
 
-	public String gravaTituloBaixado(MovimentoFinanceiroGloboBroker movimentoFinanceiroGloboBroker) {
-		return movimentoFinanceiroDao.gravaTituloBaixado(movimentoFinanceiroGloboBroker);
-	}
-
-	public String gravaTituloAberto(MovimentoFinanceiroGloboBroker movimentoFinanceiroGloboBroker) {
-		return movimentoFinanceiroDao.gravaTituloAberto(movimentoFinanceiroGloboBroker);
+	public MovimentoFinanceiroGloboBroker gravarTitulo(MovimentoFinanceiroGloboBroker movimento) {
+		return movimentoFinanceiroDao.gravaTituloBaixado(movimento);
 	}
 }
