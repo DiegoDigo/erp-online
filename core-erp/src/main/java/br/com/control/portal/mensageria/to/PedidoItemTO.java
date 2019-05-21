@@ -5,6 +5,11 @@ import java.math.BigDecimal;
 
 import br.com.control.annotation.SequenciaParametrosProcedure;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 public class PedidoItemTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
