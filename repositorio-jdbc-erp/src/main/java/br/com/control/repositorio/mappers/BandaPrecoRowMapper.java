@@ -33,7 +33,7 @@ public class BandaPrecoRowMapper implements RowMapper<BandaPreco> {
 
 		// FIXME: mudar o valor abaixo quando inserirem este campo "ordem" e
 		// "modo" na view
-		banda.setOrdem(1);
+		banda.setOrdem(rs.getInt("SEQUENCIA"));
 		banda.setModo(1);
 
 		return banda;
