@@ -46,7 +46,7 @@ public enum ProcedureIntegracao {
     INSERT_PEDIDO_RETIRADA_COMODATO_ITEM("SP_RETIRADA_COMODATO_ITEM",
             PedidoComodatoItemTO.class),
 	
-	INSERT_MOVIMENTO_FINANCEIRO_GLOBAL_BROKER_TITULO_BAIXADO("SP_MOVIMENTO_FINANCEIRO_GLOBAL_BROKER", MovimentoFinanceiroGloboBroker.class),
+	TITULOS_BAIXADOS_ERP_TERCEIROS("SP_TITULOS_BAIXADOS_ERPTEC", MovimentoFinanceiroGloboBroker.class),
 	
 	CONFIRMACAO_ENVIO_PEDIDO_ERPTERC("SP_CONFIRMARCAO_ENVIO_PEDIDO_ERPTERC", br.com.control.globobroker.model.envio.ConfirmarEnvioErpTerceiroTO.class);	
 

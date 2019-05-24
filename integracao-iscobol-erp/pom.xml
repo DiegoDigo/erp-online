@@ -24,6 +24,14 @@
 			<artifactId>core-erp</artifactId>
 			<version>${version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>br.com.control.iscobol</groupId>
+			<artifactId>is-cobol</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/iscobol.jar</systemPath>
+		</dependency>
 	</dependencies>
 
 	<build>
