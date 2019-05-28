@@ -37,6 +37,7 @@ public enum CadastrosEnum {
 	BOLETO,
 	BOLETO_PEDIDO,
 	VISITAS,
+	MOTIVO_GERAL,
 	PEDIDO_BROKER;
 
 	public static CadastrosEnum recuperaCadastro(String nome) {

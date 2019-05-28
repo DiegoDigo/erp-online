@@ -19,6 +19,10 @@ public class MotivoGeralService {
 	public List<MotivoGeral> listarMotivos() {
 		return motivoGeralDao.selectViewSemWhere(ViewsIntegracaoERP.VW_MOTIVO_GERAL, new MotivoGeralRowMapper());
 	}
+
+	public MotivoGeral listarMotivosPorCodigoETipo(String codigo, String tipo) {
+		return motivoGeralDao.motivoGeralPorCodigoETipo(codigo, tipo);
+	}
 	
 	public Integer count() {
 		return motivoGeralDao.count();

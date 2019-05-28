@@ -1,0 +1,576 @@
+package br.com.control.portal.Model;
+
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+public class PedidoCapaPortal {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private long recId;
+    private int codigoEmpresa;
+    private int codigoClienteErp;
+    private String cpfCnpj;
+    private String origem;
+    private String codigoVendedor;
+    private int tipoCobranca;
+    private int condicaoPagamento;
+    private float desconto;
+    private float percTaxaFinanc;
+    private BigDecimal valorLiquido;
+    private int dataEmissao;
+    private int regiao;
+    private int dia;
+    private int carga;
+    private String rota;
+    private BigDecimal valorBruto;
+    private BigDecimal valorLiquidoSFA;
+    private BigDecimal valorBonificado;
+    private BigDecimal valorDesconto;
+    private BigDecimal valorVerba;
+    private BigDecimal valorFinal;
+    private String codigoMotivoNaoCompra;
+    private Long horaInicialPedido;
+    private Long horaFinalPedido;
+    private String statusTransmitidoWebService;
+    private String pedidoAberto;
+    private String pedidoBloqueado;
+    private int duracaoPedido;
+    private BigDecimal gpsLatitude;
+    private BigDecimal gpsLongitude;
+    private String tecnologiaUtiliz;
+    private int distanciaGPS;
+    private int qtdSatelites;
+    private String imediato;
+    private BigDecimal bonusUtilizado;
+    private String observacao;
+    private BigDecimal valorImpostoBarreira;
+    private BigDecimal valorVerbaGeradaGL;
+    private BigDecimal valorVerbaUtilizadaGL;
+    private int pedidoTransmitido;
+    private int desbloqueioGPSERP;
+    private int dataPrimeiraParcela=0;
+    private String codigoErpTerceiro;
+    private long numeroPrePedidoGestao;
+    private int statusRetorno;
+    private String msgRetorno = "";
+//
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<PedidoItemPortal> itens = new ArrayList<>();
+
+    public PedidoCapaPortal() {
+    }
+
+    public PedidoCapaPortal(long recId, int codigoEmpresa, int codigoClienteErp, String cpfCnpj, String origem, String codigoVendedor,
+                            int tipoCobranca, int condicaoPagamento, float desconto, float percTaxaFinanc,
+                            BigDecimal valorLiquido, int dataEmissao, int regiao, int dia, int carga,
+                            String rota, BigDecimal valorBruto, BigDecimal valorLiquidoSFA,
+                            BigDecimal valorBonificado, BigDecimal valorDesconto, BigDecimal valorVerba,
+                            BigDecimal valorFinal, String codigoMotivoNaoCompra, Long horaInicialPedido,
+                            Long horaFinalPedido, String statusTransmitidoWebService, String pedidoAberto,
+                            String pedidoBloqueado, int duracaoPedido, BigDecimal gpsLatitude, BigDecimal gpsLongitude,
+                            String tecnologiaUtiliz, int distanciaGPS, int qtdSatelites, String imediato,
+                            BigDecimal bonusUtilizado, String observacao, BigDecimal valorImpostoBarreira,
+                            BigDecimal valorVerbaGeradaGL, BigDecimal valorVerbaUtilizadaGL, int pedidoTransmitido,
+                            int desbloqueioGPSERP, int dataPrimeiraParcela, String codigoErpTerceiro,
+                            long numeroPrePedidoGestao, int statusRetorno, String msgRetorno, List<PedidoItemPortal> itens) {
+        this.recId = recId;
+        this.codigoEmpresa = codigoEmpresa;
+        this.codigoClienteErp = codigoClienteErp;
+        this.cpfCnpj = cpfCnpj;
+        this.origem = origem;
+        this.codigoVendedor = codigoVendedor;
+        this.tipoCobranca = tipoCobranca;
+        this.condicaoPagamento = condicaoPagamento;
+        this.desconto = desconto;
+        this.percTaxaFinanc = percTaxaFinanc;
+        this.valorLiquido = valorLiquido;
+        this.dataEmissao = dataEmissao;
+        this.regiao = regiao;
+        this.dia = dia;
+        this.carga = carga;
+        this.rota = rota;
+        this.valorBruto = valorBruto;
+        this.valorLiquidoSFA = valorLiquidoSFA;
+        this.valorBonificado = valorBonificado;
+        this.valorDesconto = valorDesconto;
+        this.valorVerba = valorVerba;
+        this.valorFinal = valorFinal;
+        this.codigoMotivoNaoCompra = codigoMotivoNaoCompra;
+        this.horaInicialPedido = horaInicialPedido;
+        this.horaFinalPedido = horaFinalPedido;
+        this.statusTransmitidoWebService = statusTransmitidoWebService;
+        this.pedidoAberto = pedidoAberto;
+        this.pedidoBloqueado = pedidoBloqueado;
+        this.duracaoPedido = duracaoPedido;
+        this.gpsLatitude = gpsLatitude;
+        this.gpsLongitude = gpsLongitude;
+        this.tecnologiaUtiliz = tecnologiaUtiliz;
+        this.distanciaGPS = distanciaGPS;
+        this.qtdSatelites = qtdSatelites;
+        this.imediato = imediato;
+        this.bonusUtilizado = bonusUtilizado;
+        this.observacao = observacao;
+        this.valorImpostoBarreira = valorImpostoBarreira;
+        this.valorVerbaGeradaGL = valorVerbaGeradaGL;
+        this.valorVerbaUtilizadaGL = valorVerbaUtilizadaGL;
+        this.pedidoTransmitido = pedidoTransmitido;
+        this.desbloqueioGPSERP = desbloqueioGPSERP;
+        this.dataPrimeiraParcela = dataPrimeiraParcela;
+        this.codigoErpTerceiro = codigoErpTerceiro;
+        this.numeroPrePedidoGestao = numeroPrePedidoGestao;
+        this.statusRetorno = statusRetorno;
+        this.msgRetorno = msgRetorno;
+        this.itens = itens;
+    }
+
+    public long getRecId() {
+        return recId;
+    }
+
+    public void setRecId(long recId) {
+        this.recId = recId;
+    }
+
+    public int getCodigoEmpresa() {
+        return codigoEmpresa;
+    }
+
+    public void setCodigoEmpresa(int codigoEmpresa) {
+        this.codigoEmpresa = codigoEmpresa;
+    }
+
+    public int getCodigoClienteErp() {
+        return codigoClienteErp;
+    }
+
+    public void setCodigoClienteErp(int codigoClienteErp) {
+        this.codigoClienteErp = codigoClienteErp;
+    }
+
+    public String getCpfCnpj() {
+        return cpfCnpj;
+    }
+
+    public void setCpfCnpj(String cpfCnpj) {
+        this.cpfCnpj = cpfCnpj;
+    }
+
+    public String getOrigem() {
+        return origem;
+    }
+
+    public void setOrigem(String origem) {
+        this.origem = origem;
+    }
+
+    public String getCodigoVendedor() {
+        return codigoVendedor;
+    }
+
+    public void setCodigoVendedor(String codigoVendedor) {
+        this.codigoVendedor = codigoVendedor;
+    }
+
+    public int getTipoCobranca() {
+        return tipoCobranca;
+    }
+
+    public void setTipoCobranca(int tipoCobranca) {
+        this.tipoCobranca = tipoCobranca;
+    }
+
+    public int getCondicaoPagamento() {
+        return condicaoPagamento;
+    }
+
+    public void setCondicaoPagamento(int condicaoPagamento) {
+        this.condicaoPagamento = condicaoPagamento;
+    }
+
+    public float getDesconto() {
+        return desconto;
+    }
+
+    public void setDesconto(float desconto) {
+        this.desconto = desconto;
+    }
+
+    public float getPercTaxaFinanc() {
+        return percTaxaFinanc;
+    }
+
+    public void setPercTaxaFinanc(float percTaxaFinanc) {
+        this.percTaxaFinanc = percTaxaFinanc;
+    }
+
+    public BigDecimal getValorLiquido() {
+        return valorLiquido;
+    }
+
+    public void setValorLiquido(BigDecimal valorLiquido) {
+        this.valorLiquido = valorLiquido;
+    }
+
+    public int getDataEmissao() {
+        return dataEmissao;
+    }
+
+    public void setDataEmissao(int dataEmissao) {
+        this.dataEmissao = dataEmissao;
+    }
+
+    public int getRegiao() {
+        return regiao;
+    }
+
+    public void setRegiao(int regiao) {
+        this.regiao = regiao;
+    }
+
+    public int getDia() {
+        return dia;
+    }
+
+    public void setDia(int dia) {
+        this.dia = dia;
+    }
+
+    public int getCarga() {
+        return carga;
+    }
+
+    public void setCarga(int carga) {
+        this.carga = carga;
+    }
+
+    public String getRota() {
+        return rota;
+    }
+
+    public void setRota(String rota) {
+        this.rota = rota;
+    }
+
+    public BigDecimal getValorBruto() {
+        return valorBruto;
+    }
+
+    public void setValorBruto(BigDecimal valorBruto) {
+        this.valorBruto = valorBruto;
+    }
+
+    public BigDecimal getValorLiquidoSFA() {
+        return valorLiquidoSFA;
+    }
+
+    public void setValorLiquidoSFA(BigDecimal valorLiquidoSFA) {
+        this.valorLiquidoSFA = valorLiquidoSFA;
+    }
+
+    public BigDecimal getValorBonificado() {
+        return valorBonificado;
+    }
+
+    public void setValorBonificado(BigDecimal valorBonificado) {
+        this.valorBonificado = valorBonificado;
+    }
+
+    public BigDecimal getValorDesconto() {
+        return valorDesconto;
+    }
+
+    public void setValorDesconto(BigDecimal valorDesconto) {
+        this.valorDesconto = valorDesconto;
+    }
+
+    public BigDecimal getValorVerba() {
+        return valorVerba;
+    }
+
+    public void setValorVerba(BigDecimal valorVerba) {
+        this.valorVerba = valorVerba;
+    }
+
+    public BigDecimal getValorFinal() {
+        return valorFinal;
+    }
+
+    public void setValorFinal(BigDecimal valorFinal) {
+        this.valorFinal = valorFinal;
+    }
+
+    public String getCodigoMotivoNaoCompra() {
+        return codigoMotivoNaoCompra;
+    }
+
+    public void setCodigoMotivoNaoCompra(String codigoMotivoNaoCompra) {
+        this.codigoMotivoNaoCompra = codigoMotivoNaoCompra;
+    }
+
+    public Long getHoraInicialPedido() {
+        return horaInicialPedido;
+    }
+
+    public void setHoraInicialPedido(Long horaInicialPedido) {
+        this.horaInicialPedido = horaInicialPedido;
+    }
+
+    public Long getHoraFinalPedido() {
+        return horaFinalPedido;
+    }
+
+    public void setHoraFinalPedido(Long horaFinalPedido) {
+        this.horaFinalPedido = horaFinalPedido;
+    }
+
+    public String getStatusTransmitidoWebService() {
+        return statusTransmitidoWebService;
+    }
+
+    public void setStatusTransmitidoWebService(String statusTransmitidoWebService) {
+        this.statusTransmitidoWebService = statusTransmitidoWebService;
+    }
+
+    public String getPedidoAberto() {
+        return pedidoAberto;
+    }
+
+    public void setPedidoAberto(String pedidoAberto) {
+        this.pedidoAberto = pedidoAberto;
+    }
+
+    public String getPedidoBloqueado() {
+        return pedidoBloqueado;
+    }
+
+    public void setPedidoBloqueado(String pedidoBloqueado) {
+        this.pedidoBloqueado = pedidoBloqueado;
+    }
+
+    public int getDuracaoPedido() {
+        return duracaoPedido;
+    }
+
+    public void setDuracaoPedido(int duracaoPedido) {
+        this.duracaoPedido = duracaoPedido;
+    }
+
+    public BigDecimal getGpsLatitude() {
+        return gpsLatitude;
+    }
+
+    public void setGpsLatitude(BigDecimal gpsLatitude) {
+        this.gpsLatitude = gpsLatitude;
+    }
+
+    public BigDecimal getGpsLongitude() {
+        return gpsLongitude;
+    }
+
+    public void setGpsLongitude(BigDecimal gpsLongitude) {
+        this.gpsLongitude = gpsLongitude;
+    }
+
+    public String getTecnologiaUtiliz() {
+        return tecnologiaUtiliz;
+    }
+
+    public void setTecnologiaUtiliz(String tecnologiaUtiliz) {
+        this.tecnologiaUtiliz = tecnologiaUtiliz;
+    }
+
+    public int getDistanciaGPS() {
+        return distanciaGPS;
+    }
+
+    public void setDistanciaGPS(int distanciaGPS) {
+        this.distanciaGPS = distanciaGPS;
+    }
+
+    public int getQtdSatelites() {
+        return qtdSatelites;
+    }
+
+    public void setQtdSatelites(int qtdSatelites) {
+        this.qtdSatelites = qtdSatelites;
+    }
+
+    public String getImediato() {
+        return imediato;
+    }
+
+    public void setImediato(String imediato) {
+        this.imediato = imediato;
+    }
+
+    public BigDecimal getBonusUtilizado() {
+        return bonusUtilizado;
+    }
+
+    public void setBonusUtilizado(BigDecimal bonusUtilizado) {
+        this.bonusUtilizado = bonusUtilizado;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+
+    public BigDecimal getValorImpostoBarreira() {
+        return valorImpostoBarreira;
+    }
+
+    public void setValorImpostoBarreira(BigDecimal valorImpostoBarreira) {
+        this.valorImpostoBarreira = valorImpostoBarreira;
+    }
+
+    public BigDecimal getValorVerbaGeradaGL() {
+        return valorVerbaGeradaGL;
+    }
+
+    public void setValorVerbaGeradaGL(BigDecimal valorVerbaGeradaGL) {
+        this.valorVerbaGeradaGL = valorVerbaGeradaGL;
+    }
+
+    public BigDecimal getValorVerbaUtilizadaGL() {
+        return valorVerbaUtilizadaGL;
+    }
+
+    public void setValorVerbaUtilizadaGL(BigDecimal valorVerbaUtilizadaGL) {
+        this.valorVerbaUtilizadaGL = valorVerbaUtilizadaGL;
+    }
+
+    public int getPedidoTransmitido() {
+        return pedidoTransmitido;
+    }
+
+    public void setPedidoTransmitido(int pedidoTransmitido) {
+        this.pedidoTransmitido = pedidoTransmitido;
+    }
+
+    public int getDesbloqueioGPSERP() {
+        return desbloqueioGPSERP;
+    }
+
+    public void setDesbloqueioGPSERP(int desbloqueioGPSERP) {
+        this.desbloqueioGPSERP = desbloqueioGPSERP;
+    }
+
+    public int getDataPrimeiraParcela() {
+        return dataPrimeiraParcela;
+    }
+
+    public void setDataPrimeiraParcela(int dataPrimeiraParcela) {
+        this.dataPrimeiraParcela = dataPrimeiraParcela;
+    }
+
+    public String getCodigoErpTerceiro() {
+        return codigoErpTerceiro;
+    }
+
+    public void setCodigoErpTerceiro(String codigoErpTerceiro) {
+        this.codigoErpTerceiro = codigoErpTerceiro;
+    }
+
+    public long getNumeroPrePedidoGestao() {
+        return numeroPrePedidoGestao;
+    }
+
+    public void setNumeroPrePedidoGestao(long numeroPrePedidoGestao) {
+        this.numeroPrePedidoGestao = numeroPrePedidoGestao;
+    }
+
+    public int getStatusRetorno() {
+        return statusRetorno;
+    }
+
+    public void setStatusRetorno(int statusRetorno) {
+        this.statusRetorno = statusRetorno;
+    }
+
+    public String getMsgRetorno() {
+        return msgRetorno;
+    }
+
+    public void setMsgRetorno(String msgRetorno) {
+        this.msgRetorno = msgRetorno;
+    }
+
+    public List<PedidoItemPortal> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<PedidoItemPortal> itens) {
+        this.itens = itens;
+    }
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "PedidoCapaPortal{" +
+                "recId=" + recId +
+                ", codigoEmpresa=" + codigoEmpresa +
+                ", codigoClienteErp=" + codigoClienteErp +
+                ", cpfCnpj='" + cpfCnpj + '\'' +
+                ", origem='" + origem + '\'' +
+                ", codigoVendedor='" + codigoVendedor + '\'' +
+                ", tipoCobranca=" + tipoCobranca +
+                ", condicaoPagamento=" + condicaoPagamento +
+                ", desconto=" + desconto +
+                ", percTaxaFinanc=" + percTaxaFinanc +
+                ", valorLiquido=" + valorLiquido +
+                ", dataEmissao=" + dataEmissao +
+                ", regiao=" + regiao +
+                ", dia=" + dia +
+                ", carga=" + carga +
+                ", rota='" + rota + '\'' +
+                ", valorBruto=" + valorBruto +
+                ", valorLiquidoSFA=" + valorLiquidoSFA +
+                ", valorBonificado=" + valorBonificado +
+                ", valorDesconto=" + valorDesconto +
+                ", valorVerba=" + valorVerba +
+                ", valorFinal=" + valorFinal +
+                ", codigoMotivoNaoCompra='" + codigoMotivoNaoCompra + '\'' +
+                ", horaInicialPedido=" + horaInicialPedido +
+                ", horaFinalPedido=" + horaFinalPedido +
+                ", statusTransmitidoWebService='" + statusTransmitidoWebService + '\'' +
+                ", pedidoAberto='" + pedidoAberto + '\'' +
+                ", pedidoBloqueado='" + pedidoBloqueado + '\'' +
+                ", duracaoPedido=" + duracaoPedido +
+                ", gpsLatitude=" + gpsLatitude +
+                ", gpsLongitude=" + gpsLongitude +
+                ", tecnologiaUtiliz='" + tecnologiaUtiliz + '\'' +
+                ", distanciaGPS=" + distanciaGPS +
+                ", qtdSatelites=" + qtdSatelites +
+                ", imediato='" + imediato + '\'' +
+                ", bonusUtilizado=" + bonusUtilizado +
+                ", observacao='" + observacao + '\'' +
+                ", valorImpostoBarreira=" + valorImpostoBarreira +
+                ", valorVerbaGeradaGL=" + valorVerbaGeradaGL +
+                ", valorVerbaUtilizadaGL=" + valorVerbaUtilizadaGL +
+                ", pedidoTransmitido=" + pedidoTransmitido +
+                ", desbloqueioGPSERP=" + desbloqueioGPSERP +
+                ", dataPrimeiraParcela=" + dataPrimeiraParcela +
+                ", codigoErpTerceiro='" + codigoErpTerceiro + '\'' +
+                ", numeroPrePedidoGestao=" + numeroPrePedidoGestao +
+                ", statusRetorno=" + statusRetorno +
+                ", msgRetorno='" + msgRetorno + '\'' +
+                '}';
+    }
+}
