@@ -35,7 +35,7 @@ public class PedidoItemGloboBrokerRowMapper implements RowMapper<PedidoItemGlobo
 		List<LoteGloboBroker> lotes = new ArrayList<>();
 		
 		LoteGloboBroker lote = new LoteGloboBroker();
-		lote.setNumero(rs.getString("'LOT1'"));
+		lote.setNumero(rs.getString("LOT1"));
 		lote.setQuantidade(rs.getString("QTDE1"));
 		lotes.add(lote);
 		
