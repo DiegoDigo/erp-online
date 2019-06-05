@@ -31,7 +31,7 @@ public class MessagingConfiguration {
     @Value("${numero_matricula_empresa}")
     private String matricula;
 
-    @Value("${portal_filas_concorrencia:1-100}")
+    @Value("${portal_filas_concorrencia}")
     private String concorrencia; // "1-100"
 
     @Resource
