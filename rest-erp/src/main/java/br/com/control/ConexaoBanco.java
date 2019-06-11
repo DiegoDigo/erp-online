@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
+import java.beans.PropertyVetoException;
 
 @Configuration
 public class ConexaoBanco {
@@ -106,15 +107,28 @@ public class ConexaoBanco {
         return factory.build();
     }
 
+//    @Bean
+//    public DataSource dbmakerDataSource() {
+//        DriverManagerDataSource pool = new DriverManagerDataSource();
+//        pool.setDriverClassName(driverDbMaker);
+//        pool.setUrl(urlDbMaker);
+//        pool.setUsername(userDbMaker);
+//        pool.setPassword(passwordDbMaker);
+//        return pool;
+//
+//    }
+
     @Bean
-    public DataSource dbmakerDataSource() {
-        DriverManagerDataSource pool = new DriverManagerDataSource();
+    public DataSource dbmakerDataSource() throws PropertyVetoException {
+        BasicDataSource pool = new BasicDataSource();
         pool.setDriverClassName(driverDbMaker);
         pool.setUrl(urlDbMaker);
         pool.setUsername(userDbMaker);
         pool.setPassword(passwordDbMaker);
+        pool.setInitialSize(1);
+        pool.setMaxActive(1);
+        pool.setRemoveAbandoned(true);
         return pool;
-
     }
 
 }
