@@ -23,7 +23,7 @@ public class MotivoGeralDao extends JdbcDao<MotivoGeral> {
 		String sql = String.format("select * from %s where codigo_motivo_geral = '%s' and tipo_motivo_geral_rec_id = '%s'",
 				ViewsIntegracaoERP.VW_MOTIVO_GERAL, codigoMotivoGeral, tipoMotivo);
 		try{
-			return getJdbcTemplate().queryForObject(sql, new MotivoGeralRowMapper());
+			return getJdbcTemplate().query(sql, new MotivoGeralRowMapper()).get(0);
 		}catch (Exception e){
 			return null;
 		}

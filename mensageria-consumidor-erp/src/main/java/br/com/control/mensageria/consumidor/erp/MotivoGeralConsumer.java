@@ -3,6 +3,7 @@ package br.com.control.mensageria.consumidor.erp;
 import br.com.control.cadastro.MotivoGeralService;
 import br.com.control.cadastro.sincronismo.SincronismoCadastroService;
 import br.com.control.portal.enums.CadastrosEnum;
+import br.com.control.portal.mensageria.to.MotivoGeralTO;
 import br.com.control.vendas.cadastro.modelo.MotivoGeral;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,7 +41,7 @@ public class MotivoGeralConsumer extends ERPConsumer {
                 return;
             }
 
-            sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.MOTIVO_GERAL), motivoGeral, "Motivo Geral");
+            sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.MOTIVO_GERAL), new MotivoGeralTO(motivoGeral), "Motivo Geral");
             log.info("--> Motivo Geral com o codigo: " + mensagem[0] + " enviado para o Portal!");
 
         }
