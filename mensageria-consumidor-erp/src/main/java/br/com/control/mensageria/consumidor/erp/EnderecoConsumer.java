@@ -31,7 +31,7 @@ public class EnderecoConsumer extends ERPConsumer{
 
 	public List<ClienteEnderecoTO> recuperaEnderecosClienteTO(final Message<String> message) throws JMSException {
 		String codigoErp = message.getPayload();
-		log.info("### VW_ENDERECO: "+codigoErp);
+		log.info("### VW_ENDERECO : "+codigoErp);
 		
 		List<ClienteEndereco> clienteEnderecos = clienteEnderecoService.recuperarTipoEnderecoCodigoERP(codigoErp);
 		if (clienteEnderecos == null || clienteEnderecos.isEmpty()) {
@@ -44,8 +44,8 @@ public class EnderecoConsumer extends ERPConsumer{
 			clienteEnderecoTOs.add(new ClienteEnderecoTO(clienteEndereco));
 		}
 
-		sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.CLIENTE_ENDERECO), clienteEnderecoTOs, "Cliente Endereco");
-		log.info("--> Endereço com codi  go: " + codigoErp + " enviado para o Portal!");
+		//sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.CLIENTE_ENDERECO), clienteEnderecoTOs, "Cliente Endereco");
+		//log.info("--> Endereço com codigo: " + codigoErp + " enviado para o Portal!");
 		
 		return clienteEnderecoTOs;
 

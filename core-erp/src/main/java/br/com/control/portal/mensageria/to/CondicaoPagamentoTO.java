@@ -74,7 +74,7 @@ public class CondicaoPagamentoTO implements Serializable {
 		this.setAtivo(condicao.getAtivo());
 		this.setInformaPrimeiraParcela(condicao.getInformaPrimeiraParcela());
 		this.setNumeroDias(condicao.getNumeroDias());
-		this.setPrazo(condicao.getNumeroDias());
+		this.setPrazo(condicao.getPrazo());
 	}
 
 }
