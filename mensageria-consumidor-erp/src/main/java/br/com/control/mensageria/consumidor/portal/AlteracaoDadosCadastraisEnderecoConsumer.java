@@ -28,6 +28,9 @@ public class AlteracaoDadosCadastraisEnderecoConsumer {
 		ClienteTO clienteTO = message.getPayload();
 		log.debug("### RECEBIDO ALTERACAO DO ENDERECO DO CLIENTE " + clienteTO.getCodigoErp() + " DA FILA DE ALTERACAO DE DADOS CADASTRAIS ENDERECO ###");
 
+		clienteTO.setRg("");
+        clienteTO.setCelular("0");
+
 		// Salvar pré-cadastro
 		clienteEnderecoService.alterarDados(clienteTO);
 		log.info("--> dados do endereco alterados no erp");

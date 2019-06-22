@@ -41,6 +41,7 @@ public class ClienteEnderecoDao extends JdbcDao<ClienteEndereco> {
 	@Transactional
 	public void alterarEndereco(ClienteTO clienteEndereco) {
 		CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERE_ALTERA_CLIENTE);
+        System.out.println("Cliente Endereço: " + clienteEndereco.toString());
 		preparaExecucaoProcedure(clienteEndereco, stmt);
 		try {
 			stmt.close();

@@ -31,9 +31,9 @@ public class MotivoGeralConsumer extends ERPConsumer {
         if (mensagem.length > 0) {
             log.info("### VW_MOTIVO_GERAL: " + mensagem[0]);
 
-            if (mensagem[0].trim().length() == 1){
-                mensagem[0] = "00" + mensagem[0].trim();
-            }
+//            if (mensagem[0].trim().length() == 1){
+//                mensagem[0] = "00" + mensagem[0].trim();
+//            }
 
             MotivoGeral motivoGeral = motivoGeralService.listarMotivosPorCodigoETipo(mensagem[0].trim(), mensagem[1]);
             if (motivoGeral == null) {
