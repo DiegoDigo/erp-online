@@ -23,17 +23,10 @@ public class CriacaoOuAlteracaoPdvConsumer {
 	@JmsListener(destination = "${prefixo_ambiente_fila}_alteracao_dados_cadastrais_contato_${numero_matricula_empresa}")
 	public void receiveMessage(final Message<ClienteTO> message) throws JMSException {
 		ClienteTO clienteTO = message.getPayload();
-		// clienteTO.setLatitude(BigDecimal.ZERO);
-		// clienteTO.setLongitude(BigDecimal.ZERO);
-		// clienteTO.setEmail("teste@teste.com");
-		// clienteTO.setRg("432223332");
-		// clienteTO.setPontoReferenciaFaturamento("fat");
-		// clienteTO.setPontoReferenciaEntrega("ent");
-		// clienteTO.setPontoReferenciaCobranca("cob");
-		// clienteTO.setMotivoBloqueio("Mot");
-		// clienteTO.setInscricaoEstadual("IE");
 
-		System.out.println(clienteTO);
+		clienteTO.setRg((clienteTO.getRg() == null) ? "" : clienteTO.getRg());
+		clienteTO.setCelular((clienteTO.getCelular().trim().isEmpty()) ? "0" : clienteTO.getCelular().trim());
+
 		log.info("### RECEBIDO ALTERACAO DO CONTATO DO CLIENTE " + clienteTO.getRazaoSocial() + " - "
 				+ clienteTO.getCpfCnpj() + " DA FILA DE ALTERACAO DE DADOS CADASTRAIS CONTATO ###");
 		log.info("--> clienteTO: " + clienteTO);

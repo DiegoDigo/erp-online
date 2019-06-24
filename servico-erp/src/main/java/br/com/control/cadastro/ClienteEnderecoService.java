@@ -2,6 +2,7 @@ package br.com.control.cadastro;
 
 import java.util.List;
 
+import br.com.control.portal.mensageria.to.ClienteTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,7 @@ public class ClienteEnderecoService {
 		return clienteEnderecoDao.recuperarTipoEndereco(codigoTipoEnderecoERP);
 	}
 	
-	public void alterarDados(ClienteEndereco clienteEndereco) {
+	public void alterarDados(ClienteTO clienteEndereco) {
 		clienteEnderecoDao.	alterarEndereco(clienteEndereco);
 	}
 

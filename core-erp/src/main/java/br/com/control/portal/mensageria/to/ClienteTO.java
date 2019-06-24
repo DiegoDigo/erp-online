@@ -18,9 +18,9 @@ public class ClienteTO implements Serializable {
 	@SequenciaParametrosProcedure(index = 1)
 	private int codigoEmpresa;
 	@SequenciaParametrosProcedure(index = 2)
-	private String contato;
+	private String contato = "";
 	@SequenciaParametrosProcedure(index = 3)
-	private String email;
+	private String email = "";
 	@SequenciaParametrosProcedure(index = 4)
 	private String cargo;
 	@SequenciaParametrosProcedure(index = 5)
@@ -30,15 +30,15 @@ public class ClienteTO implements Serializable {
 	@SequenciaParametrosProcedure(index = 7)
 	private int celularDdd;
 	@SequenciaParametrosProcedure(index = 8)
-	private  String celular;
+	private  String celular = "";
 	@SequenciaParametrosProcedure(index = 9)
 	private String razaoSocial;
 	@SequenciaParametrosProcedure(index = 10)
-	private String sigla;
+	private String sigla = "";
 	@SequenciaParametrosProcedure(index = 11)
 	private String cpfCnpj;
 	@SequenciaParametrosProcedure(index = 12)
-	private String rg;
+	private String rg = "";
 
 	// ENDERECO FATURAMENTO
 	@SequenciaParametrosProcedure(index = 13)
@@ -101,11 +101,11 @@ public class ClienteTO implements Serializable {
 	@SequenciaParametrosProcedure(index = 38)
 	private String origem;
 	@SequenciaParametrosProcedure(index = 39)
-	private String canal;
+	private String canal = "";
 	@SequenciaParametrosProcedure(index = 40)
-	private String motivoBloqueio;
+	private String motivoBloqueio = "";
 	@SequenciaParametrosProcedure(index = 41)
-	private String inscricaoEstadual;
+	private String inscricaoEstadual = "";
 	@SequenciaParametrosProcedure(index = 42)
 	private int condicaoPagamento;
 	@SequenciaParametrosProcedure(index = 43)
@@ -117,7 +117,7 @@ public class ClienteTO implements Serializable {
 	@SequenciaParametrosProcedure(index = 46)
 	private BigDecimal longitude;
 	@SequenciaParametrosProcedure(index = 47)
-	private String vendedor;
+	private String vendedor = "";
 	@SequenciaParametrosProcedure(index = 48)
 	private int codigoPasta;
 	@SequenciaParametrosProcedure(index = 49)

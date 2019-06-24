@@ -43,8 +43,8 @@ public class VendedorClienteConsumer extends ERPConsumer{
 			vendedoresClienteTO.add(new VendedorClienteTO(vendedorCliente));
 		}
 
-		sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.VENDEDOR_CLIENTE), vendedoresClienteTO, "Vendedor do Cliente");
-		log.info("--> Vendedor Cliente com codigo: " + codigoErp + " enviado para o Portal!");
+//		sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.VENDEDOR_CLIENTE), vendedoresClienteTO, "Vendedor do Cliente");
+//		log.info("--> Vendedor Cliente com codigo: " + codigoErp + " enviado para o Portal!");
 
 		return vendedoresClienteTO;
 		

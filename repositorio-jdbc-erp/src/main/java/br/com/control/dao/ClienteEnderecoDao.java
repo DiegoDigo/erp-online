@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import br.com.control.portal.mensageria.to.ClienteTO;
 import org.springframework.stereotype.Repository;
 
 import br.com.control.portal.integracao.ProcedureIntegracao;
@@ -38,8 +39,9 @@ public class ClienteEnderecoDao extends JdbcDao<ClienteEndereco> {
 	}
 
 	@Transactional
-	public void alterarEndereco(ClienteEndereco clienteEndereco) {
+	public void alterarEndereco(ClienteTO clienteEndereco) {
 		CallableStatement stmt = preparaChamadaProcedure(ProcedureIntegracao.INSERE_ALTERA_CLIENTE);
+        System.out.println("Cliente Endereço: " + clienteEndereco.toString());
 		preparaExecucaoProcedure(clienteEndereco, stmt);
 		try {
 			stmt.close();

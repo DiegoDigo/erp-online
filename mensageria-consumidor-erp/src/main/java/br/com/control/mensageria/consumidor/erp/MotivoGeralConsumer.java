@@ -31,10 +31,6 @@ public class MotivoGeralConsumer extends ERPConsumer {
         if (mensagem.length > 0) {
             log.info("### VW_MOTIVO_GERAL: " + mensagem[0]);
 
-            if (mensagem[0].trim().length() == 1){
-                mensagem[0] = "00" + mensagem[0].trim();
-            }
-
             MotivoGeral motivoGeral = motivoGeralService.listarMotivosPorCodigoETipo(mensagem[0].trim(), mensagem[1]);
             if (motivoGeral == null) {
                 log.warn(String.format("O motivo geral com o codigo %s e o tipo %s nao encontrado no DBMaker!", mensagem[0], mensagem[1]));
@@ -45,6 +41,5 @@ public class MotivoGeralConsumer extends ERPConsumer {
             log.info("--> Motivo Geral com o codigo: " + mensagem[0] + " enviado para o Portal!");
 
         }
-
     }
 }
