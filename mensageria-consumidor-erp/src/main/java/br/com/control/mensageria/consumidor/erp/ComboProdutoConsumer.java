@@ -28,21 +28,30 @@ public class ComboProdutoConsumer extends ERPConsumer{
 
 	@JmsListener(destination = "VW_COMBO_PRODUTO", containerFactory = "jmsListenerContainerFactoryJControl")
 	public void sinalizaStatusPedido(final Message<String> message) throws JMSException {
-		String codigoErp = message.getPayload();
-		log.info("### VW_COMBO_PRODUTO: "+codigoErp);
-		
+		String[] mensagem = message.getPayload().split("\\|");
+		log.info("### VW_COMBO_PRODUTO: "+mensagem[0]);
 
-		DetalheComboProduto comboProduto = detalheComboProdutoService.recuperarComboProduto(codigoErp);
-		if (comboProduto == null) {
-			String msg = "Combo Produto com codigo: " + codigoErp + " nao encontrado no DBMaker!";
-			log.warn(msg);
-			return;
+		if(mensagem.length > 0){
+
+			String codigoErp = mensagem[0];
+			String codigoProdutoERP = mensagem[1];
+			String codigoOcorrencia = mensagem[2];
+
+			DetalheComboProduto comboProduto = detalheComboProdutoService.recuperarComboProduto(mensagem[0], codigoProdutoERP, codigoOcorrencia);
+			if (comboProduto == null) {
+				String msg = "Combo Produto com codigo: " + codigoErp + ", produto com codigo: "+ codigoProdutoERP +" e codigo de ocorrência: "+ codigoOcorrencia +" nao encontrado no DBMaker!";
+				log.warn(msg);
+				return;
+			}
+
+			DetalheComboProdutoTO comboProdutoTO = new DetalheComboProdutoTO(comboProduto);
+
+			sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.PRODUTO_COMBO), comboProdutoTO, "Detalhe combo produto");
+			log.info("--> Combo Produto com codigo: " + codigoErp + ", produto com codigo: "+ codigoProdutoERP +" e codigo de ocorrência: "+ codigoOcorrencia +" enviado para o Portal!");
+
 		}
 
-		DetalheComboProdutoTO comboProdutoTO = new DetalheComboProdutoTO(comboProduto);
 
-		sincronismoCadastroService.enviaParaOPortal(criaIdentificacaoServico(CadastrosEnum.PRODUTO_COMBO), comboProdutoTO, "Detalhe combo produto");
-		log.info("--> Combo Produto com codigo: " + codigoErp + " enviado para o Portal!");
 	}
 
 }
