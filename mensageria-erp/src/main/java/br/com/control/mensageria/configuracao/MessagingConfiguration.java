@@ -137,6 +137,8 @@ public class MessagingConfiguration {
         JmsTemplate template = new JmsTemplate();
         template.setConnectionFactory(connectionFactoryPortal());
         template.setDefaultDestinationName(ambiente + "_alteracao_dados_cadastrais_endereco_" + matricula);
+        template.setTimeToLive(3000);
+        template.setMessageTimestampEnabled(true);
         return template;
     }
 
