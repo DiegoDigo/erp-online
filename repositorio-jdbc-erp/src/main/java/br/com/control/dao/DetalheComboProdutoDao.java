@@ -22,9 +22,15 @@ public class DetalheComboProdutoDao extends JdbcDao<DetalheComboProduto> {
 		return selectViewSemWhere(ViewsIntegracaoERP.VW_COMBO_PRODUTO, new DetalheComboProdutoRowMapper());
 	}
 	
-	public DetalheComboProduto recuperarComboProduto(String codigoProdutoComboErp) {
-		String declare = String.format("DECLARE set varchar(27) @CODIGO_COMBO = '%s'", codigoProdutoComboErp);
-		getJdbcTemplate().update(declare);
+	public DetalheComboProduto recuperarComboProduto(String codigoComboERP, String codigoProdutoERP, String codigoOcorrencia) {
+		String codigoCombo = String.format("DECLARE set varchar(27) @CODIGO_COMBO = '%s'", codigoComboERP);
+		String codigoProduto = String.format("DECLARE set varchar(27) @CODIGO_PRODUTO_ERP = '%s'", codigoProdutoERP);
+		String ocorrencia = String.format("DECLARE set varchar(27) @CODIGO_OCORRENCIA_ERP = '%s'", codigoOcorrencia);
+
+		getJdbcTemplate().update(codigoCombo);
+		getJdbcTemplate().update(codigoProduto);
+		getJdbcTemplate().update(ocorrencia);
+
 		return selectViewSingle(ViewsIntegracaoERP.VW_COMBO_PRODUTO, new DetalheComboProdutoRowMapper());
 	}
 	

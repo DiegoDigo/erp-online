@@ -66,6 +66,7 @@ public class DetalheComboProdutoTO implements Serializable {
 		this.quantidadeAvulso = combo.getQuantidadeAvulso();
 		this.codigoProdutoComboERP = combo.getCodigoProdutoComboERP();
 		this.codigoProdutoERP = combo.getCodigoProdutoERP();
+		this.ocorrencia = combo.getOcorrencia();
 	}
 
 }

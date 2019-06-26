@@ -20,8 +20,8 @@ public class DetalheComboProdutoService {
 	}
 	
 
-	public DetalheComboProduto recuperarComboProduto(String codigoProdutoComboErp) {		
-		return detalheComboProdutoDao.recuperarComboProduto(codigoProdutoComboErp);
+	public DetalheComboProduto recuperarComboProduto(String codigoComboERP, String codigoProdutoERP, String codigoOcorrencia) {
+		return detalheComboProdutoDao.recuperarComboProduto(codigoComboERP, codigoProdutoERP, codigoOcorrencia);
 	}
 	
 	public Integer count() {
