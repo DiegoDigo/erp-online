@@ -27,7 +27,7 @@ public class RetransmissaoService {
     PedidoCapaDao pedidoCapaDao;
 
     @Async("threadPoolTaskExecutor")
-    @Scheduled(cron = "1 * * * * *")
+    @Scheduled(cron = "0 0 * * * *")
     protected void verificarPedidosReTransmissao() {
         System.out.println("Buscando pedidos não transmitidos");
         List<PedidoCapaTO> pedidosNaoTransmitidos = pedidoRetransmissaoService.verificar();

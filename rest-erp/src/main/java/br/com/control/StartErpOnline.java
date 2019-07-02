@@ -13,6 +13,7 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.jms.annotation.EnableJms;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.filter.CharacterEncodingFilter;
@@ -24,6 +25,7 @@ import java.util.concurrent.Executor;
 @EnableAspectJAutoProxy
 @EnableJms
 @EnableScheduling
+@EnableAsync
 public class StartErpOnline extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
