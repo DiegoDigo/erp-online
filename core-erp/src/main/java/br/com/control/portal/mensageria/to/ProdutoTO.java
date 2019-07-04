@@ -38,8 +38,15 @@ public class ProdutoTO implements Serializable {
 	private String codigoErpFamilia;
 	private String codigoErpGrupo;
 	private String codigoErpMarca;
+	private boolean produtoDisponivelPortal;
 
-	
+	public boolean isProdutoDisponivelPortal() {
+		return produtoDisponivelPortal;
+	}
+
+	public void setProdutoDisponivelPortal(boolean produtoDisponivelPortal) {
+		this.produtoDisponivelPortal = produtoDisponivelPortal;
+	}
 
 	public Boolean getAtivo() {
 		return ativo;
@@ -317,7 +324,8 @@ public class ProdutoTO implements Serializable {
 		this.setCodigoErpCategoria(produto.getCodigoErpCategoria());
 		this.setCodigoErpFamilia(produto.getCodigoErpFamilia());
 		this.setCodigoErpGrupo(produto.getCodigoErpGrupo());
-		this.setCodigoErpMarca(produto.getCodigoErpMarca());		
+		this.setCodigoErpMarca(produto.getCodigoErpMarca());
+		this.setProdutoDisponivelPortal(produto.isProdutoDisponivelPortal());
 
 	}
 }

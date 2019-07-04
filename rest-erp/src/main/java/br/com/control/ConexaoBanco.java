@@ -13,6 +13,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
+import java.util.Properties;
 
 @Configuration
 public class ConexaoBanco {
@@ -129,6 +130,6 @@ public class ConexaoBanco {
         pool.setMaxActive(1);
         pool.setRemoveAbandoned(true);
         return pool;
-    }
 
+    }
 }
