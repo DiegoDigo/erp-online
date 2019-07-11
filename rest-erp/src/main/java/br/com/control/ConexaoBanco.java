@@ -13,6 +13,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
+import java.util.Properties;
 
 @Configuration
 public class ConexaoBanco {
@@ -99,24 +100,13 @@ public class ConexaoBanco {
     @Bean
     @Primary
     public DataSource postgresDataSource() {
-        DataSourceBuilder factory = DataSourceBuilder.create()
-                .driverClassName(driverPostgre)
-                .url(urlPostgre)
-                .username(userPostgre)
-                .password(passwordPostgre);
-        return factory.build();
+        DriverManagerDataSource pool = new DriverManagerDataSource();
+        pool.setDriverClassName(driverPostgre);
+        pool.setUrl(urlPostgre);
+        pool.setUsername(userPostgre);
+        pool.setPassword(passwordPostgre);
+        return pool;
     }
-
-//    @Bean
-//    public DataSource dbmakerDataSource() {
-//        DriverManagerDataSource pool = new DriverManagerDataSource();
-//        pool.setDriverClassName(driverDbMaker);
-//        pool.setUrl(urlDbMaker);
-//        pool.setUsername(userDbMaker);
-//        pool.setPassword(passwordDbMaker);
-//        return pool;
-//
-//    }
 
     @Bean
     public DataSource dbmakerDataSource() throws PropertyVetoException {
@@ -129,6 +119,6 @@ public class ConexaoBanco {
         pool.setMaxActive(1);
         pool.setRemoveAbandoned(true);
         return pool;
-    }
 
+    }
 }

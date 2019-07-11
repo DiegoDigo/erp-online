@@ -17,9 +17,9 @@ public class DetalheComboProdutoDao extends JdbcDao<DetalheComboProduto> {
 	
 
 	public List<DetalheComboProduto> listaTodosOsCombos() {
-		getJdbcTemplate().update("DECLARE set varchar(27) @CODIGO_COMBO = '0'");
-		getJdbcTemplate().update("DECLARE set varchar(27) @CODIGO_PRODUTO_ERP = '0'");
-		getJdbcTemplate().update("DECLARE set varchar(27) @CODIGO_OCORRENCIA_ERP = '0'");
+		getJdbcTemplate().update("DECLARE set varchar(27) @CODIGO_COMBO = ''");
+		getJdbcTemplate().update("DECLARE set varchar(27) @CODIGO_PRODUTO_ERP = ''");
+		getJdbcTemplate().update("DECLARE set varchar(27) @CODIGO_OCORRENCIA_ERP = ''");
 		return selectViewSemWhere(ViewsIntegracaoERP.VW_COMBO_PRODUTO, new DetalheComboProdutoRowMapper());
 	}
 	
@@ -36,9 +36,9 @@ public class DetalheComboProdutoDao extends JdbcDao<DetalheComboProduto> {
 	}
 	
 	public Integer count() {
-		getJdbcTemplate().update("DECLARE set varchar(27) @CODIGO_COMBO = '0'");
-		getJdbcTemplate().update("DECLARE set varchar(27) @CODIGO_PRODUTO_ERP = '0'");
-		getJdbcTemplate().update("DECLARE set varchar(27) @CODIGO_OCORRENCIA_ERP = '0'");
+		getJdbcTemplate().update("DECLARE set varchar(27) @CODIGO_COMBO = ''");
+		getJdbcTemplate().update("DECLARE set varchar(27) @CODIGO_PRODUTO_ERP = ''");
+		getJdbcTemplate().update("DECLARE set varchar(27) @CODIGO_OCORRENCIA_ERP = ''");
 		String sql = "select count(*) from "+ getSchemaDatabase() + "." + ViewsIntegracaoERP.VW_COMBO_PRODUTO;
 		return contaRegistros(sql);
 	}

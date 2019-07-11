@@ -13,7 +13,7 @@ public class DetalheComboProdutoRowMapper implements RowMapper<DetalheComboProdu
 	public DetalheComboProduto mapRow(ResultSet rs, int rowNum) throws SQLException {
 		DetalheComboProduto detalhe = new DetalheComboProduto();
 //		detalhe.setRecId(rs.getLong("rec_id"));
-		detalhe.setCodigoProdutoComboERP(rs.getString("CODIGO_PRODUTO_COMBO_ERP").substring(3,10));
+		detalhe.setCodigoProdutoComboERP(rs.getString("CODIGO_PRODUTO_COMBO_ERP"));
 		detalhe.setCodigoProdutoERP(rs.getString("CODIGO_PRODUTO_ERP"));
 		detalhe.setQuantidadeCaixa(rs.getInt("QUANTIDADE_CAIXA"));
 		detalhe.setQuantidadeAvulso(rs.getInt("QUANTIDADE_AVULSO"));
