@@ -45,8 +45,7 @@ public class ProdutoRowMapper implements RowMapper<Produto>{
 		produto.setCodigoErpGrupo(rs.getString("CODIGO_GRUPO_PRODUTO_ERP"));
 		produto.setCodigoErpFamilia(rs.getString("CODIGO_FAMILIA_PRODUTO_ERP"));
 		produto.setCodigoErpMarca(rs.getString("CODIGO_MARCA_PRODUTO_ERP"));
-		String disponivelPortal = rs.getString("disp_portal_web");
-		if(disponivelPortal.equals("0")){
+		if(rs.getInt("disp_portal_web") == 0){
 			produto.setProdutoDisponivelPortal(false);
 		}else{
 			produto.setProdutoDisponivelPortal(true);
