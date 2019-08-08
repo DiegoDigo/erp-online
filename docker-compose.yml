@@ -1,0 +1,49 @@
+version: "3.7"
+
+services:
+  erp:
+    image: linkedby/erp-online
+    restart: always
+    container_name: "erp-online"
+    ports:
+      - 8282:8080
+    networks:
+      - erp-online
+    depends_on:
+      - db
+    environment:
+      PORT: 8282
+      REVENDA: 2016
+      URL_POSTGRES: jdbc:postgresql://db:5432/erp_online
+      USER_POSTGRES: postgres
+      PASSWORD_POSTGRES: control
+      FILA_PORTAL: tcp://207.38.87.77:61616
+      FILA_ERP: tcp://207.38.87.77:61616
+      AMBIENTE: dev
+      URL_DBMAKER: 'jdbc:dbmaker:type3://189.2.113.196:7777/DBCONTROL_2016_001'
+      USERNAME_DBMAKER: DBCONTROL2016001
+      PASSWORD_DBMAKER: CUIDADO
+      SCHEMA_DBMAKER: DBCONTROL2016001
+
+  db:
+    image: postgres:9.6-alpine
+    restart: always
+    container_name: "postgres-erp-online"
+    environment:
+      POSTGRES_DB: erp_online
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: control
+    ports:
+      - 5433:5432
+    volumes:
+      - database_data:/var/lib/postgresql/data
+    networks:
+      - erp-online
+
+
+volumes:
+  database_data:
+    driver: local
+
+networks:
+  erp-online:
