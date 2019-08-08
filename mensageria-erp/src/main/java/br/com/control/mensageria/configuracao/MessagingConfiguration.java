@@ -22,7 +22,7 @@ public class MessagingConfiguration {
     @Value("${fila_portal_erp_online}")
     public String FILA_PORTAL;
 
-    @Value("${fila_jcontrol_erp_online}")
+    @Value("${activemq.broker-url}")
     public String FILA_JCONTROL;
 
     @Value("${prefixo_ambiente_fila}")
@@ -66,9 +66,6 @@ public class MessagingConfiguration {
            DefaultJmsListenerContainerFactoryConfigurer configurer) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         configurer.configure(factory, connectionFactory);
-        factory.setSessionTransacted(true);
-        factory.setConcurrency(concorrencia);
-        factory.setTransactionManager(transactionManager);
         return factory;
     }
 
@@ -78,9 +75,6 @@ public class MessagingConfiguration {
             DefaultJmsListenerContainerFactoryConfigurer configurer) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         configurer.configure(factory, connectionFactory);
-        factory.setConcurrency(concorrencia);
-        factory.setSessionTransacted(true);
-        factory.setTransactionManager(transactionManager);
         return factory;
     }
 

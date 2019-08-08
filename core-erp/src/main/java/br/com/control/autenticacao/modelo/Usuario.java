@@ -51,6 +51,13 @@ public class Usuario {
 	public Usuario() {
 	}
 
+	public Usuario(String nome, String login, Sistema sistema, String password) {
+		this.nome = nome;
+		this.login = login;
+		this.sistema = sistema;
+		this.password = password;
+	}
+
 	public Usuario(Usuario user) {
 		super();
 		this.id = user.getId();

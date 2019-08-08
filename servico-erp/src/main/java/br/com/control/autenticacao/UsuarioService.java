@@ -22,9 +22,17 @@ public class UsuarioService implements UserDetailsService {
 		this.userRepository = userRepository;
 	}
 
+	public Usuario criarUsuario(Usuario usuario){
+		return this.userRepository.save(usuario);
+	}
+
+	public Usuario buscarPorLogin(String login){
+		return this.userRepository.findByLogin(login);
+	}
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Usuario user = userRepository.findByLogin(username);
+		Usuario user = this.buscarPorLogin(username);
 		if (user == null) {
 			throw new UsernameNotFoundException(String.format("Usuário %s não existe!", username));
 		}
