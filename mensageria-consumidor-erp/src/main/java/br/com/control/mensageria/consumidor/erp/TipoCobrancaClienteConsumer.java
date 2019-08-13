@@ -30,9 +30,7 @@ public class TipoCobrancaClienteConsumer {
 			return null;
 		}
 
-		TipoCobrancaClienteTO tipoCobrancaClienteTO = new TipoCobrancaClienteTO(tipoCobrancaCliente);
-		
-		return tipoCobrancaClienteTO;
+		return new TipoCobrancaClienteTO(tipoCobrancaCliente);
 	}
 
 }
