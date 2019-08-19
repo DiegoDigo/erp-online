@@ -5,5 +5,5 @@
               version="1.0">
 
     <role rolename="tclogview"/>
-    <user username="log" password="@logportal2016" roles="tclogview"/>
+    <user username="log" password="@logerp2016" roles="tclogview"/>
 </tomcat-users>

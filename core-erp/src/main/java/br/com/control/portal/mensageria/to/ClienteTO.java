@@ -161,6 +161,7 @@ public class ClienteTO implements Serializable {
 	private String codigoErpCanal;
 	private String codigoErpCondicaoPagamento;
 	private String codigoErpTipoCobranca;
+	private Boolean disponivelPortal;
 	
 	
 	private TipoCobrancaClienteTO tipoCobrancaClienteTO;
@@ -726,6 +727,7 @@ public class ClienteTO implements Serializable {
 		this.codigoErpCondicaoPagamento = cliente.getCodigoErpCondicaoPagamento();
 		this.codigoErpTipoCobranca = cliente.getCodigoErpTipoCobranca();
 		this.celular = cliente.getCelular();
+		this.disponivelPortal = cliente.getDisponivelPortal();
 		this.cargo = "teste";
 	}
 
@@ -849,43 +851,98 @@ public class ClienteTO implements Serializable {
 		this.alterado = alterado;
 	}
 
+
+	public Boolean getDisponivelPortal() {
+		return disponivelPortal;
+	}
+
+	public void setDisponivelPortal(Boolean disponivelPortal) {
+		this.disponivelPortal = disponivelPortal;
+	}
+
+
 	@Override
 	public String toString() {
-		return "ClienteTO [codigoEmpresa=" + codigoEmpresa + ", contato=" + contato + ", email=" + email + ", cargo="
-				+ cargo + ", telefoneDdd=" + telefoneDdd + ", telefoneTronco=" + telefoneTronco + ", celularDdd="
-				+ celularDdd + ", celular=" + celular + ", razaoSocial=" + razaoSocial + ", sigla=" + sigla
-				+ ", cpfCnpj=" + cpfCnpj + ", rg=" + rg + ", tipoLogradouroFaturamento=" + tipoLogradouroFaturamento
-				+ ", enderecoFaturamento=" + enderecoFaturamento + ", numeroFaturamento=" + numeroFaturamento
-				+ ", pontoReferenciaFaturamento=" + pontoReferenciaFaturamento + ", bairroFaturamento="
-				+ bairroFaturamento + ", municipioFaturamento=" + municipioFaturamento + ", ufEnderecoFaturamento="
-				+ ufEnderecoFaturamento + ", cepEnderecoFaturamento=" + cepEnderecoFaturamento
-				+ ", tipoLogradouroCobranca=" + tipoLogradouroCobranca + ", enderecoCobranca=" + enderecoCobranca
-				+ ", numeroCobranca=" + numeroCobranca + ", pontoReferenciaCobranca=" + pontoReferenciaCobranca
-				+ ", bairroCobranca=" + bairroCobranca + ", municipioCobranca=" + municipioCobranca
-				+ ", ufEnderecoCobranca=" + ufEnderecoCobranca + ", cepEnderecoCobranca=" + cepEnderecoCobranca
-				+ ", tipoLogradouroEntrega=" + tipoLogradouroEntrega + ", enderecoEntrega=" + enderecoEntrega
-				+ ", numeroEntrega=" + numeroEntrega + ", pontoReferenciaEntrega=" + pontoReferenciaEntrega
-				+ ", bairroEntrega=" + bairroEntrega + ", municipioEntrega=" + municipioEntrega + ", ufEnderecoEntrega="
-				+ ufEnderecoEntrega + ", cepEnderecoEntrega=" + cepEnderecoEntrega + ", codigoTabpreco="
-				+ codigoTabpreco + ", origem=" + origem + ", canal=" + canal + ", motivoBloqueio=" + motivoBloqueio
-				+ ", inscricaoEstadual=" + inscricaoEstadual + ", condicaoPagamento=" + condicaoPagamento
-				+ ", tipoCobranca=" + tipoCobranca + ", subCanal=" + subCanal + ", latitude=" + latitude
-				+ ", longitude=" + longitude + ", vendedor=" + vendedor + ", codigoPasta=" + codigoPasta
-				+ ", sequenciaPasta=" + sequenciaPasta + ", regiaoInclusao=" + regiaoInclusao + ", classe=" + classe
-				+ ", alterado=" + alterado + ", statusMsg=" + statusMsg + ", msg=" + msg + ", codigoErp=" + codigoErp
-				+ ", abateIcms=" + abateIcms + ", ativo=" + ativo + ", bonusDisponivel=" + bonusDisponivel
-				+ ", desprezaTaxaFinanceira=" + desprezaTaxaFinanceira + ", diaSemana=" + diaSemana + ", diasEntrega="
-				+ diasEntrega + ", ignoraBandaPreco=" + ignoraBandaPreco + ", limiteCredito=" + limiteCredito
-				+ ", motivoBloqClasse20=" + motivoBloqClasse20 + ", motivoBloqueioJuridico=" + motivoBloqueioJuridico
-				+ ", numeroCliente=" + numeroCliente + ", pasta=" + pasta + ", regiaoCliente=" + regiaoCliente
-				+ ", registroAlterado=" + registroAlterado + ", restricaoComercial=" + restricaoComercial
-				+ ", inconformidadeCadastro=" + inconformidadeCadastro + ", usoVerbaRestritoProduto="
-				+ usoVerbaRestritoProduto + ", codigoErpCanal=" + codigoErpCanal + ", codigoErpCondicaoPagamento="
-				+ codigoErpCondicaoPagamento + ", codigoErpTipoCobranca=" + codigoErpTipoCobranca + "]";
+		return "ClienteTO{" +
+				"codigoEmpresa=" + codigoEmpresa +
+				", contato='" + contato + '\'' +
+				", email='" + email + '\'' +
+				", cargo='" + cargo + '\'' +
+				", telefoneDdd=" + telefoneDdd +
+				", telefoneTronco=" + telefoneTronco +
+				", celularDdd=" + celularDdd +
+				", celular='" + celular + '\'' +
+				", razaoSocial='" + razaoSocial + '\'' +
+				", sigla='" + sigla + '\'' +
+				", cpfCnpj='" + cpfCnpj + '\'' +
+				", rg='" + rg + '\'' +
+				", tipoLogradouroFaturamento='" + tipoLogradouroFaturamento + '\'' +
+				", enderecoFaturamento='" + enderecoFaturamento + '\'' +
+				", numeroFaturamento='" + numeroFaturamento + '\'' +
+				", pontoReferenciaFaturamento='" + pontoReferenciaFaturamento + '\'' +
+				", bairroFaturamento='" + bairroFaturamento + '\'' +
+				", municipioFaturamento='" + municipioFaturamento + '\'' +
+				", ufEnderecoFaturamento='" + ufEnderecoFaturamento + '\'' +
+				", cepEnderecoFaturamento=" + cepEnderecoFaturamento +
+				", tipoLogradouroCobranca='" + tipoLogradouroCobranca + '\'' +
+				", enderecoCobranca='" + enderecoCobranca + '\'' +
+				", numeroCobranca='" + numeroCobranca + '\'' +
+				", pontoReferenciaCobranca='" + pontoReferenciaCobranca + '\'' +
+				", bairroCobranca='" + bairroCobranca + '\'' +
+				", municipioCobranca='" + municipioCobranca + '\'' +
+				", ufEnderecoCobranca='" + ufEnderecoCobranca + '\'' +
+				", cepEnderecoCobranca=" + cepEnderecoCobranca +
+				", tipoLogradouroEntrega='" + tipoLogradouroEntrega + '\'' +
+				", enderecoEntrega='" + enderecoEntrega + '\'' +
+				", numeroEntrega='" + numeroEntrega + '\'' +
+				", pontoReferenciaEntrega='" + pontoReferenciaEntrega + '\'' +
+				", bairroEntrega='" + bairroEntrega + '\'' +
+				", municipioEntrega='" + municipioEntrega + '\'' +
+				", ufEnderecoEntrega='" + ufEnderecoEntrega + '\'' +
+				", cepEnderecoEntrega=" + cepEnderecoEntrega +
+				", codigoTabpreco=" + codigoTabpreco +
+				", origem='" + origem + '\'' +
+				", canal='" + canal + '\'' +
+				", motivoBloqueio='" + motivoBloqueio + '\'' +
+				", inscricaoEstadual='" + inscricaoEstadual + '\'' +
+				", condicaoPagamento=" + condicaoPagamento +
+				", tipoCobranca=" + tipoCobranca +
+				", subCanal=" + subCanal +
+				", latitude=" + latitude +
+				", longitude=" + longitude +
+				", vendedor='" + vendedor + '\'' +
+				", codigoPasta=" + codigoPasta +
+				", sequenciaPasta=" + sequenciaPasta +
+				", regiaoInclusao=" + regiaoInclusao +
+				", classe=" + classe +
+				", alterado=" + alterado +
+				", statusMsg=" + statusMsg +
+				", msg='" + msg + '\'' +
+				", codigoErp='" + codigoErp + '\'' +
+				", abateIcms=" + abateIcms +
+				", ativo=" + ativo +
+				", bonusDisponivel=" + bonusDisponivel +
+				", desprezaTaxaFinanceira=" + desprezaTaxaFinanceira +
+				", diaSemana='" + diaSemana + '\'' +
+				", diasEntrega=" + diasEntrega +
+				", ignoraBandaPreco=" + ignoraBandaPreco +
+				", limiteCredito=" + limiteCredito +
+				", motivoBloqClasse20='" + motivoBloqClasse20 + '\'' +
+				", motivoBloqueioJuridico='" + motivoBloqueioJuridico + '\'' +
+				", numeroCliente='" + numeroCliente + '\'' +
+				", pasta=" + pasta +
+				", regiaoCliente='" + regiaoCliente + '\'' +
+				", registroAlterado=" + registroAlterado +
+				", restricaoComercial=" + restricaoComercial +
+				", inconformidadeCadastro='" + inconformidadeCadastro + '\'' +
+				", usoVerbaRestritoProduto=" + usoVerbaRestritoProduto +
+				", codigoErpCanal='" + codigoErpCanal + '\'' +
+				", codigoErpCondicaoPagamento='" + codigoErpCondicaoPagamento + '\'' +
+				", codigoErpTipoCobranca='" + codigoErpTipoCobranca + '\'' +
+				", disponivelPortal=" + disponivelPortal +
+				", tipoCobrancaClienteTO=" + tipoCobrancaClienteTO +
+				", vendedoresClienteTO=" + vendedoresClienteTO +
+				", enderecosClienteTO=" + enderecosClienteTO +
+				'}';
 	}
-	
-	
-	
-	
-
 }
