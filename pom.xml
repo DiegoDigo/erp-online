@@ -838,6 +838,48 @@
 
 
 		<profile>
+			<id>2187</id>
+			<properties>
+				<packaging.type>war</packaging.type>
+				<server.url>C:\PortalIntegracao\tomcat\webapps</server.url>
+				<artefato.nome>erp-online-2187</artefato.nome>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-web</artifactId>
+					<exclusions>
+						<exclusion>
+							<groupId>org.springframework.boot</groupId>
+							<artifactId>spring-boot-starter-tomcat</artifactId>
+						</exclusion>
+					</exclusions>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<!-- COPIA O ARQUIVO .properties DO SPRING DE ACORDO COM O PROFILE -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<configuration>
+							<webResources>
+								<resource>
+									<directory>src/main/resources/producao/2187</directory>
+									<targetPath>/WEB-INF/classes</targetPath>
+									<includes>
+										<include>application.properties</include>
+									</includes>
+								</resource>
+							</webResources>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+
+		<profile>
 			<id>5801</id>
 			<properties>
 				<packaging.type>war</packaging.type>
@@ -877,7 +919,6 @@
 				</plugins>
 			</build>
 		</profile>
-
 
 	</profiles>
 
