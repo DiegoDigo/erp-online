@@ -719,9 +719,9 @@ public class ClienteTO implements Serializable {
 		this.restricaoComercial = cliente.getRestricaoComercial();
 		this.inconformidadeCadastro = cliente.getInconformidadeCadastro();
 		this.sigla = cliente.getSigla();
-		this.subCanal = Integer.valueOf(cliente.getSubCanal());
-		this.telefoneDdd = Integer.valueOf(cliente.getTelefoneDdd());
-		this.telefoneTronco = Integer.valueOf(cliente.getTelefoneTronco());
+		this.subCanal = Integer.parseInt(cliente.getSubCanal());
+		this.telefoneDdd = Integer.parseInt(cliente.getTelefoneDdd());
+		this.telefoneTronco = Integer.parseInt(cliente.getTelefoneTronco());
 		this.usoVerbaRestritoProduto = cliente.getUsoVerbaRestritoProduto();
 		this.codigoErpCanal = cliente.getCodigoErpCanal();
 		this.codigoErpCondicaoPagamento = cliente.getCodigoErpCondicaoPagamento();

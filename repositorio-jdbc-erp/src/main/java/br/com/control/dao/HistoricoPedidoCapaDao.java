@@ -21,7 +21,7 @@ public class HistoricoPedidoCapaDao extends JdbcDao<HistoricoPedidoCapa> {
 	}
 
 	public HistoricoPedidoCapa buscarHistoricoPedidoCapa(String codigoERP) {
-		String declare = String.format("DECLARE set bigint @numero_pedido = %f ", Float.parseFloat(codigoERP));
+		String declare = "DECLARE set bigint @numero_pedido = " + Float.parseFloat(codigoERP);
 		getJdbcTemplate().update(declare);
 		return selectViewSingle(ViewsIntegracaoERP.VW_HISTORICO_PEDIDO_CAPA, new HistroricoPedidoCapaRowMapper());
 	}
