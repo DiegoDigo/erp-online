@@ -18,6 +18,7 @@ public class CondicaoPagamentoRowMapper implements RowMapper<CondicaoPagamento>{
 		condicaoPagamento.setInformaPrimeiraParcela(rs.getBoolean("informa_primeira_parcela"));
 		condicaoPagamento.setNumeroDias(rs.getInt("numero_dias"));
 		condicaoPagamento.setPrazo(rs.getInt("prazo"));
+		condicaoPagamento.setDisponivel(rs.getInt("DISPONIVEL") == 1);
 		return condicaoPagamento;
 	}
 

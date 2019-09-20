@@ -11,9 +11,20 @@ public class CondicaoPagamento implements Serializable{
 	private Boolean informaPrimeiraParcela;
 	private Integer numeroDias;
 	private Integer prazo;
+	private Boolean disponivel;
+
 	public Boolean getAtivo() {
 		return ativo;
 	}
+
+	public Boolean getDisponivel() {
+		return disponivel;
+	}
+
+	public void setDisponivel(Boolean disponivel) {
+		this.disponivel = disponivel;
+	}
+
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
